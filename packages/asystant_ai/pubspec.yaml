@@ -1,6 +1,6 @@
 name: asystant_ai
 description: An embeddable Flutter assistant with local tools and reactive_notifier.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/JhonaCodes/asystant-ai
 repository: https://github.com/JhonaCodes/asystant-ai/tree/main/packages/asystant_ai
 issue_tracker: https://github.com/JhonaCodes/asystant-ai/issues
@@ -20,6 +20,9 @@ dependencies:
   asystant_core: ^0.2.0
   reactive_notifier: ^2.18.1
   collection: ^1.19.1
+  flutter_markdown_plus: ^1.0.12
+  url_launcher: ^6.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  url_launcher_platform_interface: ^2.3.2

@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/service/asystant_link_opener.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/widgets/asystant_chat.dart';
 
 /// Default launcher. Hosts can instead mount AsystantChat in an endDrawer.
 class AsystantButton extends StatelessWidget {
-  const AsystantButton({super.key, required this.assistant, this.strings});
+  const AsystantButton({
+    super.key,
+    required this.assistant,
+    this.strings,
+    this.onOpenLink,
+  });
 
   final AsystantAI assistant;
 
   final AsystantStrings? strings;
+
+  /// Optional HTTP(S) navigation override shared with the opened chat.
+  final AsystantLinkCallback? onOpenLink;
 
   @override
   Widget build(BuildContext context) => FilledButton.tonalIcon(
@@ -32,6 +41,7 @@ class AsystantButton extends StatelessWidget {
           child: AsystantChat(
             assistant: assistant,
             strings: strings,
+            onOpenLink: onOpenLink,
             onClose: () => Navigator.of(sheetContext).pop(),
           ),
         ),

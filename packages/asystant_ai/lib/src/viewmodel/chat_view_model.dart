@@ -11,6 +11,9 @@ import 'package:asystant_ai/src/model/chat_entry.dart';
 /// Owns conversation state and executes only registered, authorized local tools.
 class ChatViewModel extends ViewModel<ChatState> {
   ChatViewModel() : super(const ChatState());
+
+  static const _streamingInterval = Duration(milliseconds: 32);
+
   AssistantTransport? _transport;
 
   ToolRegistry? _registry;
@@ -28,6 +31,10 @@ class ChatViewModel extends ViewModel<ChatState> {
   String? _identity;
 
   final Set<String> _executed = {};
+
+  final StringBuffer _streamingText = StringBuffer();
+
+  Timer? _streamingTimer;
 
   @override
   void init() {}
@@ -178,6 +185,7 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   void cancel() {
     _epoch++;
+    _resetStreaming();
     _transport?.cancel();
     if (_approval?.isCompleted == false) {
       _approval?.complete(false);
@@ -216,6 +224,7 @@ class ChatViewModel extends ViewModel<ChatState> {
   }
 
   void _fail(AssistantFailure failure) {
+    _resetStreaming();
     updateState(
       state.copyWith(
         phase: .error,
@@ -264,6 +273,7 @@ class ChatViewModel extends ViewModel<ChatState> {
       return;
     }
     final epoch = ++_epoch;
+    _resetStreaming();
     final random = Random.secure();
     final turn = List.generate(
       16,
@@ -303,9 +313,7 @@ class ChatViewModel extends ViewModel<ChatState> {
           }
           switch (event) {
             case TextDelta():
-              updateState(
-                state.copyWith(streaming: state.streaming + event.text),
-              );
+              _appendStreaming(event.text, epoch);
             case InferenceCompleted():
               if (completed != null ||
                   event.message.role != MessageRole.assistant) {
@@ -340,6 +348,7 @@ class ChatViewModel extends ViewModel<ChatState> {
           _fail(const AssistantFailure(.protocol));
           return;
         }
+        _resetStreaming();
         updateState(
           state.copyWith(
             entries: [
@@ -368,6 +377,24 @@ class ChatViewModel extends ViewModel<ChatState> {
         _fail(const AssistantFailure(.toolFailed));
       }
     }
+  }
+
+  /// Coalesces provider bursts without tying execution to a mounted chat or frame.
+  /// The completed provider message remains the authoritative final response.
+  void _appendStreaming(String text, int epoch) {
+    _streamingText.write(text);
+    _streamingTimer ??= Timer(_streamingInterval, () {
+      _streamingTimer = null;
+      if (_current(epoch)) {
+        updateState(state.copyWith(streaming: _streamingText.toString()));
+      }
+    });
+  }
+
+  void _resetStreaming() {
+    _streamingTimer?.cancel();
+    _streamingTimer = null;
+    _streamingText.clear();
   }
 
   /// Previews, authorizes and executes a single call against the frozen turn.

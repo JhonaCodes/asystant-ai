@@ -54,7 +54,7 @@ class ChatConversation extends StatelessWidget {
         ),
         if (state.steps.isNotEmpty)
           ToolSteps(steps: state.steps, strings: strings),
-        if (state.streaming.isNotEmpty) SelectableText(state.streaming),
+        if (state.streaming.isNotEmpty) Text(state.streaming),
         if (state.pending case final pending?)
           GenUiCard(
             card: pending.card,
