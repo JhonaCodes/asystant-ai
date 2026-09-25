@@ -1,7 +1,9 @@
 import 'package:asystant_core/src/model/assistant_value.dart';
 
+/// JSON-compatible field kinds supported by local argument validation.
 enum ToolFieldKind { string, integer, number, boolean, strings }
 
+/// One scalar or string-list argument accepted by a local tool.
 class ToolField extends AssistantValue {
   const ToolField({
     required this.name,

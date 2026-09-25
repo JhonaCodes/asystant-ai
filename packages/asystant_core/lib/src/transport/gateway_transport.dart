@@ -11,13 +11,18 @@ import 'package:asystant_core/src/transport/assistant_transport.dart';
 import 'package:asystant_core/src/transport/inference_event.dart';
 import 'package:asystant_core/src/transport/session_source.dart';
 
+/// HTTP/SSE transport with memory-only credentials renewed through the host session.
 class GatewayTransport extends AssistantTransport {
   GatewayTransport({
     required this.baseUri,
     required this.sessionSource,
     http.Client Function()? clientFactory,
   }) : _clientFactory = clientFactory ?? http.Client.new;
+
+  /// Base address of a compatible gateway. Use HTTPS outside local development.
   final Uri baseUri;
+
+  /// Host authentication bridge; never a provider API key.
   final SessionSource sessionSource;
   final http.Client Function() _clientFactory;
   String? _token;
@@ -46,15 +51,17 @@ class GatewayTransport extends AssistantTransport {
   Uri _url(String path) => baseUri.resolve(path);
   Future<Result<String, AssistantFailure>> _access() async {
     final identityAtStart = identity;
-    if (_disposed || identityAtStart == null)
+    if (_disposed || identityAtStart == null) {
       return Err(AssistantFailure(.authentication));
+    }
     if (_token != null &&
         identityAtStart == _boundIdentity &&
         DateTime.now()
             .toUtc()
             .add(const Duration(seconds: 30))
-            .isBefore(_expires))
+            .isBefore(_expires)) {
       return Ok(_token ?? '');
+    }
     final ticket = await sessionSource.issueTicket();
     return ticket.when(
       ok: (ticket) async {
@@ -63,8 +70,9 @@ class GatewayTransport extends AssistantTransport {
         });
         return exchange.when(
           ok: (json) {
-            if (_disposed || identity != identityAtStart)
+            if (_disposed || identity != identityAtStart) {
               return Err(AssistantFailure(.authentication));
+            }
             final rawToken = json['token'];
             final rawExpiry = json['expires_at'];
             final expiry = rawExpiry is String
@@ -73,8 +81,9 @@ class GatewayTransport extends AssistantTransport {
             if (rawToken is! String ||
                 rawToken.isEmpty ||
                 expiry == null ||
-                !expiry.isAfter(DateTime.now().toUtc()))
+                !expiry.isAfter(DateTime.now().toUtc())) {
               return Err(const AssistantFailure(.protocol));
+            }
             _token = rawToken;
             _expires = expiry;
             _boundIdentity = identityAtStart;
@@ -104,10 +113,15 @@ class GatewayTransport extends AssistantTransport {
             body: jsonEncode(body),
           )
           .timeout(const Duration(seconds: 30));
-      if (response.statusCode == 401) _token = null;
-      if (response.statusCode != 200 && response.statusCode != 204)
+      if (response.statusCode == 401) {
+        _token = null;
+      }
+      if (response.statusCode != 200 && response.statusCode != 204) {
         return Err(_failure(response.statusCode));
-      if (response.statusCode == 204) return Ok(const <String, Object?>{});
+      }
+      if (response.statusCode == 204) {
+        return Ok(const <String, Object?>{});
+      }
       return Ok(jsonDecode(response.body) as Map<String, Object?>);
     } on TimeoutException {
       return Err(AssistantFailure(.network));
@@ -151,18 +165,21 @@ class GatewayTransport extends AssistantTransport {
                 id.isEmpty ||
                 allowed is! List<Object?> ||
                 allowed.isEmpty ||
-                allowed.any((m) => m is! String || m.isEmpty))
+                allowed.any((m) => m is! String || m.isEmpty)) {
               return Err(const AssistantFailure(.protocol));
+            }
             if (_disposed ||
                 identity != _boundIdentity ||
-                identity != identityAtStart)
+                identity != identityAtStart) {
               return Err(const AssistantFailure(.authentication));
+            }
             final assigned = json['default_model'] ?? allowed.first;
             final selectable = json['allow_selection'] ?? true;
             if (assigned is! String ||
                 !allowed.contains(assigned) ||
-                selectable is! bool)
+                selectable is! bool) {
               return Err(const AssistantFailure(.protocol));
+            }
             _defaultModel = assigned;
             _allowSelection = selectable;
             _registration = id;
@@ -191,7 +208,9 @@ class GatewayTransport extends AssistantTransport {
         );
         return;
       }
-      if (epoch != _epoch || _disposed) return;
+      if (epoch != _epoch || _disposed) {
+        return;
+      }
       final client = _clientFactory();
       _active = client;
       final request = http.Request('POST', _url('/v1/turns'))
@@ -209,7 +228,9 @@ class GatewayTransport extends AssistantTransport {
           .send(request)
           .timeout(const Duration(seconds: 30));
       if (response.statusCode != 200) {
-        if (response.statusCode == 401) _token = null;
+        if (response.statusCode == 401) {
+          _token = null;
+        }
         yield InferenceFailed(_failure(response.statusCode));
         return;
       }
@@ -220,13 +241,21 @@ class GatewayTransport extends AssistantTransport {
               .transform(utf8.decoder)
               .transform(const LineSplitter())
               .timeout(const Duration(seconds: 90))) {
-        if (epoch != _epoch || _disposed) return;
+        if (epoch != _epoch || _disposed) {
+          return;
+        }
         total += line.length;
-        if (total > 2000000) throw const FormatException('Stream limit');
-        if (!line.startsWith('data:')) continue;
+        if (total > 2000000) {
+          throw const FormatException('Stream limit');
+        }
+        if (!line.startsWith('data:')) {
+          continue;
+        }
         final envelope =
             jsonDecode(line.substring(5).trim()) as Map<String, Object?>;
-        if (completed) throw const FormatException('Event after completion');
+        if (completed) {
+          throw const FormatException('Event after completion');
+        }
         switch (envelope['type']) {
           case 'text_delta':
             yield TextDelta(envelope['text'] as String);
@@ -248,12 +277,15 @@ class GatewayTransport extends AssistantTransport {
             throw const FormatException('Unknown event');
         }
       }
-      if (!completed) yield const InferenceFailed(AssistantFailure(.protocol));
+      if (!completed) {
+        yield const InferenceFailed(AssistantFailure(.protocol));
+      }
     } on TimeoutException {
       yield const InferenceFailed(AssistantFailure(.network));
     } on http.ClientException {
-      if (epoch == _epoch)
+      if (epoch == _epoch) {
         yield const InferenceFailed(AssistantFailure(.network));
+      }
     } on FormatException {
       yield const InferenceFailed(AssistantFailure(.protocol));
     } on ArgumentError {
@@ -275,7 +307,9 @@ class GatewayTransport extends AssistantTransport {
     _registration = null;
     _defaultModel = null;
     _boundIdentity = null;
-    if (token == null) return Ok(true);
+    if (token == null) {
+      return Ok(true);
+    }
     final result = await _post('/v1/sessions/revoke', const {}, token: token);
     return result.when(ok: (_) => Ok(true), err: Err.new);
   }

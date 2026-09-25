@@ -1,67 +1,46 @@
-# Verificación de implementación · 25 de septiembre de 2026
+# Implementation verification
 
-## Context status
+## Scope and context
 
-**Conforme.** Nombre final elegido: asystant-ai. SDK embebido en la app, lanzamiento desde botón, móvil/web/escritorio y nombre visible configurable. Referencias de AulaMás revisadas previamente en lectura; la carpeta de su posible SDK estaba vacía. No se modificaron repositorios de referencia. La API pública, ejemplos y documentos corresponden al código actual.
+The implementation is a reusable Flutter assistant inside an existing app, distributed as `asystant_ai` with its pure-Dart dependency `asystant_core`. The Rust gateway is a separate self-hosted service. The host chooses the display name, tools, instructions and authentication bridge. Reference applications were inspected read-only and were not modified.
 
-## Business-rule status
+## Business rules
 
-**Conforme para integración inicial.** Las tools viven en Flutter. Las escrituras piden aprobación por defecto. Rechazo, cancelación y cambio de sesión impiden ejecutar una aprobación pendiente. El host debe conservar sus permisos de negocio y verificar cancelación antes de confirmar efectos asíncronos. Los identificadores de idempotencia se entregan a las tools.
+Tools execute locally. Writes require confirmation by default. Denial, cancellation and identity changes invalidate pending approvals; host repositories must still enforce their own authorization and idempotency. The gateway verifies short-lived single-use tickets and records only hashes of opaque credentials. Model policy precedence is user, tenant, product, enforced again for every inference. Durable budget reservations survive token renewal and process restarts.
 
-El gateway valida issuer/audience/algoritmo/tiempos y uso único del ticket. La credencial es temporal y su hash es lo único persistido. Revocación por login. Modelos y montos se configuran en servidor. Los límites diarios sobreviven a renovación, nuevos logins y nuevas conexiones al pool; las reservas simultáneas se serializan transaccionalmente.
+## Verification evidence
 
-## Code-quality findings
+The implementation baseline passed seven Dart tests, thirteen Flutter/example tests and eight Rust tests. These cover schema validation, credential renewal, malformed responses, truncated SSE, permission decisions, cancellation, independent assistants, responsive layouts, concurrent reservations, persistent revocation and client model assignment. The opt-in live-provider test is excluded without explicit credentials.
 
-Hallazgos corregidos durante verificación: resultados incompletos tras cancelar una tool, parseo no tipado de respuestas de credenciales malformadas, estado de envío antes del repaint, permisos fuera de vista en ventanas pequeñas, cierre de selección sin opciones y orden de bloqueo de reservas/liquidación. Los widgets públicos están separados; las capas no ejecutan efectos del producto en servidor.
+Publication preparation additionally introduces admission tests for exchange limits, peer separation and spoofed forwarding headers, extends HTTP coverage for public OpenAPI and closed request DTOs, and checks concurrency rejection before inference. The release record records the final executed checks rather than treating documentation as proof.
 
-Las entradas/salidas JSON están en codecs y transporte. reactive_notifier administra el estado; los ViewModels se configuran mediante métodos y no por inyección en constructor. Los errores de proveedores no se propagan con secretos. Lint Flutter y Clippy sin hallazgos al cierre.
+Earlier native builds passed Android debug, iOS Simulator debug and macOS debug. Web release and browser checks cover the actual embedded example. Windows and Linux are supported by the Dart/Flutter code and generated host projects but were not natively built on this macOS host.
 
-## Test verification
+Docker verification uses disposable PostgreSQL, a non-root process and read-only root filesystem. Readiness fails before migration, succeeds afterward and fails on database outage while liveness remains available. Production hosting has not been performed.
 
-- 7 pruebas Dart: registro, argumentos, renovación conservando registro, respuesta de credencial malformada y stream truncado.
-- 13 pruebas Flutter: aprobación única, rechazo, cambio de sesión, cancelación, independencia de instancias, integración de la tool en la app y layouts 320×640 / 390×844 / 600×320 / 1440×900, teclado y texto ampliado.
-- 8 pruebas Rust: contratos de costo/tickets/transcript/registro, carrera de ocho reservas contra un mismo saldo, persistencia y renovación/revocación, endpoints HTTP completos con un proveedor de prueba.
-- Prueba real adicional, opt-in: se intentó `openai/gpt-oss-20b` a través del SDK y gateway; OpenRouter rechazó la credencial del entorno (401). No se declara inferencia real aprobada. La reserva incierta permanece retenida en la base aislada de prueba.
-- `flutter analyze`: sin incidencias.
-- `cargo clippy --all-targets -- -D warnings`: aprobado.
-- Builds: web release, Android debug, iOS Simulator debug y macOS debug completados. Windows/Linux incluyen proyectos de ejemplo, pero no se compilaron en este host macOS.
-- Navegador real automatizado: apertura desde botón, entrada de texto, permiso, confirmación y resultado a 1280 px y 390 px. Capturas Flutter `asystant-desktop.png`, `asystant-permission.png`, `asystant-result.png`, `asystant-mobile.png`.
+## Package distribution
 
-Las pruebas PostgreSQL usaron exclusivamente una base nueva de este proyecto, en el puerto 55439. No se usaron bases de las apps del usuario. Las correcciones relevantes se verificaron con fallos por aserción antes de su solución; no se consideran los errores de compilación como evidencia de comportamiento.
+MIT licenses, English usage guides, examples, changelogs, metadata and API comments are included in both packages. Publication checks use `pana` and `pub publish --dry-run`. Official pub.dev scores are produced asynchronously by pub.dev and must be distinguished from local analysis. Repository access and the publication order of the core dependency affect those results.
 
-## Confidence report
+## Security posture
 
-Arquitectura y permisos locales: alta para el alcance probado. Presupuestos, sesión y transacciones: alta en las pruebas aisladas. Compatibilidad visual: verificada en los tamaños enumerados. Proveedores: adaptación implementada, con confianza limitada hasta completar sus pruebas externas; Messages/Responses entregan respuesta completa, Chat Completions tiene streaming.
+The [security policy](../SECURITY.md) maps implemented controls to OWASP API Security Top 10 concerns and specifies operator responsibilities. Local code/tests are not an external penetration test or an OWASP certification. Shared ingress abuse controls, TLS, database permissions, backups and monitoring must be configured for the actual deployment.
 
-## Go / No-Go
+## Remaining limits
 
-**GO para integrar y evaluar el SDK en una app de desarrollo.** **NO-GO para publicar como servicio de producción validado:** falta completar la prueba externa con una credencial válida y conectar un emisor de tickets al login real de cada producto. No se ha desplegado ni publicado ningún paquete.
+- The available OpenRouter development credential returned HTTP 401; no successful external inference is claimed.
+- Each product must implement ticket issuance using its real existing login.
+- Messages/Responses adapters return complete responses, not incremental text.
+- Pending uncertain usage requires manual provider reconciliation; no automatic reconciliation or retention worker exists.
+- Cancellation cannot reverse already committed application effects.
+- Model/budget configuration changes require restart; removing a model may require client reinitialization.
 
-## Residual risks
+The SDK can be published and integrated with these limits documented. A production service is not declared validated until its provider, product authentication and deployment controls have been verified.
 
-- La reserva de costos inciertos no se libera sola. Falta automatizar conciliación con los proveedores y administración/retención del ledger.
-- Las tarifas de proveedores directos se configuran en servidor; deben reflejar su límite máximo vigente. El costo observado que supere una reserva se registra, pero no puede deshacer consumo ya facturado.
-- El SDK es inicialmente de texto y tools con campos escalares/listas de strings. Adjuntos multimodales, persistencia de conversaciones y esquemas anidados no están incluidos en esta versión.
-- Los efectos ya confirmados por una tool no se revierten al cancelar. Cada app debe aplicar autorización e idempotencia en su repositorio.
-- OpenCode Go limita los casos de uso admitidos; la configuración de un modelo debe respetar su endpoint y disponibilidad real.
+## Release preparation checks
 
+The English host example was built for web and exercised at 1280 px and 390 px; screenshots were refreshed. The complete local Dart/Flutter suite passed after formatting and documentation changes. Ten Rust tests passed with the selected AWS-LC JWT backend and HTTP/1 server features. `cargo audit` reported zero known advisories and zero warnings for the resulting lockfile. Clippy passed with warnings denied. OpenAPI 3.1 validation passed.
 
-## Ampliación: fidelidad del demo y modelo por cliente
+The process-local admission tests reject forged forwarding-header bypasses; the HTTP test verifies that concurrency rejection leaves the request ID available for a subsequent successful inference. Provider response reads now enforce the byte limit while streaming rather than after buffering the entire body. A whole-inference deadline also bounds slow consumer backpressure.
 
-Contexto: se trasladaron a la librería los pasos desplegables reales y el orden intercalado de tarjetas/mensajes; el estado de red conserva el borrador sin reenvío automático. Los avisos de conexión, credencial y presupuesto tienen iconos propios. La guía `feature-coverage.md` recoge el alcance acordado.
-
-Regla de negocio: el modelo se resuelve por producto, tenant y opcionalmente usuario. `GET /v1/models` y `init` devuelven la política efectiva. El modelo asignado prevalece sobre preferencias antiguas de la app; `allow_selection: false` bloquea tanto el selector como una petición HTTP manipulada. Las reglas se revalidan al inferir y no se elige el tenant desde datos del frontend.
-
-Pruebas nuevas: RED observado al registrar todos los modelos en vez del asignado, al rechazar en el SDK un modelo asignado distinto del solicitado y al no registrar los pasos. GREEN después de implementar las reglas. Se añadieron cobertura de precedencia por tenant/usuario, rechazo de modelo ajeno, bloqueo del selector, selección explícita, orden de resultados y borrador de red. Total: 28 pruebas locales aprobadas; smoke externo opt-in omitido.
-
-Calidad: widgets separados para encabezado, conversación, mensajes, pasos y errores. Eliminados los `part` de eventos; importaciones ordinarias y fallo tipado para eventos desconocidos. `flutter analyze` y Clippy se verifican junto con los tests. Build web actualizado; las compilaciones nativas documentadas arriba corresponden al cierre anterior y no se repitieron para estos cambios de Dart.
-
-GO para integrar esta ampliación. Se mantienen las limitaciones externas y operativas ya enumeradas. Las políticas de modelos se administran en configuración y requieren reinicio del gateway; no se añadió un endpoint administrativo público. Tras retirar un modelo, una sesión antigua debe reinicializar su registro.
-
-## Preparación del despliegue — 25 de septiembre de 2026
-
-Se añadieron Dockerfile multietapa con usuario 10001, contexto restringido que excluye secretos, Compose con PostgreSQL externo, migración independiente `--migrate-only` y ejecución sin DDL con `--serve`. Se conserva el arranque sin argumentos con migraciones para desarrollo. Las rutas `/health/live` y `/health/ready` distinguen proceso vivo de base/esquema accesible.
-
-Validación: imagen Linux ARM64 construida con `cargo build --release --locked`; existencia del tag Rust confirmada contra Docker Registry. Compose validado; `cargo fmt --check`, Clippy con `-D warnings` y ocho tests Rust aprobados. El test HTTP comprueba ambas rutas de salud. `scripts/check_container.py` pasó con PostgreSQL 18 desechable: readiness 503 sin esquema, 200 después de migrar y 503 al detener la base; liveness permaneció en 200. El proceso se ejecutó sin root y con filesystem de solo lectura. La base local de pruebas fue detenida y los recursos desechables del test fueron eliminados.
-
-No se ha desplegado externamente; falta definir el destino. El repositorio y el PR se preparan como entrega separada de la publicación del servicio. La imagen se verificó en ARM64; para un servidor AMD64 debe construirse en esa arquitectura. Continúan pendientes la credencial válida de OpenRouter, la conexión del backend de cada producto para emitir tickets y la conciliación operativa de reservas inciertas. El procedimiento completo está en `docs/deployment.md`.
+The disabled optional HTTP/2 server feature removed the affected `h2` dependency; the ingress can still terminate HTTPS/HTTP2 and forward HTTP/1. Switching the supported JWT crypto backend removed the affected `rsa` dependency without changing the HS256 ticket contract. These checks apply to the committed dependency selection, not to all future releases or the deployment operating system.

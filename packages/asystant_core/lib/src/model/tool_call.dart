@@ -1,6 +1,7 @@
 import 'package:asystant_core/src/model/assistant_value.dart';
 import 'package:asystant_core/src/tool/tool_arguments.dart';
 
+/// A model-proposed local function call whose arguments must be validated before use.
 class ToolCall extends AssistantValue {
   const ToolCall({
     required this.id,

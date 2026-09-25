@@ -28,6 +28,7 @@ class AssistantStep {
   int get hashCode => Object.hash(id, title, phase);
 }
 
+/// The execution or permission state of a displayed local-tool step.
 enum StepPhase {
   preparing,
   permission,

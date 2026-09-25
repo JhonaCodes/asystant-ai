@@ -19,35 +19,37 @@ class ChatModelPicker extends StatelessWidget {
   final ChatViewModel viewModel;
   final AsystantStrings strings;
   @override
-  Widget build(BuildContext context) => switch (state.allowModelSelection &&
-      state.models.length > 1) {
-    true => DropdownButton<String>(
-      value: state.model,
-      isExpanded: true,
-      underline: const SizedBox.shrink(),
-      hint: Text(strings.model),
-      items: state.models
-          .map(
-            (model) => DropdownMenuItem(
-              value: model,
-              child: Text(
-                model,
-                overflow: .ellipsis,
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ),
-          )
-          .toList(),
-      onChanged: state.busy
-          ? null
-          : (model) {
-              if (model case final selected?) viewModel.selectModel(selected);
-            },
-    ),
-    false => Text(
-      state.model.displayModelName,
-      overflow: .ellipsis,
-      style: Theme.of(context).textTheme.labelSmall,
-    ),
-  };
+  Widget build(BuildContext context) =>
+      switch (state.allowModelSelection && state.models.length > 1) {
+        true => DropdownButton<String>(
+          value: state.model,
+          isExpanded: true,
+          underline: const SizedBox.shrink(),
+          hint: Text(strings.model),
+          items: state.models
+              .map(
+                (model) => DropdownMenuItem(
+                  value: model,
+                  child: Text(
+                    model,
+                    overflow: .ellipsis,
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ),
+              )
+              .toList(),
+          onChanged: state.busy
+              ? null
+              : (model) {
+                  if (model case final selected?) {
+                    viewModel.selectModel(selected);
+                  }
+                },
+        ),
+        false => Text(
+          state.model.displayModelName,
+          overflow: .ellipsis,
+          style: Theme.of(context).textTheme.labelSmall,
+        ),
+      };
 }

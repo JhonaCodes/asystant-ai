@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Override through ThemeData.extensions. Defaults follow the host color scheme.
 @immutable
+/// Theme extension controlling chat spacing, widths and minimum action sizes.
 class AsystantTheme extends ThemeExtension<AsystantTheme> {
   const AsystantTheme({
     this.radius = 20,

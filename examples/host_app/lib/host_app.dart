@@ -9,7 +9,7 @@ class HostApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: 'Asistente · Host demo',
+    title: 'Assistant · Host demo',
     theme: ThemeData(
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(

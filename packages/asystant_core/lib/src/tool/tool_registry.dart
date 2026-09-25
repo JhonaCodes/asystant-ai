@@ -4,6 +4,7 @@ import 'package:asystant_core/src/tool/asystant_tool.dart';
 import 'package:asystant_core/src/tool/tool_arguments.dart';
 import 'package:asystant_core/src/tool/tool_field.dart';
 
+/// Validates tool names and arguments before dispatching to registered local tools.
 class ToolRegistry {
   ToolRegistry(Iterable<AsystantTool> tools)
     : _tools = List.unmodifiable(tools);
@@ -15,11 +16,13 @@ class ToolRegistry {
       final definition = tool.definition;
       if (!RegExp(r'^[a-zA-Z][a-zA-Z0-9_]{0,63}$').hasMatch(definition.name) ||
           !names.add(definition.name) ||
-          definition.description.trim().isEmpty)
+          definition.description.trim().isEmpty) {
         return Err(AssistantFailure(.invalidTool));
+      }
       if (definition.fields.map((f) => f.name).toSet().length !=
-          definition.fields.length)
+          definition.fields.length) {
         return Err(AssistantFailure(.invalidTool));
+      }
     }
     return Ok(true);
   }
@@ -31,16 +34,22 @@ class ToolRegistry {
     final tool = _tools
         .where((tool) => tool.definition.name == name)
         .firstOrNull;
-    if (tool == null || !tool.isAvailable)
+    if (tool == null || !tool.isAvailable) {
       return Err(AssistantFailure(.invalidTool));
+    }
     try {
       final supplied = arguments.toJson();
       final fields = tool.definition.fields;
-      if (supplied.keys.any((key) => !fields.any((field) => field.name == key)))
+      if (supplied.keys.any(
+        (key) => !fields.any((field) => field.name == key),
+      )) {
         return Err(AssistantFailure(.invalidTool));
+      }
       for (final field in fields) {
         if (!supplied.containsKey(field.name)) {
-          if (field.isRequired) return Err(AssistantFailure(.invalidTool));
+          if (field.isRequired) {
+            return Err(AssistantFailure(.invalidTool));
+          }
           continue;
         }
         final argument = supplied[field.name];
@@ -53,7 +62,9 @@ class ToolRegistry {
             argument is List<Object?> &&
                 argument.every((entry) => entry is String),
         };
-        if (!valid) return Err(AssistantFailure(.invalidTool));
+        if (!valid) {
+          return Err(AssistantFailure(.invalidTool));
+        }
       }
       return Ok(tool);
     } on FormatException {

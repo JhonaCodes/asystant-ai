@@ -1,19 +1,25 @@
 # asystant-ai
 
-SDK Flutter para incorporar un asistente **dentro de una app existente**. Se abre desde un botón y puede vivir en una sección, bottom sheet, end drawer o pantalla completa. El nombre visible es configurable; por defecto, **Asistente**.
+Embed an AI assistant inside an existing Flutter app. Launch it from a button or mount it in a section, bottom sheet, end drawer or full screen. The host chooses the assistant name and owns its lifetime.
 
-## Estructura
-
-| Directorio | Responsabilidad |
+| Component | Responsibility |
 | --- | --- |
-| `packages/asystant_ai` | Widgets, genUI, permisos, tema, textos y ViewModel con reactive_notifier |
-| `packages/asystant_core` | Contratos Dart, tools tipadas, transporte y sesión |
-| `services/asystant_gateway` | API Rust/Actix + PostgreSQL/Diesel, credenciales temporales y presupuestos |
-| `examples/host_app` | App con un espacio de trabajo y una tool local real para crear borradores en memoria |
+| [asystant_ai](packages/asystant_ai) | Flutter chat, genUI, permissions, themes and reactive_notifier state |
+| [asystant_core](packages/asystant_core) | Pure Dart tools, protocol models, session contracts and gateway transport |
+| [Rust gateway](services/asystant_gateway) | Temporary credentials, model policies, provider adapters and durable budgets |
+| [Host example](examples/host_app) | An embedded assistant with a real in-memory draft tool and simulated AI responses |
 
-Las tools se ejecutan exclusivamente en la app y llaman sus servicios habituales. El gateway transmite sus esquemas al modelo; nunca ejecuta código del producto. No requiere MCP.
+## Quick start
 
-## Ver la app
+```sh
+flutter pub add asystant_ai
+```
+
+Extend `AsystantAI`, register your local tools, initialize with a `GatewayTransport` after host authentication, then mount `AsystantButton(assistant: assistant)` or `AsystantChat(assistant: assistant)` in a bounded container. See the [package guide](packages/asystant_ai/README.md) and [integration contract](docs/public-api.md).
+
+Tools execute in your app using its existing services. The gateway passes schemas to the model and returns proposed calls; it never executes application code and does not use MCP.
+
+## Run the offline example
 
 ```sh
 flutter pub get
@@ -21,55 +27,20 @@ cd examples/host_app
 flutter run -d chrome
 ```
 
-La demo usa respuestas simuladas y lo indica en pantalla. Las acciones sobre los borradores sí se ejecutan mediante el mismo ciclo de herramientas y permisos que usa el SDK con un proveedor real.
+The example explicitly identifies simulated responses. Draft creation is a real local operation in memory and requires the same permission flow used by a network-backed assistant.
 
-![Chat móvil](docs/asystant-mobile.png)
+## Build your backend
 
-## Integración
+You can deploy the Rust gateway or use it as a reference for your own compatible API. Each product integrates ticket issuance with its existing login. Provider secrets stay on the server; Flutter receives only short-lived credentials. There is no bundled hosted service or inference credit.
 
-```dart
-import 'package:asystant_ai/asystant_ai.dart';
+- [Public HTTP contract](services/asystant_gateway/openapi.yaml)
+- [Authentication and provider guide](services/asystant_gateway/README.md)
+- [Deployment](docs/deployment.md)
+- [Security controls and OWASP scope](SECURITY.md)
+- [Architecture](docs/proposal.md)
+- [Feature coverage and limitations](docs/feature-coverage.md)
+- [Verification record](docs/implementation-verification.md)
 
-class MyAssistant extends AsystantAI {
-  MyAssistant() : super(name: 'Aula-AI');
+## License
 
-  @override
-  List<AsystantTool> get tools => [CreateDraftTool()]; // Tool de tu app.
-
-  @override
-  List<AsystantSystemPrompt> get systemPrompts => const [
-    AsystantSystemPrompt(id: 'role', content: 'Ayuda dentro de esta app.'),
-  ];
-}
-
-// Después de preparar los servicios y comprobar la sesión del host:
-final assistant = MyAssistant();
-await assistant.init(
-  transport: GatewayTransport(baseUri: gatewayUri, sessionSource: hostSession),
-  // models es opcional: la API asigna el modelo por cliente.
-  models: [],
-  builtInTools: const [
-    PresentationTool(kind: AssistantCardKind.summary),
-    PresentationTool(kind: AssistantCardKind.selection),
-  ],
-);
-
-// Desde cualquier sección del host:
-AsystantButton(assistant: assistant);
-
-// O dentro de un contenedor con altura delimitada / endDrawer / Scaffold:
-AsystantChat(assistant: assistant);
-```
-
-La instancia pertenece a la app: cerrar el panel conserva la conversación. Llama `dispose()` cuando dejes de necesitarla. Dos instancias mantienen estado independiente. Un cambio de identidad invalida permisos pendientes y limpia el historial; después el host vuelve a llamar `init`.
-
-- [Cobertura de funcionalidades acordadas](docs/feature-coverage.md)
-- [API pública y tools](docs/public-api.md)
-- [Autenticación, límites y arranque del gateway](services/asystant_gateway/README.md)
-- [Despliegue de la API con Docker](docs/deployment.md)
-- [Arquitectura y decisiones](docs/proposal.md)
-- [Interacción y personalización](docs/interaction-design.md)
-- [Verificación y límites actuales](docs/implementation-verification.md)
-- [Evidencia revisada en AulaMás](docs/aulamas-reference.md)
-
-Versión inicial privada. No se ha publicado en pub.dev ni desplegado. La prueba con OpenRouter real encontró una credencial en el entorno, pero el proveedor la rechazó con HTTP 401; queda pendiente repetirla con una clave válida. Ninguna clave de proveedor se incluye en Flutter. Los antiguos archivos `liria-preview*` son prototipos históricos y no forman parte de la librería.
+MIT. See [LICENSE](LICENSE). Both Dart packages and the Rust service include their own license copy.
