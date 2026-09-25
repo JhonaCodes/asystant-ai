@@ -1,5 +1,6 @@
 import 'inference_event.dart';
 
+/// An incremental piece of assistant text received over SSE.
 class TextDelta extends InferenceEvent {
   const TextDelta(this.text);
   final String text;

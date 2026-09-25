@@ -1,3 +1,4 @@
+/// Typed local-tool contracts and a credential-safe gateway transport for Dart.
 library;
 
 export 'package:result_controller/result_controller.dart';

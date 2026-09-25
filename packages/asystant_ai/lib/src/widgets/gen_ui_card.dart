@@ -4,6 +4,7 @@ import 'package:asystant_core/asystant_core.dart';
 import '../theme/asystant_theme.dart';
 import '../l10n/asystant_strings.dart';
 
+/// Renders a structured card and forwards explicit user choices to the host.
 class GenUiCard extends StatelessWidget {
   const GenUiCard({
     super.key,

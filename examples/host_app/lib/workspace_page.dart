@@ -12,13 +12,13 @@ class WorkspacePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: const Text('Mi espacio'),
+      title: const Text('My workspace'),
       actions: [
         Padding(
           padding: const EdgeInsets.all(8),
           child: AsystantButton(
             assistant: assistant,
-            strings: const AsystantStrings(),
+            strings: const AsystantStrings(spanish: false),
           ),
         ),
       ],
@@ -27,7 +27,7 @@ class WorkspacePage extends StatelessWidget {
       width: 460,
       child: AsystantChat(
         assistant: assistant,
-        strings: const AsystantStrings(),
+        strings: const AsystantStrings(spanish: false),
         onClose: () => Navigator.of(context).pop(),
       ),
     ),
@@ -38,12 +38,12 @@ class WorkspacePage extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           children: [
             Text(
-              'Tus borradores',
+              'Your drafts',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 12),
             const Text(
-              'Demo local · acciones reales en memoria, respuestas simuladas. Abre el asistente para preparar un borrador sin salir de esta sección.',
+              'Local demo · real in-memory actions, simulated responses. Open the assistant to prepare a draft without leaving this section.',
             ),
             const SizedBox(height: 24),
             Wrap(
@@ -52,13 +52,13 @@ class WorkspacePage extends StatelessWidget {
               children: [
                 AsystantButton(
                   assistant: assistant,
-                  strings: const AsystantStrings(),
+                  strings: const AsystantStrings(spanish: false),
                 ),
                 Builder(
                   builder: (context) => OutlinedButton.icon(
                     onPressed: () => Scaffold.of(context).openEndDrawer(),
                     icon: const Icon(Icons.view_sidebar_outlined),
-                    label: const Text('Panel lateral'),
+                    label: const Text('Side panel'),
                   ),
                 ),
                 OutlinedButton.icon(
@@ -67,14 +67,14 @@ class WorkspacePage extends StatelessWidget {
                       builder: (context) => Scaffold(
                         body: AsystantChat(
                           assistant: assistant,
-                          strings: const AsystantStrings(),
+                          strings: const AsystantStrings(spanish: false),
                           onClose: () => Navigator.of(context).pop(),
                         ),
                       ),
                     ),
                   ),
                   icon: const Icon(Icons.open_in_full),
-                  label: const Text('Pantalla completa'),
+                  label: const Text('Full screen'),
                 ),
               ],
             ),
@@ -87,9 +87,9 @@ class WorkspacePage extends StatelessWidget {
                     const Card(
                       child: ListTile(
                         leading: Icon(Icons.edit_note_rounded),
-                        title: Text('Aún no tienes borradores'),
+                        title: Text('No drafts yet'),
                         subtitle: Text(
-                          'El asistente puede ayudarte a crear el primero.',
+                          'The assistant can help you create your first draft.',
                         ),
                       ),
                     ),
@@ -98,7 +98,7 @@ class WorkspacePage extends StatelessWidget {
                       child: ListTile(
                         leading: const Icon(Icons.article_outlined),
                         title: Text(title),
-                        subtitle: const Text('Creado con una tool local'),
+                        subtitle: const Text('Created with a local tool'),
                       ),
                     ),
                 ],

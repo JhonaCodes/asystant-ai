@@ -1,15 +1,9 @@
-# Interacción
+# Interaction design
 
-El asistente es una sección del producto. El botón abre una superficie que se puede cerrar para regresar al trabajo; la conversación permanece en la instancia. La pantalla completa es otra presentación del mismo widget.
+The assistant belongs to the host app. Its launcher opens a bottom sheet by default; the host can mount the same chat in a section, end drawer or full screen. The assistant name is configurable.
 
-- Encabezado: nombre configurable, icono del asistente, estado con icono + texto y cierre opcional.
-- Conversación: mensajes seleccionables, burbuja discreta para el usuario y tarjetas de resultados.
-- Pensamiento: icono de destellos e indicador animado. La ejecución de tools usa un icono distinto. Completado, detenido y error tienen su propio símbolo.
-- Permiso: tarjeta con una descripción local de lo que se hará, “Continuar” y “Ahora no”. Sin modal adicional. Rechazar devuelve la decisión al modelo sin ejecutar.
-- Selección: chips seleccionables y confirmación explícita; las opciones llegan a la tool.
-- Compositor: una línea inicial que crece hasta cinco, etiqueta compacta del modelo y botón de envío en píldora. Durante la operación cambia a detener. Deshabilitado si no hay texto o no se completó init.
-- Scroll: sigue el contenido nuevo cuando el usuario está cerca del final y muestra las decisiones pendientes; permite revisar mensajes anteriores.
+A compact composer grows within a bounded height. Send is disabled for empty input and becomes Stop during active work. Thinking, execution, permissions and failures have distinct icons and accessible labels. The chat follows the host color scheme and supports enlarged text and narrow viewports.
 
-Los colores siguen el tema del host. `AsystantTheme` agrupa medidas, radios, ancho máximo y tamaños. `AsystantStrings` agrupa etiquetas; se puede especializar sin editar el SDK. El campo no muestra el control de resize del prototipo HTML.
+Tool previews explain the proposed action before confirmation. Continue and Not now remain inline with the relevant card; a model response cannot authorize an action. A tool requiring choices cannot continue without a selection. Steps show real lifecycle transitions rather than an invented model reasoning trace.
 
-La app de ejemplo incluye bottom sheet, panel lateral y pantalla completa. Las pruebas adaptativas cubren 320×640, 390×844, 600×320, 1440×900, teclado móvil y escala de texto 1.5. Las capturas `asystant-*.png` corresponden a la app Flutter ejecutándose en web. Los prototipos `liria-preview*` son históricos.
+Cards and text appear in execution order. Closing a panel preserves the host-owned conversation; logout invalidates pending actions. An uncertain network result is surfaced without replaying a write automatically.

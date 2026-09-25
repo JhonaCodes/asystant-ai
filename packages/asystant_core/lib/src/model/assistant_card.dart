@@ -1,7 +1,9 @@
 import 'package:asystant_core/src/model/assistant_value.dart';
 
+/// Supported presentations for read-only summaries, user choices and action results.
 enum AssistantCardKind { summary, entity, selection, permission, result }
 
+/// A structured presentation returned by a local tool, never executable UI code.
 class AssistantCard extends AssistantValue {
   const AssistantCard({
     required this.title,

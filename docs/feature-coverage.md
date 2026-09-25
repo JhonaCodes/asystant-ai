@@ -1,30 +1,26 @@
-# Funcionalidades de asystant-ai
+# Feature coverage
 
-| Pedido | Implementación en la librería / API |
+| Requirement | Implementation |
 | --- | --- |
-| Integrar dentro de cualquier app | `AsystantAI` + `AsystantChat`, sin router ni login propios |
-| Abrir desde un botón | `AsystantButton`, con bottom sheet; ejemplo de end drawer y fullscreen |
-| Mobile, web y desktop | Widgets adaptables; pruebas en teléfono y escritorio; proyectos de ejemplo multiplataforma |
-| Nombre del asistente configurable | `AsystantAI(name: ...)`; marca del paquete independiente |
-| Registro simple de tools | `List<AsystantTool>`, `TypedAsystantTool<T>`, validación antes de init y ejecución local |
-| Prompts por aplicación | `List<AsystantSystemPrompt>` |
-| Inicialización después del login | `init` explícito con `SessionSource`; no depende de que haya transcurrido un frame |
-| Estado reactive_notifier | Servicio por instancia y ViewModel sin parámetros de constructor |
-| genUI precreado | Tarjetas de resumen, entidad, selección, permisos y resultado |
-| Tools de fábrica opcionales | `PresentationTool`, activado/omitido con `builtInTools` |
-| Permisos suaves | Tarjeta inline, continuar/ahora no, vinculada a argumentos y sesión |
-| Pasos e iconos del demo | Desplegable de las acciones locales reales, con estados terminales |
-| Pensamiento y detener | Indicadores animados, streaming incremental y cancelación; sin reintentar escrituras |
-| Chat mejorable | Tema del host, `AsystantTheme`, textos reemplazables y widgets separados |
-| Tarjetas en orden | `ChatState.entries` intercala resultados con sus mensajes |
-| Autenticación agnóstica al producto | Ticket firmado por el backend del producto, intercambio por token temporal |
-| Expiración y refresh | Renovación antes de inferir, identidad estable, revocación por login |
-| Presupuesto por cliente | Límites tenant/usuario, overrides, reservas PostgreSQL y consumo persistido |
-| Modelo por cliente | `client_models`, default por tenant/usuario, selector opcional; validación en cada petición |
-| Consultar política efectiva | `GET /v1/models` autenticado y respuesta de init con modelo asignado |
-| OpenRouter inicial | Adaptador + ID configurado `openai/gpt-oss-20b` en el ejemplo de servidor |
-| Otros proveedores | OpenAI, Gemini, Claude y OpenCode Zen/Go con su protocolo configurado |
+| Flutter mobile, web and desktop | Shared bounded chat; host controls its navigation and placement |
+| Configurable assistant name | `AsystantAI(name: ...)` |
+| Tools embedded in each app | Typed registry, local preview and execution, optional built-ins |
+| Explicit permissions | Confirmation by default, optional required selection, cancellation-aware context |
+| GenUI | Summary, entity, selection, permission and result cards |
+| Progress and state icons | Tool steps, send/stop action and failure notices |
+| Existing login integration | `SessionSource` plus signed tickets from the product backend |
+| Credential renewal | Short-lived opaque gateway token, renewed through current host session |
+| Client model assignment | Product/tenant/user policies rechecked on every inference |
+| Budgets | Transactional daily tenant/user reservations and durable settlement |
+| OpenRouter | Chat Completions streaming, usage and configured price ceilings |
+| OpenAI, Gemini, Anthropic, OpenCode | Provider-specific adapters; protocol depends on model |
+| Public API reference | OpenAPI, deployment guidance, security scope and integration examples |
+| MIT distribution | License at repository, package and Rust-service roots |
 
-La demo HTML anterior es una referencia visual; los componentes y estados de esta tabla están en los paquetes Flutter y el gateway. La app de ejemplo consume esos mismos paquetes mediante dependencias locales.
+## Limits
 
-Persistencia de conversaciones, archivos multimodales, consola administrativa y conciliación automática de reservas inciertas no se presentan como implementados. No son necesarios para invocar las tools locales, pero sí deben tratarse explícitamente si se incorporan después. Las pruebas externas de proveedores siguen limitadas por la credencial de OpenRouter rechazada con 401; las pruebas de integración locales no simulan que esa inferencia haya funcionado.
+The repository includes no hosted endpoint or provider credit. Each product must integrate ticket issuance with its own backend. Real external inference still requires a valid provider key; the development credential returned HTTP 401.
+
+Messages and Responses adapters currently return a complete response instead of incremental text. The gateway has no public administration endpoint or automatic reconciliation worker. Configuration changes require restart. Rate limits inside the process supplement, rather than replace, trusted-ingress and multi-replica abuse controls.
+
+Application authorization, idempotency and cancellation checks remain essential inside local tools. Already committed effects cannot be undone by stopping the chat. Windows/Linux builds need their corresponding build hosts; the release checks distinguish analyzed platform support from native build execution.
