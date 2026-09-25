@@ -70,7 +70,7 @@ Cards support summary, entity, selection, permission and result presentations. T
 
 ## Backend and models
 
-You can deploy the [reference Rust API](https://github.com/JhonaCodes/asystant-ai/tree/main/services/asystant_gateway), or use its [OpenAPI contract](https://github.com/JhonaCodes/asystant-ai/blob/main/services/asystant_gateway/openapi.yaml) as a guide for your own backend. It handles short-lived credentials, revocation, durable budgets and model policies per product, customer and user. See [deployment](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/deployment.md) and [security](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md).
+You can deploy the [reference Rust API](https://github.com/JhonaCodes/asystant-gateway), or use its [OpenAPI contract](https://github.com/JhonaCodes/asystant-gateway/blob/main/openapi.yaml) as a guide for your own backend. It handles short-lived credentials, revocation, durable budgets and model policies per product, customer and user. See [deployment](https://github.com/JhonaCodes/asystant-gateway/blob/main/docs/deployment.md) and [security](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md).
 
 The package does not include a hosted API, provider credentials or inference credits. OpenRouter is the initial integration; the server also contains OpenAI, Gemini, Anthropic and OpenCode adapters. Messages/Responses adapters currently deliver complete responses rather than incremental text. Provider availability and usage terms must be checked before enabling a model.
 

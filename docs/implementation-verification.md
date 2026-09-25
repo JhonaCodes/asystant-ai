@@ -1,5 +1,7 @@
 # Implementation verification
 
+> Historical document: gateway source now lives in [asystant-gateway](https://github.com/JhonaCodes/asystant-gateway). PostgreSQL details and monorepo commands below describe the earlier bundled version.
+
 ## Scope and context
 
 The implementation is a reusable Flutter assistant inside an existing app, distributed as `asystant_ai` with its pure-Dart dependency `asystant_core`. The Rust gateway is a separate self-hosted service. The host chooses the display name, tools, instructions and authentication bridge. Reference applications were inspected read-only and were not modified.

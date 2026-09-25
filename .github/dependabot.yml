@@ -1,9 +1,5 @@
 version: 2
 updates:
-  - package-ecosystem: cargo
-    directory: /services/asystant_gateway
-    schedule:
-      interval: weekly
   - package-ecosystem: github-actions
     directory: /
     schedule:

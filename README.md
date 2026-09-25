@@ -1,12 +1,14 @@
 # asystant-ai
 
+The standalone Rust gateway now lives in [asystant-gateway](https://github.com/JhonaCodes/asystant-gateway), using SQLite with a persistent volume. This repository contains the Flutter SDK.
+
 Embed an AI assistant inside an existing Flutter app. Launch it from a button or mount it in a section, bottom sheet, end drawer or full screen. The host chooses the assistant name and owns its lifetime.
 
 | Component | Responsibility |
 | --- | --- |
 | [asystant_ai](packages/asystant_ai) | Flutter chat, genUI, permissions, themes and reactive_notifier state |
 | [asystant_core](packages/asystant_core) | Pure Dart tools, protocol models, session contracts and gateway transport |
-| [Rust gateway](services/asystant_gateway) | Temporary credentials, model policies, provider adapters and durable budgets |
+| [Rust gateway](https://github.com/JhonaCodes/asystant-gateway) | Temporary credentials, model policies, provider adapters and durable budgets |
 | [Host example](examples/host_app) | An embedded assistant with a real in-memory draft tool and simulated AI responses |
 
 ## Quick start
@@ -33,8 +35,8 @@ The example explicitly identifies simulated responses. Draft creation is a real 
 
 You can deploy the Rust gateway or use it as a reference for your own compatible API. Each product integrates ticket issuance with its existing login. Provider secrets stay on the server; Flutter receives only short-lived credentials. There is no bundled hosted service or inference credit.
 
-- [Public HTTP contract](services/asystant_gateway/openapi.yaml)
-- [Authentication and provider guide](services/asystant_gateway/README.md)
+- [Public HTTP contract](https://github.com/JhonaCodes/asystant-gateway/blob/main/openapi.yaml)
+- [Authentication and provider guide](https://github.com/JhonaCodes/asystant-gateway)
 - [Deployment](docs/deployment.md)
 - [Security controls and OWASP scope](SECURITY.md)
 - [Architecture](docs/proposal.md)

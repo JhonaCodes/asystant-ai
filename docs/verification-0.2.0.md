@@ -1,5 +1,7 @@
 # SDK 0.2.0 verification
 
+> Historical document: gateway source now lives in [asystant-gateway](https://github.com/JhonaCodes/asystant-gateway). PostgreSQL details and monorepo commands below describe the earlier bundled version.
+
 ## Context
 
 The Flutter SDK remains an embeddable assistant using reactive_notifier. Tool

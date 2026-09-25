@@ -1,5 +1,7 @@
 # Architecture
 
+> Historical document: gateway source now lives in [asystant-gateway](https://github.com/JhonaCodes/asystant-gateway). PostgreSQL details and monorepo commands below describe the earlier bundled version.
+
 The system separates application capabilities from provider access. Flutter owns the interaction, local permission decisions and tool execution. The gateway owns credentials, provider keys, model assignment and durable accounting. PostgreSQL stores credential hashes, consumed tickets, registrations, revocations and budget reservations.
 
 A product backend verifies its existing session and signs a short-lived single-use ticket. The gateway exchanges it for an opaque credential. The SDK registers schemas and instructions, requests inference and dispatches validated proposed calls to local tools. Results return to the model in another inference round.
