@@ -24,7 +24,7 @@ jobs:
     env:
       ASYSTANT_TEST_DATABASE_URL: postgres://asystant_test:ephemeral_ci_only@127.0.0.1:5432/asystant_test
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2
         with:
           channel: stable
