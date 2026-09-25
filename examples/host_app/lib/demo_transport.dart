@@ -48,7 +48,8 @@ class DemoTransport extends AssistantTransport {
         AssistantMessage(
           role: .assistant,
           content: done
-              ? 'The draft is in your app. You can close the assistant and keep working.'
+              ? 'The draft is in your app. You can close the assistant and keep working.\n\n'
+                    'Explore the [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md).'
               : 'Understood. I did not save the draft.',
         ),
       );

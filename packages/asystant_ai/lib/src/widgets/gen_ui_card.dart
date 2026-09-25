@@ -4,6 +4,7 @@ import 'package:asystant_core/asystant_core.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/widgets/asystant_markdown_text.dart';
 import 'package:asystant_ai/src/widgets/gen_ui_chart.dart';
 
 /// Renders a structured card and forwards explicit user choices to the host.
@@ -89,7 +90,7 @@ class _CardContents extends StatelessWidget {
         _CardHeader(card: card),
         if (card.body.isNotEmpty) ...[
           SizedBox(height: tokens.spacing),
-          Text(card.body),
+          AsystantMarkdownText(text: card.body),
         ],
         if (card.chart case final chart?) ...[
           SizedBox(height: tokens.spacing),

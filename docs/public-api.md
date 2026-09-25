@@ -72,6 +72,35 @@ this is not a claim of literally zero CPU cost.
 Migration from 0.1.0: remove `await` before `init()`. Only headless clients and tests
 that immediately send messages should explicitly await `ensureInitialized()`.
 
+### Closing the chat while work continues
+
+Own the `AsystantAI` instance in the authenticated application session, outside
+the sheet, drawer or route that displays it. Closing `AsystantChat` only removes
+the view. Initialization, pending HTTP requests, local asynchronous tools and
+responses continue in the same conversation. Reopen with the same instance to
+show its current steps, messages, cards and any pending approval. Reopening does
+not resend a message or repeat a tool call.
+
+Do not call `assistant.dispose()` from the chat panel's `dispose()` or close
+callback. Use `assistant.conversation.notifier.cancel()` for an explicit Stop
+action, and dispose the assistant when its owning login session ends. Changing
+the authenticated identity invalidates pending operations and clears old results.
+A permission requested while the panel is hidden waits for the user to reopen
+and approve; hiding the chat never grants permission.
+
+Provider text is accumulated and published to reactive state in 32 ms batches.
+The final response does not wait for that timer. Execution is independent of
+mounted widgets and animation frames, so a hidden panel does not stall the tool
+loop. Network I/O is asynchronous; it does not need an isolate. A custom tool
+that performs substantial synchronous CPU work must offload that calculation
+using a platform-appropriate worker (for example `compute` on native Flutter),
+passing serializable data and keeping UI/service references in the host isolate.
+`compute` does not create a separate worker on Flutter web.
+
+This lifetime applies while the application process can run. It does not promise
+execution after a mobile OS suspends/terminates the app, a browser tab is closed,
+or the process exits. That requires a separate durable background-job design.
+
 ## System prompts and safety
 
 Override the getter for application personality, business terminology and tool
@@ -142,3 +171,38 @@ For model-arranged charts, explicitly enable `ChartPresentationTool()` or
 `ChartPresentationTool(kind: AssistantChartKind.line)`. This optional tool only
 presents data; it cannot fetch private information or change application records.
 For authoritative reporting, build the card directly in the local data tool.
+
+## Links, selection and copying
+
+Completed messages and card bodies render Markdown, including named links such as
+`[Open settings](https://app.example.com/settings)` and bare HTTP(S) URLs. Links
+open only after a user taps them. The default opens the external browser; failures
+appear inside the assistant in the selected language. Image markup renders its
+alternative text without loading remote images or local files.
+
+The conversation is one selectable area, including streamed text, card titles,
+chart labels and results. Use mouse selection and Ctrl+C / Cmd+C on desktop, or
+long press and Copy on mobile. Selecting text never follows its links, and active
+selection pauses automatic scrolling. Streaming uses plain text until completion,
+so partial tokens do not repeatedly parse Markdown.
+
+`AsystantChat` and `AsystantButton` both accept a typed `onOpenLink` callback when
+the host needs to route a link within its application:
+
+```dart
+AsystantChat(
+  assistant: assistant,
+  onOpenLink: (uri) async {
+    if (uri.host == 'app.example.com' && uri.path == '/settings') {
+      await Navigator.of(context).pushNamed('/settings');
+      return true;
+    }
+    return false;
+  },
+);
+```
+
+Return `true` when the host handled navigation, or `false` to show link feedback.
+HTTP(S) validation applies before custom callbacks too: credentials in URLs and
+schemes such as `javascript`, `data` and `file` are rejected. A standalone
+`GenUiCard` can be wrapped in Flutter's `SelectionArea` when used outside the chat.
