@@ -23,6 +23,8 @@ class AsystantStrings {
     StepPhase.canceled => spanish ? 'Detenido' : 'Stopped',
     StepPhase.failed => spanish ? 'No se pudo completar' : 'Could not complete',
   };
+  String get connect => spanish ? 'Conectar asistente' : 'Connect assistant';
+
   String get send => spanish ? 'Enviar' : 'Send';
   String get stop => spanish ? 'Detener' : 'Stop';
   String get close => spanish ? 'Cerrar' : 'Close';

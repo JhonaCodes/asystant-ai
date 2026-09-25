@@ -3,8 +3,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:result_controller/result_controller.dart';
+
 import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/assistant_message.dart';
+import 'package:asystant_core/src/model/asystant_prompt_policy.dart';
 import 'package:asystant_core/src/model/system_prompt.dart';
 import 'package:asystant_core/src/tool/tool_definition.dart';
 import 'package:asystant_core/src/transport/assistant_transport.dart';
@@ -24,31 +26,48 @@ class GatewayTransport extends AssistantTransport {
 
   /// Host authentication bridge; never a provider API key.
   final SessionSource sessionSource;
+
   final http.Client Function() _clientFactory;
+
   String? _token;
+
   String? _boundIdentity;
+
   String? _registration;
+
   String? _defaultModel;
+
   bool _allowSelection = true;
+
   @override
   String? get defaultModel => _defaultModel;
+
   @override
   bool get allowModelSelection => _allowSelection;
+
   DateTime _expires = DateTime.fromMillisecondsSinceEpoch(0);
+
   http.Client? _active;
+
   int _epoch = 0;
+
   bool _disposed = false;
+
   @override
   String? get identity => sessionSource.identity;
+
   @override
   bool get isAuthenticated =>
       identity != null &&
       identity == _boundIdentity &&
       _token != null &&
       DateTime.now().toUtc().isBefore(_expires);
+
   @override
   Stream<void> get sessionChanges => sessionSource.changes;
+
   Uri _url(String path) => baseUri.resolve(path);
+
   Future<Result<String, AssistantFailure>> _access() async {
     final identityAtStart = identity;
     if (_disposed || identityAtStart == null) {
@@ -142,19 +161,32 @@ class GatewayTransport extends AssistantTransport {
     429 => .limit,
     _ => .unavailable,
   });
+
   @override
   Future<Result<List<String>, AssistantFailure>> initialize({
     required List<ToolDefinition> tools,
     required List<AsystantSystemPrompt> prompts,
     required List<String> models,
   }) async {
+    final policy = const AsystantPromptPolicy().compose(prompts);
+    return policy.when(
+      ok: (configured) => _register(tools, configured, models),
+      err: (failure) async => Err(failure),
+    );
+  }
+
+  Future<Result<List<String>, AssistantFailure>> _register(
+    List<ToolDefinition> tools,
+    List<AsystantSystemPrompt> configuredPrompts,
+    List<String> models,
+  ) async {
     final identityAtStart = identity;
     final access = await _access();
     return access.when(
       ok: (token) async {
         final registration = await _post('/v1/assistants/init', {
           'tools': tools.map((tool) => tool.toSchema()).toList(),
-          'prompts': prompts.map((p) => p.content).toList(),
+          'prompts': configuredPrompts.map((p) => p.content).toList(),
           'models': models,
         }, token: token);
         return registration.when(

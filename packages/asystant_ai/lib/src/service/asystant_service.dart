@@ -1,10 +1,16 @@
 import 'package:reactive_notifier/reactive_notifier.dart';
 
-import '../model/chat_state.dart';
-import '../viewmodel/chat_view_model.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 
-/// One container per assistant, owned by the host rather than the chat widget.
+/// Lazily owns one conversation per assistant, independent of widget lifetime.
 mixin AsystantService {
-  final ReactiveNotifierViewModel<ChatViewModel, ChatState> conversation =
-      ReactiveNotifierViewModel(ChatViewModel.new);
+  ReactiveNotifierViewModel<ChatViewModel, ChatState>? _conversation;
+
+  /// Creates the reactive container only when the conversation is accessed.
+  ReactiveNotifierViewModel<ChatViewModel, ChatState> get conversation =>
+      _conversation ??= ReactiveNotifierViewModel(ChatViewModel.new);
+
+  /// Releases an existing conversation without creating one during cleanup.
+  void disposeConversation() => _conversation?.dispose();
 }

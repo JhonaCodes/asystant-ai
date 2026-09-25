@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../model/chat_state.dart';
-import '../l10n/asystant_strings.dart';
-import '../theme/asystant_theme.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
 
 class StatusIndicator extends StatelessWidget {
   const StatusIndicator({
@@ -10,8 +10,11 @@ class StatusIndicator extends StatelessWidget {
     required this.phase,
     required this.strings,
   });
+
   final ChatPhase phase;
+
   final AsystantStrings strings;
+
   @override
   Widget build(BuildContext context) {
     final theme = AsystantTheme.of(context);
@@ -29,10 +32,10 @@ class StatusIndicator extends StatelessWidget {
     return Semantics(
       liveRegion: true,
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: .min,
         children: [
           AnimatedSwitcher(
-            duration: const Duration(milliseconds: 180),
+            duration: theme.transitionDuration,
             child: Icon(
               icon,
               key: ValueKey(phase),
@@ -52,7 +55,9 @@ class StatusIndicator extends StatelessWidget {
             SizedBox(width: theme.spacing),
             SizedBox.square(
               dimension: theme.iconSize / 2,
-              child: const CircularProgressIndicator(strokeWidth: 2),
+              child: CircularProgressIndicator(
+                strokeWidth: theme.progressStrokeWidth,
+              ),
             ),
           ],
         ],

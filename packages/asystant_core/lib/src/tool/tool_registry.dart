@@ -1,4 +1,5 @@
 import 'package:result_controller/result_controller.dart';
+
 import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/tool/asystant_tool.dart';
 import 'package:asystant_core/src/tool/tool_arguments.dart';
@@ -8,8 +9,11 @@ import 'package:asystant_core/src/tool/tool_field.dart';
 class ToolRegistry {
   ToolRegistry(Iterable<AsystantTool> tools)
     : _tools = List.unmodifiable(tools);
+
   final List<AsystantTool> _tools;
+
   List<AsystantTool> get tools => _tools;
+
   Result<bool, AssistantFailure> validate() {
     final names = <String>{};
     for (final tool in _tools) {
@@ -58,6 +62,9 @@ class ToolRegistry {
           ToolFieldKind.integer => argument is int,
           ToolFieldKind.number => argument is num && argument.isFinite,
           ToolFieldKind.boolean => argument is bool,
+          ToolFieldKind.numbers =>
+            argument is List<Object?> &&
+                argument.every((entry) => entry is num && entry.isFinite),
           ToolFieldKind.strings =>
             argument is List<Object?> &&
                 argument.every((entry) => entry is String),

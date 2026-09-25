@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../model/chat_state.dart';
-import '../viewmodel/chat_view_model.dart';
-import '../l10n/asystant_strings.dart';
-import '../theme/asystant_theme.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 
 class ChatSendAction extends StatelessWidget {
   const ChatSendAction({
@@ -12,9 +12,13 @@ class ChatSendAction extends StatelessWidget {
     required this.viewModel,
     required this.strings,
   });
+
   final ChatState state;
+
   final ChatViewModel viewModel;
+
   final AsystantStrings strings;
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);

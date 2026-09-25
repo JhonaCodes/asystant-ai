@@ -1,4 +1,5 @@
 import 'package:result_controller/result_controller.dart';
+
 import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/assistant_message.dart';
 import 'package:asystant_core/src/model/system_prompt.dart';

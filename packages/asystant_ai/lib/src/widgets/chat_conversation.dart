@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../model/chat_state.dart';
-import '../viewmodel/chat_view_model.dart';
-import '../l10n/asystant_strings.dart';
-import '../theme/asystant_theme.dart';
-import 'chat_timeline.dart';
-import 'chat_message_bubble.dart';
-import 'chat_failure_notice.dart';
-import 'chat_welcome.dart';
-import 'tool_steps.dart';
-import 'gen_ui_card.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/chat_entry.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
+import 'package:asystant_ai/src/widgets/chat_failure_notice.dart';
+import 'package:asystant_ai/src/widgets/chat_message_bubble.dart';
+import 'package:asystant_ai/src/widgets/chat_timeline.dart';
+import 'package:asystant_ai/src/widgets/chat_welcome.dart';
+import 'package:asystant_ai/src/widgets/gen_ui_card.dart';
+import 'package:asystant_ai/src/widgets/tool_steps.dart';
 
 class ChatConversation extends StatelessWidget {
   const ChatConversation({
@@ -18,9 +19,13 @@ class ChatConversation extends StatelessWidget {
     required this.viewModel,
     required this.strings,
   });
+
   final ChatState state;
+
   final ChatViewModel viewModel;
+
   final AsystantStrings strings;
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
@@ -37,11 +42,11 @@ class ChatConversation extends StatelessWidget {
         if (state.entries.isEmpty) ChatWelcome(strings: strings),
         ...state.entries.map(
           (entry) => switch (entry) {
-            final entry when entry.message != null => ChatMessageBubble(
-              message: entry.message!,
+            ChatEntry(message: final message?) => ChatMessageBubble(
+              message: message,
             ),
-            final entry when entry.card != null => GenUiCard(
-              card: entry.card!,
+            ChatEntry(card: final card?) => GenUiCard(
+              card: card,
               strings: strings,
             ),
             _ => const SizedBox.shrink(),

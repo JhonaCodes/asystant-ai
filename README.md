@@ -44,3 +44,20 @@ You can deploy the Rust gateway or use it as a reference for your own compatible
 ## License
 
 MIT. See [LICENSE](LICENSE). Both Dart packages and the Rust service include their own license copy.
+
+## Reports and prompt customization
+
+Application personality is supplied through `AsystantAI.systemPrompts`; scoped
+context can be added with `additionalSystemPrompts` during `init()`. The SDK and
+Rust gateway apply baseline safety guidance independently. See the
+[integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md).
+
+Cards now support typed bar and line charts, with accessible labels, units and
+source notes. These are English Flutter golden renders using example data:
+
+![Mobile report with bars and trend](https://raw.githubusercontent.com/JhonaCodes/asystant-ai/main/packages/asystant_ai/test/goldens/report_390.png)
+
+[Desktop golden](https://raw.githubusercontent.com/JhonaCodes/asystant-ai/main/packages/asystant_ai/test/goldens/report_900.png)
+
+See [model experience and verification](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/model-experience.md)
+for owner-reported GPT-OSS 20B/120B results and the boundary of automated testing.
