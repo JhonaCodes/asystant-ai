@@ -12,21 +12,34 @@ import 'package:asystant_ai/src/model/chat_entry.dart';
 class ChatViewModel extends ViewModel<ChatState> {
   ChatViewModel() : super(const ChatState());
   AssistantTransport? _transport;
+
   ToolRegistry? _registry;
+
   StreamSubscription<void>? _session;
+
   Completer<bool>? _approval;
+
   int _epoch = 0;
+
   bool _closed = false;
+
   bool _initialized = false;
+
   String? _identity;
+
   final Set<String> _executed = {};
+
   @override
   void init() {}
+
   ChatState get state => data;
+
   bool get isInitialized => _initialized;
+
   bool get canSend =>
       _initialized && !state.busy && state.draft.trim().isNotEmpty;
   bool get isAuthenticated => _transport?.isAuthenticated ?? false;
+
   Future<void> configure({
     required AssistantTransport transport,
     required List<AsystantTool> tools,
