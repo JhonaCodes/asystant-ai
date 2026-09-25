@@ -4,28 +4,42 @@ import 'dart:math';
 import 'package:asystant_core/asystant_core.dart';
 import 'package:reactive_notifier/reactive_notifier.dart';
 
-import '../model/chat_state.dart';
-import '../model/assistant_step.dart';
-import '../model/chat_entry.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/model/assistant_step.dart';
+import 'package:asystant_ai/src/model/chat_entry.dart';
 
+/// Owns conversation state and executes only registered, authorized local tools.
 class ChatViewModel extends ViewModel<ChatState> {
   ChatViewModel() : super(const ChatState());
   AssistantTransport? _transport;
+
   ToolRegistry? _registry;
+
   StreamSubscription<void>? _session;
+
   Completer<bool>? _approval;
+
   int _epoch = 0;
+
   bool _closed = false;
+
   bool _initialized = false;
+
   String? _identity;
+
   final Set<String> _executed = {};
+
   @override
   void init() {}
+
   ChatState get state => data;
+
   bool get isInitialized => _initialized;
+
   bool get canSend =>
       _initialized && !state.busy && state.draft.trim().isNotEmpty;
   bool get isAuthenticated => _transport?.isAuthenticated ?? false;
+
   Future<void> configure({
     required AssistantTransport transport,
     required List<AsystantTool> tools,
@@ -37,14 +51,18 @@ class ChatViewModel extends ViewModel<ChatState> {
     }
     final epoch = ++_epoch;
     _initialized = false;
-    await _session?.cancel();
-    if (_transport != null && _transport != transport) {
-      await _transport?.dispose();
-    }
+    final previousTransport = _transport;
     _transport = transport;
+    updateState(const ChatState(phase: ChatPhase.initializing));
+    await _session?.cancel();
+    if (previousTransport != null && previousTransport != transport) {
+      await previousTransport.dispose();
+    }
+    if (_closed || epoch != _epoch) {
+      return;
+    }
     _registry = ToolRegistry(tools);
     _identity = transport.identity;
-    updateState(const ChatState(phase: ChatPhase.initializing));
     _session = transport.sessionChanges.listen((_) {
       if (_identity != transport.identity) {
         cancel();
@@ -59,13 +77,25 @@ class ChatViewModel extends ViewModel<ChatState> {
       _fail(validation.errorOrNull!);
       return;
     }
+    final promptPolicy = const AsystantPromptPolicy().compose(prompts);
+    final configuredPrompts = promptPolicy.when(
+      ok: (composed) => composed,
+      err: (failure) {
+        _fail(failure);
+        return null;
+      },
+    );
+    if (configuredPrompts == null) {
+      return;
+    }
+
     try {
       final result = await transport.initialize(
         tools: tools
             .where((t) => t.isAvailable)
             .map((t) => t.definition)
             .toList(),
-        prompts: prompts,
+        prompts: configuredPrompts,
         models: models,
       );
       if (!_current(epoch)) {
@@ -93,6 +123,14 @@ class ChatViewModel extends ViewModel<ChatState> {
       if (_current(epoch)) {
         _fail(const AssistantFailure(.unavailable));
       }
+    }
+  }
+
+  /// Keeps unexpected host registration errors inside the assistant surface.
+  void reportInitializationFailure() {
+    if (!_closed) {
+      _initialized = false;
+      _fail(const AssistantFailure(.unavailable));
     }
   }
 
@@ -317,114 +355,10 @@ class ChatViewModel extends ViewModel<ChatState> {
           return;
         }
         for (final call in response.calls) {
+          await _executeLocalCall(call, turn, epoch);
           if (!_current(epoch)) {
             return;
           }
-          final executionKey = '$turn/${call.id}';
-          final tool = _registry!
-              .resolve(call.name, call.arguments)
-              .when(ok: (tool) => tool, err: (_) => null);
-          var outcome = 'Tool unavailable or invalid arguments.';
-          _step(
-            executionKey,
-            StepPhase.preparing,
-            title: tool?.definition.description ?? call.name,
-          );
-          if (tool != null && !_executed.contains(executionKey)) {
-            updateState(state.copyWith(phase: .executing));
-            final preview = await tool.preview(call.arguments);
-            if (!_current(epoch)) {
-              return;
-            }
-            final card = preview.when(ok: (card) => card, err: (_) => null);
-            if (card != null) {
-              _step(executionKey, StepPhase.preparing, title: card.title);
-              var allowed =
-                  !tool.requiresConfirmation && !tool.requiresSelection;
-              var selected = <String>[];
-              if (!allowed) {
-                _step(executionKey, StepPhase.permission);
-                _approval = Completer<bool>();
-                updateState(
-                  state.copyWith(
-                    phase: .permission,
-                    pending: PendingAction(
-                      call: call,
-                      card: card,
-                      requiresSelection: tool.requiresSelection,
-                    ),
-                  ),
-                );
-                allowed = await _approval!.future;
-                selected = state.pending?.selected.toList() ?? [];
-                if (!_current(epoch)) {
-                  return;
-                }
-                _approval = null;
-                updateState(state.copyWith(clearPending: true));
-              }
-              if (allowed && tool.isAvailable) {
-                _step(executionKey, StepPhase.running);
-                _executed.add(executionKey);
-                updateState(state.copyWith(phase: .executing));
-                final result = await tool.execute(
-                  call.arguments,
-                  ToolContext(
-                    idempotencyKey: executionKey,
-                    selectedOptions: List.unmodifiable(selected),
-                    isCanceled: () => !_current(epoch),
-                  ),
-                );
-                if (!_current(epoch)) {
-                  return;
-                }
-                result.when(
-                  ok: (result) {
-                    _step(executionKey, StepPhase.completed);
-                    outcome = result.modelContent;
-                    if (result.card case final card?) {
-                      updateState(
-                        state.copyWith(
-                          cards: [...state.cards, card],
-                          entries: [
-                            ...state.entries,
-                            ChatEntry(card: card),
-                          ],
-                        ),
-                      );
-                    }
-                  },
-                  err: (_) {
-                    _step(executionKey, StepPhase.failed);
-                    outcome = 'Local tool failed. Do not assume it succeeded.';
-                  },
-                );
-              } else {
-                _step(executionKey, StepPhase.declined);
-                outcome = 'User declined this action. Do not repeat it without a new request.';
-              }
-            } else {
-              _step(executionKey, StepPhase.failed);
-              outcome = 'Could not prepare a safe preview.';
-            }
-          }
-          if (state.steps.any(
-            (step) => step.id == executionKey && step.active,
-          )) {
-            _step(executionKey, StepPhase.failed);
-          }
-          updateState(
-            state.copyWith(
-              messages: [
-                ...state.messages,
-                AssistantMessage(
-                  role: .tool,
-                  content: outcome,
-                  callId: call.id,
-                ),
-              ],
-            ),
-          );
         }
         updateState(state.copyWith(phase: .thinking));
       }
@@ -434,6 +368,112 @@ class ChatViewModel extends ViewModel<ChatState> {
         _fail(const AssistantFailure(.toolFailed));
       }
     }
+  }
+
+  /// Previews, authorizes and executes a single call against the frozen turn.
+  /// Cancellation is checked again after every asynchronous host boundary.
+  Future<void> _executeLocalCall(ToolCall call, String turn, int epoch) async {
+    if (!_current(epoch)) {
+      return;
+    }
+    final executionKey = '$turn/${call.id}';
+    final tool = _registry!
+        .resolve(call.name, call.arguments)
+        .when(ok: (tool) => tool, err: (_) => null);
+    var outcome = 'Tool unavailable or invalid arguments.';
+    _step(
+      executionKey,
+      StepPhase.preparing,
+      title: tool?.definition.description ?? call.name,
+    );
+    if (tool != null && !_executed.contains(executionKey)) {
+      updateState(state.copyWith(phase: .executing));
+      final preview = await tool.preview(call.arguments);
+      if (!_current(epoch)) {
+        return;
+      }
+      final card = preview.when(ok: (card) => card, err: (_) => null);
+      if (card != null) {
+        _step(executionKey, StepPhase.preparing, title: card.title);
+        var allowed = !tool.requiresConfirmation && !tool.requiresSelection;
+        var selected = <String>[];
+        if (!allowed) {
+          _step(executionKey, StepPhase.permission);
+          _approval = Completer<bool>();
+          updateState(
+            state.copyWith(
+              phase: .permission,
+              pending: PendingAction(
+                call: call,
+                card: card,
+                requiresSelection: tool.requiresSelection,
+              ),
+            ),
+          );
+          allowed = await _approval!.future;
+          selected = state.pending?.selected.toList() ?? [];
+          if (!_current(epoch)) {
+            return;
+          }
+          _approval = null;
+          updateState(state.copyWith(clearPending: true));
+        }
+        if (allowed && tool.isAvailable) {
+          _step(executionKey, StepPhase.running);
+          _executed.add(executionKey);
+          updateState(state.copyWith(phase: .executing));
+          final result = await tool.execute(
+            call.arguments,
+            ToolContext(
+              idempotencyKey: executionKey,
+              selectedOptions: List.unmodifiable(selected),
+              isCanceled: () => !_current(epoch),
+            ),
+          );
+          if (!_current(epoch)) {
+            return;
+          }
+          result.when(
+            ok: (result) {
+              _step(executionKey, StepPhase.completed);
+              outcome = result.modelContent;
+              if (result.card case final card?) {
+                updateState(
+                  state.copyWith(
+                    cards: [...state.cards, card],
+                    entries: [
+                      ...state.entries,
+                      ChatEntry(card: card),
+                    ],
+                  ),
+                );
+              }
+            },
+            err: (_) {
+              _step(executionKey, StepPhase.failed);
+              outcome = 'Local tool failed. Do not assume it succeeded.';
+            },
+          );
+        } else {
+          _step(executionKey, StepPhase.declined);
+          outcome = 'User declined this action. Do not repeat it without a new request.';
+        }
+      } else {
+        _step(executionKey, StepPhase.failed);
+        outcome = 'Could not prepare a safe preview.';
+      }
+    }
+    if (state.steps.any((step) => step.id == executionKey && step.active)) {
+      _step(executionKey, StepPhase.failed);
+    }
+    updateState(
+      state.copyWith(
+        messages: [
+          ...state.messages,
+          AssistantMessage(role: .tool, content: outcome, callId: call.id),
+        ],
+      ),
+    );
   }
 
   @override

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../model/chat_state.dart';
-import '../viewmodel/chat_view_model.dart';
-import '../l10n/asystant_strings.dart';
-import '../theme/asystant_theme.dart';
-import 'chat_model_picker.dart';
-import 'chat_send_action.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
+import 'package:asystant_ai/src/widgets/chat_model_picker.dart';
+import 'package:asystant_ai/src/widgets/chat_send_action.dart';
 
 /// Controllers are widget lifecycle resources; conversation state lives in the VM.
 class ChatComposer extends StatefulWidget {
@@ -15,15 +15,20 @@ class ChatComposer extends StatefulWidget {
     required this.viewModel,
     required this.strings,
   });
+
   final ChatState state;
+
   final ChatViewModel viewModel;
+
   final AsystantStrings strings;
+
   @override
   State<ChatComposer> createState() => _ChatComposerState();
 }
 
 class _ChatComposerState extends State<ChatComposer> {
   final TextEditingController _text = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -59,43 +64,81 @@ class _ChatComposerState extends State<ChatComposer> {
         borderRadius: BorderRadius.circular(tokens.radius),
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: .min,
         children: [
-          TextField(
+          _ComposerTextField(
             controller: _text,
-            onChanged: widget.viewModel.setDraft,
-            minLines: 1,
-            maxLines: 5,
-            maxLength: 16000,
-            textCapitalization: TextCapitalization.sentences,
-            decoration: InputDecoration(
-              hintText: widget.strings.placeholder,
-              border: InputBorder.none,
-              filled: false,
-              counterText: '',
-              contentPadding: EdgeInsets.all(tokens.spacing / 2),
-            ),
+            viewModel: widget.viewModel,
+            strings: widget.strings,
           ),
           SizedBox(height: tokens.spacing / 2),
-          Row(
-            children: [
-              Expanded(
-                child: ChatModelPicker(
-                  state: widget.state,
-                  viewModel: widget.viewModel,
-                  strings: widget.strings,
-                ),
-              ),
-              SizedBox(width: tokens.spacing),
-              ChatSendAction(
-                state: widget.state,
-                viewModel: widget.viewModel,
-                strings: widget.strings,
-              ),
-            ],
+          _ComposerActions(
+            state: widget.state,
+            viewModel: widget.viewModel,
+            strings: widget.strings,
           ),
         ],
       ),
     );
   }
+}
+
+class _ComposerTextField extends StatelessWidget {
+  const _ComposerTextField({
+    required this.controller,
+    required this.viewModel,
+    required this.strings,
+  });
+
+  final TextEditingController controller;
+
+  final ChatViewModel viewModel;
+
+  final AsystantStrings strings;
+
+  @override
+  Widget build(BuildContext context) => TextField(
+    controller: controller,
+    onChanged: viewModel.setDraft,
+    minLines: 1,
+    maxLines: 5,
+    maxLength: 16000,
+    textCapitalization: .sentences,
+    decoration: InputDecoration(
+      hintText: strings.placeholder,
+      border: InputBorder.none,
+      filled: false,
+      counterText: '',
+      contentPadding: EdgeInsets.all(AsystantTheme.of(context).spacing / 2),
+    ),
+  );
+}
+
+class _ComposerActions extends StatelessWidget {
+  const _ComposerActions({
+    required this.state,
+    required this.viewModel,
+    required this.strings,
+  });
+
+  final ChatState state;
+
+  final ChatViewModel viewModel;
+
+  final AsystantStrings strings;
+
+  @override
+  Widget build(BuildContext context) => Row(
+    children: [
+      Expanded(
+        child: ChatModelPicker(
+          state: state,
+          viewModel: viewModel,
+          strings: strings,
+        ),
+      ),
+      SizedBox(width: AsystantTheme.of(context).spacing),
+      ChatSendAction(state: state, viewModel: viewModel, strings: strings),
+    ],
+  );
 }

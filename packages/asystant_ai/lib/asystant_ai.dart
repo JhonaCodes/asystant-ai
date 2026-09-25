@@ -12,3 +12,5 @@ export 'src/widgets/asystant_button.dart';
 export 'src/widgets/gen_ui_card.dart';
 export 'src/model/assistant_step.dart';
 export 'src/model/chat_entry.dart';
+
+export 'src/widgets/gen_ui_chart.dart';

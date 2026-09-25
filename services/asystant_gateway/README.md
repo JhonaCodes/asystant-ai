@@ -43,7 +43,7 @@ Each product must implement ticket issuance on its own backend. The reference AP
 
 ## Tools and conversations
 
-`POST /v1/assistants/init` registers tool schemas, system prompts and optional model preferences. It returns an identity-bound registration valid for 24 hours plus the effective model policy. Tool implementations remain in the app.
+`POST /v1/assistants/init` registers tool schemas, system prompts and optional model preferences. The gateway always prepends its own English security baseline before application prompts, for every provider wire format. An identical SDK baseline is deduplicated. These instructions are guidance; server authorization and local tool validation remain mandatory. It returns an identity-bound registration valid for 24 hours plus the effective model policy. Tool implementations remain in the app.
 
 `POST /v1/turns` accepts `{registration_id, request_id, model, messages}` and returns `text/event-stream`. Each `data:` payload is one JSON envelope: `text_delta`, `completed` or `failed`. A completed message can contain proposed calls; the SDK validates them, obtains permission when required, executes locally and returns each result in the next inference.
 

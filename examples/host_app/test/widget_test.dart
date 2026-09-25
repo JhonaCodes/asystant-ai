@@ -9,7 +9,8 @@ void main() {
     tester,
   ) async {
     final assistant = WorkspaceAssistant();
-    await assistant.init(transport: DemoTransport());
+    assistant.init(transport: DemoTransport());
+    await tester.runAsync(assistant.ensureInitialized);
     await tester.pumpWidget(HostApp(assistant: assistant));
     await tester.tap(find.text('Assistant').first);
     await tester.pumpAndSettle();

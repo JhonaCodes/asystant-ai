@@ -14,6 +14,7 @@ class ToolContext {
 
   /// Option values explicitly selected by the user for this call.
   final List<String> selectedOptions;
+
   final bool Function() _isCanceled;
 
   /// Whether this execution capability has been canceled or invalidated.

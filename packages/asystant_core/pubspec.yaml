@@ -1,6 +1,6 @@
 name: asystant_core
 description: Typed local tools, session contracts and gateway transport for embedded assistants.
-version: 0.1.0
+version: 0.2.0
 homepage: https://github.com/JhonaCodes/asystant-ai
 repository: https://github.com/JhonaCodes/asystant-ai/tree/main/packages/asystant_core
 issue_tracker: https://github.com/JhonaCodes/asystant-ai/issues

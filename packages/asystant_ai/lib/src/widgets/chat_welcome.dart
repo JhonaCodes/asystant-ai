@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../l10n/asystant_strings.dart';
-import '../theme/asystant_theme.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
 
 class ChatWelcome extends StatelessWidget {
   const ChatWelcome({super.key, required this.strings});
+
   final AsystantStrings strings;
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);

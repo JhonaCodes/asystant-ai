@@ -8,15 +8,20 @@ class ToolCall extends AssistantValue {
     required this.name,
     required this.arguments,
   });
+
   final String id;
+
   final String name;
+
   final ToolArguments arguments;
+
   ToolCall copyWith({String? id, String? name, ToolArguments? arguments}) =>
       ToolCall(
         id: id ?? this.id,
         name: name ?? this.name,
         arguments: arguments ?? this.arguments,
       );
+
   factory ToolCall.fromJson(Map<String, Object?> json) => ToolCall(
     id: json['id'] as String,
     name: json['name'] as String,
@@ -24,6 +29,7 @@ class ToolCall extends AssistantValue {
       json['arguments'] as Map<String, Object?>,
     ),
   );
+
   @override
   Map<String, Object?> toJson() => {
     'id': id,

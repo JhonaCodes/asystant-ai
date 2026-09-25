@@ -1,4 +1,5 @@
 import 'package:result_controller/result_controller.dart';
+
 import 'package:asystant_core/src/model/assistant_failure.dart';
 
 /// A fresh short-lived JWT ticket issued by the host backend, never a provider key.
