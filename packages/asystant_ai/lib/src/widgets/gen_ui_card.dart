@@ -17,9 +17,13 @@ class GenUiCard extends StatelessWidget {
     this.onSelect,
     this.onApprove,
     this.onDeny,
+    this.content,
   });
 
   final AssistantCard card;
+
+  /// Optional host-rendered content; use only with trusted local tool results.
+  final Widget? content;
 
   final AsystantStrings strings;
 
@@ -48,6 +52,7 @@ class GenUiCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(tokens.radius),
       ),
       child: _CardContents(
+        content: content,
         card: card,
         strings: strings,
         selected: selected,
@@ -67,9 +72,13 @@ class _CardContents extends StatelessWidget {
     this.onSelect,
     this.onApprove,
     this.onDeny,
+    this.content,
   });
 
   final AssistantCard card;
+
+  /// Optional host-rendered content; use only with trusted local tool results.
+  final Widget? content;
 
   final AsystantStrings strings;
 
@@ -95,6 +104,10 @@ class _CardContents extends StatelessWidget {
         if (card.chart case final chart?) ...[
           SizedBox(height: tokens.spacing),
           GenUiChart(chart: chart),
+        ],
+        if (content case final content?) ...[
+          SizedBox(height: tokens.spacing),
+          content,
         ],
         if (card.options.isNotEmpty) ...[
           SizedBox(height: tokens.spacing),

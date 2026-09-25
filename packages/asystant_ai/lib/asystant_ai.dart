@@ -16,3 +16,5 @@ export 'src/model/chat_entry.dart';
 export 'src/widgets/gen_ui_chart.dart';
 
 export 'src/service/asystant_link_opener.dart';
+
+export 'src/widgets/asystant_card_content.dart';
