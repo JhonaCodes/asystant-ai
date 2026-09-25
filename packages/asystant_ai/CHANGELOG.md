@@ -1,3 +1,10 @@
+## 0.2.1
+
+- Selectable conversation and card text with clickable links and host-controlled navigation.
+- Batched streaming updates reduce UI notifications without interrupting hidden conversations.
+- Regression coverage for closing/reopening during inference, pending approvals, and account changes.
+- Documented session-owned conversation lifetime and explicit cancellation.
+
 ## 0.2.0
 
 - Deferred Flutter initialization: `init()` stores configuration; the mounted chat connects after its first frame. Headless clients await `ensureInitialized()` explicitly.

@@ -27,10 +27,12 @@ class ChatTimeline extends StatefulWidget {
 class _ChatTimelineState extends State<ChatTimeline> {
   final ScrollController _scroll = ScrollController();
 
+  bool _hasSelection = false;
+
   @override
   void didUpdateWidget(covariant ChatTimeline oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.revision == oldWidget.revision) {
+    if (widget.revision == oldWidget.revision || _hasSelection) {
       return;
     }
     final follow =
@@ -40,7 +42,7 @@ class _ChatTimelineState extends State<ChatTimeline> {
             AsystantTheme.of(context).timelineFollowThreshold;
     if (follow) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted && _scroll.hasClients) {
+        if (mounted && _scroll.hasClients && !_hasSelection) {
           _scroll.jumpTo(_scroll.position.maxScrollExtent);
         }
       });
@@ -54,10 +56,14 @@ class _ChatTimelineState extends State<ChatTimeline> {
   }
 
   @override
-  Widget build(BuildContext context) => ListView(
-    controller: _scroll,
-    padding: widget.padding,
-    keyboardDismissBehavior: .onDrag,
-    children: widget.children,
+  Widget build(BuildContext context) => SelectionArea(
+    onSelectionChanged: (selection) =>
+        _hasSelection = selection?.plainText.isNotEmpty ?? false,
+    child: ListView(
+      controller: _scroll,
+      padding: widget.padding,
+      keyboardDismissBehavior: .onDrag,
+      children: widget.children,
+    ),
   );
 }

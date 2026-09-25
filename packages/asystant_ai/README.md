@@ -117,3 +117,18 @@ source notes. These are English Flutter golden renders using example data:
 
 See [model experience and verification](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/model-experience.md)
 for owner-reported GPT-OSS 20B/120B results and the boundary of automated testing.
+
+## Links and copying
+
+Completed messages and card bodies support named Markdown links and bare HTTP(S)
+URLs. Tap a link to open it, drag to select and copy on desktop, or long press and
+choose Copy on mobile. Card and chart text participates in the same selection;
+automatic scrolling pauses while text is selected. Streamed text stays lightweight
+until the message completes.
+
+Use `onOpenLink` on `AsystantChat` or `AsystantButton` to provide a host navigation
+callback returning `FutureOr<bool>`. Return `true` when handled or `false` for
+localized feedback inside the chat. Both default and custom navigation accept
+credential-free HTTP(S) URLs only. Model-supplied images render alternative text
+without automatically loading external resources. See the
+[link integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#links-selection-and-copying).
