@@ -21,6 +21,13 @@ void main() {
     await iconLoader.load();
   });
 
+  // Font rasterization differs between Flutter's macOS and Linux engines.
+  // Keep exact pixel comparison against baselines recorded on the same host OS.
+  // Existing macOS images remain stable documentation links.
+  final goldenDirectory = Platform.isMacOS
+      ? 'goldens'
+      : 'goldens/${Platform.operatingSystem}';
+
   for (final width in [390.0, 900.0]) {
     testWidgets('English report at width $width', (tester) async {
       tester.view.physicalSize = Size(width, 900);
@@ -101,7 +108,7 @@ void main() {
       expect(find.text('Customer service'), findsOneWidget);
       await expectLater(
         find.byType(MaterialApp),
-        matchesGoldenFile('goldens/report_${width.toInt()}.png'),
+        matchesGoldenFile('$goldenDirectory/report_${width.toInt()}.png'),
       );
     });
   }
