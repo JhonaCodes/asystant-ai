@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../model/assistant_step.dart';
-import '../l10n/asystant_strings.dart';
-import 'tool_step_row.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/assistant_step.dart';
+import 'package:asystant_ai/src/widgets/tool_step_row.dart';
 
 class ToolSteps extends StatelessWidget {
   const ToolSteps({super.key, required this.steps, required this.strings});
+
   final List<AssistantStep> steps;
+
   final AsystantStrings strings;
+
   @override
   Widget build(BuildContext context) => ExpansionTile(
     tilePadding: EdgeInsets.zero,

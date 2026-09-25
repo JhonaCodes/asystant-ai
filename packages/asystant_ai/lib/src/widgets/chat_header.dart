@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../model/chat_state.dart';
-import '../l10n/asystant_strings.dart';
-import '../theme/asystant_theme.dart';
-import 'status_indicator.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/widgets/status_indicator.dart';
 
 class ChatHeader extends StatelessWidget {
   const ChatHeader({
@@ -13,10 +13,15 @@ class ChatHeader extends StatelessWidget {
     required this.strings,
     this.onClose,
   });
+
   final String name;
+
   final ChatPhase phase;
+
   final AsystantStrings strings;
+
   final VoidCallback? onClose;
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);

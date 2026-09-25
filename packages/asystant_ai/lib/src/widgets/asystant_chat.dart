@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:reactive_notifier/reactive_notifier.dart';
 
@@ -11,7 +13,7 @@ import 'chat_conversation.dart';
 import 'chat_composer.dart';
 
 /// One bounded chat section for sheets, drawers, embedded panels and full screens.
-class AsystantChat extends StatelessWidget {
+class AsystantChat extends StatefulWidget {
   const AsystantChat({
     super.key,
     required this.assistant,
@@ -22,23 +24,62 @@ class AsystantChat extends StatelessWidget {
   final VoidCallback? onClose;
   final AsystantStrings? strings;
   @override
+  State<AsystantChat> createState() => _AsystantChatState();
+}
+
+class _AsystantChatState extends State<AsystantChat> {
+  @override
+  void initState() {
+    super.initState();
+    _initializeAfterFrame();
+  }
+
+  @override
+  void didUpdateWidget(covariant AsystantChat oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.assistant != widget.assistant) {
+      _initializeAfterFrame();
+    }
+  }
+
+  void _initializeAfterFrame() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        unawaited(widget.assistant.ensureInitialized());
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
-    final labels = strings ?? AsystantStrings.of(context);
+    final labels = widget.strings ?? AsystantStrings.of(context);
     return Material(
       color: Theme.of(context).colorScheme.surface,
       child: SafeArea(
         child: ReactiveViewModelBuilder<ChatViewModel, ChatState>(
-          viewmodel: assistant.conversation.notifier,
+          viewmodel: widget.assistant.conversation.notifier,
           build: (state, vm, keep) => Column(
             children: [
               ChatHeader(
-                name: assistant.name,
+                name: widget.assistant.name,
                 phase: state.phase,
                 strings: labels,
-                onClose: onClose,
+                onClose: widget.onClose,
               ),
               const Divider(height: 1),
+              if (!vm.isInitialized &&
+                  (state.phase == ChatPhase.idle ||
+                      state.phase == ChatPhase.error))
+                Padding(
+                  padding: EdgeInsets.all(tokens.spacing),
+                  child: OutlinedButton.icon(
+                    onPressed: () =>
+                        unawaited(widget.assistant.ensureInitialized()),
+                    icon: const Icon(Icons.refresh_rounded),
+                    label: Text(labels.connect),
+                  ),
+                ),
               Expanded(
                 child: Align(
                   alignment: .topCenter,

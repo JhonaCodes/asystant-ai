@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../model/chat_state.dart';
-import '../viewmodel/chat_view_model.dart';
-import '../l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 
 extension ModelDisplayName on String {
   String get displayModelName => split('/').last;
@@ -15,9 +15,13 @@ class ChatModelPicker extends StatelessWidget {
     required this.viewModel,
     required this.strings,
   });
+
   final ChatState state;
+
   final ChatViewModel viewModel;
+
   final AsystantStrings strings;
+
   @override
   Widget build(BuildContext context) =>
       switch (state.allowModelSelection && state.models.length > 1) {

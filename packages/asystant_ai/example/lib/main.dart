@@ -82,10 +82,10 @@ class ExampleAssistant extends AsystantAI {
   List<AsystantTool> get tools => const [ReadWorkspaceTool()];
 }
 
-Future<void> main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   final assistant = ExampleAssistant();
-  await assistant.init(transport: ExampleTransport());
+  assistant.init(transport: ExampleTransport());
   runApp(ExampleApp(assistant: assistant));
 }
 

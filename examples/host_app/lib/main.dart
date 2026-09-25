@@ -4,9 +4,9 @@ import 'demo_transport.dart';
 import 'host_app.dart';
 import 'workspace_assistant.dart';
 
-Future<void> main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   final assistant = WorkspaceAssistant();
-  await assistant.init(transport: DemoTransport());
+  assistant.init(transport: DemoTransport());
   runApp(HostApp(assistant: assistant));
 }

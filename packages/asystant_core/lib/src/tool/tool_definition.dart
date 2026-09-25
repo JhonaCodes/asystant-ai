@@ -8,9 +8,13 @@ class ToolDefinition extends AssistantValue {
     required this.description,
     required this.fields,
   });
+
   final String name;
+
   final String description;
+
   final List<ToolField> fields;
+
   ToolDefinition copyWith({
     String? name,
     String? description,
@@ -20,21 +24,24 @@ class ToolDefinition extends AssistantValue {
     description: description ?? this.description,
     fields: List.unmodifiable(fields ?? this.fields),
   );
+
   factory ToolDefinition.fromJson(Map<String, Object?> json) => ToolDefinition(
     name: json['name'] as String,
     description: json['description'] as String,
     fields: List.unmodifiable(
       (json['fields'] as List<Object?>).map(
-        (f) => ToolField.fromJson(f as Map<String, Object?>),
+        (field) => ToolField.fromJson(field as Map<String, Object?>),
       ),
     ),
   );
+
   @override
   Map<String, Object?> toJson() => {
     'name': name,
     'description': description,
-    'fields': fields.map((f) => f.toJson()).toList(),
+    'fields': fields.map((field) => field.toJson()).toList(),
   };
+
   Map<String, Object?> toSchema() => {
     'name': name,
     'description': description,
@@ -43,7 +50,10 @@ class ToolDefinition extends AssistantValue {
       'properties': <String, Object?>{
         for (final field in fields) field.name: field.toSchema(),
       },
-      'required': fields.where((f) => f.isRequired).map((f) => f.name).toList(),
+      'required': fields
+          .where((field) => field.isRequired)
+          .map((field) => field.name)
+          .toList(),
       'additionalProperties': false,
     },
   };
