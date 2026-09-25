@@ -22,7 +22,7 @@ class CreateDraftTool extends AsystantTool {
     ToolArguments arguments,
   ) async => Ok(
     AssistantCard(
-      title: 'Guardar borrador',
+      title: 'Save draft',
       body: arguments.string('title'),
       kind: AssistantCardKind.permission,
     ),
@@ -41,7 +41,7 @@ class CreateDraftTool extends AsystantTool {
       ToolOutcome(
         modelContent: 'created',
         card: AssistantCard(
-          title: 'Borrador guardado',
+          title: 'Draft saved',
           body: arguments.string('title'),
           kind: AssistantCardKind.result,
         ),

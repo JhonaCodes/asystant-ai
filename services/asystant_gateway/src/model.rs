@@ -53,18 +53,21 @@ pub struct Session {
     pub expires_at: DateTime<Utc>,
 }
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Manifest {
     pub tools: Vec<Value>,
     pub prompts: Vec<String>,
     pub models: Vec<String>,
 }
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct ToolCall {
     pub id: String,
     pub name: String,
     pub arguments: Value,
 }
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Message {
     pub role: String,
     pub content: String,
@@ -74,6 +77,7 @@ pub struct Message {
     pub call_id: String,
 }
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Turn {
     pub registration_id: String,
     pub request_id: String,
@@ -81,6 +85,7 @@ pub struct Turn {
     pub messages: Vec<Message>,
 }
 #[derive(Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct ExchangeInput {
     pub ticket: String,
 }

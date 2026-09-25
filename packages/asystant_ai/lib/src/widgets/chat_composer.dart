@@ -33,11 +33,12 @@ class _ChatComposerState extends State<ChatComposer> {
   @override
   void didUpdateWidget(covariant ChatComposer oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (_text.text != widget.state.draft)
+    if (_text.text != widget.state.draft) {
       _text.value = TextEditingValue(
         text: widget.state.draft,
         selection: TextSelection.collapsed(offset: widget.state.draft.length),
       );
+    }
   }
 
   @override

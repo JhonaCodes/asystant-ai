@@ -1,10 +1,11 @@
 FROM rust:1.95-slim-bookworm AS builder
-RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev pkg-config \
+RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev pkg-config cmake \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY Cargo.toml Cargo.lock ./
 COPY src ./src
 COPY migrations ./migrations
+COPY openapi.yaml ./openapi.yaml
 RUN cargo build --release --locked --bin asystant_gateway
 
 FROM debian:bookworm-slim AS runtime

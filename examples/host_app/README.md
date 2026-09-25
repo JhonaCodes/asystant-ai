@@ -1,17 +1,13 @@
-# host_app
+# Embedded assistant host example
 
-A new Flutter project.
+An English-language Flutter app demonstrating the assistant inside an existing workspace. Launch it in a bottom sheet, side panel or full screen. AI responses are explicitly simulated; the local tool creates drafts in memory after user confirmation. No provider keys are required.
 
-## Getting Started
+From the repository root:
 
-This project is a starting point for a Flutter application.
+```sh
+flutter pub get
+cd examples/host_app
+flutter run -d chrome
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For a network-backed integration, replace `DemoTransport` with `GatewayTransport` and connect your existing login to `SessionSource`. Follow the [integration guide](../../docs/public-api.md) and the [reference Rust API](../../services/asystant_gateway/README.md).

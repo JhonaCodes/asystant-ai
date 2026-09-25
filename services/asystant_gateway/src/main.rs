@@ -1,8 +1,15 @@
 use std::{env, sync::Arc};
 use actix_cors::Cors;
-use actix_web::{App, HttpServer, web};
+use actix_web::{
+    App, HttpServer, web,
+    middleware::{DefaultHeaders, from_fn},
+};
 use asystant_gateway::{
-    config::Config, handler, provider::ProviderClient, repository::PoolConfig,
+    admission::{self, Admission},
+    config::Config,
+    handler,
+    provider::ProviderClient,
+    repository::PoolConfig,
     service::GatewayService,
 };
 
@@ -26,10 +33,12 @@ async fn main() -> anyhow::Result<()> {
         PoolConfig::new(&env::var("DATABASE_URL")?)?
     };
     let service = Arc::new(GatewayService {
+        inference_slots: Arc::new(tokio::sync::Semaphore::new(32)),
         config: config.clone(),
         pool,
         provider: Arc::new(ProviderClient::new()?),
     });
+    let admission = web::Data::new(Admission::default());
     HttpServer::new(move || {
         let mut cors = Cors::default()
             .allowed_methods(vec!["GET", "POST"])
@@ -39,8 +48,23 @@ async fn main() -> anyhow::Result<()> {
             cors = cors.allowed_origin(origin)
         }
         App::new()
+            .app_data(admission.clone())
+            .wrap(from_fn(admission::enforce))
+            .wrap(
+                DefaultHeaders::new()
+                    .add(("X-Content-Type-Options", "nosniff"))
+                    .add(("Referrer-Policy", "no-referrer"))
+                    .add((
+                        "Content-Security-Policy",
+                        "default-src 'none'; frame-ancestors 'none'",
+                    )),
+            )
             .wrap(cors)
-            .app_data(web::JsonConfig::default().limit(262144))
+            .app_data(
+                web::JsonConfig::default()
+                    .limit(262144)
+                    .error_handler(|_, _| asystant_gateway::error::AppError::Invalid.into()),
+            )
             .app_data(web::Data::new(Arc::clone(&service)))
             .configure(handler::routes)
     })

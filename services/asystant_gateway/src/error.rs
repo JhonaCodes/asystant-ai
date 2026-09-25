@@ -12,6 +12,8 @@ pub enum AppError {
     Budget,
     #[error("duplicate request or ticket")]
     Conflict,
+    #[error("request limit reached")]
+    Limited,
     #[error("provider unavailable")]
     Provider,
     #[error("service unavailable")]
@@ -24,14 +26,18 @@ impl ResponseError for AppError {
             Self::Invalid => StatusCode::BAD_REQUEST,
             Self::Budget => StatusCode::PAYMENT_REQUIRED,
             Self::Conflict => StatusCode::CONFLICT,
+            Self::Limited => StatusCode::TOO_MANY_REQUESTS,
             Self::Provider => StatusCode::BAD_GATEWAY,
             Self::Internal => StatusCode::SERVICE_UNAVAILABLE,
         }
     }
     fn error_response(&self) -> HttpResponse {
-        HttpResponse::build(self.status_code())
-            .insert_header(("Cache-Control", "no-store"))
-            .json(json!({"error":self.to_string()}))
+        let mut response = HttpResponse::build(self.status_code());
+        response.insert_header(("Cache-Control", "no-store"));
+        if matches!(self, Self::Limited) {
+            response.insert_header(("Retry-After", "60"));
+        }
+        response.json(json!({"error":self.to_string()}))
     }
 }
 impl From<diesel::result::Error> for AppError {

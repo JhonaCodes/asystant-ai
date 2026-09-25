@@ -1,6 +1,7 @@
 import 'package:asystant_core/src/model/assistant_card.dart';
 import 'package:asystant_core/src/model/assistant_value.dart';
 
+/// A local execution result, with model-facing text and an optional user-facing card.
 class ToolOutcome extends AssistantValue {
   const ToolOutcome({required this.modelContent, this.card});
   final String modelContent;

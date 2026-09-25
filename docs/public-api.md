@@ -1,79 +1,54 @@
-# API pública de asystant-ai
+# Integration guide
 
-## Fachada
+## Assistant ownership
 
-`AsystantAI(name: 'Asistente')` se extiende en cada app. Implementa `tools`; opcionalmente `systemPrompts`. `init` recibe `AssistantTransport`, preferencias opcionales de modelos y `builtInTools`. Omitir `models` delega el catálogo y el modelo predeterminado a la API. El servidor siempre decide la asignación efectiva por cliente; no se confía en un ID enviado por Flutter. Expone `isInitialized`, `isAuthenticated` y `dispose`.
+Extend `AsystantAI` in the host application. Override `tools` and optionally `systemPrompts`; pass any display name to the constructor. Own one instance per independent conversation. Closing the chat UI does not destroy it; call `dispose()` when its host owner is destroyed.
 
-`AsystantButton` abre un bottom sheet adaptable. `AsystantChat` es una sección sin router ni Scaffold propio: cabe en drawer, panel, ruta o pantalla completa. `AsystantTheme` se configura mediante `ThemeData.extensions`; los colores se heredan del `ColorScheme`. `AsystantStrings` permite español/inglés y se puede extender para cambiar textos. El nombre del asistente se decide por instancia.
-
-## Una tool local
+Initialize after the application services and login are ready. If initialization depends on mounted widgets, invoke it after the first frame; otherwise initialize before mounting the chat. Never rely on a frame callback as proof of authentication.
 
 ```dart
-class CreateDraftTool extends AsystantTool {
-  const CreateDraftTool();
-
-  @override
-  ToolDefinition get definition => const ToolDefinition(
-    name: 'create_draft',
-    description: 'Crear un borrador en el espacio actual.',
-    fields: [
-      ToolField(name: 'title', description: 'Título', kind: ToolFieldKind.string),
-    ],
-  );
-
-  // Las tools piden confirmación por defecto.
-  @override
-  Future<Result<AssistantCard, AssistantFailure>> preview(
-    ToolArguments arguments,
-  ) async => Ok(AssistantCard(
-    title: 'Guardar borrador',
-    body: arguments.string('title'),
-    kind: AssistantCardKind.permission,
-  ));
-
-  @override
-  Future<Result<ToolOutcome, AssistantFailure>> execute(
-    ToolArguments arguments,
-    ToolContext context,
-  ) async {
-    context.checkCanceled();
-    // Invoca aquí el servicio de la app. Conserva su autorización de negocio.
-    // Propaga context.idempotencyKey a las escrituras que puedan repetirse.
-    return Ok(const ToolOutcome(modelContent: 'Resultado confirmado por la app'));
-  }
-}
+await assistant.init(
+  transport: GatewayTransport(baseUri: gatewayUri, sessionSource: hostSession),
+  models: [],
+  builtInTools: const [
+    PresentationTool(kind: AssistantCardKind.summary),
+    PresentationTool(kind: AssistantCardKind.selection),
+  ],
+);
 ```
 
-El ejemplo real está en `examples/host_app/lib/create_draft_tool.dart`. Para un contrato de entrada propio, usa `TypedAsystantTool<T>` e implementa `decode`, `previewInput` y `executeInput`.
+`gatewayUri`, `hostSession` and `assistant` are host-owned objects. An empty model list delegates the catalog to the server. Optional built-in tools are enabled only when included; remove one from the list to disable it on the next initialization. Duplicate tool names are rejected.
 
-Esquemas iniciales: string, integer, number finito, boolean y lista de strings. Campos obligatorios/opcionales; argumentos adicionales, tipos erróneos, nombres desconocidos y registros duplicados se rechazan. JSON solo vive en los codecs de los límites. Se pueden añadir tipos compuestos ampliando esos codecs sin cambiar los widgets.
+## Authentication bridge
 
-`isAvailable` revalida disponibilidad antes de ejecutar. `requiresConfirmation` vale true por defecto. Solo las herramientas de lectura o presentación que lo permitan deben devolver false. `requiresSelection` requiere elegir al menos una opción de la tarjeta antes de continuar. Una selección devuelve valores de `options` mediante `ToolContext.selectedOptions`.
+`SessionSource` provides:
 
-`ToolContext` expone cancelación e idempotencia. Cancelar no revierte una escritura que el servicio de la app ya haya confirmado. Para trabajo asíncrono, comprueba la cancelación de nuevo inmediatamente antes de escribir. El SDK nunca reintenta automáticamente una tool fallida o interrumpida.
+- `identity`: stable identity of the current login, or null after logout.
+- `changes`: a stream that emits whenever the authentication context changes.
+- `issueTicket()`: obtains a fresh single-use signed JWT from the product backend.
 
-## genUI
+`CallbackSessionSource` adapts existing authentication callbacks. The backend derives tenant, user and login ID from its verified session, never from arbitrary frontend fields. It signs the short-lived ticket using the product-specific secret shared with the gateway. Flutter never stores this signing secret or a provider key.
 
-`AssistantCard` ofrece `summary`, `entity`, `selection`, `permission` y `result`. `GenUiCard` es público. Las vistas previas de permisos vienen de la implementación local de la tool; el texto del modelo no concede autorización.
+The gateway exchanges a ticket for an opaque credential valid for at most ten minutes and no longer than the host session. Before inference, the transport renews a credential approaching expiry by requesting another ticket. Rotation preserves the registered tools and daily budget. A login identity change cancels pending local actions and clears the conversation; initialize again for the new identity.
 
-`PresentationTool(kind: ...)` es opcional. Se activa incluyendo la instancia en `builtInTools`; se desactiva omitiéndola. Las tools de la app y las de fábrica comparten el registro y la validación. No se permite sobrescribir silenciosamente nombres repetidos.
+Call `GatewayTransport.revokeSession()` before discarding a logged-in transport when server-side revocation is required. Local `dispose()` alone does not revoke a remote credential. The product must use a new login ID after revocation.
 
-## Sesión y transporte
+## Local tools
 
-Implementa `SessionSource`, o usa `CallbackSessionSource` con los callbacks de la autenticación actual:
+`AsystantTool` exposes `definition`, `preview`, `execute`, `requiresConfirmation`, `requiresSelection` and `isAvailable`. `TypedAsystantTool<T>` adds a single domain decoder and typed preview/execution methods. Schema validation rejects unknown fields and wrong scalar types before execution.
 
-- `identity`: identificador estable que incluya producto/tenant/usuario/sesión. Null sin login.
-- `changes`: evento cuando cambie la identidad o se cierre sesión.
-- `issueTicket`: llama al backend autenticado del producto para obtener un ticket corto firmado. Nunca firma desde Flutter.
+A preview must be read-only. Mutating actions require confirmation by default. The model cannot approve its own action. Check `ToolContext.isCanceled` or `checkCanceled()` immediately before an asynchronous write, and use its `idempotencyKey` in your own repository. Existing product authorization is still mandatory; a model-requested action is not an authorization grant.
 
-`GatewayTransport` mantiene la credencial temporal solo en memoria. Antes de una inferencia, si está cerca de vencer, solicita un nuevo ticket y renueva el acceso; conserva el registro de tools. Un 401 descarta el token para la siguiente solicitud, sin repetir automáticamente la inferencia.
+The SDK bounds each user turn to eight inference rounds and sixteen calls per response. It does not automatically retry uncertain writes or reverse effects already committed. Tool result text returns to the model; optional cards remain in chronological order in the chat.
 
-Antes de cerrar sesión, el host puede esperar `gateway.revokeSession()` para revocar todas las credenciales emitidas para ese login. Debe manejar el Result si no hay conexión. El token también vence por TTL y está limitado por la expiración de la sesión firmada. Cambiar la identidad en Flutter no sustituye la revocación del servidor.
+## Embedding and customization
 
-La inicialización debe esperar la autenticación y dependencias, independientemente de que se invoque en un post-frame. No hace falta BuildContext para inicializar. Una llamada a `init` durante una operación activa no reconfigura el asistente.
+`AsystantButton` opens a bottom sheet. `AsystantChat` is a bounded section without its own app router or Scaffold; use it in drawers, panels and full screens. Colors follow the host theme. `AsystantTheme` controls dimensions. `AsystantStrings(spanish: false)` selects English; the default locale-aware widget path supports English and Spanish, and subclassing allows custom wording.
 
-## Progreso y orden de la conversación
+GenUI supports summary, entity, selection, permission and result cards. Selections use stable option strings that tools can map to host domain identifiers. Tool steps show preparing, permission, running, completed, declined, canceled and failed states.
 
-`ChatState.steps` contiene las etapas reales de las tools de la solicitud actual: preparación, permiso, ejecución, completado, rechazo, cancelación o error. La librería presenta un desplegable de pasos con iconos; no genera razonamiento interno ficticio. `ChatState.entries` conserva el orden visible entre mensajes y tarjetas de resultados.
+## Backend compatibility
 
-Errores de red, sesión y presupuesto tienen avisos e iconos diferenciados. Si falla la conexión antes de recibir una respuesta, se restaura el borrador cuando el usuario no ha escrito otro. No se reenvían mensajes ni se ejecutan tools automáticamente al reconectar.
+Use the [Rust reference implementation](../services/asystant_gateway/README.md) directly or as guidance for a compatible service. The authoritative request/response contract is [OpenAPI](../services/asystant_gateway/openapi.yaml), including SSE envelopes and errors. See [security](../SECURITY.md) before exposing a deployment.
+
+Model policy precedence is user, then tenant, then product. Initialization returns `models`, `default_model` and `allow_selection`. A fixed assignment disables the picker and rejects a forged model selection server-side on every inference. Configuration changes require a gateway restart; removed models require clients to reinitialize.

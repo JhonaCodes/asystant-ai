@@ -1,22 +1,22 @@
 # asystant-ai gateway
 
-API independiente del producto. Rust/Actix + PostgreSQL/Diesel; el servidor **no ejecuta las tools de la app**.
+A product-independent Rust/Actix API with PostgreSQL/Diesel persistence. Use it directly or as a reference implementation for a compatible assistant backend. It manages provider access; **it never executes application tools**.
 
-## Arranque
+## Start
 
-Configura las variables de `.env.example` en el proceso y una base PostgreSQL dedicada. El binario lee variables de entorno; no carga archivos `.env` automáticamente. No copies valores de ejemplo a producción.
+Supply the environment variables in [.env.example](.env.example). The binary reads process environment variables; it does not automatically load a dotenv file.
 
 ```sh
 cargo run --manifest-path services/asystant_gateway/Cargo.toml --bin asystant_gateway
 ```
 
-Sin argumentos se aplican las migraciones al arrancar, útil para desarrollo. En despliegues, ejecuta una vez `asystant_gateway --migrate-only` antes de iniciar las réplicas con `asystant_gateway --serve`. El listener predeterminado es `127.0.0.1:8787`; utiliza HTTPS en el punto de entrada de tu infraestructura. CORS permite exclusivamente `ASYSTANT_ORIGINS`.
+Development startup applies embedded migrations. Deployments run one `asystant_gateway --migrate-only` job, then start replicas with `asystant_gateway --serve`. The default listener is `127.0.0.1:8787`; the container listens on `0.0.0.0:8787`. See [deployment](../../docs/deployment.md).
 
-El [procedimiento de despliegue](../../docs/deployment.md) incluye Docker, Compose con PostgreSQL externo, comprobaciones de salud y configuración de cada producto.
+The [OpenAPI specification](openapi.yaml) describes all public endpoints, request/response schemas and SSE events. The service exposes the same contract at `/openapi.yaml`. A public endpoint still requires a valid signed ticket or bearer credential; no anonymous inference is provided.
 
-## Contrato de autenticación
+## Authentication
 
-El backend de cada producto registra su `issuer` y un secreto exclusivo de al menos 32 bytes. Tras verificar su login actual, emite un JWT **HS256** con:
+Register each product with an issuer and an independent random secret of at least 32 bytes. After validating its existing login, the product backend issues a JWT using **HS256** with these claims:
 
 ```json
 {
@@ -32,89 +32,81 @@ El backend de cada producto registra su `issuer` y un secreto exclusivo de al me
 }
 ```
 
-Las fechas son segundos Unix; los valores anteriores ilustran la estructura. El ticket dura como máximo 120 segundos y es de un solo uso. `session_exp` es el vencimiento real de la sesión autenticada. El producto nunca acepta tenant/sub/sid arbitrarios del frontend ni comparte el secreto con Flutter.
+Timestamps are illustrative Unix seconds; generate fresh values. Tickets last at most 120 seconds and can be consumed once. `session_exp` is the actual host session expiry. Derive all identity claims from the verified login, never from caller-selected tenant/user values. Keep the signing secret outside Flutter.
 
-1. `POST /v1/sessions/exchange` con `{ "ticket": "..." }` devuelve `{token, expires_at}` y `Cache-Control: no-store`.
-2. El token opaco dura hasta 10 minutos, limitado además por `session_exp`. Solo se almacena su hash SHA-256.
-3. El SDK reobtiene un ticket del backend antes de que venza la credencial y lo intercambia. Las credenciales pertenecen a la misma identidad estable; renovar no reinicia presupuesto.
-4. `POST /v1/sessions/revoke` con Bearer revoca todas las credenciales del mismo login `sid`, incluyendo intercambios posteriores. Un nuevo login necesita un `sid` nuevo.
+1. `POST /v1/sessions/exchange` with `{ "ticket": "..." }` returns an opaque credential and expiry.
+2. The credential lasts at most ten minutes and cannot outlive the host session. Only its SHA-256 hash is stored.
+3. The SDK requests a fresh ticket before expiry and exchanges it. Rotation preserves registration and budget identity.
+4. `POST /v1/sessions/revoke` revokes all credentials for that login ID and rejects future tickets for it. A new login must use a new `sid`.
 
-El contrato `SessionSource` reutiliza la autenticación del producto. Este repositorio no modifica los backends de tus apps para emitir tickets: incluye el contrato y pruebas de emisión/verificación, de modo que cada producto conecte su login existente.
+Each product must implement ticket issuance on its own backend. The reference API does not replace the product login or accept a provider key from the frontend.
 
-## Inicialización y conversación
+## Tools and conversations
 
-`POST /v1/assistants/init` con Bearer:
+`POST /v1/assistants/init` registers tool schemas, system prompts and optional model preferences. It returns an identity-bound registration valid for 24 hours plus the effective model policy. Tool implementations remain in the app.
 
-```json
-{
-  "tools": [{"name":"create_draft","description":"Create draft","parameters":{"type":"object","properties":{"title":{"type":"string"}},"required":["title"],"additionalProperties":false}}],
-  "prompts": ["Help inside this app."],
-  "models": ["openai/gpt-oss-20b"]
-}
-```
+`POST /v1/turns` accepts `{registration_id, request_id, model, messages}` and returns `text/event-stream`. Each `data:` payload is one JSON envelope: `text_delta`, `completed` or `failed`. A completed message can contain proposed calls; the SDK validates them, obtains permission when required, executes locally and returns each result in the next inference.
 
-Devuelve `{id, models, default_model, allow_selection}`. El registro pertenece a la identidad completa y vence a las 24 horas; el host puede volver a inicializar tras ese plazo. El servidor elige el modelo predeterminado según producto → tenant → usuario. Siempre lo incluye aunque la app hubiera solicitado otro; los modelos adicionales solicitados deben estar permitidos por esa política. `models: []` delega todo el catálogo al servidor.
+Request IDs are unique per identity/inference. Reuse returns 409; there is no cached-response replay. Messages only accept user, assistant and tool roles, with matched call/result pairs. Top-level unknown request fields are rejected. The SDK bounds each turn to eight rounds and sixteen calls per model response.
 
-`POST /v1/turns` recibe `{registration_id, request_id, model, messages}`. Mensajes: `{role,content,calls,call_id}`; llamadas: `{id,name,arguments}`. Solo admite roles user/assistant/tool; exige una respuesta por llamada antes de continuar. Emite SSE con `text_delta`, `completed` o `failed`. El SDK ejecuta las llamadas confirmadas localmente y envía el resultado en la siguiente ronda.
+## Assign a model per customer
 
-`request_id` debe ser único por inferencia. Repetirlo devuelve 409; no reejecuta inferencia. La API no conserva una respuesta para replay. El SDK limita cada turno a ocho rondas y dieciséis llamadas por respuesta.
-
-## Selección de modelo por cliente
-
-Configura `default_model` y `client_models` dentro de cada entrada de `ASYSTANT_PRODUCTS`:
+Configure product `models`, `default_model` and `client_models` in `ASYSTANT_PRODUCTS`:
 
 ```json
 {
   "models": ["fast", "advanced"],
   "default_model": "fast",
   "client_models": [
-    {"tenant":"school-a","models":["fast"],"default_model":"fast","allow_selection":false},
-    {"tenant":"school-b","models":["fast","advanced"],"default_model":"advanced","allow_selection":true},
-    {"tenant":"school-b","subject":"limited-user","models":["fast"],"default_model":"fast","allow_selection":false}
+    {"tenant":"customer-a","models":["fast"],"default_model":"fast","allow_selection":false},
+    {"tenant":"customer-b","models":["fast","advanced"],"default_model":"advanced","allow_selection":true},
+    {"tenant":"customer-b","subject":"limited-user","models":["fast"],"default_model":"fast","allow_selection":false}
   ]
 }
 ```
 
-`fast` y `advanced` son ejemplos de IDs previamente definidos en `ASYSTANT_MODELS`; cada uno puede apuntar a un proveedor/modelo diferente. Las demás propiedades del producto (issuer, secreto, presupuestos) siguen siendo obligatorias.
+This fragment supplements the required issuer, secret and budget fields. Each model alias must exist in `ASYSTANT_MODELS` and can target a different provider/model.
 
-`GET /v1/models` con Bearer devuelve la política efectiva del usuario autenticado: `{models, default_model, allow_selection}`. No acepta un tenant suministrado por el frontend. Una regla de usuario prevalece sobre la de tenant; sin regla específica se aplica la del producto.
+User rules override tenant rules, which override product defaults. `GET /v1/models` derives identity from the bearer credential and returns `{models, default_model, allow_selection}`. It never accepts a caller-selected tenant. Fixed assignments expose only the assigned model. Inference rechecks policy, so changing the HTTP payload cannot bypass a fixed assignment.
 
-Con `allow_selection: false`, solo se expone y admite el modelo asignado. Con true, el selector de Flutter permite alternar entre los modelos admitidos. Cada inferencia vuelve a comprobar la política, además del registro: cambiar el payload no permite saltarse la asignación. Las asignaciones se administran en la configuración del servidor; esta versión no expone una ruta de administración pública para alterarlas.
+Initialization with `models: []` delegates the catalog to the server. The assigned default is always included even when the app requested a different model. Configuration changes require restart. If a model is removed, existing clients must reinitialize. No public policy-administration route is included.
 
-Los cambios de configuración requieren reiniciar el gateway. Si retiras el modelo de una sesión ya abierta, sus inferencias se rechazan hasta volver a inicializar el asistente con la política actual. La renovación normal de credenciales mantiene el registro vigente.
+## Accounting
 
-## Presupuestos
+Limits are integer USD micros: one USD equals 1,000,000. Configure `daily_tenant_micros`, `daily_user_micros` and optional `budget_overrides` by tenant and subject. Days use UTC. A zero override blocks new spending for that identity.
 
-Montos enteros en **USD micros**: 1 USD = 1,000,000. Política por producto con `daily_tenant_micros`, `daily_user_micros` y `budget_overrides` por tenant y opcionalmente usuario. Cambios de configuración se aplican al reiniciar; los consumos permanecen en PostgreSQL.
+Before inference, a PostgreSQL transaction reserves a conservative maximum against tenant and user accounts. Stable lock order protects concurrent updates. Credentials, logins, processes and replicas share the same daily accounts. Known costs settle once; a second settlement is rejected.
 
-La reserva conservadora usa los topes de tokens y precios configurados. Se bloquean y actualizan las cuentas del tenant y usuario dentro de una transacción. El día es UTC. Rotar tokens, reiniciar procesos o cambiar de login no reinicia la cuenta diaria. Un override de cero bloquea nuevas solicitudes de ese cliente.
+OpenRouter receives configured price ceilings and its reported cost is preferred when available. Direct-provider accounting uses configured conservative tariffs, without cache discounts. Maintain these tariffs as provider pricing changes. A known charge above the reserve is recorded in full and blocks future spending if it exhausts the limit.
 
-OpenRouter transmite el costo de uso cuando está disponible y recibe los techos de precio configurados. Otros proveedores se contabilizan con las tarifas configuradas, sin descontar caché; son estimaciones conservadoras y requieren mantener la política de precios al día. Un cargo observado mayor a la reserva se registra completo y bloquea gasto posterior cuando agota el saldo.
+Unknown usage, timeout or incomplete streaming leaves the reservation pending. Client disconnect does not automatically refund it. There is no reconciliation worker: compare pending records with provider evidence before closing them. Do not release funds based only on record age.
 
-Ante timeout, stream incompleto o costo desconocido, la reserva queda `pending`: **no se libera automáticamente**. El trabajo de contabilidad continúa aunque el cliente se desconecte. Las reservas inciertas requieren conciliación operativa con el proveedor; esta versión aún no incluye worker automático ni panel de administración. La tabla `requests` permite identificar las pendientes y `GatewayRepository.settle` es idempotente por rechazo del segundo cierre. No debe liberarse una reserva solo por antigüedad.
+## Providers
 
-## Proveedores
-
-| `provider` | Adaptación implementada |
+| Provider | Wire protocol and current behavior |
 | --- | --- |
-| `openrouter` | Chat Completions, streaming, tools, consumo y topes de precio |
-| `openai` | Chat Completions o Responses según `wire_api` |
-| `gemini` | Endpoint oficial compatible con OpenAI, streaming y tools |
-| `anthropic` | Messages, tools y respuesta completa; todavía sin streaming incremental |
-| `opencode_zen` | Chat Completions, Messages o Responses según `wire_api` |
-| `opencode_go` | Chat Completions, Messages o Responses y cabecera de sesión propia; condicionado al uso admitido por el servicio |
+| `openrouter` | Chat Completions streaming, tools, reported usage and price ceilings |
+| `openai` | Chat Completions or Responses |
+| `gemini` | Official OpenAI-compatible endpoint with streaming/tools |
+| `anthropic` | Messages with tools; complete response rather than incremental text |
+| `opencode_zen` | Chat Completions, Messages or Responses according to model |
+| `opencode_go` | Corresponding wire adapter and session header; enable only for permitted use cases |
 
-`wire_api` admite `chat_completions` (por defecto), `messages` y `responses`. Debe corresponder al endpoint publicado para el modelo elegido. Messages y Responses devuelven una respuesta completa; el streaming incremental está implementado en Chat Completions. No todos los modelos de OpenCode usan el mismo protocolo. OpenCode Go está orientado a tráfico de agentes de programación; para asistentes de producto generales, verificar elegibilidad antes de habilitarlo. OpenRouter sigue siendo la configuración inicial.
+`wire_api` is `chat_completions` by default, or `messages` / `responses`. It must match the model endpoint. Messages/Responses currently return complete responses. OpenCode Go targets coding-agent traffic; verify suitability before enabling it for a general-purpose product assistant.
 
-Referencias oficiales: [OpenRouter](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request), [Gemini compatible con OpenAI](https://ai.google.dev/gemini-api/docs/openai), [OpenCode Zen](https://opencode.ai/docs/zen/), [OpenCode Go](https://opencode.ai/docs/go/). No se asume una sola convención universal.
+Official references: [OpenRouter](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request), [Gemini](https://ai.google.dev/gemini-api/docs/openai), [OpenCode Zen](https://opencode.ai/docs/zen/), [OpenCode Go](https://opencode.ai/docs/go/).
 
-## Verificación
+## Security and verification
+
+See [SECURITY.md](../../SECURITY.md) for OWASP-mapped controls, process-local admission, trusted-ingress requirements and residual risks. Security posture is based on code and local tests; it is not a certification or production penetration test.
 
 ```sh
-cargo test --manifest-path services/asystant_gateway/Cargo.toml --test contracts
-# Únicamente contra una base de pruebas dedicada:
-ASYSTANT_TEST_DATABASE_URL=postgres://.../asystant_test cargo test --manifest-path services/asystant_gateway/Cargo.toml --test database --test http_api
+cargo test --manifest-path services/asystant_gateway/Cargo.toml --test contracts --test admission
 cargo clippy --manifest-path services/asystant_gateway/Cargo.toml --all-targets -- -D warnings
+# Dedicated test database only:
+ASYSTANT_TEST_DATABASE_URL=postgres://.../asystant_test cargo test --manifest-path services/asystant_gateway/Cargo.toml --test database --test http_api --test client_models
 ```
 
-Los tests HTTP utilizan un proveedor de prueba mediante el trait `InferenceProvider`, sin consumir claves o presupuesto externo. La prueba real con `openai/gpt-oss-20b` se intentó mediante el SDK y el gateway. La credencial disponible en el entorno fue rechazada por OpenRouter con HTTP 401; no se validó inferencia externa. Puede repetirse con `ASYSTANT_TEST_DATABASE_URL=... python3 scripts/live_openrouter.py` y una `OPENROUTER_API_KEY` válida. El script crea un emisor efímero, limita el presupuesto de prueba a USD 0.10 y no guarda ni imprime secretos.
+HTTP tests use a fake inference provider and do not consume external credits. The real OpenRouter test was attempted but the available credential returned 401; no successful live inference is claimed. Repeat with a valid key and the opt-in `scripts/live_openrouter.py` script against an isolated test database.
+
+MIT licensed; see [LICENSE](LICENSE).
