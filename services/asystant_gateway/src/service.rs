@@ -13,6 +13,7 @@ use crate::{
 };
 
 pub struct GatewayService {
+    pub inference_slots: Arc<tokio::sync::Semaphore>,
     pub config: Config,
     pub pool: PoolConfig,
     pub provider: Arc<dyn InferenceProvider>,
@@ -192,6 +193,9 @@ impl GatewayService {
         AppError,
     > {
         Self::validate_turn(&turn)?;
+        let permit = Arc::clone(&self.inference_slots)
+            .try_acquire_owned()
+            .map_err(|_| AppError::Limited)?;
         let pool = self.pool.clone();
         let registration = turn.registration_id.clone();
         let identity = session.identity.clone();
@@ -253,31 +257,31 @@ impl GatewayService {
         let (sender, receiver) = tokio::sync::mpsc::channel(128);
         // Continue accounting after client disconnect; pending reservations survive process failure.
         actix_web::rt::spawn(async move {
-            let event = match self
-                .provider
-                .complete(
+            let inference = tokio::time::timeout(
+                std::time::Duration::from_secs(120),
+                self.provider.complete(
                     &model,
                     &manifest,
                     &turn.messages,
                     &Self::hash(&session.identity),
                     &sender,
-                )
-                .await
-            {
-                Ok((message, charge)) => {
+                ),
+            )
+            .await;
+            let event = match inference {
+                Ok(Ok((message, charge))) => {
                     let pool = self.pool.clone();
                     match tokio::task::spawn_blocking(move || pool.settle(&id, charge)).await {
                         Ok(Ok(())) => json!({"type":"completed","message":message}),
                         _ => json!({"type":"failed","failure":{"code":"unavailable","detail":""}}),
                     }
                 }
-                Err(_) => json!({"type":"failed","failure":{"code":"unavailable","detail":""}}),
+                _ => json!({"type":"failed","failure":{"code":"unavailable","detail":""}}),
             };
-            let _ = sender
-                .send(Ok(actix_web::web::Bytes::from(format!(
-                    "data: {event}\n\n"
-                ))))
-                .await;
+            let _ = sender.try_send(Ok(actix_web::web::Bytes::from(format!(
+                "data: {event}\n\n"
+            ))));
+            drop(permit);
         });
         Ok(receiver)
     }

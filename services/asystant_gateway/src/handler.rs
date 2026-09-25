@@ -88,6 +88,7 @@ pub async fn models(
 }
 pub fn routes(config: &mut web::ServiceConfig) {
     config
+        .route("/openapi.yaml", web::get().to(specification))
         .route("/health/live", web::get().to(live))
         .route("/health/ready", web::get().to(ready))
         .route("/v1/sessions/exchange", web::post().to(exchange))
@@ -108,4 +109,11 @@ pub async fn ready(service: web::Data<Arc<GatewayService>>) -> Result<HttpRespon
     Ok(HttpResponse::Ok()
         .insert_header(("Cache-Control", "no-store"))
         .json(json!({"status":"ready"})))
+}
+
+/// Public protocol documentation; contains no deployment secrets or tenant policy.
+pub async fn specification() -> HttpResponse {
+    HttpResponse::Ok()
+        .content_type("application/yaml")
+        .body(include_str!("../openapi.yaml"))
 }

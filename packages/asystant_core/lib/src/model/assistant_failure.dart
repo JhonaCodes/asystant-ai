@@ -1,5 +1,6 @@
 import 'package:asystant_core/src/model/assistant_value.dart';
 
+/// Stable failure categories used by transport, tool execution and chat feedback.
 enum FailureCode {
   authentication,
   budget,
@@ -12,6 +13,7 @@ enum FailureCode {
   limit,
 }
 
+/// A typed failure that can safely cross the transport and local-tool boundary.
 class AssistantFailure extends AssistantValue implements Exception {
   const AssistantFailure(this.code, {this.detail = ''});
   final FailureCode code;

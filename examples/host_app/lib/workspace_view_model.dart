@@ -6,7 +6,8 @@ class WorkspaceViewModel extends ViewModel<List<String>> {
   @override
   void init() {}
   void create(String title, String idempotencyKey) {
-    if (_applied.add(idempotencyKey))
+    if (_applied.add(idempotencyKey)) {
       updateState(List.unmodifiable([...data, title]));
+    }
   }
 }

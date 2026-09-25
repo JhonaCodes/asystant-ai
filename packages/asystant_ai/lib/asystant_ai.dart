@@ -1,3 +1,4 @@
+/// Embeddable Flutter chat, local tools and session-backed AI transport.
 library;
 
 export 'package:asystant_core/asystant_core.dart';

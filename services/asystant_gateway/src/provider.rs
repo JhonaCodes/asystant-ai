@@ -22,6 +22,18 @@ impl ProviderClient {
                 .map_err(|_| AppError::Internal)?,
         })
     }
+    async fn read_bounded(response: reqwest::Response) -> Result<Vec<u8>, AppError> {
+        let mut stream = response.bytes_stream();
+        let mut bytes = Vec::new();
+        while let Some(chunk) = stream.next().await {
+            let chunk = chunk.map_err(|_| AppError::Provider)?;
+            if bytes.len() + chunk.len() > 2_000_000 {
+                return Err(AppError::Provider);
+            }
+            bytes.extend_from_slice(&chunk);
+        }
+        Ok(bytes)
+    }
     pub fn openai_messages(manifest: &Manifest, messages: &[Message]) -> Vec<Value> {
         let mut output = vec![json!({"role":"system","content":manifest.prompts.join("\n\n")})];
         for m in messages {
@@ -239,10 +251,7 @@ impl ProviderClient {
         if !response.status().is_success() {
             return Err(AppError::Provider);
         }
-        let bytes = response.bytes().await.map_err(|_| AppError::Provider)?;
-        if bytes.len() > 2_000_000 {
-            return Err(AppError::Provider);
-        }
+        let bytes = Self::read_bounded(response).await?;
         let value: Value = serde_json::from_slice(&bytes).map_err(|_| AppError::Provider)?;
         if !matches!(value["stop_reason"].as_str(), Some("end_turn" | "tool_use")) {
             return Err(AppError::Provider);
@@ -312,10 +321,7 @@ impl ProviderClient {
         if !response.status().is_success() {
             return Err(AppError::Provider);
         }
-        let bytes = response.bytes().await.map_err(|_| AppError::Provider)?;
-        if bytes.len() > 2_000_000 {
-            return Err(AppError::Provider);
-        }
+        let bytes = Self::read_bounded(response).await?;
         let value: Value = serde_json::from_slice(&bytes).map_err(|_| AppError::Provider)?;
         if value["status"] != "completed" {
             return Err(AppError::Provider);

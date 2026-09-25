@@ -42,6 +42,7 @@ async fn durable_budgets_replay_rotation_and_revocation() {
         origins: vec![],
     };
     let service = GatewayService {
+        inference_slots: Arc::new(tokio::sync::Semaphore::new(32)),
         config,
         pool: pool.clone(),
         provider: Arc::new(ProviderClient::new().unwrap()),

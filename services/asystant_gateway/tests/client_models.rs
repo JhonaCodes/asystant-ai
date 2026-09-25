@@ -22,6 +22,7 @@ async fn client_assignment_overrides_requested_model_and_is_scoped_to_tenant() {
     config.validate().unwrap();
     let pool = PoolConfig::new(&std::env::var("ASYSTANT_TEST_DATABASE_URL").unwrap()).unwrap();
     let service = GatewayService {
+        inference_slots: Arc::new(tokio::sync::Semaphore::new(32)),
         config,
         pool,
         provider: Arc::new(ProviderClient::new().unwrap()),

@@ -1,0 +1,7 @@
+.dart_tool/
+build/
+coverage/
+.env
+.env.*
+*.log
+pubspec.lock

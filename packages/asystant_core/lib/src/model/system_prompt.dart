@@ -1,5 +1,6 @@
 import 'package:asystant_core/src/model/assistant_value.dart';
 
+/// A named instruction registered with the gateway for this assistant instance.
 class AsystantSystemPrompt extends AssistantValue {
   const AsystantSystemPrompt({required this.id, required this.content});
   final String id;

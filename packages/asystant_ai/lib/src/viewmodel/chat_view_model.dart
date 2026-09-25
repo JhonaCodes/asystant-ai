@@ -32,12 +32,15 @@ class ChatViewModel extends ViewModel<ChatState> {
     required List<AsystantSystemPrompt> prompts,
     required List<String> models,
   }) async {
-    if (_closed || state.busy || state.phase == ChatPhase.initializing) return;
+    if (_closed || state.busy || state.phase == ChatPhase.initializing) {
+      return;
+    }
     final epoch = ++_epoch;
     _initialized = false;
     await _session?.cancel();
-    if (_transport != null && _transport != transport)
+    if (_transport != null && _transport != transport) {
       await _transport?.dispose();
+    }
     _transport = transport;
     _registry = ToolRegistry(tools);
     _identity = transport.identity;
@@ -65,7 +68,9 @@ class ChatViewModel extends ViewModel<ChatState> {
         prompts: prompts,
         models: models,
       );
-      if (!_current(epoch)) return;
+      if (!_current(epoch)) {
+        return;
+      }
       result.when(
         ok: (allowed) {
           if (allowed.isEmpty) {
@@ -85,26 +90,33 @@ class ChatViewModel extends ViewModel<ChatState> {
         err: _fail,
       );
     } catch (_) {
-      if (_current(epoch)) _fail(const AssistantFailure(.unavailable));
+      if (_current(epoch)) {
+        _fail(const AssistantFailure(.unavailable));
+      }
     }
   }
 
   bool _current(int epoch) =>
       !_closed && epoch == _epoch && _identity == _transport?.identity;
   void setDraft(String value) {
-    if (!_closed) updateState(state.copyWith(draft: value));
+    if (!_closed) {
+      updateState(state.copyWith(draft: value));
+    }
   }
 
   void selectModel(String model) {
     if (state.allowModelSelection &&
         !state.busy &&
-        state.models.contains(model))
+        state.models.contains(model)) {
       updateState(state.copyWith(model: model));
+    }
   }
 
   void selectOption(String option) {
     final pending = state.pending;
-    if (pending == null || !pending.card.options.contains(option)) return;
+    if (pending == null || !pending.card.options.contains(option)) {
+      return;
+    }
     final selected = [...pending.selected];
     selected.contains(option) ? selected.remove(option) : selected.add(option);
     updateState(state.copyWith(pending: pending.copyWith(selected: selected)));
@@ -112,21 +124,28 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   void approve(bool allow) {
     final pending = state.pending;
-    if (pending == null) return;
+    if (pending == null) {
+      return;
+    }
     final tool = _registry
         ?.resolve(pending.call.name, pending.call.arguments)
         .when(ok: (t) => t, err: (_) => null);
-    if (allow && tool?.requiresSelection == true && pending.selected.isEmpty)
+    if (allow && tool?.requiresSelection == true && pending.selected.isEmpty) {
       return;
-    if (_approval?.isCompleted == false) _approval?.complete(allow);
+    }
+    if (_approval?.isCompleted == false) {
+      _approval?.complete(allow);
+    }
   }
 
   void cancel() {
     _epoch++;
     _transport?.cancel();
-    if (_approval?.isCompleted == false) _approval?.complete(false);
+    if (_approval?.isCompleted == false) {
+      _approval?.complete(false);
+    }
     _approval = null;
-    if (!_closed)
+    if (!_closed) {
       updateState(
         state.copyWith(
           phase: .canceled,
@@ -136,13 +155,16 @@ class ChatViewModel extends ViewModel<ChatState> {
           clearPending: true,
         ),
       );
+    }
   }
 
   List<AssistantMessage> _closePendingCalls() {
     final pending = <String>{};
     for (final message in state.messages) {
       pending.addAll(message.calls.map((call) => call.id));
-      if (message.role == MessageRole.tool) pending.remove(message.callId);
+      if (message.role == MessageRole.tool) {
+        pending.remove(message.callId);
+      }
     }
     return [
       ...state.messages,
@@ -200,8 +222,9 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   Future<void> send([String? text]) async {
     final content = (text ?? state.draft).trim();
-    if (!_initialized || state.busy || content.isEmpty || _transport == null)
+    if (!_initialized || state.busy || content.isEmpty || _transport == null) {
       return;
+    }
     final epoch = ++_epoch;
     final random = Random.secure();
     final turn = List.generate(
@@ -237,7 +260,9 @@ class ChatViewModel extends ViewModel<ChatState> {
           model: state.model,
           requestId: '$turn-$round',
         )) {
-          if (!_current(epoch)) return;
+          if (!_current(epoch)) {
+            return;
+          }
           switch (event) {
             case TextDelta():
               updateState(
@@ -258,9 +283,13 @@ class ChatViewModel extends ViewModel<ChatState> {
               failed = true;
               _fail(const AssistantFailure(.protocol));
           }
-          if (failed) break;
+          if (failed) {
+            break;
+          }
         }
-        if (!_current(epoch) || failed) return;
+        if (!_current(epoch) || failed) {
+          return;
+        }
         if (completed == null) {
           _fail(const AssistantFailure(.protocol));
           return;
@@ -288,7 +317,9 @@ class ChatViewModel extends ViewModel<ChatState> {
           return;
         }
         for (final call in response.calls) {
-          if (!_current(epoch)) return;
+          if (!_current(epoch)) {
+            return;
+          }
           final executionKey = '$turn/${call.id}';
           final tool = _registry!
               .resolve(call.name, call.arguments)
@@ -302,7 +333,9 @@ class ChatViewModel extends ViewModel<ChatState> {
           if (tool != null && !_executed.contains(executionKey)) {
             updateState(state.copyWith(phase: .executing));
             final preview = await tool.preview(call.arguments);
-            if (!_current(epoch)) return;
+            if (!_current(epoch)) {
+              return;
+            }
             final card = preview.when(ok: (card) => card, err: (_) => null);
             if (card != null) {
               _step(executionKey, StepPhase.preparing, title: card.title);
@@ -324,7 +357,9 @@ class ChatViewModel extends ViewModel<ChatState> {
                 );
                 allowed = await _approval!.future;
                 selected = state.pending?.selected.toList() ?? [];
-                if (!_current(epoch)) return;
+                if (!_current(epoch)) {
+                  return;
+                }
                 _approval = null;
                 updateState(state.copyWith(clearPending: true));
               }
@@ -340,12 +375,14 @@ class ChatViewModel extends ViewModel<ChatState> {
                     isCanceled: () => !_current(epoch),
                   ),
                 );
-                if (!_current(epoch)) return;
+                if (!_current(epoch)) {
+                  return;
+                }
                 result.when(
                   ok: (result) {
                     _step(executionKey, StepPhase.completed);
                     outcome = result.modelContent;
-                    if (result.card case final card?)
+                    if (result.card case final card?) {
                       updateState(
                         state.copyWith(
                           cards: [...state.cards, card],
@@ -355,6 +392,7 @@ class ChatViewModel extends ViewModel<ChatState> {
                           ],
                         ),
                       );
+                    }
                   },
                   err: (_) {
                     _step(executionKey, StepPhase.failed);
@@ -370,8 +408,11 @@ class ChatViewModel extends ViewModel<ChatState> {
               outcome = 'Could not prepare a safe preview.';
             }
           }
-          if (state.steps.any((step) => step.id == executionKey && step.active))
+          if (state.steps.any(
+            (step) => step.id == executionKey && step.active,
+          )) {
             _step(executionKey, StepPhase.failed);
+          }
           updateState(
             state.copyWith(
               messages: [
@@ -389,13 +430,17 @@ class ChatViewModel extends ViewModel<ChatState> {
       }
       _fail(const AssistantFailure(.limit));
     } catch (_) {
-      if (_current(epoch)) _fail(const AssistantFailure(.toolFailed));
+      if (_current(epoch)) {
+        _fail(const AssistantFailure(.toolFailed));
+      }
     }
   }
 
   @override
   void dispose() {
-    if (_closed) return;
+    if (_closed) {
+      return;
+    }
     cancel();
     _closed = true;
     unawaited(_session?.cancel());

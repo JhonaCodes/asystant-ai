@@ -72,13 +72,14 @@ async fn http_exchange_init_infer_replay_and_revoke() {
         origins: vec![],
     };
     let service = Arc::new(GatewayService {
+        inference_slots: Arc::new(tokio::sync::Semaphore::new(32)),
         config,
         pool,
         provider: Arc::new(LocalProvider),
     });
     let app = test::init_service(
         App::new()
-            .app_data(web::Data::new(service))
+            .app_data(web::Data::new(Arc::clone(&service)))
             .configure(handler::routes),
     )
     .await;
@@ -88,6 +89,21 @@ async fn http_exchange_init_infer_replay_and_revoke() {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(response.headers().get("Cache-Control").unwrap(), "no-store");
     }
+    let specification = test::call_service(
+        &app,
+        test::TestRequest::get().uri("/openapi.yaml").to_request(),
+    )
+    .await;
+    assert_eq!(specification.status(), StatusCode::OK);
+    let contract: Value = serde_json::from_slice(&test::read_body(specification).await).unwrap();
+    assert_eq!(contract["openapi"], "3.1.0");
+    assert!(contract["paths"].get("/v1/turns").is_some());
+    assert!(
+        serde_json::from_value::<asystant_gateway::model::ExchangeInput>(
+            json!({"ticket":"example", "tenant":"forged"})
+        )
+        .is_err()
+    );
     let unauthorized = test::call_service(
         &app,
         test::TestRequest::post()
@@ -153,6 +169,24 @@ async fn http_exchange_init_infer_replay_and_revoke() {
     assert_eq!(registration["default_model"], "test");
     assert_eq!(registration["allow_selection"], true);
     let turn = json!({"registration_id":registration["id"],"request_id":"turn-1","model":"test","messages":[{"role":"user","content":"Hello"}]});
+    let held = service
+        .inference_slots
+        .clone()
+        .acquire_many_owned(32)
+        .await
+        .unwrap();
+    let limited = test::call_service(
+        &app,
+        test::TestRequest::post()
+            .uri("/v1/turns")
+            .insert_header(("Authorization", bearer.as_str()))
+            .set_json(&turn)
+            .to_request(),
+    )
+    .await;
+    assert_eq!(limited.status(), StatusCode::TOO_MANY_REQUESTS);
+    drop(held);
+    // The same request ID must still succeed: capacity rejection reserved no funds.
     let response = test::call_service(
         &app,
         test::TestRequest::post()

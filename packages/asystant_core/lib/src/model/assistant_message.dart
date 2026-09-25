@@ -1,8 +1,10 @@
 import 'package:asystant_core/src/model/assistant_value.dart';
 import 'package:asystant_core/src/model/tool_call.dart';
 
+/// Roles accepted by the gateway; system instructions are registered separately.
 enum MessageRole { user, assistant, tool }
 
+/// One protocol message, including model-requested calls or a local tool result.
 class AssistantMessage extends AssistantValue {
   const AssistantMessage({
     required this.role,

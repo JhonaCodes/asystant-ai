@@ -23,12 +23,14 @@ class DemoTransport extends AssistantTransport {
   }) async* {
     final epoch = _epoch;
     await Future<void>.delayed(const Duration(milliseconds: 650));
-    if (epoch != _epoch) return;
+    if (epoch != _epoch) {
+      return;
+    }
     if (messages.last.role == MessageRole.user) {
       yield InferenceCompleted(
         AssistantMessage(
           role: .assistant,
-          content: 'Preparé un borrador para tu espacio. Puedes revisar la acción antes de guardarlo.',
+          content: 'I prepared a draft for your workspace. Review the action before saving it.',
           calls: [
             ToolCall(
               id: requestId,
@@ -46,8 +48,8 @@ class DemoTransport extends AssistantTransport {
         AssistantMessage(
           role: .assistant,
           content: done
-              ? 'El borrador está en tu app. Puedes cerrar el asistente y seguir trabajando.'
-              : 'Entendido. No he guardado el borrador.',
+              ? 'The draft is in your app. You can close the assistant and keep working.'
+              : 'Understood. I did not save the draft.',
         ),
       );
     }

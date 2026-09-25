@@ -22,16 +22,20 @@ class _ChatTimelineState extends State<ChatTimeline> {
   @override
   void didUpdateWidget(covariant ChatTimeline oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.revision == oldWidget.revision) return;
+    if (widget.revision == oldWidget.revision) {
+      return;
+    }
     final follow =
         widget.forceFollow ||
         !_scroll.hasClients ||
         _scroll.position.extentAfter < 100;
-    if (follow)
+    if (follow) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted && _scroll.hasClients)
+        if (mounted && _scroll.hasClients) {
           _scroll.jumpTo(_scroll.position.maxScrollExtent);
+        }
       });
+    }
   }
 
   @override

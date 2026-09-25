@@ -1,6 +1,7 @@
 import 'package:asystant_core/src/model/assistant_value.dart';
 import 'package:asystant_core/src/tool/tool_field.dart';
 
+/// The provider-visible name, description and allowed fields of a local tool.
 class ToolDefinition extends AssistantValue {
   const ToolDefinition({
     required this.name,

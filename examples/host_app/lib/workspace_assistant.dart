@@ -3,7 +3,7 @@ import 'package:asystant_ai/asystant_ai.dart';
 import 'create_draft_tool.dart';
 
 class WorkspaceAssistant extends AsystantAI {
-  WorkspaceAssistant() : super(name: 'Asistente');
+  WorkspaceAssistant() : super(name: 'Assistant');
   @override
   List<AsystantTool> get tools => const [CreateDraftTool()];
   @override

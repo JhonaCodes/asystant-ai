@@ -1,56 +1,67 @@
-# Despliegue de asystant-ai
+# Deploying the gateway
 
-El componente que se despliega es `services/asystant_gateway`. Flutter incorpora los paquetes como dependencias; las tools siguen viviendo dentro de cada app.
+Deploy `services/asystant_gateway`. Flutter applications install the SDK; their business tools remain inside each app. No public hosted endpoint is bundled with this repository.
 
-## Requisitos
+## Prerequisites
 
-- PostgreSQL dedicado y persistente, con copias de seguridad. La cuenta de migración necesita permisos DDL; la cuenta de ejecución necesita acceso a las tablas creadas. El proceso de ejecución con `--serve` no aplica migraciones.
-- Una clave válida del proveedor, guardada exclusivamente en el servidor.
-- Un secreto aleatorio de al menos 32 bytes por producto, compartido solo entre su backend de login y el gateway.
-- Un dominio HTTPS y un proxy que permita SSE sin buffering, con tiempo de espera superior a 120 segundos.
-- Modelos, topes de precio y presupuesto definidos para cada producto/cliente. Los valores del ejemplo no representan tarifas actuales.
+- A dedicated persistent PostgreSQL database with backups and restricted network access.
+- A valid provider key and an independent random signing secret of at least 32 bytes per product.
+- Model IDs, conservative price ceilings and daily customer/user budgets configured by the operator.
+- A public HTTPS ingress with shared rate limits, request/header timeouts, SSE buffering disabled and an upstream timeout above 120 seconds. Restrict direct access to the origin server.
+- A product backend endpoint that validates the current login and issues a signed ticket as documented in the [API guide](../services/asystant_gateway/README.md).
 
-## Imagen y migraciones
-
-Desde la raíz del repositorio:
+## Build and configure
 
 ```sh
 docker build -t asystant-gateway:local services/asystant_gateway
 cp services/asystant_gateway/.env.example services/asystant_gateway/.env
 ```
 
-Completa ese archivo en el servidor. No se incluye en Git ni en el contexto de construcción. `DATABASE_URL` debe usar una dirección alcanzable desde el contenedor: `127.0.0.1` dentro de Docker identifica el propio contenedor. Para una base remota configura TLS conforme a tu proveedor.
+Replace the placeholders on the deployment server. Never commit this file. The Docker build context excludes credentials. Use a secret manager for production.
 
-Para una instalación de un servidor, con PostgreSQL externo:
+`DATABASE_URL` must be reachable from the container: `127.0.0.1` refers to the container itself. Configure database TLS according to your database provider. Price ceilings in the example are policy placeholders, not current tariff quotations.
+
+## Single-server deployment
+
+With external PostgreSQL and a host HTTPS proxy:
 
 ```sh
 docker compose -f services/asystant_gateway/compose.yaml up -d --build
 curl --fail http://127.0.0.1:8787/health/ready
 ```
 
-Compose ejecuta primero las migraciones y luego la API. Solo publica el puerto en loopback para conectar el proxy HTTPS del servidor. No elimina ni crea una base de datos. Los archivos `.env` de Compose respetan las comillas del JSON del ejemplo; al utilizar `docker run --env-file`, genera un archivo sin esas comillas exteriores porque ese comando las conserva literalmente.
+Compose runs migrations before the API and publishes only to host loopback. It does not create or delete a database. Compose parses the outer quotes around JSON in `.env.example`; plain `docker run --env-file` preserves those quotes, so generate an env file without them when using that command.
 
-En una plataforma con varias réplicas: construye una imagen por revisión; ejecuta **un único job** de esa imagen con `--migrate-only` y `DATABASE_URL`; solo después actualiza las réplicas con `--serve`. Ese job no necesita las claves del proveedor. Usa un rol DDL exclusivo para el job si la plataforma lo permite. No inicies varios jobs de migración simultáneos.
+## Multiple replicas
 
-`GET /health/live` comprueba el proceso. `GET /health/ready` verifica además una consulta al esquema PostgreSQL. No consumen inferencia ni prueban la clave del proveedor. No exponen datos de clientes. Configura el balanceador para admitir tráfico únicamente cuando readiness responda 200.
+Build one image per revision. Run exactly one migration job with `--migrate-only` and `DATABASE_URL`, using a role with DDL privileges. Only after it succeeds should replicas start with `--serve`, preferably using a separate runtime role limited to the migrated tables. Do not run concurrent migration jobs. Without arguments, the binary migrates and serves for development convenience.
 
-Antes de detener una instancia, retírala del balanceador y espera a que terminen las inferencias activas. El apagado forzado puede dejar reservas pendientes: el plazo de cierre HTTP por sí solo no garantiza finalizar todos los trabajos de contabilidad en segundo plano.
+The image runs as UID 10001. Compose additionally uses a read-only root filesystem, drops Linux capabilities and enables no-new-privileges. Set CPU, memory and connection limits appropriate to your deployment.
 
-## Conectar una app
+The gateway enforces process-local admission and 32 simultaneous inferences. Behind a proxy, the peer guard sees the proxy address and conservatively groups its clients. Configure ingress capacity and shared client/tenant limits accordingly; do not allow clients to forge trusted forwarding headers. See the [security policy](../SECURITY.md) for exact boundaries.
 
-1. Su backend verifica la sesión existente y emite un ticket firmado según el contrato del [gateway](../services/asystant_gateway/README.md#contrato-de-autenticación). La identidad y el cliente se obtienen del login validado.
-2. Flutter conecta ese endpoint a `SessionSource` y configura `GatewayTransport` con el dominio HTTPS del gateway.
-3. La inicialización registra los esquemas de tools y prompts; el servidor responde con los modelos permitidos y el modelo asignado al cliente.
-4. La app muestra el widget aprobado. El modelo propone llamadas; el SDK comprueba permisos, solicita confirmación cuando corresponde y ejecuta la implementación local.
+## Health and public documentation
 
-## Verificación y operación
+- `GET /health/live`: process liveness.
+- `GET /health/ready`: database connection and migrated-schema readiness.
+- `GET /openapi.yaml`: versioned API specification, with no secrets or tenant configuration.
 
-Antes de promover a producción, prueba login, renovación, revocación, una tool confirmada y otra cancelada, aislamiento entre clientes, límite de presupuesto y bloqueo del modelo no asignado. El test optativo `scripts/live_openrouter.py` prueba una inferencia real con una base aislada y presupuesto limitado; requiere una clave válida. La clave disponible durante el desarrollo respondió HTTP 401, por lo que esa verificación externa está pendiente.
+Only route business traffic to ready replicas. Health does not validate a provider key. Public business routes still require authentication. Enable HSTS at the HTTPS ingress rather than on a local HTTP-only listener.
 
-Después de construir la imagen, `python3 scripts/check_container.py` comprueba el usuario sin privilegios, la ejecución con filesystem de solo lectura, el job de migración y los estados de salud antes de migrar y después de detener PostgreSQL. Usa contenedores y una red desechables, no publica puertos y elimina exclusivamente sus propios recursos. Requiere Docker y descarga `postgres:18-bookworm`; no llama a un proveedor de IA.
+Before stopping an instance, remove it from the load balancer and allow active inference/accounting work to finish. A forced shutdown can leave pending reservations; the HTTP shutdown timeout alone cannot guarantee background accounting completion.
 
-Los modelos y presupuestos se administran mediante configuración del servidor y requieren reinicio. Las reservas cuyo costo no pudo confirmarse permanecen pendientes: esta versión no incorpora conciliación automática ni panel administrativo. Revisa esos registros contra el proveedor antes de liberar fondos. Guarda copias de PostgreSQL; las cuotas no deben reiniciarse recreando la base.
+## Verify
 
-Para volver a una versión anterior, conserva la imagen de la revisión previa y verifica su compatibilidad con el esquema actual. No ejecutes migraciones destructivas ni borres volúmenes para hacer rollback.
+```sh
+python3 scripts/check_container.py
+```
 
-El destino y dominio están pendientes de definición. Estos archivos preparan el despliegue; no constituyen una publicación ya realizada.
+After building the image, this opt-in test starts disposable Docker resources, checks non-root/read-only execution, migration and readiness before/after database shutdown, and removes only its own resources. It makes no provider calls.
+
+Before production, verify login, renewal, revocation, model denial, tenant isolation, approval/cancellation and budget exhaustion against the actual product integration. Run the opt-in `scripts/live_openrouter.py` with a dedicated test database and a valid provider key. The development credential returned HTTP 401; a successful external inference has not yet been established.
+
+Monitor uncertain reservations and reconcile against provider records. No automated reconciliation or retention worker is included. Never release reservations solely because they are old or reset budgets by recreating the database.
+
+For rollback, retain the previous image and verify its compatibility with the current schema. Do not delete volumes or apply destructive down migrations as a routine rollback.
+
+The hosting destination, domain and production PostgreSQL are still operator-provided. These instructions prepare a deployment; they do not claim that one is already running.
