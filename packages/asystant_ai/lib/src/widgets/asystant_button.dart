@@ -1,3 +1,4 @@
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
@@ -53,7 +54,7 @@ class AsystantButton extends StatelessWidget {
         ),
       ),
     ),
-    icon: const Icon(Icons.auto_awesome_rounded),
+    icon: const AsystantGlyph(AsystantGlyphKind.sparkle),
     label: Text(assistant.name),
   );
 }

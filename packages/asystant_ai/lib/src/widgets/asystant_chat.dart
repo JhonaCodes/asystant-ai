@@ -1,3 +1,5 @@
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -74,6 +76,8 @@ class _AsystantChatState extends State<AsystantChat> {
       opener: AsystantLinkOpener(onOpenLink: widget.onOpenLink),
       strings: labels,
       child: Material(
+        textStyle: Theme.of(context).textTheme.bodyMedium
+            ?.copyWith(height: 1.5),
         color: Theme.of(context).colorScheme.surface,
         child: SafeArea(
           child: ReactiveViewModelBuilder<ChatViewModel, ChatState>(
@@ -95,7 +99,7 @@ class _AsystantChatState extends State<AsystantChat> {
                     child: OutlinedButton.icon(
                       onPressed: () =>
                           unawaited(widget.assistant.ensureInitialized()),
-                      icon: const Icon(Icons.refresh_rounded),
+                      icon: const AsystantGlyph(AsystantGlyphKind.refresh),
                       label: Text(labels.connect),
                     ),
                   ),

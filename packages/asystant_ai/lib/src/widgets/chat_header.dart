@@ -1,3 +1,4 @@
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
@@ -29,9 +30,16 @@ class ChatHeader extends StatelessWidget {
       padding: EdgeInsets.all(tokens.padding),
       child: Row(
         children: [
-          Icon(
-            Icons.auto_awesome_rounded,
-            color: Theme.of(context).colorScheme.primary,
+          Container(
+            padding: EdgeInsets.all(tokens.spacing),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              borderRadius: BorderRadius.circular(tokens.radius),
+            ),
+            child: AsystantGlyph(
+              AsystantGlyphKind.sparkle,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+            ),
           ),
           SizedBox(width: tokens.spacing),
           Expanded(
@@ -45,10 +53,10 @@ class ChatHeader extends StatelessWidget {
             ),
           ),
           if (onClose case final close?)
-            IconButton(
+            IconButton.filledTonal(
               tooltip: strings.close,
               onPressed: close,
-              icon: const Icon(Icons.close_rounded),
+              icon: const AsystantGlyph(AsystantGlyphKind.close),
             ),
         ],
       ),

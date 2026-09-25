@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:asystant_core/asystant_core.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 
+/// Calm, readable failure feedback kept inside the conversation timeline.
 class ChatFailureNotice extends StatelessWidget {
   const ChatFailureNotice({
     super.key,
@@ -17,26 +18,31 @@ class ChatFailureNotice extends StatelessWidget {
   final AsystantStrings strings;
 
   @override
-  Widget build(BuildContext context) => Semantics(
-    liveRegion: true,
-    child: ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: Icon(
-        switch (failure.code) {
-          FailureCode.authentication => Icons.lock_clock_outlined,
-          FailureCode.budget => Icons.account_balance_wallet_outlined,
-          FailureCode.network => Icons.wifi_off_rounded,
-          FailureCode.protocol ||
-          FailureCode.unavailable ||
-          FailureCode.invalidTool ||
-          FailureCode.toolFailed ||
-          FailureCode.canceled ||
-          FailureCode.limit => Icons.error_outline_rounded,
-        },
-        size: AsystantTheme.of(context).iconSize,
-        color: Theme.of(context).colorScheme.error,
+  Widget build(BuildContext context) {
+    final tokens = AsystantTheme.of(context);
+    final colors = Theme.of(context).colorScheme;
+    return Semantics(
+      liveRegion: true,
+      child: Container(
+        padding: EdgeInsets.all(tokens.spacing),
+        decoration: BoxDecoration(
+          color: colors.errorContainer.withValues(alpha: .3),
+          borderRadius: BorderRadius.circular(tokens.radius),
+        ),
+        child: Row(
+          crossAxisAlignment: .start,
+          children: [
+            AsystantGlyph(AsystantGlyphKind.warning, color: colors.error),
+            SizedBox(width: tokens.spacing),
+            Expanded(
+              child: Text(
+                strings.failure(failure.code),
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+          ],
+        ),
       ),
-      title: Text(strings.failure(failure.code)),
-    ),
-  );
+    );
+  }
 }

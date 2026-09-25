@@ -1,3 +1,4 @@
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
@@ -32,10 +33,9 @@ class ChatSendAction extends StatelessWidget {
         },
         icon: AnimatedSwitcher(
           duration: kThemeAnimationDuration,
-          child: Icon(
-            state.busy ? Icons.stop_rounded : Icons.arrow_upward_rounded,
+          child: AsystantGlyph(
+            state.busy ? AsystantGlyphKind.stop : AsystantGlyphKind.send,
             key: ValueKey(state.busy),
-            size: tokens.iconSize,
           ),
         ),
         label: Text(state.busy ? strings.stop : strings.send),

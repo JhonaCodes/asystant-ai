@@ -42,6 +42,9 @@ class _AsystantMarkdownTextState extends State<AsystantMarkdownText> {
     children: [
       MarkdownBody(
         data: widget.text,
+        styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(
+          p: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
+        ),
         fitContent: true,
         onTapLink: _onTapLink,
         imageBuilder: AsystantImagePlaceholder.new,

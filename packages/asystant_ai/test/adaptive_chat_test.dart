@@ -14,6 +14,7 @@ void main() {
   for (final size in [
     const Size(320, 640),
     const Size(390, 844),
+    const Size(390, 360),
     const Size(600, 320),
     const Size(1440, 900),
   ]) {

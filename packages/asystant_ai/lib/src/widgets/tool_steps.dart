@@ -1,3 +1,4 @@
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
@@ -13,6 +14,7 @@ class ToolSteps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ExpansionTile(
+    trailing: const AsystantGlyph(AsystantGlyphKind.chevron),
     tilePadding: EdgeInsets.zero,
     title: Text(strings.steps, style: Theme.of(context).textTheme.labelLarge),
     children: steps

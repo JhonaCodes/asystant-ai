@@ -1,3 +1,4 @@
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
@@ -19,15 +20,15 @@ class StatusIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AsystantTheme.of(context);
     final icon = switch (phase) {
-      ChatPhase.idle => Icons.link_off_rounded,
-      ChatPhase.initializing => Icons.sync_rounded,
-      ChatPhase.ready => Icons.chat_bubble_outline_rounded,
-      ChatPhase.thinking => Icons.auto_awesome_rounded,
-      ChatPhase.executing => Icons.build_circle_outlined,
-      ChatPhase.permission => Icons.shield_outlined,
-      ChatPhase.done => Icons.check_circle_outline_rounded,
-      ChatPhase.canceled => Icons.pause_circle_outline_rounded,
-      ChatPhase.error => Icons.error_outline_rounded,
+      ChatPhase.idle => AsystantGlyphKind.chat,
+      ChatPhase.initializing => AsystantGlyphKind.refresh,
+      ChatPhase.ready => AsystantGlyphKind.chat,
+      ChatPhase.thinking => AsystantGlyphKind.sparkle,
+      ChatPhase.executing => AsystantGlyphKind.refresh,
+      ChatPhase.permission => AsystantGlyphKind.shield,
+      ChatPhase.done => AsystantGlyphKind.check,
+      ChatPhase.canceled => AsystantGlyphKind.pause,
+      ChatPhase.error => AsystantGlyphKind.warning,
     };
     return Semantics(
       liveRegion: true,
@@ -36,10 +37,9 @@ class StatusIndicator extends StatelessWidget {
         children: [
           AnimatedSwitcher(
             duration: theme.transitionDuration,
-            child: Icon(
+            child: AsystantGlyph(
               icon,
               key: ValueKey(phase),
-              size: theme.iconSize,
               color: Theme.of(context).colorScheme.primary,
             ),
           ),

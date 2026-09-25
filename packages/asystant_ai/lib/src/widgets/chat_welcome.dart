@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
@@ -16,6 +17,11 @@ class ChatWelcome extends StatelessWidget {
       child: Column(
         crossAxisAlignment: .start,
         children: [
+          AsystantGlyph(
+            AsystantGlyphKind.sparkle,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          SizedBox(height: tokens.padding),
           Text(
             strings.welcome,
             style: Theme.of(context).textTheme.headlineSmall,

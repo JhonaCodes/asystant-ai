@@ -1,3 +1,10 @@
+## 0.3.1
+
+- Render assistant controls, status indicators, and cards with bundled SVG icons,
+  independent of Material icon font downloads and web font caches.
+- Refine the chat header, message typography, composer, and failure feedback.
+- Add English chat previews at mobile and desktop widths with no icon fonts loaded.
+
 ## 0.3.0
 
 - Add host-owned content for completed GenUI cards through `cardContentBuilder`.

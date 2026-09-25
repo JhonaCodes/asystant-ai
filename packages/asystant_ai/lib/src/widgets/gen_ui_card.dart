@@ -1,3 +1,4 @@
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_core/asystant_core.dart';
@@ -141,17 +142,13 @@ class _CardHeader extends StatelessWidget {
     final theme = Theme.of(context);
     return Row(
       children: [
-        Icon(
-          switch (card.kind) {
-            AssistantCardKind.summary => Icons.subject_rounded,
-            AssistantCardKind.entity => Icons.article_outlined,
-            AssistantCardKind.selection => Icons.checklist_rounded,
-            AssistantCardKind.permission => Icons.shield_outlined,
-            AssistantCardKind.result => Icons.task_alt_rounded,
-          },
-          size: tokens.iconSize,
-          color: theme.colorScheme.primary,
-        ),
+        AsystantGlyph(switch (card.kind) {
+          AssistantCardKind.summary => AsystantGlyphKind.document,
+          AssistantCardKind.entity => AsystantGlyphKind.document,
+          AssistantCardKind.selection => AsystantGlyphKind.check,
+          AssistantCardKind.permission => AsystantGlyphKind.shield,
+          AssistantCardKind.result => AsystantGlyphKind.check,
+        }, color: theme.colorScheme.primary),
         SizedBox(width: tokens.spacing),
         Expanded(child: Text(card.title, style: theme.textTheme.titleSmall)),
       ],
@@ -223,7 +220,7 @@ class _CardConfirmation extends StatelessWidget {
           children: [
             FilledButton.icon(
               onPressed: onApprove,
-              icon: const Icon(Icons.check_rounded),
+              icon: const AsystantGlyph(AsystantGlyphKind.check),
               label: Text(strings.allow),
             ),
             TextButton(onPressed: onDeny, child: Text(strings.deny)),

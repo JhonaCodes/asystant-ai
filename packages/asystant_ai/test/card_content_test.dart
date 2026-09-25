@@ -46,7 +46,7 @@ void main() {
       expect(downloads, 0);
       expect(find.text('Static QR'), findsOneWidget);
       expect(find.text('Approve changes'), findsOneWidget);
-      expect(find.byIcon(Icons.check_rounded), findsOneWidget);
+      expect(find.text('Continue'), findsOneWidget);
       await tester.tap(find.text('Download image'));
       expect(downloads, 1);
       vm.dispose();

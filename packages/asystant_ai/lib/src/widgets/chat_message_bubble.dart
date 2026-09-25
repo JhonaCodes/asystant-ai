@@ -20,7 +20,8 @@ class ChatMessageBubble extends StatelessWidget {
         padding: EdgeInsets.all(tokens.spacing),
         decoration: BoxDecoration(
           color: message.role == MessageRole.user
-              ? Theme.of(context).colorScheme.secondaryContainer
+              ? Theme.of(context).colorScheme.primaryContainer
+                    .withValues(alpha: .55)
               : null,
           borderRadius: BorderRadius.circular(tokens.radius),
         ),

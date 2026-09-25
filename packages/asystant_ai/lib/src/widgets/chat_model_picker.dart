@@ -1,3 +1,4 @@
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
@@ -26,6 +27,7 @@ class ChatModelPicker extends StatelessWidget {
   Widget build(BuildContext context) =>
       switch (state.allowModelSelection && state.models.length > 1) {
         true => DropdownButton<String>(
+          icon: const AsystantGlyph(AsystantGlyphKind.chevron),
           value: state.model,
           isExpanded: true,
           underline: const SizedBox.shrink(),

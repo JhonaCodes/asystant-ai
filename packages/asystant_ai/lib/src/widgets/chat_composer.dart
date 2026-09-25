@@ -60,7 +60,7 @@ class _ChatComposerState extends State<ChatComposer> {
       padding: EdgeInsets.all(tokens.spacing),
       decoration: BoxDecoration(
         border: Border.all(color: colors.outlineVariant),
-        color: colors.surfaceContainerLow,
+        color: colors.surface,
         borderRadius: BorderRadius.circular(tokens.radius),
       ),
       child: Column(
@@ -99,6 +99,7 @@ class _ComposerTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) => TextField(
     controller: controller,
+    style: Theme.of(context).textTheme.bodyMedium,
     onChanged: viewModel.setDraft,
     minLines: 1,
     maxLines: 5,
