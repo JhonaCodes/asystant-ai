@@ -1,0 +1,8 @@
+name: asystant_workspace
+publish_to: none
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+workspace:
+  - packages/asystant_core
+  - packages/asystant_ai
+  - examples/host_app

@@ -1,0 +1,372 @@
+<div id="liria-preview" aria-label="Diseño del chat Liria">
+  <div class="lr-window" data-mode="drawer">
+    <aside class="lr-history">
+      <div class="lr-brand"><span class="lr-mark">l.</span><strong>Liria</strong></div>
+      <button class="lr-new cursor-interaction" type="button"><i data-lucide="plus" aria-hidden="true"></i>Nueva conversación</button>
+      <small>HOY</small>
+      <button class="lr-history-chat cursor-interaction" type="button" aria-pressed="true"><i data-lucide="messages-square" aria-hidden="true"></i><span>Una clase para explorar</span></button>
+      <div class="lr-history-foot">Tu espacio, con ayuda.</div>
+    </aside>
+    <section class="lr-host" aria-label="Aplicación anfitriona">
+      <div class="lr-host-title"><i data-lucide="book-open" aria-hidden="true"></i>Mi aula <span>Planificación</span></div>
+      <h2>Espacio para aprender</h2><p>Actividades de la semana</p>
+      <article><small>LUNES · CIENCIAS</small><h3>El mundo que nos rodea</h3><p>3.º A · Actividad por preparar</p></article>
+      <article><small>MARTES · LENGUAJE</small><h3>Historias compartidas</h3><p>3.º A · Borrador guardado</p></article>
+    </section>
+    <section class="lr-chat" aria-label="Conversación con Liria">
+      <div class="lr-sheet-handle" aria-hidden="true"></div>
+      <header class="lr-header">
+        <div class="lr-identity"><span class="lr-mark">l.</span><div><strong>Liria</strong><small>Tu asistente, en contexto</small></div></div>
+        <button class="lr-expand cursor-interaction" type="button" aria-label="Expandir conversación"></button>
+      </header>
+      <div class="lr-thread">
+        <div class="lr-day">Hoy</div>
+        <div class="lr-user">Ayúdame a preparar una clase sobre el agua para 3.º A.</div>
+        <div class="lr-answer"><span class="lr-eyebrow"><i data-lucide="sparkles" aria-hidden="true"></i>LIRIA</span><p>Preparemos algo que puedan descubrir por sí mismos.</p></div>
+        <details class="lr-steps">
+          <summary><span class="lr-step-state"></span><i class="lr-chevron" data-lucide="chevron-down" aria-hidden="true"></i></summary>
+          <ol class="lr-step-list"></ol>
+        </details>
+        <div class="lr-dynamic" aria-live="polite"></div>
+      </div>
+      <footer class="lr-footer">
+        <div class="lr-compose-context"><span><i data-lucide="book-open" aria-hidden="true"></i>Ciencias <span class="lr-separator">/</span> 3.º A</span><span class="lr-context-note">Contexto de esta conversación</span></div>
+        <form class="lr-composer" aria-label="Escribir a Liria">
+          <label class="lr-sr" for="lr-message">Mensaje para Liria</label>
+          <textarea id="lr-message" rows="1" placeholder="Escribe a Liria…" aria-describedby="lr-input-hint"></textarea>
+          <button class="lr-send cursor-interaction" type="button" aria-label="Enviar mensaje" disabled><i data-lucide="send-horizontal" aria-hidden="true"></i><span>Enviar</span></button>
+        </form>
+        <div class="lr-compose-meta"><span id="lr-input-hint">Escribe un mensaje para enviar</span><span class="lr-keyboard-hint">↵ Enviar · ⇧↵ Nueva línea</span></div>
+        <div class="lr-demo">Vista previa · datos y acciones de ejemplo</div>
+      </footer>
+    </section>
+  </div>
+</div>
+<style>
+#liria-preview{
+  --lr-bg:light-dark(#fff,#191a21);--lr-soft:light-dark(#f7f7fa,#22232d);
+  --lr-ink:light-dark(#282a37,#f0f0f7);--lr-muted:light-dark(#6a6c7c,#a9abba);
+  --lr-line:light-dark(#e8e9f0,#353744);--lr-accent:light-dark(#5750b5,#c1baff);
+  --lr-tint:light-dark(#f1effb,#2d2a43);--lr-button:light-dark(#5951b6,#bfb5ff);
+  --lr-on:light-dark(#fff,#242036);--lr-success:light-dark(#277353,#9cd1b7);
+  --lr-success-bg:light-dark(#eef7f1,#23352e);--lr-warning:light-dark(#876228,#dec291);
+  --lr-warning-bg:light-dark(#fbf5e9,#383122);--lr-error:light-dark(#a13e49,#eda7af);
+  --lr-error-bg:light-dark(#fcf0f1,#3b282f);--lr-radius:16px;--lr-gap:24px;
+  width:100%;font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--lr-ink)
+}
+#liria-preview *{box-sizing:border-box}
+#liria-preview button,#liria-preview textarea{font:inherit}
+#liria-preview button{min-height:48px;border:0;color:inherit;background:transparent;border-radius:10px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:background 140ms ease}
+#liria-preview button:hover:not(:disabled){background:var(--lr-soft)}
+#liria-preview button:disabled{cursor:default}
+#liria-preview button:focus-visible,#liria-preview summary:focus-visible,#liria-preview textarea:focus-visible{outline:2px solid var(--lr-accent);outline-offset:3px}
+#liria-preview svg{width:16px;height:16px;flex-shrink:0;stroke-width:1.7}
+#liria-preview small{font-size:12px;color:var(--lr-muted)}
+#liria-preview p{margin:8px 0 16px}
+#liria-preview h2{font-size:24px;line-height:1.3;font-weight:600;margin:28px 0 8px}
+#liria-preview h3{font-size:16px;line-height:1.45;font-weight:600;margin:4px 0}
+#liria-preview strong{font-weight:600}
+#liria-preview [hidden]{display:none!important}
+#liria-preview .lr-sr{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
+#liria-preview .lr-window{display:grid;grid-template-columns:205px minmax(0,1fr);background:var(--lr-bg);border:1px solid var(--lr-line);border-radius:20px;overflow:clip;min-height:660px}
+#liria-preview .lr-history{background:var(--lr-soft);padding:26px 16px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--lr-line)}
+#liria-preview .lr-brand{display:flex;gap:10px;align-items:center;margin-bottom:16px;font-size:20px}
+#liria-preview .lr-mark{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:var(--lr-tint);color:var(--lr-accent);font-size:23px;font-weight:600;font-family:Georgia,serif}
+#liria-preview .lr-new{background:var(--lr-bg);border:1px solid var(--lr-line);justify-content:flex-start}
+#liria-preview .lr-history>small{margin:24px 10px 0;font-size:11px;letter-spacing:1px}
+#liria-preview .lr-history-chat{background:var(--lr-tint);font-size:13px;justify-content:flex-start;text-align:left;color:var(--lr-accent)}
+#liria-preview .lr-history-foot{margin-top:auto;padding:30px 10px 0;font-size:12px;color:var(--lr-muted)}
+#liria-preview .lr-chat{min-width:0;display:flex;flex-direction:column;background:var(--lr-bg)}
+#liria-preview .lr-header{padding:12px 24px;border-bottom:1px solid var(--lr-line);display:flex;justify-content:space-between;align-items:center;gap:8px}
+#liria-preview .lr-identity{display:flex;align-items:center;gap:11px}
+#liria-preview .lr-identity small{display:block;margin-top:1px;font-size:11px}
+#liria-preview .lr-expand{color:var(--lr-muted);padding:10px;min-width:48px}
+#liria-preview .lr-thread{width:100%;max-width:740px;margin:0 auto;padding:18px clamp(16px,4%,36px) var(--lr-gap);flex:1}
+#liria-preview .lr-day{text-align:center;color:var(--lr-muted);font-size:11px;margin-bottom:20px}
+#liria-preview .lr-user{margin:0 0 26px auto;background:var(--lr-soft);padding:13px 16px;border-radius:18px 18px 5px 18px;max-width:88%;overflow-wrap:anywhere}
+#liria-preview .lr-eyebrow{font-size:11px;letter-spacing:1.6px;font-weight:600;color:var(--lr-accent);display:flex;align-items:center;gap:7px}
+#liria-preview .lr-eyebrow svg{width:13px;height:13px}
+#liria-preview .lr-answer p{font-size:15px;line-height:1.65;margin-top:10px}
+#liria-preview .lr-steps{font-size:12px;color:var(--lr-muted);margin:12px 0 22px}
+#liria-preview .lr-steps summary{min-height:44px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--lr-line);list-style:none}
+#liria-preview summary::-webkit-details-marker{display:none}
+#liria-preview .lr-step-state{display:flex;gap:8px;align-items:center}
+#liria-preview .lr-step-state small{font-size:11px;opacity:.85}
+#liria-preview .lr-chevron{width:13px;height:13px;transition:transform 180ms}
+#liria-preview details[open]>summary>.lr-chevron{transform:rotate(180deg)}
+#liria-preview .lr-step-list{list-style:none;padding:12px 0 4px;margin:0}
+#liria-preview .lr-step-list li{display:flex;align-items:center;gap:9px;min-height:32px;position:relative}
+#liria-preview .lr-step-list li+li:before{content:"";position:absolute;left:7px;top:-7px;width:1px;height:13px;background:var(--lr-line)}
+#liria-preview [data-tone="success"]{color:var(--lr-success)}
+#liria-preview [data-tone="warning"]{color:var(--lr-warning)}
+#liria-preview [data-tone="error"]{color:var(--lr-error)}
+#liria-preview [data-tone="active"]{color:var(--lr-accent)}
+#liria-preview .lr-card{border:1px solid var(--lr-line);border-radius:var(--lr-radius);background:var(--lr-bg);overflow:clip}
+#liria-preview .lr-card-body{padding:18px}
+#liria-preview .lr-card p{color:var(--lr-muted);font-size:13px;margin:6px 0 14px}
+#liria-preview .lr-card-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+#liria-preview .lr-card-head>div{min-width:0}
+#liria-preview .lr-card-head small{font-size:11px}
+#liria-preview .lr-state-icon{height:36px;width:36px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:var(--lr-soft);color:var(--lr-muted)}
+#liria-preview .lr-state-icon svg{width:18px;height:18px}
+#liria-preview .lr-state-icon[data-tone="active"]{background:var(--lr-tint);color:var(--lr-accent)}
+#liria-preview .lr-state-icon[data-tone="success"]{background:var(--lr-success-bg);color:var(--lr-success)}
+#liria-preview .lr-state-icon[data-tone="warning"]{background:var(--lr-warning-bg);color:var(--lr-warning)}
+#liria-preview .lr-state-icon[data-tone="error"]{background:var(--lr-error-bg);color:var(--lr-error)}
+#liria-preview .lr-choice{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-top:1px solid var(--lr-line);min-height:60px}
+#liria-preview .lr-choice input{width:18px;height:18px;accent-color:var(--lr-accent);margin:4px 0 0;flex-shrink:0}
+#liria-preview .lr-choice span{display:block}
+#liria-preview .lr-choice small{display:block;margin-top:3px}
+#liria-preview .lr-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:10px 12px;border-top:1px solid var(--lr-line)}
+#liria-preview .lr-primary{background:var(--lr-button);color:var(--lr-on);border-radius:12px;padding:10px 14px}
+#liria-preview .lr-primary:hover:not(:disabled){background:var(--lr-button);filter:brightness(.97)}
+#liria-preview .lr-primary:disabled{opacity:.4}
+#liria-preview .lr-tag{display:inline-flex;gap:5px;align-items:center;font-size:11px;padding:4px 8px;background:var(--lr-soft);border-radius:6px;color:var(--lr-muted)}
+#liria-preview .lr-tag svg{width:12px;height:12px}
+#liria-preview .lr-tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+#liria-preview .lr-approval{border-color:color-mix(in srgb,var(--lr-accent) 25%,var(--lr-line))}
+#liria-preview .lr-approval .lr-card-head small{color:var(--lr-accent)}
+#liria-preview .lr-preview-list{padding:0;margin:16px 0;list-style:none;font-size:13px}
+#liria-preview .lr-preview-list li{display:flex;gap:8px;align-items:flex-start;margin:9px 0}
+#liria-preview .lr-preview-list svg{margin-top:2px;color:var(--lr-muted);width:14px;height:14px}
+#liria-preview .lr-edit{margin-left:auto;font-size:12px;color:var(--lr-muted)}
+#liria-preview .lr-result-preview{margin-top:14px;font-size:13px}
+#liria-preview .lr-result-preview summary{min-height:44px;display:flex;gap:8px;align-items:center;list-style:none}
+#liria-preview .lr-next{font-size:13px;color:var(--lr-muted);padding-top:10px}
+#liria-preview .lr-notice{display:flex;gap:12px;align-items:flex-start;padding:16px 0}
+#liria-preview .lr-notice p{color:var(--lr-muted);font-size:13px;margin:6px 0}
+#liria-preview .lr-notice button{padding:8px 0;color:var(--lr-accent);justify-content:flex-start}
+#liria-preview .lr-notice button:hover{background:transparent;text-decoration:underline}
+#liria-preview .lr-welcome{padding:32px 0}
+#liria-preview .lr-welcome .lr-new{margin-top:20px}
+#liria-preview .lr-footer{max-width:740px;width:100%;margin:0 auto;padding:0 clamp(16px,4%,36px) 16px}
+#liria-preview .lr-compose-context{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 4px 10px;font-size:11px;color:var(--lr-muted)}
+#liria-preview .lr-compose-context>span:first-child{display:flex;align-items:center;gap:7px}
+#liria-preview .lr-compose-context svg{width:13px;height:13px}
+#liria-preview .lr-separator{opacity:.5}
+#liria-preview .lr-context-note{font-size:11px}
+#liria-preview .lr-composer{display:flex;align-items:flex-end;gap:8px;border:1px solid var(--lr-line);border-radius:18px;padding:6px 6px 6px 16px;background:var(--lr-soft);transition:border-color 160ms,box-shadow 160ms}
+#liria-preview .lr-composer:focus-within{border-color:color-mix(in srgb,var(--lr-accent) 70%,var(--lr-line));box-shadow:0 0 0 3px color-mix(in srgb,var(--lr-accent) 8%,transparent)}
+#liria-preview textarea{display:block;flex:1;min-width:0;width:100%;border:0;background:transparent;resize:none;color:var(--lr-ink);font-size:16px;line-height:24px;height:48px;min-height:48px;max-height:168px;padding:12px 0;overflow-y:hidden}
+#liria-preview textarea::placeholder{color:var(--lr-muted)}
+#liria-preview textarea:focus-visible{outline-offset:0;border-radius:4px}
+#liria-preview .lr-send{border-radius:30px;min-height:48px;min-width:48px;padding:10px 15px;gap:7px;flex-shrink:0;background:var(--lr-button);color:var(--lr-on);font-size:12px;font-weight:600}
+#liria-preview .lr-send svg{width:16px;height:16px;stroke-width:2}
+#liria-preview .lr-send:disabled{background:var(--lr-line);color:var(--lr-muted)}
+#liria-preview .lr-send:hover:not(:disabled){background:var(--lr-button);filter:brightness(.97)}
+#liria-preview .lr-send[data-command="stop"]{background:var(--lr-bg);border:1px solid var(--lr-line);color:var(--lr-ink)}
+#liria-preview .lr-send[data-command="stop"]:hover{background:var(--lr-soft)}
+#liria-preview .lr-compose-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 4px 0;color:var(--lr-muted);font-size:11px;min-height:25px}
+#liria-preview .lr-compose-meta>span:first-child{display:flex;align-items:center;gap:5px}
+#liria-preview .lr-compose-meta svg{width:12px;height:12px}
+#liria-preview .lr-keyboard-hint{white-space:nowrap}
+#liria-preview .lr-demo{text-align:center;font-size:11px;color:var(--lr-muted);padding-top:10px;opacity:.85}
+#liria-preview .lr-host{display:none;padding:32px;background:var(--lr-soft);min-width:0}
+#liria-preview .lr-host-title{font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#liria-preview .lr-host-title span{width:100%;font-weight:400;font-size:12px;color:var(--lr-muted);padding-left:24px}
+#liria-preview .lr-host article{border-top:1px solid var(--lr-line);padding:22px 0}
+#liria-preview .lr-host p{color:var(--lr-muted);font-size:13px}
+#liria-preview .lr-sheet-handle{display:none;height:4px;width:32px;border-radius:3px;background:var(--lr-line);margin:10px auto 0}
+#liria-preview .lr-window[data-mode="drawer"]{grid-template-columns:minmax(0,1fr) minmax(320px,450px)}
+#liria-preview .lr-window[data-mode="drawer"] .lr-history{display:none}
+#liria-preview .lr-window[data-mode="drawer"] .lr-host{display:block}
+#liria-preview .lr-window[data-mode="drawer"] .lr-chat{border-left:1px solid var(--lr-line)}
+#liria-preview .lr-window[data-mode="sheet"]{display:flex;flex-direction:column;max-width:420px;margin:auto;background:var(--lr-soft)}
+#liria-preview .lr-window[data-mode="sheet"] .lr-history{display:none}
+#liria-preview .lr-window[data-mode="sheet"] .lr-host{display:block;padding:20px 24px}
+#liria-preview .lr-window[data-mode="sheet"] .lr-host article,#liria-preview .lr-window[data-mode="sheet"] .lr-host h2,#liria-preview .lr-window[data-mode="sheet"] .lr-host p{display:none}
+#liria-preview .lr-window[data-mode="sheet"] .lr-chat{border-radius:24px 24px 0 0;border-top:1px solid var(--lr-line)}
+#liria-preview .lr-window[data-mode="sheet"] .lr-sheet-handle{display:block}
+#liria-preview .lr-window:not([data-mode="fullScreen"]) .lr-keyboard-hint,#liria-preview .lr-window:not([data-mode="fullScreen"]) .lr-context-note{display:none}
+#liria-preview .lr-window[data-send-style="icon"] .lr-send span{display:none}
+#liria-preview .lr-window[data-send-style="icon"] .lr-send{padding:10px;width:48px}
+#liria-preview .lr-spin{animation:lr-turn 1200ms linear infinite}
+#liria-preview .lr-breathe{animation:lr-breathe 1500ms ease-in-out infinite}
+@keyframes lr-turn{to{transform:rotate(360deg)}}
+@keyframes lr-breathe{50%{opacity:.45}}
+@media(prefers-reduced-motion:reduce){#liria-preview *,#liria-preview *:before{animation:none!important;transition:none!important}}
+@media(max-width:700px){#liria-preview .lr-window{grid-template-columns:1fr}#liria-preview .lr-history{display:none}#liria-preview .lr-window[data-mode="drawer"]{grid-template-columns:1fr}#liria-preview .lr-window[data-mode="drawer"] .lr-host{display:none}#liria-preview .lr-window[data-mode="drawer"] .lr-chat{border-left:0}#liria-preview .lr-header{padding:10px 16px}#liria-preview .lr-keyboard-hint,#liria-preview .lr-context-note{display:none}}
+@media(max-width:380px){#liria-preview .lr-send{padding:10px 12px}#liria-preview .lr-composer{padding-left:12px}#liria-preview .lr-actions .lr-edit{margin-left:0}}
+</style>
+<script>
+(()=>{
+  const root=document.getElementById('liria-preview');
+  const panel=root.querySelector('.lr-dynamic');
+  const input=root.querySelector('textarea');
+  const send=root.querySelector('.lr-send');
+  const state={mode:'drawer',stage:'complete',radius:16,spacing:24,accent:'Iris',sendStyle:'label',selected:['experiment','journal']};
+  const stages={
+    empty:{icon:'message-circle',label:'Listo para ayudarte',tone:'neutral'},
+    sending:{icon:'send-horizontal',label:'Enviando mensaje',tone:'active',motion:'lr-breathe'},
+    thinking:{icon:'sparkles',label:'Preparando respuesta',tone:'active',motion:'lr-breathe'},
+    selection:{icon:'list-checks',label:'Esperando tu selección',tone:'active'},
+    approval:{icon:'shield-question',label:'Necesita tu confirmación',tone:'active'},
+    working:{icon:'loader-circle',label:'Creando borrador',tone:'active',motion:'lr-spin'},
+    complete:{icon:'circle-check',label:'Borrador preparado',tone:'success'},
+    declined:{icon:'circle-minus',label:'Acción descartada',tone:'neutral'},
+    stopped:{icon:'circle-pause',label:'Proceso detenido',tone:'neutral'},
+    error:{icon:'circle-alert',label:'No se pudo continuar',tone:'error'},
+    offline:{icon:'wifi-off',label:'Sin conexión',tone:'warning'},
+    expired:{icon:'lock-keyhole',label:'Sesión vencida',tone:'warning'},
+    budget:{icon:'gauge',label:'Límite alcanzado',tone:'warning'}
+  };
+  const activities=[{id:'experiment',title:'¿Qué flota y qué se hunde?',detail:'Exploración en grupos · 20 min'},{id:'journal',title:'Mi diario del agua',detail:'Observar y dibujar · 15 min'},{id:'discussion',title:'Cada gota cuenta',detail:'Conversación guiada · 10 min'}];
+  let timer;
+  let stoppedFrom='thinking';
+  const icon=(name,classes='')=>`<i data-lucide="${name}" class="${classes}" aria-hidden="true"></i>`;
+  const amount=n=>`${n} ${n===1?'actividad':'actividades'}`;
+  const busy=()=>['sending','thinking','working'].includes(state.stage);
+  function icons(){if(globalThis.lucide)lucide.createIcons({attrs:{width:16,height:16}});}
+  function restore(snapshot){
+    const saved=snapshot?.modelContent;
+    if(!saved)return;
+    if(['fullScreen','drawer','sheet'].includes(saved.mode))state.mode=saved.mode;
+    if(Object.hasOwn(stages,saved.stage))state.stage=saved.stage;
+    if(Array.isArray(saved.selected))state.selected=saved.selected.filter(id=>activities.some(a=>a.id===id));
+    const appearance=snapshot?.privateContent;
+    if(['label','icon'].includes(appearance?.sendStyle))state.sendStyle=appearance.sendStyle;
+  }
+  restore(window.openai?.widgetState);
+  function remember(){if(window.openai?.setWidgetState)window.openai.setWidgetState({modelContent:{mode:state.mode,stage:state.stage,selected:state.selected},privateContent:{sendStyle:state.sendStyle}}).catch(()=>{});}
+  function cancelTimer(){clearTimeout(timer);}
+  function transition(next,delay,after){
+    cancelTimer();state.stage=next;render();remember();
+    timer=setTimeout(after,delay);
+  }
+  function resizeInput(){input.style.height='48px';input.style.height=Math.min(168,input.scrollHeight)+'px';input.style.overflowY=input.scrollHeight>168?'auto':'hidden';}
+  function renderComposer(){
+    const blocked=['expired','budget'].includes(state.stage);
+    input.disabled=blocked;
+    input.readOnly=busy();
+    input.placeholder=state.stage==='expired'?'Inicia sesión para escribir…':state.stage==='budget'?'Tu cupo está agotado':'Escribe a Liria…';
+    const canSend=Boolean(input.value.trim())&&!blocked&&state.stage!=='offline';
+    const command=busy()?'stop':'send';
+    const buttonKey=`${command}:${canSend}:${state.sendStyle}`;
+    if(send.dataset.renderKey!==buttonKey){
+      send.innerHTML=icon(command==='stop'?'square':'send-horizontal')+`<span>${command==='stop'?'Detener':'Enviar'}</span>`;
+      send.dataset.renderKey=buttonKey;
+    }
+    send.dataset.command=command;
+    send.disabled=command==='send'&&!canSend;
+    send.setAttribute('aria-label',command==='stop'?'Detener proceso':'Enviar mensaje');
+    let hint='Escribe un mensaje para enviar';
+    let hintIcon='message-circle';
+    if(busy()){hint='Puedes detener el proceso';hintIcon='circle-pause';}
+    else if(state.stage==='offline'){hint='Tu mensaje se conserva aquí';hintIcon='wifi-off';}
+    else if(blocked){hint=state.stage==='expired'?'Inicia sesión para continuar':'Disponible al renovar tu cupo';hintIcon=stages[state.stage].icon;}
+    else if(canSend){hint='Listo para enviar';hintIcon='send-horizontal';}
+    const hintNode=root.querySelector('#lr-input-hint');
+    const hintKey=hintIcon+hint;
+    if(hintNode.dataset.renderKey!==hintKey){hintNode.innerHTML=icon(hintIcon)+hint;hintNode.dataset.renderKey=hintKey;}
+    resizeInput();icons();
+  }
+  function renderSteps(){
+    const status=stages[state.stage];
+    root.querySelector('.lr-step-state').innerHTML=`${icon(status.icon,status.motion||'')}<span>${status.label}</span>`;
+    root.querySelector('.lr-step-state').dataset.tone=status.tone;
+    const completedRead=!['sending','thinking','empty'].includes(state.stage);
+    const first=completedRead?{icon:'circle-check',tone:'success',label:'Contexto de 3.º A consultado'}:{icon:'search',tone:'active',label:'Consultando el contexto del grupo'};
+    const second=completedRead?{icon:'circle-check',tone:'success',label:'Actividades disponibles revisadas'}:{icon:'circle-dashed',tone:'neutral',label:'Revisar actividades disponibles'};
+    const rows=[first,second];
+    if(state.stage==='error')rows[1]={icon:'circle-alert',tone:'error',label:'No se pudieron consultar las actividades'};
+    if(state.stage==='offline'){rows[0]={icon:'wifi-off',tone:'warning',label:'Consulta interrumpida por la conexión'};rows[1]={icon:'circle-dashed',tone:'neutral',label:'Revisar actividades al reconectar'};}
+    if(state.stage==='stopped'&&stoppedFrom!=='working'){rows[0]={icon:'circle-pause',tone:'neutral',label:'Consulta detenida'};rows[1]={icon:'circle-dashed',tone:'neutral',label:'Actividades pendientes de revisión'};}
+    if(state.stage!=='selection'&&completedRead)rows.push({icon:status.icon,tone:status.tone,label:status.label,motion:status.motion});
+    root.querySelector('.lr-step-list').innerHTML=rows.map(step=>`<li><span data-tone="${step.tone}">${icon(step.icon,step.motion||'')}</span><span>${step.label}</span></li>`).join('');
+  }
+  function cardHead(name,title,subtitle,tone='active'){return `<div class="lr-card-head"><span class="lr-state-icon" data-tone="${tone}">${icon(name)}</span><div><small>${subtitle}</small><h3>${title}</h3></div></div>`;}
+  function notice(title,description,action='',label=''){
+    const status=stages[state.stage];
+    return `<div class="lr-notice"><span class="lr-state-icon" data-tone="${status.tone}">${icon(status.icon,status.motion||'')}</span><div><strong>${title}</strong><p>${description}</p>${action?`<button type="button" class="cursor-interaction" data-action="${action}">${icon('arrow-right')}${label}</button>`:''}</div></div>`;
+  }
+  function render(){
+    const windowNode=root.querySelector('.lr-window');
+    windowNode.dataset.mode=state.mode;windowNode.dataset.sendStyle=state.sendStyle;
+    root.style.setProperty('--lr-radius',state.radius+'px');root.style.setProperty('--lr-gap',state.spacing+'px');
+    const green=state.accent==='Aula verde';
+    root.style.setProperty('--lr-accent',green?'light-dark(#196b4c,#99d8b7)':'light-dark(#5750b5,#c1baff)');
+    root.style.setProperty('--lr-tint',green?'light-dark(#edf6f0,#23372e)':'light-dark(#f1effb,#2d2a43)');
+    root.style.setProperty('--lr-button',green?'light-dark(#196b4c,#99d8b7)':'light-dark(#5951b6,#bfb5ff)');
+    root.style.setProperty('--lr-on',green?'light-dark(#fff,#153024)':'light-dark(#fff,#242036)');
+    const expand=root.querySelector('.lr-expand');
+    expand.setAttribute('aria-label',state.mode==='fullScreen'?'Mostrar como panel lateral':'Expandir conversación');
+    expand.innerHTML=icon(state.mode==='fullScreen'?'panel-right':'maximize-2');
+    const empty=state.stage==='empty';
+    for(const selector of ['.lr-user','.lr-answer','.lr-steps','.lr-day'])root.querySelector(selector).hidden=empty;
+    root.querySelector('.lr-history-chat').setAttribute('aria-pressed',String(!empty));
+    renderSteps();
+    const chosen=activities.filter(a=>state.selected.includes(a.id));
+    const entries=chosen.map(a=>`<li>${icon('check')}<span>${a.title}</span></li>`).join('');
+    switch(state.stage){
+      case 'selection':
+        panel.innerHTML=`<p>Elige las actividades que quieras incluir.</p><div class="lr-card"><div class="lr-card-body">${cardHead('list-checks','Una clase para explorar','Elige una o varias')}${activities.map(a=>`<label class="lr-choice"><input type="checkbox" value="${a.id}" ${state.selected.includes(a.id)?'checked':''}><span>${a.title}<small>${a.detail}</small></span></label>`).join('')}</div><div class="lr-actions"><button type="button" class="lr-primary cursor-interaction" data-action="preview" ${chosen.length?'':'disabled'}>${icon('arrow-right')}Revisar ${amount(chosen.length)}</button></div></div>`;break;
+      case 'approval':
+        panel.innerHTML=`<p>Todo listo. Solo falta tu confirmación.</p><div class="lr-card lr-approval"><div class="lr-card-body">${cardHead('shield-question','Crear «Exploramos el agua»','Tu confirmación es necesaria')}<div class="lr-tags"><span class="lr-tag">${icon('users')}3.º A</span><span class="lr-tag">${amount(chosen.length)}</span><span class="lr-tag">${icon('file-pen-line')}Solo borrador</span></div><ul class="lr-preview-list">${entries}</ul><p>Se guardará en tu planificación. No se publica ni envía notificaciones.</p></div><div class="lr-actions"><button type="button" class="lr-primary cursor-interaction" data-action="approve">${icon('check')}Crear borrador</button><button type="button" class="cursor-interaction" data-action="decline">Ahora no</button><button type="button" class="lr-edit cursor-interaction" data-action="edit">${icon('sliders-horizontal')}Ajustar</button></div></div>`;break;
+      case 'complete':
+        panel.innerHTML=`<div class="lr-card"><div class="lr-card-body">${cardHead('circle-check','Exploramos el agua','Borrador de ejemplo creado','success')}<p>${amount(chosen.length)} · Ciencias · 3.º A</p><div class="lr-tags"><span class="lr-tag">${icon('file-pen-line')}Sin publicar</span><span class="lr-tag">Editable</span></div><details class="lr-result-preview"><summary>${icon('file-text')}Ver borrador ${icon('chevron-down','lr-chevron')}</summary><ul class="lr-preview-list">${entries}</ul></details></div></div><p class="lr-next">Podemos ajustar la duración o preparar los materiales.</p>`;break;
+      case 'working':panel.innerHTML=notice('Creando tu borrador','Guardando las actividades que elegiste.');break;
+      case 'thinking':panel.innerHTML=notice('Preparando una propuesta','Revisando el contexto y las actividades disponibles.');break;
+      case 'sending':panel.innerHTML=notice('Enviando tu mensaje','La conversación continúa en un momento.');break;
+      case 'declined':panel.innerHTML=notice('No se creó el borrador.','Podemos ajustar las actividades o dejarlo para después.','edit','Revisar actividades');break;
+      case 'stopped':panel.innerHTML=notice('Proceso detenido','En esta demostración no se guardó ningún cambio.',stoppedFrom==='working'?'review':'edit',stoppedFrom==='working'?'Revisar propuesta':'Volver a las actividades');break;
+      case 'error':panel.innerHTML=notice('No pudimos consultar las actividades','Tu mensaje sigue aquí. Puedes volver a consultar.','retry','Reintentar consulta');break;
+      case 'offline':panel.innerHTML=notice('La conexión se interrumpió','Puedes seguir escribiendo. Tu mensaje no se enviará hasta volver a conectar.','reconnect','Simular reconexión');break;
+      case 'expired':panel.innerHTML=notice('Tu sesión necesita renovarse','Tu conversación y el mensaje que estabas escribiendo siguen aquí.','resume','Simular inicio de sesión');break;
+      case 'budget':panel.innerHTML=notice('Alcanzaste el límite de hoy','Puedes revisar la conversación. En este ejemplo, el acceso se renueva a las 00:00 UTC.');break;
+      case 'empty':panel.innerHTML=`<div class="lr-welcome"><span class="lr-state-icon" data-tone="active">${icon('sparkles')}</span><h2>¿Qué hacemos hoy?</h2><p>Podemos preparar una clase y organizar tus ideas.</p><button type="button" class="lr-new cursor-interaction" data-action="edit">${icon('book-open')}Preparar una clase sobre el agua</button></div>`;break;
+    }
+    renderComposer();
+  }
+  function go(stage){cancelTimer();state.stage=stage;render();remember();}
+  function stop(){stoppedFrom=state.stage;go('stopped');input.focus();}
+  root.addEventListener('click',event=>{
+    const action=event.target.closest('[data-action]')?.dataset.action;
+    if(!action)return;
+    switch(action){
+      case 'approve':if(state.stage==='approval')transition('working',1800,()=>go('complete'));break;
+      case 'preview':if(state.selected.length)go('approval');break;
+      case 'decline':go('declined');break;
+      case 'edit':go('selection');break;
+      case 'review':go('approval');break;
+      case 'retry':transition('thinking',1200,()=>go('selection'));break;
+      case 'reconnect':go('selection');break;
+      case 'resume':go('approval');break;
+    }
+  });
+  panel.addEventListener('change',event=>{
+    if(event.target.type!=='checkbox')return;
+    state.selected=[...panel.querySelectorAll('input:checked')].map(checkbox=>checkbox.value);
+    const button=panel.querySelector('[data-action="preview"]');
+    button.innerHTML=icon('arrow-right')+`Revisar ${amount(state.selected.length)}`;
+    button.disabled=!state.selected.length;icons();remember();
+  });
+  root.querySelector('.lr-expand').addEventListener('click',()=>{state.mode=state.mode==='fullScreen'?'drawer':'fullScreen';render();remember();});
+  root.querySelector('.lr-new').addEventListener('click',()=>{input.value='';go('empty');input.focus();});
+  root.querySelector('.lr-history-chat').addEventListener('click',()=>{if(!state.selected.length)state.selected=['experiment','journal'];go('approval');});
+  function submitMessage(){
+    if(busy()){stop();return;}
+    if(!input.value.trim()||input.disabled||state.stage==='offline')return;
+    root.querySelector('.lr-user').textContent=input.value.trim();input.value='';
+    transition('sending',450,()=>transition('thinking',1050,()=>go('selection')));
+  }
+  send.addEventListener('click',submitMessage);
+  root.querySelector('.lr-composer').addEventListener('submit',event=>{event.preventDefault();submitMessage();});
+  input.addEventListener('input',renderComposer);
+  input.addEventListener('keydown',event=>{
+    if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing&&!busy()){
+      event.preventDefault();submitMessage();
+    }
+  });
+  window.addEventListener('openai:set_globals',event=>{const snapshot=event.detail?.globals?.widgetState;if(snapshot){if(snapshot.modelContent?.stage&&snapshot.modelContent.stage!==state.stage)cancelTimer();restore(snapshot);render();}});
+  render();
+  if(globalThis.Tweak){
+    const tweak=new Tweak({container:root,onChange:()=>{cancelTimer();if(state.stage==='approval'&&!state.selected.length)state.selected=['experiment'];render();}});
+    tweak.addSelect(state,'mode',{label:'Superficie',options:[{label:'Pantalla completa',value:'fullScreen'},{label:'Panel lateral',value:'drawer'},{label:'Bottom sheet móvil',value:'sheet'}]});
+    tweak.addSelect(state,'stage',{label:'Estado del asistente',options:[{label:'Inicio',value:'empty'},{label:'Preparando respuesta',value:'thinking'},{label:'Selección',value:'selection'},{label:'Permiso',value:'approval'},{label:'Ejecutando',value:'working'},{label:'Completado',value:'complete'},{label:'Detenido',value:'stopped'},{label:'Rechazado',value:'declined'},{label:'Error',value:'error'},{label:'Sin conexión',value:'offline'},{label:'Sesión vencida',value:'expired'},{label:'Límite alcanzado',value:'budget'}]});
+    tweak.addSelect(state,'sendStyle',{label:'Botón de envío',options:[{label:'Cápsula con texto',value:'label'},{label:'Circular con icono',value:'icon'}]});
+    tweak.addSelect(state,'accent',{label:'Identidad',options:['Iris','Aula verde']});
+    tweak.addSlider(state,'radius',{label:'Radio de componentes',min:4,max:24,unit:'px'});
+    tweak.addSlider(state,'spacing',{label:'Separación del campo de mensaje',min:16,max:40,step:4,unit:'px'});
+  }
+})();
+</script>
