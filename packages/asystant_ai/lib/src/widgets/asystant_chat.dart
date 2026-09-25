@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:reactive_notifier/reactive_notifier.dart';
 
+import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
 import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/service/asystant_link_opener.dart';
@@ -22,9 +23,13 @@ class AsystantChat extends StatefulWidget {
     this.onClose,
     this.strings,
     this.onOpenLink,
+    this.cardContentBuilder,
   });
 
   final AsystantAI assistant;
+
+  /// Adds typed, host-owned content to completed cards only.
+  final AsystantCardContentBuilder? cardContentBuilder;
 
   final VoidCallback? onClose;
 
@@ -102,6 +107,7 @@ class _AsystantChatState extends State<AsystantChat> {
                         maxWidth: tokens.maxContentWidth,
                       ),
                       child: ChatConversation(
+                        cardContentBuilder: widget.cardContentBuilder,
                         state: state,
                         viewModel: vm,
                         strings: labels,

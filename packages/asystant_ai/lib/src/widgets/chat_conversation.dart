@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/chat_entry.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
@@ -18,6 +19,7 @@ class ChatConversation extends StatelessWidget {
     required this.state,
     required this.viewModel,
     required this.strings,
+    this.cardContentBuilder,
   });
 
   final ChatState state;
@@ -25,6 +27,8 @@ class ChatConversation extends StatelessWidget {
   final ChatViewModel viewModel;
 
   final AsystantStrings strings;
+
+  final AsystantCardContentBuilder? cardContentBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +52,7 @@ class ChatConversation extends StatelessWidget {
             ChatEntry(card: final card?) => GenUiCard(
               card: card,
               strings: strings,
+              content: cardContentBuilder?.call(context, card),
             ),
             _ => const SizedBox.shrink(),
           },

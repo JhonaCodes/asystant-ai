@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
 import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/service/asystant_link_opener.dart';
@@ -13,9 +14,13 @@ class AsystantButton extends StatelessWidget {
     required this.assistant,
     this.strings,
     this.onOpenLink,
+    this.cardContentBuilder,
   });
 
   final AsystantAI assistant;
+
+  /// Adds typed, host-owned content to completed cards only.
+  final AsystantCardContentBuilder? cardContentBuilder;
 
   final AsystantStrings? strings;
 
@@ -40,6 +45,7 @@ class AsystantButton extends StatelessWidget {
           ),
           child: AsystantChat(
             assistant: assistant,
+            cardContentBuilder: cardContentBuilder,
             strings: strings,
             onOpenLink: onOpenLink,
             onClose: () => Navigator.of(sheetContext).pop(),

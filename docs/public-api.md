@@ -206,3 +206,28 @@ Return `true` when the host handled navigation, or `false` to show link feedback
 HTTP(S) validation applies before custom callbacks too: credentials in URLs and
 schemes such as `javascript`, `data` and `file` are rejected. A standalone
 `GenUiCard` can be wrapped in Flutter's `SelectionArea` when used outside the chat.
+
+### Host-owned card content
+
+Pass `cardContentBuilder` to `AsystantChat` or `AsystantButton` to add domain UI
+beneath a completed local tool card. Return `null` for cards your host does not
+recognize. The standard title, body and chart stay visible. Pending permission
+cards never invoke this builder, so custom content cannot replace consent.
+
+```dart
+AsystantChat(
+  assistant: assistant,
+  cardContentBuilder: (context, card) => switch (card) {
+    PublicQrCard() => PublicQrPreview(card: card),
+    _ => null,
+  },
+)
+```
+
+`PublicQrCard` and `PublicQrPreview` in this example are host-defined types.
+A local tool may return an `AssistantCard` subclass with a typed public URL or
+artifact identifier. Keep builds free of side effects and start downloads only
+from explicit button callbacks. Generate QR images locally; do not interpret
+model text as arbitrary widgets, file paths or trusted remote images. Override
+`toJson`, `copyWith` and the host decoder when extending card data. The SDK's
+base `AssistantCard.fromJson` does not restore host subclasses automatically.

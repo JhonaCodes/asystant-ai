@@ -1,3 +1,8 @@
+## 0.3.0
+
+- Add host-owned content for completed GenUI cards through `cardContentBuilder`.
+- Keep custom result widgets separate from SDK permission controls.
+
 ## 0.2.1
 
 - Selectable conversation and card text with clickable links and host-controlled navigation.
