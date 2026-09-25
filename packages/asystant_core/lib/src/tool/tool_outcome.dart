@@ -4,8 +4,11 @@ import 'package:asystant_core/src/model/assistant_value.dart';
 /// A local execution result, with model-facing text and an optional user-facing card.
 class ToolOutcome extends AssistantValue {
   const ToolOutcome({required this.modelContent, this.card});
+
   final String modelContent;
+
   final AssistantCard? card;
+
   ToolOutcome copyWith({
     String? modelContent,
     AssistantCard? card,
@@ -14,6 +17,7 @@ class ToolOutcome extends AssistantValue {
     modelContent: modelContent ?? this.modelContent,
     card: clearCard ? null : card ?? this.card,
   );
+
   factory ToolOutcome.fromJson(Map<String, Object?> json) => ToolOutcome(
     modelContent: json['model_content'] as String,
     card: switch (json['card']) {
@@ -21,6 +25,7 @@ class ToolOutcome extends AssistantValue {
       _ => null,
     },
   );
+
   @override
   Map<String, Object?> toJson() => {
     'model_content': modelContent,

@@ -1,17 +1,18 @@
 import 'package:asystant_core/asystant_core.dart';
 import 'package:collection/collection.dart';
 
-import 'chat_phase.dart';
-import 'assistant_step.dart';
-import 'chat_entry.dart';
-import 'pending_action.dart';
-export 'chat_phase.dart';
-export 'pending_action.dart';
+import 'package:asystant_ai/src/model/assistant_step.dart';
+import 'package:asystant_ai/src/model/chat_entry.dart';
+import 'package:asystant_ai/src/model/chat_phase.dart';
+import 'package:asystant_ai/src/model/pending_action.dart';
+
+export 'package:asystant_ai/src/model/chat_phase.dart';
+export 'package:asystant_ai/src/model/pending_action.dart';
 
 /// Ephemeral view state; only the transport serializes conversation messages.
 class ChatState {
   const ChatState({
-    this.phase = ChatPhase.idle,
+    this.phase = .idle,
     this.messages = const [],
     this.cards = const [],
     this.streaming = '',
@@ -24,22 +25,41 @@ class ChatState {
     this.entries = const [],
     this.allowModelSelection = true,
   });
+
   final List<AssistantStep> steps;
+
   final List<ChatEntry> entries;
+
   final bool allowModelSelection;
+
   final ChatPhase phase;
+
   final List<AssistantMessage> messages;
+
   final List<AssistantCard> cards;
+
   final String streaming;
+
   final String draft;
+
   final PendingAction? pending;
+
   final AssistantFailure? failure;
+
   final String model;
+
   final List<String> models;
+
   bool get busy => switch (phase) {
     ChatPhase.thinking || ChatPhase.executing || ChatPhase.permission => true,
-    _ => false,
+    ChatPhase.idle ||
+    ChatPhase.initializing ||
+    ChatPhase.ready ||
+    ChatPhase.done ||
+    ChatPhase.canceled ||
+    ChatPhase.error => false,
   };
+
   ChatState copyWith({
     List<AssistantStep>? steps,
     List<ChatEntry>? entries,
@@ -69,6 +89,7 @@ class ChatState {
     model: model ?? this.model,
     models: List.unmodifiable(models ?? this.models),
   );
+
   @override
   bool operator ==(Object other) =>
       other is ChatState &&
@@ -102,6 +123,7 @@ class ChatState {
           other.models,
         ],
       );
+
   @override
   int get hashCode => const DeepCollectionEquality().hash([
     steps,

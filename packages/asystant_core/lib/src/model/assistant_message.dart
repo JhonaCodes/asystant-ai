@@ -12,10 +12,15 @@ class AssistantMessage extends AssistantValue {
     this.calls = const [],
     this.callId = '',
   });
+
   final MessageRole role;
+
   final String content;
+
   final List<ToolCall> calls;
+
   final String callId;
+
   AssistantMessage copyWith({
     MessageRole? role,
     String? content,
@@ -27,6 +32,7 @@ class AssistantMessage extends AssistantValue {
     calls: List.unmodifiable(calls ?? this.calls),
     callId: callId ?? this.callId,
   );
+
   factory AssistantMessage.fromJson(Map<String, Object?> json) =>
       AssistantMessage(
         role: MessageRole.values.byName(json['role'] as String),
@@ -38,11 +44,12 @@ class AssistantMessage extends AssistantValue {
         ),
         callId: json['call_id'] as String? ?? '',
       );
+
   @override
   Map<String, Object?> toJson() => {
     'role': role.name,
     'content': content,
-    'calls': calls.map((c) => c.toJson()).toList(),
+    'calls': calls.map((call) => call.toJson()).toList(),
     'call_id': callId,
   };
 }

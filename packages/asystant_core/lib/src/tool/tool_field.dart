@@ -1,9 +1,9 @@
 import 'package:asystant_core/src/model/assistant_value.dart';
 
 /// JSON-compatible field kinds supported by local argument validation.
-enum ToolFieldKind { string, integer, number, boolean, strings }
+enum ToolFieldKind { string, integer, number, boolean, strings, numbers }
 
-/// One scalar or string-list argument accepted by a local tool.
+/// One scalar or homogeneous-list argument accepted by a local tool.
 class ToolField extends AssistantValue {
   const ToolField({
     required this.name,
@@ -11,10 +11,15 @@ class ToolField extends AssistantValue {
     required this.kind,
     this.isRequired = true,
   });
+
   final String name;
+
   final String description;
+
   final ToolFieldKind kind;
+
   final bool isRequired;
+
   ToolField copyWith({
     String? name,
     String? description,
@@ -26,12 +31,14 @@ class ToolField extends AssistantValue {
     kind: kind ?? this.kind,
     isRequired: isRequired ?? this.isRequired,
   );
+
   factory ToolField.fromJson(Map<String, Object?> json) => ToolField(
     name: json['name'] as String,
     description: json['description'] as String,
     kind: ToolFieldKind.values.byName(json['kind'] as String),
     isRequired: json['is_required'] as bool,
   );
+
   @override
   Map<String, Object?> toJson() => {
     'name': name,
@@ -39,10 +46,19 @@ class ToolField extends AssistantValue {
     'kind': kind.name,
     'is_required': isRequired,
   };
+
   Map<String, Object?> toSchema() => {
-    'type': kind == ToolFieldKind.strings ? 'array' : kind.name,
+    'type': switch (kind) {
+      ToolFieldKind.strings || ToolFieldKind.numbers => 'array',
+      ToolFieldKind.string ||
+      ToolFieldKind.integer ||
+      ToolFieldKind.number ||
+      ToolFieldKind.boolean => kind.name,
+    },
     'description': description,
-    if (kind == ToolFieldKind.strings)
-      'items': <String, Object?>{'type': 'string'},
+    if (kind == ToolFieldKind.strings || kind == ToolFieldKind.numbers)
+      'items': <String, Object?>{
+        'type': kind == ToolFieldKind.strings ? 'string' : 'number',
+      },
   };
 }

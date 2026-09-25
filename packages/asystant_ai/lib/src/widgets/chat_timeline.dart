@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
+
 /// Keeps new content visible while allowing the reader to scroll older messages.
 class ChatTimeline extends StatefulWidget {
   const ChatTimeline({
@@ -9,16 +11,22 @@ class ChatTimeline extends StatefulWidget {
     required this.revision,
     this.forceFollow = false,
   });
+
   final List<Widget> children;
+
   final EdgeInsets padding;
+
   final Object revision;
+
   final bool forceFollow;
+
   @override
   State<ChatTimeline> createState() => _ChatTimelineState();
 }
 
 class _ChatTimelineState extends State<ChatTimeline> {
   final ScrollController _scroll = ScrollController();
+
   @override
   void didUpdateWidget(covariant ChatTimeline oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -28,7 +36,8 @@ class _ChatTimelineState extends State<ChatTimeline> {
     final follow =
         widget.forceFollow ||
         !_scroll.hasClients ||
-        _scroll.position.extentAfter < 100;
+        _scroll.position.extentAfter <
+            AsystantTheme.of(context).timelineFollowThreshold;
     if (follow) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted && _scroll.hasClients) {
@@ -48,7 +57,7 @@ class _ChatTimelineState extends State<ChatTimeline> {
   Widget build(BuildContext context) => ListView(
     controller: _scroll,
     padding: widget.padding,
-    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+    keyboardDismissBehavior: .onDrag,
     children: widget.children,
   );
 }

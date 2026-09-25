@@ -32,7 +32,7 @@ class WorkspaceAssistant extends AsystantAI {
 After your host services and login are ready, call `assistant.init` with a `GatewayTransport`. Its `SessionSource` obtains signed tickets from your backend; provider API keys never belong in Flutter. Pass `models: []` to accept the server-assigned model and add optional factory tools through `builtInTools`.
 
 ```dart
-await assistant.init(
+assistant.init(
   transport: GatewayTransport(
     baseUri: gatewayUri,
     sessionSource: hostSession,
@@ -81,3 +81,39 @@ The package does not include a hosted API, provider credentials or inference cre
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+### Deferred startup
+
+`init()` only stores configuration. It does not evaluate application tool getters,
+create a session, or contact the gateway. `AsystantChat` starts setup after its first
+frame, only when mounted; a launcher button alone does not initialize the assistant.
+Do not await assistant readiness before `runApp()` or host authentication.
+For a custom chat UI, call `ensureInitialized()` when that UI opens. Concurrent calls
+share initialization. Network failures remain inside the assistant UI and do not
+prevent the host app from starting.
+
+Network I/O uses asynchronous Dart APIs. An isolate is unnecessary for this work and
+would not support application tools holding UI or service references. Keep tool
+registration cheap; move any genuinely CPU-intensive application computation to an
+isolate inside that tool. Startup has no dependency on the assistant's network latency;
+this is not a claim of literally zero CPU cost.
+
+Migration from 0.1.0: remove `await` before `init()`. Only headless clients and tests
+that immediately send messages should explicitly await `ensureInitialized()`.
+
+## Reports and prompt customization
+
+Application personality is supplied through `AsystantAI.systemPrompts`; scoped
+context can be added with `additionalSystemPrompts` during `init()`. The SDK and
+Rust gateway apply baseline safety guidance independently. See the
+[integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md).
+
+Cards now support typed bar and line charts, with accessible labels, units and
+source notes. These are English Flutter golden renders using example data:
+
+![Mobile report with bars and trend](https://raw.githubusercontent.com/JhonaCodes/asystant-ai/main/packages/asystant_ai/test/goldens/report_390.png)
+
+[Desktop golden](https://raw.githubusercontent.com/JhonaCodes/asystant-ai/main/packages/asystant_ai/test/goldens/report_900.png)
+
+See [model experience and verification](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/model-experience.md)
+for owner-reported GPT-OSS 20B/120B results and the boundary of automated testing.
