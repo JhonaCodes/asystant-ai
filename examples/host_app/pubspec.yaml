@@ -1,0 +1,18 @@
+name: host_app
+description: A host application invoking the embedded Asistente SDK.
+publish_to: none
+version: 0.1.0+1
+resolution: workspace
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  reactive_notifier: ^2.18.1
+  asystant_ai:
+    path: ../../packages/asystant_ai
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true

@@ -1,0 +1,18 @@
+name: asystant_ai
+description: An embeddable Flutter assistant with local tools and reactive_notifier.
+version: 0.1.0
+publish_to: none
+resolution: workspace
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+  flutter: '>=3.47.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  asystant_core:
+    path: ../asystant_core
+  reactive_notifier: ^2.18.1
+  collection: ^1.19.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

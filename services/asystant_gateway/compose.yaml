@@ -1,0 +1,27 @@
+# External PostgreSQL: supply DATABASE_URL through .env or a secret manager.
+x-gateway: &gateway
+  image: asystant-gateway:local
+  build: .
+  env_file: .env
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+
+services:
+  migrate:
+    <<: *gateway
+    command: [--migrate-only]
+    restart: "no"
+    healthcheck:
+      disable: true
+  api:
+    <<: *gateway
+    environment:
+      ASYSTANT_BIND: 0.0.0.0:8787
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:8787:8787"
+    restart: unless-stopped
+    stop_grace_period: 140s
