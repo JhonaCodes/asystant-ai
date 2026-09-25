@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:reactive_notifier/reactive_notifier.dart';
 
-import '../asystant_ai.dart';
-import '../model/chat_state.dart';
-import '../viewmodel/chat_view_model.dart';
-import '../theme/asystant_theme.dart';
-import '../l10n/asystant_strings.dart';
-import 'chat_header.dart';
-import 'chat_conversation.dart';
-import 'chat_composer.dart';
+import 'package:asystant_ai/src/asystant_ai.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/widgets/chat_header.dart';
+import 'package:asystant_ai/src/widgets/chat_conversation.dart';
+import 'package:asystant_ai/src/widgets/chat_composer.dart';
 
 /// One bounded chat section for sheets, drawers, embedded panels and full screens.
 class AsystantChat extends StatefulWidget {
@@ -20,9 +20,13 @@ class AsystantChat extends StatefulWidget {
     this.onClose,
     this.strings,
   });
+
   final AsystantAI assistant;
+
   final VoidCallback? onClose;
+
   final AsystantStrings? strings;
+
   @override
   State<AsystantChat> createState() => _AsystantChatState();
 }
