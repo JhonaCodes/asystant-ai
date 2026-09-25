@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:asystant_core/asystant_core.dart';
 
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/widgets/asystant_markdown_text.dart';
 
 class ChatMessageBubble extends StatelessWidget {
   const ChatMessageBubble({super.key, required this.message});
@@ -23,7 +24,7 @@ class ChatMessageBubble extends StatelessWidget {
               : null,
           borderRadius: BorderRadius.circular(tokens.radius),
         ),
-        child: SelectableText(message.content),
+        child: AsystantMarkdownText(text: message.content),
       ),
     );
   }

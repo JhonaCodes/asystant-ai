@@ -25,6 +25,12 @@ class AsystantStrings {
   };
   String get connect => spanish ? 'Conectar asistente' : 'Connect assistant';
 
+  String get linkFailure => spanish
+      ? 'No se pudo abrir el enlace. Puedes copiarlo e intentarlo de nuevo.'
+      : 'Could not open this link. You can copy it and try again.';
+
+  String get imageOmitted => spanish ? 'Imagen omitida' : 'Image omitted';
+
   String get send => spanish ? 'Enviar' : 'Send';
   String get stop => spanish ? 'Detener' : 'Stop';
   String get close => spanish ? 'Cerrar' : 'Close';
