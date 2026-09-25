@@ -17,12 +17,15 @@ class ChatMessageBubble extends StatelessWidget {
       alignment: message.role == MessageRole.user ? .centerRight : .centerLeft,
       child: Container(
         margin: EdgeInsets.only(bottom: tokens.padding),
-        padding: EdgeInsets.all(tokens.spacing),
+        padding: EdgeInsets.all(tokens.padding),
         decoration: BoxDecoration(
           color: message.role == MessageRole.user
               ? Theme.of(context).colorScheme.primaryContainer
                     .withValues(alpha: .55)
-              : null,
+              : Theme.of(context).colorScheme.surface,
+          border: Border.all(
+            color: Theme.of(context).colorScheme.outlineVariant,
+          ),
           borderRadius: BorderRadius.circular(tokens.radius),
         ),
         child: AsystantMarkdownText(text: message.content),

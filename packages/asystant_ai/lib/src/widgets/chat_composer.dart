@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
@@ -29,6 +30,19 @@ class ChatComposer extends StatefulWidget {
 class _ChatComposerState extends State<ChatComposer> {
   final TextEditingController _text = TextEditingController();
 
+  bool _isFocused = false;
+
+  KeyEventResult _handleKey(FocusNode node, KeyEvent event) {
+    if (event is KeyDownEvent &&
+        event.logicalKey == LogicalKeyboardKey.enter &&
+        !HardwareKeyboard.instance.isShiftPressed &&
+        !_text.value.composing.isValid) {
+      if (widget.viewModel.canSend) widget.viewModel.send();
+      return .handled;
+    }
+    return .ignored;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -56,29 +70,53 @@ class _ChatComposerState extends State<ChatComposer> {
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
     final colors = Theme.of(context).colorScheme;
-    return Container(
-      padding: EdgeInsets.all(tokens.spacing),
-      decoration: BoxDecoration(
-        border: Border.all(color: colors.outlineVariant),
-        color: colors.surface,
-        borderRadius: BorderRadius.circular(tokens.radius),
-      ),
-      child: Column(
-        mainAxisSize: .min,
-        children: [
-          _ComposerTextField(
-            controller: _text,
-            viewModel: widget.viewModel,
-            strings: widget.strings,
+    return Column(
+      mainAxisSize: .min,
+      crossAxisAlignment: .start,
+      children: [
+        AnimatedContainer(
+          duration: tokens.transitionDuration,
+          padding: EdgeInsets.all(tokens.spacing / 2),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: _isFocused ? colors.primary : colors.outlineVariant,
+              width: _isFocused ? tokens.progressStrokeWidth : 1,
+            ),
+            color: colors.surface,
+            borderRadius: BorderRadius.circular(tokens.composerRadius),
           ),
-          SizedBox(height: tokens.spacing / 2),
-          _ComposerActions(
+          child: Row(
+            crossAxisAlignment: .end,
+            children: [
+              Expanded(
+                child: Focus(
+                  onFocusChange: (focused) =>
+                      setState(() => _isFocused = focused),
+                  onKeyEvent: _handleKey,
+                  child: _ComposerTextField(
+                    controller: _text,
+                    viewModel: widget.viewModel,
+                    strings: widget.strings,
+                  ),
+                ),
+              ),
+              ChatSendAction(
+                state: widget.state,
+                viewModel: widget.viewModel,
+                strings: widget.strings,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: tokens.spacing / 2),
+          child: ChatModelPicker(
             state: widget.state,
             viewModel: widget.viewModel,
             strings: widget.strings,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -102,44 +140,25 @@ class _ComposerTextField extends StatelessWidget {
     style: Theme.of(context).textTheme.bodyMedium,
     onChanged: viewModel.setDraft,
     minLines: 1,
-    maxLines: 5,
+    maxLines: 4,
+    textInputAction: .newline,
     maxLength: 16000,
     textCapitalization: .sentences,
     decoration: InputDecoration(
       hintText: strings.placeholder,
       border: InputBorder.none,
+      enabledBorder: InputBorder.none,
+      focusedBorder: InputBorder.none,
+      disabledBorder: InputBorder.none,
+      errorBorder: InputBorder.none,
+      focusedErrorBorder: InputBorder.none,
+      isDense: true,
       filled: false,
       counterText: '',
-      contentPadding: EdgeInsets.all(AsystantTheme.of(context).spacing / 2),
-    ),
-  );
-}
-
-class _ComposerActions extends StatelessWidget {
-  const _ComposerActions({
-    required this.state,
-    required this.viewModel,
-    required this.strings,
-  });
-
-  final ChatState state;
-
-  final ChatViewModel viewModel;
-
-  final AsystantStrings strings;
-
-  @override
-  Widget build(BuildContext context) => Row(
-    children: [
-      Expanded(
-        child: ChatModelPicker(
-          state: state,
-          viewModel: viewModel,
-          strings: strings,
-        ),
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: AsystantTheme.of(context).spacing,
+        vertical: AsystantTheme.of(context).spacing,
       ),
-      SizedBox(width: AsystantTheme.of(context).spacing),
-      ChatSendAction(state: state, viewModel: viewModel, strings: strings),
-    ],
+    ),
   );
 }

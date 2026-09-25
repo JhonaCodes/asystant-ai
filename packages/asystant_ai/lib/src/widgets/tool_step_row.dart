@@ -13,16 +13,22 @@ class ToolStepRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListTile(
+    dense: true,
     contentPadding: EdgeInsets.zero,
-    leading: AsystantGlyph(switch (step.phase) {
-      StepPhase.preparing => AsystantGlyphKind.search,
-      StepPhase.permission => AsystantGlyphKind.shield,
-      StepPhase.running => AsystantGlyphKind.refresh,
-      StepPhase.completed => AsystantGlyphKind.check,
-      StepPhase.declined => AsystantGlyphKind.close,
-      StepPhase.canceled => AsystantGlyphKind.pause,
-      StepPhase.failed => AsystantGlyphKind.warning,
-    }, color: Theme.of(context).colorScheme.primary),
+    leading: AsystantGlyph(
+      switch (step.phase) {
+        StepPhase.preparing => AsystantGlyphKind.search,
+        StepPhase.permission => AsystantGlyphKind.shield,
+        StepPhase.running => AsystantGlyphKind.refresh,
+        StepPhase.completed => AsystantGlyphKind.check,
+        StepPhase.declined => AsystantGlyphKind.close,
+        StepPhase.canceled => AsystantGlyphKind.pause,
+        StepPhase.failed => AsystantGlyphKind.warning,
+      },
+      color: step.phase == StepPhase.failed
+          ? Theme.of(context).colorScheme.error
+          : Theme.of(context).colorScheme.primary,
+    ),
     title: Text(step.title),
     subtitle: Text(strings.stepPhase(step.phase)),
   );

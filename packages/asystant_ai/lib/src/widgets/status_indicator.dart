@@ -1,5 +1,6 @@
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:flutter/material.dart';
+import 'package:asystant_ai/src/widgets/chat_activity_pulse.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
@@ -37,10 +38,16 @@ class StatusIndicator extends StatelessWidget {
         children: [
           AnimatedSwitcher(
             duration: theme.transitionDuration,
-            child: AsystantGlyph(
-              icon,
+            child: ChatActivityPulse(
               key: ValueKey(phase),
-              color: Theme.of(context).colorScheme.primary,
+              active:
+                  phase == ChatPhase.thinking ||
+                  phase == ChatPhase.initializing ||
+                  phase == ChatPhase.executing,
+              child: AsystantGlyph(
+                icon,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ),
           SizedBox(width: theme.spacing / 2),
@@ -50,16 +57,6 @@ class StatusIndicator extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),
-          if (phase == ChatPhase.thinking ||
-              phase == ChatPhase.initializing) ...[
-            SizedBox(width: theme.spacing),
-            SizedBox.square(
-              dimension: theme.iconSize / 2,
-              child: CircularProgressIndicator(
-                strokeWidth: theme.progressStrokeWidth,
-              ),
-            ),
-          ],
         ],
       ),
     );

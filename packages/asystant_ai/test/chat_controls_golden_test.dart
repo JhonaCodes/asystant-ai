@@ -68,7 +68,7 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(find.byTooltip('Close').hitTestable(), findsOneWidget);
-      expect(find.text('Send').hitTestable(), findsOneWidget);
+      expect(find.byTooltip('Send').hitTestable(), findsOneWidget);
       expect(
         find.byWidgetPredicate(
           (widget) =>
@@ -88,7 +88,7 @@ void main() {
         'Create a draft for the new branch.',
       );
       await tester.pump();
-      await tester.tap(find.text('Send'));
+      await tester.tap(find.byTooltip('Send'));
       await tester.pumpAndSettle();
       expect(find.text('Continue').hitTestable(), findsOneWidget);
       if (Platform.isMacOS) {

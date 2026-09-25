@@ -1,3 +1,10 @@
+## 0.3.2
+
+- Align the embedded chat with Aula-AI: compact header, inline composer and icon-only send/stop controls.
+- Isolate input borders from host themes and support Enter to send / Shift+Enter for a new line.
+- Pulse the working icon while keeping status text readable; respect reduced-motion preferences.
+- Refine bordered messages and discreet inline failure feedback.
+
 ## 0.3.1
 
 - Render assistant controls, status indicators, and cards with bundled SVG icons,

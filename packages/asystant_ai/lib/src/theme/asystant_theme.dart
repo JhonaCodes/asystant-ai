@@ -19,6 +19,9 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     this.sheetHeightFactor = .92,
     this.permissionBorderOpacity = .4,
     this.chartHeight = 180,
+    this.headerHeight = 72,
+    this.identitySize = 36,
+    this.composerRadius = 16,
   });
 
   final double radius;
@@ -49,6 +52,12 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
 
   final double chartHeight;
 
+  final double headerHeight;
+
+  final double identitySize;
+
+  final double composerRadius;
+
   static AsystantTheme of(BuildContext context) =>
       Theme.of(context).extension<AsystantTheme>() ?? const AsystantTheme();
 
@@ -68,6 +77,9 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     double? sheetHeightFactor,
     double? permissionBorderOpacity,
     double? chartHeight,
+    double? headerHeight,
+    double? identitySize,
+    double? composerRadius,
   }) => AsystantTheme(
     radius: radius ?? this.radius,
     spacing: spacing ?? this.spacing,
@@ -85,6 +97,9 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     permissionBorderOpacity:
         permissionBorderOpacity ?? this.permissionBorderOpacity,
     chartHeight: chartHeight ?? this.chartHeight,
+    headerHeight: headerHeight ?? this.headerHeight,
+    identitySize: identitySize ?? this.identitySize,
+    composerRadius: composerRadius ?? this.composerRadius,
   );
 
   @override

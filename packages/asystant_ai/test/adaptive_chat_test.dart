@@ -40,7 +40,7 @@ void main() {
       expect(find.text('Ayuda de mi app'), findsOneWidget);
       await tester.enterText(find.byType(TextField), 'Create a draft');
       await tester.pump();
-      await tester.tap(find.text('Enviar'));
+      await tester.tap(find.byTooltip('Enviar'));
       await tester.pumpAndSettle();
       expect(find.text('Continuar'), findsOneWidget);
       expect(tester.takeException(), isNull);
@@ -81,7 +81,7 @@ void main() {
     );
     await tester.enterText(find.byType(TextField), 'A draft');
     await tester.pump();
-    expect(find.text('Enviar').hitTestable(), findsOneWidget);
+    expect(find.byTooltip('Enviar').hitTestable(), findsOneWidget);
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox());
     assistant.dispose();

@@ -26,7 +26,12 @@ class ChatFailureNotice extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(tokens.spacing),
         decoration: BoxDecoration(
-          color: colors.errorContainer.withValues(alpha: .3),
+          color: colors.surface,
+          border: Border.all(
+            color: colors.error.withValues(
+              alpha: tokens.permissionBorderOpacity,
+            ),
+          ),
           borderRadius: BorderRadius.circular(tokens.radius),
         ),
         child: Row(

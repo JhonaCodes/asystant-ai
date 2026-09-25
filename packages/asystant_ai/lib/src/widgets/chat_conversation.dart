@@ -12,6 +12,7 @@ import 'package:asystant_ai/src/widgets/chat_timeline.dart';
 import 'package:asystant_ai/src/widgets/chat_welcome.dart';
 import 'package:asystant_ai/src/widgets/gen_ui_card.dart';
 import 'package:asystant_ai/src/widgets/tool_steps.dart';
+import 'package:asystant_ai/src/widgets/status_indicator.dart';
 
 class ChatConversation extends StatelessWidget {
   const ChatConversation({
@@ -60,6 +61,12 @@ class ChatConversation extends StatelessWidget {
         if (state.steps.isNotEmpty)
           ToolSteps(steps: state.steps, strings: strings),
         if (state.streaming.isNotEmpty) Text(state.streaming),
+        if (state.phase == ChatPhase.thinking ||
+            state.phase == ChatPhase.executing)
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: tokens.spacing),
+            child: StatusIndicator(phase: state.phase, strings: strings),
+          ),
         if (state.pending case final pending?)
           GenUiCard(
             card: pending.card,
