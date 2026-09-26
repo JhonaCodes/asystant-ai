@@ -9,5 +9,5 @@ build/
 
 .local/
 
-# Own repo (JhonaCodes/asystant-gateway), kept as a sibling folder for local convenience only
-/asystant-gateway/
+# Own repo (JhonaCodes/asystant-api), kept as a sibling folder for local convenience only
+/asystant-api/

@@ -10,4 +10,4 @@ cd examples/host_app
 flutter run -d chrome
 ```
 
-For a network-backed integration, replace `DemoTransport` with `GatewayTransport` and connect your existing login to `SessionSource`. Follow the [integration guide](../../docs/public-api.md) and the [reference Rust API](../../services/asystant_gateway/README.md).
+For a network-backed integration, replace `DemoTransport` with `GatewayTransport` and connect your existing login to `SessionSource`. Follow the [integration guide](../../docs/public-api.md) and the [reference Rust API](https://github.com/JhonaCodes/asystant-api).

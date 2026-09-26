@@ -1,6 +1,6 @@
 # SDK 0.2.0 verification
 
-> Historical document: gateway source now lives in [asystant-gateway](https://github.com/JhonaCodes/asystant-gateway). PostgreSQL details and monorepo commands below describe the earlier bundled version.
+> Historical document: gateway source now lives in [asystant-api](https://github.com/JhonaCodes/asystant-api). PostgreSQL details and monorepo commands below describe the earlier bundled version.
 
 ## Context
 

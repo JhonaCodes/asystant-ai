@@ -56,7 +56,7 @@ Implement `SessionSource`, or use `CallbackSessionSource`, to provide the curren
 
 ## Reference API
 
-You can use the [Rust gateway](https://github.com/JhonaCodes/asystant-gateway) as a deployment-ready starting point or as a guide for implementing your own compatible API. Read its [HTTP contract](https://github.com/JhonaCodes/asystant-gateway/blob/main/openapi.yaml), [deployment guide](https://github.com/JhonaCodes/asystant-gateway/blob/main/docs/deployment.md) and [security controls](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md). It is self-hosted software; this package does not include a hosted service or provider credits.
+You can use the [Rust gateway](https://github.com/JhonaCodes/asystant-api) as a deployment-ready starting point or as a guide for implementing your own compatible API. Read its [HTTP contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml), [deployment guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/deployment.md) and [security controls](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md). It is self-hosted software; this package does not include a hosted service or provider credits.
 
 OpenRouter is the initial provider. Other adapters and their streaming limitations are documented in the gateway. Application authorization remains the responsibility of your local tool implementations.
 

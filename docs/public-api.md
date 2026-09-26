@@ -49,7 +49,7 @@ GenUI supports summary, entity, selection, permission and result cards. Selectio
 
 ## Backend compatibility
 
-Use the [Rust reference implementation](https://github.com/JhonaCodes/asystant-gateway) directly or as guidance for a compatible service. The authoritative request/response contract is [OpenAPI](https://github.com/JhonaCodes/asystant-gateway/blob/main/openapi.yaml), including SSE envelopes and errors. See [security](../SECURITY.md) before exposing a deployment.
+Use the [Rust reference implementation](https://github.com/JhonaCodes/asystant-api) directly or as guidance for a compatible service. The authoritative request/response contract is [OpenAPI](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml), including SSE envelopes and errors. See [security](../SECURITY.md) before exposing a deployment.
 
 Model policy precedence is user, then tenant, then product. Initialization returns `models`, `default_model` and `allow_selection`. A fixed assignment disables the picker and rejects a forged model selection server-side on every inference. Configuration changes require a gateway restart; removed models require clients to reinitialize.
 

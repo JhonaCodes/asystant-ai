@@ -2,7 +2,7 @@
 
 This repository contains the Flutter SDK. The independently deployed Rust API
 and its OWASP-mapped controls are maintained in
-[asystant-gateway](https://github.com/JhonaCodes/asystant-gateway/blob/main/SECURITY.md).
+[asystant-api](https://github.com/JhonaCodes/asystant-api/blob/main/SECURITY.md).
 Historical verification reports in this repository describe the earlier bundled
 PostgreSQL gateway; they are not deployment instructions for the SQLite service.
 
