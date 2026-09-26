@@ -8,3 +8,6 @@ build/
 .DS_Store
 
 .local/
+
+# Own repo (JhonaCodes/asystant-gateway), kept as a sibling folder for local convenience only
+/asystant-gateway/
