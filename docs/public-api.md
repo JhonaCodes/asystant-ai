@@ -153,6 +153,31 @@ Future<Result<ToolOutcome, AssistantFailure>> execute(
 
 Each executed call is an `AssistantStep` with the `toolName`, when it `startedAt`, the `detail` of a failure and the tool's `data`. A turn's steps end up in `ChatEntry.activity`, which a conversation store keeps.
 
+### Progress and cancellation of long tools
+
+A tool that takes a while (a render, an export) reports how far it has come with `ToolContext.reportProgress(fraction, label: ...)`: `fraction` from 0 to 1 (clamped; a non-finite value is ignored) and an optional short `label` for the person, such as "Frame 12 of 48". The running step shows it as `AssistantStep.progress` and `AssistantStep.progressLabel`, and `AssistantStep.showsProgress` is true while it runs with a progress. Report as often as the work advances: the chat shows the first report at once and then at most one every 100 ms, always the latest, so the UI is not rebuilt on every report. Progress never reaches the model, and reports after the call ends or is canceled are ignored. The built-in chat draws it as a thin bar under the step.
+
+`conversation.cancel()` (the chat's Stop button) cancels the turn and reaches the tool that is running: from then on `ToolContext.isCanceled` is true and `checkCanceled()` throws. The SDK cannot interrupt your code, so a long tool checks `isCanceled` as it advances (for example on each progress report) and stops its own work there. The running step ends as `StepPhase.canceled`, and whatever the tool returns afterwards is ignored.
+
+```dart
+@override
+Future<Result<ToolOutcome, AssistantFailure>> execute(
+  ToolArguments arguments,
+  ToolContext context,
+) async {
+  final frames = await renderer.render(
+    onFrame: (done, total) {
+      if (context.isCanceled) {
+        renderer.cancel(); // Host-owned: stop the work.
+        return;
+      }
+      context.reportProgress(done / total, label: 'Frame $done of $total');
+    },
+  );
+  return Ok(ToolOutcome(modelContent: 'Rendered ${frames.length} frames.'));
+}
+```
+
 A preview must be read-only. Mutating actions require confirmation by default. The model cannot approve its own action. Check `ToolContext.isCanceled` or `checkCanceled()` immediately before an asynchronous write, and use its `idempotencyKey` in your own repository. Existing product authorization is still mandatory; a model-requested action is not an authorization grant.
 
 ### Turn limits

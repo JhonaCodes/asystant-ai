@@ -123,9 +123,15 @@ class _ChatActivityCardState extends State<ChatActivityCard> {
                   for (final step in widget.steps)
                     _ActivityRow(
                       icon: AsystantGlyphKind.tool,
-                      label: step.title,
+                      label: switch (step) {
+                        AssistantStep(showsProgress: true, :final progressLabel)
+                            when progressLabel.isNotEmpty =>
+                          '${step.title} · $progressLabel',
+                        _ => step.title,
+                      },
                       outcome: step.outcome,
                       strings: widget.strings,
+                      progress: step.showsProgress ? step.progress : null,
                     ),
                   if (widget.closingStep case final label?)
                     _ActivityRow(
@@ -150,6 +156,7 @@ class _ActivityRow extends StatelessWidget {
     required this.label,
     required this.outcome,
     required this.strings,
+    this.progress,
   });
 
   final AsystantGlyphKind icon;
@@ -159,6 +166,9 @@ class _ActivityRow extends StatelessWidget {
   final StepOutcome outcome;
 
   final AsystantStrings strings;
+
+  /// How far a running tool has come, from 0 to 1; null shows no bar.
+  final double? progress;
 
   @override
   Widget build(BuildContext context) {
@@ -191,10 +201,25 @@ class _ActivityRow extends StatelessWidget {
           ),
           SizedBox(width: tokens.spacing - 4),
           Expanded(
-            child: Text(
-              label,
-              style: Theme.of(context).textTheme.bodySmall
-                  ?.copyWith(color: colors.onSurfaceVariant),
+            child: Column(
+              crossAxisAlignment: .stretch,
+              children: [
+                Text(
+                  label,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: colors.onSurfaceVariant,
+                  ),
+                ),
+                if (progress case final value?)
+                  Padding(
+                    padding: EdgeInsets.only(top: tokens.spacing / 3),
+                    child: LinearProgressIndicator(
+                      value: value,
+                      minHeight: 2,
+                      semanticsLabel: label,
+                    ),
+                  ),
+              ],
             ),
           ),
           Tooltip(

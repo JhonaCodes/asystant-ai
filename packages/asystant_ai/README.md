@@ -85,7 +85,7 @@ The host owns the assistant instance: closing the panel preserves the conversati
 
 Implement `AsystantTool` or `TypedAsystantTool<T>`. Return a `ToolDefinition`, a read-only preview and an execution result. Tools execute inside the host app, never on a server. Confirmation is required by default; read-only tools can explicitly opt out. Use `requiresSelection` for user choices and `isAvailable` to control registration.
 
-`ToolContext` exposes cancellation, selected values and an idempotency key. Your repository must still enforce authorization and protect asynchronous writes against duplicate effects. The SDK does not claim to reverse completed actions.
+`ToolContext` exposes cancellation, selected values, an idempotency key and `reportProgress(fraction, label: ...)`: a long tool reports how far it has come, the running `AssistantStep` shows it (`progress`, `progressLabel`, throttled so the chat is not rebuilt on every report), and `cancel()` makes `isCanceled` true for the tool while it runs, so it can stop its own work; the step ends as canceled. Your repository must still enforce authorization and protect asynchronous writes against duplicate effects. The SDK does not claim to reverse completed actions.
 
 To let the assistant answer from your own documents, index them in an `AsystantKnowledge` and pass `KnowledgeSearchTool(knowledge: knowledge)` in `builtInTools`. The search is local and lexical (BM25, Spanish and English), needs no service or embeddings model and returns only the matching passages. See [Local knowledge (RAG)](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#local-knowledge-rag).
 

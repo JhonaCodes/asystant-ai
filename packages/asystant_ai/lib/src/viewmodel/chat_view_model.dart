@@ -44,6 +44,15 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   Timer? _streamingTimer;
 
+  /// At most one progress update per interval reaches the state; see
+  /// [_reportProgress].
+  static const _progressInterval = Duration(milliseconds: 100);
+
+  Timer? _progressTimer;
+
+  /// The latest progress report not shown yet.
+  ({String id, double fraction, String label})? _progress;
+
   AsystantAttachmentPolicy _attachmentPolicy = const AsystantAttachmentPolicy();
 
   /// Rounds per turn and calls per response; see [AsystantTurnLimits].
@@ -513,6 +522,7 @@ class ChatViewModel extends ViewModel<ChatState> {
   void cancel() {
     _epoch++;
     _resetStreaming();
+    _resetProgress();
     _transport?.cancel();
     if (_approval?.isCompleted == false) {
       _approval?.complete(false);
@@ -560,6 +570,7 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   void _fail(AssistantFailure failure) {
     _resetStreaming();
+    _resetProgress();
     updateState(
       state.copyWith(
         phase: .error,
@@ -592,6 +603,8 @@ class ChatViewModel extends ViewModel<ChatState> {
     DateTime? startedAt,
     String? detail,
     Map<String, Object?>? data,
+    double? progress,
+    String? progressLabel,
   }) {
     final exists = state.steps.any((step) => step.id == id);
     updateState(
@@ -607,6 +620,8 @@ class ChatViewModel extends ViewModel<ChatState> {
                             startedAt: startedAt,
                             detail: detail,
                             data: data,
+                            progress: progress,
+                            progressLabel: progressLabel,
                           )
                         : step,
                   )
@@ -621,6 +636,8 @@ class ChatViewModel extends ViewModel<ChatState> {
                   startedAt: startedAt,
                   detail: detail ?? '',
                   data: data ?? const {},
+                  progress: progress,
+                  progressLabel: progressLabel ?? '',
                 ),
               ],
       ),
@@ -815,6 +832,49 @@ class ChatViewModel extends ViewModel<ChatState> {
     _streamingText.clear();
   }
 
+  /// Shows a running tool's progress on its step without rebuilding the
+  /// chat on every report: the first report shows at once, and then at most
+  /// one per [_progressInterval], always the latest.
+  void _reportProgress(String id, int epoch, double fraction, String label) {
+    if (!_current(epoch)) {
+      return;
+    }
+    _progress = (id: id, fraction: fraction, label: label);
+    if (_progressTimer == null) {
+      _flushProgress(epoch);
+    }
+  }
+
+  void _flushProgress(int epoch) {
+    final progress = _progress;
+    _progress = null;
+    if (progress == null || !_current(epoch)) {
+      return;
+    }
+    _progressTimer = Timer(_progressInterval, () {
+      _progressTimer = null;
+      _flushProgress(epoch);
+    });
+    // Only the call still running shows it: a late report must not revive
+    // a step that already ended.
+    if (state.steps.any(
+      (step) => step.id == progress.id && step.phase == StepPhase.running,
+    )) {
+      _step(
+        progress.id,
+        StepPhase.running,
+        progress: progress.fraction,
+        progressLabel: progress.label,
+      );
+    }
+  }
+
+  void _resetProgress() {
+    _progressTimer?.cancel();
+    _progressTimer = null;
+    _progress = null;
+  }
+
   /// Ends the turn after [call], whose tool asked for it
   /// (`ToolOutcome.endsTurn`): the calls in [skipped] are answered without
   /// running, and the model is not called again. The person speaks next.
@@ -911,11 +971,15 @@ class ChatViewModel extends ViewModel<ChatState> {
               selectedOptions: List.unmodifiable(selected),
               attachments: state.conversationAttachments,
               isCanceled: () => !_current(epoch),
+              onProgress: (fraction, label) =>
+                  _reportProgress(executionKey, epoch, fraction, label),
             ),
           );
           if (!_current(epoch)) {
             return false;
           }
+          // What the tool reported last is not shown after it returns.
+          _resetProgress();
           result.when(
             ok: (result) {
               _step(

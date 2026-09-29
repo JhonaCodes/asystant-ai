@@ -46,7 +46,7 @@ class ReadWorkspaceTool extends AsystantTool {
 }
 ```
 
-Use `TypedAsystantTool<T>` to decode tool arguments into a domain type. Definitions reject duplicate names, unknown arguments and invalid scalar types. For writes, check cancellation immediately before committing and pass `context.idempotencyKey` to your own repository. Cancellation does not undo effects already committed.
+Use `TypedAsystantTool<T>` to decode tool arguments into a domain type. Definitions reject duplicate names, unknown arguments and invalid scalar types. For writes, check cancellation immediately before committing and pass `context.idempotencyKey` to your own repository. Cancellation does not undo effects already committed. A long tool reports how far it has come with `context.reportProgress(fraction, label: 'Frame 12 of 48')` (0 to 1) and checks `context.isCanceled` as it advances, to stop its own work when the turn is canceled.
 
 ## Local knowledge (RAG)
 

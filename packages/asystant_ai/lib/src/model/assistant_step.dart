@@ -12,6 +12,8 @@ class AssistantStep {
     this.startedAt,
     this.detail = '',
     this.data = const {},
+    this.progress,
+    this.progressLabel = '',
   });
 
   final String id;
@@ -35,6 +37,17 @@ class AssistantStep {
   /// The tool's `ToolOutcome.data`: structured result for the host.
   final Map<String, Object?> data;
 
+  /// How far the running tool has come, from 0 to 1, as it reported with
+  /// `ToolContext.reportProgress`; null when it reported none.
+  final double? progress;
+
+  /// The label of the last progress report, such as "Frame 12 of 48"; empty
+  /// when there is none.
+  final String progressLabel;
+
+  /// Whether the step is running and has progress to show.
+  bool get showsProgress => active && progress != null;
+
   AssistantStep copyWith({
     String? id,
     String? title,
@@ -43,6 +56,8 @@ class AssistantStep {
     DateTime? startedAt,
     String? detail,
     Map<String, Object?>? data,
+    double? progress,
+    String? progressLabel,
   }) => AssistantStep(
     id: id ?? this.id,
     title: title ?? this.title,
@@ -51,6 +66,8 @@ class AssistantStep {
     startedAt: startedAt ?? this.startedAt,
     detail: detail ?? this.detail,
     data: Map.unmodifiable(data ?? this.data),
+    progress: progress ?? this.progress,
+    progressLabel: progressLabel ?? this.progressLabel,
   );
 
   bool get active => switch (phase) {
@@ -85,7 +102,9 @@ class AssistantStep {
       toolName == other.toolName &&
       startedAt == other.startedAt &&
       detail == other.detail &&
-      const DeepCollectionEquality().equals(data, other.data);
+      const DeepCollectionEquality().equals(data, other.data) &&
+      progress == other.progress &&
+      progressLabel == other.progressLabel;
 
   @override
   int get hashCode => Object.hash(
@@ -96,6 +115,8 @@ class AssistantStep {
     startedAt,
     detail,
     const DeepCollectionEquality().hash(data),
+    progress,
+    progressLabel,
   );
 }
 
