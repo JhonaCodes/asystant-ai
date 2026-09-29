@@ -1,0 +1,196 @@
+{
+  "id": "equinacea",
+  "commonName": "Equinácea",
+  "otherNames": [
+    "equinácea púrpura",
+    "flor de cono púrpura"
+  ],
+  "scientificName": "Echinacea purpurea (L.) Moench",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "parte aérea",
+    "raíz"
+  ],
+  "easyExplanation": "La equinácea es una flor púrpura de centro espinoso, muy usada como estimulante de las defensas contra los resfriados. En Europa se reconoce su uso para prevenir y tratar los primeros síntomas del resfriado en adultos y adolescentes mayores de 12 años. Puede causar alergia grave en personas sensibles a la familia de la margarita, y como estimula el sistema inmunitario, muchas guías recomiendan precaución en personas con enfermedades autoinmunes o que toman medicamentos que bajan las defensas.",
+  "botany": {
+    "description": "Hierba erguida de la familia de la margarita, de 90 a 120 cm de alto, con tallos verde claros con rayas moradas y pelillos blancos dispersos. Sus hojas, de 8 a 20 cm, son simples, ásperas al tacto, de bordes dentados, más anchas en la base del tallo y más angostas hacia arriba. Sus flores, de hasta 12 cm de diámetro, tienen un centro abombado, espinoso, de color café morado, rodeado de pétalos lavanda o morados que cuelgan hacia abajo; florece de junio a agosto.",
+    "identification": "Se reconoce por su centro floral abombado y espinoso de color café morado, rodeado de pétalos morados caídos hacia abajo, y sus hojas ásperas al tacto con bordes dentados.",
+    "cultivation": "Crece a pleno sol o media sombra, en suelo bien drenado y húmedo, aunque tolera suelos arcillosos, arenosos o rocosos poco profundos; tolera bien la sequía una vez establecida y necesita poco mantenimiento.",
+    "lookalikes": [
+      "Otras especies de Echinacea, como Echinacea angustifolia y Echinacea pallida, de aspecto y uso medicinal similares."
+    ],
+    "nativeRange": "Nativa del este y centro de Estados Unidos.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "cold_symptoms",
+      "label": "Prevención y primeros síntomas del resfriado",
+      "evidence": "wellEstablished",
+      "note": "Extracto de la parte aérea, por boca, para la prevención y el tratamiento a corto plazo de los primeros síntomas del resfriado; uso bien establecido en Europa, solo en adultos y adolescentes mayores de 12 años, y muy usado popularmente como estimulante de las defensas.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Heridas superficiales pequeñas",
+      "evidence": "traditional",
+      "note": "Preparado tópico de la parte aérea sobre la piel; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Usa un producto ya preparado (cápsula, tableta o extracto líquido) de equinácea, siguiendo las instrucciones del envase.",
+      "dose": "La que indique el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 10,
+      "title": "Extracto de equinácea por boca",
+      "uses": [
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un producto ya preparado de equinácea."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalo siguiendo la dosis del envase."
+        }
+      ],
+      "warnings": [
+        "Solo para adultos y adolescentes mayores de 12 años.",
+        "No lo uses si eres alérgico a la equinácea o a otras plantas de la familia de la margarita.",
+        "Consulta a un médico si los síntomas del resfriado duran más de 10 días."
+      ],
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Aplica un preparado tópico ya hecho de equinácea sobre heridas superficiales pequeñas.",
+      "dose": "La que indique el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Equinácea para uso tópico",
+      "uses": [
+        "minor_wound"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un preparado tópico ya hecho de equinácea."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplícalo sobre la herida superficial."
+        }
+      ],
+      "warnings": [
+        "Consulta a un médico si la herida no mejora en 1 semana."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "No la uses si eres alérgico a la equinácea o a otras plantas de su familia, como la ambrosía, la manzanilla o la caléndula; se han reportado reacciones alérgicas graves."
+    },
+    {
+      "kind": "condition",
+      "tag": "autoimmune_disease",
+      "note": "Como estimula el sistema inmunitario, muchas guías recomiendan precaución en enfermedades autoinmunes, aunque una revisión reciente considera esa contraindicación discutible; consulta a un médico antes de usarla."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "immunosuppressant",
+      "severity": "caution",
+      "note": "Existe una razón teórica para pensar que la equinácea podría interferir con medicamentos que bajan las defensas; consulta a un médico antes de combinarlos."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Náuseas y dolor abdominal.",
+    "En niños: sarpullido, y en raras ocasiones reacciones alérgicas graves.",
+    "Reacciones alérgicas graves, incluso poco frecuentes, en personas sensibles a la familia de la margarita."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/equinacea.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Echinacea_purpurea_002.JPG",
+      "caption": "Flor de equinácea (Echinacea purpurea)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Echinacea purpurea (Purple Coneflower)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/echinacea-purpurea/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Echinaceae purpureae herba — summary of HMPC conclusions (purple coneflower herb)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/echinaceae-purpureae-herba",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "From Phytochemical Diversity to Clinical Translation: Preparation-Dependent Bioactivity of Echinacea purpurea",
+      "publisher": "International Journal of Molecular Sciences (PMC13565866)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13565866/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Echinacea",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/echinacea",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Review and Assessment of Medicinal Safety Data of Orally Used Echinacea Preparations",
+      "publisher": "Planta Medica (PubMed, NLM)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26441065/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s2",
+    "s4",
+    "s5"
+  ]
+}

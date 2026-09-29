@@ -1,0 +1,201 @@
+{
+  "id": "noni",
+  "commonName": "Noni",
+  "otherNames": [
+    "fruta del queso",
+    "morinda"
+  ],
+  "scientificName": "Morinda citrifolia L.",
+  "family": "Rubiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El noni es un arbusto de fruto amarillento y olor fuerte. Sus hojas se usan tradicionalmente en té para la diarrea (junto con suero de rehidratación) y aplicadas sobre la piel para dolores articulares. El jugo o los suplementos concentrados de noni son distintos: se han reportado varios casos de hepatitis aguda e incluso insuficiencia hepática que requirió trasplante, así que este catálogo no los recomienda. Tampoco hay pruebas en personas de que el noni cure el cáncer, aunque es una creencia popular muy extendida.",
+  "botany": {
+    "description": "Arbusto o árbol pequeño de copa cónica, de 2 a 6 metros (rara vez hasta 10), con tronco de unos 12 cm de diámetro. Las hojas jóvenes son ricas en vitamina A. Las flores son pequeñas, agrupadas en racimos densos. El fruto es ovalado, de 3 a 10 cm de largo, color crema cuando madura, con un olor fuerte y desagradable parecido al queso podrido.",
+    "identification": "Se reconoce por su fruto ovalado de superficie irregular, color crema o amarillento al madurar, con un olor penetrante muy característico, y sus hojas grandes, brillantes y muy nervadas.",
+    "cultivation": "Crece bien con temperaturas de 24 a 30 °C y lluvia de 1.500 a 3.000 mm al año, hasta 1.500 m de altitud, en suelo arenoso bien drenado; tolera la sequía una vez establecido y resiste el viento salino costero.",
+    "lookalikes": [
+      "Otras especies del género Morinda, de fruto más pequeño."
+    ],
+    "nativeRange": "Nativo del este de Asia y el Pacífico (China, India, Sri Lanka, Birmania, Tailandia, Vietnam, Malasia, Indonesia, Filipinas, Nueva Guinea y Australia); hoy cultivado también en el Caribe y América tropical.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El jugo de noni cura el cáncer.",
+      "note": "Es una creencia muy popular en el Pacífico y hoy extendida en América. En laboratorio, extractos de noni afectan células cancerosas, pero no hay pruebas en ensayos clínicos en personas; un tumor necesita atención médica, no un jugo. Además, el jugo o los suplementos concentrados de noni se han relacionado con hepatitis aguda y con casos de insuficiencia hepática que requirieron trasplante; un caso reportado también encontró daño al hígado tras 8 meses de uso prolongado de una crema de noni sobre la piel.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "diarrhea",
+      "label": "Diarrea",
+      "evidence": "popular",
+      "note": "Decocción de hojas frescas por boca; uso tradicional documentado en encuestas TRAMIL. Es complementario al suero de rehidratación oral, nunca lo reemplaza; busca atención médica si hay signos de deshidratación o la diarrea dura más de 2 días.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "joint_pain",
+      "label": "Dolor articular o reumático leve",
+      "evidence": "popular",
+      "note": "Hojas frescas lavadas, aplicadas directamente sobre la zona afectada; uso tradicional documentado en encuestas TRAMIL.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de hojas de noni para la diarrea",
+      "uses": [
+        "diarrhea"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava 30 g de hojas frescas de noni."
+        },
+        {
+          "kind": "simmer",
+          "text": "Ponlas en 1 litro (4 tazas) de agua y hierve 10 minutos, tapado."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela y deja entibiar."
+        },
+        {
+          "kind": "drink",
+          "text": "Bebe 1 taza, 4 veces al día y/o después de cada evacuación con diarrea, junto con suero de rehidratación oral."
+        }
+      ],
+      "warnings": [
+        "Es un remedio complementario al suero de rehidratación oral, nunca lo reemplaza: dale suero primero si hay riesgo de deshidratación.",
+        "Busca atención médica de inmediato si hay boca seca, poca orina o llanto sin lágrimas (signos de deshidratación), o si la diarrea dura más de 2 días.",
+        "No la des en el embarazo, la lactancia ni a niños pequeños: no hay datos de seguridad para esos casos.",
+        "Esto es distinto del jugo o los suplementos concentrados de noni, que no se recomiendan por el riesgo de daño al hígado."
+      ],
+      "dose": "30 g de hojas frescas por litro de agua.",
+      "frequency": "1 taza, 4 veces al día y/o después de cada evacuación con diarrea.",
+      "maxDays": 2,
+      "instructions": "Hierve 30 g de hojas frescas de noni en 1 litro de agua, tapado, durante 10 minutos; cuela y bebe 1 taza 4 veces al día y/o después de cada evacuación, junto con suero de rehidratación oral.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "freshPlant",
+      "route": "topical",
+      "title": "Hojas frescas de noni para dolor articular",
+      "uses": [
+        "joint_pain"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava bien hojas frescas de noni."
+        },
+        {
+          "kind": "apply",
+          "text": "Colócalas directamente sobre la zona con dolor, cubriendo la superficie."
+        }
+      ],
+      "warnings": [
+        "No las apliques sobre piel lastimada o heridas abiertas.",
+        "Cambia las hojas cada 4 a 6 horas; no guardes la preparación más de 24 horas, ni refrigerada."
+      ],
+      "dose": "La cantidad de hojas necesaria para cubrir la zona.",
+      "frequency": "Cambiar cada 4 a 6 horas.",
+      "maxDays": 7,
+      "instructions": "Lava hojas frescas de noni y colócalas directamente sobre la zona con dolor articular, 1 a 2 veces al día.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "avoid",
+      "note": "El noni puede reducir el efecto de la warfarina."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "El noni es rico en potasio; junto con medicamentos para la presión puede elevar demasiado el potasio en la sangre."
+    },
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "El jugo o los suplementos concentrados de noni se han relacionado con daño al hígado; no los combines con otras sustancias que también dañan el hígado."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "sideEffects": [
+    "El jugo o los suplementos concentrados de noni se han relacionado con hepatitis aguda y, en casos reportados, con insuficiencia hepática que requirió trasplante; este catálogo no recomienda su consumo.",
+    "Un caso reportado encontró daño al hígado también por el uso prolongado (8 meses) de una crema para la piel con noni, por absorción a través de la piel; esto no ocurrió con el uso breve de hoja fresca que describe este catálogo.",
+    "Rico en potasio: puede ser riesgoso para personas con enfermedad renal o que ya tienen el potasio alto."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/noni.jpg",
+      "author": "Martín Huamán",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hojas_y_fruto_de_Noni_(Morinda_citrifolia).jpg",
+      "caption": "Hojas y fruto de noni (Morinda citrifolia)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Morinda citrifolia",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Morinda+citrifolia",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Morinda citrifolia — TRAMIL Pharmacopoeia",
+      "publisher": "TRAMIL",
+      "url": "https://tramil.net/en/plant/morinda-citrifolia",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Noni",
+      "publisher": "Memorial Sloan Kettering Cancer Center — About Herbs",
+      "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/noni",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "A Case Report: Drug-Induced Liver Injury from Prolonged Topical Application of Noni (Morinda citrifolia)",
+      "publisher": "Journal of Investigative Medicine High Impact Case Reports (PMC12976397)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12976397/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "id": "arbol_de_te",
+  "commonName": "Árbol de té",
+  "otherNames": [
+    "melaleuca",
+    "tea tree"
+  ],
+  "scientificName": "Melaleuca alternifolia (Maiden & Betche) Cheel",
+  "family": "Myrtaceae",
+  "partsUsed": [
+    "aceite esencial de la hoja"
+  ],
+  "easyExplanation": "El árbol de té es un arbolito de Australia del que se extrae un aceite esencial de olor fuerte, usado solo sobre la piel y muy diluido. Nunca se debe tomar por boca: tragarlo, incluso en enjuague bucal, puede causar confusión, dificultad para caminar y coma. Guárdalo siempre fuera del alcance de los niños.",
+  "botany": {
+    "description": "Arbolito pequeño de hasta 7 metros, de copa frondosa y corteza blancuzca y papirácea que se desprende en capas. Sus hojas son alargadas y angostas (de 10 a 35 mm), ricas en glándulas de aceite, y sus flores blancas o crema se agrupan en espigas.",
+    "identification": "Se reconoce por su corteza blanca que se despega en tiras de papel, sus hojas delgadas muy aromáticas al estrujarlas y sus pequeños frutos leñosos en forma de copa (2 a 3 mm) a lo largo de las ramas.",
+    "cultivation": "Crece de forma natural a orillas de arroyos y en zonas pantanosas del noreste de Nueva Gales del Sur hasta Queensland, en Australia; se cultiva en suelo húmedo con buen drenaje y sol pleno, sobre todo en plantaciones para producir aceite esencial, poco común como planta de jardín de casa fuera de Australia.",
+    "lookalikes": [
+      "Otras especies de Melaleuca de aspecto similar, cuyo aceite puede tener una composición química distinta."
+    ],
+    "nativeRange": "Endémico de Australia, desde el distrito de Grafton en Nueva Gales del Sur hasta Maryborough en Queensland.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El aceite de árbol de té es seguro para tomar por boca o para usar sin diluir directamente sobre la piel.",
+      "note": "Tragado, el aceite de árbol de té es tóxico y puede causar confusión, dificultad para caminar y coma; nunca se debe ingerir, ni siquiera en enjuagues bucales que luego se escupen sin querer. Sin diluir sobre la piel puede irritarla o causar alergia; siempre se usa diluido y en cantidades pequeñas.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "skin_irritation",
+      "label": "Granitos o acné leve",
+      "evidence": "limited",
+      "note": "Aceite esencial bien diluido, aplicado solo sobre la piel; estudios pequeños sugieren que podría ayudar, pero la evidencia es limitada.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "fungal_skin_infection",
+      "label": "Hongos leves de la piel (como pie de atleta)",
+      "evidence": "limited",
+      "note": "Aceite esencial bien diluido, aplicado sobre la piel afectada; algunos estudios pequeños sugieren un posible beneficio, pero falta más investigación para confirmarlo.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "essentialOil",
+      "route": "topical",
+      "instructions": "El aceite esencial de árbol de té es un producto de farmacia o tienda naturista; nunca se prepara en casa. Dilúyelo siempre antes de aplicarlo sobre la piel, según lo indique el envase o un profesional de salud.",
+      "dose": "La que indique el envase del producto; siempre diluido, nunca puro sobre la piel.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Aceite de árbol de té diluido para la piel",
+      "uses": [
+        "skin_irritation",
+        "fungal_skin_infection"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un aceite esencial de árbol de té de una fuente confiable."
+        },
+        {
+          "kind": "dilute",
+          "text": "Dilúyelo en un aceite portador o en un producto ya preparado, según el envase."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplica una cantidad pequeña sobre la piel afectada, nunca sobre mucosas ni cerca de los ojos."
+        }
+      ],
+      "warnings": [
+        "Nunca lo tomes por boca: tragarlo puede causar confusión, dificultad para caminar y coma.",
+        "Nunca lo apliques sin diluir sobre la piel.",
+        "Guárdalo siempre fuera del alcance de los niños; un frasco pequeño puede ser peligroso si un niño lo bebe.",
+        "Si aparece enrojecimiento o irritación, deja de usarlo."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "myrtaceae",
+      "note": "No lo uses si eres alérgico al árbol de té o a otras plantas de su familia, como el eucalipto o el clavo de olor."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No lo uses sobre heridas abiertas o piel muy dañada."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "myrtaceae"
+  ],
+  "sideEffects": [
+    "Enrojecimiento o irritación de la piel, sobre todo con productos viejos o expuestos al calor, la luz o el aire.",
+    "Tragado es tóxico y puede ser mortal; esto no es un uso que este catálogo recomiende."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/arbol_de_te.jpg",
+      "author": "Geoff Derrin",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Melaleuca_alternifolia_flowers.jpg",
+      "caption": "Flores del árbol de té (Melaleuca alternifolia)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Melaleuca alternifolia",
+      "publisher": "Useful Tropical Plants Database (theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Melaleuca+alternifolia",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Tea Tree Oil (background: uso tradicional por los aborígenes de Australia de las hojas para heridas, quemaduras y picaduras de insectos)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/tea-tree-oil",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Tea Tree Oil",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/tea-tree-oil",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

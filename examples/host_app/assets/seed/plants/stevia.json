@@ -1,0 +1,167 @@
+{
+  "id": "stevia",
+  "commonName": "Stevia",
+  "otherNames": [
+    "ka'a he'ê",
+    "hierba dulce",
+    "yerba dulce"
+  ],
+  "scientificName": "Stevia rebaudiana (Bertoni) Bertoni",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La stevia es una hierba pequeña cuyas hojas endulzan sin aportar calorías. El pueblo guaraní de Paraguay la usa desde hace siglos para endulzar infusiones. Los glucósidos de esteviol purificados están aprobados como edulcorante en muchos países. En estudios de laboratorio parece ayudar a bajar el azúcar y, en menor medida, la presión, pero en personas los resultados todavía son mixtos, así que no reemplaza el tratamiento médico de la diabetes o la hipertensión.",
+  "botany": {
+    "description": "Planta pequeña de vida corta, de 30 a 60 cm de alto, con hojas alargadas dispuestas en filas opuestas a lo largo de los tallos, y flores blancas con toques de color lila claro, sin fragancia; produce un fruto acostillado en forma de huso.",
+    "identification": "Se reconoce por sus hojas alargadas y opuestas de sabor muy dulce al masticarlas, y por sus flores blanquecinas con matices lilas; suelen recortarse las flores para mejorar el sabor de las hojas.",
+    "cultivation": "Necesita clima cálido, húmedo y soleado, y prefiere suelo arenoso. Es sensible al frío y no tolera heladas; se propaga con dificultad por semilla, porque solo germina un pequeño porcentaje, así que suele multiplicarse por esquejes.",
+    "lookalikes": [],
+    "nativeRange": "Nativa de zonas húmedas de Brasil y Paraguay.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La stevia reemplaza el tratamiento médico de la diabetes o de la presión alta.",
+      "note": "En animales, el extracto de stevia bajó bastante la glucosa y, en dosis altas, la presión arterial, pero los ensayos en personas dieron resultados mixtos: algunos no encontraron efecto sobre la glucosa ni la insulina. No hay evidencia suficiente para reemplazar el tratamiento médico de la diabetes o la hipertensión con stevia.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "blood_sugar_support",
+      "label": "Ayudar a controlar el azúcar en la sangre",
+      "evidence": "limited",
+      "note": "Estudios en animales muestran una baja importante de la glucosa; en personas, los resultados son variados y algunos estudios no encontraron efecto sobre la glucosa ni la insulina.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "weight_loss",
+      "label": "Bajar de peso",
+      "evidence": "popular",
+      "note": "Al no aportar calorías, se usa como reemplazo popular del azúcar para quienes buscan bajar de peso o reducir calorías.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Agrega hojas frescas o secas de stevia a una infusión o bebida caliente para endulzarla, en lugar de azúcar.",
+      "dose": "La que indique el envase si usas hoja seca o producto comercial; la ingesta diaria aceptable de extracto seco de stevia definida por la EFSA y la FDA es de 4 mg por kg de peso corporal.",
+      "frequency": "Según el envase o la receta.",
+      "maxDays": null,
+      "title": "Hojas de stevia como endulzante",
+      "uses": [
+        "blood_sugar_support",
+        "weight_loss"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Prepara tu infusión o bebida caliente habitual."
+        },
+        {
+          "kind": "pour",
+          "text": "Agrega hojas frescas o secas de stevia al gusto, en vez de azúcar."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar un momento antes de colar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "No reemplaza el tratamiento médico de la diabetes ni de la presión alta.",
+        "Si tomas medicamentos para la diabetes, mide tu azúcar con más frecuencia."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "El extracto crudo (no purificado) de stevia podría tener más riesgo de alergia en personas sensibles a plantas de esta familia, como la manzanilla, la ambrosía o el crisantemo."
+    },
+    {
+      "kind": "condition",
+      "tag": "diabetes",
+      "note": "No la uses para reemplazar tu tratamiento; úsala solo como apoyo adicional bajo supervisión médica."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "En estudios de laboratorio bajó bastante el azúcar; usarla junto con medicamentos para la diabetes podría aumentar el riesgo de que baje demasiado."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "En animales bajó la presión arterial en dosis altas; podría sumarse al efecto de los medicamentos para la presión."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas, sobre todo con extractos crudos no purificados.",
+    "Algunos productos comerciales de stevia son falsificados y contienen ciclamato de sodio o sacarina en vez de glucósidos de esteviol."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/stevia.jpg",
+      "author": "Ethel Aardvark",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stevia_rebaudiana_foliage.jpg",
+      "caption": "Follaje de stevia (Stevia rebaudiana)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Stevia rebaudiana",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/stevia-rebaudiana/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Stevia rebaudiana Bertoni as a sweet herbal medicine: traditional uses, potential applications, and future development",
+      "publisher": "Frontiers in Pharmacology (PMC12443846)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12443846/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Natural sweetener Stevia rebaudiana: Functionalities, health benefits and potential risks",
+      "publisher": "PMC (National Library of Medicine) — EXCLI J",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8600158/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

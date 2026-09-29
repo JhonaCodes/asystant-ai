@@ -1,0 +1,160 @@
+{
+  "id": "estafiate",
+  "commonName": "Estafiate",
+  "otherNames": [
+    "ajenjo del país",
+    "iztauhyatl",
+    "western mugwort",
+    "white sage (nombre en inglés, no confundir con Salvia apiana)"
+  ],
+  "scientificName": "Artemisia ludoviciana Nutt.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "hoja",
+    "tallo"
+  ],
+  "easyExplanation": "El estafiate es una hierba plateada muy usada en la medicina tradicional mexicana, sobre todo en infusión para la gastritis y otras molestias digestivas. Como el ajenjo, contiene tuyona y otras sustancias que en dosis altas o por tiempo prolongado pueden afectar el sistema nervioso, y no hay estudios en personas que digan cuánto es seguro tomar. Por eso se recomienda usarlo poco tiempo, en cantidad moderada, y no en el embarazo ni en niños pequeños.",
+  "botany": {
+    "description": "Hierba perenne de 60 a 90 cm (2 a 3 pies) de alto y ancho, de porte erguido, extendido y en matas, que se propaga por rizomas. Sus hojas son de forma lanceolada, de 5 a 10 cm de largo, de color verde plateado, suaves al tacto, aromáticas y caducas. Sus flores, de color amarillo grisáceo y sin pétalos vistosos, se agrupan en panículas densas que aparecen de agosto a septiembre, seguidas de pequeños frutos secos de color café.",
+    "identification": "Se reconoce por su color plateado grisáceo, sus hojas lanceoladas suaves y aromáticas, y sus flores pequeñas sin brillo agrupadas en panículas densas.",
+    "cultivation": "Crece a pleno sol, en suelo de pobre a moderadamente fértil, de seco a medio, bien drenado; es resistente a la sequía, al suelo pobre y a ciervos y conejos, pero le va mal en suelo húmedo o mal drenado.",
+    "lookalikes": [
+      "Otras especies de Artemisia de aspecto plateado similar, como el ajenjo (Artemisia absinthium)"
+    ],
+    "nativeRange": "Nativo de América del Norte, incluido México; presente también, aunque raro, en el sureste de Estados Unidos.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves (gastritis)",
+      "evidence": "popular",
+      "note": "Uso tradicional documentado en comunidades rurales del norte de México: infusión de hojas y tallo de estafiate para enfermedades del sistema digestivo, en particular la gastritis; estudios preliminares sobre esta planta muestran actividad gastroprotectora y contra la bacteria Helicobacter pylori, aunque no hay estudios clínicos en personas que confirmen una dosis segura y eficaz.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de estafiate",
+      "uses": [
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre unas pocas hojas y tallos frescos o secos de estafiate, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "Solo para adultos: no lo uses en niños ni adolescentes.",
+        "No lo uses en el embarazo ni la lactancia.",
+        "No lo uses por más de 2 semanas seguidas.",
+        "No hay una dosis exacta establecida por estudios en personas; usa poca cantidad y no lo repitas por mucho tiempo."
+      ],
+      "dose": "No se especifica una cantidad exacta en las fuentes disponibles; se prepara con pocas hojas y tallos por taza, como en la costumbre tradicional.",
+      "frequency": "Hasta 2 veces al día.",
+      "maxDays": 14,
+      "instructions": "Prepara una infusión con pocas hojas y tallos de estafiate en agua recién hervida, deja reposar, cuela y tómala. Uso solo en adultos y por tiempo corto.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "No lo uses si eres alérgico a esta planta o a otras de la familia de la margarita, como la manzanilla o el ajenjo."
+    },
+    {
+      "kind": "condition",
+      "tag": "epilepsy",
+      "note": "Evítalo si tienes epilepsia o convulsiones: contiene tuyona, como el ajenjo, que puede afectar el sistema nervioso."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Evítalo si tienes una enfermedad del hígado."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "safetySources": ["s4"],
+  "sideEffects": [
+    "Reacciones alérgicas en personas sensibles a la familia de la margarita.",
+    "Contiene tuyona y otros compuestos que en dosis altas o uso prolongado pueden afectar el sistema nervioso; no existen estudios en personas que establezcan una dosis segura."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/estafiate.jpg",
+      "author": "Krzysztof Ziarnek, Kenraiz",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Artemisia_ludoviciana_kz01.jpg",
+      "caption": "Estafiate (Artemisia ludoviciana)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Artemisia ludoviciana Nutt.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:303755-2",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Artemisia ludoviciana (White Sage)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/artemisia-ludoviciana/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Medicinal plants used by rural communities in the arid zone of Viesca and Parras Coahuila in northeast Mexico",
+      "publisher": "Saudi Pharmaceutical Journal (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9845112/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Biophysical and structural modifications on human erythrocytes induced by ethanolic extracts of Ruta graveolens, Artemisia ludoviciana, and Lippia graveolens",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12533566/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

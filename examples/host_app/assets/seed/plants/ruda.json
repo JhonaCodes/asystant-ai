@@ -1,0 +1,130 @@
+{
+  "id": "ruda",
+  "commonName": "Ruda",
+  "otherNames": [
+    "arruda",
+    "ruda de olor",
+    "rue"
+  ],
+  "scientificName": "Ruta graveolens L.",
+  "family": "Rutaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La ruda es una planta muy usada en creencias populares, pero tomarla por boca es peligroso: puede provocar un aborto con daño grave al hígado, los riñones y la sangre, y hay casos de personas que han necesitado diálisis o han muerto. Además, su savia y sus hojas contienen sustancias que, si tocan la piel y luego le da el sol, producen quemaduras. Por estas razones, este catálogo no describe ninguna forma de tomarla ni de aplicarla que sea segura de recomendar.",
+  "botany": {
+    "description": "Subarbusto perenne de 60 a 90 cm (2 a 3 pies) de alto y ancho, de porte erguido a redondeado, que con los años se vuelve leñoso en la base. Sus hojas son alternas, compuestas, muy divididas, de aspecto parecido al helecho, de color verde azulado, de 8 a 15 cm de largo, y despiden un olor fuerte y penetrante al frotarlas. Sus flores son pequeñas, de color amarillo apagado, con 4 a 5 pétalos, y se agrupan en racimos erguidos en las puntas de los tallos a mediados y fines del verano.",
+    "identification": "Se reconoce por sus hojas azuladas muy divididas y aromáticas, su porte de arbusto pequeño y redondeado, y sus flores amarillas pequeñas en racimos terminales.",
+    "cultivation": "Crece a pleno sol o media sombra, en suelo medianamente fértil y bien drenado; tolera suelo arcilloso, arenoso o rocoso. Resiste la sequía y se resiembra sola.",
+    "lookalikes": [
+      "Otras especies del género Ruta, con hojas y flores similares"
+    ],
+    "nativeRange": "Nativa de los Balcanes, en el sureste de Europa; hoy cultivada y naturalizada en muchas regiones templadas del mundo, incluida América Latina.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de ruda, o la ruda en cualquier otra forma tomada por boca, provoca la menstruación o el aborto de forma segura.",
+      "note": "La ruda se ha usado desde hace siglos para provocar el aborto o 'bajar la regla', pero no es segura: puede causar daño grave al hígado, los riñones y la sangre. Un centro de intoxicaciones de Sudamérica registró más incidencia de alteraciones hepáticas, renales y de la sangre en personas que la usaron para interrumpir un embarazo por su cuenta, con un caso de falla de varios órganos que necesitó diálisis. Estudios en ratones muestran además que puede dañar el embarazo en etapas avanzadas sin lograr el aborto buscado.",
+      "sources": [
+        "s3",
+        "s5"
+      ]
+    },
+    {
+      "claim": "Llevar ruda encima o ponerla en la casa protege del 'mal de ojo' o la mala suerte, y usarla así no tiene ningún riesgo.",
+      "note": "Es una creencia popular extendida sin respaldo científico. El riesgo real de la ruda no está en llevarla como amuleto, sino en tomarla por boca o en el contacto de la piel con su savia seguido de sol, que puede causar quemaduras por fotosensibilidad.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "rutaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras cítricas de su familia."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Evita todo contacto o uso si tienes una enfermedad del hígado: la ruda es tóxica para el hígado incluso en quienes no tienen una enfermedad previa."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "No la combines con medicamentos que puedan dañar el hígado; la ruda ya es tóxica para el hígado por sí sola."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "rutaceae"
+  ],
+  "safetySources": ["s3", "s4"],
+  "sideEffects": [
+    "Tomada por boca: daño grave al hígado, los riñones y la sangre; puede requerir diálisis y en casos graves causar la muerte.",
+    "En contacto con la piel y luego con el sol: quemaduras por fotosensibilidad (fitofotodermatitis), a veces severas.",
+    "No se recomienda ningún uso por boca ni sobre la piel expuesta al sol."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/ruda.jpg",
+      "author": "Forest and Kim Starr",
+      "license": "CC BY 3.0 US",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/us/deed.en",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starr-090430-6568-Ruta_graveolens-flowers-Kula-Maui_(24834979062).jpg",
+      "caption": "Flores de ruda (Ruta graveolens)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Ruta graveolens L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:775099-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Ruta graveolens (Common Rue)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/ruta-graveolens/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Toxicities of Herbal Abortifacients",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10192026/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "New Insights Concerning Phytophotodermatitis Induced by Phototoxic Plants",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11355232/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "popular",
+      "title": "Herbal fertility treatments used in North America from colonial times to 1900, and their potential for improving the success rate of assisted reproductive technology",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6047296/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

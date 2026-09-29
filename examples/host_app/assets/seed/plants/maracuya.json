@@ -1,0 +1,183 @@
+{
+  "id": "maracuya",
+  "commonName": "Maracuyá",
+  "otherNames": [
+    "fruta de la pasión",
+    "parchita",
+    "gulupa",
+    "curuba de monte",
+    "maracujá"
+  ],
+  "scientificName": "Passiflora edulis Sims",
+  "family": "Passifloraceae",
+  "partsUsed": [
+    "hoja",
+    "fruto (pulpa)"
+  ],
+  "easyExplanation": "El maracuyá es una enredadera de América del Sur, conocida sobre todo por su fruta jugosa. En Colombia, Brasil y Perú también se usan sus hojas en infusión, de forma popular, para ayudar a relajarse y a dormir. No es la misma especie que la pasiflora medicinal europea (Passiflora incarnata), aunque son parientes cercanas.",
+  "botany": {
+    "description": "Enredadera trepadora, vigorosa y de hoja perenne, con tallos de 2 a 9 metros o más que se sostienen con zarcillos enrollados. Sus hojas tienen tres lóbulos profundos y bordes dentados. Las flores son grandes, blancas, con una corona de filamentos morados y blancos alrededor del centro. El fruto es una baya ovalada de 4 a 5,5 cm, de cáscara amarilla o morada según la variedad, con pulpa jugosa y semillas negras.",
+    "identification": "Se reconoce por sus zarcillos en espiral, hojas de tres lóbulos con el borde aserrado y la flor vistosa con corona de filamentos. Existen dos formas: Passiflora edulis f. edulis, de fruto morado (más resistente al frío), y Passiflora edulis f. flavicarpa, de fruto amarillo y planta más grande. Se distingue de Passiflora incarnata (otra pasiflora usada como calmante, nativa de Norteamérica) por su corona más corta y su fruto comestible de cáscara lisa; no se recomienda comer partes de una pasiflora silvestre que no se pueda identificar con certeza, porque varias especies del género no son comestibles.",
+    "cultivation": "Se cultiva en climas cálidos, con temperaturas de 20 a 30 °C; la planta adulta tolera hasta cerca de -2 °C en reposo, pero los brotes jóvenes no soportan heladas. Necesita suelo húmedo, rico en materia orgánica y bien drenado, con luz filtrada, y entre 900 y 2.000 mm de lluvia al año. Crece desde el nivel del mar hasta 2.000 metros de altura. Se propaga por semilla fresca, estacas o acodo, y necesita un enrejado o soporte para trepar.",
+    "lookalikes": [
+      "Passiflora incarnata (pasiflora): flor con corona más larga, nativa de Norteamérica, es la especie con uso medicinal reconocido en Europa; no debe confundirse con el maracuyá.",
+      "Passiflora caerulea: hojas con cinco lóbulos en vez de tres.",
+      "Otras especies silvestres de Passiflora de fruto no comestible: no se deben consumir sin identificación certera."
+    ],
+    "nativeRange": "Nativa del sur de Brasil, Paraguay y el norte de Argentina. Hoy se cultiva y también crece naturalizada en zonas tropicales y subtropicales de toda América, el Caribe, África y Asia; en Colombia se encuentra tanto cultivada como silvestre en la Amazonía, la región andina y el Pacífico.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "nervousness",
+      "label": "Nerviosismo o tensión nerviosa leve",
+      "evidence": "popular",
+      "note": "En Brasil, Colombia y Perú se usa la infusión de hojas de maracuyá de forma popular para calmar los nervios. Estudios en animales con extracto de hoja apoyan un efecto calmante, pero no hay ensayos clínicos en personas que lo confirmen.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Ayuda popular para dormir",
+      "evidence": "popular",
+      "note": "La Farmacopea Brasileña reconoce el uso tradicional de la hoja de Passiflora edulis por su actividad calmante, aunque, como el resto del género, casi no se ha probado en personas.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarse",
+      "evidence": "popular",
+      "note": "Uso popular extendido en la medicina tradicional de países de América del Sur, en infusión de hoja.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "beliefs": [],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Se prepara una infusión con hojas de maracuyá, frescas o secas, vertiendo agua recién hervida sobre ellas y dejándola reposar antes de colar. Es la forma en que se usa popularmente en Brasil, Colombia y Perú para calmar los nervios y ayudar a dormir.",
+      "title": "Té de hojas de maracuyá",
+      "uses": [
+        "nervousness",
+        "sleep_better",
+        "relax"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de maracuyá, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar 10 minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela las hojas."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo, preferiblemente antes de dormir."
+        }
+      ],
+      "warnings": [
+        "No se ha estudiado su uso en el embarazo ni en la lactancia; evita tomarlo en esos casos.",
+        "Puede sumar el efecto de medicamentos sedantes."
+      ],
+      "sources": [
+        "s3",
+        "s4"
+      ],
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase, generalmente 1 a 2 tazas al día.",
+      "maxDays": 14
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "passifloraceae",
+      "note": "No lo uses si eres alérgico al maracuyá o a otras especies de Passiflora."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "Podría sumar el efecto de sedantes o pastillas para dormir; no se ha estudiado en personas."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "passifloraceae"
+  ],
+  "sideEffects": [
+    "Podría causar somnolencia leve, como otras plantas calmantes de esta familia.",
+    "El fruto verde (no maduro) puede contener compuestos que liberan cianuro; solo se debe comer la fruta madura."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/maracuya.jpg",
+      "author": "Kristi Denby / Archivo Centro Takiwasi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hojas_de_maracuy%C3%A1_(Passiflora_edulis).jpg",
+      "caption": "Hojas de maracuyá, usadas en infusión en la medicina tradicional de la Amazonía peruana"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Passiflora edulis Sims — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/2874190",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Passiflora edulis Sims — general information",
+      "publisher": "ColPlanta — Colombian Plants Made Accessible",
+      "url": "https://colplanta.org/taxon/urn:lsid:ipni.org:names:321964-2/general-information",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Divulgação científica sobre as três espécies mais populares de maracujá (Passiflora edulis Sims, Passiflora alata Curtis e Passiflora incarnata L.) no Brasil",
+      "publisher": "Universidade Federal de São Paulo (UNIFESP), repositorio institucional",
+      "url": "https://repositorio.unifesp.br/handle/11600/66287",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Passiflora edulis: An Insight Into Current Researches on Phytochemistry and Pharmacology",
+      "publisher": "Frontiers in Pharmacology",
+      "url": "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2020.00617/full",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s4"
+  ]
+}

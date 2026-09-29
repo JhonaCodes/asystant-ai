@@ -1,0 +1,108 @@
+{
+  "id": "hoja_santa",
+  "commonName": "Hoja santa",
+  "otherNames": [
+    "acuyo",
+    "momo",
+    "hierba santa",
+    "root beer plant"
+  ],
+  "scientificName": "Piper auritum Kunth",
+  "family": "Piperaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La hoja santa es una hoja grande y aromática muy usada para envolver o dar sabor a la comida en México y Centroamérica, y también en remedios caseros para la fiebre, la diarrea o el dolor. Su aceite contiene safrol, una sustancia que en estudios de laboratorio y en animales ha mostrado poder dañar el hígado y favorecer el cáncer, por lo que su uso está prohibido como aditivo en la Unión Europea. Usarla ocasionalmente para cocinar, en la cantidad de una comida, es distinto de tomarla de forma repetida como remedio o en extractos concentrados; este catálogo no recomienda ninguna forma de uso medicinal por boca.",
+  "botany": {
+    "description": "Arbusto de 1,5 a 6 m de alto, de tallos erguidos, propio de climas cálidos y húmedos. Sus hojas son grandes, en forma de corazón, ovaladas u oblongas, muy aromáticas al frotarlas, con un olor que recuerda al anís o la raíz de sasafrás. Sus flores, pequeñas y sin pétalos vistosos, se agrupan en espigas alargadas y erguidas.",
+    "identification": "Se reconoce por sus hojas grandes en forma de corazón y su fuerte aroma anisado al romperlas, junto con sus espigas de flores delgadas y erguidas.",
+    "cultivation": "Crece en climas cálidos y húmedos, a pleno sol o media sombra, en suelo fértil y húmedo; se propaga con facilidad por esqueje.",
+    "lookalikes": [
+      "Otras especies del género Piper, de hoja grande similar"
+    ],
+    "nativeRange": "Nativa de México y Centroamérica, y de partes del norte de Sudamérica.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Tomar hoja santa en té o en extracto concentrado para la fiebre, la diarrea o el dolor es un remedio natural sin riesgo.",
+      "note": "El aceite esencial de la hoja santa contiene safrol en gran cantidad, un compuesto con potencial genotóxico y cancerígeno bien estudiado en el laboratorio; por ese riesgo, su adición como tal está prohibida en la Unión Europea (Reglamento CE n.º 1334/2008). No hay estudios en personas que establezcan una cantidad segura para tomarla como remedio.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "claim": "Como la hoja santa se usa para cocinar (envolver tamales, dar sabor a platos), tomarla en té o en cantidad como remedio no tiene ningún riesgo.",
+      "note": "Usarla ocasionalmente para cocinar, en la cantidad de una comida, no es lo mismo que tomarla de forma repetida como remedio en té concentrado o en extracto: el riesgo del safrol depende de la cantidad y la frecuencia de uso.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "No la tomes como remedio junto con medicamentos que puedan dañar el hígado; el safrol de la hoja santa ya representa un riesgo para el hígado en estudios de laboratorio."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3", "s4"],
+  "sideEffects": [
+    "Su aceite esencial contiene safrol, un compuesto con potencial genotóxico y cancerígeno en estudios de laboratorio y en animales.",
+    "No se recomienda ninguna forma de uso medicinal por boca; usarla como condimento de comida, en poca cantidad y de forma ocasional, es distinto de tomarla como remedio."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/hoja_santa.jpg",
+      "author": "Koffermejia",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acuyo_o_hoja_santa.jpg",
+      "caption": "Hoja santa o acuyo (Piper auritum)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Piper auritum Kunth",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:680520-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Traditional Herbal Medicine in Mesoamerica: Toward Its Evidence Base for Improving Universal Health Coverage",
+      "publisher": "Frontiers in Pharmacology (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7411306/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Occurrence of Alkenylbenzenes in Plants: A Review of Their Distribution, Sources of Human Exposure, and Biological Activities in the Context of Food Safety",
+      "publisher": "Plants (MDPI, via PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10255789/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Studies of Piper auritum Kuntz's Mutagenic and Antimutagenic Properties Using the Ames Test",
+      "publisher": "Metabolites (MDPI, via PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11943675/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "alcachofa",
+  "commonName": "Alcachofa",
+  "otherNames": [
+    "alcaucil"
+  ],
+  "scientificName": "Cynara cardunculus L. var. scolymus (L.) Fiori (sin. Cynara scolymus L.)",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La alcachofa es una planta grande parecida a un cardo, con hojas plateadas muy recortadas; la parte comestible que todos conocemos es su flor sin abrir. La hoja, más amarga, se usa en Europa como uso tradicional reconocido para las molestias digestivas leves. Puede causar alergia en personas sensibles a la familia de la margarita y no se recomienda si hay obstrucción de las vías biliares.",
+  "botany": {
+    "description": "Hierba perenne grande, parecida a un cardo, con hojas plateado-verdosas muy recortadas de más de 15 cm y tallos de flor de hasta 1,5 m. La flor es una gran cabezuela morada tipo cardo de hasta 18 cm; la parte comestible es el capítulo floral antes de abrir.",
+    "identification": "Hojas profundamente lobuladas, de color verde plateado, dispuestas en forma de gran roseta erguida; cabezuela floral grande, con brácteas carnosas superpuestas, que se abre en una flor lila si no se cosecha a tiempo.",
+    "cultivation": "Necesita sol pleno, suelo fértil, bien drenado y húmedo, y bastante espacio (unos 1,5 m entre plantas). Se cultiva mejor en climas templados de veranos frescos e inviernos suaves; en climas más fríos se maneja como planta anual.",
+    "lookalikes": [
+      "Cynara cardunculus (cardo, la misma especie en su forma silvestre/de tallos comestibles): muy parecida en aspecto, se distingue por usarse el tallo de la hoja y no la flor.",
+      "Helianthus tuberosus (topinambur o pataca): comparte el nombre común \"alcachofa de Jerusalén\" en inglés pero es una planta distinta, de la familia de la margarita también."
+    ],
+    "nativeRange": "Norte de África y oeste de Europa, en la región mediterránea; cultivada hoy en zonas templadas de todo el mundo, incluida América.",
+    "sources": ["s1"]
+  },
+  "beliefs": [
+    {
+      "claim": "La alcachofa \"elimina la grasa\" o hace bajar de peso por sí sola.",
+      "note": "Los estudios en animales muestran que sus extractos pueden proteger el hígado, pero los resultados sobre la digestión y el peso no son concluyentes en personas. No reemplaza una alimentación balanceada.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Hoja en infusión o extracto; uso tradicional reconocido en Europa para las molestias digestivas.",
+      "sources": ["s3"]
+    },
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "traditional",
+      "note": "Hoja en infusión o extracto; uso tradicional reconocido en Europa.",
+      "sources": ["s3"]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "traditional",
+      "note": "Uso tradicional como aperitivo antes de las comidas para ayudar a digerir.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja seca de alcachofa en agua recién hervida, deja reposar y cuela. Muchas personas la cultivan en casa, aunque para la infusión se usa sobre todo la hoja seca.",
+      "dose": "1,5 g de hoja seca (una cucharadita) por taza de 150 ml, hasta 4 veces al día; o 3 g por taza, 1 a 2 veces al día (entre 3 y 6 g en total por día).",
+      "frequency": "Hasta 4 veces al día.",
+      "maxDays": 14,
+      "title": "Té de hoja de alcachofa",
+      "uses": ["indigestion", "bloating", "digest_better"],
+      "steps": [
+        {"kind": "boilWater", "text": "Hierve agua."},
+        {"kind": "pour", "text": "Échala sobre hojas de alcachofa secas en una taza."},
+        {"kind": "steep", "text": "Deja reposar."},
+        {"kind": "drink", "text": "Cuela y tómalo antes de las comidas."}
+      ],
+      "warnings": [
+        "No la tomes si tienes obstrucción de las vías biliares o cálculos que las bloqueen.",
+        "Si las molestias duran más de 2 semanas o empeoran, consulta a un médico."
+      ],
+      "sources": ["s3"]
+    },
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Usa cápsulas o gotas de extracto de hoja de alcachofa de farmacia.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Extracto de alcachofa en cápsulas",
+      "uses": ["indigestion", "bloating"],
+      "steps": [
+        {"kind": "buy", "text": "Compra en la farmacia un extracto de hoja de alcachofa."},
+        {"kind": "swallow", "text": "Tómalo como dice el envase, antes de las comidas."}
+      ],
+      "warnings": ["No lo tomes si tienes obstrucción de las vías biliares o cálculos que las bloqueen."],
+      "sources": ["s3"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "No la uses si eres alérgico a la alcachofa o a plantas como la margarita, la ambrosía o el crisantemo."
+    },
+    {
+      "kind": "condition",
+      "tag": "bile_duct_obstruction",
+      "note": "Puede provocar cólicos biliares; no la uses si tienes las vías biliares obstruidas."
+    },
+    {
+      "kind": "condition",
+      "tag": "gallstones",
+      "note": "Consulta antes: puede agravar los cálculos que bloquean la salida de la bilis."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Consulta antes de combinarla con anticoagulantes."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de bajar la presión."
+    },
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de bajar el azúcar en la sangre."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": ["asteraceae"],
+  "sideEffects": [
+    "Gases o malestar digestivo leve.",
+    "El contacto con la planta puede irritar la piel.",
+    "Reacciones alérgicas, a veces graves, en personas sensibles a la familia de la margarita."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/alcachofa.jpg",
+      "author": "Magnus Manske",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:P1000286_Cynara_scolymus_(Globe_Artichoke)_(Compositae).JPG",
+      "caption": "Planta de alcachofa (Cynara cardunculus var. scolymus)"
+    }
+  ],
+  "sources": [
+    {"id": "s1", "kind": "botany", "title": "Cynara cardunculus Scolymus Group (Globe Artichoke)", "publisher": "NC State Extension Gardener Plant Toolbox", "url": "https://plants.ces.ncsu.edu/plants/cynara-cardunculus-scolymus-group/", "accessedOn": "2026-09-28"},
+    {"id": "s2", "kind": "popular", "title": "Medicinal Plants in Food Supplements for Gastrointestinal Disorders (incluye Cynara cardunculus como una de las plantas más usadas)", "publisher": "Nutrients / PMC (PMID 41373965, PMCID PMC12693992)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12693992/", "accessedOn": "2026-09-28"},
+    {"id": "s3", "kind": "science", "title": "Community herbal monograph on Cynara scolymus L., folium (Cynarae folium)", "publisher": "EMA HMPC", "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-cynara-cardunculus-l-syn-cynara-scolymus-l-folium_en.pdf", "accessedOn": "2026-09-28"}
+  ]
+}

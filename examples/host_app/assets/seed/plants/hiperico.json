@@ -1,0 +1,291 @@
+{
+  "id": "hiperico",
+  "commonName": "Hipérico",
+  "otherNames": [
+    "hierba de San Juan",
+    "corazoncillo"
+  ],
+  "scientificName": "Hypericum perforatum L.",
+  "family": "Hypericaceae",
+  "partsUsed": [
+    "flor",
+    "hoja",
+    "parte aérea"
+  ],
+  "easyExplanation": "El hipérico, o hierba de San Juan, es una planta de flores amarillas usada de forma tradicional para el ánimo bajo, los nervios y, en aceite, para heridas y quemaduras leves en la piel. Es importante saber que interactúa con muchos medicamentos comunes -anticonceptivos, anticoagulantes, antidepresivos e inmunosupresores, entre otros- y puede hacerlos menos eficaces o peligrosos si se combinan sin supervisión médica. También puede aumentar la sensibilidad de la piel al sol.",
+  "botany": {
+    "description": "El hipérico es una hierba perenne de tallos lisos y erguidos, de 30 cm a 1 metro de altura, con hojas pequeñas y opuestas, y flores amarillas de cinco pétalos agrupadas en el extremo de los tallos.",
+    "identification": "Al mirar sus hojas a contraluz se ven puntos translúcidos que parecen pequeñas perforaciones -de ahí su nombre \"perforatum\"-, y sus pétalos amarillos tienen puntos negros en el borde. Puede confundirse con otras especies de Hypericum: Hypericum punctatum tiene puntos negros repartidos por toda la hoja, no solo translúcidos, e Hypericum hirsutum tiene el tallo velludo.",
+    "cultivation": "Crece en suelos bien drenados y con sol, en praderas, laderas y bordes de bosque de clima templado, con al menos 760 mm de lluvia al año; tolera el frío moderado y se propaga con facilidad por semilla y raíz, por lo que en varios países se lo considera una planta invasora.",
+    "lookalikes": [
+      "Hypericum punctatum",
+      "Hypericum hirsutum"
+    ],
+    "nativeRange": "Originario de Europa, el norte de África y Asia occidental y central; hoy crece en todos los continentes habitados.",
+    "sources": [
+      "s2"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "low_mood_mild",
+      "label": "Ánimo bajo o tristeza leve",
+      "evidence": "limited",
+      "note": "Los estudios en personas dan resultados mixtos: algunos muestran beneficio frente a placebo en depresión leve a moderada y otros no encuentran diferencia. El ánimo bajo que persiste puede ser depresión, que necesita evaluación profesional; no se debe intentar tratar por cuenta propia, y esta infusión o cápsula no reemplaza esa evaluación.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "stress",
+      "label": "Estrés o tensión nerviosa leve",
+      "evidence": "popular",
+      "note": "Uso popular en infusión para calmar los nervios, documentado en un estudio etnobotánico del noroeste de Croacia.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "nervousness",
+      "label": "Nerviosismo leve",
+      "evidence": "popular",
+      "note": "Uso popular en infusión para calmar los nervios, documentado en un estudio etnobotánico del noroeste de Croacia.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Heridas superficiales pequeñas",
+      "evidence": "popular",
+      "note": "El aceite de hipérico se usa popularmente sobre la piel para ayudar a cicatrizar heridas leves, documentado en un estudio etnobotánico del noroeste de Croacia.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "minor_burn",
+      "label": "Quemadura leve",
+      "evidence": "popular",
+      "note": "El aceite de hipérico se usa popularmente sobre quemaduras leves de la piel, incluidas las quemaduras solares, documentado en un estudio etnobotánico del noroeste de Croacia.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "skin_irritation",
+      "label": "Irritación leve de la piel",
+      "evidence": "popular",
+      "note": "El aceite de hipérico se usa popularmente sobre picaduras de insectos y piel irritada, documentado en un estudio etnobotánico del noroeste de Croacia.",
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "beliefs": [
+    {
+      "claim": "Puede reemplazar a un antidepresivo recetado por un médico",
+      "note": "No debe usarse para sustituir ni suspender un tratamiento antidepresivo indicado por un profesional de salud: combinarlo con antidepresivos (incluidos los ISRS) puede causar síndrome serotoninérgico, una reacción grave.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "claim": "Por ser una planta, es segura de combinar con cualquier medicamento",
+      "note": "El hipérico induce enzimas del hígado (CYP3A4) y una proteína de transporte (P-glicoproteína) que aceleran la eliminación de muchos medicamentos, reduciendo su efecto; los estudios documentan casos de rechazo de trasplantes, embarazos no planeados y pérdida de control de la coagulación por esta causa.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con la parte aérea seca de hipérico en agua recién hervida, deja reposar y cuela. Revisa antes con un profesional de salud si tomas algún otro medicamento.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "title": "Té de hipérico",
+      "uses": [
+        "low_mood_mild",
+        "stress",
+        "nervousness"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hipérico seco en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "No lo combines con anticonceptivos hormonales, anticoagulantes, antidepresivos, inmunosupresores u otros medicamentos sin consultar antes a un profesional de salud.",
+        "Puede aumentar la sensibilidad de la piel al sol.",
+        "No lo uses para reemplazar un tratamiento antidepresivo indicado por un médico.",
+        "Si el ánimo bajo no mejora, empeora o aparecen pensamientos de hacerte daño, busca ayuda profesional de inmediato."
+      ],
+      "sources": [
+        "s1",
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "El aceite de hipérico (macerado oleoso) se compra ya preparado; se aplica en pequeña cantidad sobre la piel limpia y seca de la zona afectada.",
+      "dose": "La que indique el envase del producto.",
+      "frequency": "Según el envase.",
+      "title": "Aceite de hipérico para la piel",
+      "uses": [
+        "minor_wound",
+        "minor_burn",
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra aceite de hipérico ya preparado en una tienda de confianza."
+        },
+        {
+          "kind": "clean",
+          "text": "Limpia y seca la piel de la zona."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplica una pequeña cantidad de aceite sobre la piel."
+        }
+      ],
+      "warnings": [
+        "Evita el sol directo sobre la piel tratada; puede causar quemaduras o manchas.",
+        "No lo uses sobre heridas profundas o muy extensas."
+      ],
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Las cápsulas o tabletas de hipérico son un producto de farmacia; no se preparan en casa.",
+      "dose": "Sigue la cantidad indicada en el envase o la que te indique un profesional de salud.",
+      "frequency": "Según el envase.",
+      "title": "Cápsulas de hipérico",
+      "uses": [
+        "low_mood_mild",
+        "stress"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra el producto en una farmacia o tienda de confianza."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalo con agua, según indique el envase."
+        }
+      ],
+      "warnings": [
+        "Avisa a tu médico si tomas hipérico antes de empezar o cambiar cualquier otro medicamento.",
+        "No lo combines con anticonceptivos hormonales, anticoagulantes, antidepresivos o inmunosupresores sin supervisión médica.",
+        "Si el ánimo bajo no mejora, empeora o aparecen pensamientos de hacerte daño, busca ayuda profesional de inmediato."
+      ],
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "hormonal_contraceptive",
+      "severity": "avoid",
+      "note": "Reduce su eficacia por inducción enzimática y puede causar sangrado inesperado o un embarazo no planeado."
+    },
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "avoid",
+      "note": "Reduce el efecto anticoagulante (por ejemplo, de la warfarina) y aumenta el riesgo de formar coágulos."
+    },
+    {
+      "medicationClass": "immunosuppressant",
+      "severity": "avoid",
+      "note": "Puede bajar el nivel en sangre de tacrolimus o ciclosporina y causar el rechazo de un órgano trasplantado; hay casos documentados de rechazo de trasplante de corazón."
+    },
+    {
+      "medicationClass": "antidepressant",
+      "severity": "avoid",
+      "note": "Combinarlo con antidepresivos, incluidos los ISRS, puede causar síndrome serotoninérgico, una reacción grave con agitación, taquicardia y, en casos extremos, riesgo para la vida."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Sensibilidad de la piel al sol (fotosensibilidad), con riesgo de quemaduras o manchas.",
+    "Malestar estomacal, boca seca, mareo o cansancio.",
+    "Inquietud o ansiedad en algunas personas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/hiperico.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hypericum_perforatum_001.JPG",
+      "caption": "Flores de hipérico (Hypericum perforatum)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "popular",
+      "title": "Ethnobotanical Survey of Culturally Important Plants and Mushrooms in North-Western Part of Croatia",
+      "publisher": "Plants (MDPI) / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11175058/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Hypericum perforatum L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/3189486",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "St. John's Wort and Depression: In Depth",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/st-johns-wort-and-depression-in-depth",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Clinical relevance of St. John's wort drug interactions revisited",
+      "publisher": "PMC (British Journal of Clinical Pharmacology)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7056460/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ]
+}

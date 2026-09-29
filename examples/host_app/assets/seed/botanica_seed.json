@@ -1,0 +1,1310 @@
+{
+  "version": 12,
+  "reference": {
+    "id": "current",
+    "version": 1,
+    "terms": [
+      {
+        "id": "headache",
+        "label": "Dolor de cabeza",
+        "kind": "symptom",
+        "synonyms": [
+          "cefalea",
+          "migraña",
+          "jaqueca"
+        ]
+      },
+      {
+        "id": "indigestion",
+        "label": "Indigestión o malestar digestivo leve",
+        "kind": "symptom",
+        "synonyms": [
+          "dispepsia",
+          "digestión pesada",
+          "empacho",
+          "malestar estomacal"
+        ]
+      },
+      {
+        "id": "bloating",
+        "label": "Hinchazón abdominal o gases",
+        "kind": "symptom",
+        "synonyms": [
+          "gases",
+          "flatulencia",
+          "distensión abdominal",
+          "barriga hinchada"
+        ]
+      },
+      {
+        "id": "abdominal_cramps",
+        "label": "Cólicos o espasmos abdominales leves",
+        "kind": "symptom",
+        "synonyms": [
+          "retortijones",
+          "espasmos intestinales",
+          "cólico",
+          "colon irritable"
+        ]
+      },
+      {
+        "id": "abdominal_pain",
+        "label": "Dolor abdominal",
+        "kind": "symptom",
+        "synonyms": [
+          "dolor de estómago",
+          "dolor de barriga",
+          "dolor de vientre"
+        ]
+      },
+      {
+        "id": "nausea",
+        "label": "Náuseas",
+        "kind": "symptom",
+        "synonyms": [
+          "ganas de vomitar",
+          "asco",
+          "vómito"
+        ]
+      },
+      {
+        "id": "motion_sickness",
+        "label": "Mareo por movimiento en viajes",
+        "kind": "symptom",
+        "synonyms": [
+          "mareo en el carro",
+          "mareo en el coche",
+          "mareo en barco",
+          "cinetosis"
+        ]
+      },
+      {
+        "id": "poor_appetite",
+        "label": "Falta de apetito",
+        "kind": "symptom",
+        "synonyms": [
+          "inapetencia",
+          "poco apetito",
+          "sin hambre"
+        ]
+      },
+      {
+        "id": "cough",
+        "label": "Tos",
+        "kind": "symptom",
+        "synonyms": [
+          "tos seca",
+          "tos con flema"
+        ]
+      },
+      {
+        "id": "sore_throat",
+        "label": "Dolor o irritación de garganta",
+        "kind": "symptom",
+        "synonyms": [
+          "garganta irritada",
+          "carraspera",
+          "dolor al tragar"
+        ]
+      },
+      {
+        "id": "mouth_sores",
+        "label": "Llagas o irritación en la boca",
+        "kind": "symptom",
+        "synonyms": [
+          "aftas",
+          "boca irritada",
+          "encías inflamadas"
+        ]
+      },
+      {
+        "id": "cold_symptoms",
+        "label": "Síntomas de resfriado",
+        "kind": "symptom",
+        "synonyms": [
+          "resfriado",
+          "catarro",
+          "gripa",
+          "gripe",
+          "congestión nasal",
+          "nariz tapada"
+        ]
+      },
+      {
+        "id": "insomnia",
+        "label": "Dificultad para dormir",
+        "kind": "symptom",
+        "synonyms": [
+          "insomnio",
+          "no puedo dormir",
+          "sueño ligero"
+        ]
+      },
+      {
+        "id": "nervousness",
+        "label": "Nerviosismo o tensión nerviosa leve",
+        "kind": "symptom",
+        "synonyms": [
+          "nervios",
+          "inquietud",
+          "tensión nerviosa"
+        ]
+      },
+      {
+        "id": "anxiety_mild",
+        "label": "Ansiedad leve",
+        "kind": "symptom",
+        "synonyms": [
+          "ansiedad",
+          "angustia leve",
+          "preocupación constante"
+        ]
+      },
+      {
+        "id": "stress",
+        "label": "Estrés",
+        "kind": "symptom",
+        "synonyms": [
+          "estresado",
+          "agotamiento mental",
+          "cansancio mental"
+        ]
+      },
+      {
+        "id": "muscle_pain",
+        "label": "Dolor muscular leve",
+        "kind": "symptom",
+        "synonyms": [
+          "dolor de músculos",
+          "contractura",
+          "agujetas"
+        ]
+      },
+      {
+        "id": "joint_pain",
+        "label": "Dolor leve de articulaciones",
+        "kind": "symptom",
+        "synonyms": [
+          "dolor de articulaciones",
+          "dolor de rodilla",
+          "artralgia"
+        ]
+      },
+      {
+        "id": "menstrual_cramps",
+        "label": "Cólicos menstruales",
+        "kind": "symptom",
+        "synonyms": [
+          "dolor menstrual",
+          "dolor de regla",
+          "dismenorrea"
+        ]
+      },
+      {
+        "id": "minor_burn",
+        "label": "Quemadura leve",
+        "kind": "symptom",
+        "synonyms": [
+          "quemadura pequeña",
+          "quemadura de primer grado"
+        ]
+      },
+      {
+        "id": "sunburn",
+        "label": "Quemadura de sol leve",
+        "kind": "symptom",
+        "synonyms": [
+          "piel quemada por el sol",
+          "quemadura solar"
+        ]
+      },
+      {
+        "id": "minor_wound",
+        "label": "Herida superficial pequeña",
+        "kind": "symptom",
+        "synonyms": [
+          "raspón",
+          "rasguño",
+          "cortada pequeña",
+          "herida leve"
+        ]
+      },
+      {
+        "id": "skin_irritation",
+        "label": "Irritación o inflamación leve de la piel",
+        "kind": "symptom",
+        "synonyms": [
+          "piel irritada",
+          "rojez en la piel",
+          "piel inflamada"
+        ]
+      },
+      {
+        "id": "itching",
+        "label": "Picazón en la piel",
+        "kind": "symptom",
+        "synonyms": [
+          "comezón",
+          "picor",
+          "prurito"
+        ]
+      },
+      {
+        "id": "fluid_retention",
+        "label": "Retención de líquidos",
+        "kind": "symptom",
+        "synonyms": [
+          "hinchazón de piernas",
+          "piernas hinchadas"
+        ]
+      },
+      {
+        "id": "urinary_discomfort",
+        "label": "Molestias urinarias leves",
+        "kind": "symptom",
+        "synonyms": [
+          "ganas frecuentes de orinar",
+          "molestia al orinar",
+          "vías urinarias"
+        ]
+      },
+      {
+        "id": "poor_circulation",
+        "label": "Molestias leves de circulación",
+        "kind": "symptom",
+        "synonyms": [
+          "mala circulación",
+          "circulación lenta"
+        ]
+      },
+      {
+        "id": "fever",
+        "label": "Fiebre",
+        "kind": "symptom",
+        "synonyms": [
+          "temperatura alta",
+          "calentura"
+        ]
+      },
+      {
+        "id": "chest_pain",
+        "label": "Dolor en el pecho",
+        "kind": "symptom",
+        "synonyms": [
+          "opresión en el pecho",
+          "dolor torácico"
+        ]
+      },
+      {
+        "id": "breathing_difficulty",
+        "label": "Dificultad para respirar",
+        "kind": "symptom",
+        "synonyms": [
+          "falta de aire",
+          "ahogo",
+          "me asfixio"
+        ]
+      },
+      {
+        "id": "sudden_severe_headache",
+        "label": "Dolor de cabeza repentino y muy fuerte",
+        "kind": "symptom",
+        "synonyms": [
+          "el peor dolor de cabeza de mi vida",
+          "dolor de cabeza súbito"
+        ]
+      },
+      {
+        "id": "headache_with_fever_stiff_neck",
+        "label": "Dolor de cabeza con fiebre y cuello rígido",
+        "kind": "symptom",
+        "synonyms": [
+          "cuello rígido con fiebre",
+          "no puedo doblar el cuello y tengo fiebre"
+        ]
+      },
+      {
+        "id": "fainting",
+        "label": "Desmayo",
+        "kind": "symptom",
+        "synonyms": [
+          "me desmayé",
+          "perdí el conocimiento",
+          "síncope"
+        ]
+      },
+      {
+        "id": "stroke_signs",
+        "label": "Señales de derrame cerebral",
+        "kind": "symptom",
+        "synonyms": [
+          "cara caída de un lado",
+          "debilidad de un lado del cuerpo",
+          "dificultad repentina para hablar",
+          "derrame cerebral",
+          "ACV"
+        ]
+      },
+      {
+        "id": "blood_vomit_or_stool",
+        "label": "Sangre en el vómito o en las heces",
+        "kind": "symptom",
+        "synonyms": [
+          "vómito con sangre",
+          "heces con sangre",
+          "heces negras"
+        ]
+      },
+      {
+        "id": "suicidal_thoughts",
+        "label": "Pensamientos de hacerse daño o de suicidio",
+        "kind": "symptom",
+        "synonyms": [
+          "quiero morir",
+          "hacerme daño",
+          "suicidio"
+        ]
+      },
+      {
+        "id": "face_throat_swelling",
+        "label": "Hinchazón de cara, labios, lengua o garganta",
+        "kind": "symptom",
+        "synonyms": [
+          "labios hinchados",
+          "lengua hinchada",
+          "se me cierra la garganta"
+        ]
+      },
+      {
+        "id": "pregnancy_bleeding",
+        "label": "Sangrado durante el embarazo",
+        "kind": "symptom",
+        "synonyms": [
+          "sangrado en el embarazo",
+          "manchado en el embarazo"
+        ]
+      },
+      {
+        "id": "sleep_better",
+        "label": "Dormir mejor",
+        "kind": "goal",
+        "synonyms": [
+          "descansar mejor",
+          "conciliar el sueño"
+        ]
+      },
+      {
+        "id": "relax",
+        "label": "Relajarme",
+        "kind": "goal",
+        "synonyms": [
+          "calmarme",
+          "tranquilizarme"
+        ]
+      },
+      {
+        "id": "digest_better",
+        "label": "Mejorar la digestión",
+        "kind": "goal",
+        "synonyms": [
+          "digerir mejor",
+          "digestión"
+        ]
+      },
+      {
+        "id": "weight_loss",
+        "label": "Bajar de peso",
+        "kind": "goal",
+        "synonyms": [
+          "adelgazar",
+          "perder peso"
+        ]
+      },
+      {
+        "id": "improve_energy",
+        "label": "Tener más energía",
+        "kind": "goal",
+        "synonyms": [
+          "cansancio",
+          "falta de energía"
+        ]
+      },
+      {
+        "id": "skin_care",
+        "label": "Cuidar la piel",
+        "kind": "goal",
+        "synonyms": [
+          "piel sana",
+          "cuidado de la piel"
+        ]
+      },
+      {
+        "id": "gallstones",
+        "label": "Cálculos en la vesícula",
+        "kind": "condition",
+        "synonyms": [
+          "piedras en la vesícula",
+          "colelitiasis"
+        ]
+      },
+      {
+        "id": "bile_duct_obstruction",
+        "label": "Obstrucción u otra enfermedad de las vías biliares",
+        "kind": "condition",
+        "synonyms": [
+          "vías biliares",
+          "problemas de bilis"
+        ]
+      },
+      {
+        "id": "gallbladder_inflammation",
+        "label": "Inflamación de la vesícula",
+        "kind": "condition",
+        "synonyms": [
+          "colecistitis"
+        ]
+      },
+      {
+        "id": "gastric_ulcer",
+        "label": "Úlcera de estómago",
+        "kind": "condition",
+        "synonyms": [
+          "úlcera gástrica",
+          "úlcera péptica"
+        ]
+      },
+      {
+        "id": "gerd",
+        "label": "Reflujo o acidez frecuente",
+        "kind": "condition",
+        "synonyms": [
+          "reflujo gastroesofágico",
+          "agruras",
+          "acidez"
+        ]
+      },
+      {
+        "id": "achlorhydria",
+        "label": "Falta de ácido en el estómago (aclorhidria)",
+        "kind": "condition",
+        "synonyms": [
+          "aclorhidria"
+        ]
+      },
+      {
+        "id": "kidney_disease",
+        "label": "Enfermedad de los riñones",
+        "kind": "condition",
+        "synonyms": [
+          "insuficiencia renal",
+          "problemas renales"
+        ]
+      },
+      {
+        "id": "heart_disease",
+        "label": "Enfermedad grave del corazón o de la circulación",
+        "kind": "condition",
+        "synonyms": [
+          "insuficiencia cardíaca",
+          "problemas del corazón"
+        ]
+      },
+      {
+        "id": "epilepsy",
+        "label": "Epilepsia o convulsiones",
+        "kind": "condition",
+        "synonyms": [
+          "convulsiones",
+          "ataques epilépticos"
+        ]
+      },
+      {
+        "id": "liver_disease",
+        "label": "Enfermedad del hígado",
+        "kind": "condition",
+        "synonyms": [
+          "hepatitis",
+          "problemas del hígado"
+        ]
+      },
+      {
+        "id": "diabetes",
+        "label": "Diabetes",
+        "kind": "condition",
+        "synonyms": [
+          "azúcar alta",
+          "glucosa alta"
+        ]
+      },
+      {
+        "id": "hypertension",
+        "label": "Presión arterial alta",
+        "kind": "condition",
+        "synonyms": [
+          "hipertensión",
+          "tensión alta"
+        ]
+      },
+      {
+        "id": "hormone_sensitive_condition",
+        "label": "Cáncer u otra enfermedad sensible a los estrógenos",
+        "kind": "condition",
+        "synonyms": [
+          "cáncer de mama",
+          "cáncer de útero",
+          "sensible a hormonas"
+        ]
+      },
+      {
+        "id": "damaged_skin",
+        "label": "Heridas abiertas o piel muy dañada o irritada",
+        "kind": "condition",
+        "synonyms": [
+          "herida abierta",
+          "piel lastimada"
+        ]
+      },
+      {
+        "id": "anticoagulant",
+        "label": "Anticoagulantes (por ejemplo, warfarina)",
+        "kind": "medicationClass",
+        "synonyms": [
+          "warfarina",
+          "anticoagulante",
+          "adelgazar la sangre"
+        ]
+      },
+      {
+        "id": "antiplatelet",
+        "label": "Antiagregantes plaquetarios (por ejemplo, aspirina, clopidogrel)",
+        "kind": "medicationClass",
+        "synonyms": [
+          "aspirina",
+          "clopidogrel",
+          "antiagregante"
+        ]
+      },
+      {
+        "id": "sedative",
+        "label": "Sedantes o medicamentos para dormir",
+        "kind": "medicationClass",
+        "synonyms": [
+          "pastillas para dormir",
+          "tranquilizantes",
+          "benzodiacepinas"
+        ]
+      },
+      {
+        "id": "antidiabetic",
+        "label": "Medicamentos para la diabetes",
+        "kind": "medicationClass",
+        "synonyms": [
+          "metformina",
+          "insulina",
+          "hipoglucemiantes"
+        ]
+      },
+      {
+        "id": "antihypertensive",
+        "label": "Medicamentos para la presión arterial",
+        "kind": "medicationClass",
+        "synonyms": [
+          "antihipertensivos",
+          "pastillas para la presión"
+        ]
+      },
+      {
+        "id": "diuretic",
+        "label": "Diuréticos",
+        "kind": "medicationClass",
+        "synonyms": [
+          "pastillas para orinar",
+          "furosemida",
+          "hidroclorotiazida"
+        ]
+      },
+      {
+        "id": "lithium",
+        "label": "Litio",
+        "kind": "medicationClass",
+        "synonyms": [
+          "carbonato de litio"
+        ]
+      },
+      {
+        "id": "hormonal_contraceptive",
+        "label": "Anticonceptivos hormonales",
+        "kind": "medicationClass",
+        "synonyms": [
+          "pastillas anticonceptivas",
+          "anticonceptivos"
+        ]
+      },
+      {
+        "id": "immunosuppressant",
+        "label": "Inmunosupresores (por ejemplo, tras un trasplante)",
+        "kind": "medicationClass",
+        "synonyms": [
+          "tacrolimus",
+          "ciclosporina",
+          "trasplante"
+        ]
+      },
+      {
+        "id": "hepatotoxic_drug",
+        "label": "Medicamentos que pueden dañar el hígado",
+        "kind": "medicationClass",
+        "synonyms": [
+          "medicamentos hepatotóxicos"
+        ]
+      },
+      {
+        "id": "asteraceae",
+        "label": "Familia de la margarita (Asteraceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "compuestas",
+          "margarita",
+          "ambrosía",
+          "crisantemo",
+          "manzanilla",
+          "caléndula",
+          "diente de león"
+        ]
+      },
+      {
+        "id": "lamiaceae",
+        "label": "Familia de la menta (Lamiaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "labiadas",
+          "menta",
+          "hierbabuena",
+          "romero",
+          "lavanda",
+          "toronjil"
+        ]
+      },
+      {
+        "id": "zingiberaceae",
+        "label": "Familia del jengibre (Zingiberaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "jengibre"
+        ]
+      },
+      {
+        "id": "caprifoliaceae",
+        "label": "Familia de la valeriana (Caprifoliaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "valeriana"
+        ]
+      },
+      {
+        "id": "asphodelaceae",
+        "label": "Familia de la sábila (Asphodelaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "sábila",
+          "aloe"
+        ]
+      },
+      {
+        "id": "equisetaceae",
+        "label": "Familia de la cola de caballo (Equisetaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "cola de caballo",
+          "equiseto"
+        ]
+      },
+      {
+        "id": "insect_repellent",
+        "label": "Repeler insectos",
+        "kind": "goal",
+        "synonyms": [
+          "repelente de insectos",
+          "ahuyentar mosquitos",
+          "alejar pulgas"
+        ]
+      },
+      {
+        "id": "altitude_sickness",
+        "label": "Malestar por la altura (soroche)",
+        "kind": "symptom",
+        "synonyms": [
+          "soroche",
+          "mal de altura",
+          "mal de montaña",
+          "apunamiento"
+        ]
+      },
+      {
+        "id": "intestinal_parasites",
+        "label": "Parásitos intestinales",
+        "kind": "symptom",
+        "synonyms": [
+          "parásitos",
+          "lombrices",
+          "parasitosis intestinal"
+        ]
+      },
+      {
+        "id": "passifloraceae",
+        "kind": "allergenGroup",
+        "label": "Familia de la pasiflora (Passifloraceae)",
+        "synonyms": [
+          "flor de la pasión",
+          "maracuyá",
+          "pasiflora",
+          "pasionaria"
+        ]
+      },
+      {
+        "id": "tiliaceae",
+        "kind": "allergenGroup",
+        "label": "Familia del tilo (Tiliaceae)",
+        "synonyms": [
+          "tilo",
+          "tila",
+          "tilia"
+        ]
+      },
+      {
+        "id": "rutaceae",
+        "kind": "allergenGroup",
+        "label": "Familia del naranjo y los cítricos (Rutaceae)",
+        "synonyms": [
+          "cítricos",
+          "naranja",
+          "naranjo amargo",
+          "limón",
+          "azahar"
+        ]
+      },
+      {
+        "id": "low_mood_mild",
+        "kind": "symptom",
+        "label": "Ánimo bajo o tristeza leve persistente",
+        "synonyms": [
+          "decaimiento",
+          "tristeza persistente",
+          "depresión leve"
+        ]
+      },
+      {
+        "id": "antidepressant",
+        "kind": "medicationClass",
+        "label": "Antidepresivos",
+        "synonyms": [
+          "ISRS",
+          "sertralina",
+          "fluoxetina",
+          "antidepresivo"
+        ]
+      },
+      {
+        "id": "apiaceae",
+        "label": "Familia del apio y la zanahoria (Apiaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "anís",
+          "apio",
+          "eneldo",
+          "hinojo",
+          "perejil",
+          "zanahoria"
+        ]
+      },
+      {
+        "id": "bruise",
+        "label": "Golpes o moretones",
+        "kind": "symptom",
+        "synonyms": [
+          "moretón",
+          "hematoma",
+          "contusión",
+          "cardenal"
+        ]
+      },
+      {
+        "id": "sprain",
+        "label": "Esguince o torcedura leve",
+        "kind": "symptom",
+        "synonyms": [
+          "esguince",
+          "torcedura",
+          "torcida de tobillo"
+        ]
+      },
+      {
+        "id": "hamamelidaceae",
+        "label": "Familia del hamamelis (Hamamelidaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "hamamelis",
+          "avellano de bruja"
+        ]
+      },
+      {
+        "id": "fungal_skin_infection",
+        "label": "Hongos leves de la piel",
+        "kind": "symptom",
+        "synonyms": [
+          "hongos en la piel",
+          "micosis de la piel",
+          "pie de atleta",
+          "tiña"
+        ]
+      },
+      {
+        "id": "myrtaceae",
+        "label": "Familia del eucalipto y el árbol de té (Myrtaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "eucalipto",
+          "clavo de olor",
+          "guayaba",
+          "árbol de té"
+        ]
+      },
+      {
+        "id": "meliaceae",
+        "label": "Familia del neem y el paraíso (Meliaceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "neem",
+          "paraíso",
+          "caoba"
+        ]
+      },
+      {
+        "id": "autoimmune_disease",
+        "label": "Enfermedad autoinmune",
+        "kind": "condition",
+        "synonyms": [
+          "lupus",
+          "esclerosis múltiple",
+          "artritis reumatoide",
+          "enfermedad autoinmune"
+        ]
+      },
+      {
+        "id": "kidney_stones",
+        "label": "Piedras o cálculos en el riñón",
+        "kind": "symptom",
+        "synonyms": [
+          "piedra en el riñón",
+          "cálculo renal",
+          "litiasis renal",
+          "cólico renal"
+        ]
+      },
+      {
+        "id": "bph_urinary_symptoms",
+        "label": "Molestias urinarias por próstata aumentada de tamaño",
+        "kind": "symptom",
+        "synonyms": [
+          "hiperplasia prostática benigna",
+          "próstata inflamada",
+          "dificultad para orinar por próstata"
+        ]
+      },
+      {
+        "id": "blood_pressure_support",
+        "label": "Ayudar a bajar la presión arterial",
+        "kind": "goal",
+        "synonyms": [
+          "apoyo para la hipertensión",
+          "bajar la presión"
+        ]
+      },
+      {
+        "id": "blood_sugar_support",
+        "label": "Ayudar a controlar el azúcar en la sangre",
+        "kind": "goal",
+        "synonyms": [
+          "apoyo para la diabetes",
+          "control de glucosa"
+        ]
+      },
+      {
+        "id": "alliaceae",
+        "label": "Familia del ajo y la cebolla (Amaryllidaceae, alliáceas)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "ajo",
+          "alliáceas",
+          "cebolla",
+          "cebollín",
+          "puerro"
+        ]
+      },
+      {
+        "id": "antiretroviral",
+        "label": "Medicamentos para el VIH (antirretrovirales)",
+        "kind": "medicationClass",
+        "synonyms": [
+          "antirretrovirales",
+          "saquinavir",
+          "ritonavir",
+          "medicamentos para el VIH"
+        ]
+      },
+      {
+        "id": "lauraceae",
+        "label": "Familia del laurel y la canela (Lauraceae)",
+        "kind": "allergenGroup",
+        "synonyms": [
+          "aguacate",
+          "canela",
+          "laurel",
+          "lauráceas"
+        ]
+      },
+      {
+        "id": "toothache",
+        "label": "Dolor de muela o de diente",
+        "kind": "symptom",
+        "synonyms": [
+          "dolor dental",
+          "dolor de diente",
+          "muela adolorida"
+        ]
+      },
+      {
+        "id": "cognitive_support",
+        "label": "Apoyar la memoria y la concentración",
+        "kind": "goal",
+        "synonyms": [
+          "memoria",
+          "concentración",
+          "declive cognitivo leve",
+          "atención"
+        ]
+      },
+      {
+        "id": "cardiac_glycoside",
+        "label": "Glucósidos cardíacos (como la digoxina)",
+        "kind": "medicationClass",
+        "synonyms": [
+          "digoxina",
+          "digitálicos",
+          "digital"
+        ]
+      },
+      {
+        "id": "diarrhea",
+        "label": "Diarrea",
+        "kind": "symptom",
+        "synonyms": [
+          "cámaras",
+          "diarrea leve",
+          "soltura de estómago"
+        ]
+      },
+      {
+        "id": "constipation",
+        "label": "Estreñimiento",
+        "kind": "symptom",
+        "synonyms": [
+          "dificultad para evacuar",
+          "estar tapado",
+          "estreñida",
+          "estreñido",
+          "estreñimiento leve",
+          "no puedo ir al baño"
+        ]
+      },
+      {
+        "id": "intestinal_obstruction",
+        "label": "Obstrucción o estrechamiento intestinal",
+        "kind": "condition",
+        "synonyms": [
+          "obstrucción intestinal",
+          "parálisis intestinal",
+          "estrechamiento del esófago o intestino"
+        ]
+      },
+      {
+        "id": "excessive_sweating",
+        "label": "Sudor excesivo",
+        "kind": "symptom",
+        "synonyms": [
+          "sudoración excesiva",
+          "transpiración excesiva",
+          "hiperhidrosis"
+        ]
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "chest_pain",
+        "label": "Dolor en el pecho",
+        "advice": "Busca atención médica de inmediato o llama a emergencias.",
+        "triggerTags": [
+          "chest_pain"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "breathing_difficulty",
+        "label": "Dificultad para respirar",
+        "advice": "Busca atención médica de inmediato o llama a emergencias.",
+        "triggerTags": [
+          "breathing_difficulty"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "sudden_severe_headache",
+        "label": "Dolor de cabeza repentino y muy fuerte",
+        "advice": "Puede ser una emergencia. Busca atención de urgencias de inmediato.",
+        "triggerTags": [
+          "sudden_severe_headache"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "headache_with_fever_stiff_neck",
+        "label": "Dolor de cabeza con fiebre y cuello rígido",
+        "advice": "Puede ser una infección grave. Busca atención de urgencias de inmediato.",
+        "triggerTags": [
+          "headache_with_fever_stiff_neck"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "fainting",
+        "label": "Desmayo",
+        "advice": "Busca atención médica de inmediato o llama a emergencias.",
+        "triggerTags": [
+          "fainting"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "stroke_signs",
+        "label": "Señales de derrame cerebral",
+        "advice": "Llama a emergencias de inmediato: cada minuto cuenta.",
+        "triggerTags": [
+          "stroke_signs"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "blood_vomit_or_stool",
+        "label": "Sangre en el vómito o en las heces",
+        "advice": "Busca atención médica de urgencia.",
+        "triggerTags": [
+          "blood_vomit_or_stool"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "severe_abdominal_pain",
+        "label": "Dolor abdominal intenso",
+        "advice": "Busca atención médica de urgencia.",
+        "triggerTags": [
+          "abdominal_pain"
+        ],
+        "minIntensity": 8,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "high_fever",
+        "label": "Fiebre que dura 3 días o más",
+        "advice": "Consulta a un médico lo antes posible.",
+        "triggerTags": [
+          "fever"
+        ],
+        "minIntensity": null,
+        "minDurationDays": 3,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "suicidal_thoughts",
+        "label": "Pensamientos de hacerse daño o de suicidio",
+        "advice": "No estás solo. Busca ayuda ahora: llama a una línea de crisis o a emergencias, o habla con alguien de confianza.",
+        "triggerTags": [
+          "suicidal_thoughts"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "face_throat_swelling",
+        "label": "Hinchazón de cara, labios, lengua o garganta",
+        "advice": "Puede ser una alergia grave. Llama a emergencias de inmediato.",
+        "triggerTags": [
+          "face_throat_swelling"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "pregnancy_bleeding",
+        "label": "Sangrado durante el embarazo",
+        "advice": "Busca atención médica de inmediato o llama a emergencias.",
+        "triggerTags": [
+          "pregnancy_bleeding"
+        ],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": false,
+        "maxAgeYears": null
+      },
+      {
+        "id": "infant_under_2",
+        "label": "Bebé menor de 2 años",
+        "advice": "No uses plantas medicinales en bebés. Consulta al pediatra.",
+        "triggerTags": [],
+        "minIntensity": null,
+        "minDurationDays": null,
+        "anySymptom": true,
+        "maxAgeYears": 1
+      },
+      {
+        "id": "persistent_symptom",
+        "label": "Síntoma que dura 2 semanas o más",
+        "advice": "Consulta a un médico para identificar la causa antes de seguir con remedios caseros.",
+        "triggerTags": [],
+        "minIntensity": null,
+        "minDurationDays": 14,
+        "anySymptom": true,
+        "maxAgeYears": null
+      }
+    ]
+  },
+  "plants": [
+    "hierbabuena",
+    "menta",
+    "manzanilla",
+    "jengibre",
+    "valeriana",
+    "calendula",
+    "sabila",
+    "romero",
+    "toronjil",
+    "cola_de_caballo",
+    "diente_de_leon",
+    "lavanda",
+    "limoncillo",
+    "cidron",
+    "poleo",
+    "muna",
+    "albahaca",
+    "oregano",
+    "mejorana",
+    "tomillo",
+    "pasiflora",
+    "maracuya",
+    "tilo",
+    "azahar",
+    "hiperico",
+    "verbena",
+    "damiana",
+    "berro",
+    "boldo",
+    "alcachofa",
+    "cardo_mariano",
+    "anis",
+    "hinojo",
+    "anis_estrellado",
+    "eneldo",
+    "carqueja",
+    "arnica",
+    "llanten",
+    "sangre_de_drago",
+    "hamamelis",
+    "arbol_de_te",
+    "neem",
+    "malva",
+    "achiote",
+    "eucalipto",
+    "sauco",
+    "gordolobo",
+    "marrubio",
+    "guaco",
+    "malvavisco",
+    "regaliz",
+    "equinacea",
+    "chancapiedra",
+    "barba_de_maiz",
+    "ortiga",
+    "perejil",
+    "apio",
+    "pezuna_de_vaca",
+    "nopal",
+    "stevia",
+    "flor_de_jamaica",
+    "curcuma",
+    "ajo",
+    "cebolla",
+    "canela",
+    "clavo_de_olor",
+    "comino",
+    "cilantro",
+    "culantro",
+    "laurel",
+    "yerba_mate",
+    "guayusa",
+    "te_verde",
+    "maca",
+    "una_de_gato",
+    "ginseng",
+    "ginkgo",
+    "chia",
+    "espino_blanco",
+    "castano_de_indias",
+    "guayaba",
+    "guanabana",
+    "aguacate",
+    "papaya",
+    "pina",
+    "limon",
+    "noni",
+    "moringa",
+    "tamarindo",
+    "linaza",
+    "ruda",
+    "paico",
+    "anamu",
+    "ajenjo",
+    "estafiate",
+    "borraja",
+    "higuerilla",
+    "sen",
+    "hoja_santa",
+    "salvia"
+  ]
+}

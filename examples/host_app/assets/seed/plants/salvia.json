@@ -1,0 +1,233 @@
+{
+  "id": "salvia",
+  "commonName": "Salvia",
+  "otherNames": [
+    "salvia de cocina",
+    "sage"
+  ],
+  "scientificName": "Salvia officinalis L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La salvia es una hierba aromática de uso muy antiguo, aceptada en Europa para hacer gárgaras cuando hay dolor de garganta o llagas en la boca, para ayudar a la digestión y para el sudor excesivo. Su aceite contiene tuyona, la misma sustancia del ajenjo, que en dosis altas o por tiempo prolongado puede afectar el sistema nervioso; por eso no se recomienda en el embarazo, en personas con epilepsia, ni en niños pequeños, y solo por tiempo corto.",
+  "botany": {
+    "description": "Arbusto perenne, semileñoso, aromático y comestible, de vida relativamente corta, de porte tupido y extendido, de 30 a 60 cm de alto (1 a 2 pies) y 60 a 90 cm de ancho. Sus hojas son opuestas, simples, ovaladas, de borde liso, de unos 10 cm de largo, de color verde grisáceo, con una textura arrugada, aterciopelada y con pelillos blancos; los tallos son cuadrangulares, verdes al inicio y luego leñosos. Sus flores, de color lila azulado a lila rosado, con dos labios, aparecen a principios de verano en espigas erguidas y atraen mariposas y abejas.",
+    "identification": "Se reconoce por sus hojas grisáceas, arrugadas y aterciopeladas al tacto, su fuerte aroma característico al frotarlas, y sus flores lilas en espigas erguidas.",
+    "cultivation": "Crece a pleno sol, en suelo de medio a seco y bien drenado; no tolera el encharcamiento. Resiste bien la sequía y el suelo pobre; conviene podarla para evitar que se vuelva desgarbada.",
+    "lookalikes": [
+      "Otras especies de Salvia de hoja gris y aromática similar"
+    ],
+    "nativeRange": "Nativa de la región mediterránea, donde crece en laderas y montañas de matorral y pastizal.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té o el aceite de salvia se pueden tomar en cualquier cantidad y por cualquier tiempo porque es una hierba de cocina.",
+      "note": "La salvia contiene tuyona, la misma sustancia presente en el ajenjo, que en dosis altas o por uso prolongado puede afectar el sistema nervioso; estudios de composición química muestran que el aceite esencial de salvia puede tener hasta un 40% o más de tuyona (sumando sus dos formas). Por precaución, no se recomienda su uso en el embarazo, en personas con epilepsia, ni por tiempo prolongado.",
+      "sources": [
+        "s5"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "sore_throat",
+      "label": "Dolor o irritación de garganta",
+      "evidence": "traditional",
+      "note": "Uso tradicional de la hoja de salvia, en gárgaras, para el dolor y la irritación de garganta y boca, reconocido por el comité de medicamentos herbarios de la Unión Europea (HMPC) entre los trastornos de boca y garganta.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "mouth_sores",
+      "label": "Llagas en la boca",
+      "evidence": "traditional",
+      "note": "Uso tradicional de la hoja de salvia, en enjuague, para las llagas e irritaciones leves de la boca, reconocido por el HMPC entre los trastornos de boca y garganta.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Uso tradicional de la hoja de salvia, por boca, para las molestias digestivas leves, reconocido por el HMPC entre los trastornos gastrointestinales; uso popular documentado también en la medicina tradicional de Guadalajara, México, como infusión para trastornos digestivos.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "tag": "excessive_sweating",
+      "label": "Sudor excesivo",
+      "evidence": "traditional",
+      "note": "Uso tradicional de preparados de hoja de salvia, por boca, para reducir el sudor excesivo, reconocido por el HMPC.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té o gárgaras de hoja de salvia",
+      "uses": [
+        "sore_throat",
+        "mouth_sores",
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas frescas o secas de salvia, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "rinse",
+          "text": "Para la garganta o la boca: haz gárgaras o enjuágate con el té ya tibio."
+        },
+        {
+          "kind": "drink",
+          "text": "Para la digestión: tómalo tibio."
+        }
+      ],
+      "warnings": [
+        "No lo uses en el embarazo ni la lactancia.",
+        "No lo uses si tienes epilepsia o convulsiones.",
+        "No lo uses en niños pequeños.",
+        "No lo uses por tiempo prolongado ni en cantidad concentrada: contiene tuyona, que en exceso puede afectar el sistema nervioso.",
+        "Nunca tomes aceite esencial de salvia sin diluir por boca."
+      ],
+      "dose": "La que indique el envase; sin dosis indicada, unas pocas hojas frescas o secas por taza.",
+      "frequency": "Hasta 3 veces al día.",
+      "maxDays": 14,
+      "instructions": "Prepara una infusión con hojas de salvia en agua recién hervida, deja reposar y cuela. Úsala tibia en gárgaras o enjuague para la garganta y la boca, o tómala para la digestión. No la uses por tiempo prolongado.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "capsule",
+      "route": "oral",
+      "title": "Extracto de salvia de farmacia para el sudor excesivo",
+      "uses": [
+        "excessive_sweating"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra un producto de salvia ya preparado en la farmacia, en cápsula o gotas."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalo por boca en la cantidad indicada en el envase."
+        }
+      ],
+      "warnings": [
+        "No lo uses en el embarazo ni la lactancia.",
+        "No lo uses si tienes epilepsia o convulsiones.",
+        "Solo para adultos."
+      ],
+      "dose": "La que indique el envase.",
+      "frequency": "Según lo indicado en el envase.",
+      "maxDays": 14,
+      "instructions": "Compra un producto de salvia ya preparado (cápsula o gotas) y tómalo por boca en la cantidad indicada en el envase.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia, como la menta o el romero."
+    },
+    {
+      "kind": "condition",
+      "tag": "epilepsy",
+      "note": "No la uses si tienes epilepsia o convulsiones: la tuyona de la salvia puede afectar el sistema nervioso."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "safetySources": ["s3", "s5"],
+  "sideEffects": [
+    "Reacciones alérgicas en personas sensibles a la familia de la menta.",
+    "En dosis altas o por uso prolongado, la tuyona puede afectar el sistema nervioso."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/salvia.jpg",
+      "author": "Javier martin",
+      "license": "Dominio público (PD-self)",
+      "licenseUrl": "https://en.wikipedia.org/wiki/en:public_domain",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Salvia_officinalis_Habitus_DehesaBoyalPuertollano.jpg",
+      "caption": "Salvia (Salvia officinalis) en su hábitat, Dehesa Boyal de Puertollano, España"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Salvia officinalis L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:456833-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Salvia officinalis (Common Sage)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/salvia-officinalis/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Salviae officinalis folium - European Union herbal monograph (sage leaf)",
+      "publisher": "European Medicines Agency, HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/salviae-officinalis-folium",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Ethnobotany in a Modern City: The Persistence in the Use of Medicinal Plants in Guadalajara, Mexico",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12430341/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Influence of Shading on Essential Oil Quantity and Quality of Sage (Salvia officinalis L.) at Different Harvest Times",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13259298/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

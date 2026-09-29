@@ -1,0 +1,278 @@
+{
+  "id": "curcuma",
+  "commonName": "Cúrcuma",
+  "otherNames": [
+    "azafrán de la India",
+    "turmeric"
+  ],
+  "scientificName": "Curcuma longa L.",
+  "family": "Zingiberaceae",
+  "partsUsed": [
+    "rizoma"
+  ],
+  "easyExplanation": "La cúrcuma es un rizoma de color amarillo-naranja, pariente del jengibre, que se usa como especia y como remedio. En Europa se reconoce su uso tradicional por boca para molestias digestivas leves como sensación de pesadez y gases. En dosis altas o en productos que se absorben más (con pimienta negra o piperina), se han reportado casos de daño al hígado; también puede aumentar el riesgo de sangrado si tomas anticoagulantes o antiagregantes.",
+  "botany": {
+    "description": "Hierba perenne de hasta un metro de altura, con rizomas gruesos y ramificados de los que nacen hojas grandes, agrupadas, de forma de lanza, de hasta un metro de largo, entre 8 y 12 por brote.",
+    "identification": "Se reconoce por sus flores blancoamarillentas agrupadas en espigas densas y cortas, de 10 a 15 cm, que aparecen entre julio y agosto, y por el interior anaranjado de su rizoma cuando se corta.",
+    "cultivation": "Necesita clima cálido y húmedo, sol por la mañana y sombra por la tarde, suelo rico, algo ácido y de húmedo a mojado; se propaga dividiendo los rizomas en primavera o verano y necesita riego abundante si se cultiva en maceta.",
+    "lookalikes": [
+      "Otras especies de Curcuma y rizomas de la familia del jengibre (Zingiberaceae), de aspecto similar antes de cortarlos."
+    ],
+    "nativeRange": "Suroeste de India; hoy cultivada en el sur y sureste de Asia (India, Bangladés, China, Tailandia, Camboya, Malasia, Indonesia, Filipinas).",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La cúrcuma en cualquier cantidad 'limpia' o 'desintoxica' el hígado.",
+      "note": "No hay evidencia de que la cúrcuma limpie el hígado; al contrario, se han reportado casos de daño hepático con suplementos de cúrcuma, sobre todo en formulaciones de mayor absorción. Señales de alarma: cansancio, náuseas, poco apetito, orina oscura o piel amarilla.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "claim": "La cúrcuma cura el cáncer o reemplaza su tratamiento.",
+      "note": "La evidencia en personas es todavía insuficiente; no reemplaza ningún tratamiento médico.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Sensación de plenitud, digestión lenta y gases; uso tradicional por boca reconocido en Europa.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "traditional",
+      "note": "Uso tradicional por boca reconocido en Europa.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "poor_appetite",
+      "label": "Falta de apetito pasajera",
+      "evidence": "popular",
+      "note": "En la medicina tradicional de India se usa como tónico digestivo y para mejorar el apetito; esto es un uso popular, no una evaluación oficial europea.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "joint_pain",
+      "label": "Dolor leve de articulaciones",
+      "evidence": "popular",
+      "note": "Uso popular en la medicina tradicional de India, China, Japón y Corea para molestias articulares; la evidencia en personas todavía es limitada.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "traditional",
+      "note": "Uso tradicional por boca reconocido en Europa.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "title": "Cápsulas de cúrcuma",
+      "uses": [
+        "indigestion",
+        "bloating",
+        "poor_appetite",
+        "joint_pain"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra en la farmacia cápsulas o comprimidos de rizoma de cúrcuma."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalos como indica el envase."
+        }
+      ],
+      "warnings": [
+        "Si el producto combina la cúrcuma con pimienta negra o piperina para 'absorberse mejor', el riesgo de daño al hígado es mayor: suspéndelo y consulta si notas cansancio, náuseas, poco apetito, orina oscura o piel u ojos amarillos.",
+        "Avisa a tu médico si tomas anticoagulantes o antiagregantes, o si vas a operarte: la cúrcuma puede aumentar el riesgo de sangrado.",
+        "No la uses en el embarazo en forma de suplemento."
+      ],
+      "dose": "Sigue la cantidad indicada en el envase del producto; no se recomienda usarla por más de 2 a 3 meses seguidos sin consultar.",
+      "frequency": "Según el envase.",
+      "maxDays": 90,
+      "instructions": "Usa un producto de farmacia de cúrcuma en cápsulas, en la cantidad que indica el envase; suspende y consulta si aparecen señales de daño al hígado.",
+      "sources": [
+        "s3",
+        "s5"
+      ]
+    },
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Cúrcuma fresca o en polvo en la comida",
+      "uses": [
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Ralla el rizoma fresco o usa cúrcuma en polvo."
+        },
+        {
+          "kind": "swallow",
+          "text": "Agrégala a tus comidas."
+        }
+      ],
+      "warnings": [
+        "La cantidad que se usa al cocinar es un condimento, no una dosis medicinal."
+      ],
+      "dose": "La que uses al cocinar; no es una dosis medicinal.",
+      "frequency": "Con las comidas.",
+      "maxDays": null,
+      "instructions": "La cúrcuma fresca o en polvo se usa como especia en la cocina; esa cantidad no es la dosis que se estudió para los usos medicinales.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "zingiberaceae",
+      "note": "No la uses en suplemento si eres alérgico a la cúrcuma, el jengibre u otras plantas de esta familia."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "No la uses si tienes una enfermedad del hígado: la EMA no la recomienda, y se han reportado casos poco frecuentes de daño hepático con suplementos de cúrcuma o curcumina."
+    },
+    {
+      "kind": "condition",
+      "tag": "gallstones",
+      "note": "La EMA no la recomienda si tienes cálculos en la vesícula, las vías biliares tapadas u otra enfermedad de la vesícula o de las vías biliares, porque puede estimular la bilis."
+    },
+    {
+      "kind": "condition",
+      "tag": "bile_duct_obstruction",
+      "note": "La EMA no la recomienda si tienes cálculos en la vesícula, las vías biliares tapadas u otra enfermedad de la vesícula o de las vías biliares, porque puede estimular la bilis."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "La cúrcuma en suplemento se ha asociado a sangrado excesivo junto con warfarina y medicamentos parecidos."
+    },
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "caution",
+      "note": "La cúrcuma en suplemento puede sumar su efecto al de los antiagregantes y aumentar el riesgo de sangrado."
+    },
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "caution",
+      "note": "Evita combinarla con medicamentos que pueden dañar el hígado, sobre todo en formulaciones de mayor absorción."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "zingiberaceae"
+  ],
+  "sideEffects": [
+    "Náuseas, vómito, acidez, malestar de estómago, diarrea o estreñimiento.",
+    "Ronchas o picazón si se usa sobre la piel.",
+    "En dosis altas o formulaciones de mayor absorción, daño al hígado: cansancio, náuseas, poco apetito, orina oscura o piel y ojos amarillos son señales de alarma."
+  ],
+  "safetySources": [
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/curcuma.jpg",
+      "author": "Lavinia Engelbrecht",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turmeric_rhizomes.jpg",
+      "caption": "Rizoma de cúrcuma cortado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Curcuma longa (Turmeric)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/curcuma-longa/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Evaluating the Toxicity and Safety of Turmeric (Curcuma longa L.) and Its Components: A Narrative Review",
+      "publisher": "Journal of Toxicology (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13389443/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Turmeric",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/turmeric",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Curcumae longae rhizoma (turmeric)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/curcumae-longae-rhizoma",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Navigating the Effects of Anti-Atherosclerotic Supplements and Acknowledging Associated Bleeding Risks",
+      "publisher": "International Journal of Molecular Sciences (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12564107/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "science",
+      "title": "Rarely reported cases of hepatotoxicity associated with turmeric- and curcuminoid-containing dietary supplements",
+      "publisher": "Pharmaceutical Biology (PubMed 42364655)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42364655/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s7",
+      "kind": "science",
+      "title": "European Union herbal monograph on Curcuma longa L., rhizoma (Revision 1)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-curcuma-longa-l-rhizoma-revision-1_en.pdf",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

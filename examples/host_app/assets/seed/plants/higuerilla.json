@@ -1,0 +1,175 @@
+{
+  "id": "higuerilla",
+  "commonName": "Higuerilla",
+  "otherNames": [
+    "ricino",
+    "tártago",
+    "castor bean"
+  ],
+  "scientificName": "Ricinus communis L.",
+  "family": "Euphorbiaceae",
+  "partsUsed": [
+    "semilla (nunca se usa; solo el aceite de farmacia)"
+  ],
+  "easyExplanation": "La higuerilla es una planta de hojas grandes en forma de estrella cuyas semillas contienen ricina, una de las sustancias más tóxicas que existen: masticar solo unas pocas semillas puede provocar una intoxicación grave, con vómito, diarrea intensa y hospitalización, y una cantidad mayor puede matar. Las semillas NUNCA deben comerse ni darse a nadie, bajo ninguna forma casera. Lo único que este catálogo describe es el aceite de higuerilla de farmacia, ya preparado sin ricina, aceptado como laxante para el estreñimiento ocasional, por poco tiempo y solo en adultos.",
+  "botany": {
+    "description": "Arbusto o árbol pequeño, semileñoso, de crecimiento rápido, de 2 a 3 m de alto (hasta 6 a 10 pies) y porte denso, erguido, con varios tallos; en climas cálidos se comporta como perenne y en climas fríos se cultiva como planta anual de temporada cálida. Sus hojas son grandes, alternas, simples, palmeadas, con 5 a 11 lóbulos puntiagudos en forma de estrella, de 15 a 75 cm de ancho, de color verde brillante o morado según la variedad, con el borde dentado; los tallos son rojos, verdes o morados. Sus flores, verde amarillentas y sin pétalos, aparecen en espigas de hasta 45 cm entre agosto y noviembre, seguidas de cápsulas pequeñas, redondas y espinosas de 1 a 2,5 cm, cada una con tres semillas lisas y moteadas.",
+    "identification": "Se reconoce por sus hojas grandes, palmeadas, en forma de estrella, y sus cápsulas pequeñas y espinosas con semillas moteadas dentro. Toda la planta es tóxica si se ingiere.",
+    "cultivation": "Necesita pleno sol y suelo fértil, húmedo y bien drenado; puede necesitar tutor por su poca resistencia al viento. Es de bajo mantenimiento una vez establecida, aunque tarda en volverse tolerante a la sequía.",
+    "lookalikes": [
+      "Ninguna confusión frecuente reportada; sus hojas grandes en forma de estrella y sus cápsulas espinosas la distinguen con claridad."
+    ],
+    "nativeRange": "Nativa del África tropical oriental y Medio Oriente; hoy naturalizada en regiones tropicales y subtropicales de todo el mundo.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Comer semillas de higuerilla, aunque sea pocas, para 'limpiar' el cuerpo o por otra razón, no tiene mayor riesgo.",
+      "note": "Las semillas de higuerilla contienen ricina, una toxina que puede ser mortal. Hay casos documentados de personas hospitalizadas tras masticar solo 3 a 6 semillas, con vómito, diarrea y dolor abdominal intensos que requirieron cuidados intensivos; una cantidad mayor puede causar la muerte. Las semillas nunca deben comerse.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "claim": "Como el aceite de higuerilla es 'natural', se puede usar libremente, en cualquier cantidad y por el tiempo que se quiera.",
+      "note": "El aceite de higuerilla de farmacia es un laxante reconocido, pero solo para uso ocasional y de corto plazo (no más de una semana sin supervisión médica); usado por más tiempo o en exceso puede causar náusea, vómito, dolor abdominal y diarrea intensa, y no debe usarse en el embarazo ni la lactancia.",
+      "sources": [
+        "s5"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "constipation",
+      "label": "Estreñimiento ocasional",
+      "evidence": "wellEstablished",
+      "note": "Uso bien establecido del aceite de higuerilla de farmacia como laxante estimulante, por vía oral, para el estreñimiento ocasional, reconocido por el comité de medicamentos herbarios de la Unión Europea (HMPC); solo a corto plazo y en adultos. Es también un uso popular documentado en distintas regiones, con la semilla procesada en aceite, nunca cruda.",
+      "sources": [
+        "s5",
+        "s6"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "title": "Aceite de higuerilla de farmacia",
+      "uses": [
+        "constipation"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra aceite de higuerilla ya preparado en la farmacia; no se elabora en casa ni se usa la semilla directamente."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalo por boca en la cantidad indicada en el envase o por tu médico."
+        }
+      ],
+      "warnings": [
+        "Nunca uses semillas de higuerilla, enteras, molidas o de cualquier otra forma casera: son tóxicas y pueden ser mortales.",
+        "No lo uses por más de una semana sin supervisión médica.",
+        "No lo uses si tienes obstrucción o estrechamiento intestinal, atonía intestinal, apendicitis, enfermedad inflamatoria intestinal, dolor abdominal sin explicación o deshidratación grave.",
+        "No lo uses en el embarazo ni la lactancia.",
+        "Solo para adultos."
+      ],
+      "dose": "La que indique el envase o tu médico.",
+      "frequency": "Uso ocasional, no diario.",
+      "maxDays": 7,
+      "instructions": "Compra aceite de higuerilla ya preparado en la farmacia y tómalo por boca en la cantidad indicada en el envase, solo de forma ocasional y por poco tiempo. Nunca uses la semilla de la planta en ninguna forma casera.",
+      "sources": [
+        "s5"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "gastric_ulcer",
+      "note": "No uses el aceite de higuerilla si tienes dolor abdominal sin explicación, una obstrucción intestinal o una enfermedad inflamatoria intestinal."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "diuretic",
+      "severity": "caution",
+      "note": "El uso repetido de laxantes como el aceite de higuerilla puede bajar el potasio; ten precaución si tomas diuréticos."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3", "s4", "s5"],
+  "sideEffects": [
+    "Las semillas son tóxicas y potencialmente mortales incluso en pocas unidades masticadas: nunca deben comerse.",
+    "El aceite de farmacia puede causar náusea, vómito, dolor abdominal y diarrea intensa; no se recomienda su uso prolongado.",
+    "Toda la planta (hojas, tallos, semillas) puede irritar la piel al manipularla."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/higuerilla.jpg",
+      "author": "Lidine Mia",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ricinus_communis_02.jpg",
+      "caption": "Higuerilla o ricino (Ricinus communis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Ricinus communis L.",
+      "publisher": "Global Biodiversity Information Facility (GBIF)",
+      "url": "https://api.gbif.org/v1/species/match?name=Ricinus%20communis",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Ricinus communis (Castor Bean)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/ricinus-communis/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Ricin intoxication by lethal dose of castor seeds ingestion: a case report",
+      "publisher": "Journal of Medical Case Reports (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11363666/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Pediatric ricin toxicity from castor seed ingestion: a case report from Nepal",
+      "publisher": "Annals of Medicine and Surgery (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12577919/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Ricini oleum - European Union herbal monograph (castor oil)",
+      "publisher": "European Medicines Agency, HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/ricini-oleum",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "popular",
+      "title": "Ethnobotany of the medicinal plants used by the ethnic communities of Kerman province, Southeast Iran",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8082778/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

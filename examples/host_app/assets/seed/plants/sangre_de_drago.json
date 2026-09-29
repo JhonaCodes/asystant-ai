@@ -1,0 +1,135 @@
+{
+  "id": "sangre_de_drago",
+  "commonName": "Sangre de drago",
+  "otherNames": [
+    "sangre de grado",
+    "sangre de dragón",
+    "dragon's blood"
+  ],
+  "scientificName": "Croton lechleri Müll.Arg.",
+  "family": "Euphorbiaceae",
+  "partsUsed": [
+    "látex (savia) del tronco"
+  ],
+  "easyExplanation": "La sangre de drago es un árbol de la Amazonía cuyo tronco, al cortarlo, suelta un látex rojo espeso, parecido a la sangre. Los pueblos indígenas de la Amazonía lo usan desde hace generaciones sobre heridas y cortes: al secarse forma una capa protectora que ayuda a cerrar la piel. Se usa solo sobre la piel, en heridas pequeñas y limpias.",
+  "botany": {
+    "description": "Árbol de tamaño mediano, de 10 a 20 metros de alto, con tronco relativamente angosto (unos 30 cm de diámetro). Sus hojas son grandes, alternas, en forma de corazón, de 15 a 30 cm, de color verde brillante. Las flores son de color blanco verdoso a ámbar y los frutos son cápsulas de tres partes agrupadas en espigas largas.",
+    "identification": "Se reconoce por su látex de color rojo intenso, parecido a la sangre, que brota al hacer un corte en la corteza del tronco; es la característica que le da su nombre.",
+    "cultivation": "Crece de forma silvestre en la Amazonía, en suelos ricos en minerales y zonas alteradas o ribereñas, desde el nivel del mar hasta 1.000 metros de altura; no es una planta habitual de maceta o jardín de casa.",
+    "lookalikes": [
+      "Otras especies del género Croton que también producen látex rojo (\"sangre de drago\") y se recolectan de forma similar, aunque con composición química algo distinta."
+    ],
+    "nativeRange": "Nativo del noroeste de Sudamérica, en la cuenca amazónica de Bolivia, Brasil, Colombia, Ecuador, Perú y Venezuela.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Tomar sangre de drago por boca cura infecciones intestinales graves o reemplaza el tratamiento médico de la diarrea.",
+      "note": "Un derivado purificado del látex (crofelemer) fue aprobado como medicamento de prescripción en Estados Unidos solo para la diarrea no infecciosa asociada al VIH, bajo supervisión médica y con dosis controladas; esto no significa que tomar el látex crudo de la planta sea seguro o eficaz para diarrea infecciosa o infecciones intestinales, que necesitan diagnóstico y tratamiento médico.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "minor_wound",
+      "label": "Heridas y cortes pequeños",
+      "evidence": "limited",
+      "note": "Látex aplicado directamente sobre la herida limpia; uso tradicional indígena documentado en la Amazonía desde hace generaciones para sellar heridas y ayudar a que dejen de sangrar. Estudios en animales muestran que favorece la formación de colágeno y la reparación de la piel, pero falta evidencia clínica sólida en personas.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Limpia bien la herida pequeña con agua y jabón. Aplica unas gotas del látex de sangre de drago directamente sobre la herida; se seca rápido y forma una capa protectora.",
+      "dose": "Unas gotas del látex, la cantidad necesaria para cubrir la herida.",
+      "frequency": "Una aplicación; puedes repetir si la capa se despega antes de que la herida cierre.",
+      "maxDays": 7,
+      "title": "Látex de sangre de drago sobre heridas pequeñas",
+      "uses": [
+        "minor_wound"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava la herida pequeña con agua y jabón."
+        },
+        {
+          "kind": "apply",
+          "text": "Pon unas gotas del látex directamente sobre la herida."
+        }
+      ],
+      "warnings": [
+        "Uso solo sobre la piel: no lo tomes por boca sin indicación de un profesional de salud.",
+        "No lo uses en heridas profundas, muy grandes, con signos de infección, ni en mordeduras o quemaduras extensas: busca atención médica.",
+        "Consigue el látex de una fuente confiable; la recolección y el almacenamiento sin higiene pueden contaminarlo."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No lo uses en heridas profundas, muy grandes o con signos de infección; consulta a un médico."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3"
+  ],
+  "sideEffects": [
+    "Poco frecuente: irritación local de la piel."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/sangre_de_drago.jpg",
+      "author": "Jaime Torres (Pisofrix) / Archivo Centro Takiwasi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sangre_de_grado_(Croton_lechleri)_en_el_jard%C3%ADn_bot%C3%A1nico_de_Takiwasi.jpg",
+      "caption": "Sangre de drago (Croton lechleri) en el jardín botánico de Takiwasi, Perú"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Croton lechleri",
+      "publisher": "Useful Tropical Plants Database (theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Croton+lechleri",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Medicinal Plants from Latin America with Wound Healing Activity: Ethnomedicine, Phytochemistry, Preclinical and Clinical Studies (incluye Croton lechleri / látex tradicional amazónico)",
+      "publisher": "Pharmaceuticals / PMC (PMID 36145316, PMCID PMC9505834)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9505834/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "A Review on Phytochemistry and Recent Pharmacology of Dragon's Blood (Croton lechleri), a Multifunctional Ethnomedicinal Resource from the Amazon Forest",
+      "publisher": "Planta Medica (PMID 40043740)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40043740/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

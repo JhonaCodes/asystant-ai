@@ -1,0 +1,159 @@
+{
+  "id": "azahar",
+  "commonName": "Azahar",
+  "otherNames": [
+    "flor de naranjo amargo",
+    "flor de azahar",
+    "naranjo agrio"
+  ],
+  "scientificName": "Citrus × aurantium L.",
+  "family": "Rutaceae",
+  "partsUsed": [
+    "flor"
+  ],
+  "easyExplanation": "El azahar es la flor blanca y muy aromática del naranjo amargo. En México, España y otros países de habla hispana, el agua o la infusión de azahar es una bebida popular y muy antigua para calmarse y ayudar a dormir. La ciencia lo describe como un sedante suave tradicional, aunque hay pocos estudios modernos hechos específicamente con la flor.",
+  "botany": {
+    "description": "Árbol perenne de hasta 9-10 metros, de copa densa, con hojas simples y alternas sobre pecíolos largos que llevan espinas. Florece de manera abundante entre abril y junio, con flores blancas, muy perfumadas, ricas en néctar y polen. Su fruto es una naranja de 5 a 7 cm, de sabor marcadamente amargo, distinto al de la naranja dulce.",
+    "identification": "Se reconoce por sus flores blancas muy fragantes de cinco pétalos, sus hojas con pecíolo alado y espinoso, y su fruto de cáscara rugosa y sabor amargo (a diferencia de la naranja dulce, Citrus sinensis, de fruto agradable al paladar). Es un híbrido natural entre el pomelo (Citrus maxima) y la mandarina silvestre (Citrus reticulata).",
+    "cultivation": "Se cultiva en climas cálidos y mediterráneos, en suelo franco, profundo, con buen drenaje y abundante materia orgánica, en una posición muy soleada; no tolera la sombra. Prefiere un pH de 5 a 6, aunque tolera un rango más amplio. Las plantas en reposo toleran temperaturas de hasta -6 °C si antes hubo un período de frío gradual, pero los brotes jóvenes no soportan heladas. Se propaga por semilla fresca, que germina en 2 a 3 semanas a 13 °C.",
+    "lookalikes": [
+      "Naranjo dulce (Citrus sinensis): flor muy similar, pero de fruto dulce y no amargo; ambas flores se usan igual en perfumería y como calmante, y en la práctica no se distinguen por el aroma."
+    ],
+    "nativeRange": "Originario del sudeste asiático (sur de China y el sudeste de Asia), se extendió a la India, Persia y el mundo islámico desde alrededor del año 700, y de ahí al Mediterráneo. Llegó a México ya en 1568 con la colonización española, y desde entonces se cultiva ampliamente en América Latina.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "nervousness",
+      "label": "Nerviosismo o tensión nerviosa leve",
+      "evidence": "traditional",
+      "note": "La flor de azahar se usa en la medicina tradicional iraní para trastornos nerviosos leves; no hay un monográfico europeo (EMA) específico para la flor, y los estudios clínicos modernos centrados en ella son pocos.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarse",
+      "evidence": "traditional",
+      "note": "Uso popular como calmante suave: la naranja agria se vende como sedante en mercados de plantas de Bogotá, y la medicina tradicional iraní usa su flor para los nervios.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Ayudar a dormir",
+      "evidence": "limited",
+      "note": "Un ensayo clínico pequeño con destilado de flor de azahar por boca mostró una mejora modesta en la calidad del sueño frente a placebo, sin efecto significativo sobre la ansiedad.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "beliefs": [],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Vierte agua recién hervida sobre flor seca de azahar y deja reposar antes de colar. Es la manera en que se prepara popularmente el 'agua de azahar' o té de azahar, usado desde hace siglos para calmarse y ayudar a dormir.",
+      "title": "Infusión de flor de azahar",
+      "uses": [
+        "nervousness",
+        "relax",
+        "sleep_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre flor seca de azahar en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela la flor."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala tibia, preferiblemente antes de dormir."
+        }
+      ],
+      "warnings": [
+        "No se ha establecido su seguridad en el embarazo ni en la lactancia.",
+        "Esta infusión de la flor no debe confundirse con productos hechos con la cáscara o el extracto de la fruta, que no se cubren aquí."
+      ],
+      "sources": [
+        "s4"
+      ],
+      "dose": "Cantidades como las de una infusión de uso común; las fuentes no dan una dosis medicinal exacta para la flor seca en infusión.",
+      "frequency": "Uso ocasional, preferiblemente antes de dormir.",
+      "maxDays": 14
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "rutaceae",
+      "note": "No la uses si eres alérgico al azahar, la naranja u otros cítricos."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "rutaceae"
+  ],
+  "sideEffects": [
+    "No se han descrito efectos secundarios frecuentes con la infusión de la flor; los datos de fotosensibilidad y de interacción que existen para el naranjo amargo corresponden al aceite y a extractos de la cáscara del fruto, no a la flor en infusión."
+  ],
+  "safetySources": [
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/azahar.jpg",
+      "author": "Zeynel Cebeci",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bitter_orange_-_Citrus_aurantium_01.JPG",
+      "caption": "Flores de azahar del naranjo amargo (Citrus × aurantium)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Citrus aurantium L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/8077391",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Astonishing diversity—the medicinal plant markets of Bogotá, Colombia",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC6011411)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6011411/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Effect of bitter orange blossom distillate on anxiety and sleep disorder in mothers with infants admitted to neonatal intensive care unit: a randomised controlled clinical trial",
+      "publisher": "PLoS One / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11318878/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

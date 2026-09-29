@@ -1,0 +1,189 @@
+{
+  "id": "berro",
+  "commonName": "Berro",
+  "otherNames": [
+    "berro de agua",
+    "mastuerzo de agua"
+  ],
+  "scientificName": "Nasturtium officinale W.T.Aiton",
+  "family": "Brassicaceae",
+  "partsUsed": [
+    "hoja",
+    "tallo"
+  ],
+  "easyExplanation": "El berro es una verdura de hojas verdes que crece en el agua, muy usada en la cocina y, de forma popular, para la tos y como diurético. Importante: el berro silvestre crudo puede tener un parásito (Fasciola hepatica) si creció en agua contaminada con heces de ganado; es más seguro comer berro cultivado, bien lavado o cocido.",
+  "botany": {
+    "description": "Planta acuática o semiacuática, perenne, de 10 a 50 cm de alto, con tallos huecos y carnosos que flotan o se apoyan en el agua, hojas compuestas de varios folíolos de color verde oscuro, y flores pequeñas y blancas agrupadas en el extremo de los tallos.",
+    "identification": "Crece en colonias grandes en arroyos, manantiales y aguas limpias y corrientes; sus tallos huecos flotan sobre el agua y sus hojas tienen un sabor picante parecido al de la mostaza.",
+    "cultivation": "Se cultiva en sistemas con agua corriente y limpia, muchas veces de forma hidropónica; crece rápido pero se conserva pocos días una vez cosechada.",
+    "lookalikes": [],
+    "nativeRange": "Originario de Europa y Asia central; hoy naturalizado en zonas templadas de todo el mundo, y en algunos lugares, como la región de los Grandes Lagos en América del Norte, se comporta como especie invasora.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Uso popular documentado en Estados Unidos y Haití para la bronquitis y la tos, cocido o en infusión.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "fluid_retention",
+      "label": "Retención de líquidos",
+      "evidence": "popular",
+      "note": "Uso popular como diurético suave, documentado en Turquía, República Dominicana y otras regiones.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "skin_irritation",
+      "label": "Irritación leve de la piel",
+      "evidence": "popular",
+      "note": "Uso popular sobre la piel para el eccema y para ayudar a cicatrizar, documentado en Haití.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "beliefs": [
+    {
+      "claim": "Limpia la sangre",
+      "note": "No existe un mecanismo por el que una planta \"limpie la sangre\": esa función depende del hígado y los riñones. Una revisión científica describe el berro como rico en glucosinolatos y antioxidantes, con mejoras medibles en marcadores de estrés oxidativo e inflamación en algunos estudios clínicos, pero eso no equivale a \"depurar\" la sangre ni a un efecto detox general.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "instructions": "Cocina las hojas de berro, cultivado y bien lavado, en agua durante unos minutos; bebe el caldo o cómelo cocido como parte de una sopa. Cocinarlo reduce el riesgo de parásitos que tiene el berro silvestre crudo.",
+      "dose": "No hay una cantidad exacta establecida; se usa como verdura, en la cantidad habitual de una sopa o guiso.",
+      "frequency": "Cuando se desee, como parte de las comidas.",
+      "title": "Berro cocido o en caldo",
+      "uses": [
+        "cough",
+        "fluid_retention"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava bien las hojas de berro con agua corriente."
+        },
+        {
+          "kind": "simmer",
+          "text": "Cocina las hojas en agua durante unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela si quieres beber solo el caldo."
+        },
+        {
+          "kind": "drink",
+          "text": "Bebe el caldo o come las hojas cocidas."
+        }
+      ],
+      "warnings": [
+        "Evita el berro silvestre crudo: puede tener el parásito Fasciola hepatica si creció en agua contaminada con heces de ganado.",
+        "Usa berro cultivado y bien lavado, o cocínalo, para reducir el riesgo."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Machaca hojas frescas de berro cultivado y bien lavado, y aplica la pasta sobre la piel irritada.",
+      "dose": "La cantidad necesaria para cubrir la zona.",
+      "frequency": "Una o dos veces al día.",
+      "title": "Berro machacado sobre la piel",
+      "uses": [
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava bien las hojas de berro con agua corriente."
+        },
+        {
+          "kind": "apply",
+          "text": "Machácalas y aplica la pasta sobre la piel."
+        }
+      ],
+      "warnings": [
+        "No lo apliques sobre heridas abiertas.",
+        "Usa solo berro cultivado y bien lavado, nunca silvestre crudo."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": null,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Su sabor picante puede irritar la boca o el estómago si se come en cantidades muy grandes.",
+    "El berro silvestre crudo puede transmitir el parásito Fasciola hepatica si creció en agua contaminada con heces de ganado; cocinarlo o usar berro cultivado y bien lavado reduce este riesgo."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/berro.jpg",
+      "author": "AnRo0002",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:20190525Nasturtium_officinale1.jpg",
+      "caption": "Berro (Nasturtium officinale) creciendo en agua"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Nasturtium officinale R.Br. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/7701037",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Nasturtium officinale — Ethnobotanical uses",
+      "publisher": "Phytochemical and Ethnobotanical Databases, USDA-ARS",
+      "url": "https://phytochem.nal.usda.gov/ethnobotanical-plant-nasturtium-officinale",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Fascioliasis (DPDx)",
+      "publisher": "CDC",
+      "url": "https://www.cdc.gov/dpdx/fascioliasis/index.html",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Watercress as a Functional Food for Non-Communicable Diseases Prevention and Management",
+      "publisher": "Life (MDPI) / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12299072/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "id": "malva",
+  "commonName": "Malva",
+  "otherNames": [
+    "malva común",
+    "quesitos"
+  ],
+  "scientificName": "Malva sylvestris L.",
+  "family": "Malvaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "La malva es una hierba de flores moradas, fácil de encontrar silvestre o cultivada en jardines. En Europa se reconoce su uso tradicional en infusión para la irritación de boca y garganta y para molestias leves del estómago.",
+  "botany": {
+    "description": "Hierba perenne vigorosa de hasta 1,5 metros, con tallos erguidos o tendidos, ramificados, y hojas alternas, palmeadas, de hasta 7 cm, cubiertas de pelillos en forma de estrella y con nervios marcados por debajo.",
+    "identification": "Se reconoce por sus flores de color púrpura rosado con rayas oscuras, de 5 pétalos (hasta 2 cm), agrupadas de 2 a 4 en las axilas de las hojas, y por sus frutos en forma de rueda con varias semillas (mericarpios) muy marcados.",
+    "cultivation": "Se cultiva con facilidad como planta ornamental de flor vistosa en jardines, o crece silvestre en prados, setos y campos en descanso; prefiere sol pleno y no es exigente con el suelo.",
+    "lookalikes": [
+      "Malva neglecta (malva enana): planta más pequeña y de flores más pálidas, con usos tradicionales similares."
+    ],
+    "nativeRange": "Nativa de Europa occidental, el norte de África y Asia; hoy cultivada y naturalizada en muchas regiones templadas del mundo, incluida América Latina.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "sore_throat",
+      "label": "Irritación de boca y garganta con tos seca",
+      "evidence": "traditional",
+      "note": "Infusión para gárgaras o por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias leves de estómago e intestino",
+      "evidence": "traditional",
+      "note": "Infusión por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hojas o flores de malva, frescas o secas, en agua recién hervida; deja reposar, cuela y bebe, o haz gárgaras sin tragar si es para la garganta.",
+      "dose": "La que indique el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de malva",
+      "uses": [
+        "sore_throat",
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas o flores de malva, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo, o haz gárgaras."
+        }
+      ],
+      "warnings": [
+        "Si la irritación de boca o garganta no mejora en una semana, o las molestias digestivas duran más de dos semanas, consulta a un médico."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No se han reportado efectos secundarios frecuentes con el uso tradicional."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/malva.jpg",
+      "author": "KENPEI",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Malva_sylvestris3.jpg",
+      "caption": "Flores de malva (Malva sylvestris)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Malva sylvestris (High mallow)",
+      "publisher": "Go Botany, Native Plant Trust",
+      "url": "https://gobotany.nativeplanttrust.org/species/malva/sylvestris/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Malvae sylvestris flos (uso popular de larga tradición, al menos 30 años, reconocido en su historial de uso en Europa)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/malvae-sylvestris-flos",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Malvae sylvestris flos — summary of HMPC conclusions (mallow flower)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/malvae-sylvestris-flos",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3"
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "id": "mejorana",
+  "commonName": "Mejorana",
+  "otherNames": [
+    "mejorana dulce",
+    "almoraduj"
+  ],
+  "scientificName": "Origanum majorana L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "La mejorana se usa en infusión de hoja por tradición para la digestión pesada y los gases. Hay un uso bien establecido, respaldado por una agencia europea de medicamentos, de un ungüento con mejorana para la irritación de la piel alrededor de la nariz.",
+  "botany": {
+    "description": "Hierba perenne y sensible al frío, de tallos y hojas cubiertos de pelos finos que le dan un aspecto suave al tacto. Las hojas son simples, ovaladas a oblongas, de 0,5 a 1,5 cm de largo por 0,2 a 0,8 cm de ancho. Las flores son pequeñas, blancas, rosadas a rojizas, o azuladas a violeta.",
+    "identification": "Se distingue del orégano (su pariente más cercano) por hojas más pequeñas y suaves, y un sabor y aroma más delicados y dulces, ya que a su aceite esencial le faltan los compuestos fenólicos (carvacrol y timol) responsables del sabor fuerte del orégano.",
+    "cultivation": "Es una planta perenne sensible al frío (zonas de cultivo templadas a cálidas); en climas fríos se cultiva en maceta o se trata como anual. Se cosechan las hojas frescas o secas cuando la planta empieza a florecer, y se secan despacio a la sombra.",
+    "lookalikes": [
+      "Origanum vulgare (orégano), de sabor más fuerte y hojas algo mayores.",
+      "Origanum onites (orégano de maceta), de uso culinario parecido.",
+      "Origanum × majoricum, un híbrido más resistente al frío pero de sabor menos dulce."
+    ],
+    "nativeRange": "Nativa del Mediterráneo oriental, Chipre, Turquía, el oeste de Asia, la península arábiga y el Levante; hoy cultivada y en algunos sitios naturalizada en otras zonas templadas y cálidas del mundo.",
+    "sources": [
+      "s1",
+      "s2",
+      "s5"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de mejorana equilibra las hormonas y trata el síndrome de ovario poliquístico (SOP).",
+      "note": "Un estudio piloto controlado y aleatorizado, con solo 25 mujeres, encontró que tomar té de mejorana dos veces al día durante un mes mejoró algunos marcadores hormonales (menor andrógeno adrenal, mejor sensibilidad a la insulina) en mujeres con SOP. Es un hallazgo preliminar en un grupo pequeño, no una forma de tratar el SOP por cuenta propia: el diagnóstico y el tratamiento de esta condición los define un médico.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional reconocido por la agencia europea de medicamentos para las molestias digestivas leves de tipo espasmódico, como la hinchazón y los gases.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional reconocido por la agencia europea de medicamentos para la hinchazón y los gases.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "skin_irritation",
+      "label": "Irritación de la piel alrededor de la nariz",
+      "evidence": "wellEstablished",
+      "note": "Ungüento de mejorana en la piel alrededor de la nariz; uso bien establecido por larga tradición, reconocido por la agencia europea de medicamentos.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Ayudar a relajarse",
+      "evidence": "popular",
+      "note": "Uso popular como sedante y ayuda para dormir, documentado en una base de datos etnobotánica (Haití, y como sedante en general).",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de mejorana",
+      "uses": [
+        "indigestion",
+        "bloating",
+        "relax"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve 150 ml de agua (poco más de media taza)."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre 2 a 4 g de hoja seca de mejorana (más o menos 1 cucharadita colmada)."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela las hojas."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala una o dos veces al día, antes de las comidas."
+        }
+      ],
+      "warnings": [
+        "No se recomienda en menores de 18 años, por falta de datos.",
+        "No se recomienda en el embarazo ni en la lactancia, por falta de datos.",
+        "Si las molestias duran más de 2 semanas, consulta a un médico."
+      ],
+      "dose": "2 a 4 g de hoja seca en 150 ml de agua, una o dos veces al día (dosis diaria: 2 a 8 g).",
+      "frequency": "Una o dos veces al día, antes de las comidas.",
+      "maxDays": 14,
+      "instructions": "Prepara una infusión con hoja seca de mejorana en agua recién hervida; deja reposar, cuela y tómala una o dos veces al día antes de las comidas.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "form": "gel",
+      "route": "topical",
+      "title": "Ungüento de mejorana para la piel de la nariz",
+      "uses": [
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un ungüento de mejorana ya preparado, de farmacia o herbolario."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplica una pequeña cantidad alrededor de la nariz, sin meterla adentro."
+        }
+      ],
+      "warnings": [
+        "No lo uses en niños menores de 1 año, por falta de datos.",
+        "No lo apliques profundo dentro de la nariz: puede afectar el movimiento normal de los pelillos de la nariz.",
+        "Lávate las manos después de aplicarlo, para que no te entre en los ojos.",
+        "Si aparecen señales de infección en la piel, o si las molestias duran más de 1 semana, consulta a un médico."
+      ],
+      "dose": "Una pequeña cantidad, según el envase del producto.",
+      "frequency": "2 a 4 veces al día.",
+      "maxDays": 7,
+      "instructions": "Usa un ungüento de mejorana ya preparado y aplica una pequeña cantidad alrededor (nunca dentro) de la nariz, de 2 a 4 veces al día.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia (orégano, menta, albahaca, entre otras)."
+    },
+    {
+      "kind": "condition",
+      "tag": "hormone_sensitive_condition",
+      "note": "Hay estudios preliminares de efectos hormonales; si tienes una condición sensible a las hormonas, como el síndrome de ovario poliquístico, consulta a tu médico antes de usarla seguido."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hormonal_contraceptive",
+      "severity": "caution",
+      "note": "Hay estudios preliminares de efectos sobre hormonas; consulta a tu médico si usas anticonceptivos hormonales y quieres tomarla seguido."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "sideEffects": [
+    "No se conocen efectos adversos frecuentes con el uso tradicional.",
+    "El ungüento en la piel puede irritar los ojos si no te lavas las manos después de aplicarlo.",
+    "Rara vez, reacciones alérgicas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/mejorana.jpg",
+      "author": "Forest & Kim Starr",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starr_070906-8858_Origanum_majorana.jpg",
+      "caption": "Planta de mejorana (Origanum majorana)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Origanum majorana L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:453303-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "European Union herbal monograph on Origanum majorana L., herba",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-origanum-majorana-l-herba_en.pdf",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "The effect of marjoram (Origanum majorana) tea on the hormonal profile of women with polycystic ovary syndrome: a randomised controlled pilot study",
+      "publisher": "Journal of Human Nutrition and Dietetics (PubMed)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25662759/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Origanum majorana — Ethnobotanical uses",
+      "publisher": "Phytochemical and Ethnobotanical Databases, USDA-ARS",
+      "url": "https://phytochem.nal.usda.gov/ethnobotanical-plant-origanum-majorana",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "botany",
+      "title": "Origanum majorana L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/2926615",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s2",
+    "s3"
+  ]
+}

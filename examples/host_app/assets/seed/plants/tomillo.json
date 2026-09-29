@@ -1,0 +1,240 @@
+{
+  "id": "tomillo",
+  "commonName": "Tomillo",
+  "otherNames": [
+    "tomillo común",
+    "tomillo de jardín"
+  ],
+  "scientificName": "Thymus vulgaris L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "El tomillo es una hierba aromática que se usa en infusión, y tiene un uso tradicional reconocido en Europa para la tos con flema del resfriado. En Latinoamérica también se usa por tradición popular para ayudar a la digestión y aliviar los gases. No se recomienda en niños menores de 12 años, ni en el embarazo o la lactancia, porque no hay estudios suficientes que respalden su seguridad en esos casos.",
+  "botany": {
+    "description": "Thymus vulgaris es un subarbusto aromático perenne de la familia Lamiaceae, de tallos leñosos y erguidos que forman matas densas y compactas.",
+    "identification": "Alcanza entre 15 y 30 cm de altura y hasta 40 cm de ancho. Hojas pequeñas, lineales, de 0,6 a 1,3 cm, de color gris verdoso, con vello fino y bordes enrollados hacia el envés, muy aromáticas al frotarlas. Flores pequeñas, tubulares, de dos labios, de color púrpura o blanco, agrupadas en racimos hacia la punta de los tallos entre mayo y julio.",
+    "cultivation": "Necesita sol pleno, al menos 6 horas de luz directa al día. Prefiere suelo seco, arenoso o pedregoso, bien drenado, de pH neutro a alcalino (6,0 a 8,0 o más). Tolera bien la sequía y el frío; conviene evitar el exceso de riego, que pudre sus raíces.",
+    "lookalikes": [
+      "Thymus leucotrichus",
+      "Thymus pulegioides",
+      "Thymus serpyllum (tomillo serpol)"
+    ],
+    "nativeRange": "Originario del suroeste de Europa y el sureste de Italia; naturalizado en el norte de África y cultivado en muchas regiones templadas del mundo, incluida América Latina.",
+    "sources": [
+      "s4",
+      "s5"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de tomillo cura las infecciones respiratorias por sí solo y puede reemplazar a un antibiótico.",
+      "note": "El tomillo puede ayudar a aliviar la tos y a aflojar la flema, pero no hay evidencia de que cure infecciones bacterianas ni de que reemplace un tratamiento médico; la propia guía europea de uso tradicional indica consultar a un médico si aparece fiebre, dificultad para respirar o flema con pus, o si los síntomas duran más de una semana.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "cough",
+      "label": "Tos con flema del resfriado",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa, con al menos treinta años de uso documentado, para la tos productiva asociada al resfriado.",
+      "sources": [
+        "s1",
+        "s2"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas del resfriado",
+      "evidence": "traditional",
+      "note": "Uso tradicional para acompañar los síntomas del resfriado, junto con la tos productiva.",
+      "sources": [
+        "s1",
+        "s2"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada",
+      "evidence": "popular",
+      "note": "En mercados populares de Colombia se vende y usa por tradición para ayudar a la digestión.",
+      "sources": [
+        "s6"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "popular",
+      "note": "Uso popular tradicional para la flatulencia, documentado en mercados de plantas medicinales de Colombia.",
+      "sources": [
+        "s6"
+      ]
+    },
+    {
+      "tag": "poor_appetite",
+      "label": "Falta de apetito",
+      "evidence": "popular",
+      "note": "Uso popular tradicional para la falta de apetito, documentado en mercados de plantas medicinales de Colombia.",
+      "sources": [
+        "s6"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Cólico o retortijón estomacal",
+      "evidence": "popular",
+      "note": "Uso popular tradicional para el cólico y el retortijón estomacal, documentado en mercados de plantas medicinales de Colombia.",
+      "sources": [
+        "s6"
+      ]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "popular",
+      "note": "Uso popular tradicional para fortalecer o ayudar a la digestión, documentado en mercados de plantas medicinales de Colombia.",
+      "sources": [
+        "s6"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de tomillo",
+      "uses": [
+        "cough",
+        "cold_symptoms",
+        "indigestion",
+        "bloating",
+        "poor_appetite",
+        "abdominal_cramps",
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre una cucharadita de tomillo seco (1 a 2 g), frescas o secas, en una taza (150 ml)."
+        },
+        {
+          "kind": "steep",
+          "text": "Tapa y deja reposar de 10 a 15 minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Bébelo."
+        }
+      ],
+      "warnings": [
+        "No lo uses en niños menores de 12 años.",
+        "Evítalo en el embarazo y la lactancia.",
+        "Consulta a un médico si los síntomas duran más de una semana, o si aparece fiebre, dificultad para respirar o flema con pus."
+      ],
+      "dose": "1 a 2 g de tomillo seco (una cucharadita) en 150 ml de agua hirviendo, de 3 a 4 veces al día.",
+      "frequency": "De 3 a 4 veces al día.",
+      "maxDays": 7,
+      "instructions": "Vierte agua recién hervida sobre el tomillo, tapa la taza y deja reposar de 10 a 15 minutos para que suelte sus aceites aromáticos. Cuela y bebe. Si los síntomas de la tos o el resfriado no mejoran después de una semana, o empeoran, consulta a un médico.",
+      "sources": [
+        "s1",
+        "s2",
+        "s6"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No lo uses si eres alérgico al tomillo o a otras plantas de esta familia."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "safetySources": [
+    "s1",
+    "s2"
+  ],
+  "sideEffects": [
+    "Molestias gástricas (se desconoce con qué frecuencia ocurren)."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/tomillo.jpg",
+      "author": "Salicyna",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thymus_vulgaris_2020-05-22_9031.jpg",
+      "caption": "Planta de tomillo (Thymus vulgaris)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "science",
+      "title": "Thymi herba — assessment report / HMPC conclusions summary (thyme)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/thymi-herba",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Community herbal monograph on Thymus vulgaris L. and Thymus zygis L., herba (Thymi herba)",
+      "publisher": "EMA HMPC (EMA/HMPC/342332/2013)",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-thymus-vulgaris-l-thymus-zygis-l-herba_en.pdf",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Evaluation of efficacy and tolerability of a fixed combination of dry extracts of thyme herb and primrose root in adults suffering from acute bronchitis with productive cough. A prospective, double-blind, placebo-controlled multicentre clinical trial",
+      "publisher": "Arzneimittelforschung (PubMed)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17966760/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "botany",
+      "title": "Thymus vulgaris L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/5341442",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "botany",
+      "title": "Thymus vulgaris (Common Thyme)",
+      "publisher": "North Carolina Extension Gardener Plant Toolbox, NC State University",
+      "url": "https://plants.ces.ncsu.edu/plants/thymus-vulgaris/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "popular",
+      "title": "Astonishing diversity—the medicinal plant markets of Bogotá, Colombia",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6011411/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

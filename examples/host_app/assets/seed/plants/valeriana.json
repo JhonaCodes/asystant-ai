@@ -1,0 +1,253 @@
+{
+  "id": "valeriana",
+  "commonName": "Valeriana",
+  "otherNames": [
+    "valeriana común"
+  ],
+  "scientificName": "Valeriana officinalis L.",
+  "family": "Caprifoliaceae",
+  "partsUsed": [
+    "raíz"
+  ],
+  "easyExplanation": "La valeriana es una planta cuya raíz se usa para calmar los nervios y ayudar a dormir. Un extracto seco de la raíz tiene uso bien establecido en Europa para la tensión nerviosa leve y los problemas leves de sueño; otras formas tienen uso tradicional. Puede dar sueño, así que no conduzcas después de tomarla.",
+  "botany": {
+    "description": "La valeriana es una hierba perenne de tallo hueco y acanalado que puede alcanzar hasta 2 m de altura. Bajo tierra crece un rizoma vertical con numerosas raicillas y, en algunas subespecies, estolones horizontales. Las hojas son opuestas y muy divididas, con foliolos alargados y dentados. Las flores, pequeñas, blancas o rosadas, se agrupan en racimos sueltos en el extremo de los tallos; los frutos son pequeños y secos, con una sola semilla.",
+    "identification": "Se reconoce por sus hojas opuestas divididas en 6 a 11 foliolos lanceolados y dentados, más anchas y con pecíolo en la base del tallo y sin pecíolo hacia arriba, y por sus flores tubulares de cinco pétalos, de 4 a 5 mm, agrupadas en racimos sueltos que abren de rosado a blanco entre junio y agosto. Puede confundirse con la valeriana de pantano (Valeriana dioica), una especie más baja y compacta, de flores más apretadas, con las plantas masculinas y femeninas separadas.",
+    "cultivation": "Crece en pastizales secos y húmedos, zanjas y orillas de caminos, tanto en Europa como en las zonas donde se ha naturalizado. Tolera muy distintos tipos de suelo, de secos a húmedos, pero no el encharcamiento permanente. Se propaga por semilla y por los estolones que emite el rizoma, y una vez establecida se extiende con facilidad por sus propios medios.",
+    "lookalikes": [
+      "Valeriana de pantano (Valeriana dioica)"
+    ],
+    "nativeRange": "Originaria de Europa y el oeste de Asia. Se cultiva como planta medicinal en varios países europeos y se ha naturalizado, tras escapar de jardines y cultivos, en el norte de Estados Unidos y Canadá.",
+    "sources": [
+      "s3",
+      "s5"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "insomnia",
+      "label": "Problemas leves para dormir",
+      "evidence": "wellEstablished",
+      "note": "Extracto seco de raíz; el efecto se nota mejor tras unas 2 semanas. Otras revisiones hallan resultados inconsistentes.",
+      "sources": [
+        "s1",
+        "s2"
+      ]
+    },
+    {
+      "tag": "nervousness",
+      "label": "Tensión nerviosa leve",
+      "evidence": "wellEstablished",
+      "note": "Extracto seco de raíz.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "stress",
+      "label": "Síntomas leves de estrés",
+      "evidence": "traditional",
+      "note": "Infusión, tintura u otras formas tradicionales; también documentada como sedante y tranquilizante en un estudio sobre los mercados de plantas medicinales de Bogotá, Colombia.",
+      "sources": [
+        "s1",
+        "s7"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Dormir mejor",
+      "evidence": "wellEstablished",
+      "note": "Extracto seco de raíz.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarse",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "headache",
+      "label": "Dolor de cabeza de origen nervioso",
+      "evidence": "popular",
+      "note": "Uso popular documentado en un estudio sobre los mercados de plantas medicinales de Bogotá, Colombia, sin estudios clínicos que lo respalden.",
+      "sources": [
+        "s7"
+      ]
+    }
+  ],
+  "beliefs": [
+    {
+      "claim": "Sirve para tratar la epilepsia y las convulsiones",
+      "note": "Este uso aparece en textos de medicina popular, pero no hay estudios en personas que lo respalden. La epilepsia y las convulsiones necesitan tratamiento médico específico; dejar el medicamento recetado por confiar en la valeriana es peligroso.",
+      "sources": [
+        "s6"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Usa cápsulas o comprimidos de extracto seco de raíz de valeriana de farmacia.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Cápsulas de valeriana",
+      "uses": [
+        "insomnia",
+        "nervousness",
+        "sleep_better",
+        "relax"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra en la farmacia cápsulas o comprimidos de extracto de raíz de valeriana."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalos como dice el envase."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con raíz seca troceada en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de valeriana",
+      "uses": [
+        "stress",
+        "relax",
+        "headache"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre la raíz seca troceada en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s1",
+        "s7"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "caprifoliaceae",
+      "note": "No la uses si eres alérgico a la valeriana."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "sedative",
+      "severity": "avoid",
+      "note": "No la combines con sedantes ni con alcohol."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "caprifoliaceae"
+  ],
+  "safetySources": [
+    "s1",
+    "s2",
+    "s6"
+  ],
+  "sideEffects": [
+    "Náuseas o cólicos abdominales.",
+    "Dolor de cabeza, malestar de estómago, embotamiento o sueños vívidos.",
+    "Puede afectar la capacidad para conducir o usar máquinas.",
+    "Si se deja de golpe tras un uso largo, puede haber síntomas de abstinencia.",
+    "Muy rara vez, daño en el hígado."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/valeriana.jpg",
+      "author": "Ivar Leidus",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Valeriana_officinalis_-_Niitv%C3%A4lja.jpg",
+      "caption": "Flores de valeriana"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "science",
+      "title": "Valerianae radix — summary of HMPC conclusions (valerian root)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/valerianae-radix",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Valerian (Herbs at a Glance)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/valerian",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "botany",
+      "title": "Valeriana officinalis L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/2888763",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "botany",
+      "title": "Valeriana officinalis (Common Valerian)",
+      "publisher": "Go Botany, Native Plant Trust",
+      "url": "https://gobotany.nativeplanttrust.org/species/valeriana/officinalis/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "science",
+      "title": "Radix Valerianae — WHO monographs on selected medicinal plants, Volume 1",
+      "publisher": "World Health Organization",
+      "url": "https://e-lactancia.org/media/papers/Fitoterapia-WHO-01.pdf",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s7",
+      "kind": "popular",
+      "title": "Astonishing diversity—the medicinal plant markets of Bogotá, Colombia",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6011411/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

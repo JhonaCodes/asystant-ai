@@ -1,0 +1,296 @@
+{
+  "id": "jengibre",
+  "commonName": "Jengibre",
+  "otherNames": [],
+  "scientificName": "Zingiber officinale Roscoe",
+  "family": "Zingiberaceae",
+  "partsUsed": [
+    "rizoma"
+  ],
+  "easyExplanation": "El jengibre es una raíz (rizoma) de sabor picante que se usa en la cocina y como remedio. En Europa, el polvo de jengibre tiene uso bien establecido para prevenir las náuseas del mareo en viajes en adultos y adolescentes, y uso tradicional por boca para gases y digestión pesada. También es una de las hierbas más usadas en remedios caseros para el resfriado en varios países.",
+  "botany": {
+    "description": "Hierba perenne de tallos erguidos, uno o dos por rizoma, con hojas simples, alternas, angostas y alargadas (de más de 15 cm de largo y menos de 2,5 cm de ancho), sin vello. Su rizoma es de piel corchosa, de color marrón a dorado, con la pulpa interna amarillo pálida y de olor picante.",
+    "identification": "Se reconoce por su rizoma fibroso y aromático, y por sus espigas de flores en forma de cono, con brácteas verdes o amarillas de borde translúcido, que nacen en tallos separados de las hojas, en otoño.",
+    "cultivation": "Prefiere sombra parcial (2 a 6 horas de sol directo), suelo rico en materia orgánica, de arcilla, marga o arena, húmedo a algo encharcado, y necesita entre 30 cm y 1 metro de espacio.",
+    "lookalikes": [
+      "Curcuma longa (cúrcuma) y otros rizomas de la familia Zingiberaceae, de aspecto parecido antes de cortarlos, aunque el interior de la cúrcuma es de color anaranjado intenso."
+    ],
+    "nativeRange": "Asia tropical.",
+    "sources": [
+      "s3"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "motion_sickness",
+      "label": "Prevenir el mareo en viajes",
+      "evidence": "wellEstablished",
+      "note": "Uso bien establecido en adultos (18 años o más): 1 a 2 g de polvo de raíz, 1 hora antes de viajar. Aparte, hay un uso tradicional con una dosis menor que sí incluye adolescentes y niños desde 6 años. Otras revisiones señalan que muchos estudios no muestran beneficio.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "nausea",
+      "label": "Náuseas por mareo en viajes",
+      "evidence": "wellEstablished",
+      "note": "Solo para las náuseas del mareo en viajes, en adultos; para otras náuseas, consulta.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa para molestias digestivas leves con espasmos, hinchazón y gases.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Espasmos digestivos leves",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "poor_appetite",
+      "label": "Falta de apetito pasajera",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "joint_pain",
+      "label": "Dolor leve de articulaciones",
+      "evidence": "traditional",
+      "note": "Si la articulación está hinchada o roja, o hay fiebre, consulta a un médico.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Es la hierba más citada en encuestas de remedios caseros para el resfriado y la gripe, en decocción o inhalación de su vapor. Si los síntomas duran más de una semana, consulta.",
+      "sources": [
+        "s5"
+      ]
+    },
+    {
+      "tag": "menstrual_cramps",
+      "label": "Cólicos menstruales",
+      "evidence": "limited",
+      "note": "Una revisión con metaanálisis encontró que el jengibre alivia más el dolor menstrual que un placebo, de forma parecida a un antiinflamatorio (ácido mefenámico); los estudios incluidos tienen riesgo alto de sesgo, por eso la evidencia es limitada.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Usa cápsulas o comprimidos de polvo de raíz de jengibre de farmacia.",
+      "dose": "Para el mareo en viajes, uso bien establecido en adultos (18 años o más): 1 a 2 g, 1 hora antes de viajar. Uso tradicional con dosis menor, que sí incluye adolescentes y niños desde 6 años: 750 mg (250 a 500 mg en niños de 6 a 12 años), media hora antes de viajar. Para gases y digestión pesada (uso tradicional, solo adultos): 180 mg, hasta 3 veces al día.",
+      "frequency": "Según la indicación de dosis.",
+      "maxDays": 14,
+      "title": "Cápsulas de jengibre",
+      "uses": [
+        "motion_sickness",
+        "nausea",
+        "bloating",
+        "abdominal_cramps",
+        "poor_appetite",
+        "joint_pain",
+        "cold_symptoms",
+        "menstrual_cramps",
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra en la farmacia cápsulas o comprimidos de raíz de jengibre."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalos como dice el envase."
+        }
+      ],
+      "warnings": [
+        "El uso por boca para gases y digestión no se recomienda en menores de 18 años.",
+        "Para el mareo en viajes, no se recomienda en menores de 6 años.",
+        "Para gases y digestión, consulta si las molestias duran más de 2 semanas; para el mareo en viajes, consulta si los síntomas duran más de 5 días."
+      ],
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "oral",
+      "instructions": "Hierve rodajas de jengibre fresco o seco en agua, deja reposar y cuela.",
+      "dose": "Unas rodajas de jengibre fresco o seco por taza de agua; no hay una cantidad medicinal exacta descrita en las fuentes consultadas.",
+      "frequency": "Hasta unas pocas tazas al día.",
+      "maxDays": 7,
+      "title": "Agua o té de jengibre",
+      "uses": [
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua con unas rodajas de jengibre fresco o seco."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir unos minutos a fuego bajo."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo tibio."
+        }
+      ],
+      "warnings": [
+        "Si los síntomas de resfriado duran más de una semana, o hay fiebre alta o dificultad para respirar, busca atención médica."
+      ],
+      "sources": [
+        "s5"
+      ]
+    },
+    {
+      "form": "tincture",
+      "route": "oral",
+      "instructions": "Usa una tintura de raíz de jengibre de farmacia, diluida según el envase.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Gotas de jengibre",
+      "uses": [
+        "motion_sickness",
+        "nausea",
+        "bloating",
+        "abdominal_cramps",
+        "poor_appetite",
+        "joint_pain",
+        "cold_symptoms",
+        "menstrual_cramps",
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa una tintura de raíz de jengibre de farmacia."
+        },
+        {
+          "kind": "dilute",
+          "text": "Mézclala con agua como dice el envase."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómala."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "zingiberaceae",
+      "note": "No lo uses si eres alérgico al jengibre."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "zingiberaceae"
+  ],
+  "sideEffects": [
+    "Molestias de estómago, eructos, indigestión y náuseas (comunes).",
+    "Reacción alérgica en la piel.",
+    "Acidez, diarrea o irritación de boca y garganta."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/jengibre.jpg",
+      "author": "Sanjay Acharya",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ginger_Root.jpg",
+      "caption": "Rizoma (raíz) de jengibre"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "science",
+      "title": "Final Community herbal monograph on Zingiber officinale Roscoe, rhizoma",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-zingiber-officinale-roscoe-rhizoma_en.pdf",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Ginger (Herbs at a Glance)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/ginger",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "botany",
+      "title": "Zingiber officinale (Ginger)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/zingiber-officinale/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Efficacy of Plant-Derived Therapies for Primary Dysmenorrhea: A Systematic Review and Meta-Analysis of Randomized Controlled Trials",
+      "publisher": "Phytotherapy Research (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13254016/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "popular",
+      "title": "Survey on the Traditional Use of Medicinal Herbs in Haiti: A Study on Knowledge, Practices, and Efficacy Prevention",
+      "publisher": "Plants (MDPI, PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11396795/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s1",
+    "s2"
+  ]
+}

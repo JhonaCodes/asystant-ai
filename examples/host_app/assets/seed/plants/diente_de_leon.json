@@ -1,0 +1,227 @@
+{
+  "id": "diente_de_leon",
+  "commonName": "Diente de león",
+  "otherNames": [
+    "taraxaco"
+  ],
+  "scientificName": "Taraxacum officinale Weber ex F.H.Wigg.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "raíz",
+    "hoja"
+  ],
+  "easyExplanation": "El diente de león es una planta común de flores amarillas; se usan su raíz y sus hojas. La agencia europea de medicamentos lo evalúa para la falta de apetito y molestias digestivas y urinarias leves, pero hay muy poca evidencia científica sobre sus efectos. Puede interactuar con medicamentos para la diabetes, diuréticos y anticoagulantes.",
+  "indications": [
+    {
+      "tag": "poor_appetite",
+      "label": "Falta de apetito",
+      "evidence": "limited",
+      "note": "Área de uso evaluada en Europa; la evidencia científica es escasa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "limited",
+      "note": "Área de uso evaluada en Europa; la evidencia científica es escasa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "urinary_discomfort",
+      "label": "Molestias urinarias leves",
+      "evidence": "limited",
+      "note": "Área de uso evaluada en Europa; la evidencia científica es escasa. Si hay fiebre o sangre en la orina, consulta.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con raíz u hojas secas en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana; evita cantidades grandes.",
+      "frequency": "Según el envase.",
+      "maxDays": null,
+      "title": "Té de diente de león",
+      "uses": [
+        "poor_appetite",
+        "indigestion",
+        "urinary_discomfort"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas frescas o raíz y hojas secas en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Evita tomar cantidades grandes."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "Puede causar alergia en personas sensibles a plantas de la familia de la margarita."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Consulta antes: se ha reportado daño por tomar mucha infusión con enfermedad renal."
+    },
+    {
+      "kind": "condition",
+      "tag": "hormone_sensitive_condition",
+      "note": "Estudios de laboratorio muestran actividad parecida a los estrógenos; consulta antes de usarlo."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Podría bajar más el azúcar en la sangre."
+    },
+    {
+      "medicationClass": "diuretic",
+      "severity": "caution",
+      "note": "Podría sumar su efecto de aumentar la orina."
+    },
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Posible interacción teórica."
+    },
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "caution",
+      "note": "Posible interacción teórica."
+    },
+    {
+      "medicationClass": "immunosuppressant",
+      "severity": "caution",
+      "note": "Se reportó un caso de niveles tóxicos de un inmunosupresor tras tomar una infusión que lo contenía."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Acidez o dolor de estómago.",
+    "Bajada del azúcar en la sangre.",
+    "Sarpullido o dermatitis por contacto.",
+    "Diarrea leve con cantidades altas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/diente_de_leon.jpg",
+      "author": "Dominicus Johannes Bergsma",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paardenbloem_(Taraxacum_officinale)_06.JPG",
+      "caption": "Flor y hojas de diente de león"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Dandelion - Taraxacum officinale",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/taraxacum-officinale/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Plants Used in Mexican Traditional Medicine for the Management of Urolithiasis (incluye Taraxacum officinale)",
+      "publisher": "Molecules / PMC (PMID 35335370, PMCID PMC8949565)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8949565/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Taraxaci radix cum herba — EMA herbal product page (key facts)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/taraxaci-radix-cum-herba",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Taraxaci folium — EMA herbal product page (key facts)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/taraxaci-folium",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Dandelion (Herbs at a Glance)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/dandelion",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "science",
+      "title": "Dandelion (About Herbs)",
+      "publisher": "Memorial Sloan Kettering Cancer Center",
+      "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/dandelion",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "botany": {
+    "description": "Hierba perenne comestible, de flores amarillas brillantes en cabezuelas solitarias con más de 20 pétalos, hojas dentadas en roseta basal, raíz principal profunda y tallos huecos sin hojas que sueltan un látex blanco al cortarlos.",
+    "identification": "Hojas alargadas y dentadas con lóbulos apuntando hacia atrás, de 8 a 15 cm, en roseta pegada al suelo. La flor amarilla se cierra al anochecer y da paso a una bola de semillas con vilano blanco que el viento dispersa.",
+    "cultivation": "Crece rápido en sol pleno, casi cualquier suelo, y tolera el suelo compactado; se considera maleza común de jardines y potreros más que planta de cultivo.",
+    "lookalikes": [
+      "Hypochaeris radicata, Sonchus spp. y Youngia japonica: otras \"falsas margaritas\" amarillas con las que se confunde por su parecido; no son tóxicas pero conviene identificar bien la planta antes de comerla."
+    ],
+    "nativeRange": "Eurasia; hoy naturalizado en casi todo el mundo, incluida América.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El diente de león \"purifica la sangre\" y cura el cáncer o la hepatitis.",
+      "note": "No hay estudios en personas que muestren que el diente de león cure el cáncer, la hepatitis ni que \"purifique la sangre\". La evaluación europea solo reconoce evidencia limitada para la falta de apetito y molestias digestivas y urinarias leves.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "safetySources": [
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+  ]
+}

@@ -1,0 +1,1 @@
+enum AssessmentStatus { inProgress, completed }

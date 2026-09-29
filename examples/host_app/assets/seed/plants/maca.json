@@ -1,0 +1,119 @@
+{
+  "id": "maca",
+  "commonName": "Maca",
+  "otherNames": [
+    "maca andina",
+    "ginseng peruano"
+  ],
+  "scientificName": "Lepidium meyenii Walp.",
+  "family": "Brassicaceae",
+  "partsUsed": [
+    "raíz"
+  ],
+  "easyExplanation": "La maca es una raíz parecida a un pequeño nabo que crece muy alto en los Andes peruanos, donde se consume desde hace más de dos mil años como alimento y para dar energía. Se toma seca, en harina o en cápsulas. Se necesitan más estudios en personas para confirmar sus beneficios, y en dosis altas o por mucho tiempo podría afectar la tiroides, así que no reemplaza un tratamiento médico para la fertilidad ni para ningún otro problema de salud.",
+  "botany": {
+    "description": "Hierba de los Andes altos (3800 a 4500 m) que forma una roseta de hojas rizadas pegadas al suelo y desarrolla un hipocótilo carnoso en forma de raíz, parecido a un pequeño nabo, que es la parte que se usa. De colores que van del crema al morado según la variedad.",
+    "identification": "Se reconoce por su roseta de hojas rizadas y su raíz carnosa corta, adaptada al frío y la altura extrema; no se confunde fácilmente con otras plantas por crecer solo en esas condiciones andinas.",
+    "cultivation": "Se cultiva tradicionalmente en la puna, entre 3800 y 4500 m de altura, en suelos fríos y pobres donde pocos cultivos sobreviven.",
+    "lookalikes": [],
+    "nativeRange": "Andes centrales del Perú (Argentina Noroeste, Bolivia, Chile Norte y Perú, según los registros de herbario).",
+    "sources": ["s1", "s2"]
+  },
+  "beliefs": [
+    {
+      "claim": "La maca cura la infertilidad o garantiza un embarazo.",
+      "note": "No hay estudios sólidos en personas que muestren que la maca trate la infertilidad; las revisiones sistemáticas sobre maca y salud sexual muestran resultados mixtos y poca calidad de evidencia. La infertilidad necesita evaluación médica.",
+      "sources": ["s3"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "improve_energy",
+      "label": "Cansancio o falta de energía",
+      "evidence": "traditional",
+      "note": "Uso tradicional andino desde hace más de dos mil años, como alimento energizante en las condiciones duras de la altura.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Maca en agua o harina",
+      "uses": ["improve_energy"],
+      "steps": [
+        {"kind": "clean", "text": "Usa raíz de maca seca, en trozos o en harina."},
+        {"kind": "simmer", "text": "Hierve la maca seca en agua para preparar una bebida tipo mazamorra, o mezcla la harina de maca en agua o leche."},
+        {"kind": "drink", "text": "Tómala tibia."}
+      ],
+      "warnings": [
+        "No la tomes en dosis altas ni por tiempo prolongado sin supervisión: podría afectar la tiroides.",
+        "No reemplaza el tratamiento médico de la infertilidad ni de ninguna otra enfermedad."
+      ],
+      "dose": "1,5 a 3 g de maca en polvo al día.",
+      "frequency": "Una vez al día.",
+      "maxDays": 90,
+      "instructions": "La raíz de maca seca se hierve para preparar una bebida parecida a una mazamorra, o se muele en harina y se mezcla en agua o leche.",
+      "sources": ["s2"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "hormone_sensitive_condition",
+      "note": "La maca actúa sobre el sistema hormonal; consulta antes de usarla si tienes una enfermedad sensible a las hormonas."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hormonal_contraceptive",
+      "severity": "caution",
+      "note": "Por su posible efecto sobre las hormonas, consulta a tu médico antes de combinarla con anticonceptivos hormonales u otro tratamiento hormonal."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3"],
+  "sideEffects": [
+    "En dosis altas o uso prolongado, podría afectar el funcionamiento de la tiroides por su contenido de glucosinolatos.",
+    "Las guías de dosis estandarizadas todavía son limitadas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/maca.jpg",
+      "author": "Frank Vincentz",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kluse_-_Lepidium_meyenii_-_Maca_01_ies.jpg",
+      "caption": "Planta de maca (Lepidium meyenii)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Lepidium meyenii Walp.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:286286-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Maca as a Functional Food and Dietary Supplement: A Review on Analytical Studies",
+      "publisher": "Foods (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12840177/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Herbal dietary supplements for erectile dysfunction: A systematic review and meta-analysis of randomized-controlled trials",
+      "publisher": "Journal of Traditional and Complementary Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12902307/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

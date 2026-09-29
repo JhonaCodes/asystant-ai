@@ -1,0 +1,180 @@
+{
+  "id": "arnica",
+  "commonName": "Árnica",
+  "otherNames": [
+    "árnica de montaña",
+    "tabaco de montaña"
+  ],
+  "scientificName": "Arnica montana L.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "flor"
+  ],
+  "easyExplanation": "El árnica es una flor amarilla anaranjada de las montañas de Europa que solo se usa sobre la piel, nunca por boca: es venenosa si se traga. En crema, gel o tintura diluida, se usa para golpes, moretones, torceduras y dolor muscular leve, siempre sobre piel sana y sin heridas abiertas.",
+  "botany": {
+    "description": "Hierba perenne de 18 a 60 cm, con hojas basales ovaladas dispuestas en roseta y hojas superiores opuestas en forma de lanza. Sus flores, de unos 5 cm, tienen un centro anaranjado amarillo rodeado de 10 a 15 pétalos (flores liguladas) de color amarillo brillante.",
+    "identification": "Se distingue por su roseta de hojas basales grandes y veteadas, sus hojas superiores opuestas (poco común en la familia de la margarita) y sus cabezuelas de color naranja amarillento intenso. Florece de mayo a agosto.",
+    "cultivation": "Crece en prados de montaña con suelo ácido, pobre en nutrientes, típicamente hasta casi 3.000 metros de altura; no crece en suelo calizo. Fuera de Europa se cultiva poco y de forma experimental, casi siempre en jardines botánicos o de forma ornamental.",
+    "lookalikes": [
+      "En México y otros países de América Latina se vende como \"árnica\" a otras plantas distintas (por ejemplo Heterotheca inuloides o Gaillardia), que no son Arnica montana y no tienen la misma composición ni el mismo respaldo de estudios."
+    ],
+    "nativeRange": "Nativa de la mayor parte de Europa, ausente de las regiones célticas y de las penínsulas itálica y balcánica; hoy es rara en muchos lugares por la pérdida de sus prados de montaña.",
+    "sources": [
+      "s1",
+      "s4"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de árnica o el árnica tomada por boca es un remedio casero seguro para golpes o dolores.",
+      "note": "Tomar árnica por boca no es seguro: puede causar molestias digestivas, sangrado interno, daño al corazón y a la circulación, y se ha descrito un caso de anemia hemolítica en un bebé de 9 días amamantado por una madre que tomaba té de árnica. Este catálogo solo describe su uso sobre la piel.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "bruise",
+      "label": "Golpes y moretones",
+      "evidence": "traditional",
+      "note": "Gel, crema o tintura diluida sobre la piel sana; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "sprain",
+      "label": "Esguinces o torceduras leves",
+      "evidence": "traditional",
+      "note": "Gel, crema o tintura diluida sobre la piel sana; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "muscle_pain",
+      "label": "Dolor muscular leve",
+      "evidence": "traditional",
+      "note": "Gel, crema o tintura diluida sobre la piel sana; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Aplica una capa fina de gel o crema de árnica de farmacia sobre la piel sana, limpia y sin heridas, varias veces al día.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Varias veces al día, según el envase.",
+      "maxDays": 4,
+      "title": "Gel o crema de árnica",
+      "uses": [
+        "bruise",
+        "sprain",
+        "muscle_pain"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un gel o crema de árnica de farmacia, nunca la flor cruda ni la tintura sin diluir."
+        },
+        {
+          "kind": "clean",
+          "text": "Verifica que la piel esté sana, limpia y sin heridas ni raspones."
+        },
+        {
+          "kind": "apply",
+          "text": "Pon una capa fina sobre la zona del golpe, moretón o dolor."
+        }
+      ],
+      "warnings": [
+        "Uso solo sobre la piel sana: nunca lo tomes por boca.",
+        "No lo apliques sobre heridas abiertas, piel lastimada o mucosas.",
+        "Si el dolor o la molestia no mejora en 3 a 4 días, o empeora, consulta a un médico."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "No lo uses si eres alérgico al árnica o a plantas como el girasol, la caléndula o la ambrosía."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "Nunca lo apliques sobre heridas abiertas o piel muy dañada."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Podría aumentar el efecto de medicamentos como la warfarina; evita usarlo en zonas extensas si tomas anticoagulantes."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Dermatitis de contacto e irritación de la piel.",
+    "Tomado por boca es tóxico y puede ser mortal; esto no es un uso que este catálogo recomiende."
+  ],
+  "safetySources": [
+    "s2",
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/arnica.jpg",
+      "author": "Hans Hillewaert",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arnica_montana_(flower).jpg",
+      "caption": "Flor de árnica (Arnica montana)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Arnica montana L.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/30090722-2",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Arnicae flos — summary of HMPC conclusions (arnica flower)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/arnicae-flos",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Arnica (About Herbs)",
+      "publisher": "Memorial Sloan Kettering Cancer Center",
+      "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/arnica",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Uso tradicional del árnica en golpes y dolor muscular, y confusión de nombre con otras \"árnicas\" mexicanas (Heterotheca inuloides, Gaillardia)",
+      "publisher": "SciELO México",
+      "url": "https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S2007-11322014000500008",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

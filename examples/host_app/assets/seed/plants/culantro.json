@@ -1,0 +1,191 @@
+{
+  "id": "culantro",
+  "commonName": "Culantro",
+  "otherNames": [
+    "recao",
+    "cilantro cimarrón",
+    "cilantro de monte"
+  ],
+  "scientificName": "Eryngium foetidum L.",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El culantro es una hierba de hoja larga y dentada, de sabor más fuerte que el cilantro, con el que no debe confundirse: son dos plantas distintas de la misma familia. En varios países de América Latina se usa en té para molestias digestivas, tos y resfriado. En estudios con animales, dosis altas y sostenidas afectaron el riñón, por eso no conviene usarlo seguido en grandes cantidades ni si tienes una enfermedad renal.",
+  "botany": {
+    "description": "Hierba perenne erguida, de 20 a 80 cm de altura, con raíz pivotante y hojas basales largas, angostas, dispuestas en roseta, con el borde en forma de sierra (dentado); sus cabezuelas de flores pequeñas y cilíndricas no son comestibles.",
+    "identification": "Se distingue del cilantro por sus hojas alargadas y con dientes en el borde, dispuestas en roseta, de sabor más fuerte y ácido, y porque conserva mejor su color y sabor al secarse.",
+    "cultivation": "Prefiere suelo bien drenado y sol pleno, aunque tolera sombra parcial y suelo fértil algo húmedo; se cultiva como perenne en climas tropicales y como anual en climas templados, y crece bien entre 700 y 1.200 m de altitud.",
+    "lookalikes": [
+      "Coriandrum sativum (cilantro): hoja distinta, sabor más suave; son dos plantas diferentes aunque se usan de forma parecida en la cocina."
+    ],
+    "nativeRange": "América Central, especialmente México; naturalizada en otras regiones tropicales del Caribe y Sudamérica.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El culantro, tomado en cualquier cantidad, es un remedio 100% seguro por ser una hierba de cocina.",
+      "note": "En un estudio en ratones, una dosis diaria sostenida equivalente a un 35% del consumo humano habitual, durante 24 semanas, causó disfunción renal; un ensayo de toxicidad en embriones de pez cebra también encontró malformaciones del desarrollo con extractos de la planta. Esto no significa que la cantidad que se usa al cocinar sea peligrosa, pero sí que no conviene tomarlo seguido en cantidades grandes como remedio.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "En Perú, Colombia y Ecuador se usa en té para gases, diarrea, indigestión y dolor de estómago.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "popular",
+      "note": "Uso tradicional en té en varios países de Sudamérica.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Espasmos digestivos leves",
+      "evidence": "popular",
+      "note": "Uso tradicional para el dolor de estómago en Perú, Colombia y Ecuador.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "En comunidades brasileñas se usa en té o jarabe para la gripe; también documentado para fiebre y dolor de cabeza en comunidades amazónicas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Uso tradicional documentado en comunidades amazónicas, junto con el dolor de garganta.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de culantro",
+      "uses": [
+        "indigestion",
+        "bloating",
+        "abdominal_cramps",
+        "cold_symptoms",
+        "cough"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de culantro, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "No lo tomes seguido en grandes cantidades por tiempo prolongado.",
+        "Evítalo si tienes una enfermedad de los riñones.",
+        "Evítalo en el embarazo: se usa de forma tradicional para 'bajar la regla' y facilitar el parto, y un ensayo en embriones de pez cebra encontró malformaciones del desarrollo con extractos de la planta."
+      ],
+      "dose": "No hay una cantidad exacta descrita en las fuentes consultadas; usa pocas hojas por taza.",
+      "frequency": "Hasta unas pocas tazas al día, por pocos días.",
+      "maxDays": 7,
+      "instructions": "Prepara una infusión con hojas de culantro, frescas o secas, en agua recién hervida; deja reposar y cuela.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "No lo uses si eres alérgico al culantro u otras plantas de esta familia, como el cilantro, el apio, el hinojo o el comino."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Evita el consumo seguido en grandes cantidades si tienes una enfermedad de los riñones; en un estudio en ratones, un consumo alto y sostenido afectó el funcionamiento del riñón."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas en personas sensibles a plantas de su familia.",
+    "En estudios con animales, un consumo alto y sostenido afectó el funcionamiento del riñón."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/culantro.jpg",
+      "author": "Filo gèn'",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eryngium_foetidum_(Apiaceae).jpg",
+      "caption": "Hojas de culantro (Eryngium foetidum)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Eryngium foetidum",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Eryngium+foetidum",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Eryngium foetidum L. (Apiaceae): A Literature Review of Traditional Uses, Chemical Composition, and Pharmacological Activities",
+      "publisher": "Evidence-Based Complementary and Alternative Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8938054/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Untargeted metabolic analysis using LC-Q-TOF-MS and toxicity assessment of Eryngium foetidum in zebrafish embryos",
+      "publisher": "Acta Pharmaceutica",
+      "url": "https://reference-global.com/article/10.2478/acph-2025-0008",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

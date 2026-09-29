@@ -1,0 +1,160 @@
+{
+  "id": "cilantro",
+  "commonName": "Cilantro",
+  "otherNames": [
+    "culantro europeo",
+    "coriandro"
+  ],
+  "scientificName": "Coriandrum sativum L.",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "hoja",
+    "semilla (fruto)"
+  ],
+  "easyExplanation": "El cilantro es una hierba aromática muy usada en la cocina latinoamericana, tanto la hoja fresca como su semilla seca (coriandro). Es distinto del culantro (Eryngium foetidum), una planta de hoja distinta y sabor más fuerte. Un estudio pequeño en personas con diabetes tipo 2 encontró que la semilla de cilantro, en cápsulas, bajó el azúcar y el colesterol en sangre; por eso conviene cuidado si tomas medicamentos para la diabetes.",
+  "botany": {
+    "description": "Hierba anual de 30 a 60 cm de alto y de ancho, de hojas inferiores anchas, lobuladas y parecidas al perejil, y hojas superiores simples y finamente divididas, tipo helecho. Sus flores blancas a rosadas, pequeñas, se agrupan en umbelas de hasta 5 cm.",
+    "identification": "Se reconoce por el cambio de forma entre sus hojas inferiores (anchas, parecidas al perejil) y superiores (finas, tipo helecho), y por su fruto redondo, seco, de color amarillo pardo (la semilla de coriandro).",
+    "cultivation": "Es una planta de clima fresco que crece en suelo húmedo, bien drenado, a pleno sol o media sombra; se propaga por semilla y florece (se 'espiga') rápido con el calor, lo que afecta la cosecha de hoja.",
+    "lookalikes": [
+      "Eryngium foetidum (culantro): otra planta distinta, de hojas largas y dentadas en roseta, con un olor más fuerte; no debe confundirse con el cilantro."
+    ],
+    "nativeRange": "Mediterráneo occidental, sur de Europa y Asia occidental.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "popular",
+      "note": "El cilantro fresco se usa como hierba de mesa junto con las comidas en varios países de América Latina; un inventario de mercados de la península de Yucatán lo documenta con uso medicinal y culinario a la vez, sin precisar más detalle.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Cilantro fresco en la comida",
+      "uses": [
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava hojas frescas de cilantro."
+        },
+        {
+          "kind": "swallow",
+          "text": "Agrégalas picadas a tus comidas."
+        }
+      ],
+      "warnings": [
+        "La cantidad que se usa al cocinar es un alimento, no una dosis medicinal.",
+        "No lo uses si eres alérgico a plantas de su familia, como el apio, el hinojo, el eneldo o el comino."
+      ],
+      "dose": "La que uses al cocinar; no es una dosis medicinal.",
+      "frequency": "Con las comidas.",
+      "maxDays": null,
+      "instructions": "El cilantro fresco se agrega picado a las comidas; es un alimento de uso diario, no un tratamiento.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "capsule",
+      "route": "oral",
+      "title": "Cápsulas de semilla de cilantro (coriandro)",
+      "uses": [],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra en la farmacia cápsulas de semilla de cilantro (coriandro), si tu médico las recomienda como apoyo junto con tu tratamiento."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalas como indica el envase."
+        }
+      ],
+      "warnings": [
+        "No cambies ni suspendas tu medicamento para la diabetes por tu cuenta: en un estudio, la semilla de cilantro bajó el azúcar en sangre y podría sumarse al efecto de la metformina o la glibenclamida.",
+        "Consulta a tu médico antes de usarla si tomas medicamentos para la diabetes."
+      ],
+      "dose": "En el estudio se usaron 1.000 mg al día de semilla en polvo, repartidos en dos tomas de 500 mg, media hora antes del almuerzo y la cena, durante 6 semanas; sigue siempre la cantidad indicada en el envase del producto.",
+      "frequency": "Según el envase o la indicación médica.",
+      "maxDays": 42,
+      "instructions": "Cápsulas de semilla de cilantro en polvo, en la cantidad que indica el envase; en un estudio se usaron por 6 semanas junto con el tratamiento habitual para la diabetes, sin cambiarlo.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "No lo uses si eres alérgico al cilantro u otras plantas de esta familia, como el apio, el hinojo, el eneldo o el comino; puede haber reacción cruzada."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "La semilla de cilantro, en suplemento, puede bajar el azúcar en sangre y sumarse al efecto de los medicamentos para la diabetes."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas en personas sensibles a plantas de su familia.",
+    "En suplemento de semilla, posible bajada del azúcar en sangre mayor a la esperada si se combina con medicamentos para la diabetes."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/cilantro.jpg",
+      "author": "Kpsudeep",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bunches_of_coriander_leaves.jpg",
+      "caption": "Hojas frescas de cilantro"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Coriandrum sativum (Cilantro, Coriander)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/coriandrum-sativum/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Floristic inventory of the main markets of the Yucatan Peninsula, Mexico",
+      "publisher": "PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12977888/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Effects of Dietary Supplementation with Coriander Seed Powder on Serum Lipid Profile, Glycemic Indices, and Oxidative Stress Biomarkers in Patients with Type 2 Diabetes Mellitus: A Randomized, Double-Blind, Placebo-Controlled Trial",
+      "publisher": "Preventive Nutrition and Food Science (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12765609/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

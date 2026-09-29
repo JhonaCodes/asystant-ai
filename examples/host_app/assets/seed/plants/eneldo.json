@@ -1,0 +1,147 @@
+{
+  "id": "eneldo",
+  "commonName": "Eneldo",
+  "otherNames": [],
+  "scientificName": "Anethum graveolens L.",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "fruto (semilla)",
+    "hoja"
+  ],
+  "easyExplanation": "El eneldo es una hierba aromática de hojas finas y plumosas, muy usada en la cocina, que también se toma en infusión para los gases y ayudar a la digestión. Su fruto se ha usado desde hace mucho tiempo en el agua tradicional para el cólico del bebé, pero no hay estudios clínicos amplios en personas, así que en bebés y durante el embarazo o la lactancia conviene usarlo poco y consultar antes.",
+  "botany": {
+    "description": "Hierba anual aromática, de 60 cm a 1,2 m de altura, con tallos huecos, erguidos y estriados, hojas azuladas y muy finas, parecidas a plumas. Sus flores amarillas pequeñas se agrupan en umbelas (forma de paraguas); el fruto es una semilla ovalada y aplanada.",
+    "identification": "Se distingue del hinojo, que es muy parecido, por su olor propio y porque su tallo es hueco; sus hojas son azul verdosas y sus semillas más pequeñas y aplanadas.",
+    "cultivation": "Prefiere sol pleno a media sombra, suelo bien drenado, algo ácido y rico en materia orgánica; se siembra directo porque no le gusta que muevan sus raíces, y germina en 10 a 14 días.",
+    "lookalikes": [
+      "Foeniculum vulgare (hinojo): muy parecido en el aspecto de sus hojas finas; se distingue por el olor y porque el tallo del hinojo no es hueco."
+    ],
+    "nativeRange": "Mediterráneo, sur de Rusia y norte y oeste de África; hoy naturalizado en gran parte del mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "traditional",
+      "note": "Fruto en infusión; uso tradicional como carminativo (contra los gases) en varias tradiciones, incluida la medicina ayurvédica.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Ayudar a la digestión",
+      "evidence": "traditional",
+      "note": "Fruto en infusión, tomado tradicionalmente después de las comidas para favorecer la digestión.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con semillas de eneldo machacadas, frescas de tu huerta o secas, en agua recién hervida, deja reposar y cuela.",
+      "dose": "La que indique el envase.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de eneldo",
+      "uses": [
+        "bloating",
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre semillas de eneldo machacadas, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "En bebés, el embarazo o la lactancia, consulta antes con un profesional de la salud."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "No lo uses si eres alérgico al eneldo o a otras plantas de su familia, como el hinojo, el anís, el apio o la zanahoria."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas en personas sensibles a esta familia de plantas.",
+    "El contacto con la planta al sol puede irritar la piel en personas sensibles."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/eneldo.jpg",
+      "author": "Tepeyac",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anethum_graveolens_02.jpg",
+      "caption": "Planta de eneldo en flor"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Dill - Anethum graveolens",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/anethum-graveolens/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Anethum graveolens: An Indian traditional medicinal herb and spice",
+      "publisher": "Pharmacognosy Reviews (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3249919/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Anethum graveolens: An Indian traditional medicinal herb and spice (pharmacological evidence and safety)",
+      "publisher": "Pharmacognosy Reviews (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3249919/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3"
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "id": "lavanda",
+  "commonName": "Lavanda",
+  "otherNames": [
+    "espliego",
+    "alhucema"
+  ],
+  "scientificName": "Lavandula angustifolia Mill.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "flor",
+    "aceite esencial"
+  ],
+  "easyExplanation": "La lavanda es una planta aromática de flores moradas. En Europa se reconoce el uso tradicional del aceite de lavanda para aliviar síntomas leves de estrés y cansancio mental, y para ayudar a dormir. Su aroma se usa en aromaterapia, aunque no está claro que ayude con el sueño o la ansiedad. Es solo para adultos y niños mayores de 12 años.",
+  "botany": {
+    "description": "Arbusto perenne, bajo y redondeado, de 30 a 60 cm de alto, de la familia de la menta. Sus hojas son angostas, opuestas, de color verde grisáceo a azulado, aromáticas, con una textura suave y vellosa. Sus flores, pequeñas y de cinco pétalos con dos labios, son de color morado (a veces rosado o blanco) y crecen en espigas al final de tallos largos.",
+    "identification": "Se reconoce por sus hojas angostas verde grisáceas cubiertas de vello blanco, sus espigas de flores moradas muy aromáticas al final de tallos delgados, y su porte de arbusto bajo y compacto.",
+    "cultivation": "Necesita sol pleno a media sombra, suelo bien drenado, neutro a alcalino, arenoso o rocoso; no tolera el exceso de humedad ni las arcillas pesadas. Se propaga por semilla, división o esquejes, y conviene podarla cada año retirando las espigas ya florecidas.",
+    "lookalikes": [
+      "Otras especies de lavanda, como Lavandula latifolia o Lavandula x intermedia, de aspecto y uso similares, con las que se puede confundir el nombre común."
+    ],
+    "nativeRange": "Nativa de la región del Mediterráneo, en especial Francia, Italia y España; hoy cultivada en todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "stress",
+      "label": "Síntomas leves de estrés y cansancio mental",
+      "evidence": "traditional",
+      "note": "Uso tradicional del aceite reconocido en Europa; solo adultos y niños mayores de 12 años.",
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    },
+    {
+      "tag": "insomnia",
+      "label": "Ayuda para dormir",
+      "evidence": "traditional",
+      "note": "Uso tradicional del aceite reconocido en Europa; solo adultos y niños mayores de 12 años.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Dormir mejor",
+      "evidence": "traditional",
+      "note": "Uso tradicional del aceite reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarse",
+      "evidence": "traditional",
+      "note": "Uso tradicional del aceite reconocido en Europa.",
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    },
+    {
+      "tag": "anxiety_mild",
+      "label": "Ansiedad leve",
+      "evidence": "limited",
+      "note": "Estudios pequeños con un producto de aceite de lavanda por boca sugieren posible beneficio, pero la evidencia es limitada por el tamaño reducido de los estudios.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "essentialOil",
+      "route": "inhalation",
+      "instructions": "Usa el aceite esencial en un difusor o inhala su aroma. No tomes aceite esencial por boca salvo en un producto medicinal hecho para eso.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": null,
+      "title": "Aroma de lavanda",
+      "uses": [
+        "stress",
+        "insomnia",
+        "sleep_better",
+        "relax"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa aceite esencial de lavanda."
+        },
+        {
+          "kind": "inhale",
+          "text": "Ponlo en un difusor o respira su aroma."
+        }
+      ],
+      "warnings": [
+        "No tomes aceite esencial por boca, salvo un producto medicinal hecho para eso.",
+        "No lo uses en baño completo si tienes heridas abiertas, problemas de piel, fiebre alta, una infección grave o problemas graves del corazón o la circulación.",
+        "Solo para adultos y niños mayores de 12 años.",
+        "No lo uses en la piel de bebés ni niños pequeños: se han reportado casos de hinchazón del tejido mamario en niños con el uso repetido de productos tópicos de lavanda."
+      ],
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los sedantes; avisa si vas a tener una cirugía."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "sideEffects": [
+    "Por boca: diarrea, dolor de cabeza, náuseas o eructos.",
+    "En aromaterapia: dolor de cabeza o tos.",
+    "En la piel: reacciones alérgicas; se han reportado casos de hinchazón del tejido mamario en niños con el uso tópico repetido, aunque no está confirmado que la lavanda sea la causa."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/lavanda.jpg",
+      "author": "Валерія Матвєєва",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lavandula_angustifolia_june.jpg",
+      "caption": "Flores de lavanda"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Lavandula angustifolia (English Lavender)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/lavandula-angustifolia/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Astonishing diversity—the medicinal plant markets of Bogotá, Colombia",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC6011411)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6011411/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Lavandulae aetheroleum — summary of HMPC conclusions (lavender oil)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/lavandulae-aetheroleum",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Lavender (Herbs at a Glance)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/lavender",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ]
+}

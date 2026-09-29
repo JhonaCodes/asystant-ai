@@ -1,0 +1,131 @@
+{
+  "id": "tamarindo",
+  "commonName": "Tamarindo",
+  "otherNames": [
+    "tamarindo dulce",
+    "tamarind"
+  ],
+  "scientificName": "Tamarindus indica L.",
+  "family": "Fabaceae",
+  "partsUsed": [
+    "fruto"
+  ],
+  "easyExplanation": "El tamarindo es un árbol grande y longevo cuyo fruto es una vaina con una pulpa ácida y dulce. La pulpa es tradicional para el estreñimiento leve, gracias a sus ácidos naturales que ayudan a evacuar. No se debe tomar junto con aspirina, ibuprofeno o cloroquina sin consultar, porque puede cambiar cómo el cuerpo los absorbe.",
+  "botany": {
+    "description": "Árbol longevo de hasta 30 metros, de copa densa y amplia, con tronco de 1 a 2 metros de diámetro. El follaje es plumoso, generalmente perenne pero caduco en zonas más secas. Las flores son perfumadas y atraen insectos. El fruto es una vaina de 5 a 15 cm, con una pulpa pegajosa de sabor ácido (por ácidos tartárico, acético y cítrico), aunque existen variedades más dulces.",
+    "identification": "Se reconoce por sus vainas curvas de cáscara quebradiza color café, con una pulpa pegajosa y fibrosa por dentro y semillas duras.",
+    "cultivation": "Prefiere zonas tropicales más secas, con estación seca marcada, hasta 1.500 m de altitud, temperaturas de 20 a 35 °C y lluvia de 800 a 3.000 mm al año, en suelo bien drenado y sol pleno. Es de crecimiento lento; empieza a dar fruto entre los 7 y 10 años y puede producir por 200 años.",
+    "lookalikes": [
+      "Ninguno relevante: su vaina curva y su pulpa ácida la hacen fácil de distinguir."
+    ],
+    "nativeRange": "Probablemente originario de África tropical; hoy naturalizado y cultivado en zonas tropicales y subtropicales de todo el mundo, incluida América.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "constipation",
+      "label": "Estreñimiento leve",
+      "evidence": "traditional",
+      "note": "Pulpa de la fruta, sin semillas, por boca; uso tradicional documentado en encuestas TRAMIL y en revisiones científicas, por los ácidos naturales que contiene.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Pulpa de tamarindo para el estreñimiento leve",
+      "uses": [
+        "constipation"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Quita las semillas a 40 a 50 g de pulpa de tamarindo."
+        },
+        {
+          "kind": "pour",
+          "text": "Machácala y mézclala con medio litro de agua hervida."
+        },
+        {
+          "kind": "drink",
+          "text": "Bebe 1 taza, una o dos veces al día."
+        }
+      ],
+      "warnings": [
+        "Prepara solo la cantidad de un día; no la guardes más de 24 horas.",
+        "No lo des a niños menores de 5 años.",
+        "No lo tomes si estás embarazada o en lactancia.",
+        "No lo combines con aspirina, ibuprofeno o cloroquina sin consultar a un médico o farmacéutico: puede cambiar cómo el cuerpo absorbe esos medicamentos.",
+        "Si el estreñimiento dura más de 3 a 5 días, consulta a un médico."
+      ],
+      "dose": "40 a 50 g de pulpa sin semillas por medio litro de agua.",
+      "frequency": "1 a 2 veces al día.",
+      "maxDays": 5,
+      "instructions": "Machaca 40 a 50 g de pulpa de tamarindo sin semillas en medio litro de agua hervida y bebe 1 taza, una o dos veces al día.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "caution",
+      "note": "Se han documentado cambios en cómo el cuerpo absorbe la aspirina cuando se toma junto con tamarindo; consulta antes de combinarlos. Lo mismo se ha reportado con el ibuprofeno y la cloroquina."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 5,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3"
+  ],
+  "sideEffects": [
+    "En dosis altas, sus ácidos pueden causar molestias digestivas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/tamarindo.jpg",
+      "author": "HannoSEA",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tamarind_fruits_(Tamarindus_indica).jpg",
+      "caption": "Vainas y pulpa de tamarindo (Tamarindus indica)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Tamarindus indica",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Tamarindus+indica",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Tamarindus indica — TRAMIL Pharmacopoeia",
+      "publisher": "TRAMIL",
+      "url": "https://tramil.net/en/plant/tamarindus-indica",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Tamarindus indica: Extent of explored potential",
+      "publisher": "Pharmacognosy Reviews (PMC3210002)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3210002/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

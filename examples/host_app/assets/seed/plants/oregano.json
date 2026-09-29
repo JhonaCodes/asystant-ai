@@ -1,0 +1,195 @@
+{
+  "id": "oregano",
+  "commonName": "Orégano",
+  "otherNames": [
+    "orégano común",
+    "orégano orejón silvestre"
+  ],
+  "scientificName": "Origanum vulgare L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "El orégano se usa por tradición en infusión de hoja para la digestión pesada y los síntomas del resfriado. Su aceite esencial es muy concentrado en carvacrol y timol; en dosis altas o sin diluir puede irritar la piel y las mucosas, así que no se recomienda tomarlo por boca sin indicación profesional.",
+  "botany": {
+    "description": "Planta perenne y leñosa de hasta 90 cm de altura, con tallos jóvenes cuadrados y velludos que se vuelven leñosos con el tiempo. Las hojas son ovaladas, de color verde oliva, de 1 a 4 cm, cubiertas de pequeños pelos. En verano forma espigas de flores pequeñas (3 a 4 mm), de color blanco a rosado o violeta claro.",
+    "identification": "Se reconoce por su tallo cuadrado típico de la familia de las mentas (Lamiaceae), sus hojas aromáticas de verde oliva con pelos finos, y sus espigas de flores rosadas a violeta en verano.",
+    "cultivation": "Se planta a inicios de primavera, con unos 30 cm entre plantas, en suelo bien drenado y algo seco, con sol pleno; tolera un pH de 6,0 a 9,0 (idealmente 6,0-8,0) y prefiere clima cálido y seco, aunque se adapta a otros ambientes.",
+    "lookalikes": [
+      "Origanum majorana (mejorana), de sabor más suave porque a su aceite esencial le faltan los compuestos fenólicos (carvacrol y timol) que sí tiene el orégano."
+    ],
+    "nativeRange": "Nativo de la región mediterránea y de zonas templadas desde Macaronesia hasta China; hoy naturalizado en gran parte del hemisferio norte templado, incluidos Estados Unidos y México.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El aceite de orégano cura infecciones graves y puede reemplazar a los antibióticos recetados.",
+      "note": "En estudios de laboratorio, el carvacrol y el timol del aceite de orégano muestran actividad contra bacterias, pero no hay estudios clínicos en personas que respalden reemplazar un tratamiento antibiótico recetado por aceite de orégano; además, en las concentraciones necesarias para ese efecto antimicrobiano el aceite también daña las células del intestino.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada y gastritis leve",
+      "evidence": "popular",
+      "note": "Hoja en infusión; uso popular documentado en estudios etnobotánicos de Turquía y Croacia para el dolor de estómago y la gastritis leve.",
+      "sources": [
+        "s5",
+        "s6"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Dolor de estómago",
+      "evidence": "popular",
+      "note": "Hoja en infusión, con leche hervida o sola; uso popular documentado en un estudio etnobotánico de Turquía para el dolor de estómago y las náuseas.",
+      "sources": [
+        "s5"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Hoja en infusión, con leche hervida o sola; uno de los remedios más conocidos en un estudio etnobotánico de Turquía para el resfriado común.",
+      "sources": [
+        "s5"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de orégano",
+      "uses": [
+        "indigestion",
+        "abdominal_cramps",
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve 500 ml de agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre 1 cucharada de hojas secas de orégano, o un puñado de hojas frescas."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar 15 minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela las hojas."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo tibio."
+        }
+      ],
+      "warnings": [
+        "No se recomienda en el embarazo."
+      ],
+      "dose": "Cantidades como las de una infusión de uso común; las fuentes no dan una dosis medicinal exacta.",
+      "frequency": "Uso ocasional.",
+      "maxDays": null,
+      "instructions": "Prepara una infusión con hoja de orégano, fresca o seca, en agua recién hervida; deja reposar, cuela y tómala tibia.",
+      "sources": [
+        "s5",
+        "s6"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No lo uses si eres alérgico a esta planta o a otras de su familia (menta, albahaca, mejorana, entre otras)."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "safetySources": [
+    "s3",
+    "s7"
+  ],
+  "sideEffects": [
+    "En dosis altas: náuseas, vómito, diarrea, dificultad para tragar o salivación excesiva.",
+    "El aceite esencial sin diluir o en dosis altas puede irritar la piel y las mucosas.",
+    "Rara vez, reacciones alérgicas que pueden ser graves."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/oregano.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Origanum_vulgare_001.JPG",
+      "caption": "Planta de orégano (Origanum vulgare)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Origanum vulgare L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:453395-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Origanum vulgare L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/2926612",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Chemical Composition and Biological Activities of Essential Oils from Origanum vulgare Genotypes Belonging to the Carvacrol and Thymol Chemotypes",
+      "publisher": "PMC (NIH)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10059975/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "popular",
+      "title": "Hidden Ethnomedicinal Diversity in a Fine-Scale Study from Konak, Eastern Anatolia",
+      "publisher": "Plants (MDPI) / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12899098/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "popular",
+      "title": "Ethnobotanical Survey of Culturally Important Plants and Mushrooms in North-Western Part of Croatia",
+      "publisher": "Plants (MDPI) / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11175058/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s7",
+      "kind": "science",
+      "title": "Maternal Reproductive Toxicity of Some Essential Oils and Their Constituents",
+      "publisher": "PMC (National Library of Medicine) — Int J Mol Sci",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7956842/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

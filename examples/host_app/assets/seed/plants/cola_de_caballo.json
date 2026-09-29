@@ -1,0 +1,188 @@
+{
+  "id": "cola_de_caballo",
+  "commonName": "Cola de caballo",
+  "otherNames": [
+    "equiseto"
+  ],
+  "scientificName": "Equisetum arvense L.",
+  "family": "Equisetaceae",
+  "partsUsed": [
+    "partes aéreas"
+  ],
+  "easyExplanation": "La cola de caballo es una planta sin flores, de tallos verdes y finos que parecen una cola. Por tradición se usa para aumentar la cantidad de orina y así ayudar a limpiar las vías urinarias en molestias leves, y sobre la piel para heridas superficiales. No debe usarse si te indicaron tomar poco líquido por una enfermedad del corazón o de los riñones.",
+  "botany": {
+    "description": "Helecho perenne sin flores que crece de un rizoma subterráneo, con dos tipos de tallos: unos fértiles, cortos (10 a 25 cm) y de color pardo, que aparecen a inicios de primavera y llevan una espiga de esporas en la punta antes de marchitarse, y otros estériles, verdes, huecos y segmentados en nudos, de 10 a 90 cm de alto y 3 a 5 mm de diámetro, con ramitas delgadas dispuestas en verticilos alrededor del tallo.",
+    "identification": "Se reconoce por sus tallos verdes, articulados y huecos, con ramitas finas agrupadas en verticilos que le dan aspecto de cola de caballo. Puede confundirse con la cola de zorra o mil hojas de agua (Hippuris vulgaris), una planta acuática sin relación botánica, y con Erigeron canadensis, una maleza común de Norteamérica; ninguna de las dos tiene tallos huecos y segmentados como el equiseto.",
+    "cultivation": "Crece de forma silvestre en suelos húmedos, orillas de ríos y acequias, zonas encharcadas y terrenos alterados; no suele cultivarse en huertos caseros porque se propaga muy rápido por su rizoma y puede volverse invasora.",
+    "lookalikes": [
+      "Hippuris vulgaris (cola de zorra o mil hojas de agua): planta acuática sin parentesco, de tallo macizo, no hueco ni segmentado.",
+      "Erigeron canadensis: maleza de Norteamérica que no tiene tallos articulados ni huecos."
+    ],
+    "nativeRange": "Nativa de las regiones árticas y templadas del hemisferio norte, desde el extremo norte de Norteamérica hasta Texas, y también en India e Irán; se ha vuelto invasora en el hemisferio sur, en especial en Nueva Zelanda.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "urinary_discomfort",
+      "label": "Molestias urinarias leves",
+      "evidence": "traditional",
+      "note": "Aumenta la cantidad de orina para ayudar a limpiar las vías urinarias; uso tradicional reconocido en Europa y documentado como una de las plantas medicinales de uso más frecuente en la ciudad de Guadalajara, México. Si hay fiebre o sangre en la orina, o dura más de una semana, consulta a un médico.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Heridas superficiales",
+      "evidence": "traditional",
+      "note": "Compresas con la infusión o decocción sobre la piel; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con la planta seca en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Té de cola de caballo",
+      "uses": [
+        "urinary_discomfort"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre la planta seca en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "No la uses para molestias urinarias si te indicaron tomar poco líquido por una enfermedad del corazón o de los riñones.",
+        "Consulta a un médico si tienes fiebre, sangre en la orina o si la molestia dura más de una semana."
+      ],
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "topical",
+      "instructions": "Hierve la planta seca en agua, deja enfriar, cuela y úsala en compresas sobre la herida superficial.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Compresas de cola de caballo",
+      "uses": [
+        "minor_wound"
+      ],
+      "steps": [
+        {
+          "kind": "simmer",
+          "text": "Hierve la planta seca en agua."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja que se enfríe."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuélala."
+        },
+        {
+          "kind": "compress",
+          "text": "Moja un paño limpio y ponlo sobre la herida superficial."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "equisetaceae",
+      "note": "No la uses si eres alérgico a la cola de caballo."
+    },
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "No la uses para molestias urinarias si te indicaron tomar poco líquido por una enfermedad del corazón."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "No la uses para molestias urinarias si te indicaron tomar poco líquido por una enfermedad de los riñones."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "equisetaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas.",
+    "Molestias leves de estómago o intestino al tomarla."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/cola_de_caballo.jpg",
+      "author": "Krzysztof Ziarnek, Kenraiz",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Equisetum_arvense_kz08.jpg",
+      "caption": "Tallos verdes de cola de caballo"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Equisetum arvense (Field Horsetail)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/equisetum-arvense/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Ethnobotany in a Modern City: The Persistence in the Use of Medicinal Plants in Guadalajara, Mexico — cola de caballo (Equisetum arvense) among commonly used species",
+      "publisher": "Plants (Basel) (PMC12430341)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12430341/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Equiseti herba — summary of HMPC conclusions (horsetail herb)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/equiseti-herba",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

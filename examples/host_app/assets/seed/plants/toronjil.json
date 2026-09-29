@@ -1,0 +1,214 @@
+{
+  "id": "toronjil",
+  "commonName": "Toronjil",
+  "otherNames": [
+    "melisa"
+  ],
+  "scientificName": "Melissa officinalis L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El toronjil, también llamado melisa, es una planta de hojas con aroma a limón. En Europa se reconoce su uso tradicional en infusión para aliviar síntomas leves de estrés, ayudar a dormir y calmar molestias digestivas leves, como gases e hinchazón.",
+  "botany": {
+    "description": "El toronjil es una hierba perenne, frondosa y de aspecto tupido, con tallos erguidos y ramificados de sección cuadrada, cubiertos de pelos finos. Las hojas son opuestas, de forma ovalada o acorazonada, de borde festoneado y superficie arrugada; al aplastarlas desprenden un fuerte aroma a limón. Las flores son pequeñas, blanco cremoso, y se agrupan en verticilos en las axilas de las hojas superiores durante el verano.",
+    "identification": "Se reconoce por sus hojas arrugadas en forma de corazón u óvalo, con el borde dentado y un intenso olor a limón al frotarlas, y por sus tallos cuadrados típicos de la familia de la menta. Sus flores blanco-cremosas, pequeñas y de dos labios, nacen agrupadas donde la hoja se une al tallo, entre junio y agosto.",
+    "cultivation": "Se cultiva bien a pleno sol o media sombra, en suelos de arcilla, franco o arenosos con buen drenaje y pH neutro a algo ácido. Tolera la sequía una vez establecida y crece con facilidad en climas templados; se propaga por semilla o dividiendo la planta.",
+    "nativeRange": "Originaria del sur y centro de Europa y de Asia central, con presencia natural en la región mediterránea (Grecia, Italia, España) y en países de Asia central como Kirguistán y Turkmenistán. Hoy se cultiva como planta aromática y medicinal en muchas otras regiones, incluida América Latina.",
+    "sources": [
+      "s3",
+      "s4"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "stress",
+      "label": "Síntomas leves de estrés",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa; también se vende como sedante y tranquilizante en los mercados populares de plantas medicinales de Bogotá, Colombia.",
+      "sources": [
+        "s1",
+        "s6"
+      ]
+    },
+    {
+      "tag": "insomnia",
+      "label": "Ayuda para dormir",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa; también documentado como remedio popular para la flatulencia en los mercados de Bogotá, Colombia.",
+      "sources": [
+        "s1",
+        "s6"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa; también documentado como remedio popular para problemas digestivos en los mercados de Bogotá, Colombia.",
+      "sources": [
+        "s1",
+        "s6"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Dormir mejor",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarse",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "beliefs": [
+    {
+      "claim": "Cura tumores y enfermedades graves como el cáncer",
+      "note": "Una revisión científica de sus usos tradicionales en la medicina europea e iraní documenta su empleo para los nervios, el ánimo, la memoria y el sistema digestivo, pero no para tratar tumores ni cáncer. No hay estudios en personas que respalden ese uso, y confiar en el toronjil en vez de un tratamiento médico para el cáncer es peligroso.",
+      "sources": [
+        "s5"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja seca de toronjil en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de toronjil",
+      "uses": [
+        "stress",
+        "insomnia",
+        "bloating",
+        "indigestion",
+        "sleep_better",
+        "relax",
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de toronjil, frescas o secas en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "safetySources": [
+    "s1"
+  ],
+  "sideEffects": [
+    "No se habían reportado efectos adversos al momento de la evaluación europea."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/toronjil.jpg",
+      "author": "Donald Hobern from Copenhagen, Denmark",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Melissa_officinalis_(36847904235).jpg",
+      "caption": "Hojas y flores de toronjil"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "science",
+      "title": "Melissae folium — summary of HMPC conclusions (melissa leaf)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/melissae-folium",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "botany",
+      "title": "Melissa officinalis L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/5341501",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "botany",
+      "title": "Melissa officinalis (Lemon Balm)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/melissa-officinalis/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Melissa officinalis L. — a review of its traditional uses, phytochemistry and pharmacology",
+      "publisher": "Journal of Ethnopharmacology (Shakeri, Sahebkar & Javadi, 2016)",
+      "url": "https://doi.org/10.1016/j.jep.2016.05.010",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "popular",
+      "title": "Astonishing diversity—the medicinal plant markets of Bogotá, Colombia",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6011411/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "id": "ginkgo",
+  "commonName": "Ginkgo",
+  "otherNames": [
+    "árbol de los cuarenta escudos",
+    "ginkgo biloba"
+  ],
+  "scientificName": "Ginkgo biloba L.",
+  "family": "Ginkgoaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El ginkgo es un árbol muy antiguo de China cuyas hojas se usan en extracto para la memoria y la circulación. El extracto de hoja estandarizado es en general seguro para adultos, pero puede aumentar el riesgo de sangrado, sobre todo con anticoagulantes o antes de una cirugía. Las semillas frescas son tóxicas y nunca deben comerse.",
+  "botany": {
+    "description": "Árbol de hoja caduca, de forma piramidal, que alcanza 15 a 24 m de altura. Hojas en forma de abanico, de 5 a 8 cm, verde esmeralda con venación bifurcada característica, que se vuelven amarillo dorado en otoño. Los árboles hembra producen semillas parecidas a ciruelas pequeñas, de pulpa externa carnosa y de olor desagradable al madurar, con una cubierta interna dura, lisa y de color crema.",
+    "identification": "Se reconoce fácilmente por sus hojas en abanico con venas que se bifurcan, únicas entre los árboles; es una especie \"fósil viviente\" sin parientes cercanos.",
+    "cultivation": "Necesita pleno sol y buen drenaje; tolera la sequía, el calor y la contaminación del aire, por lo que se usa mucho como árbol urbano.",
+    "lookalikes": [],
+    "nativeRange": "Sur-centro y sureste de China.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El ginkgo mejora la memoria de cualquier persona sana o previene la demencia.",
+      "note": "No hay evidencia clara de que el ginkgo ayude a personas sanas ni que prevenga la demencia; estudios grandes en adultos mayores no mostraron que redujera el riesgo de demencia. El uso con evidencia más sólida es en personas con demencia leve ya diagnosticada por un médico.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "cognitive_support",
+      "label": "Apoyo a la memoria en demencia leve diagnosticada",
+      "evidence": "wellEstablished",
+      "note": "El extracto seco estandarizado de hoja de ginkgo está aprobado en Europa para mejorar la función cognitiva en adultos con demencia leve, siempre bajo diagnóstico y seguimiento médico.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "poor_circulation",
+      "label": "Molestias leves de circulación (piernas pesadas, manos y pies fríos)",
+      "evidence": "traditional",
+      "note": "Uso tradicional de la hoja en polvo para síntomas leves de mala circulación periférica; en la medicina china tradicional, las hojas se usaban desde hace siglos para el asma y los trastornos circulatorios.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "title": "Extracto de hoja de ginkgo",
+      "uses": [
+        "cognitive_support",
+        "poor_circulation"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra un extracto de hoja de ginkgo estandarizado en cápsulas o comprimidos; no se prepara en casa."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalo con agua, según la dosis del envase."
+        }
+      ],
+      "warnings": [
+        "Suspéndelo 3 a 4 días antes de una cirugía por el riesgo de sangrado.",
+        "No lo uses en el embarazo.",
+        "Nunca comas las semillas frescas de ginkgo: son tóxicas.",
+        "Consulta a tu médico si tomas anticoagulantes o antiagregantes."
+      ],
+      "dose": "La que indique el envase del extracto estandarizado.",
+      "frequency": "Según el envase; consulta a tu médico si no mejora en 3 meses (memoria) o en 2 semanas (circulación).",
+      "maxDays": null,
+      "instructions": "El extracto de hoja de ginkgo se compra ya preparado en cápsulas o comprimidos estandarizados; se toma con agua según la dosis indicada en el envase.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "epilepsy",
+      "note": "El ginkgo se ha relacionado con un mayor riesgo de convulsiones; evítalo si tienes epilepsia."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "avoid",
+      "note": "Puede aumentar el riesgo de sangrado combinado con anticoagulantes como la warfarina."
+    },
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "avoid",
+      "note": "Puede aumentar el riesgo de sangrado combinado con antiagregantes como la aspirina."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3", "s4"],
+  "sideEffects": [
+    "Mareo, molestias digestivas o dolor de cabeza.",
+    "Mayor riesgo de sangrado.",
+    "Las semillas frescas son tóxicas por vía oral: pueden causar irritación de labios, boca y garganta, dolor de estómago, náuseas y diarrea; en el pasado se reportaron intoxicaciones graves, algunas mortales, por comerlas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/ginkgo.jpg",
+      "author": "Joe Schneid, Louisville, Kentucky",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:GinkgoLeaves.jpg",
+      "caption": "Hojas de ginkgo (Ginkgo biloba)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Ginkgo biloba (ginkgo)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Neuroprotective and Neuromodulatory Potential of Valeriana officinalis, Passiflora incarnata, and Ginkgo biloba",
+      "publisher": "Plants (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13567466/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Ginkgo",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/ginkgo",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Ginkgo folium (ginkgo leaf) — summary of HMPC conclusions",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/ginkgo-folium",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

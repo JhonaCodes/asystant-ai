@@ -1,0 +1,143 @@
+{
+  "id": "ginseng",
+  "commonName": "Ginseng",
+  "otherNames": [
+    "ginseng coreano",
+    "ginseng asiático",
+    "ginseng chino"
+  ],
+  "scientificName": "Panax ginseng C.A.Mey.",
+  "family": "Araliaceae",
+  "partsUsed": [
+    "raíz"
+  ],
+  "easyExplanation": "El ginseng es la raíz de una planta de Asia, usada desde hace miles de años en la medicina china y coreana como tónico para el cansancio. En dosis normales y por poco tiempo parece seguro para la mayoría de los adultos, pero puede bajar el azúcar en la sangre y afectar la coagulación, por eso hay que tener cuidado si se toman medicamentos para la diabetes o anticoagulantes, y no se recomienda en el embarazo.",
+  "botany": {
+    "description": "Hierba perenne de raíz gruesa, carnosa y ramificada, que con los años puede tomar una forma parecida a una figura humana (de ahí el nombre \"ginseng\", raíz-hombre). Tallo único con hojas compuestas y palmadas de cinco folíolos; flores pequeñas en umbela y frutos rojos.",
+    "identification": "Se reconoce por su raíz gruesa y ramificada de color amarillento y sus hojas palmeadas de cinco folíolos, características del género Panax.",
+    "cultivation": "Se cultiva en Corea, China y el este de Rusia, en zonas boscosas sombreadas; tarda varios años en desarrollar una raíz de tamaño comercial.",
+    "lookalikes": [],
+    "nativeRange": "Extremo oriente de Rusia (Jabárovsk, Primorie), Corea y Manchuria; introducida en el norte-centro de China.",
+    "sources": ["s1"]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "improve_energy",
+      "label": "Cansancio o falta de energía",
+      "evidence": "limited",
+      "note": "Uso tradicional como tónico para reponer la energía (\"qi\") en la medicina china; los estudios en personas muestran solo un efecto pequeño y no siempre consistente sobre la fatiga.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Cocimiento de raíz de ginseng",
+      "uses": ["improve_energy"],
+      "steps": [
+        {"kind": "clean", "text": "Usa raíz de ginseng seca, en rodajas."},
+        {"kind": "simmer", "text": "Hiérvela en agua unos minutos."},
+        {"kind": "strain", "text": "Cuela."},
+        {"kind": "drink", "text": "Tómalo tibio."}
+      ],
+      "warnings": [
+        "No lo uses por más de 6 meses seguidos sin consultar a tu médico.",
+        "No lo uses en el embarazo ni en menores de 18 años.",
+        "Avisa a tu médico si tomas anticoagulantes o medicamentos para la diabetes."
+      ],
+      "dose": "La que indique el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 180,
+      "instructions": "Se hierve la raíz seca de ginseng en agua unos minutos y se toma tibia; también se vende en cápsulas o extractos, siguiendo la dosis del envase.",
+      "sources": ["s3", "s4", "s5"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "autoimmune_disease",
+      "note": "Podría empeorar una enfermedad autoinmune al estimular el sistema de defensas."
+    },
+    {
+      "kind": "condition",
+      "tag": "diabetes",
+      "note": "Podría bajar el azúcar en la sangre; no reemplaza el tratamiento médico de la diabetes."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Podría afectar la coagulación de la sangre y el metabolismo de la warfarina; consulta a tu médico antes de combinarlos."
+    },
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Podría bajar aún más el azúcar en la sangre junto con medicamentos para la diabetes."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3", "s4", "s5"],
+  "sideEffects": [
+    "Insomnio, el efecto más frecuente.",
+    "Dolor de estómago, náuseas o diarrea.",
+    "Poco frecuentes pero graves: sarpullido intenso, daño al hígado o reacciones alérgicas graves."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/ginseng.jpg",
+      "author": "Ginsenosideforbrain",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ginseng_root.jpg",
+      "caption": "Raíz de ginseng (Panax ginseng)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Panax ginseng C.A.Mey.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:91472-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Research progress on the prevention and treatment of exercise-induced fatigue with ginseng and relevant formulas",
+      "publisher": "Frontiers in Pharmacology (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13084168/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Asian Ginseng",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/asian-ginseng",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Ginseng radix (ginseng root) — summary of HMPC conclusions",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/ginseng-radix",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Herbal Medicines and Drugs Interactions: Cytochrome P450 Responsibility",
+      "publisher": "Current Medicinal Chemistry (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13555779/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

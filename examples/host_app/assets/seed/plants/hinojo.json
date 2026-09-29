@@ -1,0 +1,168 @@
+{
+  "id": "hinojo",
+  "commonName": "Hinojo",
+  "otherNames": [
+    "eneldo dulce",
+    "fenollo"
+  ],
+  "scientificName": "Foeniculum vulgare Mill.",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "fruto (semilla)"
+  ],
+  "easyExplanation": "El hinojo es una hierba alta y aromática, de sabor parecido al regaliz, cuyo fruto (la \"semilla\") se usa en infusión para los gases y la digestión pesada, como uso tradicional reconocido en Europa. Su aceite esencial contiene estragol, una sustancia por la que la agencia europea de medicamentos restringe su uso en niños pequeños, el embarazo y la lactancia: en esos casos, solo la infusión ocasional y en cantidad moderada, nunca el aceite esencial ni productos concentrados.",
+  "botany": {
+    "description": "Hierba perenne, cultivada como anual, de 90 cm a 1,5 m de altura, de hojas verde amarillento muy finas y plumosas, con florecitas amarillas pequeñas agrupadas en umbelas (forma de paraguas); su fruto es una semilla aromática y dulce.",
+    "identification": "Se reconoce por sus hojas filiformes (como hilos finos), su umbela amarilla plana y su fuerte aroma dulce a anís o regaliz al frotar hojas o semillas.",
+    "cultivation": "Necesita sol pleno y suelo húmedo, rico en materia orgánica y bien drenado; tolera suelos pobres, arenosos o arcillosos. Se resiembra solo con facilidad y puede volverse invasor si no se controla.",
+    "lookalikes": [
+      "Anethum graveolens (eneldo): muy parecido en el aspecto de sus hojas finas; se distingue por el olor y porque el tallo del eneldo es hueco."
+    ],
+    "nativeRange": "Sur de Europa y región mediterránea; hoy distribuido y cultivado en casi todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "traditional",
+      "note": "Fruto (semilla) en infusión; uso tradicional reconocido en Europa para las molestias digestivas y los gases.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada",
+      "evidence": "traditional",
+      "note": "Fruto (semilla) en infusión; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Espasmos digestivos leves",
+      "evidence": "traditional",
+      "note": "Fruto (semilla) en infusión; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con semillas de hinojo machacadas, frescas de tu huerta o secas, en agua recién hervida, deja hervir unos minutos y cuela. Toma solo cantidades moderadas y de forma ocasional en el embarazo o la lactancia.",
+      "dose": "0,3 a 0,6 g de semilla seca, o 3 a 5 g de hoja fresca, por taza; deja hervir unos 10 minutos.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de hinojo",
+      "uses": [
+        "bloating",
+        "indigestion",
+        "abdominal_cramps"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre semillas de hinojo machacadas, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "No se lo des a niños pequeños ni lo tomes en el embarazo o la lactancia más que de forma ocasional y en cantidad moderada.",
+        "No uses el aceite esencial de hinojo por boca ni en la piel de niños."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "No lo uses si eres alérgico al hinojo o a otras plantas de su familia, como el anís, el eneldo, el apio o la zanahoria."
+    },
+    {
+      "kind": "condition",
+      "tag": "hormone_sensitive_condition",
+      "note": "Su aceite esencial tiene actividad parecida a los estrógenos; se ha reportado desarrollo mamario prematuro en niñas por su uso repetido. Consulta antes de usarlo."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas en la piel o las vías respiratorias.",
+    "En dosis altas, su aceite esencial (por el estragol y el anetol) puede ser tóxico para el sistema nervioso.",
+    "Se han reportado casos de desarrollo mamario prematuro en niñas tras uso repetido."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/hinojo.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Foeniculum_vulgare_006.JPG",
+      "caption": "Flores en umbela de hinojo (Foeniculum vulgare)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Fennel - Foeniculum vulgare",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/foeniculum-vulgare/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Foeniculum vulgare (hinojo) — usos y preparación tradicional documentados por TRAMIL",
+      "publisher": "TRAMIL — Programa de Investigación Científica Aplicada a las Plantas Medicinales del Caribe",
+      "url": "https://tramil.net/es/plant/foeniculum-vulgare",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Hinojo (Foeniculum vulgare) y lactancia: estragol, anetol y restricciones de la EMA",
+      "publisher": "e-lactancia.org (APILAM)",
+      "url": "https://www.e-lactancia.org/breastfeeding/fennel/product/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3"
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "id": "anis",
+  "commonName": "Anís",
+  "otherNames": [
+    "anís verde",
+    "matalahúva"
+  ],
+  "scientificName": "Pimpinella anisum L.",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "fruto (semilla)"
+  ],
+  "easyExplanation": "El anís es una hierba de flores blancas pequeñas, cuyo fruto (la \"semilla\" de anís) se usa en infusión para los gases y las molestias digestivas leves, como uso tradicional reconocido en Europa. No se recomienda en niños menores de 12 años ni en el embarazo o la lactancia en cantidades mayores a las de cocina, por sustancias de su aceite esencial (el estragol y el anetol) que en dosis altas pueden ser dañinas.",
+  "botany": {
+    "description": "Hierba anual erguida y ramificada, de 40 a 60 cm de altura, con hojas inferiores enteras y hojas superiores muy divididas y finas. Sus flores blancas, pequeñas, forman umbelas (grupos en forma de paraguas); el fruto es una semilla aromática de sabor dulce parecido al regaliz.",
+    "identification": "Se reconoce por sus flores blancas en umbela, sus hojas superiores finamente divididas y el fuerte aroma dulce (anisado) de sus semillas al frotarlas.",
+    "cultivation": "Necesita un período de cultivo cálido de al menos 5 a 6 meses, sol pleno y suelo fértil, liviano y bien drenado; no le gusta que muevan sus raíces, así que no se trasplanta bien.",
+    "lookalikes": [
+      "Otras plantas de la familia Apiaceae con flores blancas en umbela (como el perejil o la cicuta) pueden confundirse a simple vista; a diferencia de plantas peligrosas como la cicuta, el anís tiene un aroma dulce característico, pero conviene comprar la semilla ya identificada en vez de recolectarla silvestre."
+    ],
+    "nativeRange": "Mediterráneo oriental y suroeste de Asia, sobre todo la península de Anatolia, Grecia y Egipto; hoy cultivado en muchas regiones templadas, incluidas Argentina, Chile y México.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "traditional",
+      "note": "Fruto (semilla) en infusión; uso tradicional reconocido en Europa para molestias digestivas leves de tipo espasmódico y gases, también documentado como planta de uso popular en el Caribe.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Espasmos digestivos leves",
+      "evidence": "traditional",
+      "note": "Fruto (semilla) en infusión; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos del resfriado",
+      "evidence": "traditional",
+      "note": "Uso tradicional como expectorante en la tos asociada al resfriado.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con semillas de anís machacadas, frescas o secas, en agua recién hervida, deja reposar y cuela.",
+      "dose": "1 a 3,5 g de fruto entero o machacado (una cucharadita colmada equivale aproximadamente a 3 g) por taza de 150 ml.",
+      "frequency": "3 veces al día.",
+      "maxDays": 14,
+      "title": "Té de anís",
+      "uses": [
+        "bloating",
+        "abdominal_cramps",
+        "cough"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre semillas de anís machacadas, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "No lo des a niños menores de 12 años sin indicación de un profesional."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "No lo uses si eres alérgico al anís o a otras plantas de su familia, como el hinojo, el eneldo, el apio o la zanahoria."
+    },
+    {
+      "kind": "condition",
+      "tag": "hormone_sensitive_condition",
+      "note": "Su aceite esencial tiene una leve actividad parecida a los estrógenos; consulta antes de usarlo en cantidad."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas en la piel o las vías respiratorias, sobre todo en personas sensibles a esta familia de plantas.",
+    "En dosis altas, su aceite esencial puede irritar la piel y las mucosas, y su componente anetol puede afectar el sistema nervioso."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/anis.jpg",
+      "author": "SABENCIA Guillermo César Ruiz",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pimpinella_anisum._An%C3%ADs.jpg",
+      "caption": "Planta de anís (Pimpinella anisum) en flor"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Pimpinella anisum (anise)",
+      "publisher": "Useful Tropical Plants Database (theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Pimpinella+anisum",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Pimpinella anisum (anís) — nombres vernáculos y uso documentado en el Caribe",
+      "publisher": "TRAMIL — Programa de Investigación Científica Aplicada a las Plantas Medicinales del Caribe",
+      "url": "https://tramil.net/es/plant/pimpinella-anisum",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Community herbal monograph on Pimpinella anisum L., fructus (Anisi fructus)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-pimpinella-anisum-l-fructus_en.pdf",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Anís y lactancia materna: compatibilidad y precauciones",
+      "publisher": "e-lactancia.org (APILAM)",
+      "url": "https://www.e-lactancia.org/breastfeeding/anise/product/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

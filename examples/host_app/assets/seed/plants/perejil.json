@@ -1,0 +1,183 @@
+{
+  "id": "perejil",
+  "commonName": "Perejil",
+  "otherNames": [
+    "perejil rizado",
+    "perejil liso"
+  ],
+  "scientificName": "Petroselinum crispum (Mill.) Fuss",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El perejil es una hierba de cocina muy conocida, con hojas verdes y finamente recortadas. En cantidades de comida es seguro, pero en cantidades medicinales, y sobre todo su semilla y su aceite esencial, contienen una sustancia (apiol) que puede provocar un aborto peligroso y dañar el hígado y los riñones; por eso el embarazo debe evitar tomarlo en cantidades mayores a las de cocinar. También puede dar manchas oscuras en la piel si se expone al sol después de tocarlo o comerlo en cantidad.",
+  "botany": {
+    "description": "Hierba bianual en climas templados (anual en climas cálidos), que en el primer año forma una roseta de hojas muy divididas de 10 a 25 cm de largo, y en el segundo año produce un tallo floral de hasta 75 cm con umbelas planas de 3 a 10 cm de diámetro, con numerosas flores pequeñas de color amarillo a verde amarillento.",
+    "identification": "Se distingue del cilantro, con el que puede confundirse por el aspecto similar de sus hojas, por su olor propio; la chirivía (raíz parecida en nombre y forma a la raíz de perejil) tiene un sabor muy distinto.",
+    "cultivation": "Crece mejor en suelo húmedo y bien drenado, a pleno sol, entre 22 y 30 °C. La semilla germina lento, de 4 a 6 semanas, por las furanocumarinas de su cubierta.",
+    "lookalikes": [
+      "Cilantro (Coriandrum sativum): hojas de aspecto parecido pero de olor y sabor muy distintos.",
+      "Cicuta menor o cicuta acuática: plantas venenosas de la misma familia que pueden confundirse con el perejil silvestre; no se debe recolectar perejil silvestre sin certeza absoluta de la identificación."
+    ],
+    "nativeRange": "Nativo de Grecia, los Balcanes, Argelia y Marruecos; se cree que se cultivó originalmente en Cerdeña.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té o el aceite de perejil en cantidad provoca la regla o un aborto de forma segura.",
+      "note": "El perejil y sus preparados concentrados se han usado históricamente en Sudamérica e Italia para provocar abortos, muchas veces con muerte por sangrado vaginal grave. El compuesto responsable, el apiol, presente sobre todo en la semilla y el aceite esencial, es tóxico para el hígado y los riñones; en animales, dosis relativamente pequeñas provocaron hemorragia grave y aborto, y los síntomas de intoxicación incluyen fiebre, dolor abdominal intenso, sangrado vaginal, convulsiones, vómito y diarrea. No es un método seguro bajo ninguna forma.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "claim": "El perejil cura la anemia, la artritis o el cáncer.",
+      "note": "Estos son usos populares antiguos; la propia fuente que los recoge aclara que ningún estudio científico ha demostrado esos efectos, y la revisión científica disponible sobre el perejil se centra en su toxicidad (apiol) y no respalda estos usos.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "fluid_retention",
+      "label": "Retención de líquidos",
+      "evidence": "popular",
+      "note": "Uso popular como diurético suave, en cantidades de alimento, por inhibir la bomba de sodio y potasio; no hay estudios clínicos que lo confirmen.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hojas frescas o secas de perejil en agua recién hervida, deja reposar y cuela. Es una cantidad de uso culinario, nunca semillas ni aceite esencial.",
+      "dose": "Un puñado pequeño de hojas frescas o secas por taza; no uses semilla de perejil ni su aceite esencial.",
+      "frequency": "Hasta 2 tazas al día.",
+      "maxDays": 7,
+      "title": "Té de hoja de perejil",
+      "uses": [
+        "fluid_retention"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de perejil, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "En el embarazo, evita el perejil en cantidades mayores a las de cocinar; nunca uses su semilla ni su aceite esencial.",
+        "No uses el aceite esencial de perejil por boca ni sobre la piel sin diluir: es tóxico para el hígado y los riñones."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "No lo uses si eres alérgico al perejil o a otras plantas de su familia, como el apio, el hinojo, el eneldo o el anís."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Evita cantidades medicinales si tienes una enfermedad de los riñones; su semilla y aceite esencial son tóxicos para el riñón."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Evita cantidades medicinales si tienes una enfermedad del hígado; su semilla y aceite esencial son tóxicos para el hígado."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "El perejil es rico en vitamina K, que puede contrarrestar el efecto de los anticoagulantes como la warfarina."
+    },
+    {
+      "medicationClass": "diuretic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los diuréticos."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "sideEffects": [
+    "Manchas oscuras en la piel (fotosensibilidad) si se expone al sol tras el contacto con la planta o su jugo en cantidad.",
+    "Reacciones alérgicas.",
+    "La semilla y el aceite esencial, tomados por boca, son tóxicos para el hígado y los riñones y pueden provocar un aborto grave; esto no es un uso que este catálogo recomiende."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/perejil.jpg",
+      "author": "4028mdk09",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Petroselinum_crispum.JPG",
+      "caption": "Planta de perejil (Petroselinum crispum)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Petroselinum crispum (Parsley)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/petroselinum-crispum/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Petroselinum crispum (Mill.) Fuss (Parsley): An Updated Review of the Traditional Uses, Phytochemistry, and Pharmacology — traditional use as a diuretic",
+      "publisher": "Journal of Agricultural and Food Chemistry",
+      "url": "https://doi.org/10.1021/acs.jafc.3c06429",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Maternal Reproductive Toxicity of Some Essential Oils and Their Constituents",
+      "publisher": "PMC (National Library of Medicine) — Int J Mol Sci",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7956842/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "New Insights Concerning Phytophotodermatitis Induced by Phototoxic Plants",
+      "publisher": "PMC (National Library of Medicine) — Life (Basel)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11355232/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

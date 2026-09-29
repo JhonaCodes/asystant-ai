@@ -1,0 +1,203 @@
+{
+  "id": "calendula",
+  "commonName": "Caléndula",
+  "otherNames": [
+    "maravilla"
+  ],
+  "scientificName": "Calendula officinalis L.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "flor"
+  ],
+  "easyExplanation": "La caléndula es una flor anaranjada que se cultiva fácilmente en macetas o jardines y se usa sobre la piel. En Europa se reconoce su uso tradicional para inflamaciones leves de la piel, como las quemaduras de sol, y para ayudar a curar heridas pequeñas. Puede causar alergia en personas sensibles a plantas de la familia de la margarita.",
+  "botany": {
+    "description": "Hierba anual o perenne de vida corta, de hasta 80 cm, con hojas oblongo-lanceoladas y flores de 4 a 7 cm de diámetro, de color amarillo o anaranjado, con pétalos (flores liguladas) alrededor de un centro de flores tubulares que suele ser más oscuro.",
+    "identification": "Se reconoce por sus cabezuelas anaranjadas o amarillas con brácteas velludas alrededor de la base de la flor y por sus frutos (aquenios) curvados y con pequeñas espinas, muy distintos de otras margaritas.",
+    "cultivation": "Crece bien a pleno sol, en suelo con buen drenaje; se cultiva con facilidad en maceta o jardín, germina rápido y puede florecer todo el año en climas templados. Es perenne de vida corta, pero suele tratarse como anual en climas fríos.",
+    "lookalikes": [
+      "Otras flores anaranjadas o amarillas de la familia Asteraceae con las que se puede confundir a simple vista, aunque la caléndula se distingue por sus brácteas velludas y sus frutos espinosos y curvados."
+    ],
+    "nativeRange": "Probablemente nativa del sur de Europa; hoy cultivada y naturalizada en muchas regiones templadas y cálidas del mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "skin_irritation",
+      "label": "Inflamación leve de la piel",
+      "evidence": "traditional",
+      "note": "Uso sobre la piel; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "sunburn",
+      "label": "Quemadura de sol leve",
+      "evidence": "traditional",
+      "note": "Uso sobre la piel; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Ayudar a curar heridas pequeñas",
+      "evidence": "traditional",
+      "note": "Uso sobre la piel; uso tradicional reconocido en Europa, también documentado como uso popular para ayudar a cicatrizar cortes y quemaduras pequeñas.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "skin_care",
+      "label": "Cuidar la piel irritada o con heridas pequeñas",
+      "evidence": "traditional",
+      "note": "Uso sobre la piel; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Aplica una capa fina de pomada o crema de caléndula de farmacia sobre la piel limpia.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Crema de caléndula",
+      "uses": [
+        "skin_irritation",
+        "sunburn",
+        "minor_wound",
+        "skin_care"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa una pomada o crema de caléndula de farmacia."
+        },
+        {
+          "kind": "clean",
+          "text": "Limpia la piel."
+        },
+        {
+          "kind": "apply",
+          "text": "Pon una capa fina."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "infusion",
+      "route": "topical",
+      "instructions": "Deja enfriar una infusión de flores de caléndula, cuélala y úsala en compresas sobre la piel.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Compresas de caléndula",
+      "uses": [
+        "skin_irritation",
+        "sunburn",
+        "minor_wound",
+        "skin_care"
+      ],
+      "steps": [
+        {
+          "kind": "strain",
+          "text": "Prepara un té con flores de caléndula, frescas o secas, y cuélalo."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja que se enfríe."
+        },
+        {
+          "kind": "compress",
+          "text": "Moja un paño limpio y ponlo sobre la piel."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "No la uses si eres alérgico a plantas de la familia de la margarita."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "Sobre heridas abiertas o piel muy dañada, consulta antes de usarla."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 6,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Alergia o sensibilización de la piel."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/calendula.jpg",
+      "author": "Ввласенко",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calendula_(Calendula_officinalis).jpg",
+      "caption": "Flor de caléndula"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Calendula officinalis (Pot marigold)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/calendula-officinalis/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Calendula (uso popular sobre cortes pequeños, quemaduras y piel irritada)",
+      "publisher": "Memorial Sloan Kettering Cancer Center (About Herbs)",
+      "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/calendula",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Calendulae flos — summary of HMPC conclusions (calendula flower)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/calendulae-flos",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Calendula (About Herbs)",
+      "publisher": "Memorial Sloan Kettering Cancer Center",
+      "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/calendula",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "castano_de_indias",
+  "commonName": "Castaño de Indias",
+  "otherNames": [
+    "castaño de las Indias",
+    "horse chestnut"
+  ],
+  "scientificName": "Aesculus hippocastanum L.",
+  "family": "Sapindaceae",
+  "partsUsed": [
+    "semilla"
+  ],
+  "easyExplanation": "El castaño de Indias es un árbol grande de Europa cuyas semillas (parecidas a castañas, pero no comestibles) contienen una sustancia venenosa. Nunca se deben comer crudas ni preparar en casa en té: son tóxicas y pueden ser mortales. Solo el extracto de semilla estandarizado y purificado que se vende en farmacia, sin la sustancia tóxica, es seguro para las piernas cansadas e hinchadas por mala circulación.",
+  "botany": {
+    "description": "Árbol grande de copa ovalada a redondeada, de 15 a 23 m de altura. Hojas opuestas, compuestas y palmeadas, con 5 a 7 folíolos de borde aserrado. Flores blancas con centro amarillo y motas rojas, agrupadas en racimos grandes de 12 a 30 cm. El fruto es una cápsula espinosa de 2,5 a 5 cm que contiene una o dos semillas grandes, brillantes y de color café.",
+    "identification": "Se reconoce por sus hojas palmeadas de 5 a 7 folíolos, sus llamativos racimos de flores blancas y sus frutos en cápsula espinosa con semillas grandes y brillantes parecidas a castañas, aunque no son comestibles.",
+    "cultivation": "Prefiere pleno sol a media sombra y suelo húmedo y bien drenado; es un árbol de sombra muy usado en parques y calles de Europa.",
+    "lookalikes": [
+      "Castaño comestible (Castanea sativa): produce castañas comestibles con cáscara espinosa parecida, pero de la familia Fagaceae; no debe confundirse con el fruto tóxico del castaño de Indias."
+    ],
+    "nativeRange": "Europa (Balcanes).",
+    "sources": ["s1"]
+  },
+  "beliefs": [
+    {
+      "claim": "Las semillas crudas o el té de hojas de castaño de Indias son un remedio casero seguro para la circulación.",
+      "note": "No es seguro: las semillas, la corteza, las flores y las hojas crudas contienen esculina y otras sustancias tóxicas que pueden causar debilidad muscular, parálisis, vómitos y diarrea; solo el extracto de semilla estandarizado y purificado en farmacia, sin esa sustancia tóxica, es el que se ha estudiado como seguro.",
+      "sources": ["s1", "s3"]
+    },
+    {
+      "claim": "El extracto de castaño de Indias está aprobado en Europa como tratamiento para las hemorroides.",
+      "note": "No exactamente: la agencia europea de medicamentos solo reconoce como uso bien establecido la insuficiencia venosa crónica de las piernas. El uso para hemorroides se apoya en estudios clínicos más pequeños sobre su compuesto principal, la escina, no en el uso bien establecido europeo; por eso este catálogo no lo incluye como uso recomendado bajo ese nivel de evidencia.",
+      "sources": ["s2"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "poor_circulation",
+      "label": "Piernas cansadas, pesadas o con hormigueo por mala circulación",
+      "evidence": "wellEstablished",
+      "note": "El extracto estandarizado de semilla de castaño de Indias está aprobado en Europa (uso bien establecido) para tratar la insuficiencia venosa crónica en adultos: piernas hinchadas, pesadas, con hormigueo, dolor o calambres en las pantorrillas; es también un uso tradicional muy extendido en Europa para la mala circulación de las piernas.",
+      "sources": ["s4", "s5"]
+    },
+    {
+      "tag": "fluid_retention",
+      "label": "Hinchazón de piernas por mala circulación",
+      "evidence": "wellEstablished",
+      "note": "El mismo extracto estandarizado ayuda a reducir la hinchazón de las piernas asociada a la insuficiencia venosa crónica.",
+      "sources": ["s4"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "title": "Extracto de semilla de castaño de Indias",
+      "uses": ["poor_circulation", "fluid_retention"],
+      "steps": [
+        {"kind": "buy", "text": "Compra un extracto de semilla de castaño de Indias estandarizado y purificado en farmacia; no se prepara en casa con la semilla cruda."},
+        {"kind": "swallow", "text": "Tómalo con agua, según la dosis del envase."}
+      ],
+      "warnings": [
+        "Nunca comas las semillas, la corteza, las flores ni las hojas crudas: son tóxicas y pueden ser mortales.",
+        "Nunca prepares té casero con hojas o semillas de este árbol.",
+        "Consulta a un médico si los síntomas persisten o empeoran."
+      ],
+      "dose": "La que indique el envase del extracto estandarizado.",
+      "frequency": "Según el envase; puede tardar 4 semanas o más en notarse mejoría.",
+      "maxDays": null,
+      "instructions": "Se compra un extracto de semilla de castaño de Indias ya estandarizado y purificado, sin la sustancia tóxica, y se toma con agua según la dosis del envase; nunca se prepara en casa con la semilla cruda.",
+      "sources": ["s3", "s4"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Consulta a tu médico antes de usarlo si tienes una enfermedad de los riñones."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Consulta a tu médico antes de usarlo si tienes una enfermedad del hígado."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Podría aumentar el riesgo de sangrado combinado con anticoagulantes."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3", "s4"],
+  "sideEffects": [
+    "Mareo, molestias digestivas, dolor de cabeza o picazón con el extracto estandarizado.",
+    "Las semillas, la corteza, las flores y las hojas crudas son muy tóxicas y pueden ser mortales: causan debilidad muscular, parálisis, pupilas dilatadas, vómitos y diarrea."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/castano_de_indias.jpg",
+      "author": "JJ Harrison",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aesculus_hippocastanum_Seed.jpg",
+      "caption": "Semilla de castaño de Indias (Aesculus hippocastanum)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Aesculus hippocastanum (common horsechestnut)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/aesculus-hippocastanum/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Natural Products in Hemorrhoid Management: A Comprehensive Literature Review of Traditional Herbal Remedies and Evidence-Based Therapies",
+      "publisher": "Cureus (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12128686/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Horse Chestnut",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/horse-chestnut",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Hippocastani semen (horse chestnut seed) — summary of HMPC conclusions",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/hippocastani-semen",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "popular",
+      "title": "Turkish folk medicine plants used as sources of water extracts and their pharmacological comparison, including horse chestnut",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7179405/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

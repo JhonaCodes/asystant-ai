@@ -1,0 +1,236 @@
+{
+  "id": "ortiga",
+  "commonName": "Ortiga",
+  "otherNames": [
+    "ortiga mayor",
+    "ortiga verde",
+    "stinging nettle"
+  ],
+  "scientificName": "Urtica dioica L.",
+  "family": "Urticaceae",
+  "partsUsed": [
+    "hoja",
+    "raíz"
+  ],
+  "easyExplanation": "La ortiga es una planta con pelitos que pican al tocarlos. La hoja se usa en Europa, por tradición, para aumentar la orina y aliviar molestias urinarias leves. La raíz se usa, también por tradición, para las molestias al orinar de los hombres con la próstata agrandada, pero antes de usarla un médico debe confirmar que se trata de eso y no de otra causa, porque los mismos síntomas pueden deberse a otras enfermedades de la próstata.",
+  "botany": {
+    "description": "Hierba perenne de 0,9 a 2 metros de alto, con rizomas y estolones muy extendidos de color amarillo brillante, tallos erguidos y hojas opuestas, de forma ovalada y bordes dentados, de 3 a 20 cm de largo, cubiertas de pelos urticantes finos y huecos.",
+    "identification": "Se reconoce por sus pelos urticantes: al tocarlos se rompen e inyectan histamina, serotonina y acetilcolina, lo que produce un ardor y picazón característicos apenas se roza la planta.",
+    "cultivation": "Se propaga por semilla, por división de estolones o esquejes de cabeza; también se cultiva en sistemas sin suelo (hidroponía o aeroponía). Prefiere suelos húmedos y ricos en nitrógeno.",
+    "lookalikes": [],
+    "nativeRange": "Nativa de Europa, buena parte de Asia templada y el noroeste de África; hoy se encuentra en todo el mundo, incluida América del Norte y Australia.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Cualquier molestia al orinar en un hombre se debe a la próstata y se puede tratar solo con raíz de ortiga, sin ver a un médico.",
+      "note": "El uso tradicional europeo de la raíz de ortiga es únicamente para las molestias urinarias que ya se diagnosticaron como causadas por una próstata agrandada de tipo benigno; los mismos síntomas pueden deberse a una infección, a un cálculo o a un problema más serio de la próstata, por lo que siempre se necesita un diagnóstico médico antes de tratarlos en casa.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "fluid_retention",
+      "label": "Retención de líquidos",
+      "evidence": "traditional",
+      "note": "La hoja de ortiga se usa por tradición en Europa como diurético para ayudar a eliminar líquidos.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "urinary_discomfort",
+      "label": "Molestias urinarias leves",
+      "evidence": "traditional",
+      "note": "La hoja aumenta la orina y ayuda a limpiar las vías urinarias; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "bph_urinary_symptoms",
+      "label": "Molestias al orinar por próstata aumentada de tamaño (ya diagnosticada)",
+      "evidence": "traditional",
+      "note": "La raíz de ortiga se usa por tradición en Europa para las molestias urinarias leves de la hiperplasia prostática benigna, siempre que un médico ya haya descartado otras causas.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja de ortiga fresca o seca en agua recién hervida, deja reposar y cuela. Usa guantes al manipular la planta fresca.",
+      "dose": "La que indique el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Té de hoja de ortiga",
+      "uses": [
+        "fluid_retention",
+        "urinary_discomfort"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Si usas hoja fresca, recógela con guantes para no pincharte con los pelos urticantes."
+        },
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre la hoja de ortiga, fresca o seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Consulta a un médico si las molestias duran más de una semana, o si hay fiebre o sangre en la orina."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Los productos de raíz de ortiga (cápsulas o extractos) se compran ya preparados; no se hacen en casa.",
+      "dose": "La que indique el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": null,
+      "title": "Extracto de raíz de ortiga",
+      "uses": [
+        "bph_urinary_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra un producto de raíz de ortiga en la farmacia."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalo con agua según el envase."
+        }
+      ],
+      "warnings": [
+        "Antes de usarlo, un médico debe confirmar que las molestias urinarias son por próstata aumentada de tamaño y no por otra causa (infección, cálculo u otro problema de próstata)."
+      ],
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "No la uses para molestias urinarias si te indicaron tomar poco líquido por una enfermedad del corazón."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "No la uses para molestias urinarias si te indicaron tomar poco líquido por una enfermedad de los riñones."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "diuretic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los diuréticos."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Su efecto diurético podría sumarse al de los medicamentos para la presión."
+    },
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Hay datos preliminares de que podría bajar el azúcar en la sangre; consulta si tomas medicamentos para la diabetes."
+    },
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los sedantes."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3",
+    "s4",
+    "s5"
+  ],
+  "sideEffects": [
+    "Molestias leves de estómago al tomarla.",
+    "Contacto con la piel: ardor, picazón y ronchas por los pelos urticantes.",
+    "Reacciones alérgicas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/ortiga.jpg",
+      "author": "Uwe H. Friese, Bremerhaven 2003",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brennnessel_1.JPG",
+      "caption": "Planta de ortiga (Urtica dioica)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Urtica dioica (Stinging Nettle)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/urtica-dioica/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Nutritional and pharmacological importance of stinging nettle (Urtica dioica L.): A review — traditional diuretic and prostate use",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9253158/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Urticae folium (nettle leaf) — herbal medicinal product overview",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/urticae-folium",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Urticae radix (nettle root) — herbal medicinal product overview",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/urticae-radix",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Nutritional and pharmacological importance of stinging nettle (Urtica dioica L.): A review",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9253158/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

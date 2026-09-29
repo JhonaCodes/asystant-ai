@@ -1,0 +1,210 @@
+{
+  "id": "albahaca",
+  "commonName": "Albahaca",
+  "otherNames": [
+    "albahaca dulce",
+    "basilico"
+  ],
+  "scientificName": "Ocimum basilicum L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La albahaca es una hierba aromática que se usa en infusión de hoja, fresca o seca, por tradición para la digestión pesada y los gases. El aceite esencial concentrado de albahaca contiene estragol, una sustancia que el cuerpo transforma en compuestos que se unen al ADN y que se considera cancerígena, así que no se recomienda tomarlo por boca ni usarlo sin diluir.",
+  "botany": {
+    "description": "Hierba anual (a veces de vida corta como subarbusto) de 30 a 150 cm de altura, con tallos cuadrangulares y hojas opuestas, ovaladas a ovalado-elípticas, de 15 a 50 mm de largo por 5 a 25 mm de ancho, de borde liso o levemente dentado y superficie brillante; puede haber variedades de hoja verde o morada. Las flores son pequeñas, blancas o algo rosadas, agrupadas en espigas terminales.",
+    "identification": "Se reconoce por su fuerte aroma dulce y anisado al frotar las hojas, sus tallos cuadrados típicos de la familia de las menta (Lamiaceae) y sus hojas brillantes dispuestas en pares opuestos.",
+    "cultivation": "Es sensible al frío y crece mejor con calor, sol pleno y suelo bien drenado y con materia orgánica; se siembra en almácigo protegido y se trasplanta afuera cuando ya no hay riesgo de helada, con temperaturas óptimas entre 7 y 27 °C.",
+    "lookalikes": [
+      "Otras especies de Ocimum, como la albahaca morada o la albahaca sagrada (Ocimum tenuiflorum/tulsi), de aroma y composición distintos."
+    ],
+    "nativeRange": "Nativa de Asia tropical y subtropical (desde India y Sri Lanka hasta el sureste asiático y el norte de Australia); hoy se cultiva y en algunos sitios se ha naturalizado en zonas cálidas de todo el mundo.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El aceite esencial de albahaca es completamente seguro para tomar por ser una planta natural.",
+      "note": "La albahaca puede contener estragol, un compuesto que el cuerpo transforma en sustancias que se unen al ADN; una revisión científica lo describe como genotóxico y carcinógeno, sin un límite de exposición que se considere totalmente seguro, con niveles de hasta 81 % en el aceite esencial de algunas variedades. El aceite esencial concentrado no debe tomarse por boca ni aplicarse sin diluir mucho sobre la piel.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional documentado en revisiones científicas de todo el mundo para molestias digestivas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "popular",
+      "note": "Hoja en infusión; una revisión científica documenta su uso tradicional en distintas regiones como planta carminativa, contra los gases y la flatulencia.",
+      "sources": [
+        "s5"
+      ]
+    },
+    {
+      "tag": "nausea",
+      "label": "Náuseas leves",
+      "evidence": "popular",
+      "note": "Hoja en infusión; una revisión científica documenta el uso tradicional de la hoja para los vómitos y otros trastornos digestivos.",
+      "sources": [
+        "s5"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "Hoja en infusión; uso tradicional general documentado para trastornos digestivos (gastritis, cólicos, diarrea), sin estudios específicos sobre el cólico como síntoma aislado.",
+      "sources": [
+        "s5"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Hoja en infusión; una revisión científica documenta el uso tradicional de la hoja y la semilla para la tos, la fiebre y el resfriado.",
+      "sources": [
+        "s5"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de hojas de albahaca",
+      "uses": [
+        "indigestion",
+        "bloating",
+        "nausea",
+        "abdominal_cramps",
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve una taza de agua (unos 250 ml)."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre las hojas de albahaca, frescas de tu huerta o secas."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar de 5 a 10 minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela las hojas."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo tibio."
+        }
+      ],
+      "warnings": [
+        "Si tomas medicamentos para la presión arterial o la diabetes, consulta a tu médico antes de tomarla seguido, porque puede interferir con su efecto.",
+        "En dosis altas puede causar mareos, náuseas o diarrea.",
+        "No se recomienda en dosis altas ni por tiempo prolongado durante el embarazo o la lactancia."
+      ],
+      "dose": "Cantidades como las de una infusión de uso común; las fuentes no dan una dosis medicinal exacta.",
+      "frequency": "Uso ocasional.",
+      "maxDays": null,
+      "instructions": "Prepara una infusión con hoja de albahaca, fresca o seca, en agua recién hervida; deja reposar, cuela y tómala tibia.",
+      "sources": [
+        "s2",
+        "s5"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia (menta, romero, orégano, entre otras)."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Puede sumarse al efecto de los medicamentos para la presión arterial; consulta a tu médico si la usas seguido."
+    },
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Puede interferir con medicamentos para la diabetes; consulta a tu médico si la usas seguido."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "sideEffects": [
+    "En dosis altas puede causar mareos, náuseas o diarrea.",
+    "El aceite esencial concentrado contiene estragol, una sustancia con posible efecto genotóxico y cancerígeno en dosis altas; no se recomienda tomarlo por boca ni usarlo sin diluir.",
+    "Rara vez, reacciones alérgicas."
+  ],
+  "safetySources": [
+    "s2",
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/albahaca.jpg",
+      "author": "Mokkie",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sweet_Basil_(Ocimum_basilicum)_2.jpg",
+      "caption": "Hojas de albahaca (Ocimum basilicum)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Ocimum basilicum L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:452874-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Sweet Basil (Ocimum basilicum L.)—A Review of Its Botany, Cultivation, Nutritional, Industrial and Bioactive Properties",
+      "publisher": "PMC (NIH)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10748370/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Alkenylbenzenes in Foods: Aspects Impeding the Evaluation of Adverse Health Effects",
+      "publisher": "Foods (MDPI) / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8469824/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "popular",
+      "title": "Sweet Basil (Ocimum basilicum L.)—A Review of Its Botany, Cultivation, Nutritional, Industrial and Bioactive Properties",
+      "publisher": "PMC (NIH)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10748370/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

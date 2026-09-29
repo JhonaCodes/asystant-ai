@@ -1,0 +1,230 @@
+{
+  "id": "hamamelis",
+  "commonName": "Hamamelis",
+  "otherNames": [
+    "avellano de bruja",
+    "witch hazel"
+  ],
+  "scientificName": "Hamamelis virginiana L.",
+  "family": "Hamamelidaceae",
+  "partsUsed": [
+    "corteza",
+    "hoja"
+  ],
+  "easyExplanation": "El hamamelis es un arbusto de América del Norte cuya corteza y hojas se usan en Europa, reconocidas oficialmente, para la piel seca o irritada, para las molestias de las hemorroides y para enjuagues de boca. Se aplica sobre la piel o las mucosas, en tintura, ungüento o compresas, nunca por boca.",
+  "botany": {
+    "description": "Arbusto o árbol pequeño caducifolio de hasta 6 metros (rara vez hasta 10), con corteza lisa de color pardo claro y corteza interna rojiza. Sus hojas, de 3,7 a 16,7 cm, son ovaladas y de borde ondulado, y en otoño se vuelven amarillas con manchas óxido.",
+    "identification": "Se distingue por florecer al final del otoño (de septiembre a noviembre), con flores delgadas en forma de cinta, de color amarillo pálido a brillante, de 1 a 2 cm, que aparecen cuando la mayoría de las plantas ya no florecen. Sus cápsulas leñosas lanzan las semillas con fuerza, hasta 10 metros de distancia.",
+    "cultivation": "Se cultiva como arbusto ornamental de sombra parcial a sol, en suelo húmedo y bien drenado; es resistente al frío y valorado por su floración fuera de temporada.",
+    "lookalikes": [
+      "Hamamelis vernalis (hamamelis de primavera): especie muy parecida, pero florece en invierno en vez de en otoño."
+    ],
+    "nativeRange": "Nativo del este de Norteamérica, desde Nueva Escocia hasta Minnesota y hacia el sur hasta el centro de Florida y el este de Texas.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "skin_irritation",
+      "label": "Piel seca o levemente inflamada",
+      "evidence": "traditional",
+      "note": "Tintura al 5-10 % o ungüento con extracto seco al 1,3 %, aplicados varias veces al día sobre la piel.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Ayudar a cuidar heridas pequeñas de la piel",
+      "evidence": "traditional",
+      "note": "Compresas con la decocción de la corteza sobre la piel.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "itching",
+      "label": "Picazón y ardor por hemorroides",
+      "evidence": "traditional",
+      "note": "Tintura, ungüento, decocción en compresas o supositorios de uso rectal, según el producto; solo en adultos.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "mouth_sores",
+      "label": "Irritación leve de la boca",
+      "evidence": "traditional",
+      "note": "Enjuagues o gárgaras con tintura diluida o decocción de la corteza.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Usa una crema, ungüento o tintura de hamamelis de farmacia sobre la piel seca o levemente irritada.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Varias veces al día, según el envase.",
+      "maxDays": 7,
+      "title": "Crema o tintura de hamamelis para la piel",
+      "uses": [
+        "skin_irritation",
+        "minor_wound"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa una crema, ungüento o tintura de hamamelis de farmacia."
+        },
+        {
+          "kind": "clean",
+          "text": "Limpia la piel."
+        },
+        {
+          "kind": "apply",
+          "text": "Pon una capa fina varias veces al día."
+        }
+      ],
+      "warnings": [
+        "Si la piel no mejora en una semana, consulta a un médico."
+      ],
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Usa un ungüento, crema o toallitas de hamamelis de farmacia para aplicar sobre la zona externa afectada por hemorroides.",
+      "dose": "Sigue la dosis indicada en el envase del producto (por ejemplo, supositorios con 66 mg de extracto seco, 1 a 3 veces al día).",
+      "frequency": "Varias veces al día, según el envase.",
+      "maxDays": 14,
+      "title": "Hamamelis para hemorroides",
+      "uses": [
+        "itching"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un producto de hamamelis de farmacia pensado para hemorroides (ungüento, toallitas o supositorios)."
+        },
+        {
+          "kind": "clean",
+          "text": "Limpia bien la zona."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplica el producto según el envase."
+        }
+      ],
+      "warnings": [
+        "No lo uses en menores de 18 años.",
+        "Si aparece sangrado o los síntomas empeoran, consulta a un médico de inmediato.",
+        "Si no mejora en dos semanas, consulta a un médico."
+      ],
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "infusion",
+      "route": "topical",
+      "instructions": "Deja enfriar una decocción de corteza de hamamelis, cuélala y úsala para enjuagues de boca o gárgaras.",
+      "dose": "Sigue la cantidad indicada en el envase; con tintura, diluye 2 a 4 ml en agua, hasta 3 veces al día.",
+      "frequency": "Hasta 3 veces al día.",
+      "maxDays": 7,
+      "title": "Enjuague de hamamelis",
+      "uses": [
+        "mouth_sores"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Prepara una decocción con corteza de hamamelis."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja que se enfríe y cuélala."
+        },
+        {
+          "kind": "rinse",
+          "text": "Haz enjuagues o gárgaras, sin tragar el líquido."
+        }
+      ],
+      "warnings": [
+        "No mayores de 12 años.",
+        "No lo tragues."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "hamamelidaceae",
+      "note": "No lo uses si eres alérgico al hamamelis."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No lo uses sobre heridas profundas o piel muy dañada."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "hamamelidaceae"
+  ],
+  "sideEffects": [
+    "Dermatitis alérgica de contacto; la frecuencia no se conoce."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/hamamelis.jpg",
+      "author": "Alex Abair",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hamamelis_virginiana_flower.jpg",
+      "caption": "Flores de hamamelis (Hamamelis virginiana)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Witch hazel - Hamamelis virginiana",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/hamamelis-virginiana/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Hamamelis virginiana (uso tradicional de la corteza por los pueblos originarios de Norteamérica para curar heridas y tumefacciones)",
+      "publisher": "Plants For A Future (PFAF)",
+      "url": "https://pfaf.org/user/Plant.aspx?LatinName=Hamamelis+virginiana",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Final community herbal monograph on Hamamelis virginiana L., cortex (witch hazel bark) — indications, posology, contraindications and safety",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-hamamelis-virginiana-l-cortex_en.pdf",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3"
+  ]
+}

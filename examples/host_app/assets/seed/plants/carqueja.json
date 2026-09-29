@@ -1,0 +1,183 @@
+{
+  "id": "carqueja",
+  "commonName": "Carqueja",
+  "otherNames": [
+    "carquejilla",
+    "yaguareté ka'a"
+  ],
+  "scientificName": "Baccharis trimera (Less.) DC.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "tallo",
+    "hoja"
+  ],
+  "easyExplanation": "La carqueja es un arbusto sudamericano de tallos aplanados y casi sin hojas visibles; se usa en infusión, por tradición, para ayudar a la digestión y como apoyo del hígado. No hay estudios en personas que confirmen bien estos efectos, solo estudios en animales. No se recomienda en el embarazo por su posible efecto sobre el útero, ni combinada con medicamentos para bajar el azúcar o la presión, porque podría sumar su efecto.",
+  "botany": {
+    "description": "Subarbusto o hierba de 40 a 80 cm, casi sin hojas verdaderas en la planta adulta: el tallo se aplana y forma estructuras aladas verdes (cladodios) de sección triangular, que hacen la función de las hojas. Las flores son cabezuelas pequeñas, blanco amarillentas.",
+    "identification": "Se reconoce por sus tallos alados de sección triangular o trilobulada, verdes y casi sin hojas, con un sabor muy amargo característico.",
+    "cultivation": "Crece en pastizales y suelos pobres en nitrógeno, fósforo y potasio, desde el nivel del mar hasta cerca de 3000 m de altura; no responde bien a suelos muy fertilizados.",
+    "lookalikes": [],
+    "nativeRange": "Nativa de Sudamérica: Brasil (donde es más abundante), Argentina, Paraguay, Uruguay, Bolivia y Perú.",
+    "sources": [
+      "s3"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La carqueja \"limpia\" el hígado y la sangre y cura enfermedades hepáticas por sí sola.",
+      "note": "Sus flavonoides (como la hispidulina) muestran actividad antioxidante y protectora del hígado en estudios de laboratorio y en animales, pero no hay ensayos clínicos en personas que confirmen que cure una enfermedad del hígado. Una enfermedad hepática necesita diagnóstico y tratamiento médico.",
+      "sources": [
+        "s1",
+        "s2"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "Uso tradicional muy extendido en Brasil y otros países de Sudamérica, en infusión de hojas y ramas, como digestivo y apoyo del hígado.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "poor_appetite",
+      "label": "Falta de apetito",
+      "evidence": "popular",
+      "note": "Uso tradicional como amargo aperitivo antes de las comidas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "popular",
+      "note": "Uso tradicional como digestivo, por su sabor amargo que estimula la producción de bilis.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con tallos y hojas de carqueja, frescos o secos, en agua recién hervida; deja reposar y cuela.",
+      "dose": "No hay una dosis oficial establecida por una agencia como la EMA; sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de carqueja",
+      "uses": [
+        "indigestion",
+        "poor_appetite",
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre tallos y hojas de carqueja, frescos o secos, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "No la uses en el embarazo ni la lactancia: se ha reportado efecto sobre el útero en animales y no hay datos de seguridad en personas.",
+        "Consulta antes de combinarla con medicamentos para la diabetes, la presión arterial o anticoagulantes."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "Puede causar alergia en personas sensibles a plantas como la ambrosía, el crisantemo, la caléndula o la margarita."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de bajar el azúcar en la sangre."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de bajar la presión."
+    },
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Podría aumentar el riesgo de sangrado combinada con anticoagulantes."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Baja de la presión arterial con dosis altas.",
+    "Reacciones alérgicas en personas sensibles a la familia de la margarita.",
+    "No se han reportado casos de daño al hígado o al riñón por su uso oral en adultos a las dosis tradicionales."
+  ],
+  "safetySources": [
+    "s1"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/carqueja.jpg",
+      "author": "Carlo Brescia",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baccharis_trimera_-_Jardim_Bot%C3%A2nico_de_S%C3%A3o_Paulo_-_DSC_0075.jpg",
+      "caption": "Planta de carqueja con sus tallos alados"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "science",
+      "title": "Baccharis trimera (Carqueja) Improves Metabolic and Redox Status in an Experimental Model of Type 1 Diabetes",
+      "publisher": "PubMed (peer-reviewed animal study)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30622608/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Carqueja (Baccharis trimera): utilização terapêutica e biossíntese",
+      "publisher": "Revista Brasileira de Plantas Medicinais (SciELO Brasil)",
+      "url": "https://www.scielo.br/j/rbpm/a/CFY3XWVTbXbwTXWKYkhvMgv/?lang=pt",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "botany",
+      "title": "Baccharis trimera (Carqueja) — ficha de especie",
+      "publisher": "Sistema de Información de Biodiversidad, Administración de Parques Nacionales de Argentina",
+      "url": "https://sib.gob.ar/especies/baccharis-trimera",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

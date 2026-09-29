@@ -1,0 +1,153 @@
+{
+  "id": "chancapiedra",
+  "commonName": "Chancapiedra",
+  "otherNames": [
+    "chanca piedra",
+    "rompepiedra",
+    "quiebrapiedra",
+    "stone breaker"
+  ],
+  "scientificName": "Phyllanthus niruri L.",
+  "family": "Phyllanthaceae",
+  "partsUsed": [
+    "planta entera"
+  ],
+  "easyExplanation": "La chancapiedra es una hierba pequeña muy conocida en Latinoamérica por su nombre, que significa \"quiebra piedras\": se usa por tradición para ayudar a prevenir cálculos (piedras) en el riñón. Un solo estudio pequeño en personas mostró menos cristales de oxalato en la orina, pero no hay evidencia fuerte todavía. Si ya tienes una piedra en el riñón con dolor fuerte, fiebre o sangre en la orina, necesitas ver a un médico: la planta no reemplaza ese tratamiento.",
+  "botany": {
+    "description": "Hierba anual erguida, de 15 a 70 cm de alto, con ramas delgadas que nacen desde la base, corteza lisa de color verde claro, hojas pequeñas y numerosas dispuestas en dos filas a lo largo de las ramitas (parecen una sola hoja compuesta), flores diminutas de color verde pálido a menudo teñidas de rojo, y frutos en cápsulas pequeñas y lisas con semillas diminutas.",
+    "identification": "Se reconoce por sus ramitas con hojitas pequeñas y parejas dispuestas en dos hileras, semejantes a una hoja de helecho, y por llevar diminutas flores y luego cápsulas colgando en la cara inferior de esas ramitas, junto al nervio central.",
+    "cultivation": "Crece espontánea en sitios abiertos de bosques húmedos de montaña baja, entre 1000 y 2500 metros de altura, y también como maleza de jardines y terrenos removidos; prefiere sol pleno o media sombra y se adapta a la mayoría de los suelos.",
+    "lookalikes": [
+      "Otras especies del género Phyllanthus, como Phyllanthus amarus, de aspecto muy similar y a menudo confundidas entre sí en el comercio de plantas medicinales."
+    ],
+    "nativeRange": "Nativa de zonas tropicales de América, desde Texas y México hasta Centroamérica y buena parte de Sudamérica, además de la India; crece sobre todo en zonas costeras y cálidas.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La chancapiedra disuelve o expulsa por sí sola una piedra en el riñón que ya causa dolor, fiebre o sangre en la orina.",
+      "note": "La única revisión sistemática disponible encontró un solo estudio pequeño y no aleatorizado en personas: con té de chancapiedra durante 12 semanas bajó el oxalato en la orina y el número de piedras en algunos pacientes, pero es evidencia muy limitada. Un dolor fuerte, fiebre o sangre en la orina por un cálculo renal necesita atención médica; la planta no reemplaza ese tratamiento y no hay garantía de que disuelva una piedra ya formada.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "kidney_stones",
+      "label": "Ayudar a prevenir piedras en el riñón",
+      "evidence": "limited",
+      "note": "Un estudio pequeño y no aleatorizado en personas con piedras menores a 10 mm mostró menos oxalato en la orina y menos cálculos tras 12 semanas de té de chancapiedra; es evidencia preliminar, no una cura. Es una de las plantas más usadas y vendidas como suplemento popular para piedras en el riñón. Si tienes dolor fuerte, fiebre o sangre en la orina, consulta a un médico de inmediato.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con la planta fresca o seca en agua recién hervida, deja reposar y cuela.",
+      "dose": "La que indique el envase de la tisana; si usas planta fresca, un puñado pequeño por taza.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de chancapiedra",
+      "uses": [
+        "kidney_stones"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre chancapiedra, fresca o seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "Si tienes dolor fuerte en la espalda o el costado, fiebre o sangre en la orina, consulta a un médico de inmediato; no esperes a que la planta haga efecto.",
+        "No reemplaza el tratamiento médico de una piedra en el riñón ya diagnosticada."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Consulta antes de usarla si tienes una enfermedad de los riñones ya diagnosticada."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Se le atribuye un posible efecto sobre la presión arterial; consulta si tomas medicamentos para la presión."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No hay estudios amplios de seguridad en personas; se recomienda no usarla por tiempo prolongado sin supervisión.",
+    "Un análisis de laboratorio encontró que la propia chancapiedra contiene algo de oxalato (8,2 mg por dosis comercial); no se sabe con certeza cómo afecta esto el balance general del riesgo de piedras."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/chancapiedra.jpg",
+      "author": "Vengolis",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phyllanthus_niruri_05754.jpg",
+      "caption": "Rama de chancapiedra (Phyllanthus niruri) con frutos"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Phyllanthus niruri",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Phyllanthus+niruri",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Evaluation of the Online Information Landscape and Oxalate Content of Purportedly Antilithogenic Ingredients — chanca piedra among the most popular over-the-counter kidney-stone supplements",
+      "publisher": "Journal of Endourology",
+      "url": "https://doi.org/10.1177/08927790251409797",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Systematic review of pharmacological, complementary, and alternative therapies for the prevention of calcium oxalate stones",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12126926/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

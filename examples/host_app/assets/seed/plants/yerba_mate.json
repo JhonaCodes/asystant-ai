@@ -1,0 +1,144 @@
+{
+  "id": "yerba_mate",
+  "commonName": "Yerba mate",
+  "otherNames": [
+    "mate",
+    "mate amargo",
+    "hierba mate",
+    "chimarrão",
+    "tereré"
+  ],
+  "scientificName": "Ilex paraguariensis A.St.-Hil.",
+  "family": "Aquifoliaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La yerba mate es un árbol de Sudamérica cuyas hojas se toman en infusión, tradicionalmente en una calabaza compartida con una bombilla. Da energía y alerta mental porque tiene cafeína, la misma sustancia del café. Tomarla muy caliente, por encima de 65 °C, se ha relacionado con más riesgo de cáncer de esófago, así que siempre debe tomarse tibia o fría.",
+  "botany": {
+    "description": "Árbol perenne de hasta 18 m en estado silvestre (3 a 6 m cuando se cultiva para cosecha), de tronco cilíndrico grisáceo y raíz pivotante con raíces laterales fibrosas. Hojas simples, alternas, perennes y coriáceas, de 7 a 12 por 3 a 5 cm, verde oscuro por encima y más pálidas por debajo, de bordes aserrados. Flores pequeñas, blanco verdosas, en grupos en las axilas de las hojas; frutos en baya roja con 4 a 5 semillas.",
+    "identification": "Se reconoce por sus hojas coriáceas de bordes aserrados y su fruto en baya roja pequeña, típico del género Ilex (acebos); crece de forma silvestre en el bosque atlántico de Argentina, Paraguay y Brasil.",
+    "cultivation": "Se cultiva en suelos ácidos de la región subtropical del bosque atlántico, y se poda para mantenerla entre 3 y 6 m de altura y facilitar la cosecha de las hojas.",
+    "lookalikes": [],
+    "nativeRange": "Sudamérica subtropical: Argentina, Paraguay y Brasil, sobre todo en la región del bosque atlántico.",
+    "sources": ["s1", "s3", "s2"]
+  },
+  "beliefs": [
+    {
+      "claim": "Tomar el mate bien caliente es más sano o más efectivo.",
+      "note": "Es al revés: la evidencia científica muestra que el riesgo de cáncer de esófago viene de la temperatura, no de la yerba en sí. Bebidas por encima de 65 °C (como se toma tradicionalmente el mate a 70-85 °C) se asocian con mayor riesgo; frías no aumentan ese riesgo.",
+      "sources": ["s4"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "improve_energy",
+      "label": "Cansancio o falta de energía",
+      "evidence": "traditional",
+      "note": "La cafeína y otras metilxantinas de la yerba mate tienen un efecto estimulante que aumenta el estado de alerta; se toma tradicionalmente en el Cono Sur por esta razón.",
+      "sources": ["s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Mate tradicional",
+      "uses": ["improve_energy"],
+      "steps": [
+        {"kind": "boilWater", "text": "Calienta agua sin dejarla hervir con fuerza; no debe quedar hirviendo."},
+        {"kind": "pour", "text": "Llena una calabaza (mate) o taza con yerba mate y vierte el agua tibia sobre ella."},
+        {"kind": "steep", "text": "Deja reposar un momento antes de tomarlo."},
+        {"kind": "drink", "text": "Tómalo tibio o frío, nunca hirviendo, con bombilla o colado."}
+      ],
+      "warnings": [
+        "Nunca lo tomes hirviendo o muy caliente (por encima de 65 °C): se relaciona con más riesgo de cáncer de esófago con el uso repetido a largo plazo.",
+        "No compartas la bombilla si alguien tiene una infección de la boca o la garganta."
+      ],
+      "dose": "La cantidad de yerba mate que llene la calabaza; no hay una cantidad exacta establecida por estudios para esta preparación tradicional.",
+      "frequency": "Según la tolerancia a la cafeína; evita tomarla en exceso durante el día.",
+      "maxDays": null,
+      "instructions": "Se llena una calabaza con yerba mate y se va agregando agua tibia (nunca hirviendo) poco a poco, tomándola con una bombilla metálica con filtro; también se toma fría, como tereré.",
+      "sources": ["s3"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "La cafeína puede acelerar el ritmo cardíaco; si tienes una enfermedad del corazón, consulta antes de tomarlo con regularidad. La yerba mate no reemplaza el tratamiento médico de una enfermedad del corazón."
+    },
+    {
+      "kind": "condition",
+      "tag": "hypertension",
+      "note": "La cafeína puede subir la presión arterial de forma pasajera; los estudios sobre sus efectos cardiometabólicos son preliminares, así que no reemplaza el tratamiento médico de la presión arterial alta ni de la diabetes."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "La cafeína del mate puede contrarrestar el efecto de los sedantes o pastillas para dormir."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 14,
+  "allergenGroups": [],
+  "safetySources": ["s4", "s5"],
+  "sideEffects": [
+    "Nerviosismo, insomnio o palpitaciones si se toma en exceso, por la cafeína.",
+    "Tomado muy caliente y por muchos años, se asocia con mayor riesgo de cáncer de esófago."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/yerba_mate.jpg",
+      "author": "C T Johansson",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ilex_paraguariensis-IMG_2108.jpg",
+      "caption": "Hojas de yerba mate (Ilex paraguariensis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Ilex paraguariensis A.St.-Hil.",
+      "publisher": "GBIF Backbone Taxonomy",
+      "url": "https://www.gbif.org/species/5414252",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Yerba Mate (Ilex paraguariensis) Beverage: Nutraceutical Ingredient or Conveyor for the Intake of Medicinal Plants? Evidence from Paraguayan Folk Medicine",
+      "publisher": "Evidence-Based Complementary and Alternative Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5872613/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Ilex paraguariensis (Yerba Mate): A Narrative Review of Bioactive Compounds, Biological Activities, and Green Extraction Technologies",
+      "publisher": "Nutrients (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13468038/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Comparative oesophageal cancer risk assessment of hot beverage consumption (coffee, mate and tea)",
+      "publisher": "BMC Cancer (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5831222/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Cardiometabolic Effects of Ilex paraguariensis (Yerba Mate): A Narrative Review of Evidence and Research Gaps",
+      "publisher": "Cureus (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13579547/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

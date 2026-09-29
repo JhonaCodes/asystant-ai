@@ -1,0 +1,159 @@
+{
+  "id": "pezuna_de_vaca",
+  "commonName": "Pezuña de vaca",
+  "otherNames": [
+    "pata de vaca",
+    "mororó",
+    "casco de vaca"
+  ],
+  "scientificName": "Bauhinia forficata Link",
+  "family": "Fabaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La pezuña de vaca es un árbol pequeño con hojas partidas en dos lóbulos, como la huella de una vaca. En Chile y Brasil se usa por tradición para ayudar a bajar el azúcar en la sangre; un estudio clínico con 92 personas encontró menos azúcar y hemoglobina glicada tras 4 meses de uso junto con su tratamiento habitual, pero es un solo estudio y hace falta más investigación. No reemplaza el tratamiento de la diabetes indicado por un médico y puede sumar su efecto al de los medicamentos para la diabetes.",
+  "botany": {
+    "description": "Árbol pequeño de hoja perenne, de copa simétrica, entre 7,5 y 9 metros de alto y ancho similar, follaje denso y crecimiento moderado. Pertenece a la familia de las leguminosas (Fabaceae).",
+    "identification": "Se reconoce por su hoja partida en dos lóbulos redondeados, como la huella de la pezuña de una vaca; de ahí viene el nombre científico forficata (\"en forma de tijera\") y los nombres populares en español y portugués.",
+    "cultivation": "Prefiere suelo bien drenado y sol pleno, aunque tolera sombra intermitente alta como la de pinares abiertos. Es tolerante a la sequía pero agradece riego ocasional en época de calor; puede mostrar deficiencias de nutrientes en suelos alcalinos.",
+    "lookalikes": [],
+    "nativeRange": "Nativa de Sudamérica: Brasil (de Río de Janeiro a Río Grande do Sul), centro y norte de Argentina, Bolivia, Paraguay y Uruguay, en regiones semiáridas y zonas de bosque.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La pezuña de vaca reemplaza el tratamiento médico de la diabetes.",
+      "note": "Un ensayo clínico con 92 personas encontró mejoría del azúcar en sangre a los 4 meses como apoyo adicional al tratamiento habitual, pero es un solo estudio; la mayor parte de la evidencia restante viene de animales. No debe usarse para reemplazar el diagnóstico ni el tratamiento médico de la diabetes, solo como apoyo adicional bajo supervisión.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "blood_sugar_support",
+      "label": "Ayudar a controlar el azúcar en la sangre",
+      "evidence": "limited",
+      "note": "Uso tradicional en Chile y Brasil para la diabetes, y una de las plantas más usadas en la medicina popular brasileña para este fin. Un ensayo clínico aleatorizado con 92 personas encontró menos glucosa en ayunas y menos hemoglobina glicada a los 4 meses de tomar cápsulas de pezuña de vaca junto con el tratamiento habitual; el resto de la evidencia es sobre todo en animales, con un efecto hipoglucemiante atribuido a la trigonelina. No reemplaza el tratamiento médico de la diabetes.",
+      "sources": [
+        "s2",
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hojas frescas o secas de pezuña de vaca en agua recién hervida, deja reposar y cuela.",
+      "dose": "La que indique el envase; si usas hoja fresca, un puñado pequeño por taza.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de pezuña de vaca",
+      "uses": [
+        "blood_sugar_support"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de pezuña de vaca, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "No reemplaza el tratamiento médico de la diabetes; no dejes de tomar tu medicamento sin indicación de tu médico.",
+        "Si tomas medicamentos para la diabetes, mide tu azúcar con más frecuencia por el riesgo de que baje demasiado."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "diabetes",
+      "note": "No la uses para reemplazar tu tratamiento; úsala solo como apoyo adicional bajo supervisión médica."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Puede sumar su efecto para bajar el azúcar al de la insulina o los medicamentos para la diabetes y aumentar el riesgo de hipoglucemia."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "sideEffects": [
+    "No hay estudios amplios de seguridad en personas; el extracto preparado con éter (no con agua) mostró actividad genotóxica en un estudio, por lo que solo debe usarse en infusión o decocción con agua."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/pezuna_de_vaca.jpg",
+      "author": "Gabriel Collares",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Folhas_de_pata-de-vaca,_ou_mororó_(do_tupi_*myroró).jpg",
+      "caption": "Hojas partidas en dos lóbulos de pezuña de vaca (Bauhinia forficata)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Bauhinia forficata Link",
+      "publisher": "Plants of the World Online (Kew)",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:481315-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Chromatography Conditions Development by Design of Experiments for the Chemotype Differentiation of Four Bauhinia Species — pata de vaca extensively used in Brazilian popular medicine for diabetes",
+      "publisher": "Frontiers in Chemistry (PMC9169091)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9169091/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Bauhinia forficata Link, Antioxidant, Genoprotective, and Hypoglycemic Activity in a Murine Model",
+      "publisher": "PMC (National Library of Medicine) — Plants (Basel)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9692633/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Clinical efficacy of capsules containing standardized extract of Bauhinia forficata Link (pata-de-vaca) as adjuvant treatment in type 2 diabetes patients",
+      "publisher": "Journal of Ethnopharmacology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34506937/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

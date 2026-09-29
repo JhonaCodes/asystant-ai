@@ -1,0 +1,188 @@
+{
+  "id": "moringa",
+  "commonName": "Moringa",
+  "otherNames": [
+    "árbol de la vida",
+    "árbol milagroso",
+    "paraíso blanco",
+    "drumstick tree"
+  ],
+  "scientificName": "Moringa oleifera Lam.",
+  "family": "Moringaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La moringa es un árbol de crecimiento muy rápido cuyas hojas son muy nutritivas y se comen o se toman en infusión o en polvo. Estudios pequeños sugieren que las hojas podrían ayudar un poco con la energía, la presión y el azúcar en la sangre, pero no reemplazan el tratamiento médico de la diabetes o la presión alta. No se recomienda en el embarazo: estudios en animales muestran que extractos de hoja de moringa pueden provocar contracciones fuertes del útero, y la raíz, la corteza y las flores se han relacionado además con efectos abortivos y antifertilidad.",
+  "botany": {
+    "description": "Árbol o arbusto caducifolio de hasta 8 metros, de copa amplia en forma de sombrilla y follaje poco denso, con tronco a menudo bifurcado desde la base, de hasta 60 cm de diámetro. Tiene racimos largos de flores perfumadas que pueden aparecer todo el año. Sus vainas, en forma de frijol alargado, miden de 15 a 45 cm.",
+    "identification": "Se reconoce por su crecimiento muy rápido, sus hojas compuestas de muchos folíolos pequeños y sus vainas largas y delgadas colgantes, con semillas que producen aceite.",
+    "cultivation": "Crece en clima templado cálido a tropical, hasta 1.000 m de altitud, con temperaturas óptimas de 20 a 35 °C y lluvia de 700 a 2.200 mm al año, en suelo bien drenado. Es de crecimiento muy rápido: puede alcanzar 2,5 m en 1 a 3 meses.",
+    "lookalikes": [
+      "Ninguno relevante: sus vainas alargadas y su follaje fino la hacen fácil de distinguir."
+    ],
+    "nativeRange": "Nativa del este de Asia y el subcontinente indio; hoy cultivada ampliamente en zonas tropicales de América, África y Asia.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La moringa (en especial su raíz, corteza o flores) es un remedio seguro para tomar durante el embarazo.",
+      "note": "En estudios de laboratorio, extractos de hoja de moringa provocaron contracciones fuertes y sostenidas del útero; la raíz, la corteza y las flores se han relacionado además con efectos abortivos y antifertilidad. Por eso este catálogo no recomienda ninguna parte de la moringa, incluida la hoja, durante el embarazo.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "claim": "La moringa cura o reemplaza el tratamiento de la diabetes, la presión alta u otras enfermedades graves.",
+      "note": "Es una creencia muy popular por la fama de la moringa como \"árbol milagroso\". La mayoría de la evidencia proviene de estudios en animales; en personas la evidencia es todavía limitada. La diabetes y la presión alta son enfermedades que necesitan control y tratamiento médico, nunca solo una planta.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "improve_energy",
+      "label": "Falta de energía o nutrición pobre",
+      "evidence": "traditional",
+      "note": "Las hojas de moringa, frescas, secas o en polvo, se usan tradicionalmente como alimento muy nutritivo; estudios pequeños en madres y niños muestran que pueden mejorar el estado nutricional y la hemoglobina.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "blood_pressure_support",
+      "label": "Ayudar a bajar la presión arterial",
+      "evidence": "limited",
+      "note": "Estudios en animales y algunos ensayos pequeños en personas sugieren un efecto leve; la presión alta necesita control y tratamiento médico, la hoja de moringa no lo reemplaza.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "blood_sugar_support",
+      "label": "Ayudar a controlar el azúcar en la sangre",
+      "evidence": "limited",
+      "note": "Estudios en animales y algunos ensayos pequeños en personas sugieren un efecto leve; la diabetes necesita control y tratamiento médico, la hoja de moringa no lo reemplaza.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de hojas de moringa",
+      "uses": [
+        "improve_energy",
+        "blood_pressure_support",
+        "blood_sugar_support"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de moringa, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar de 5 a 10 minutos."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Usa solo la hoja; evita la raíz, la corteza y las flores, que se han relacionado con efectos abortivos.",
+        "No la tomes si estás embarazada: estudios en animales muestran que la hoja de moringa también puede provocar contracciones fuertes del útero.",
+        "No reemplaza el tratamiento médico de la diabetes o la presión alta.",
+        "Si tomas medicamentos para la presión o el azúcar, consulta a tu médico antes de usarla con frecuencia."
+      ],
+      "dose": "1 cucharadita de hoja seca por taza.",
+      "frequency": "1 a 2 tazas al día.",
+      "maxDays": 14,
+      "instructions": "Hierve agua, échala sobre hojas de moringa (frescas o secas) en una taza, deja reposar de 5 a 10 minutos, cuela y bebe.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "hypertension",
+      "note": "Si tomas medicamentos para la presión, consulta antes de usar moringa con frecuencia, por su posible efecto adicional."
+    },
+    {
+      "kind": "condition",
+      "tag": "diabetes",
+      "note": "Si tomas medicamentos para la diabetes, consulta antes de usar moringa con frecuencia, por su posible efecto adicional sobre el azúcar en la sangre."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los medicamentos para la presión arterial."
+    },
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los medicamentos para la diabetes y bajar demasiado el azúcar."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 4,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3"
+  ],
+  "sideEffects": [
+    "Extractos de hoja se han relacionado con contracciones fuertes del útero en estudios de laboratorio; la raíz, la corteza y las flores se han relacionado además con efectos abortivos. Ninguna parte de la moringa se recomienda en el embarazo.",
+    "En general, la hoja es bien tolerada; dosis muy altas de extracto podrían causar malestar digestivo."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/moringa.jpg",
+      "author": "Salil Kumar Mukherjee",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Moringa_leaves.jpg",
+      "caption": "Hojas de moringa (Moringa oleifera)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Moringa oleifera",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Moringa+oleifera",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Ethnopharmacological considerations of plants traditionally used by local communities to manage maternal conditions in Tanzania",
+      "publisher": "Frontiers in Pharmacology (PMC12953572)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12953572/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Moringa oleifera: An Updated Comprehensive Review of Its Pharmacological Activities, Ethnomedicinal, Phytopharmaceutical Formulation, Clinical, Phytochemical, and Toxicological Aspects",
+      "publisher": "International Journal of Molecular Sciences (PMC9916933)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9916933/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

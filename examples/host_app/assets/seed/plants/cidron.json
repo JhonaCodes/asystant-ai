@@ -1,0 +1,251 @@
+{
+  "id": "cidron",
+  "commonName": "Cedrón",
+  "otherNames": [
+    "cidrón",
+    "hierba luisa",
+    "hierbaluisa",
+    "verbena de indias"
+  ],
+  "scientificName": "Aloysia citrodora Paláu",
+  "family": "Verbenaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El cedrón es una planta aromática de olor a limón, originaria de Sudamérica. La hoja en infusión se usa por tradición para calmar los nervios, ayudar a dormir y aliviar molestias digestivas leves como gases o pesadez.",
+  "botany": {
+    "description": "Arbusto aromático de hasta 2 a 3 metros, con hojas lanceoladas, ásperas y muy perfumadas a limón cuando se las frota, dispuestas en verticilos de tres. Sus flores son pequeñas, blancas o lila pálido, agrupadas en espigas al final de las ramas.",
+    "identification": "Se reconoce por el fuerte aroma a limón de sus hojas al frotarlas, sus hojas alargadas y ásperas dispuestas en grupos de tres alrededor del tallo, y sus pequeñas flores blanquecinas en espiga.",
+    "cultivation": "Se cultiva en huertos y jardines familiares como planta aromática y medicinal. Prefiere sitios soleados, suelo bien drenado y riego moderado; en climas fríos pierde las hojas en invierno y rebrota en primavera.",
+    "lookalikes": [],
+    "nativeRange": "Nativa del noroeste de Argentina y el sur de Bolivia; hoy se cultiva ampliamente en América Latina, España y otras regiones templadas.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "stress",
+      "label": "Estrés y tensión nerviosa leve",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional reconocido para el alivio de síntomas leves de estrés mental. También registrado como sedante en un estudio etnobotánico de inmigrantes bolivianos en Buenos Aires.",
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Ayudar a conciliar el sueño",
+      "evidence": "traditional",
+      "note": "Hoja en infusión, tomada antes de dormir; uso tradicional reconocido como ayuda para el sueño.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional reconocido para molestias gastrointestinales leves. También registrado en un estudio etnobotánico de inmigrantes bolivianos en Buenos Aires.",
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional reconocido para gases e hinchazón leves.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de cedrón para dormir mejor",
+      "uses": [
+        "sleep_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hoja de cedrón, fresca o seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo unos 30 minutos antes de acostarte."
+        }
+      ],
+      "warnings": [
+        "No se recomienda en niños por falta de datos de seguridad.",
+        "No se recomienda en el embarazo ni la lactancia."
+      ],
+      "dose": "1 a 2 g de hoja seca (aproximadamente 1 cucharadita) por taza de 200 ml de agua hirviendo.",
+      "frequency": "Una vez, media hora antes de acostarte.",
+      "maxDays": 14,
+      "instructions": "Vierte agua hirviendo sobre la hoja de cedrón, deja reposar, cuela y bebe media hora antes de acostarte.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de cedrón para el estrés",
+      "uses": [
+        "stress"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "simmer",
+          "text": "Añade la hoja de cedrón, fresca o seca, y hierve unos minutos."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala."
+        }
+      ],
+      "warnings": [
+        "No se recomienda en niños por falta de datos de seguridad.",
+        "No se recomienda en el embarazo ni la lactancia."
+      ],
+      "dose": "5 g de hoja seca por 100 ml de agua.",
+      "frequency": "3 veces al día.",
+      "maxDays": 14,
+      "instructions": "Hierve la hoja de cedrón en el agua, deja reposar, cuela y bebe.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de cedrón para la digestión",
+      "uses": [
+        "indigestion",
+        "bloating"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hoja de cedrón, fresca o seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo después de las comidas."
+        }
+      ],
+      "warnings": [
+        "No se recomienda en niños por falta de datos de seguridad.",
+        "No se recomienda en el embarazo ni la lactancia."
+      ],
+      "dose": "2 a 3 g de hoja seca (aproximadamente 1 cucharadita colmada) por taza de 200 ml de agua hirviendo.",
+      "frequency": "1 a 3 veces al día.",
+      "maxDays": 14,
+      "instructions": "Vierte agua hirviendo sobre la hoja de cedrón, deja reposar, cuela y bebe después de las comidas para ayudar a la digestión.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Reacciones alérgicas leves en personas sensibles, poco frecuentes.",
+    "Puede afectar la capacidad para conducir o manejar maquinaria en algunas personas."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/cidron.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aloysia_citriodora_002.jpg",
+      "caption": "Hojas y flores de cedrón (Aloysia citrodora)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Aloysia citrodora Paláu",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1015994-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Functional foods and nutraceuticals in a market of Bolivian immigrants in Buenos Aires (Argentina)",
+      "publisher": "Evidence-Based Complementary and Alternative Medicine / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3235782/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "European Union herbal monograph on Aloysia citrodora Paláu ... folium",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-aloysia-citrodora-palau-syn-aloysia-triphylla-lher-kuntze-verbena-triphylla-lher-lippia-citriodora-kunth-folium_en.pdf",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Antioxidant and Antiproliferation Activities of Lemon Verbena (Aloysia citrodora): An In Vitro and In Vivo Study",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8951487/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

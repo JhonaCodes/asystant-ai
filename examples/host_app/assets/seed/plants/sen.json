@@ -1,0 +1,156 @@
+{
+  "id": "sen",
+  "commonName": "Sen",
+  "otherNames": [
+    "sen de Alejandría",
+    "hoja de sen",
+    "senna"
+  ],
+  "scientificName": "Senna alexandrina Mill.",
+  "family": "Fabaceae",
+  "partsUsed": [
+    "hoja",
+    "fruto (vaina)"
+  ],
+  "easyExplanation": "El sen es una planta cuyas hojas y vainas se usan desde hace siglos como laxante. La agencia europea de medicamentos reconoce su uso, por boca, para el estreñimiento ocasional, pero solo por poco tiempo: no más de una semana seguida, y no en niños menores de 12 años. Usado por mucho tiempo puede dañar el funcionamiento normal del intestino y crear dependencia para poder evacuar.",
+  "botany": {
+    "description": "Arbusto leguminoso de la subfamilia Caesalpinioideae, de porte variable según la región donde crece. Sus hojas están compuestas por varios pares de folíolos pequeños y alargados, de color verde. Sus flores son pequeñas, de color amarillo, típicas de las leguminosas, y su fruto es una vaina aplanada de color café que contiene varias semillas.",
+    "identification": "Se reconoce por sus hojas compuestas de folíolos pequeños y alargados, sus flores amarillas y sus vainas aplanadas de color café; las hojas y vainas secas, molidas, son la parte que se vende como laxante.",
+    "cultivation": "Crece en climas cálidos y áridos, a pleno sol, en suelo bien drenado; se cultiva sobre todo en el norte y noreste de África, Medio Oriente y el sur de Asia, de donde se exporta como planta medicinal.",
+    "lookalikes": [
+      "Otras especies del género Senna, de hoja y flor similares"
+    ],
+    "nativeRange": "Nativo del norte y noreste de África y de la península arábiga; cultivado también en India y otras regiones cálidas.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El sen se puede tomar todos los días por mucho tiempo para 'mantener limpio' el intestino, sin ningún riesgo.",
+      "note": "El uso prolongado de laxantes estimulantes como el sen debe evitarse: puede alterar el funcionamiento normal del intestino y crear dependencia para poder evacuar; por eso las autoridades europeas de medicamentos limitan su uso a no más de una semana seguida, y de forma ocasional (2 a 3 veces por semana), no a diario de manera indefinida.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "constipation",
+      "label": "Estreñimiento ocasional",
+      "evidence": "wellEstablished",
+      "note": "Uso bien establecido de la hoja de sen, por vía oral, para el estreñimiento ocasional, reconocido por el comité de medicamentos herbarios de la Unión Europea (HMPC); solo a corto plazo, en adultos y adolescentes mayores de 12 años. Es también un uso popular documentado en distintas comunidades étnicas.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de hoja de sen",
+      "uses": [
+        "constipation"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hoja seca de sen, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "Solo para adultos y adolescentes mayores de 12 años.",
+        "No lo uses por más de una semana seguida.",
+        "Suele bastar con tomarlo 2 a 3 veces por semana, no todos los días.",
+        "No lo uses si tienes obstrucción o estrechamiento intestinal, atonía intestinal, apendicitis, enfermedad inflamatoria intestinal, dolor abdominal sin explicación o deshidratación grave.",
+        "No lo uses en el embarazo ni la lactancia.",
+        "El uso prolongado de laxantes como este puede crear dependencia para evacuar; evita usarlo por mucho tiempo."
+      ],
+      "dose": "La que indique el envase del producto.",
+      "frequency": "2 a 3 veces por semana; no a diario.",
+      "maxDays": 7,
+      "instructions": "Prepara una infusión con hoja seca de sen en agua recién hervida, deja reposar, cuela y tómala. Uso solo ocasional, no diario ni por más de una semana seguida.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "gastric_ulcer",
+      "note": "No lo uses si tienes dolor abdominal sin explicación, obstrucción intestinal o una enfermedad inflamatoria intestinal."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "diuretic",
+      "severity": "caution",
+      "note": "El uso repetido de laxantes como el sen puede bajar el potasio; ten precaución si tomas diuréticos."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "safetySources": ["s2"],
+  "sideEffects": [
+    "Dolor y espasmos abdominales, diarrea.",
+    "Reacciones alérgicas como picazón o sarpullido en personas sensibles.",
+    "Con el uso prolongado: coloración del interior del intestino, desequilibrio de electrolitos y dependencia para poder evacuar."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/sen.jpg",
+      "author": "Krzysztof Ziarnek, Kenraiz",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Senna_alexandrina_kz01.jpg",
+      "caption": "Senna alexandrina (sen)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Senna alexandrina Mill.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:518323-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Sennae folium - European Union herbal monograph (senna leaf)",
+      "publisher": "European Medicines Agency, HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/sennae-folium",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "The sustainable use of diverse plants accustomed by different ethnic groups in Sibi District, Balochistan, Pakistan",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10880983/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "id": "nopal",
+  "commonName": "Nopal",
+  "otherNames": [
+    "tuna",
+    "chumbera",
+    "higo chumbo",
+    "prickly pear"
+  ],
+  "scientificName": "Opuntia ficus-indica (L.) Mill.",
+  "family": "Cactaceae",
+  "partsUsed": [
+    "cladodio (penca)"
+  ],
+  "easyExplanation": "El nopal es un cactus de pencas planas y carnosas, muy usado como verdura en México. Comer la penca asada o cocida baja un poco el azúcar en la sangre por unas horas después de comerla, según estudios en personas con diabetes tipo 2; por su fibra, también ayuda a la digestión. No reemplaza el tratamiento médico de la diabetes y, si ya tienes el azúcar baja, comer nopal puede bajarla aún más.",
+  "botany": {
+    "description": "Cactus arbustivo perenne que puede alcanzar 5 metros de altura, con tallos suculentos, gruesos, aplanados y de forma ovalada a espatulada llamados cladodios o pencas, cubiertos de una epidermis cerosa que repele el agua y refleja el sol. Las pencas de 1 a 2 años producen flores blancas, amarillas o rojas, y frutos que maduran entre agosto y octubre en el hemisferio norte.",
+    "identification": "Se reconoce por sus pencas aplanadas en vez de hojas verdaderas, cubiertas de espinas y de pequeños grupos de púas finas (gloquidios) que se clavan con facilidad en la piel; el fruto (la tuna) varía de verde pálido a rojo intenso por fuera, con pulpa roja, púrpura o blanco amarillenta.",
+    "cultivation": "Necesita al menos 200 mm de lluvia al año (óptimo 200 a 400 mm), suelo arenoso profundo y bien drenado, y humedad relativa por encima del 60 %; se propaga fácilmente plantando una penca directamente en tierra.",
+    "lookalikes": [],
+    "nativeRange": "Domesticado a partir de especies de Opuntia nativas del centro de México; se dispersó luego por toda América y se naturalizó también en el Mediterráneo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Comer nopal reemplaza el tratamiento médico de la diabetes.",
+      "note": "La evidencia en personas es de estudios de una sola toma (agudos): la penca asada baja la glucosa en sangre unas horas después de comerla, pero solo un estudio de 16 semanas evaluó el efecto sostenido y no mostró beneficio a largo plazo. No reemplaza el diagnóstico ni el tratamiento indicado por un médico.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "blood_sugar_support",
+      "label": "Ayudar a controlar el azúcar en la sangre",
+      "evidence": "limited",
+      "note": "Comer penca asada, cocida o en polvo bajó la glucosa en sangre entre 23 y 48 mg/dL a las 2 o 3 horas de comerla, en estudios con personas con diabetes tipo 2; el efecto es agudo (de corto plazo), no se demostró beneficio sostenido a largo plazo. El nopal es también uno de los remedios populares más usados para la diabetes en México.",
+      "sources": [
+        "s2",
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "instructions": "Limpia la penca de nopal quitando espinas y gloquidios, y cocínala asada, hervida o al vapor antes de comerla.",
+      "dose": "Entre 100 y 500 g de penca fresca por toma, según los estudios.",
+      "frequency": "Como parte de una comida, hasta una vez al día.",
+      "maxDays": null,
+      "title": "Penca de nopal asada o cocida",
+      "uses": [
+        "blood_sugar_support"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava la penca y quítale las espinas y los gloquidios con un cuchillo."
+        },
+        {
+          "kind": "boilWater",
+          "text": "Hiérvela, cocínala al vapor o ásala hasta que esté tierna."
+        },
+        {
+          "kind": "drink",
+          "text": "Cómela como parte de tu comida."
+        }
+      ],
+      "warnings": [
+        "No reemplaza el tratamiento médico de la diabetes.",
+        "Si ya tienes el azúcar baja, no comas nopal en cantidad porque puede bajarla más.",
+        "Si tomas medicamentos para la diabetes, mide tu azúcar con más frecuencia."
+      ],
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "diabetes",
+      "note": "No lo uses para reemplazar tu tratamiento; úsalo solo como apoyo adicional bajo supervisión médica."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Puede sumar su efecto para bajar el azúcar al de la insulina o los medicamentos para la diabetes y aumentar el riesgo de hipoglucemia."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "sideEffects": [
+    "Molestias digestivas leves: diarrea, náusea, más volumen o frecuencia de deposiciones, sensación de llenura, dolor de cabeza.",
+    "Formación de bezoar (una bola de fibra vegetal no digerida) en casos raros, sobre todo si se come en gran cantidad."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/nopal.jpg",
+      "author": "Albtalkourtaki",
+      "license": "Dominio público",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Opuntia_ficus-indica_015.jpg",
+      "caption": "Pencas (cladodios) de nopal (Opuntia ficus-indica)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Opuntia ficus-indica (L.) Mill.",
+      "publisher": "Plants of the World Online (Kew)",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1151735-2",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Risks and benefits of commonly used herbal medicines in Mexico — nopal (Opuntia) among the most widely used popular remedies for diabetes",
+      "publisher": "Toxicology and Applied Pharmacology (PMC2322858)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2322858/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Risks and benefits of commonly used herbal medicines in Mexico",
+      "publisher": "PMC (National Library of Medicine) — Toxicol Appl Pharmacol",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2322858/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Prickly Pear Cacti (Opuntia spp.) Cladodes as a Functional Ingredient for Hyperglycemia Management",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8874358/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

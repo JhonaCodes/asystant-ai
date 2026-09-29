@@ -1,0 +1,185 @@
+{
+  "id": "llanten",
+  "commonName": "Llantén",
+  "otherNames": [
+    "llantén mayor",
+    "llantén común"
+  ],
+  "scientificName": "Plantago major L.",
+  "family": "Plantaginaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El llantén es una hierba de hojas anchas que crece silvestre en patios, jardines y orillas de caminos en casi todo el mundo. Sus hojas machacadas o en infusión se usan desde hace mucho tiempo sobre heridas pequeñas, picaduras de insectos y piel irritada, y en lavados para los ojos irritados.",
+  "botany": {
+    "description": "Hierba perenne que crece en roseta, con hojas ovaladas de 3 a 18 cm, de 3 a 7 nervios largos y visibles a lo largo de la hoja. Sus flores, pequeñas y de color verde parduzco con estambres morados, se agrupan en espigas densas que se elevan por encima de las hojas.",
+    "identification": "Se reconoce por su roseta de hojas anchas con nervios paralelos muy marcados y por sus espigas de flores delgadas y erguidas; cada planta puede producir hasta 20.000 semillas pequeñas.",
+    "cultivation": "Crece con facilidad en suelos compactados o pisoteados, como patios, aceras y caminos; no necesita cuidados especiales y se ha vuelto común en casi todo el mundo por la mezcla accidental de sus semillas con las de cultivos de grano.",
+    "lookalikes": [
+      "Plantago lanceolata (llantén menor o lanceolado): hojas mucho más angostas y alargadas, con menos nervios visibles."
+    ],
+    "nativeRange": "Nativa de Eurasia y del África templada; hoy naturalizada en casi todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La decocción de llantén \"limpia la sangre\" (mala sangre) o cura enfermedades internas graves.",
+      "note": "No hay estudios en personas que muestren que el llantén limpie la sangre ni cure enfermedades internas; esa idea popular no tiene respaldo científico. Lo que sí está documentado, con evidencia preliminar, es su uso sobre heridas y piel irritada.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "minor_wound",
+      "label": "Heridas, raspones y picaduras de insectos",
+      "evidence": "limited",
+      "note": "Hojas frescas lavadas y machacadas, aplicadas directamente sobre la piel como cataplasma; uso tradicional muy documentado en folclore herbolario. Un ensayo clínico con extracto de llantén en gel al 10 %, aplicado una vez al día durante dos semanas sobre úlceras de pie diabético y úlceras por presión, mostró mayor reducción del tamaño de la herida que el vendaje habitual; es evidencia preliminar en heridas más complejas que una herida casera y no reemplaza la atención médica de ese tipo de úlceras.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "tag": "skin_irritation",
+      "label": "Piel irritada",
+      "evidence": "popular",
+      "note": "Compresas con la infusión o cataplasma de hoja fresca machacada sobre la piel.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "topical",
+      "instructions": "Lava bien hojas frescas de llantén y májalas hasta formar una pasta; aplícala directamente sobre la herida pequeña, el raspón, la picadura o la piel irritada, y cúbrela con un paño limpio si es necesario.",
+      "dose": "Un puñado de hojas frescas, lavadas y machacadas; suficiente para cubrir la zona afectada.",
+      "frequency": "Cambia la cataplasma 1 a 2 veces al día.",
+      "maxDays": 7,
+      "title": "Cataplasma de hojas de llantén",
+      "uses": [
+        "minor_wound",
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava bien hojas frescas de llantén."
+        },
+        {
+          "kind": "apply",
+          "text": "Machácalas hasta formar una pasta y ponla sobre la piel limpia."
+        },
+        {
+          "kind": "compress",
+          "text": "Cubre con un paño limpio si lo necesitas."
+        }
+      ],
+      "warnings": [
+        "No lo apliques sobre heridas profundas, muy grandes o con signos de infección: pus, mal olor o fiebre.",
+        "Lávate las manos antes y después de prepararlo."
+      ],
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "infusion",
+      "route": "topical",
+      "instructions": "Prepara una infusión con hojas de llantén, frescas o secas, deja enfriar, cuela y úsala en compresas sobre la piel irritada.",
+      "dose": "20 gramos de hoja fresca (o la cantidad indicada en el envase si usas hoja seca) por medio litro de agua.",
+      "frequency": "Hasta 3 veces al día.",
+      "maxDays": 7,
+      "title": "Compresas de llantén",
+      "uses": [
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve el agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre las hojas de llantén, frescas o secas."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar y luego cuela."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja que se enfríe."
+        },
+        {
+          "kind": "compress",
+          "text": "Moja un paño limpio y ponlo sobre la piel."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No lo uses sobre heridas profundas, muy grandes o con signos de infección; consulta a un médico."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 5,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Poco frecuente: irritación leve de la piel o de los ojos al aplicarlo."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/llanten.jpg",
+      "author": "Iorsh",
+      "license": "Public Domain",
+      "licenseUrl": "https://en.wikipedia.org/wiki/en:public_domain",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plantago_major.jpg",
+      "caption": "Hojas y espiga de flores de llantén (Plantago major)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Plantago major (Common plantain)",
+      "publisher": "Go Botany, Native Plant Trust",
+      "url": "https://gobotany.nativeplanttrust.org/species/plantago/major/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Plantago major (llantén) — usos tradicionales documentados por TRAMIL",
+      "publisher": "TRAMIL — Programa de Investigación Científica Aplicada a las Plantas Medicinales del Caribe",
+      "url": "https://tramil.net/es/plant/plantago-major",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "The Effect of Plantago major Hydroalcoholic Extract on the Healing of Diabetic Foot and Pressure Ulcers: A Randomized Open-Label Controlled Clinical Trial",
+      "publisher": "International Journal of Lower Extremity Wounds (PMID 35044254)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35044254/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s4"
+  ]
+}

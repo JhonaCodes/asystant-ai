@@ -1,0 +1,160 @@
+{
+  "id": "te_verde",
+  "commonName": "Té verde",
+  "otherNames": [
+    "te chino",
+    "green tea"
+  ],
+  "scientificName": "Camellia sinensis (L.) Kuntze",
+  "family": "Theaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El té verde se hace con las hojas del mismo arbusto que el té negro, sin fermentar. Contiene cafeína y antioxidantes; tomado como bebida es en general seguro, pero los extractos concentrados en cápsulas o pastillas se han relacionado con casos de daño al hígado, algunos graves. Por eso aquí solo se recomienda como infusión, no como extracto concentrado.",
+  "botany": {
+    "description": "Arbusto o arbolito perenne de 2 a 4,5 m (silvestre hasta 15 m), de crecimiento lento. Hojas alternas, simples, lustrosas, verde oscuro y aserradas, de 5 a 8 cm en la variedad sinensis y más grandes en la variedad assamica. Flores pequeñas, aromáticas, blancas o rosadas, de 7 a 8 pétalos y estambres amarillos, que aparecen de otoño a comienzos de invierno cuando la planta tiene unos 4 años.",
+    "identification": "Se reconoce por sus hojas lustrosas y aserradas y sus flores blancas con centro amarillo; existen dos variedades principales, sinensis (China) y assamica (India, hojas más grandes).",
+    "cultivation": "Crece a pleno sol o media sombra, en suelo ácido bien drenado; tolera calor y sequía. Se poda para mantenerla entre 1,2 y 1,5 m y facilitar la cosecha de brotes.",
+    "lookalikes": [],
+    "nativeRange": "Sur-centro y sureste de China, y la región de Assam en India.",
+    "sources": ["s1"]
+  },
+  "beliefs": [
+    {
+      "claim": "El té verde en extracto o pastillas es más fuerte y por eso más sano que el té en infusión.",
+      "note": "Es al revés: los extractos concentrados de té verde (cápsulas o pastillas) se han asociado con casos de daño hepático, algunos graves, sobre todo con dosis altas o en ayunas; el té en infusión tiene un perfil de seguridad mucho mayor.",
+      "sources": ["s4", "s5"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "improve_energy",
+      "label": "Cansancio o falta de energía",
+      "evidence": "traditional",
+      "note": "La cafeína del té verde da un efecto estimulante suave.",
+      "sources": ["s3"]
+    },
+    {
+      "tag": "weight_loss",
+      "label": "Apoyo para bajar de peso",
+      "evidence": "limited",
+      "note": "Las catequinas y la cafeína del té verde podrían tener un efecto modesto sobre el peso corporal; la evidencia es limitada e inconsistente.",
+      "sources": ["s3"]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "popular",
+      "note": "En la medicina tradicional china, las hojas de té se consideran útiles para \"despejar el calor\" y favorecer la digestión; es un uso popular, sin evidencia clínica sólida.",
+      "sources": ["s2"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té verde",
+      "uses": ["improve_energy", "weight_loss"],
+      "steps": [
+        {"kind": "boilWater", "text": "Calienta agua sin dejarla hervir con fuerza."},
+        {"kind": "pour", "text": "Échala sobre hojas de té verde, frescas o secas, en una taza."},
+        {"kind": "steep", "text": "Deja reposar 2 a 3 minutos."},
+        {"kind": "drink", "text": "Cuela y tómalo."}
+      ],
+      "warnings": [
+        "No lo tomes muy caliente ni en exceso: la cafeína en dosis altas puede causar náuseas, presión arterial alta o insomnio.",
+        "Este catálogo no recomienda cápsulas ni extractos concentrados de té verde: se han relacionado con daño al hígado."
+      ],
+      "dose": "1 cucharadita de hojas por taza.",
+      "frequency": "Hasta 3 a 4 tazas al día.",
+      "maxDays": null,
+      "instructions": "Prepara una infusión con hojas de té verde, frescas o secas, en agua caliente (no hirviendo), deja reposar unos minutos, cuela y tómala.",
+      "sources": ["s3"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Evita los extractos concentrados si tienes una enfermedad del hígado; la infusión en cantidades moderadas es más segura pero consulta a tu médico."
+    },
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "La cafeína puede acelerar el ritmo cardíaco; consulta antes de tomarlo con regularidad."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "caution",
+      "note": "No combines extractos concentrados de té verde con medicamentos que puedan dañar el hígado."
+    },
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "La cafeína puede contrarrestar el efecto de los sedantes o pastillas para dormir."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "safetySources": ["s3", "s4", "s5"],
+  "sideEffects": [
+    "Náuseas, estreñimiento, molestias de estómago o presión arterial alta por la cafeína, sobre todo en forma de suplemento.",
+    "Daño al hígado, raro pero a veces grave, reportado con cápsulas o extractos concentrados, con más riesgo en personas con cierta variante genética (5 a 15 % de la población)."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/te_verde.jpg",
+      "author": "Vinayaraj",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Camellia_sinensis_-_Flower_and_leaves_-_Wayanad_2021_(1).jpg",
+      "caption": "Hojas y flor del árbol del té (Camellia sinensis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Camellia sinensis (tea plant)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/camellia-sinensis/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Dietary (-)-Epigallocatechin Gallate (EGCG): State-of-the-Art Advances in Bioactivities, Bioavailability Enhancement Strategies, and Applications in Nutrition and Health",
+      "publisher": "Nutrients (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12844721/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Green Tea",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/green-tea",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Common Causes of Drug-Induced Liver Injury in 2025",
+      "publisher": "Turkish Journal of Gastroenterology (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13554482/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Protective effects of green tea (Camellia sinensis (L.) Kuntze) against kidney diseases",
+      "publisher": "Jornal Brasileiro de Nefrologia (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600745/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

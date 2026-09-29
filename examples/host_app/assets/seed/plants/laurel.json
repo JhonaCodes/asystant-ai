@@ -1,0 +1,204 @@
+{
+  "id": "laurel",
+  "commonName": "Laurel",
+  "otherNames": [
+    "hoja de laurel",
+    "laurel de cocina"
+  ],
+  "scientificName": "Laurus nobilis L.",
+  "family": "Lauraceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "ADVERTENCIA IMPORTANTE: en América Latina, 'laurel rosa' o 'laurel de jardín' es en realidad la adelfa (Nerium oleander), una planta ornamental MORTAL si se come, y el 'laurel cerezo' (Prunus laurocerasus) también es tóxico. Ninguna de las dos es el laurel de cocina (Laurus nobilis), del que trata esta ficha. Si no estás seguro de cuál planta tienes, no la uses. La hoja de laurel de cocina, en té, se usa de forma tradicional para gases y digestión pesada; en cantidades altas y seguidas se han reportado casos de daño al hígado.",
+  "botany": {
+    "description": "Árbol o arbusto perennifolio del Mediterráneo, de hojas simples, alternas, de forma ovalada, de color verde azulado a gris plateado, de textura correosa, de 2,5 a 7,5 cm de largo. Su corteza va de gris oscuro a gris claro y se agrieta con la edad; sus flores verdes, blancas o amarillas aparecen entre marzo y mayo, y solo las plantas femeninas producen frutos pequeños, negros o morados.",
+    "identification": "El laurel de cocina tiene el pecíolo (el tallito de la hoja) rojizo, el borde de la hoja apenas ondulado, aroma alcanforado al frotarla, y no tiene glándulas nectarias visibles en la hoja. El laurel cerezo (Prunus laurocerasus), con el que se confunde, tiene el pecíolo verde, el borde de la hoja dentado (con dientes pequeños), huele a almendra al frotarla y sí tiene glándulas nectarias visibles en el borde de la hoja.",
+    "cultivation": "Crece a pleno sol o media sombra, en suelo bien drenado que tolera arcilla, arena o materia orgánica alta; es de crecimiento lento y resiste bien en maceta, seto o como planta de ornato.",
+    "lookalikes": [
+      "Nerium oleander (adelfa), llamada 'laurel rosa' o 'laurel de jardín' en varios países de América Latina: es una planta ornamental completamente distinta y MORTAL si se come; puede causar arritmias graves y la muerte. No tiene relación con el laurel de cocina más allá del nombre popular.",
+      "Prunus laurocerasus (laurel cerezo): hoja parecida a la del laurel de cocina, pero contiene glicósidos cianogénicos tóxicos; se distingue por su pecíolo verde, borde dentado y olor a almendra al frotarla."
+    ],
+    "nativeRange": "Cuenca del Mediterráneo.",
+    "sources": [
+      "s1",
+      "s4",
+      "s6"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Si se llama 'laurel', cualquier planta con ese nombre sirve para cocinar o para un remedio.",
+      "note": "En América Latina, 'laurel rosa' y 'laurel de jardín' son nombres populares de la adelfa (Nerium oleander), una planta ornamental mortal si se come: puede causar arritmias graves y la muerte; se han reportado más de una decena de muertes documentadas en la literatura médica. No es el mismo laurel que se usa en la cocina.",
+      "sources": [
+        "s5"
+      ]
+    },
+    {
+      "claim": "El té de hojas de laurel, tomado seguido en cantidad, 'desintoxica' el cuerpo sin riesgo.",
+      "note": "Hay un caso documentado de daño al hígado (con las enzimas del hígado muy elevadas) en una persona que tomó té de laurel dos veces al día durante tres meses buscando 'desintoxicarse'; mejoró al suspenderlo, pero quedó con cicatrización moderada del hígado.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "popular",
+      "note": "Uso tradicional de la hoja de laurel de cocina en la medicina popular mediterránea, para prevenir gases y ayudar a la secreción de jugos gástricos.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "Uso tradicional para molestias digestivas en la medicina popular mediterránea.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Uso tradicional documentado en la medicina popular mediterránea.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de hoja de laurel de cocina",
+      "uses": [
+        "bloating",
+        "indigestion",
+        "cough"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre 1 o 2 hojas secas de laurel de cocina (Laurus nobilis), enteras o un poco quebradas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Retira las hojas y tómalo."
+        }
+      ],
+      "warnings": [
+        "Asegúrate de que es laurel de cocina (Laurus nobilis) y no adelfa ('laurel rosa') ni laurel cerezo: si tienes duda, no lo uses.",
+        "No lo tomes seguido por semanas ni en cantidades mayores a las de esta receta: se ha reportado daño al hígado con el uso diario prolongado.",
+        "No le des a niños pequeños hojas enteras: podrían atragantarse o lastimarse el tubo digestivo con el borde de la hoja."
+      ],
+      "dose": "1 a 2 hojas secas por taza (unos 0,8 a 1,2 g al día si se toma dos veces).",
+      "frequency": "Hasta 2 veces al día.",
+      "maxDays": 7,
+      "instructions": "Prepara una infusión con 1 o 2 hojas secas de laurel de cocina en agua recién hervida; deja reposar, retira las hojas y tómalo. No lo repitas a diario por semanas seguidas.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lauraceae",
+      "note": "No lo uses si eres alérgico al laurel u otras plantas de esta familia, como la canela."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Evita el uso seguido por tiempo prolongado si tienes una enfermedad del hígado; se ha reportado daño hepático con el consumo diario sostenido de té de laurel."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lauraceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas en personas sensibles.",
+    "Con el uso diario y prolongado, riesgo de daño al hígado (fatiga, poco apetito, molestias digestivas, enzimas del hígado elevadas).",
+    "Las hojas enteras no se tragan: pueden lastimar la boca, la garganta o el tubo digestivo."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/laurel.jpg",
+      "author": "Forest and Kim Starr",
+      "license": "CC BY 3.0 US",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/us",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starr-071024-0195-Laurus_nobilis-leaves-Enchanting_Floral_Gardens_of_Kula-Maui_(24867859296).jpg",
+      "caption": "Hojas de laurel de cocina (Laurus nobilis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Laurus nobilis (Bay Laurel, Sweet Bay)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/laurus-nobilis/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Critical Review on Nutritional, Bioactive, and Medicinal Potential of Spices and Herbs and Their Application in Food Fortification and Nanotechnology",
+      "publisher": "Applied Biochemistry and Biotechnology (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9551254/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Herb-induced liver injury case report involving Laurus nobilis (bay leaf) infusion",
+      "publisher": "PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12842737/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Risk of Poisoning from Garden Plants: Misidentification between Laurel and Cherry Laurel",
+      "publisher": "Toxins (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9697506/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Human Deaths Related to Oleander Poisoning: A Review of the Literature",
+      "publisher": "Toxins (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11946565/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "botany",
+      "title": "Nerium oleander L. — vernacular names (laurel de jardín, laurel rosado)",
+      "publisher": "GBIF (Catalogue of Life)",
+      "url": "https://www.gbif.org/species/3169756",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3"
+  ]
+}

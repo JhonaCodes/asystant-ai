@@ -1,0 +1,178 @@
+{
+  "id": "barba_de_maiz",
+  "commonName": "Barba de maíz",
+  "otherNames": [
+    "pelo de elote",
+    "estigmas de maíz",
+    "corn silk"
+  ],
+  "scientificName": "Zea mays L.",
+  "family": "Poaceae",
+  "partsUsed": [
+    "estigmas (barba o pelo de la mazorca)"
+  ],
+  "easyExplanation": "La barba de maíz son los hilos finos y sedosos que salen de la punta de la mazorca. Por tradición se usan en té para aumentar la orina y aliviar molestias urinarias leves y la hinchazón por retención de líquidos. No hay estudios suficientes en personas todavía, así que no reemplaza el tratamiento de un médico para piedras en el riñón, la próstata o la diabetes.",
+  "botany": {
+    "description": "El maíz es una gramínea anual alta, de 1,2 a 4 metros, con un solo tallo y hojas largas y angostas que nacen alternas a los lados. Es una planta monoica: en la punta del tallo lleva la espiga masculina (el penacho), que libera el polen al viento, y más abajo, en las axilas de las hojas, las flores femeninas agrupadas en la mazorca, cubierta de brácteas (la \"chala\"). De cada óvulo de la mazorca sale un hilo largo y suave, la barba o estigma, que recibe el polen; ese conjunto de hilos es la barba de maíz.",
+    "identification": "Se reconoce por el manojo de hilos finos, sedosos y de color verde claro a rubio o pardusco que asoman en la punta de la mazorca envuelta en sus brácteas; cada hilo termina en el interior conectado a un futuro grano.",
+    "cultivation": "Se siembra en primavera en climas templados porque es sensible al frío; necesita humedad constante en el suelo y es especialmente sensible a la sequía justo cuando salen las barbas.",
+    "lookalikes": [],
+    "nativeRange": "Originario del sur de México, domesticado hace unos 9000 años a partir del teosinte silvestre en el valle del río Balsas.",
+    "sources": [
+      "s1",
+      "s4"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de barba de maíz cura la diabetes o disuelve piedras en el riñón.",
+      "note": "Los estudios sobre el efecto de la barba de maíz en el azúcar en la sangre y en piedras renales se hicieron en animales, no en personas, así que no hay evidencia suficiente para presentarlo como cura. Un cálculo renal o la diabetes necesitan diagnóstico y tratamiento médico; la barba de maíz no los reemplaza.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "urinary_discomfort",
+      "label": "Molestias urinarias leves",
+      "evidence": "limited",
+      "note": "Uso tradicional de siglos en la medicina china y de pueblos originarios de Norteamérica; estudios en animales muestran que aumenta la producción de orina. Si hay fiebre, sangre en la orina o dolor fuerte, consulta a un médico.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "fluid_retention",
+      "label": "Retención de líquidos",
+      "evidence": "limited",
+      "note": "Uso tradicional como diurético suave; estudios en animales muestran aumento de la orina y del potasio eliminado.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con la barba de maíz fresca o seca en agua recién hervida, deja reposar y cuela.",
+      "dose": "La que indique el envase; si usas barba fresca, un puñado pequeño por taza.",
+      "frequency": "Hasta 2 o 3 tazas al día.",
+      "maxDays": 7,
+      "title": "Té de barba de maíz",
+      "uses": [
+        "urinary_discomfort",
+        "fluid_retention"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre la barba de maíz, fresca o seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "Si tienes fiebre, sangre en la orina o dolor fuerte, consulta a un médico.",
+        "No reemplaza el tratamiento de la diabetes ni de problemas de próstata."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Consulta antes de usarla si tienes una enfermedad de los riñones."
+    },
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "No la uses si te indicaron tomar poco líquido por una enfermedad del corazón."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "diuretic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los diuréticos y aumentar la pérdida de líquidos y potasio."
+    },
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "En animales bajó el azúcar en la sangre; usarla junto con medicamentos para la diabetes podría aumentar el riesgo de que baje demasiado."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No se han descrito efectos adversos importantes en los estudios de seguridad en animales; la información en personas es limitada."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/barba_de_maiz.jpg",
+      "author": "Pollinator",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cornsilk_7091.jpg",
+      "caption": "Barba de maíz (estigmas de Zea mays)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Zea mays (Corn)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/zea-mays/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Corn silk (Stigma maydis) in healthcare: a phytochemical and pharmacological review — traditional use as a diuretic in Chinese and Native American medicine",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6268265/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Corn silk (Stigma maydis) in healthcare: a phytochemical and pharmacological review",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6268265/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "botany",
+      "title": "Population genomics of Zea species identifies selection signatures during maize domestication and adaptation",
+      "publisher": "BMC Plant Biology (PMC8855575)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8855575/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

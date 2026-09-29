@@ -1,0 +1,154 @@
+{
+  "id": "gordolobo",
+  "commonName": "Gordolobo",
+  "otherNames": [
+    "verbasco",
+    "hierba del paño",
+    "candelaria"
+  ],
+  "scientificName": "Verbascum thapsus L.",
+  "family": "Scrophulariaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "El gordolobo es una hierba de dos años con hojas grandes y afelpadas y una espiga alta de flores amarillas. Se usa desde la antigüedad como remedio popular para la tos y las molestias respiratorias. Toda la planta está cubierta de pelillos que irritan la garganta si se tragan, por eso el té siempre se debe colar muy bien, con un paño fino, antes de tomarlo.",
+  "botany": {
+    "description": "Hierba bianual afelpada de la familia del gordolobo. El primer año forma una roseta de hojas grandes, ovaladas, plateado verdosas y aterciopeladas, de 10 a 30 cm. El segundo año crece un tallo floral alto, de 2 a 3 metros, con una espiga cilíndrica densa de flores amarillas, fragantes, de 5 pétalos, que florecen de junio a septiembre. Sus frutos son cápsulas pequeñas con miles de semillas diminutas.",
+    "identification": "Se reconoce por su roseta de hojas grandes y afelpadas al tacto, su tallo floral muy alto y recto con una espiga densa de flores amarillas, y la pelusa fina que cubre toda la planta.",
+    "cultivation": "Prefiere sol pleno, suelo bien drenado de neutro a algo ácido, y tolera suelos pobres, arenosos, rocosos o arcillosos; no tolera el exceso de humedad. Se propaga con facilidad por semilla y crece de forma silvestre en terrenos baldíos y praderas secas.",
+    "lookalikes": [
+      "Otras especies de Verbascum de aspecto y uso similares."
+    ],
+    "nativeRange": "Nativo de Europa y Asia; hoy naturalizado en toda América.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Infusión de hoja o flor, bien colada; uso popular tradicional desde la Antigüedad para molestias pulmonares y de garganta, documentado en revisiones científicas modernas, aunque no existe un medicamento aprobado con gordolobo.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Infusión de hoja o flor, bien colada; uso popular tradicional para el asma, la bronquitis y los síntomas del resfriado.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "sore_throat",
+      "label": "Garganta irritada",
+      "evidence": "popular",
+      "note": "Infusión de hoja o flor, bien colada; uso popular tradicional como expectorante para las vías respiratorias.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja o flor de gordolobo, frescas o secas, en agua recién hervida, deja reposar y cuela muy bien con un paño fino para retirar los pelillos de la planta antes de tomarla.",
+      "dose": "La que indique el envase de la tisana; sin cantidad indicada, usa una cucharadita de hoja o flor seca por taza.",
+      "frequency": "Hasta 3 tazas al día.",
+      "maxDays": 14,
+      "title": "Té de gordolobo",
+      "uses": [
+        "cough",
+        "cold_symptoms",
+        "sore_throat"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hoja o flor de gordolobo, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar de 5 a 10 minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela muy bien con un paño fino: la planta tiene pelillos que irritan la garganta si se tragan."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "Cuela siempre muy bien la infusión con un paño fino antes de tomarla: los pelillos de la planta pueden irritar la garganta.",
+        "Consulta a un médico si la tos o los síntomas duran más de 1 semana."
+      ],
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Irritación de garganta o boca si se toma sin colar bien: la planta tiene pelillos finos irritantes.",
+    "No existe un medicamento aprobado con gordolobo; su seguridad y eficacia no están bien estudiadas en personas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/gordolobo.jpg",
+      "author": "AnRo0002",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:20180619Verbascum_thapsus1.jpg",
+      "caption": "Espiga de flores de gordolobo"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Verbascum thapsus (Common Mullein)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Health-promoting and disease-mitigating potential of Verbascum thapsus L. (common mullein): A review — traditional use as medicine for lung, skin and throat disorders",
+      "publisher": "Phytotherapy Research",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35088467/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Health-promoting and disease-mitigating potential of Verbascum thapsus L. (common mullein): A review",
+      "publisher": "Phytotherapy Research",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35088467/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3"
+  ]
+}

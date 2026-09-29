@@ -1,0 +1,142 @@
+{
+  "id": "comino",
+  "commonName": "Comino",
+  "otherNames": [],
+  "scientificName": "Cuminum cyminum L.",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "semilla (fruto)"
+  ],
+  "easyExplanation": "El comino es una semilla aromática, muy usada como especia, de la misma familia que el cilantro y el hinojo. Un estudio pequeño en personas encontró que un extracto de comino, en cápsulas, ayudó a que el intestino volviera a moverse más rápido después de una cirugía abdominal, con menos dolor, gases y náuseas; la evidencia todavía es limitada. Puede causar alergia, sobre todo en personas alérgicas a otras plantas de su familia.",
+  "botany": {
+    "description": "Hierba anual de 20 a 30 cm de altura, de tallos delgados que se ramifican en 2 o 3 subramas, con hojas muy divididas, parecidas a las del hinojo pero más pequeñas, de color verde oscuro. Sus flores pequeñas, blancas, rosadas o rojas, se agrupan en umbelas de 5 a 7 grupos (umbélulas).",
+    "identification": "Se reconoce por su fruto seco, de forma cónica, de menos de 6 mm, con una sola semilla de color amarillo pardo a gris, marcada por ocho costillas y canales de aceite.",
+    "cultivation": "Necesita sol pleno, suelo bien drenado con materia orgánica y al menos 120 días sin heladas; las semillas se remojan 8 horas antes de sembrarlas y se inician en interior 6 a 8 semanas antes de la última helada.",
+    "lookalikes": [
+      "Otras plantas de la familia Apiaceae de hoja parecida, como el hinojo, el eneldo o el cilantro, aunque se distinguen por el fruto y el olor."
+    ],
+    "nativeRange": "Desde el Mediterráneo hasta India; hoy se cultiva en el norte de África, el Mediterráneo, Medio Oriente, Asia central y América.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "popular",
+      "note": "Uso popular tradicional para gases, hinchazón y digestión pesada; un ensayo clínico pequeño también encontró menos hinchazón, gases y náuseas, y un tránsito intestinal más rápido, con cápsulas de extracto de comino después de una cirugía abdominal.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Espasmos digestivos leves",
+      "evidence": "limited",
+      "note": "El mismo estudio encontró menos dolor abdominal con el extracto de comino; la evidencia todavía es limitada y no reemplaza atención médica tras una cirugía.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Comino en la comida",
+      "uses": [
+        "bloating",
+        "abdominal_cramps"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Usa semillas de comino enteras o molidas."
+        },
+        {
+          "kind": "swallow",
+          "text": "Agrégalas a tus comidas."
+        }
+      ],
+      "warnings": [
+        "La cantidad que se usa al cocinar es un condimento, no la dosis exacta de cápsulas que se estudió.",
+        "No lo uses si tienes alergia a plantas de su familia, como el cilantro, el apio, el eneldo o el hinojo."
+      ],
+      "dose": "La que uses al cocinar; no es la dosis del estudio con cápsulas.",
+      "frequency": "Con las comidas.",
+      "maxDays": null,
+      "instructions": "El comino se usa como especia en la cocina; el estudio con mejores resultados usó cápsulas de extracto estandarizado, no la semilla de cocina directamente.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "No lo uses si eres alérgico al comino u otras plantas de esta familia, como el cilantro, el hinojo, el apio o el eneldo; puede haber reacción cruzada."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas, desde picazón y estornudos hasta, en casos raros, reacciones graves (anafilaxia), sobre todo en personas alérgicas a otras plantas de su familia."
+  ],
+  "safetySources": [
+    "s2",
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/comino.jpg",
+      "author": "Sanjay Acharya",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seeds_of_Cumin.jpg",
+      "caption": "Semillas de comino"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Cuminum cyminum (Cumin)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/cuminum-cyminum/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "The effect of Cuminum cyminum on the return of bowel motility after abdominal surgery: a triple-blind randomized clinical trial",
+      "publisher": "BMC Complementary Medicine and Therapies (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11229490/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Cumin anaphylaxis and allergy to spices in pediatrics: a case report and literature review",
+      "publisher": "Frontiers in Immunology (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13381197/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Herbal Spices as Food and Medicine: Microscopic Authentication of Commercial Herbal Spices",
+      "publisher": "Plants (MDPI, PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11054362/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

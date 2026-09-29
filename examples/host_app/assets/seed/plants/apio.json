@@ -1,0 +1,184 @@
+{
+  "id": "apio",
+  "commonName": "Apio",
+  "otherNames": [
+    "celery",
+    "apio de monte"
+  ],
+  "scientificName": "Apium graveolens L.",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "tallo",
+    "hoja",
+    "semilla"
+  ],
+  "easyExplanation": "El apio es una verdura de tallos largos y acanalados que también se usa como planta medicinal, sobre todo su semilla, por tradición para bajar un poco la presión arterial y como diurético. Estudios en personas muestran una baja leve de la presión, pero la evidencia todavía es limitada. Puede dar alergia, a veces grave, y manchar la piel si te da el sol después de tocarlo o comerlo en cantidad.",
+  "botany": {
+    "description": "Hierba de tallos largos y acanalados que se agrupan en manojo, con hojas pinnadas a bipinnadas de foliolos romboidales de 3 a 6 cm, y flores blancas pequeñas agrupadas en umbelas. Los tallos contienen haces de células de colénquima angular que se separan en \"hilos\" fibrosos al cocinarlo o comerlo.",
+    "identification": "Existen tres grupos: el apio de tallo (el más común, de tallos gruesos y comestibles), el apio de hoja (cultivado por su follaje aromático) y el apionabo o celeriac (cultivado por su raíz-tallo engrosada).",
+    "cultivation": "Se siembra a partir de semilla en almácigo o directamente en el jardín, y se trasplanta a zanjas profundas para blanquear los tallos; las variedades autoblanqueantes son hoy las más cultivadas. Se cultiva tradicionalmente como verdura de invierno y comienzos de primavera.",
+    "lookalikes": [],
+    "nativeRange": "Nativo de zonas templadas de Eurasia y el norte de África; se cultiva hoy en todo el mundo como verdura.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "blood_pressure_support",
+      "label": "Ayudar a bajar la presión arterial",
+      "evidence": "limited",
+      "note": "Una revisión sistemática con metaanálisis de estudios en personas encontró que el apio, sobre todo en semilla o preparados con más de 1000 mg al día, bajó un poco la presión sistólica y diastólica; la evidencia es de calidad moderada pero con estudios pequeños y heterogéneos, no reemplaza el tratamiento médico de la hipertensión.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "fluid_retention",
+      "label": "Retención de líquidos",
+      "evidence": "popular",
+      "note": "Uso tradicional como diurético en la medicina árabe e islámica y en la medicina popular hispanohablante.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con semillas de apio, en agua recién hervida, deja reposar y cuela.",
+      "dose": "La que indique el envase; los estudios usaron entre 1 y 2,25 g de preparados de apio al día.",
+      "frequency": "Una vez al día.",
+      "maxDays": 14,
+      "title": "Té de semilla de apio",
+      "uses": [
+        "blood_pressure_support",
+        "fluid_retention"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre semillas de apio en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "No reemplaza el tratamiento médico de la presión alta; controla tu presión si lo usas junto con tu medicamento.",
+        "Evita la exposición al sol fuerte poco después de tocarlo o comerlo en cantidad, por el riesgo de manchas en la piel."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "El apio es una causa frecuente de alergia alimentaria, a veces grave (choque anafiláctico); no lo uses si eres alérgico a esta familia de plantas (zanahoria, hinojo, eneldo, perejil, anís) ni al polen de ambrosía, con el que puede haber reacción cruzada."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Consulta antes de usarlo en cantidades medicinales si tienes una enfermedad de los riñones."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los medicamentos para la presión arterial."
+    },
+    {
+      "medicationClass": "diuretic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los diuréticos."
+    },
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "Se le atribuye un efecto sedante leve; podría sumarse al de los sedantes."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas, a veces graves (choque anafiláctico).",
+    "Manchas oscuras en la piel (fotosensibilidad) si se expone al sol tras el contacto con la planta, su jugo o su semilla en cantidad.",
+    "El apio tiene actividad estimulante del útero; por eso se recomienda evitarlo en cantidades medicinales durante el embarazo."
+  ],
+  "safetySources": [
+    "s3",
+    "s4",
+    "s5"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/apio.jpg",
+      "author": "MPF",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2023-06-22_Apium_graveolens_(Wild_Celery),_Elswick,_Northumberland_1.jpg",
+      "caption": "Apio silvestre (Apium graveolens) en flor"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Apium graveolens (Celery)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/apium-graveolens/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "An Updated Phytopharmacological Review on Medicinal Plant of Arab Region: Apium graveolens Linn — traditional use in Arab and Islamic medicine",
+      "publisher": "Pharmacognosy Reviews (PMC5414449)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5414449/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Effects of celery (Apium graveolens) on blood pressure, glycemic and lipid profile in adults: a systematic review and meta-analysis",
+      "publisher": "PMC (National Library of Medicine) — Front Nutr",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12321563/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "An Updated Phytopharmacological Review on Medicinal Plant of Arab Region: Apium graveolens Linn",
+      "publisher": "PMC (National Library of Medicine) — Pharmacogn Rev",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5414449/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "New Insights Concerning Phytophotodermatitis Induced by Phototoxic Plants",
+      "publisher": "PMC (National Library of Medicine) — Life (Basel)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11355232/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "id": "ajenjo",
+  "commonName": "Ajenjo",
+  "otherNames": [
+    "absenta",
+    "artemisa amarga",
+    "wormwood"
+  ],
+  "scientificName": "Artemisia absinthium L.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "hoja",
+    "parte aérea"
+  ],
+  "easyExplanation": "El ajenjo es una hierba muy amarga que se usa desde hace siglos para abrir el apetito y aliviar la digestión pesada. La agencia europea de medicamentos acepta su uso tradicional, por poco tiempo, solo en adultos. Contiene tuyona, una sustancia que en dosis altas o por tiempo prolongado puede afectar el sistema nervioso, por lo que no se debe usar en niños, en el embarazo, ni por más de dos semanas seguidas sin consultar a un médico.",
+  "botany": {
+    "description": "Hierba perenne de porte erguido y en matas, con varios tallos, de 60 cm a 1,5 m (2 a 5 pies) de alto y de ancho. Sus hojas son alternas, de forma ovalada ancha, muy divididas en segmentos de punta roma, de 2,5 a 7,5 cm de largo, cubiertas de pelillos plateados que le dan un color verde grisáceo, y despiden un olor aromático parecido al de la salvia al frotarlas. Sus flores son pequeñas, de color amarillo verdoso, sin pétalos vistosos, y se agrupan en panículas colgantes de 10 a 20 cm de largo que aparecen a finales del verano y comienzos del otoño.",
+    "identification": "Se distingue por su color plateado grisáceo, sus hojas muy divididas y aromáticas, y sus flores pequeñas y colgantes en panículas alargadas.",
+    "cultivation": "Crece a pleno sol o media sombra, en suelo bien drenado, de franco a franco-arcilloso, de húmedo a moderadamente seco; tolera suelo pobre y seco, y resiste bien a ciervos y conejos, aunque puede pudrirse en suelo húmedo.",
+    "lookalikes": [
+      "Otras especies de Artemisia, como el estafiate (Artemisia ludoviciana), de aspecto plateado similar"
+    ],
+    "nativeRange": "Nativo de Europa hasta Siberia y el oeste del Himalaya; hoy naturalizado en América y otras regiones templadas.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El ajenjo, tomado en cantidad o por mucho tiempo, es un remedio natural sin riesgo porque solo se usa una hierba.",
+      "note": "El ajenjo contiene tuyona, una sustancia que en dosis altas o con el uso prolongado puede causar convulsiones y otros efectos en el sistema nervioso; por eso las autoridades europeas de medicamentos limitan su uso tradicional a adultos y por un tiempo corto, y piden consultar a un médico si los síntomas duran más de dos semanas.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "poor_appetite",
+      "label": "Falta de apetito",
+      "evidence": "traditional",
+      "note": "Uso tradicional de la parte aérea de ajenjo para la pérdida temporal del apetito, reconocido por el comité de medicamentos herbarios de la Unión Europea (HMPC), solo en adultos.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Uso tradicional de la parte aérea de ajenjo para molestias digestivas leves y sensación de ardor de estómago, reconocido por el HMPC, solo en adultos; también documentado como planta medicinal popular para trastornos digestivos en comunidades de Lituania.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de ajenjo",
+      "uses": [
+        "poor_appetite",
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas o parte aérea seca de ajenjo, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo antes de las comidas."
+        }
+      ],
+      "warnings": [
+        "Solo para adultos: no lo uses en niños ni adolescentes.",
+        "No lo uses en el embarazo ni la lactancia.",
+        "No lo uses por más de 2 semanas seguidas; si los síntomas continúan, consulta a un médico.",
+        "No lo uses si tienes una enfermedad del hígado o de las vías biliares."
+      ],
+      "dose": "La que indique el envase del producto.",
+      "frequency": "Según lo indicado en el envase.",
+      "maxDays": 14,
+      "instructions": "Prepara una infusión con hojas o parte aérea seca de ajenjo en agua recién hervida, deja reposar, cuela y tómala antes de las comidas. Uso solo en adultos y por tiempo corto.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "No lo uses si eres alérgico a esta planta o a otras de la familia de la margarita, como la manzanilla o la caléndula."
+    },
+    {
+      "kind": "condition",
+      "tag": "bile_duct_obstruction",
+      "note": "No lo uses si tienes obstrucción de las vías biliares, colangitis o una enfermedad del hígado."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "No lo uses si tienes una enfermedad del hígado."
+    },
+    {
+      "kind": "condition",
+      "tag": "epilepsy",
+      "note": "Evítalo si tienes epilepsia o convulsiones: la tuyona del ajenjo puede afectar el sistema nervioso."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "safetySources": ["s3"],
+  "sideEffects": [
+    "Reacciones alérgicas en personas sensibles a la familia de la margarita.",
+    "En dosis altas o por uso prolongado, la tuyona puede afectar el sistema nervioso y causar convulsiones."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/ajenjo.jpg",
+      "author": "David Monniaux",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Artemisia_absinthium_P1210748.jpg",
+      "caption": "Ajenjo (Artemisia absinthium) en el jardín del museo de la absenta, Auvers-sur-Oise, Francia"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Artemisia absinthium L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:300106-2",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Artemisia absinthium (Wormwood)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/artemisia-absinthium/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Absinthii herba - European Union herbal monograph (wormwood herb)",
+      "publisher": "European Medicines Agency, HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/absinthii-herba",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Medicinal Plants Traditionally Used to Treat Digestive System Disorders in Lithuania",
+      "publisher": "Plants (MDPI, via PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13164646/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

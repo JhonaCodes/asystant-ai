@@ -1,0 +1,248 @@
+{
+  "id": "muna",
+  "commonName": "Muña",
+  "otherNames": [
+    "muna",
+    "tipo",
+    "tipollo"
+  ],
+  "scientificName": "Minthostachys mollis (Benth.) Griseb.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La muña es una planta andina de la familia de la menta, usada por tradición en infusión para la digestión y el resfriado. Su aceite esencial puede contener bastante pulegona, la misma sustancia tóxica para el hígado que tiene el poleo; por eso aquí solo se describe el té hecho con la hoja, a la concentración tradicional, y nunca el aceite esencial concentrado.",
+  "botany": {
+    "description": "Subarbusto o arbusto aromático perenne, de 0,5 a 2 metros de altura, con hojas pequeñas, opuestas, ovaladas, de bordes enteros o levemente aserrados, muy perfumadas al frotarlas. Sus flores son pequeñas, blanco amarillentas, agrupadas cerca de las hojas.",
+    "identification": "Se reconoce por su porte de subarbusto leñoso en la base, sus hojas pequeñas y opuestas con fuerte aroma mentolado, y sus flores blanco amarillentas agrupadas junto a las hojas; crece en laderas rocosas y secas de los Andes, entre unos 2700 y 3400 metros de altitud.",
+    "cultivation": "Se cultiva en huertos familiares andinos, en suelo seco y pedregoso, a pleno sol y en climas fríos de altura; se propaga por división de matas.",
+    "lookalikes": [
+      "Otras mentas andinas del género Minthostachys, como Minthostachys setosa",
+      "El poleo (Mentha pulegium), con el que comparte algunos nombres comunes en ciertas regiones pero es una especie distinta"
+    ],
+    "nativeRange": "Nativa de los Andes de Venezuela, Colombia, Ecuador, Perú y Bolivia.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de muña elimina los parásitos intestinales.",
+      "note": "No hay estudios en personas que muestren que la muña elimine parásitos intestinales; si se sospechan parásitos, se necesita diagnóstico y tratamiento médico, y no conviene aumentar la cantidad o concentración del té buscando ese efecto: su aceite esencial, rico en pulegona, ha causado daño grave al hígado en estudios con animales.",
+      "sources": [
+        "s5"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas y dolor de estómago",
+      "evidence": "limited",
+      "note": "Extracto de hoja de muña mostró efecto protector de la mucosa gástrica y analgésico en un estudio con animales; también es el uso tradicional andino más extendido de la planta.",
+      "sources": [
+        "s6"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Cólicos leves",
+      "evidence": "popular",
+      "note": "Infusión de hoja; uso tradicional para el cólico y el dolor de estómago, documentado en un estudio etnobotánico de Incahuasi, Perú.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Gases",
+      "evidence": "popular",
+      "note": "Infusión de hoja; uso tradicional para el dolor de estómago y los gases, documentado en un estudio etnobotánico de Incahuasi, Perú.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Infusión de hoja; uso popular para la gripe y el resfriado (que incluyen la tos), documentado en un estudio etnobotánico de Incahuasi, Perú.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Infusión de hoja; uso popular para la gripe y el resfriado, documentado en un estudio etnobotánico de Incahuasi, Perú.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de muña para la digestión",
+      "uses": [
+        "indigestion",
+        "abdominal_cramps",
+        "bloating"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de muña, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo después de las comidas."
+        }
+      ],
+      "warnings": [
+        "No se recomienda en el embarazo ni la lactancia.",
+        "Usa solo la infusión de la hoja; nunca el aceite esencial ni extractos concentrados, que sí pueden dañar el hígado."
+      ],
+      "dose": "Unas hojas frescas o secas por taza; las fuentes no dan una cantidad exacta en gramos.",
+      "frequency": "1 a 3 tazas al día.",
+      "maxDays": 14,
+      "instructions": "Vierte agua hirviendo sobre hojas de muña, deja reposar, cuela y bebe después de las comidas.",
+      "sources": [
+        "s2",
+        "s6"
+      ]
+    },
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de muña para la tos y el resfriado",
+      "uses": [
+        "cough",
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de muña, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "No se recomienda en el embarazo ni la lactancia."
+      ],
+      "dose": "Unas hojas frescas o secas por taza; las fuentes no dan una cantidad exacta en gramos.",
+      "frequency": "Hasta 3 tazas al día.",
+      "maxDays": 14,
+      "instructions": "Vierte agua hirviendo sobre hojas de muña, deja reposar, cuela y bebe.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia, como la menta o el poleo."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Usa con precaución si tienes una enfermedad del hígado: su aceite esencial puede tener niveles altos de pulegona, una sustancia tóxica para el hígado."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "caution",
+      "note": "Precaución al combinarla con medicamentos que pueden dañar el hígado, por su contenido variable de pulegona."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "safetySources": [
+    "s5",
+    "s6"
+  ],
+  "sideEffects": [
+    "En dosis altas o como aceite esencial concentrado, la pulegona que puede contener daña el hígado; esto no se ha reportado con el té preparado como se describe aquí.",
+    "Irritación digestiva leve en personas sensibles."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/muna.jpg",
+      "author": "Lidsay Brito",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mu%C3%B1a_creciendo_de_manera_silvestre_en_la_quebrada_de_Aquilpo.jpg",
+      "caption": "Muña (Minthostachys mollis) creciendo de forma silvestre en los Andes de Áncash, Perú"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Minthostachys mollis (Benth.) Griseb.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:451957-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Traditional medicine in Incahuasi: an ethnobotanical study",
+      "publisher": "F1000Research / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10993006/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Potential Toxicity of the Essential Oil from Minthostachys mollis: A Medicinal Plant Commonly Used in the Traditional Andean Medicine in Peru",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6942890/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "science",
+      "title": "A Comprehensive Review on Essential Oil Composition and Gastric Effect of Minthostachys mollis: An Ethnomedicinal Resource from Andes",
+      "publisher": "Natural Resources for Human Health (NRFHH)",
+      "url": "https://www.nrfhh.com/A-Comprehensive-Review-on-Essential-Oil-Composition-and-Gastric-Effect-of-Minthostachys,210623,0,2.html",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

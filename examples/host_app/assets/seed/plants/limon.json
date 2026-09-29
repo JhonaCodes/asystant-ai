@@ -1,0 +1,159 @@
+{
+  "id": "limon",
+  "commonName": "Limón",
+  "otherNames": [
+    "limonero",
+    "lemon"
+  ],
+  "scientificName": "Citrus × limon (L.) Osbeck",
+  "family": "Rutaceae",
+  "partsUsed": [
+    "fruto"
+  ],
+  "easyExplanation": "El limón es un árbol pequeño con espinas cuyo fruto ácido se usa a diario en la cocina y, en jugo o té, como remedio casero popular para el resfriado, la tos y la gripe. No hay estudios rigurosos que prueben que cura estas enfermedades, pero es seguro como alimento. Cuidado: su jugo o cáscara sobre la piel, seguido de sol, puede causar manchas o quemaduras, y tomarlo muy seguido y sin diluir puede desgastar el esmalte de los dientes.",
+  "botany": {
+    "description": "Árbol pequeño de 3 a 6 metros, con espinas afiladas en las ramas jóvenes. Las hojas son alternas, rojizas cuando nuevas, luego verde oscuro por arriba y verde claro por abajo, ovaladas, de 6 a 11 cm. Las flores son blancas por dentro y moradas por fuera, poco perfumadas, solitarias o en grupos. El fruto es ovalado, con una pequeña punta en el extremo, de 7 a 12 cm, cáscara amarillo claro y pulpa amarilla pálida, jugosa y ácida, dividida en 8 a 10 gajos.",
+    "identification": "Se reconoce por su fruto ovalado con una punta característica en un extremo, su cáscara amarilla y su pulpa muy ácida, junto con las espinas de sus ramas jóvenes.",
+    "cultivation": "Prefiere climas costeros más frescos que el naranjo y es más sensible al frío; sus hojas se dañan entre -6 y -5 °C aproximadamente. Tolera suelos pobres y se planta con una separación de unos 7,5 m entre árboles. Se propaga por injerto sobre patrones, salvo variedades como Meyer que enraízan fácilmente de estaca.",
+    "lookalikes": [
+      "Otros cítricos de fruto ovalado, como la lima ácida (Citrus × aurantiifolia), de tamaño más pequeño y cáscara verde."
+    ],
+    "nativeRange": "Origen incierto, posiblemente relacionado con el noroeste de India; se difundió por el Mediterráneo con el comercio árabe y llegó a América con la colonización europea.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado o gripe",
+      "evidence": "popular",
+      "note": "Jugo o té de limón, por boca; remedio popular muy extendido para prevenir y aliviar el resfriado común y la gripe. No hay datos científicos rigurosos que prueben su eficacia, pero es seguro y aporta vitamina C.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Jugo o té de limón, por boca; uso popular junto con el anterior. Si la tos dura más de una semana o hay fiebre alta, consulta a un médico.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té o agua de limón para el resfriado",
+      "uses": [
+        "cold_symptoms",
+        "cough"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Calienta agua sin que hierva con fuerza."
+        },
+        {
+          "kind": "pour",
+          "text": "Exprime el jugo de medio limón en una taza de agua tibia."
+        },
+        {
+          "kind": "drink",
+          "text": "Bébelo tibio."
+        }
+      ],
+      "warnings": [
+        "Enjuágate la boca con agua después de tomarlo y espera antes de cepillarte los dientes, para cuidar el esmalte.",
+        "No reemplaza la atención médica si hay fiebre alta, dificultad para respirar o los síntomas empeoran."
+      ],
+      "dose": "El jugo de medio limón por taza de agua.",
+      "frequency": "1 a 3 veces al día.",
+      "maxDays": 7,
+      "instructions": "Exprime el jugo de medio limón en una taza de agua tibia (no hirviendo) y bébelo, 1 a 3 veces al día mientras duren los síntomas leves.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "gerd",
+      "note": "Su acidez puede empeorar el reflujo o la acidez de estómago."
+    },
+    {
+      "kind": "condition",
+      "tag": "gastric_ulcer",
+      "note": "Su acidez puede irritar una úlcera de estómago."
+    },
+    {
+      "kind": "allergy",
+      "tag": "rutaceae",
+      "note": "No lo uses si eres alérgico a los cítricos."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "acceptable",
+  "lactation": "acceptable",
+  "minAgeYears": 1,
+  "allergenGroups": [
+    "rutaceae"
+  ],
+  "sideEffects": [
+    "Su jugo o cáscara sobre la piel, seguido de exposición al sol, puede causar manchas oscuras o quemaduras (fitofotodermatitis); no te lo apliques en la piel antes de tomar sol.",
+    "Tomarlo muy seguido, sin diluir, puede desgastar el esmalte de los dientes por su acidez: un estudio que probó jugo de lima, un cítrico igual de ácido, encontró un desgaste notable del esmalte."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/limon.jpg",
+      "author": "Xosema",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Citrus_limon_-_Lemon_tree_-_Limonero_-_Limoeiro.JPG",
+      "caption": "Árbol de limón con frutos"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Fruits of Warm Climates — Lemon",
+      "publisher": "Purdue University, NewCROP (Julia F. Morton)",
+      "url": "https://hort.purdue.edu/newcrop/morton/lemon.html",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Infecciones virales de las vías respiratorias altas (uso popular del limón para el resfriado)",
+      "publisher": "Medicina Integrativa (PMC7161400)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7161400/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "New Insights Concerning Phytophotodermatitis Induced by Phototoxic Plants",
+      "publisher": "Life, MDPI (PMC11355232)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11355232/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Evaluating the Erosive Effects of Freshly Squeezed Local Fruit Juices on Human Dental Enamel",
+      "publisher": "Nutrients (PMC12388693)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12388693/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ]
+}

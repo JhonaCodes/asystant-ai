@@ -1,0 +1,190 @@
+{
+  "id": "papaya",
+  "commonName": "Papaya",
+  "otherNames": [
+    "lechosa",
+    "mamón",
+    "fruta bomba",
+    "pawpaw"
+  ],
+  "scientificName": "Carica papaya L.",
+  "family": "Caricaceae",
+  "partsUsed": [
+    "fruto",
+    "látex",
+    "raíz"
+  ],
+  "easyExplanation": "La papaya es un árbol pequeño de fruto dulce, muy común como alimento en toda América; comerla madura es una fruta normal, no una dosis medicinal. El fruto verde aplastado se ha usado tradicionalmente sobre la piel para forúnculos. El látex de la fruta verde y las semillas son irritantes y se han asociado con contracciones fuertes del útero, por eso se evitan en el embarazo.",
+  "botany": {
+    "description": "Árbol pequeño, de crecimiento rápido y vida corta, de 3 a 10 metros, con tronco no leñoso, algo hueco, generalmente sin ramas laterales salvo que se dañe la punta de crecimiento. Tiene flores masculinas, femeninas o hermafroditas según la planta. El fruto, muy rico en vitaminas, tiene pulpa cremosa de sabor parecido al melón con albaricoque.",
+    "identification": "Se reconoce por su tronco recto y hueco coronado por hojas grandes muy recortadas, y por sus frutos alargados que cuelgan directamente del tronco bajo las hojas.",
+    "cultivation": "Crece mejor por debajo de los 900 m de altitud, con temperaturas de 21 a 30 °C y lluvia de 1.500 a 2.500 mm al año, en suelo profundo, rico en materia orgánica y bien drenado; muere en pocos días si el suelo se encharca. Puede empezar a dar fruto a los 6 meses.",
+    "lookalikes": [
+      "Ninguno relevante: su tronco hueco sin ramas y sus frutos colgando del tallo la hacen fácil de distinguir."
+    ],
+    "nativeRange": "Se cree que es originaria de Centroamérica y el sur de México, aunque no se conoce con certeza.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El látex de la papaya verde o sus semillas provocan la regla o el aborto de forma segura.",
+      "note": "Es un uso popular documentado, pero no un remedio seguro: estudios de laboratorio muestran que el látex crudo de papaya provoca contracciones fuertes y sostenidas del útero, parecidas a las de la oxitocina, sin que exista una dosis segura establecida en personas. Provocar un aborto por cuenta propia es peligroso; esto necesita atención médica, nunca un remedio casero.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "minor_wound",
+      "label": "Forúnculos o granos con pus",
+      "evidence": "popular",
+      "note": "Fruto verde lavado, rallado o cocido, aplicado sobre la piel; uso tradicional documentado en encuestas TRAMIL, por poco tiempo.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "urinary_discomfort",
+      "label": "Molestias urinarias leves",
+      "evidence": "popular",
+      "note": "Maceración de raíz por boca; uso tradicional documentado en encuestas TRAMIL. Si hay dolor fuerte, fiebre o sangre en la orina, es una infección que necesita atención médica además de la planta.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "topical",
+      "route": "topical",
+      "title": "Fruto verde de papaya para forúnculos",
+      "uses": [
+        "minor_wound"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava la zona afectada con agua hervida y jabón."
+        },
+        {
+          "kind": "clean",
+          "text": "Lava el fruto verde de papaya y rállalo."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplica 5 a 10 g del fruto rallado sobre la zona, dos veces al día, y cúbrela."
+        }
+      ],
+      "warnings": [
+        "No lo uses más de 7 días seguidos.",
+        "Prepara solo la cantidad que vas a usar en el momento; no lo guardes más de 24 horas, ni refrigerado.",
+        "No lo apliques sobre heridas abiertas grandes ni piel muy dañada.",
+        "No hay datos suficientes para recomendarlo en el embarazo, la lactancia ni en menores de 12 años."
+      ],
+      "dose": "5 a 10 g de fruto verde rallado por aplicación.",
+      "frequency": "2 veces al día.",
+      "maxDays": 7,
+      "instructions": "Lava la piel afectada, ralla fruto verde de papaya lavado y aplica 5 a 10 g sobre la zona dos veces al día, cubriendo con un paño limpio.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Maceración de raíz de papaya para molestias urinarias",
+      "uses": [
+        "urinary_discomfort"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava y trocea 30 g de raíz de papaya."
+        },
+        {
+          "kind": "pour",
+          "text": "Ponla en 1 litro de agua hervida y deja reposar 12 horas."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Bebe la cantidad colada repartida en las siguientes 12 horas."
+        }
+      ],
+      "warnings": [
+        "No lo uses más de 7 días seguidos.",
+        "No hay datos suficientes para recomendarlo en el embarazo, la lactancia ni en menores de 12 años.",
+        "Consulta a un médico antes de usarlo; no reemplaza el tratamiento de una infección urinaria."
+      ],
+      "dose": "30 g de raíz troceada por litro de agua.",
+      "frequency": "El contenido colado, repartido en 12 horas.",
+      "maxDays": 7,
+      "instructions": "Deja en reposo 30 g de raíz de papaya troceada en 1 litro de agua hervida durante 12 horas, cuela y bebe lo colado repartido en las siguientes 12 horas.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "gastric_ulcer",
+      "note": "El látex de la fruta verde es irritante y su ingestión puede causar gastritis."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3"
+  ],
+  "sideEffects": [
+    "El látex de la fruta verde es irritante; tragarlo puede causar gastritis.",
+    "Comer la fruta madura, con moderación, es un alimento normal y no un remedio con dosis medicinal."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/papaya.jpg",
+      "author": "Nescopio",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_pawpaw_tree_with_its_fruits.jpg",
+      "caption": "Árbol de papaya con frutos"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Carica papaya",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Carica+papaya",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Carica papaya — TRAMIL Pharmacopoeia",
+      "publisher": "TRAMIL",
+      "url": "https://tramil.net/en/plant/carica-papaya",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Uterotonic plants and their bioactive constituents",
+      "publisher": "Planta Medica (PMC3407953)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3407953/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

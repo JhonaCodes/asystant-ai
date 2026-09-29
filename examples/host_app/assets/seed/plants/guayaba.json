@@ -1,0 +1,137 @@
+{
+  "id": "guayaba",
+  "commonName": "Guayaba",
+  "otherNames": [
+    "guayabo",
+    "guava"
+  ],
+  "scientificName": "Psidium guajava L.",
+  "family": "Myrtaceae",
+  "partsUsed": [
+    "hoja",
+    "fruto"
+  ],
+  "easyExplanation": "La guayaba es un árbol pequeño cuyo fruto se come fresco y cuyas hojas se usan tradicionalmente en toda América en té para la diarrea leve. Estudios en personas muestran que el té de hoja de guayaba puede ayudar a que la diarrea dure menos y duela menos, pero no reemplaza la atención médica si la diarrea es fuerte, con sangre o dura varios días.",
+  "botany": {
+    "description": "Arbusto o árbol pequeño de 3 a 10 metros, de copa abierta y tronco corto, con ramas bajas que suelen colgar y brotes de raíz. Las flores son blancas y aparecen todo el año. El fruto es ovalado o de forma de pera, de 4 a 12 cm, de cáscara amarilla y pulpa aromática blanca o rosada.",
+    "identification": "Se reconoce por su corteza lisa que se desprende en placas, sus hojas opuestas con nervaduras muy marcadas y su fruto aromático con muchas semillas pequeñas por dentro.",
+    "cultivation": "Crece bien con al menos 1.000 mm de lluvia al año y un período seco para que madure el fruto; prefiere suelo fértil, húmedo y sol pleno, con temperaturas ideales entre 23 y 28 °C. Empieza a producir fruta entre los 5 y 8 años.",
+    "lookalikes": [
+      "Otras especies del género Psidium, de fruto más pequeño y menos aromático."
+    ],
+    "nativeRange": "Nativa de América, desde Perú hasta México y el Caribe; hoy cultivada en zonas tropicales de todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "diarrhea",
+      "label": "Diarrea leve",
+      "evidence": "limited",
+      "note": "Decocción o infusión de hojas de guayaba, tradicional en más de 40 países. Estudios clínicos pequeños muestran que puede acortar la duración y aliviar el dolor de la diarrea leve, pero la evidencia es limitada y no reemplaza la atención médica si hay sangre, fiebre alta o dura más de unos días.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de hojas de guayaba para la diarrea leve",
+      "uses": [
+        "diarrhea"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava 30 g de hojas frescas de guayaba (o su equivalente en secas)."
+        },
+        {
+          "kind": "simmer",
+          "text": "Ponlas en 1 litro (4 tazas) de agua y hierve unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela y deja entibiar."
+        },
+        {
+          "kind": "drink",
+          "text": "Bebe 1 taza, 3 a 4 veces al día."
+        }
+      ],
+      "warnings": [
+        "No la des a niños menores de 3 años.",
+        "Es un remedio complementario al suero de rehidratación oral, nunca lo reemplaza: dale suero primero si hay riesgo de deshidratación.",
+        "Busca atención médica de inmediato si hay boca seca, poca orina o llanto sin lágrimas (signos de deshidratación).",
+        "Busca atención médica si la diarrea dura más de 3 días en adultos o más de 1 día en niños, o si hay sangre o fiebre."
+      ],
+      "dose": "30 g de hojas frescas (o su equivalente en secas) por litro de agua.",
+      "frequency": "1 taza, 3 a 4 veces al día.",
+      "maxDays": 3,
+      "instructions": "Hierve 30 g de hojas frescas de guayaba en 1 litro de agua unos minutos, cuela y bebe 1 taza 3 a 4 veces al día mientras dura la diarrea leve.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "myrtaceae",
+      "note": "No la uses si eres alérgico a la guayaba o a otras plantas de su familia, como el eucalipto o el clavo de olor."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 3,
+  "allergenGroups": [
+    "myrtaceae"
+  ],
+  "sideEffects": [
+    "No se reportaron efectos secundarios importantes en los ensayos clínicos revisados; los estudios en animales con dosis muy altas no mostraron toxicidad ni muertes."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/guayaba.jpg",
+      "author": "Adityamadhav83",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Psidium_guajava_(Guava_tree_leaves)_at_Bhadrachalam.jpg",
+      "caption": "Hojas de guayaba (Psidium guajava)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Psidium guajava",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Psidium+guajava",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Psidium guajava — TRAMIL Pharmacopoeia",
+      "publisher": "TRAMIL",
+      "url": "https://tramil.net/en/plant/psidium-guajava",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Ethnobotany, phytochemistry, and biological activities of Psidium guajava in the treatment of diarrhea: a review",
+      "publisher": "Frontiers in Pharmacology (PMC11377350)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11377350/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3"
+  ]
+}

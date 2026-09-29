@@ -1,0 +1,211 @@
+{
+  "id": "aguacate",
+  "commonName": "Aguacate",
+  "otherNames": [
+    "palta",
+    "avocado"
+  ],
+  "scientificName": "Persea americana Mill.",
+  "family": "Lauraceae",
+  "partsUsed": [
+    "hoja",
+    "fruto"
+  ],
+  "easyExplanation": "El aguacate es un árbol cuyo fruto se come como alimento en toda América. Sus hojas se usan en té tradicionalmente para gases, tos leve o molestias urinarias leves, siempre por poco tiempo. No se debe usar para provocar la regla ni en el embarazo, y las hojas y semillas son tóxicas para animales como perros, cabras, ovejas, caballos y aves, así que no se las des a mascotas ni animales de granja.",
+  "botany": {
+    "description": "Árbol grande, de copa densa e irregular, de hasta 8 a 10 metros cultivado (silvestre hasta 20 metros), con tronco de hasta 45 cm de diámetro que se ramifica desde abajo. Las hojas nuevas suelen ser rojizas. Las flores son hermafroditas pero se abren dos veces, primero como femeninas y horas después como masculinas, por lo que necesita polinización cruzada entre árboles. El fruto es en forma de pera, de hasta 12 cm, con pulpa untuosa y de sabor suave y aceitoso.",
+    "identification": "Se reconoce por su fruto en forma de pera con una sola semilla grande adentro, su pulpa cremosa verde amarillenta y sus hojas grandes y brillantes de olor característico al estrujarlas.",
+    "cultivation": "Necesita clima cálido, con temperaturas de 14 a 40 °C y lluvia de 500 a 2.000 mm al año; tolera mal el encharcamiento y necesita suelo bien drenado, de neutro a alcalino, y protección del viento fuerte. Los árboles de semilla dan fruto a los 6 a 8 años; los injertados, desde el segundo año.",
+    "lookalikes": [
+      "Otras especies del género Persea, de fruto más pequeño."
+    ],
+    "nativeRange": "Nativo de Centroamérica, principalmente de México, donde crece de forma silvestre en bosques húmedos de tierras bajas sobre suelo calizo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de hojas o de fruto de aguacate provoca la regla o el aborto de forma segura.",
+      "note": "Encuestas de medicina tradicional documentan este uso popular, pero no hay estudios clínicos que confirmen que sea seguro o efectivo, y por precaución se contraindica en el embarazo. Provocar un aborto por cuenta propia con una planta es peligroso y puede no funcionar o causar daño; esto necesita atención médica, no un remedio casero. Además, estudios de toxicidad muestran que partes de esta planta pueden dañar tejidos en animales, lo que refuerza la precaución en el embarazo.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "bloating",
+      "label": "Gases",
+      "evidence": "popular",
+      "note": "Decocción de hojas por boca; uso tradicional documentado en encuestas TRAMIL, por poco tiempo.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos leve",
+      "evidence": "popular",
+      "note": "Decocción de hojas por boca; uso tradicional documentado en encuestas TRAMIL. Si la tos persiste o empeora, consulta a un médico.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "headache",
+      "label": "Dolor de cabeza leve",
+      "evidence": "popular",
+      "note": "Hojas frescas aplicadas sobre la frente; uso tradicional documentado en encuestas TRAMIL.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "urinary_discomfort",
+      "label": "Molestias urinarias leves",
+      "evidence": "popular",
+      "note": "Decocción de hojas por boca; uso tradicional documentado en encuestas TRAMIL. Si hay dolor fuerte, fiebre o sangre en la orina, es una infección que necesita atención médica, no solo la planta.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Té de hojas de aguacate",
+      "uses": [
+        "bloating",
+        "cough",
+        "urinary_discomfort"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava y trocea 20 g de hojas frescas de aguacate."
+        },
+        {
+          "kind": "simmer",
+          "text": "Hiérvelas 5 minutos en 1 litro (4 tazas) de agua, en una olla tapada."
+        },
+        {
+          "kind": "strain",
+          "text": "Deja enfriar y cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Bebe 1 taza, 3 veces al día."
+        }
+      ],
+      "warnings": [
+        "Prepara la cantidad de un día; no la guardes más de 24 horas.",
+        "No la des a niños menores de 6 años.",
+        "No la tomes si estás embarazada o en lactancia."
+      ],
+      "dose": "20 g de hojas frescas troceadas por litro de agua.",
+      "frequency": "1 taza, 3 veces al día.",
+      "maxDays": 7,
+      "instructions": "Hierve 20 g de hojas frescas troceadas en 1 litro de agua, tapado, durante 5 minutos; deja enfriar, cuela y bebe 1 taza 3 veces al día. Prepara solo la cantidad de un día.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "freshPlant",
+      "route": "topical",
+      "title": "Hoja fresca de aguacate para el dolor de cabeza",
+      "uses": [
+        "headache"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava una hoja fresca de aguacate."
+        },
+        {
+          "kind": "apply",
+          "text": "Colócala sobre la frente durante 15 minutos."
+        }
+      ],
+      "warnings": [
+        "Si el dolor de cabeza es muy fuerte, repentino o distinto al habitual, busca atención médica."
+      ],
+      "dose": "Una hoja fresca.",
+      "frequency": "Hasta 3 veces al día.",
+      "maxDays": 7,
+      "instructions": "Coloca una hoja fresca de aguacate limpia sobre la frente durante 15 minutos, hasta 3 veces al día.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "hormone_sensitive_condition",
+      "note": "Se le atribuye un posible efecto sobre la menstruación; por precaución evita el uso frecuente si tienes una condición sensible a hormonas."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "avoid",
+      "note": "Las encuestas TRAMIL recomiendan que quienes toman warfarina eviten cualquier parte de esta planta."
+    },
+    {
+      "medicationClass": "antidepressant",
+      "severity": "avoid",
+      "note": "Evita esta planta si tomas inhibidores de la monoaminooxidasa (IMAO), un tipo de antidepresivo."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 6,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Las hojas y la semilla del aguacate son tóxicas para animales: se han reportado daño a la glándula mamaria en cabras y lesiones en el corazón de ovejas, y la sustancia responsable (persina) también puede afectar a perros, gatos, caballos y aves. No des hojas, semilla ni cáscara a mascotas ni animales de granja.",
+    "En personas, a las dosis tradicionales estudiadas no se han encontrado efectos tóxicos importantes, pero no hay estudios suficientes para un uso prolongado."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/aguacate.jpg",
+      "author": "Vitaium",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Green_avocado_foliage_(Persea_americana).jpg",
+      "caption": "Hojas de aguacate (Persea americana)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Persea americana",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Persea+americana",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Persea americana — TRAMIL Pharmacopoeia",
+      "publisher": "TRAMIL",
+      "url": "https://tramil.net/en/plant/persea-americana",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Emerging Plant Intoxications in Domestic Animals: A European Perspective",
+      "publisher": "Toxins, MDPI (PMC10467095)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10467095/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

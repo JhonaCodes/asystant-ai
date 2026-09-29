@@ -1,0 +1,206 @@
+{
+  "id": "damiana",
+  "commonName": "Damiana",
+  "otherNames": [
+    "hierba de la pastora"
+  ],
+  "scientificName": "Turnera diffusa Willd.",
+  "family": "Passifloraceae",
+  "partsUsed": [
+    "hoja",
+    "parte aérea"
+  ],
+  "easyExplanation": "La damiana es un arbusto pequeño y aromático de México y América Central, usado en infusión en la tradición popular para malestares digestivos leves y para el estrés. También se le atribuye fama de afrodisíaco, pero eso no está probado en personas con estudios de buena calidad.",
+  "botany": {
+    "description": "Arbusto pequeño y muy ramificado, de hasta 1,5 metros de altura, con hojas pequeñas, arrugadas y aromáticas cuando se estrujan, y flores pequeñas de color amarillo.",
+    "identification": "Se reconoce por sus hojas pequeñas y de borde dentado con un fuerte olor parecido a la manzanilla al frotarlas, y por sus frutos pequeños de sabor parecido al higo.",
+    "cultivation": "Crece de forma silvestre en zonas cálidas y secas; en el mercado se vende con frecuencia una planta distinta, Turnera ulmifolia, mal identificada como damiana, así que conviene comprarla de un proveedor de confianza.",
+    "lookalikes": [
+      "Turnera ulmifolia"
+    ],
+    "nativeRange": "Nativa del sur de Texas (Estados Unidos), México, América Central, el Caribe y partes de América del Sur.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Malestares digestivos leves",
+      "evidence": "popular",
+      "note": "Uso popular en México documentado en una base de datos etnobotánica para el dolor de estómago y la dispepsia.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "stress",
+      "label": "Estrés",
+      "evidence": "popular",
+      "note": "Uso popular como calmante para los nervios (\"nerves\"), documentado en México y en fuentes de herbolaria de habla hispana; falta respaldo de estudios en personas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarme",
+      "evidence": "popular",
+      "note": "Uso popular como calmante para los nervios, documentado en una base de datos etnobotánica.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "improve_energy",
+      "label": "Tener más energía",
+      "evidence": "popular",
+      "note": "Uso popular tradicional como tónico y estimulante para el cansancio, documentado en Estados Unidos.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "beliefs": [
+    {
+      "claim": "Es un afrodisíaco comprobado que aumenta el deseo sexual",
+      "note": "Es una de las creencias populares más conocidas sobre la damiana, con siglos de uso tradicional en México y Centroamérica, pero la investigación en personas es escasa (algunos estudios pequeños con combinaciones de varias plantas) y la mayoría de la evidencia proviene de estudios en animales; los mecanismos no se entienden bien todavía.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hojas de damiana, frescas o secas, en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "title": "Té de damiana",
+      "uses": [
+        "indigestion",
+        "stress",
+        "relax",
+        "improve_energy"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de damiana, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar 5 a 10 minutos."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Evítala en el embarazo y la lactancia.",
+        "No la tomes por la noche: se le atribuye tradicionalmente un efecto estimulante que puede dificultar el sueño.",
+        "Por precaución, evítala si tienes una enfermedad del hígado o del riñón: no hay estudios en personas que confirmen que es segura en esos casos.",
+        "Si tienes diabetes o tomas medicamentos para la diabetes, consulta antes: podría bajar más el azúcar en la sangre."
+      ],
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Se recomienda evitarla si hay una enfermedad del hígado."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Se recomienda evitarla si hay una enfermedad de los riñones."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Uno de sus compuestos mostró efecto para bajar el azúcar en sangre en estudios con animales; podría sumarse al efecto de los medicamentos para la diabetes."
+    },
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "Su efecto relajante podría sumarse al de sedantes o ansiolíticos; se recomienda supervisión médica al combinarlos."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Puede causar insomnio si se toma por la noche.",
+    "Náuseas leves o diarrea en personas sensibles.",
+    "En estudios de laboratorio, algunos de sus compuestos mostraron toxicidad para células, pero solo en concentraciones mucho más altas que las de un preparado tradicional."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/damiana.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turnera_diffusa_var._aphrodisiaca_002.JPG",
+      "caption": "Rama de damiana (Turnera diffusa) en flor"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Turnera diffusa Willd. ex Schult. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/2874847",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Turnera diffusa — Ethnobotanical uses",
+      "publisher": "Phytochemical and Ethnobotanical Databases, USDA-ARS",
+      "url": "https://phytochem.nal.usda.gov/ethnobotanical-plant-turnera-diffusa",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Flavonoid Composition and Molecular Basis of the Potential Sexual-Enhancing Properties of a Turnera diffusa Extract (Liboost®)",
+      "publisher": "Pharmaceuticals (MDPI) / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13118355/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Acute Hypoglycemic and Antidiabetic Effect of Teuhetenone A Isolated from Turnera diffusa",
+      "publisher": "PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6154680/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Cytotoxic Properties of Damiana (Turnera diffusa) Extracts and Constituents and A Validated Quantitative UHPLC-DAD Assay",
+      "publisher": "PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6429218/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s4",
+    "s5"
+  ]
+}

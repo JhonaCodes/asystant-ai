@@ -1,0 +1,212 @@
+{
+  "id": "verbena",
+  "commonName": "Verbena",
+  "otherNames": [
+    "verbena azul",
+    "hierba sagrada"
+  ],
+  "scientificName": "Verbena officinalis L.",
+  "family": "Verbenaceae",
+  "partsUsed": [
+    "hoja",
+    "parte aérea"
+  ],
+  "easyExplanation": "La verbena es una hierba de flores pequeñas y moradas, muy usada en infusión en la tradición popular latinoamericana para malestares digestivos leves y para calmar los nervios. Debe evitarse por completo durante el embarazo, porque se ha asociado con riesgo de aborto.",
+  "botany": {
+    "description": "Hierba perenne de tallo erguido y ramificado, de hasta 70 cm de altura, con hojas opuestas, lobuladas y dentadas, y espigas delgadas de flores pequeñas de color lila o morado, con dos labios.",
+    "identification": "Se reconoce por sus espigas alargadas y poco tupidas de florecitas moradas que se abren de a pocas a la vez, y por sus hojas ásperas y profundamente lobuladas cerca de la base del tallo.",
+    "cultivation": "Prefiere suelos calizos y bien drenados, con sol o media sombra; se propaga por semilla o esquejes de raíz y se naturaliza con facilidad fuera de su rango original.",
+    "lookalikes": [],
+    "nativeRange": "Originaria de Europa; hoy naturalizada ampliamente en América del Norte y otras regiones templadas y cálidas del mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Malestares digestivos leves",
+      "evidence": "popular",
+      "note": "Uso tradicional en infusión en México, Colombia y otros países de América Latina para malestares digestivos y como tónico general.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "stress",
+      "label": "Estrés",
+      "evidence": "limited",
+      "note": "Estudios en animales muestran un efecto calmante (ansiolítico) comparable al diazepam; falta confirmarlo en personas.",
+      "sources": [
+        "s4",
+        "s5"
+      ]
+    },
+    {
+      "tag": "nervousness",
+      "label": "Nerviosismo leve",
+      "evidence": "limited",
+      "note": "Uso tradicional para los nervios, respaldado solo por estudios en animales hasta ahora.",
+      "sources": [
+        "s4",
+        "s5"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarme",
+      "evidence": "limited",
+      "note": "Estudios en animales muestran efecto ansiolítico y sedante; falta confirmarlo en personas.",
+      "sources": [
+        "s4",
+        "s5"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Dormir mejor",
+      "evidence": "limited",
+      "note": "En estudios con animales acortó el tiempo para dormirse y alargó la duración del sueño; falta confirmarlo en personas.",
+      "sources": [
+        "s4",
+        "s5"
+      ]
+    }
+  ],
+  "beliefs": [
+    {
+      "claim": "Ayuda a regular la menstruación o a \"bajar la regla\"",
+      "note": "Se ha usado tradicionalmente para la falta de menstruación, pero estudios muestran que puede dañar las células del trofoblasto e inhibir la hormona hCG, con efecto abortivo; un estudio en ratas también encontró toxicidad durante la gestación. No debe usarse con este fin, y debe evitarse por completo durante el embarazo.",
+      "sources": [
+        "s3",
+        "s6"
+      ]
+    },
+    {
+      "claim": "Es un tónico natural que se puede tomar todos los días por mucho tiempo sin problema",
+      "note": "No hay ensayos clínicos en personas que respalden un uso prolongado; los estudios disponibles son en animales, e incluyen señales de toxicidad prenatal y genotóxica en dosis altas.",
+      "sources": [
+        "s6"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hojas de verbena, frescas o secas, en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "title": "Té de verbena",
+      "uses": [
+        "indigestion",
+        "stress",
+        "nervousness",
+        "relax",
+        "sleep_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de verbena, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar 5 a 10 minutos."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Evítala durante el embarazo: se ha asociado con riesgo de aborto.",
+        "No la uses para intentar provocar o adelantar la menstruación."
+      ],
+      "sources": [
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": null,
+  "allergenGroups": [],
+  "safetySources": [
+    "s6"
+  ],
+  "sideEffects": [
+    "Estudios en animales muestran toxicidad prenatal y efectos genotóxicos con dosis altas; se recomienda prudencia con el uso prolongado.",
+    "Hay poca información sobre sus efectos en personas más allá del uso tradicional."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/verbena.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Verbena_officinalis_001.JPG",
+      "caption": "Espiga de flores de verbena (Verbena officinalis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Verbena officinalis L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/2925529",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Las Verbenaceae empleadas como recurso herbolario en México: Una revisión etnobotánica-médica",
+      "publisher": "Scielo México (Botanical Sciences / Polibotánica)",
+      "url": "https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1405-27682017000200195",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Ethnobotanical Plant: Verbena officinalis",
+      "publisher": "Dr. Duke's Phytochemical and Ethnobotanical Databases, USDA",
+      "url": "https://phytochem.nal.usda.gov/ethnobotanical-plant-verbena-officinalis",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Anticonvulsant, Anxiolytic, and Sedative Activities of Verbena officinalis",
+      "publisher": "PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5174135/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Verbena officinalis L. Herb Extract, Its Amino Acid Preparations and 3D-Printed Dosage Forms: Phytochemical, Technological and Pharmacological Research",
+      "publisher": "PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12429985/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "science",
+      "title": "Verbena medicinal (Verbena officinalis L.): review of phytochemical and pharmacological studies",
+      "publisher": "Problems of Biological, Medical and Pharmaceutical Chemistry",
+      "url": "https://edgccjournal.org/1560-9596/article/view/112689",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

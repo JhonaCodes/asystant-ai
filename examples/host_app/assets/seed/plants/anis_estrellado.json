@@ -1,0 +1,101 @@
+{
+  "id": "anis_estrellado",
+  "commonName": "Anís estrellado",
+  "otherNames": [
+    "badiana",
+    "anís de China"
+  ],
+  "scientificName": "Illicium verum Hook.f.",
+  "family": "Schisandraceae",
+  "partsUsed": [
+    "fruto"
+  ],
+  "easyExplanation": "El anís estrellado es el fruto seco en forma de estrella de un árbol de China y Vietnam, usado en infusión para los gases y la digestión pesada. ADVERTENCIA IMPORTANTE: existe una especie muy parecida, el anís estrellado japonés (Illicium anisatum), que es TÓXICA y ha envenenado a bebés cuando se mezcló por error con el anís estrellado verdadero en infusiones. Por eso nunca se debe dar anís estrellado, en ninguna forma, a bebés ni niños pequeños.",
+  "botany": {
+    "description": "Árbol perenne pequeño a mediano, de hojas alargadas y aromáticas. Su fruto, cuando está maduro y seco, forma una estrella de 6 a 8 puntas leñosas en forma de bote, cada una con una semilla brillante adentro.",
+    "identification": "El fruto verdadero tiene entre 6 y 8 puntas grandes, de forma regular, semillas ovaladas brillantes y aroma dulce e intenso a anís. La especie tóxica con la que se confunde tiene frutos más pequeños e irregulares, con más de 8 puntas, semillas casi redondas y un olor más débil o distinto.",
+    "cultivation": "Se cultiva en climas subtropicales húmedos, con sombra parcial en los primeros años y suelo bien drenado; no es una planta que se cultive comúnmente en casa fuera de su región de origen.",
+    "lookalikes": [
+      "Illicium anisatum (anís estrellado japonés, \"shikimi\"): visualmente muy parecido, pero es TÓXICO. Contiene sustancias neurotóxicas y se han reportado intoxicaciones graves, incluso en recién nacidos, por infusiones contaminadas con esta especie vendida o mezclada por error como si fuera anís estrellado verdadero."
+    ],
+    "nativeRange": "Sur de China y noreste de Vietnam; cultivado también en otras zonas subtropicales de Asia.",
+    "sources": ["s1"]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "popular",
+      "note": "Uso popular como digestivo, solo en adultos; nunca en bebés, por el riesgo de confusión con la especie tóxica.",
+      "sources": ["s2"]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada",
+      "evidence": "popular",
+      "note": "Uso popular como digestivo, solo en adultos.",
+      "sources": ["s2"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con 1 o 2 frutos (estrellas) de anís estrellado verdadero, comprado en un lugar confiable, en agua recién hervida; deja reposar y cuela.",
+      "dose": "1 a 2 frutos por taza.",
+      "frequency": "1 a 2 veces al día, en adultos.",
+      "maxDays": 7,
+      "title": "Té de anís estrellado (solo adultos)",
+      "uses": ["bloating", "indigestion"],
+      "steps": [
+        {"kind": "boilWater", "text": "Hierve agua."},
+        {"kind": "pour", "text": "Échala sobre 1 o 2 frutos de anís estrellado en una taza."},
+        {"kind": "steep", "text": "Deja reposar."},
+        {"kind": "strain", "text": "Cuela."},
+        {"kind": "drink", "text": "Tómalo."}
+      ],
+      "warnings": [
+        "Nunca se lo des a bebés ni niños pequeños, en ninguna forma ni cantidad.",
+        "Cómpralo solo en un lugar confiable, identificado como anís estrellado verdadero (Illicium verum)."
+      ],
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "La especie tóxica con la que se confunde puede dañar los riñones; evita el producto si no confías en su origen."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Si el producto está contaminado con la especie tóxica (Illicium anisatum): convulsiones, vómito, irritabilidad extrema y otros signos neurológicos graves, sobre todo en bebés.",
+    "En personas sanas y con producto identificado: gases o malestar digestivo leve."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/anis_estrellado.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Illicium_verum_001.JPG",
+      "caption": "Frutos secos de anís estrellado (Illicium verum)"
+    }
+  ],
+  "sources": [
+    {"id": "s1", "kind": "botany", "title": "Illicium verum", "publisher": "Useful Tropical Plants Database (theferns.info)", "url": "https://tropical.theferns.info/viewtropical.php?id=Illicium+verum", "accessedOn": "2026-09-28"},
+    {"id": "s2", "kind": "popular", "title": "A Comprehensive Review of the Pharmacology, Chemistry, Traditional Uses and Quality Control of Star Anise (uso tradicional como digestivo y confusión con especies tóxicas de Illicium)", "publisher": "Molecules / PMC (PMID 37959797, PMCID PMC10648513)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10648513/", "accessedOn": "2026-09-28"},
+    {"id": "s3", "kind": "science", "title": "Case series: star anise toxicity presenting to the emergency department in Eastern Regional Referral Hospital in Bhutan", "publisher": "International Journal of Emergency Medicine / PMC (PMID 39266976, PMCID PMC11391840)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11391840/", "accessedOn": "2026-09-28"},
+    {"id": "s4", "kind": "science", "title": "Intoxicación por anís estrellado: a propósito de un caso en un recién nacido", "publisher": "Revista Chilena de Pediatría (SciELO Chile)", "url": "https://www.scielo.cl/scielo.php?pid=S0370-41062003000400009&script=sci_arttext", "accessedOn": "2026-09-28"}
+  ]
+}

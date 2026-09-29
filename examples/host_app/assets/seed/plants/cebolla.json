@@ -1,0 +1,158 @@
+{
+  "id": "cebolla",
+  "commonName": "Cebolla",
+  "otherNames": [],
+  "scientificName": "Allium cepa L.",
+  "family": "Amaryllidaceae",
+  "partsUsed": [
+    "bulbo"
+  ],
+  "easyExplanation": "La cebolla es un bulbo comestible que también se usa como remedio casero, sobre todo su jugo mezclado con miel para el resfriado y la tos. La Agencia Europea de Medicamentos evaluó la cebolla pero no aprobó un uso tradicional oficial por falta de datos suficientes; su jugo puede aumentar el efecto de los anticoagulantes.",
+  "botany": {
+    "description": "Bulbo cultivado de la familia de las amarilidáceas, con hojas largas y verdes, de superficie cerosa (glauca), y tallos huecos y redondos. Sus flores pequeñas, blancas o rosadas, en forma de estrella o campana con 6 pétalos, se agrupan en umbelas.",
+    "identification": "Se reconoce por sus hojas lineales dispuestas en roseta, de más de 15 cm de largo y menos de 2,5 cm de ancho, sus flores pequeñas de 6 pétalos y su tallo hueco y redondo.",
+    "cultivation": "Es un cultivo de clima fresco que necesita al menos 6 horas de sol al día y suelo suelto, fértil, húmedo pero bien drenado; los bulbos se siembran a 1,3 a 2,5 cm de profundidad y 15 cm de distancia, y se cosechan cuando dos tercios del follaje se ha secado.",
+    "lookalikes": [
+      "Otras especies de Allium cultivadas, como el ajo o el puerro, de aspecto de hoja similar antes de formar bulbo."
+    ],
+    "nativeRange": "Probablemente Asia central y Persia central; su origen exacto no se conoce con certeza por su cultivo muy antiguo (más de 5.000 años).",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Poner cebolla cruda en los pies o en la habitación 'absorbe' virus o baja la fiebre.",
+      "note": "No hay evidencia de que la cebolla, puesta en los pies o en el ambiente, prevenga o cure infecciones ni baje la fiebre; una fiebre que dura 3 días o más necesita evaluación médica.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Jugo de cebolla mezclado con miel o panela; remedio casero documentado en encuestas de medicina tradicional. No reemplaza atención médica si la tos dura mucho o hay fiebre alta.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Jugo de cebolla, de preferencia roja, mezclado con miel o panela; uso popular documentado, sobre todo con síntomas de tos y malestar respiratorio leve.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Jugo de cebolla con miel",
+      "uses": [
+        "cough",
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Pela y pica o licúa una cebolla fresca, de preferencia roja."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela para obtener el jugo."
+        },
+        {
+          "kind": "pour",
+          "text": "Mézclalo con miel o panela."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalo por cucharadas."
+        }
+      ],
+      "warnings": [
+        "No le des miel a bebés menores de 1 año.",
+        "Si la tos dura más de 2 semanas, o hay fiebre alta, dificultad para respirar o sangre en la flema, busca atención médica.",
+        "Avisa a tu médico si tomas anticoagulantes: la cebolla puede aumentar su efecto."
+      ],
+      "dose": "La que indique la costumbre familiar; no hay una cantidad medicinal exacta descrita en las fuentes consultadas.",
+      "frequency": "Varias veces al día mientras duren los síntomas leves.",
+      "maxDays": 7,
+      "instructions": "Se licúa o pica la cebolla fresca, se cuela el jugo y se mezcla con miel o panela; es un remedio casero para la tos y el resfriado, documentado en encuestas de plantas medicinales.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "alliaceae",
+      "note": "No la uses si eres alérgico a la cebolla, el ajo u otras plantas de esta familia."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Revisiones de interacciones con warfarina señalan que la cebolla puede aumentar el efecto anticoagulante."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "alliaceae"
+  ],
+  "sideEffects": [
+    "Mal aliento y olor corporal.",
+    "Molestias digestivas o gases al comerla cruda en cantidad.",
+    "Irritación de ojos al cortarla; reacciones alérgicas en algunas personas.",
+    "El jugo o la cebolla cruda sin diluir pueden irritar la piel sensible."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/cebolla.jpg",
+      "author": "Colin",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Onion_on_White.JPG",
+      "caption": "Bulbo de cebolla"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Allium cepa (Onion)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/allium-cepa/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Survey on the Traditional Use of Medicinal Herbs in Haiti: A Study on Knowledge, Practices, and Efficacy Prevention",
+      "publisher": "Plants (MDPI, PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11396795/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Inconsistent Reporting of Interactions Between Warfarin and Medicinal Plants Across Clinical Decision Support Resources",
+      "publisher": "Journal of Evidence-Based Integrative Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12033581/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

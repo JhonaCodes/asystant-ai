@@ -1,0 +1,144 @@
+{
+  "id": "una_de_gato",
+  "commonName": "Uña de gato",
+  "otherNames": [
+    "garabato",
+    "cat's claw"
+  ],
+  "scientificName": "Uncaria tomentosa (Willd. ex Schult.) DC.",
+  "family": "Rubiaceae",
+  "partsUsed": [
+    "corteza",
+    "raíz"
+  ],
+  "easyExplanation": "La uña de gato es una liana amazónica con espinas curvas como garras de gato, usada tradicionalmente en Perú en cocimiento de su corteza. Importante: el nombre \"uña de gato\" se usa para varias plantas distintas que se venden en los mercados de Perú, no solo para Uncaria tomentosa; por eso hay que asegurarse de qué planta se está comprando. Como estimula el sistema de defensas, no se debe usar si tienes una enfermedad autoinmune o si tomas medicamentos para evitar el rechazo de un trasplante.",
+  "botany": {
+    "description": "Liana o bejuco leñoso que puede superar los 30 m de longitud, con espinas curvas en forma de garra a lo largo del tallo que le dan su nombre común. Flores blanco amarillentas; crece en el bosque tropical de montaña baja, entre 600 y 1000 m de altura.",
+    "identification": "Se reconoce por sus espinas curvas en forma de garra de gato a lo largo de la liana. Importante: en los mercados de Perú se vende como \"uña de gato\" más de una especie distinta, incluida Uncaria guianensis (de espinas más cortas y curvas de otra forma) y otras plantas no emparentadas; conviene comprarla con el nombre científico confirmado.",
+    "cultivation": "Crece de forma silvestre en el bosque tropical amazónico; no es un cultivo doméstico habitual.",
+    "lookalikes": [
+      "Uncaria guianensis: otra liana amazónica también llamada \"uña de gato\", con espinas de forma distinta, que se confunde y se mezcla con U. tomentosa en el comercio.",
+      "Otras plantas no emparentadas vendidas bajo el mismo nombre popular \"uña de gato\" en los mercados peruanos."
+    ],
+    "nativeRange": "América Central y del Sur tropical: Belice, Bolivia, Brasil, Colombia, Costa Rica, Ecuador, Guyana Francesa, Guatemala, Guyana, Honduras, Nicaragua, Panamá, Perú, Surinam, Trinidad y Tobago, Venezuela.",
+    "sources": ["s1"]
+  },
+  "beliefs": [
+    {
+      "claim": "La uña de gato cura el cáncer.",
+      "note": "No hay estudios en personas que muestren que la uña de gato cure el cáncer; el cáncer necesita tratamiento médico. Los estudios existentes son en células o animales, no en personas.",
+      "sources": ["s4"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "joint_pain",
+      "label": "Dolor leve de articulaciones",
+      "evidence": "traditional",
+      "note": "Uso tradicional en la Amazonía peruana, en cocimiento de la corteza, para dolores articulares y reumáticos.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Cocimiento de corteza de uña de gato",
+      "uses": ["joint_pain"],
+      "steps": [
+        {"kind": "clean", "text": "Usa corteza de uña de gato en trozos o rebanadas."},
+        {"kind": "boilWater", "text": "Pon a hervir unos 20 g de corteza en 1 litro de agua."},
+        {"kind": "simmer", "text": "Deja hervir a fuego lento unos 45 minutos."},
+        {"kind": "strain", "text": "Cuela y deja entibiar."},
+        {"kind": "drink", "text": "Tómalo tibio."}
+      ],
+      "warnings": [
+        "No la uses si tienes una enfermedad autoinmune, si tomas medicamentos inmunosupresores o si tuviste un trasplante de órgano o de piel.",
+        "Avisa a tu médico si vas a operarte: puede aumentar el riesgo de sangrado."
+      ],
+      "dose": "Unos 20 g de corteza por litro de agua.",
+      "frequency": "Según la tolerancia; no por tiempo prolongado sin supervisión.",
+      "maxDays": 30,
+      "instructions": "Se hierve la corteza de uña de gato en agua a fuego lento durante unos 45 minutos, se cuela y se toma tibia; es la preparación tradicional (\"sancóshi\") de los pueblos indígenas de la Amazonía peruana.",
+      "sources": ["s2"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "autoimmune_disease",
+      "note": "Puede activar más el sistema de defensas y empeorar los síntomas de una enfermedad autoinmune."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "immunosuppressant",
+      "severity": "avoid",
+      "note": "No la uses si tomas medicamentos inmunosupresores, por ejemplo tras un trasplante de órgano o de piel: podría contrarrestarlos."
+    },
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Podría aumentar el riesgo de sangrado combinada con anticoagulantes."
+    },
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "caution",
+      "note": "Podría aumentar el riesgo de sangrado combinada con antiagregantes plaquetarios."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3", "s4"],
+  "sideEffects": [
+    "Molestias digestivas leves.",
+    "Mayor riesgo de sangrado, sobre todo antes de una cirugía.",
+    "Podría empeorar una enfermedad autoinmune."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/una_de_gato.jpg",
+      "author": "Vangeliq.petrova",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Uncaria_tomentosa.jpg",
+      "caption": "Tallo con espinas de uña de gato (Uncaria tomentosa)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Uncaria tomentosa (Willd. ex Schult.) DC.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:768322-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Uncaria tomentosa as a Promising Natural Source of Molecules with Multiple Activities: Review of Its Ethnomedicinal Uses, Phytochemistry and Pharmacology",
+      "publisher": "International Journal of Molecular Sciences (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12296035/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Cat's Claw",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/cats-claw",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Cytotoxic effect of different Uncaria tomentosa (cat's claw) extracts, fractions on normal and cancer cells: a systematic review",
+      "publisher": "Frontiers in Pharmacology (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12116528/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

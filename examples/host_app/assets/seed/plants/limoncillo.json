@@ -1,0 +1,207 @@
+{
+  "id": "limoncillo",
+  "commonName": "Limoncillo",
+  "otherNames": [
+    "pasto limón",
+    "té de limón",
+    "zacate limón"
+  ],
+  "scientificName": "Cymbopogon citratus (DC.) Stapf",
+  "family": "Poaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El limoncillo, o pasto limón, es una hierba de hojas largas y angostas que huelen a limón. Por tradición se toma en té para el resfriado, la tos, la fiebre y las molestias digestivas leves. En dosis altas su aceite esencial puede dañar el hígado y los riñones, así que no se recomienda en el embarazo, la lactancia ni en niños menores de 3 años.",
+  "botany": {
+    "description": "El limoncillo es un pasto aromático que forma matas densas y erguidas. Al estrujar sus hojas desprenden un fuerte aroma a limón, por el citral que contiene su aceite esencial.",
+    "identification": "Forma matas perennes de porte erguido, de 1 a 2 metros de altura, en macollas densas. Hojas largas y angostas, de textura áspera al tacto, que pueden alcanzar hasta 1 metro de longitud. Casi nunca florece cuando se cultiva.",
+    "cultivation": "Necesita sol pleno, con al menos 6 horas de luz directa al día. Prefiere suelo bien drenado y húmedo, aunque tolera suelos pobres, el calor y la humedad. Se multiplica por división de las matas. En climas fríos se cultiva en maceta y se protege del frío en invierno; no debe dejarse secar por completo.",
+    "lookalikes": [],
+    "nativeRange": "Originario de la India y Sri Lanka; hoy cultivado ampliamente en regiones tropicales y subtropicales de todo el mundo, incluida América Latina.",
+    "sources": [
+      "s2",
+      "s4"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de limoncillo calma los nervios y ayuda a dormir mejor.",
+      "note": "Es una creencia muy extendida, pero los estudios en personas no encontraron que el té de limoncillo reduzca la ansiedad ni produzca un efecto calmante medible frente a un placebo.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado y gripe",
+      "evidence": "popular",
+      "note": "Uso popular en el Caribe y América Latina, en té o decocción de las hojas.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Uso popular en el Caribe y América Latina, en té o decocción de las hojas.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "fever",
+      "label": "Fiebre",
+      "evidence": "popular",
+      "note": "Uso popular en el Caribe y América Latina, en té o decocción de las hojas.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Gases",
+      "evidence": "popular",
+      "note": "Uso popular para la flatulencia, en té o decocción de las hojas.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "abdominal_pain",
+      "label": "Dolor de estómago",
+      "evidence": "popular",
+      "note": "Uso popular para el dolor de estómago, en té o decocción de las hojas.",
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "instructions": "Usa 15 a 25 gramos de hojas de limoncillo, frescas o secas, por litro de agua (4 tazas). Para la decocción, hierve las hojas 5 minutos en una olla tapada. Deja reposar, cuela siempre con un paño (las hojas tienen pelillos finos que pueden lastimar si se beben) y toma 1 taza (250 ml) 2 a 3 veces al día. No lo prepares con más de 24 horas de anticipación.",
+      "dose": "15 a 25 g de hojas por litro de agua (4 tazas).",
+      "frequency": "1 taza (250 ml), 2 a 3 veces al día.",
+      "maxDays": 7,
+      "title": "Decocción de limoncillo (té de limón)",
+      "uses": [
+        "cold_symptoms",
+        "cough",
+        "fever",
+        "bloating",
+        "abdominal_pain"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Enjuaga las hojas de limoncillo, frescas de tu huerta o secas."
+        },
+        {
+          "kind": "simmer",
+          "text": "Hiérvelas 5 minutos en una olla tapada con el agua."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja reposar hasta que entibie."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela siempre con un paño para quitar los pelillos finos de la hoja."
+        },
+        {
+          "kind": "drink",
+          "text": "Toma 1 taza, 2 a 3 veces al día."
+        }
+      ],
+      "warnings": [
+        "Cuela siempre con un paño: los pelillos de la hoja pueden lastimar si se beben.",
+        "No lo prepares con más de 24 horas de anticipación.",
+        "No lo uses en el embarazo, la lactancia ni en niños menores de 3 años.",
+        "Si los síntomas continúan más de unos días, busca atención médica."
+      ],
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "No tomes cantidades altas ni el aceite esencial por boca: en dosis altas se ha asociado a daño en el hígado."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Evita tomarlo en cantidades grandes: el uso excesivo del té se ha asociado a molestias en el riñón."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "caution",
+      "note": "El citral, en dosis altas, se ha asociado a daño en el hígado en estudios; evita dosis altas si tomas medicamentos que también pueden dañarlo."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 4,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Mareo, somnolencia, boca seca, más ganas de orinar o más apetito.",
+    "En la piel: sarpullido o irritación de contacto.",
+    "En dosis altas del aceite esencial: daño al hígado y a la mucosa del estómago.",
+    "Uso excesivo del té: puede afectar la función de los riñones."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/limoncillo.jpg",
+      "author": "Mokkie",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lemongrass_(Cymbopogon_citratus)_1.jpg",
+      "caption": "Matas de limoncillo (Cymbopogon citratus)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "popular",
+      "title": "Cymbopogon citratus — TRAMIL monograph",
+      "publisher": "TRAMIL (Programa de Investigación Científica Aplicada a las Plantas Medicinales del Caribe)",
+      "url": "https://www.tramil.net/en/plant/cymbopogon-citratus",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Cymbopogon citratus (Lemongrass, Lemon Grass, Oil Grass)",
+      "publisher": "North Carolina Extension Gardener Plant Toolbox, NC State University",
+      "url": "https://plants.ces.ncsu.edu/plants/cymbopogon-citratus/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Lemongrass — About Herbs, Botanicals & Other Products",
+      "publisher": "Memorial Sloan Kettering Cancer Center",
+      "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/lemongrass",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "botany",
+      "title": "Cymbopogon citratus (DC.) Stapf — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/2705275",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3"
+  ]
+}

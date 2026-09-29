@@ -1,0 +1,129 @@
+{
+  "id": "boldo",
+  "commonName": "Boldo",
+  "otherNames": [
+    "boldu"
+  ],
+  "scientificName": "Peumus boldus Molina",
+  "family": "Monimiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El boldo es un árbol chileno cuyas hojas se usan en infusión para molestias digestivas leves, pero hay que ser muy cuidadoso con él: se han reportado casos de daño al hígado por tomarlo, y su aceite esencial contiene una sustancia tóxica (el ascaridol). No lo tomes más de 4 semanas seguidas, evítalo en el embarazo, la lactancia, en niños pequeños y si tienes enfermedad del hígado o de la vesícula.",
+  "botany": {
+    "description": "Árbol o arbusto perenne de hasta 6 a 8 metros, de hojas duras, ásperas al tacto, de forma ovalada, con un aroma parecido al alcanfor y sabor amargo y leñoso.",
+    "identification": "Hojas opuestas, coriáceas y ásperas, de bordes algo ondulados; flores pequeñas, blanquecinas y separadas en plantas macho y planta hembra (solo una de las dos en cada árbol); frutos pequeños, amarillentos y comestibles cuando maduros.",
+    "cultivation": "Prefiere suelo arenoso, ácido y bien drenado, a pleno sol; tolera heladas leves y ocasionales (hasta unos -4 °C). Se cultiva también fuera de Chile, en Italia, Brasil y el norte de África.",
+    "lookalikes": [],
+    "nativeRange": "Endémico del centro y sur de Chile, entre los 33° y 40° de latitud sur, típico del bosque esclerófilo chileno.",
+    "sources": ["s1"]
+  },
+  "beliefs": [
+    {
+      "claim": "El boldo \"limpia\" o \"desintoxica\" el hígado y se puede tomar de forma prolongada sin riesgo.",
+      "note": "Hay reportes documentados de daño al hígado (hepatotoxicidad) por tomar boldo, incluso en infusión. Su aceite esencial contiene ascaridol, una sustancia tóxica e irritante. Por eso su uso debe ser breve (no más de 4 semanas) y nunca en quien ya tiene una enfermedad del hígado.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Infusión de hoja por boca, para el alivio de la dispepsia y espasmos leves del aparato digestivo; no más de 2 semanas seguidas sin consultar.",
+      "sources": ["s3"]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Espasmos digestivos leves",
+      "evidence": "traditional",
+      "note": "Infusión de hoja por boca; uso tradicional para espasmos leves del aparato digestivo.",
+      "sources": ["s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja seca de boldo en agua recién hervida, deja reposar poco tiempo y cuela. Se usa solo la infusión acuosa, nunca el aceite esencial puro, porque concentra el ascaridol tóxico.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana; no aumentes la cantidad ni la concentración.",
+      "frequency": "Según el envase.",
+      "maxDays": 28,
+      "title": "Té de boldo",
+      "uses": ["indigestion", "abdominal_cramps"],
+      "steps": [
+        {"kind": "boilWater", "text": "Hierve agua."},
+        {"kind": "pour", "text": "Échala sobre hoja seca de boldo en una taza."},
+        {"kind": "steep", "text": "Deja reposar poco tiempo, sin concentrar demasiado."},
+        {"kind": "strain", "text": "Cuela."},
+        {"kind": "drink", "text": "Tómalo."}
+      ],
+      "warnings": [
+        "No lo tomes más de 4 semanas en total.",
+        "No lo uses si tienes una enfermedad del hígado o de la vesícula.",
+        "No uses el aceite esencial de boldo; solo la infusión de la hoja."
+      ],
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "No lo uses: hay reportes de daño al hígado por tomar boldo."
+    },
+    {
+      "kind": "condition",
+      "tag": "gallstones",
+      "note": "Estimula la producción de bilis; puede agravar los cálculos que obstruyen la vía biliar."
+    },
+    {
+      "kind": "condition",
+      "tag": "bile_duct_obstruction",
+      "note": "No lo uses si tienes las vías biliares obstruidas."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Consulta antes de combinarlo con anticoagulantes."
+    },
+    {
+      "medicationClass": "immunosuppressant",
+      "severity": "avoid",
+      "note": "Se ha reportado un caso de interacción con tacrolimus en una persona trasplantada."
+    },
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "No lo combines con medicamentos que puedan dañar el hígado."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Daño al hígado (hepatotoxicidad), incluso con la infusión.",
+    "En dosis altas: alucinaciones, alteraciones del comportamiento y del sistema nervioso.",
+    "Reacciones alérgicas graves, poco frecuentes."
+  ],
+  "safetySources": ["s3", "s4"],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/boldo.jpg",
+      "author": "Dick Culbert",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peumus_boldus,_Monimiaceae.jpg",
+      "caption": "Flores de boldo (Peumus boldus)"
+    }
+  ],
+  "sources": [
+    {"id": "s1", "kind": "botany", "title": "Peumus boldus", "publisher": "Useful Tropical Plants Database (theferns.info)", "url": "https://tropical.theferns.info/viewtropical.php?id=Peumus+boldus", "accessedOn": "2026-09-28"},
+    {"id": "s2", "kind": "popular", "title": "Los secretos del boldo: el árbol endémico de Chile que protege el hígado y las neuronas", "publisher": "Centro Interdisciplinario de Neurociencia de Valparaíso (CINV)", "url": "https://cinv.uv.cl/el-boldo/", "accessedOn": "2026-09-28"},
+    {"id": "s3", "kind": "science", "title": "Boldo (herbal facts sheet)", "publisher": "UTEP Herbal Safety Program, University of Texas at El Paso", "url": "https://www.utep.edu/herbal-safety/herbal-facts/herbal%20facts%20sheet/boldo.html", "accessedOn": "2026-09-28"},
+    {"id": "s4", "kind": "science", "title": "Boldo y lactancia (riesgo, ascaridol y hepatotoxicidad)", "publisher": "e-lactancia.org (APILAM)", "url": "https://www.e-lactancia.org/breastfeeding/boldo/product/", "accessedOn": "2026-09-28"}
+  ]
+}

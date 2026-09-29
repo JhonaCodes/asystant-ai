@@ -1,0 +1,181 @@
+{
+  "id": "guaco",
+  "commonName": "Guaco",
+  "otherNames": [
+    "guaco brasileño",
+    "cipó-caatinga"
+  ],
+  "scientificName": "Mikania glomerata Spreng. / Mikania laevigata Sch. Bip. ex Baker",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El guaco es una enredadera brasileña de hojas anchas, muy usada en Brasil y otros países de América Latina como jarabe o té para la tos y el asma. Contiene cumarina, la misma sustancia de la que se derivan los medicamentos anticoagulantes, por lo que se recomienda precaución si se combina con esos medicamentos, y en dosis altas o por mucho tiempo puede afectar el hígado. No se recomienda combinarlo con anticoagulantes ni usarlo en personas con enfermedad del hígado.",
+  "botany": {
+    "description": "Enredadera (liana) sin pelos, de tallo trepador, con hojas simples y opuestas, de hasta 15 cm de largo por 7 cm de ancho, verde brillante por encima y más pálidas por debajo, con tres nervaduras bien marcadas. Sus flores blanco cremosas, hermafroditas, se agrupan en cabezuelas de cuatro flores cada una, con vilano blanco.",
+    "identification": "Se reconoce por su hábito trepador, sus hojas anchas con tres nervaduras visibles que nacen del mismo punto, y sus pequeñas cabezuelas de flores blanco cremosas agrupadas.",
+    "cultivation": "Crece como enredadera en climas cálidos y húmedos, trepando sobre árboles y arbustos; se propaga sobre todo por esquejes.",
+    "lookalikes": [
+      "Mikania laevigata: especie muy parecida y de uso similar, pero con hasta diez veces más cumarina que Mikania glomerata; ambas se venden como \"guaco\" pero no deben usarse como si fueran intercambiables en la misma dosis."
+    ],
+    "nativeRange": "Nativo del sureste de Brasil, desde el estado de São Paulo hasta Rio Grande do Sul.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "cough",
+      "label": "Tos con flema",
+      "evidence": "popular",
+      "note": "Infusión o jarabe de hoja de guaco; uso tradicional muy extendido en Brasil como expectorante, y forma parte de jarabes comerciales para enfermedades respiratorias en la medicina popular brasileña.",
+      "sources": [
+        "s5",
+        "s3"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas respiratorios del resfriado",
+      "evidence": "limited",
+      "note": "Estudios en animales muestran actividad antiinflamatoria y broncodilatadora de extractos de guaco, pero la evidencia en personas todavía es limitada.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja de guaco, fresca o seca, en agua recién hervida, deja reposar y cuela.",
+      "dose": "La que indique el envase de la tisana o del jarabe ya preparado.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Té o jarabe de guaco",
+      "uses": [
+        "cough",
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hoja de guaco, fresca o seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo, o usa un jarabe de guaco ya preparado siguiendo su etiqueta."
+        }
+      ],
+      "warnings": [
+        "No lo combines con medicamentos anticoagulantes o antiagregantes sin consultar a un médico.",
+        "No lo uses si tienes una enfermedad del hígado, ni en dosis altas por tiempo prolongado.",
+        "Consulta a un médico si la tos dura más de 1 semana."
+      ],
+      "sources": [
+        "s5",
+        "s3",
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "La cumarina del guaco puede afectar el hígado en dosis altas o uso prolongado; evita el guaco si tienes una enfermedad del hígado."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "El guaco contiene cumarina, la sustancia de la que derivan los anticoagulantes como la warfarina; aunque la cumarina en sí no es anticoagulante, se recomienda precaución y consultar a un médico antes de combinarlos."
+    },
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "caution",
+      "note": "Precaución si tomas antiagregantes plaquetarios; consulta a un médico antes de combinarlos."
+    },
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "caution",
+      "note": "Un estudio en animales encontró que el guaco aumentó el daño al ADN causado por un medicamento de quimioterapia (doxorrubicina); consulta a un médico antes de combinarlo con medicamentos que puedan dañar el hígado."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "La cumarina es moderadamente tóxica para el hígado en estudios con animales; no se ha medido directamente un daño en personas, pero se recomienda precaución en dosis altas o uso prolongado.",
+    "Reacciones alérgicas en personas sensibles a la familia de la margarita (Asteraceae)."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/guaco.jpg",
+      "author": "Eugenio Hansen, OFS",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mikania_glomerata.JPG",
+      "caption": "Planta de guaco (Mikania glomerata)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Biological Activities of Mikania glomerata and Mikania laevigata: A Scoping Review and Evidence Gap Mapping",
+      "publisher": "Pharmaceuticals (Basel) (PMC12030693)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12030693/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Anti-inflammatory activities of Mikania glomerata and Mikania laevigata extracts",
+      "publisher": "Journal of Ethnopharmacology (PubMed, NLM)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30415057/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Mikania glomerata Sprengel (Asteraceae) influences the mutagenicity induced by doxorubicin without altering liver lipid peroxidation or antioxidant levels",
+      "publisher": "Journal of Toxicology and Environmental Health, Part A (PubMed, NLM)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22852859/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Coumarin",
+      "publisher": "LiverTox (NIDDK / National Library of Medicine)",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK548911/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "popular",
+      "title": "Biological Activities of Mikania glomerata and Mikania laevigata: A Scoping Review and Evidence Gap Mapping — traditional Brazilian use as expectorant syrup",
+      "publisher": "Pharmaceuticals (Basel) (PMC12030693)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12030693/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ]
+}

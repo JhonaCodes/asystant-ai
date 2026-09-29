@@ -1,0 +1,169 @@
+{
+  "id": "tilo",
+  "commonName": "Tilo",
+  "otherNames": [
+    "tila",
+    "flor de tilo",
+    "tilia",
+    "árbol de tilo"
+  ],
+  "scientificName": "Tilia platyphyllos Scop. / Tilia cordata Mill.",
+  "family": "Malvaceae (antes Tiliaceae)",
+  "partsUsed": [
+    "flor (con su bráctea)"
+  ],
+  "easyExplanation": "El tilo es un árbol europeo de flores pequeñas y fragantes. Su flor, seca y en infusión —la 'tila'— es una de las tisanas calmantes más conocidas en países de habla hispana. En Europa se reconoce oficialmente su uso tradicional para aliviar los síntomas leves del resfriado y la tensión nerviosa leve.",
+  "botany": {
+    "description": "Árbol caducifolio de hasta 30-40 metros, de copa densa y redondeada. Sus hojas son grandes (6 a 9 cm, hasta 15 cm), en forma de corazón, con el borde aserrado y el envés cubierto de un vello blanquecino, sobre todo en las nervaduras. Las flores son pequeñas, blanco-amarillentas y muy perfumadas, agrupadas en racimos de 3 a 4, cada uno unido a una bráctea alargada de color verde pálido que lo acompaña incluso cuando cae. El fruto es una nuececilla redonda de 9 a 12 mm, con cáscara leñosa marcada por cinco costillas.",
+    "identification": "Se reconoce por sus hojas grandes en forma de corazón con el envés velloso, y por la bráctea alargada unida al racimo de flores, única entre los árboles comunes de clima templado. Se diferencia de Tilia cordata (tilo de hoja pequeña) por el tamaño de sus hojas, más grandes en Tilia platyphyllos, y de su híbrido Tilia × europaea (tilo común), que es una cruza entre ambas. Para uso medicinal se recolectan las flores recién abiertas: se ha señalado que las flores viejas desarrollan compuestos que no convienen usar, por lo que conviene cosecharlas frescas.",
+    "cultivation": "Crece bien en suelos húmedos, profundos y ricos en materia orgánica, de pH neutro a ligeramente alcalino; tolera mal los suelos muy secos o muy encharcados. Prefiere sol pleno o media sombra. Florece entre junio y julio y sus semillas maduran en octubre. Se propaga por semilla fresca (la semilla almacenada puede tardar años en germinar) o por acodo.",
+    "lookalikes": [
+      "Tilia cordata (tilo de hoja pequeña): hojas notablemente más pequeñas; sus flores se usan igual y están incluidas en el mismo monográfico europeo.",
+      "Tilia × europaea (tilo común): híbrido entre T. platyphyllos y T. cordata, de uso equivalente."
+    ],
+    "nativeRange": "Nativo de gran parte de Europa continental, desde el suroeste de Gran Bretaña hasta España, Crimea, el Cáucaso y el oeste de Asia, principalmente sobre suelos calizos. Se cultiva como árbol ornamental y de sombra en muchos países de clima templado, incluida América Latina.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas leves de resfriado",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa para aliviar los síntomas del resfriado común. Si los síntomas empeoran, aparece fiebre alta, dificultad para respirar o duran más de una semana, consulta a un profesional de salud.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "stress",
+      "label": "Síntomas leves de tensión nerviosa",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa para aliviar síntomas leves de tensión mental. No se recomienda en menores de 12 años.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Ayuda popular para dormir",
+      "evidence": "popular",
+      "note": "En países de habla hispana, la infusión de flor de tilo (\"tila\") se toma popularmente como tranquilizante y ayuda para dormir, más allá de lo que reconoce oficialmente el monográfico europeo, que solo evalúa el resfriado y la tensión leve. Un estudio etnobotánico de Guadalajara, México, documenta el mismo uso popular con la especie emparentada Tilia americana var. mexicana, bajo el mismo nombre de \"tila\".",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "beliefs": [],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Vierte agua recién hervida sobre flor seca de tilo y deja reposar antes de colar. El monográfico europeo indica 1,5 g de flor seca (una cucharadita colmada) en 150 ml de agua hirviendo, de 2 a 4 veces al día, para adultos y adolescentes; en niños de 4 a 12 años, y solo para el resfriado, la cantidad se reduce a 1 g por taza. No se recomienda en menores de 4 años.",
+      "title": "Té de flor de tilo (tila)",
+      "uses": [
+        "cold_symptoms",
+        "stress",
+        "sleep_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre flor seca de tilo en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela la flor."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo tibio."
+        }
+      ],
+      "warnings": [
+        "No se recomienda en el embarazo ni en la lactancia; no hay datos suficientes de seguridad.",
+        "Si los síntomas del resfriado duran más de una semana, o los de tensión nerviosa persisten, consulta a un profesional de salud."
+      ],
+      "sources": [
+        "s4"
+      ],
+      "dose": "1,5 g de flor seca (1 cucharadita colmada) en 150 ml de agua hirviendo (para niños de 4 a 12 años, 1 g por taza).",
+      "frequency": "De 2 a 4 tazas al día.",
+      "maxDays": 7
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "tiliaceae",
+      "note": "No lo uses si eres alérgico a la flor de tilo."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "tiliaceae"
+  ],
+  "safetySources": [
+    "s4"
+  ],
+  "sideEffects": [
+    "No se han descrito efectos secundarios conocidos en el uso tradicional."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/tilo.jpg",
+      "author": "Grondin",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tilleul_en_fleur_01.jpg",
+      "caption": "Tilo (Tilia platyphyllos) en flor"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Tilia platyphyllos Scop. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/3152048",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Tilia platyphyllos (Bigleaf Linden)",
+      "publisher": "North Carolina Extension Gardener Plant Toolbox, NC State University",
+      "url": "https://plants.ces.ncsu.edu/plants/tilia-platyphyllos/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Ethnobotany in a Modern City: The Persistence in the Use of Medicinal Plants in Guadalajara, Mexico",
+      "publisher": "Plants (MDPI) / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12430341/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Community herbal monograph on Tilia cordata Miller, Tilia platyphyllos Scop., Tilia x vulgaris Heyne or their mixtures, flos (Tiliae flos)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-tilia-cordata-miller-tilia-platyphyllos-scop-tilia-x-vulgaris-heyne-or-their-mixtures-flos-first-version_en.pdf",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

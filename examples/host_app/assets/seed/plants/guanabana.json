@@ -1,0 +1,126 @@
+{
+  "id": "guanabana",
+  "commonName": "Guanábana",
+  "otherNames": [
+    "guanábano",
+    "graviola",
+    "soursop",
+    "corossol"
+  ],
+  "scientificName": "Annona muricata L.",
+  "family": "Annonaceae",
+  "partsUsed": [
+    "fruto",
+    "hoja"
+  ],
+  "easyExplanation": "La guanábana es un árbol cuyo fruto grande y ácido se come fresco como alimento; comer la fruta con moderación es, en general, seguro. Distinto es el té de sus hojas: es muy popular como remedio casero e incluso se cree que cura el cáncer, pero no hay estudios en personas que lo demuestren, y sus hojas contienen anonacina, una sustancia que puede dañar el sistema nervioso si se consume de forma habitual o concentrada (te puede provocar movimientos y síntomas parecidos al párkinson). Por eso este catálogo no recomienda el té de hoja de guanábana como remedio.",
+  "botany": {
+    "description": "Árbol pequeño de crecimiento rápido, de hasta 7 metros de alto, con tronco de hasta 15 cm de diámetro que suele ramificarse desde la base. Las hojas son aromáticas, con olor parecido al de la grosella negra. Las flores son amarillas. El fruto es grande, ovalado, de hasta 20 por 10 cm y más de 1 kg, de cáscara espinosa y pulpa jugosa, blanca, ácida y muy aromática.",
+    "identification": "Se reconoce por su fruto grande de cáscara verde con espinas blandas, su pulpa blanca fibrosa de sabor ácido y sus hojas brillantes de olor característico al estrujarlas.",
+    "cultivation": "Necesita clima tropical húmedo, hasta 1.000 m de altitud, con temperaturas de 25 a 30 °C y lluvia anual de 1.000 a 2.500 mm; no tolera heladas. Prefiere suelo franco arenoso, húmedo pero bien drenado, con sol pleno.",
+    "lookalikes": [
+      "Otras especies del género Annona, como la anona o el chirimoyo, de fruto más pequeño y sin espinas tan marcadas."
+    ],
+    "nativeRange": "Nativa del norte de Sudamérica, el sur de Centroamérica y el Caribe; hoy cultivada en zonas tropicales de todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de hojas de guanábana cura el cáncer.",
+      "note": "Es una creencia popular muy extendida. En laboratorio, extractos de guanábana afectan células de cáncer de mama, colon, hígado, próstata, pulmón y piel, pero eso no prueba que funcione en personas: solo existen dos reportes de casos aislados, sin ensayos clínicos serios. Un tumor no se trata solo con una planta; requiere atención médica. Además, el consumo habitual o concentrado de hoja de guanábana puede dañar el sistema nervioso.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "claim": "El té de hojas de guanábana es un remedio casero seguro para los nervios, el insomnio o la presión alta.",
+      "note": "Se usa así de forma tradicional en varias regiones tropicales (como calmante y para dormir, y en Trinidad y Tobago para la presión alta), pero la presión alta es una enfermedad que necesita control y tratamiento médico, no una planta sola. Además, las hojas de guanábana contienen anonacina, una sustancia que en consumo habitual o concentrado se ha relacionado con daño al sistema nervioso y síntomas parecidos al párkinson en estudios de laboratorio y en poblaciones que consumen mucha fruta o té de esta familia de plantas. Por precaución, este catálogo no recomienda el té de hoja como remedio de uso regular.",
+      "sources": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "hormone_sensitive_condition",
+      "note": "No sustituye ningún tratamiento oncológico; el cáncer necesita atención médica."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Podría bajar aún más el azúcar en la sangre junto con medicamentos para la diabetes."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría bajar aún más la presión arterial junto con medicamentos para la presión."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "El consumo habitual o concentrado de hojas (té, extractos o suplementos) se ha relacionado con daño al sistema nervioso y síntomas parecidos al párkinson (temblor, rigidez, dificultad para moverse).",
+    "Comer la fruta madura como alimento, con moderación, es en general seguro; el riesgo se asocia al té de hoja, jugos concentrados o suplementos, no al consumo ocasional de la fruta."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/guanabana.jpg",
+      "author": "Forest and Kim Starr",
+      "license": "CC BY 3.0 US",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/us/deed.en",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starr-090720-3045-Annona_muricata-fruit_and_leaves-Waiehu-Maui_(24852161972).jpg",
+      "caption": "Fruto y hojas de guanábana (Annona muricata)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Annona muricata",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Annona+muricata",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Ethnomedicines used in Trinidad and Tobago for urinary problems and diabetes mellitus",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC1624823)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1624823/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Graviola (Annona muricata)",
+      "publisher": "Memorial Sloan Kettering Cancer Center — About Herbs",
+      "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/graviola",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Exploring the Leaves of Annona muricata L. as a Source of Potential Anti-inflammatory and Anticancer Agents",
+      "publisher": "Frontiers in Pharmacology (PMC6019487)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6019487/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ]
+}

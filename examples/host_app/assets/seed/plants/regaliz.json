@@ -1,0 +1,197 @@
+{
+  "id": "regaliz",
+  "commonName": "Regaliz",
+  "otherNames": [
+    "orozuz",
+    "palo dulce",
+    "licorice"
+  ],
+  "scientificName": "Glycyrrhiza glabra L.",
+  "family": "Fabaceae",
+  "partsUsed": [
+    "raíz"
+  ],
+  "easyExplanation": "El regaliz es una planta de raíz muy dulce, usada desde la antigüedad para la tos y las molestias digestivas. Su dulzor viene de la glicirricina, una sustancia que en dosis altas o por tiempo prolongado sube la presión arterial y baja el potasio de la sangre, lo que puede alterar el ritmo del corazón. Por eso no se recomienda en personas con presión alta, enfermedad del corazón o de los riñones, ni en el embarazo, y solo se usa por poco tiempo.",
+  "botany": {
+    "description": "Hierba perenne leguminosa de hasta 1 metro de alto, con tallos erguidos y algo vellosos, de color crema a dorado. Sus hojas están compuestas por 4 a 7 pares de folíolos, de hasta 15 cm en total. Sus flores, pequeñas y parecidas a las de una arveja, son de color rosa claro a azulado y crecen en racimos de hasta 10 cm. Su fruto es una vaina café de poco más de 1 cm con 3 a 5 semillas. Su raíz es aromática y muy dulce, por la glicirricina que contiene.",
+    "identification": "Se reconoce por sus hojas compuestas de varios pares de folíolos, sus flores pequeñas rosa azuladas en racimos, sus vainas cafés pequeñas, y el sabor intensamente dulce de su raíz.",
+    "cultivation": "Crece a pleno sol o media sombra, en suelo de neutro a algo alcalino, bien drenado o húmedo; necesita suelo profundo y fértil para que la raíz se desarrolle bien. Se propaga por división de raíz o semilla.",
+    "lookalikes": [
+      "Otras leguminosas de flor parecida, de las que se distingue sobre todo por el sabor dulce característico de su raíz."
+    ],
+    "nativeRange": "Nativo de Europa, el norte de África y Asia; hoy cultivado en muchas regiones templadas del mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El regaliz en cantidad se puede tomar libremente porque es una planta y no un medicamento.",
+      "note": "No es así: la glicirricina del regaliz, en dosis altas o por tiempo prolongado, puede subir la presión arterial, bajar el potasio de la sangre y alterar el ritmo del corazón, incluso hasta un paro cardíaco en casos graves. Por eso su uso debe limitarse en cantidad y en tiempo.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "cough",
+      "label": "Tos con flema",
+      "evidence": "traditional",
+      "note": "Decocción o infusión de raíz de regaliz, por boca; uso tradicional para la tos y el resfriado.",
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Decocción de raíz de regaliz, por boca; uso tradicional para trastornos digestivos.",
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    },
+    {
+      "tag": "mouth_sores",
+      "label": "Llagas en la boca",
+      "evidence": "limited",
+      "note": "Algunos estudios pequeños encontraron mejoría de las llagas bucales con regaliz, pero la evidencia todavía es limitada.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "sore_throat",
+      "label": "Garganta irritada tras intubación",
+      "evidence": "limited",
+      "note": "Algunos estudios pequeños encontraron menos dolor de garganta después de una intubación con enjuagues de regaliz, pero la evidencia todavía es limitada.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "instructions": "Hierve raíz seca de regaliz, cortada en trozos pequeños, a fuego lento durante unos minutos, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase.",
+      "frequency": "Una vez al día.",
+      "maxDays": 14,
+      "title": "Decocción de raíz de regaliz",
+      "uses": [
+        "cough",
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "simmer",
+          "text": "Hierve a fuego lento trozos de raíz seca de regaliz durante unos minutos."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "No lo uses por mucho tiempo seguido: los estudios de seguridad son sobre todo a corto plazo; consulta a un médico antes de usarlo por más de 2 semanas.",
+        "No lo uses si tienes presión arterial alta, o una enfermedad del corazón o de los riñones.",
+        "No lo uses en el embarazo.",
+        "No lo combines con diuréticos, medicamentos para la presión o corticoides sin consultar a un médico.",
+        "Consulta a un médico si la tos dura más de 1 semana o los síntomas digestivos más de 2 semanas."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "hypertension",
+      "note": "No lo uses si tienes la presión arterial alta: la glicirricina puede subirla más."
+    },
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "No lo uses si tienes una enfermedad del corazón: el desequilibrio de potasio puede alterar el ritmo cardíaco."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "No lo uses si tienes una enfermedad de los riñones."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "avoid",
+      "note": "El regaliz puede subir la presión arterial y contrarrestar el efecto de estos medicamentos."
+    },
+    {
+      "medicationClass": "diuretic",
+      "severity": "avoid",
+      "note": "El regaliz hace perder potasio; combinado con diuréticos que también bajan el potasio, el riesgo de un desequilibrio grave aumenta."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3"
+  ],
+  "sideEffects": [
+    "En dosis altas o por tiempo prolongado: presión arterial alta, retención de líquidos, pérdida de potasio y alteraciones del ritmo del corazón, incluso paro cardíaco en casos graves.",
+    "En el embarazo, cantidades altas se han asociado con mayor riesgo de parto prematuro.",
+    "Interacciones reportadas con corticoides."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/regaliz.jpg",
+      "author": "Joanna Boisse",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Atlas_roslin_pl_Lukrecja_gładka_571_7092.jpg",
+      "caption": "Planta de regaliz (Glycyrrhiza glabra)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Glycyrrhiza glabra (Licorice)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/glycyrrhiza-glabra/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Traditional Respiratory Remedies From Anatolia: Ethnobotanical Insights and Bioactive Properties",
+      "publisher": "Chemistry & Biodiversity",
+      "url": "https://doi.org/10.1002/cbdv.202503666",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Licorice Root",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/licorice-root",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

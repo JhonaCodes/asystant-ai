@@ -1,0 +1,369 @@
+{
+  "id": "menta",
+  "commonName": "Menta",
+  "otherNames": [
+    "menta piperita",
+    "piperita"
+  ],
+  "scientificName": "Mentha × piperita L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja",
+    "aceite esencial"
+  ],
+  "easyExplanation": "La menta piperita se usa de dos formas: la hoja en infusión y el aceite esencial. La infusión de la hoja se usa por tradición para la digestión pesada y los gases. El aceite, en productos de farmacia, tiene uso bien establecido para los cólicos del colon irritable (en cápsulas) y para el dolor de cabeza leve (aplicado en la frente, solo adultos).",
+  "botany": {
+    "description": "Mentha × piperita es un híbrido natural y estéril entre la menta acuática (Mentha aquatica) y la hierbabuena (Mentha spicata). Casi nunca produce semilla viable, así que se multiplica sobre todo por rizomas y esquejes.",
+    "identification": "Hierba perenne erguida, de 30 a 90 cm de altura. Tallos cuadrados, rojizo-verdosos y aromáticos. Hojas lanceoladas, de unos 2,5 a 5 cm, con bordes dentados y vello fino en el envés. Flores pequeñas, de color rosa a lavanda, agrupadas en espigas densas en la punta del tallo; rara vez llega a formar fruto.",
+    "cultivation": "Crece en sol pleno o sombra parcial, con al menos 3 horas de sol directo al día. Prefiere suelo rico en materia orgánica, húmedo y de pH cercano al neutro (6,0 a 7,0). Se extiende de forma agresiva por sus rizomas subterráneos, por lo que conviene sembrarla en maceta o con una barrera en el suelo para contener su crecimiento.",
+    "lookalikes": [
+      "Mentha spicata (hierbabuena)",
+      "Nepeta × faassenii (nébeda)"
+    ],
+    "nativeRange": "Originaria de Europa y Oriente Medio; hoy se cultiva y crece naturalizada en muchas regiones templadas del mundo.",
+    "sources": [
+      "s5",
+      "s4"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La menta o su aceite \"destapan\" de verdad la nariz tapada y hacen respirar mejor.",
+      "note": "El mentol de la menta estimula los receptores de frío de la nariz y da la sensación de que entra más aire, pero los estudios que midieron la resistencia real de las vías nasales muestran que esta no cambia: la nariz sigue igual de tapada, aunque se sienta distinto.",
+      "sources": [
+        "s7"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1",
+        "s6"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Gases e hinchazón",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Cólicos y gases, sobre todo en colon irritable",
+      "evidence": "wellEstablished",
+      "note": "Aceite de menta en cápsulas por boca; hay estudios clínicos que lo respaldan.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "headache",
+      "label": "Dolor de cabeza leve",
+      "evidence": "wellEstablished",
+      "note": "Aceite de menta diluido en la frente y las sienes; solo adultos.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "traditional",
+      "note": "Aceite inhalado o aplicado en el pecho y la espalda; su uso mentolado para el resfriado tiene una larga tradición popular.",
+      "sources": [
+        "s2",
+        "s6"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos del resfriado",
+      "evidence": "traditional",
+      "note": "Aceite inhalado o aplicado en el pecho y la espalda.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "muscle_pain",
+      "label": "Dolor muscular localizado",
+      "evidence": "traditional",
+      "note": "Aceite aplicado sobre piel sana, sin heridas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "itching",
+      "label": "Picazón en piel sana",
+      "evidence": "traditional",
+      "note": "Aceite aplicado sobre piel sana, sin heridas; uso tradicional documentado para la picazón (prurito).",
+      "sources": [
+        "s2",
+        "s6"
+      ]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "traditional",
+      "note": "Hoja en infusión; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja seca de menta en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de menta",
+      "uses": [
+        "indigestion",
+        "bloating",
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de menta, frescas de tu huerta o secas en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Usa cápsulas de aceite de menta de farmacia con cubierta que se disuelve en el intestino; así se reduce la acidez.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": null,
+      "title": "Cápsulas de aceite de menta",
+      "uses": [
+        "abdominal_cramps"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra en la farmacia cápsulas de aceite de menta que se disuelven en el intestino."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalas como dice el envase."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "form": "essentialOil",
+      "route": "topical",
+      "instructions": "Usa un producto de aceite de menta ya diluido y aplícalo en la frente y las sienes, o sobre la piel sana donde duele el músculo. No lo apliques en heridas ni cerca de los ojos, y nunca en la cara de bebés o niños pequeños.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": null,
+      "title": "Aceite de menta en la piel",
+      "uses": [
+        "headache",
+        "muscle_pain",
+        "itching"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un aceite de menta de farmacia que ya venga diluido."
+        },
+        {
+          "kind": "apply",
+          "text": "Ponlo en la frente y las sienes, o en la piel sana donde duele el músculo."
+        }
+      ],
+      "warnings": [
+        "No lo pongas en heridas.",
+        "Mantenlo lejos de los ojos.",
+        "Nunca en la cara de bebés o niños pequeños."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "form": "essentialOil",
+      "route": "inhalation",
+      "instructions": "Inhala el vapor de un producto de aceite de menta preparado para inhalación.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": null,
+      "title": "Vapor de aceite de menta",
+      "uses": [
+        "cold_symptoms",
+        "cough"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un aceite de menta hecho para inhalar."
+        },
+        {
+          "kind": "inhale",
+          "text": "Respira su vapor como dice el envase."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia."
+    },
+    {
+      "kind": "condition",
+      "tag": "gallstones",
+      "note": "Usa la hoja con precaución y no tomes el aceite por boca si tienes cálculos en la vesícula."
+    },
+    {
+      "kind": "condition",
+      "tag": "bile_duct_obstruction",
+      "note": "Usa la hoja con precaución y no tomes el aceite por boca si tienes problemas de las vías biliares."
+    },
+    {
+      "kind": "condition",
+      "tag": "gerd",
+      "note": "Puede empeorar el reflujo y la acidez."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "No tomes el aceite de menta por boca."
+    },
+    {
+      "kind": "condition",
+      "tag": "achlorhydria",
+      "note": "No tomes el aceite de menta por boca."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "safetySources": [
+    "s1",
+    "s2",
+    "s3"
+  ],
+  "sideEffects": [
+    "Acidez o reflujo.",
+    "Aceite por boca: náuseas, boca seca, dolor abdominal u olor a mentol en la orina.",
+    "Aceite en la piel: sarpullido o irritación; también irritación de ojos o nariz.",
+    "Rara vez, reacciones alérgicas, que pueden ser graves."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/menta.jpg",
+      "author": "Forest & Kim Starr",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starr_070906-8848_Mentha_x_piperita.jpg",
+      "caption": "Hojas de menta piperita"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "science",
+      "title": "Menthae piperitae folium — summary of HMPC conclusions (peppermint leaf)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/menthae-piperitae-folium",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Menthae piperitae aetheroleum — summary of HMPC conclusions (peppermint oil)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/menthae-piperitae-aetheroleum",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Peppermint Oil (Herbs at a Glance)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/peppermint-oil",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "botany",
+      "title": "Mentha × piperita L. — GBIF Backbone Taxonomy",
+      "publisher": "GBIF",
+      "url": "https://www.gbif.org/species/8707933",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "botany",
+      "title": "Mentha x piperita (Peppermint)",
+      "publisher": "North Carolina Extension Gardener Plant Toolbox, NC State University",
+      "url": "https://plants.ces.ncsu.edu/plants/mentha-x-piperita/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s6",
+      "kind": "popular",
+      "title": "A Descriptive Overview of the Medical Uses Given to Mentha Aromatic Herbs throughout History",
+      "publisher": "PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7767097/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s7",
+      "kind": "science",
+      "title": "The effects of oral administration of (-)-menthol on nasal resistance to airflow and nasal sensation of airflow in subjects suffering from nasal congestion associated with the common cold",
+      "publisher": "Journal of Pharmacy and Pharmacology (PubMed)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1981905/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

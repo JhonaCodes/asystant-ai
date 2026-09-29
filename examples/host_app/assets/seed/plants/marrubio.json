@@ -1,0 +1,167 @@
+{
+  "id": "marrubio",
+  "commonName": "Marrubio",
+  "otherNames": [
+    "manrubio",
+    "marrubio blanco",
+    "hierba del sapo"
+  ],
+  "scientificName": "Marrubium vulgare L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "El marrubio es una hierba de hojas grises y arrugadas, de olor fuerte, muy conocida en el mundo hispano. En Europa se reconoce el uso tradicional de su parte aérea en infusión, para ayudar a expulsar la flema en la tos del resfriado, para la digestión pesada con gases, y para la falta de apetito pasajera. Es solo para adultos y adolescentes mayores de 12 años; no se recomienda en el embarazo ni la lactancia.",
+  "botany": {
+    "description": "Hierba perenne de la familia de la menta, de 30 a 60 cm de alto, con tallos cuadrangulares, erguidos y cubiertos de una pelusa blanca. Sus hojas, de hasta 5 cm, son redondeadas, arrugadas, de color verde grisáceo, cubiertas de pelillos suaves y de olor fuerte al estrujarlas. Sus flores blancas y pequeñas crecen agrupadas en verticilos densos alrededor del tallo, entre junio y noviembre.",
+    "identification": "Se reconoce por sus hojas redondeadas, arrugadas y grisáceas por la pelusa que las cubre, sus tallos cuadrangulares blanquecinos y afelpados, y sus flores blancas pequeñas agrupadas en anillos apretados a lo largo del tallo.",
+    "cultivation": "Crece a pleno sol, en suelo arenoso, seco, de ácido a neutro, aunque tolera suelos húmedos o pobres; necesita buen drenaje. Se propaga por división, esquejes de hoja o semilla, y puede volverse invasor porque se dispersa con facilidad.",
+    "lookalikes": [
+      "Otras hierbas grises y afelpadas de la familia de la menta, de las que se distingue por sus hojas muy arrugadas y su olor característico."
+    ],
+    "nativeRange": "Nativo de Europa, Asia y África; hoy naturalizado en gran parte de América.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "cough",
+      "label": "Tos con flema del resfriado",
+      "evidence": "traditional",
+      "note": "Infusión de la parte aérea, por boca; uso tradicional reconocido en Europa como expectorante, solo en adultos y adolescentes mayores de 12 años.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "traditional",
+      "note": "Infusión de la parte aérea, por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada",
+      "evidence": "traditional",
+      "note": "Infusión de la parte aérea, por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "poor_appetite",
+      "label": "Falta de apetito pasajera",
+      "evidence": "traditional",
+      "note": "Infusión de la parte aérea, por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja y flor de marrubio, frescas o secas, en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de marrubio",
+      "uses": [
+        "cough",
+        "bloating",
+        "indigestion",
+        "poor_appetite"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hoja y flor de marrubio, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Solo para adultos y adolescentes mayores de 12 años.",
+        "No lo uses en el embarazo ni la lactancia.",
+        "Consulta a un médico si la tos dura más de 1 semana, o los síntomas digestivos o la falta de apetito duran más de 2 semanas."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No lo uses si eres alérgico al marrubio o a otras plantas de su familia, como la menta o el romero."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "sideEffects": [
+    "No se reportaron efectos secundarios en la evaluación europea, aunque la vigilancia es limitada porque hay pocos estudios clínicos."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/marrubio.jpg",
+      "author": "Andrey Zharkikh",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016.05.27_07.52.55_IMG_5637_-_Flickr_-_andrey_zharkikh.jpg",
+      "caption": "Hojas y tallo de marrubio"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Marrubium vulgare (White Horehound)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/marrubium-vulgare/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Marrubii herba — summary of HMPC conclusions (white horehound herb)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/marrubii-herba",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "The use of medicinal plants by cancer patients receiving chemotherapy: a cross-sectional study at a referral oncology hospital in Morocco (Marrubium vulgare among the most used species)",
+      "publisher": "Journal of Oncology Pharmacy Practice",
+      "url": "https://doi.org/10.1177/10781552251331920",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s2"
+  ]
+}

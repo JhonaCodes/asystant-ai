@@ -1,0 +1,323 @@
+{
+  "id": "manzanilla",
+  "commonName": "Manzanilla",
+  "otherNames": [
+    "camomila",
+    "manzanilla alemana"
+  ],
+  "scientificName": "Matricaria chamomilla L. (sin. Matricaria recutita L.)",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "flor"
+  ],
+  "easyExplanation": "La manzanilla es una flor pequeña, parecida a una margarita, muy usada en infusión. En Europa se reconoce su uso tradicional para molestias digestivas leves, síntomas de resfriado, irritaciones de boca y garganta, e irritaciones o heridas pequeñas de la piel. Puede causar alergia en personas sensibles a plantas de la familia de la margarita.",
+  "botany": {
+    "description": "Hierba anual de hasta 60 cm, de olor aromático y sabor amargo, con hojas largas, angostas y muy divididas, parecidas a plumas. Sus flores, de 1,5 a 2,5 cm, tienen pétalos blancos alrededor de un centro amarillo dorado hueco por dentro.",
+    "identification": "Se reconoce por sus cabezuelas perfumadas, el centro del disco hueco (a diferencia de otras margaritas parecidas) y sus hojas filiformes muy recortadas. Cada flor tiene entre 10 y 25 pétalos blancos alrededor del disco amarillo.",
+    "cultivation": "Prefiere sol pleno y suelo bien drenado, de arena o marga, húmedo a seco; tolera suelos pobres. Se recomienda iniciarla en maceta individual 6 a 8 semanas antes de la última helada porque no trasplanta bien.",
+    "lookalikes": [
+      "Chamaemelum nobile (manzanilla romana): otra especie distinta, de uso y aspecto similares, con la que suele confundirse el nombre.",
+      "Anthemis cotula (manzanilla hedionda o falsa manzanilla): huele fuerte y desagradable al aplastarla (la manzanilla verdadera no); puede irritar la piel y las mucosas."
+    ],
+    "nativeRange": "Macaronesia, norte de África y Eurasia templada hasta Indochina; hoy naturalizada en América.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La infusión de manzanilla cura el sarampión u otras infecciones virales.",
+      "note": "No hay estudios en personas que muestren que la manzanilla trate infecciones virales como el sarampión; esa es una enfermedad que necesita atención médica. La evaluación europea solo reconoce su uso tradicional para molestias digestivas, de piel y de garganta.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "traditional",
+      "note": "Infusión por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Espasmos digestivos leves",
+      "evidence": "traditional",
+      "note": "Infusión por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Infusión por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "traditional",
+      "note": "Infusión o inhalación de su vapor.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "sore_throat",
+      "label": "Irritación leve de garganta",
+      "evidence": "traditional",
+      "note": "Gárgaras con la infusión.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "mouth_sores",
+      "label": "Llagas o irritación leve en la boca",
+      "evidence": "traditional",
+      "note": "Enjuagues con la infusión.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "sunburn",
+      "label": "Quemadura de sol leve",
+      "evidence": "traditional",
+      "note": "Compresas con la infusión sobre la piel.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "skin_irritation",
+      "label": "Inflamación leve de la piel",
+      "evidence": "traditional",
+      "note": "Compresas con la infusión sobre la piel.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Heridas superficiales y granos pequeños",
+      "evidence": "traditional",
+      "note": "Compresas con la infusión sobre la piel.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "traditional",
+      "note": "Infusión por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con las flores secas en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Té de manzanilla",
+      "uses": [
+        "bloating",
+        "abdominal_cramps",
+        "indigestion",
+        "cold_symptoms",
+        "digest_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre flores de manzanilla, frescas o secas en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "infusion",
+      "route": "topical",
+      "instructions": "Deja enfriar la infusión colada y úsala para enjuagues de boca, gárgaras o compresas sobre la piel.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Manzanilla para enjuagues y compresas",
+      "uses": [
+        "sore_throat",
+        "mouth_sores",
+        "sunburn",
+        "skin_irritation",
+        "minor_wound"
+      ],
+      "steps": [
+        {
+          "kind": "strain",
+          "text": "Prepara un té de manzanilla, con flores frescas o secas, y cuélalo."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja que se enfríe."
+        },
+        {
+          "kind": "rinse",
+          "text": "Úsalo para enjuagarte la boca o hacer gárgaras."
+        },
+        {
+          "kind": "compress",
+          "text": "O moja un paño limpio y ponlo sobre la piel."
+        }
+      ],
+      "warnings": [],
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "infusion",
+      "route": "inhalation",
+      "instructions": "Inhala el vapor de la infusión caliente con cuidado de no quemarte.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Vapor de manzanilla",
+      "uses": [
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Prepara un té de manzanilla bien caliente."
+        },
+        {
+          "kind": "inhale",
+          "text": "Respira su vapor con calma."
+        }
+      ],
+      "warnings": [
+        "Cuidado de no quemarte con el vapor."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "No la uses si eres alérgico a la manzanilla o a plantas como ambrosía, crisantemo, caléndula o margarita."
+    },
+    {
+      "kind": "condition",
+      "tag": "hormone_sensitive_condition",
+      "note": "Podría tener efectos parecidos a los estrógenos; consulta antes de usarla."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Se han reportado interacciones con la warfarina."
+    },
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los sedantes."
+    },
+    {
+      "medicationClass": "hormonal_contraceptive",
+      "severity": "caution",
+      "note": "Datos preliminares indican que podría disminuir el efecto de las pastillas anticonceptivas."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Poco comunes: náuseas o mareo.",
+    "Reacciones alérgicas, a veces graves, incluso por contacto con la boca.",
+    "Irritación de los ojos si se usa cerca de ellos."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/manzanilla.jpg",
+      "author": "kallerna",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kamomillasaunio_(Matricaria_recutita).JPG",
+      "caption": "Plantas de manzanilla en flor"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Chamomile - Matricaria chamomilla",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/matricaria-chamomilla/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Uso potencial de la manzanilla Matricaria chamomilla L. y experiencias en Nicaragua",
+      "publisher": "Revista Amelica (portal.amelica.org)",
+      "url": "https://portal.amelica.org/ameli/journal/230/2301351006/html/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Matricariae flos — summary of HMPC conclusions (matricaria flower)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/matricariae-flos",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Chamomile (Herbs at a Glance)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/chamomile",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ]
+}

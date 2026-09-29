@@ -1,0 +1,118 @@
+{
+  "id": "anamu",
+  "commonName": "Anamu",
+  "otherNames": [
+    "mucura",
+    "guinea hen weed",
+    "hierba de gallina",
+    "apacín"
+  ],
+  "scientificName": "Petiveria alliacea L.",
+  "family": "Petiveriaceae",
+  "partsUsed": [
+    "hoja",
+    "raíz"
+  ],
+  "easyExplanation": "El anamu es una hierba de fuerte olor a ajo, muy conocida en la medicina popular del Caribe y la Amazonía, donde se le atribuyen usos contra el cáncer, para 'las defensas' y para otros males. La ciencia no respalda estas creencias en personas: solo hay estudios de laboratorio y en animales, y uno de sus compuestos puede dañar las células nerviosas en dosis altas. Como no hay estudios en personas que digan qué cantidad es segura ni por cuánto tiempo, este catálogo no ofrece ninguna receta ni cantidad para tomarlo.",
+  "botany": {
+    "description": "Hierba de tallo erguido y cilíndrico, con ramas, de 5 cm hasta 1,5 m de alto según las condiciones donde crece. Sus hojas y raíces despiden un fuerte olor parecido al ajo al ser cortadas o frotadas. Sus flores son pequeñas y se agrupan en espigas alargadas; su fruto es pequeño y se adhiere a la ropa o al pelaje de los animales.",
+    "identification": "Se reconoce principalmente por el fuerte olor a ajo de sus hojas y raíces al romperlas, junto con sus espigas de flores pequeñas y su porte herbáceo de tallo erguido.",
+    "cultivation": "Crece de forma silvestre en suelos húmedos de zonas tropicales y subtropicales, a pleno sol o media sombra; se propaga con facilidad por semilla o esqueje de raíz.",
+    "lookalikes": [
+      "Otras hierbas de porte similar; se distingue con claridad por su fuerte olor a ajo, poco común entre las plantas que se le parecen."
+    ],
+    "nativeRange": "Nativa de América tropical, incluida la cuenca amazónica, América Central y el Caribe; hoy también presente en África y Asia tropical.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El anamu cura el cáncer o elimina tumores.",
+      "note": "Solo hay estudios de laboratorio (células) y en animales que muestran algún efecto tóxico contra células cancerosas; no existen estudios clínicos en personas que confirmen que cure o trate el cáncer. Un análisis bibliométrico de sus propiedades encontró apenas un ensayo clínico en humanos, de 1991, y ninguno específico sobre cáncer.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "claim": "El anamu 'sube las defensas' o fortalece el sistema inmune sin ningún riesgo.",
+      "note": "Estudios de laboratorio muestran que un extracto de la planta activa ciertas células del sistema inmune (células dendríticas), pero esto no está probado como beneficio real en personas, y uno de sus compuestos principales (el trisulfuro de dibencilo) puede dañar el crecimiento de las células nerviosas en dosis más altas. Los propios autores concluyen que aún no puede recomendarse para enfermedades del sistema nervioso, y que hacen falta estudios en humanos.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "claim": "Bañarse con anamu atrae la buena suerte o protege de la brujería.",
+      "note": "Es una creencia espiritual documentada en comunidades caribeñas migrantes de la Amazonía francesa, sin ningún mecanismo biológico que la respalde; los estudios disponibles sobre esta planta son de laboratorio y no muestran ningún efecto sobre la suerte o la protección espiritual.",
+      "sources": [
+        "s5",
+        "s3"
+      ]
+    },
+    {
+      "claim": "El anamu es un remedio natural sin riesgo porque se usa desde hace generaciones.",
+      "note": "El uso tradicional prolongado no equivale a seguridad comprobada: una revisión bibliométrica de sus propiedades farmacológicas y toxicológicas encontró vacíos importantes en los estudios de toxicidad y ningún perfil de seguridad completo en personas, por lo que no existe una cantidad ni un tiempo de uso que la evidencia respalde como seguro.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3", "s4"],
+  "sideEffects": [
+    "Uno de sus compuestos principales puede dañar el crecimiento de las células nerviosas en dosis altas, según estudios de laboratorio.",
+    "No hay estudios en personas suficientes para saber qué cantidad es segura ni por cuánto tiempo se puede usar."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/anamu.jpg",
+      "author": "Krzysztof Ziarnek, Kenraiz",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Petiveria_alliacea_kz01.jpg",
+      "caption": "Planta de anamu (Petiveria alliacea)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Petiveria alliacea L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:323288-2",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Amazonian Plants: A Global Bibliometric Approach to Petiveria alliacea L. Pharmacological and Toxicological Properties",
+      "publisher": "Plants (MDPI, via PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10536944/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Neuroprotective and Immunomodulatory Efficacy of Selected Caribbean Medicinal Plants: A Systematic Review",
+      "publisher": "Cureus (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13327530/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "popular",
+      "title": "Migrant Pharmacopoeias: An Ethnobotanical Survey of Four Caribbean Communities in Amazonia (French Guiana)",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8528477/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

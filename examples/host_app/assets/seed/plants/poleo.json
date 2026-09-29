@@ -1,0 +1,173 @@
+{
+  "id": "poleo",
+  "commonName": "Poleo",
+  "otherNames": [
+    "poleo menta",
+    "menta poleo",
+    "poliol",
+    "pennyroyal"
+  ],
+  "scientificName": "Mentha pulegium L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El poleo es una menta pequeña de olor fuerte que contiene pulegona, una sustancia tóxica para el hígado. Tomado por boca, en té o como aceite esencial, puede dañar gravemente el hígado y provocar un aborto peligroso, a veces mortal, por eso nunca se debe tomar por boca ni usar en el embarazo. Por eso aquí solo se describe su uso tradicional externo: las hojas machacadas se han usado desde la antigüedad para ahuyentar pulgas y mosquitos, frotadas en la piel o puestas en la ropa.",
+  "botany": {
+    "description": "Hierba perenne de 10 a 40 cm, de porte rastrero a semierguido, con tallos cuadrangulares y velludos, hojas pequeñas, ovaladas y opuestas, muy aromáticas al frotarlas, y flores pequeñas de color lila rosado agrupadas en verticilos a lo largo del tallo.",
+    "identification": "Se distingue de otras mentas por su tamaño pequeño, su porte rastrero, sus hojas pequeñas y su intenso olor mentolado; crece en lugares húmedos, orillas de arroyos, acequias y zonas encharcadas.",
+    "cultivation": "Se cultiva en suelo húmedo y fresco, a pleno sol o media sombra; se propaga por división de matas o esquejes y se expande con facilidad como cubresuelo en sitios con riego constante.",
+    "lookalikes": [
+      "Otras mentas del género Mentha, como la menta piperita o la hierbabuena"
+    ],
+    "nativeRange": "Nativa de Europa, la cuenca del Mediterráneo, el norte de África y el oeste de Asia; hoy naturalizada también en América.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El poleo, en té o como aceite, provoca la menstruación o el aborto.",
+      "note": "El poleo contiene pulegona, que el hígado transforma en sustancias tóxicas. Tomarlo por boca, en té o como aceite esencial, puede provocar un aborto peligroso junto con daño grave al hígado; existen casos documentados de insuficiencia hepática y muerte incluso con cantidades pequeñas, desde unos 10 ml de aceite esencial.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "claim": "El té de poleo es un remedio casero seguro para el resfriado, la tos o la indigestión.",
+      "note": "No es seguro: tomar poleo por boca, incluso en infusión, puede alcanzar niveles tóxicos de pulegona y dañar el hígado. Por eso este catálogo solo describe su uso tradicional externo, como repelente de insectos, y nunca por boca.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "insect_repellent",
+      "label": "Repeler insectos",
+      "evidence": "popular",
+      "note": "Hojas frescas machacadas, frotadas en la piel expuesta o puestas en la ropa; uso tradicional documentado desde la Antigüedad para alejar pulgas, mosquitos y otros insectos. Uso solo externo, nunca por boca.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "topical",
+      "title": "Hojas de poleo machacadas como repelente de insectos",
+      "uses": [
+        "insect_repellent"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava hojas frescas de poleo y córtalas o macháchalas un poco para liberar su aroma."
+        },
+        {
+          "kind": "apply",
+          "text": "Frota las hojas machacadas sobre la piel expuesta, o colócalas en los bolsillos y dobladillos de la ropa."
+        },
+        {
+          "kind": "rinse",
+          "text": "Lávate bien las manos y la piel con agua después de usarlo."
+        }
+      ],
+      "warnings": [
+        "Uso solo externo: nunca lo tomes por boca ni lo pongas cerca de la boca, la nariz o los ojos.",
+        "No lo uses en el embarazo, ni siquiera sobre la piel, por precaución.",
+        "No lo apliques sobre piel lastimada, heridas o piel muy sensible.",
+        "No lo uses en bebés ni niños pequeños.",
+        "Nunca uses aceite esencial de poleo sin diluir sobre la piel, ni lo tomes por boca: es tóxico para el hígado incluso en dosis pequeñas."
+      ],
+      "dose": "Un puñado de hojas frescas machacadas; solo para uso externo.",
+      "frequency": "Vuelve a aplicar cuando las hojas se sequen o pierdan el olor.",
+      "maxDays": null,
+      "instructions": "Lava y machaca hojas frescas de poleo para liberar su aroma, frótalas sobre la piel expuesta o colócalas en la ropa; lávate después las manos y la piel. Es un uso tradicional externo, nunca se toma por boca.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No lo uses si eres alérgico a esta planta o a otras de su familia, como la menta o el romero."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Evita el contacto con esta planta si tienes una enfermedad del hígado; se sabe que la pulegona daña el hígado y no se ha estudiado bien cuánta se absorbe por la piel."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "No lo combines con medicamentos que pueden dañar el hígado; la pulegona del poleo es tóxica para el hígado."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "sideEffects": [
+    "Irritación de la piel en personas sensibles al contacto con la planta.",
+    "El aceite esencial o el té de poleo tomados por boca son tóxicos para el hígado y pueden ser mortales; esto no es un uso que este catálogo recomiende."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/poleo.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mentha_pulegium_003.JPG",
+      "caption": "Flores y hojas de poleo (Mentha pulegium)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Mentha pulegium L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:451022-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "An Evidence-Based Review on Medicinal Plants Used as Insecticide and Insect Repellent in Traditional Iranian Medicine",
+      "publisher": "Iranian Red Crescent Medical Journal / PMC (PubMed Central)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4867175/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Toxicities of Herbal Abortifacients",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10192026/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Mentha pulegium L.: A Plant Underestimated for Its Toxicity to Be Recovered from the Perspective of the Circular Economy",
+      "publisher": "Molecules (MDPI)",
+      "url": "https://www.mdpi.com/1420-3049/26/8/2154",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

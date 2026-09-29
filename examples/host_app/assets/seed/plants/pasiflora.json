@@ -1,0 +1,236 @@
+{
+  "id": "pasiflora",
+  "commonName": "Pasiflora",
+  "otherNames": [
+    "flor de la pasión",
+    "pasionaria"
+  ],
+  "scientificName": "Passiflora incarnata L.",
+  "family": "Passifloraceae",
+  "partsUsed": [
+    "parte aérea"
+  ],
+  "easyExplanation": "La pasiflora es una enredadera de flores llamativas cuya parte aérea se usa en infusión para la tensión nerviosa leve y las dificultades leves para dormir. El efecto no está totalmente probado y puede dar sueño, así que no la combines con sedantes ni la uses antes de una cirugía. No se recomienda en el embarazo ni en menores de 12 años.",
+  "botany": {
+    "description": "La pasiflora es una enredadera perenne de crecimiento rápido que trepa mediante zarcillos que nacen junto a las hojas; es leñosa en climas cálidos, mientras que en climas fríos la parte aérea muere en invierno y vuelve a brotar desde la raíz. Sus hojas, de 8 a 15 cm de ancho, tienen tres lóbulos profundos, son verde oscuro y de borde dentado. Las flores, de 2,5 a 8 cm, son blancas con una llamativa corona de filamentos rosado-púrpura en el centro, y muy aromáticas. El fruto, llamado 'maypop', es ovalado y carnoso, madura a un color amarillento entre julio y octubre y es comestible cuando está maduro.",
+    "identification": "Se reconoce por sus hojas de tres lóbulos profundos y dentados, por los zarcillos con los que trepa sobre cercas y arbustos, y por sus flores llamativas de pétalos blancos con una corona de filamentos rosado-púrpura en el centro. El fruto, parecido a un huevo, 'truena' o 'salta' al aplastarlo cuando está maduro, de ahí su nombre en inglés, maypop.",
+    "cultivation": "Se cultiva a pleno sol o media sombra, en suelos bien drenados de textura arcillosa, franca o arenosa, con buena materia orgánica; tolera la sequía una vez establecida. Es resistente en climas templados a subtropicales y se extiende con facilidad por brotes de raíz, por lo que conviene darle espacio o contenerla.",
+    "nativeRange": "Originaria del sureste y centro-sur de Estados Unidos y de las Bermudas, donde crece de forma silvestre en más de 24 estados, desde Florida hasta Pensilvania y hacia el oeste hasta Texas y Kansas. Hoy se cultiva como planta medicinal y ornamental en muchas otras regiones.",
+    "sources": [
+      "s3"
+    ]
+  },
+  "indications": [
+    {
+      "tag": "nervousness",
+      "label": "Tensión nerviosa leve",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa, en infusión o extracto de la parte aérea.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "insomnia",
+      "label": "Dificultades leves para dormir",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa. Estudios pequeños sugieren que puede mejorar el tiempo total de sueño, aunque el efecto sobre el tiempo para quedarse dormido es variable.",
+      "sources": [
+        "s1",
+        "s2"
+      ]
+    },
+    {
+      "tag": "anxiety_mild",
+      "label": "Ansiedad leve",
+      "evidence": "limited",
+      "note": "Estudios pequeños sugieren que puede ayudar a reducir síntomas de ansiedad, incluida la ansiedad antes de un procedimiento quirúrgico o dental, pero los resultados no son concluyentes.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarse",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Dormir mejor",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa.",
+      "sources": [
+        "s1",
+        "s2"
+      ]
+    },
+    {
+      "tag": "menstrual_cramps",
+      "label": "Cólicos menstruales",
+      "evidence": "popular",
+      "note": "Uso popular documentado en bases de datos etnobotánicas de Estados Unidos y Turquía para la dismenorrea (dolor menstrual), sin estudios clínicos que lo confirmen.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "beliefs": [
+    {
+      "claim": "Cura la sífilis y otras enfermedades graves",
+      "note": "La pasiflora se ha usado por tradición como sedante suave, no para tratar infecciones ni enfermedades graves. No hay estudios en personas que respalden usarla para la sífilis u otras enfermedades serias, que necesitan diagnóstico y tratamiento médico.",
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con la parte aérea seca de pasiflora en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de pasiflora",
+      "uses": [
+        "nervousness",
+        "insomnia",
+        "anxiety_mild",
+        "relax",
+        "sleep_better",
+        "menstrual_cramps"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre la parte aérea de pasiflora, fresca o seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "No la uses en las 2 semanas previas a una cirugía."
+      ],
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Usa cápsulas o comprimidos de extracto seco de pasiflora de farmacia.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Cápsulas de pasiflora",
+      "uses": [
+        "nervousness",
+        "anxiety_mild",
+        "sleep_better"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra en la farmacia cápsulas o comprimidos de extracto de pasiflora."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalos como dice el envase."
+        }
+      ],
+      "warnings": [
+        "No la uses en las 2 semanas previas a una cirugía."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "passifloraceae",
+      "note": "No la uses si eres alérgico a la pasiflora o al maracuyá."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "sedative",
+      "severity": "avoid",
+      "note": "No la combines con sedantes ni con anestesia; suspéndela al menos 2 semanas antes de una cirugía."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "passifloraceae"
+  ],
+  "safetySources": [
+    "s1",
+    "s2"
+  ],
+  "sideEffects": [
+    "Somnolencia, mareo o confusión.",
+    "Muy rara vez se han reportado intoxicaciones por preparados de esta planta; no te excedas de la cantidad indicada."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/pasiflora.jpg",
+      "author": "Patrick Ch. Apfeld (Pehah)",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Passiflora_incarnata_(detail).jpg",
+      "caption": "Detalle de la flor de pasiflora"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "science",
+      "title": "Passionflower (Herbs at a Glance)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/passionflower",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Passiflorae herba — summary of HMPC conclusions (passion flower)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/passiflorae-herba",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "botany",
+      "title": "Passiflora incarnata (Maypop)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/passiflora-incarnata/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Passiflora incarnata — Ethnobotanical uses",
+      "publisher": "Phytochemical and Ethnobotanical Databases, USDA-ARS",
+      "url": "https://phytochem.nal.usda.gov/ethnobotanical-plant-passiflora-incarnata",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

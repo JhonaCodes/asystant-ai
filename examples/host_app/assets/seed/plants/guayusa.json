@@ -1,0 +1,129 @@
+{
+  "id": "guayusa",
+  "commonName": "Guayusa",
+  "otherNames": [
+    "wais",
+    "waisa"
+  ],
+  "scientificName": "Ilex guayusa Loes.",
+  "family": "Aquifoliaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "La guayusa es un árbol de la Amazonía ecuatoriana cuyas hojas se hierven para preparar una bebida energizante que los pueblos kichwa toman de madrugada. Tiene tanta cafeína como el guaraná, por eso da energía y quita el sueño, pero también puede dar dolor de cabeza o nerviosismo si se toma en exceso.",
+  "botany": {
+    "description": "Árbol perenne de porte arbustivo cuando es joven; los árboles domesticados alcanzan 10 a 15 m y los silvestres hasta 25 m, con troncos de hasta 80 cm de diámetro. Hojas simples, alternas, dentadas, de forma oblonga a elíptica, coriáceas y verde oliva, de 15 a 21 cm de largo por 5 a 7,5 cm de ancho, unidas por un pecíolo de 1 cm. Flores blanco verdosas con cáliz persistente; fruto en baya globosa verde de 1 cm.",
+    "identification": "Se distingue de otros acebos por sus hojas grandes, dentadas y coriáceas de color verde oliva, y por crecer como árbol de dosel en la selva amazónica, a diferencia de la yerba mate que crece más al sur.",
+    "cultivation": "Se cultiva en la Amazonía de Ecuador en chacras junto a otros cultivos; Ecuador concentra cerca del 98 % de la producción mundial.",
+    "lookalikes": [
+      "Ilex paraguariensis (yerba mate): otro acebo sudamericano usado para infusión estimulante, pero de otra región (subtropical, no amazónica) y con hojas más pequeñas."
+    ],
+    "nativeRange": "Región amazónica de Ecuador, con presencia también en zonas vecinas de Colombia y Perú.",
+    "sources": ["s1", "s3"]
+  },
+  "beliefs": [
+    {
+      "claim": "La guayusa purifica el cuerpo y permite interpretar los sueños si se toma en la ceremonia del amanecer.",
+      "note": "Es una creencia cultural importante para el pueblo achuar y kichwa, ligada al ritual de la guayusa upina, sin que exista evidencia científica de un efecto purificante o de interpretación de sueños; el efecto medible es el estimulante de la cafeína.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "improve_energy",
+      "label": "Cansancio o falta de energía",
+      "evidence": "traditional",
+      "note": "Bebida energizante tradicional de la mañana entre los pueblos kichwa de la Amazonía ecuatoriana; su alto contenido de cafeína quita el sueño y da fuerza.",
+      "sources": ["s2", "s3"]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "Uso tradicional para problemas de estómago y digestión entre los pueblos amazónicos.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Guayusa de madrugada",
+      "uses": ["improve_energy", "indigestion"],
+      "steps": [
+        {"kind": "clean", "text": "Usa hojas de guayusa frescas o secadas cerca del fuego."},
+        {"kind": "simmer", "text": "Hierve las hojas en agua durante 10 a 30 minutos."},
+        {"kind": "strain", "text": "Cuela la bebida."},
+        {"kind": "drink", "text": "Tómala caliente, tradicionalmente de madrugada y sin azúcar."}
+      ],
+      "warnings": [
+        "No la tomes de noche: por su cafeína puede quitar el sueño.",
+        "No se ha estudiado su seguridad en el embarazo ni en niños pequeños; evítala en esos casos."
+      ],
+      "dose": "Un puñado de hojas frescas o secas por litro de agua.",
+      "frequency": "Una vez al día, por la mañana.",
+      "maxDays": null,
+      "instructions": "Se hierven hojas de guayusa frescas o secadas junto al fuego durante 10 a 30 minutos, se cuela y se toma caliente, tradicionalmente antes del amanecer y sin azúcar.",
+      "sources": ["s2"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "Su alto contenido de cafeína puede acelerar el ritmo cardíaco; consulta antes de tomarla si tienes una enfermedad del corazón."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "La cafeína puede contrarrestar el efecto de los sedantes o pastillas para dormir."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 14,
+  "allergenGroups": [],
+  "safetySources": ["s3"],
+  "sideEffects": [
+    "Dolor de cabeza, nerviosismo o temblor si se toma en exceso, por la cafeína.",
+    "Insomnio si se toma por la tarde o la noche."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/guayusa.jpg",
+      "author": "Pisofrix",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hojas_de_Guayusa_(Ilex_guayusa).jpg",
+      "caption": "Hojas de guayusa (Ilex guayusa)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Ilex guayusa Loes.",
+      "publisher": "GBIF Backbone Taxonomy",
+      "url": "https://www.gbif.org/species/5534620",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Socio-cultural components related to the cropping, harvesting, and consumption of guayusa (Ilex guayusa Loes) in Amazonian Kichwa communities",
+      "publisher": "PLOS One (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13229370/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Guayusa (Ilex guayusa Loes.) Ancestral Plant of Ecuador: History, Traditional Uses, Chemistry, Biological Activity, and Potential Industrial Uses",
+      "publisher": "Molecules (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12251278/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

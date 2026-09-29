@@ -1,0 +1,198 @@
+{
+  "id": "eucalipto",
+  "commonName": "Eucalipto",
+  "otherNames": [
+    "eucalipto azul",
+    "eucalipto blanco"
+  ],
+  "scientificName": "Eucalyptus globulus Labill.",
+  "family": "Myrtaceae",
+  "partsUsed": [
+    "hoja",
+    "aceite esencial"
+  ],
+  "easyExplanation": "El eucalipto es un árbol grande de olor fuerte y mentolado. En Europa se reconoce el uso tradicional de su aceite esencial y su hoja para la tos del resfriado y los dolores musculares leves, en productos ya preparados, por inhalación o sobre la piel. El aceite esencial es tóxico si se traga: puede provocar convulsiones y otros efectos graves incluso en cantidades pequeñas, y nunca se debe usar cerca de la cara de bebés o niños pequeños, ni por boca sin un producto hecho para eso.",
+  "botany": {
+    "description": "Árbol de hasta 45 metros (hasta 90 en condiciones ideales), de corteza lisa blanca o cremosa que se desprende en tiras, aunque puede quedar corteza vieja sin desprender en la base. Sus hojas jóvenes son opuestas, sin tallo, de color verde con una capa cerosa blanquecina por debajo; las hojas adultas son alternas, alargadas y curvas, de 15 a 30 cm, verde oscuro brillante en ambas caras. Sus flores blancas nacen de botones en forma de trompo con una tapa aplanada y verrugosa, y su fruto es una cápsula leñosa cónica de 2 a 3 cm.",
+    "identification": "Se reconoce por sus tallos jóvenes casi cuadrados con bordes en forma de ala, sus dos tipos de hoja muy distintos (jóvenes redondeadas y sin tallo, adultas largas y curvas), su corteza blanca que se desprende en tiras, y el fuerte olor mentolado de sus hojas al estrujarlas.",
+    "cultivation": "Se planta a pleno sol en climas templados de tipo mediterráneo; es uno de los eucaliptos más plantados del mundo. Crece rápido y tolera distintos tipos de suelo, aunque no tolera bien el frío intenso.",
+    "lookalikes": [
+      "Otras especies de eucalipto de hoja y corteza parecidas, que se distinguen sobre todo por la forma en que se agrupan sus botones florales."
+    ],
+    "nativeRange": "Nativo del sureste de Australia (Nueva Gales del Sur, Victoria y Tasmania); hoy cultivado ampliamente en climas mediterráneos de todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El aceite esencial de eucalipto es seguro para tomar por boca como remedio casero para la tos o el resfriado.",
+      "note": "No lo es: el aceite esencial de eucalipto es tóxico si se traga, incluso en pocos mililitros. Un caso documentado de un adulto que tragó 15 ml de aceite de eucalipto terminó en convulsiones y muerte. Los productos medicinales de eucalipto están hechos para inhalarse, aplicarse en la piel o usarse en el baño, nunca para beberse directamente.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "cough",
+      "label": "Tos del resfriado",
+      "evidence": "traditional",
+      "note": "Producto ya preparado de aceite o extracto de eucalipto, por boca (solo mayores de 12 años), inhalación o en la piel (desde los 4 años); uso tradicional reconocido en Europa.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Congestión nasal por resfriado",
+      "evidence": "traditional",
+      "note": "Inhalación del vapor con un producto de eucalipto, o frotación en el pecho con un producto para la piel; uso tradicional reconocido en Europa desde los 4 años.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "muscle_pain",
+      "label": "Dolor muscular leve",
+      "evidence": "traditional",
+      "note": "Producto de eucalipto para frotar sobre la piel; uso tradicional reconocido en Europa desde los 4 años.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "essentialOil",
+      "route": "inhalation",
+      "instructions": "Usa un producto ya preparado de aceite esencial de eucalipto en un inhalador, difusor o agregado a agua caliente, y respira el vapor con cuidado de no quemarte. No se prepara en casa a partir de la hoja fresca para inhalación de vapor concentrado.",
+      "dose": "La que indique el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Inhalación de eucalipto",
+      "uses": [
+        "cough",
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un producto ya preparado de aceite esencial de eucalipto."
+        },
+        {
+          "kind": "inhale",
+          "text": "Agrégalo al agua caliente o a un inhalador y respira el vapor con cuidado."
+        }
+      ],
+      "warnings": [
+        "No lo uses en bebés ni niños menores de 4 años.",
+        "No lo apliques ni lo acerques a la cara de bebés o niños pequeños: puede provocar espasmo de la laringe.",
+        "Nunca lo tomes por boca directamente del frasco: es tóxico si se traga.",
+        "No lo uses si tienes antecedentes de convulsiones.",
+        "Consulta a un médico si la tos dura más de 1 semana o el resfriado más de 2 semanas."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Aplica un producto ya preparado (ungüento, crema o linimento) de eucalipto sobre el pecho o los músculos adoloridos, siguiendo las instrucciones del envase.",
+      "dose": "La que indique el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Ungüento o linimento de eucalipto",
+      "uses": [
+        "muscle_pain",
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un producto ya preparado de eucalipto para la piel."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplícalo sobre la zona adolorida o el pecho, sin llegar a la nariz o la boca."
+        }
+      ],
+      "warnings": [
+        "No lo uses en bebés ni niños menores de 4 años.",
+        "No lo apliques cerca de la nariz o la boca de niños pequeños.",
+        "No lo uses sobre piel lastimada o irritada."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "epilepsy",
+      "note": "No uses productos de eucalipto si tienes antecedentes de convulsiones."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 4,
+  "allergenGroups": [],
+  "sideEffects": [
+    "El aceite esencial es tóxico si se traga: puede causar náuseas, vómito, mareo, dificultad para respirar y convulsiones; hay un caso documentado de muerte de un adulto tras tragar 15 ml.",
+    "En bebés y niños pequeños puede provocar espasmo de la laringe si se aplica cerca de la cara.",
+    "En la piel: reacciones alérgicas en personas sensibles."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/eucalipto.jpg",
+      "author": "Ana Patricia Iglesias Cabrera",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eucalyptus_globulus_Manejo_forestal_III_Regi%C3%B3n_de_Chile.jpg",
+      "caption": "Árboles de eucalipto (Eucalyptus globulus)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Eucalyptus globulus Labill.",
+      "publisher": "Plants of the World Online (Kew)",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:592965-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Eucalypti aetheroleum — summary of HMPC conclusions (eucalyptus oil)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/eucalypti-aetheroleum",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Fatal Eucalyptus Oil Poisoning in an Adult Male: A Case Report With Comprehensive Autopsy and Histopathological Findings",
+      "publisher": "Cureus (PMC12107212)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12107212/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Self-medication with herbal remedies and pharmaceuticals for COVID-19 among healthcare students in Maputo",
+      "publisher": "Scientific Reports (PMC13538521)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13538521/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s2",
+    "s3"
+  ]
+}

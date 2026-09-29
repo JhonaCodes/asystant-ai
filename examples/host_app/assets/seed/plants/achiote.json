@@ -1,0 +1,141 @@
+{
+  "id": "achiote",
+  "commonName": "Achiote",
+  "otherNames": [
+    "onoto",
+    "bija",
+    "annatto"
+  ],
+  "scientificName": "Bixa orellana L.",
+  "family": "Bixaceae",
+  "partsUsed": [
+    "semilla"
+  ],
+  "easyExplanation": "El achiote es un arbusto o arbolito de América tropical con frutos espinosos llenos de semillas cubiertas de una capa roja anaranjada. Esa capa se usa desde hace generaciones como colorante de comida y, en la medicina tradicional, las semillas fritas en aceite se aplican sobre quemaduras leves y pequeñas.",
+  "botany": {
+    "description": "Arbusto o arbolito perenne de 6 a 10 metros, con flores blancas o rosadas y frutos globulares cubiertos de espinas suaves, que contienen entre 30 y 45 semillas en forma de cono cubiertas por una capa cerosa de color rojo intenso.",
+    "identification": "Se reconoce por sus frutos espinosos de color pardo rojizo y por el pigmento rojo anaranjado que cubre sus semillas, usado como tinte natural (achiote o annatto).",
+    "cultivation": "Se cultiva con facilidad en climas cálidos y húmedos, en patios y huertos familiares de México, Centroamérica y buena parte de Sudamérica; prefiere suelo bien drenado y sol pleno.",
+    "lookalikes": [],
+    "nativeRange": "Nativo de México y América Central y del Sur, con poblaciones silvestres y cultivadas desde México hasta Ecuador, Brasil y Bolivia; hoy cultivado también en África y Asia.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "minor_burn",
+      "label": "Quemadura leve y pequeña",
+      "evidence": "popular",
+      "note": "Semillas machacadas y fritas en aceite vegetal, aplicadas sobre la quemadura después de limpiarla; uso tradicional documentado y clasificado como recomendado por TRAMIL, limitado a quemaduras superficiales y pequeñas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Ayudar a que una herida quirúrgica sane con menos cicatriz",
+      "evidence": "limited",
+      "note": "Un ensayo clínico pequeño con ungüento de achiote aplicado durante 4 semanas después de una cirugía mostró mejor aspecto de la cicatriz (color, grosor, textura) que el cuidado habitual; los propios autores piden interpretar el resultado con cautela por el tamaño pequeño del estudio.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Limpia bien la quemadura leve. Fríe semillas de achiote machacadas en aceite vegetal, deja entibiar y aplica el aceite colado sobre la zona quemada.",
+      "dose": "10 gramos de semillas machacadas por 40 ml de aceite vegetal.",
+      "frequency": "Cambia la cura cada 12 horas.",
+      "maxDays": 5,
+      "title": "Aceite de semillas de achiote para quemaduras leves",
+      "uses": [
+        "minor_burn"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Limpia bien la quemadura leve."
+        },
+        {
+          "kind": "simmer",
+          "text": "Fríe semillas de achiote machacadas en aceite vegetal."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja entibiar y cuela el aceite."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplica el aceite sobre la zona quemada."
+        }
+      ],
+      "warnings": [
+        "Solo para quemaduras superficiales y pequeñas (menos del 10 % de la piel del cuerpo), y nunca en cara, manos, pies ni genitales.",
+        "No lo uses en niños menores de 12 años, ni en el embarazo o la lactancia.",
+        "No guardes la preparación más de 24 horas fuera de refrigeración.",
+        "Si la quemadura es grande, profunda o muestra signos de infección, busca atención médica."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "Solo para quemaduras superficiales y pequeñas; si es profunda o extensa, busca atención médica."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Reacciones de hipersensibilidad en personas sensibles."
+  ],
+  "safetySources": [
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/achiote.jpg",
+      "author": "Leonardo Ré-Jorge",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bixa_orellana_fruit_open.jpg",
+      "caption": "Fruto abierto de achiote (Bixa orellana) mostrando las semillas"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Bixa orellana",
+      "publisher": "Useful Tropical Plants Database (theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Bixa+orellana",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Bixa orellana (achiote) — usos tradicionales documentados por TRAMIL",
+      "publisher": "TRAMIL — Programa de Investigación Científica Aplicada a las Plantas Medicinales del Caribe",
+      "url": "https://tramil.net/es/plant/bixa-orellana",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Topical Bixa orellana for Postoperative Wound Healing: A Prospective Randomized Controlled Trial",
+      "publisher": "Foot & Ankle Orthopaedics (PMID 40585345)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40585345/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

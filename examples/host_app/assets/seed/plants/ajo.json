@@ -1,0 +1,206 @@
+{
+  "id": "ajo",
+  "commonName": "Ajo",
+  "otherNames": [],
+  "scientificName": "Allium sativum L.",
+  "family": "Amaryllidaceae",
+  "partsUsed": [
+    "bulbo"
+  ],
+  "easyExplanation": "El ajo es un bulbo de olor y sabor fuertes que se usa como alimento y como remedio. En Europa se reconoce su uso tradicional, en extracto seco, para aliviar síntomas del resfriado y como apoyo (junto con la dieta) para prevenir la arterioesclerosis en adultos. El ajo por boca puede aumentar el riesgo de sangrado, sobre todo si tomas anticoagulantes, antiagregantes o si vas a operarte.",
+  "botany": {
+    "description": "Bulbo compuesto por varios dientes envueltos en capas de piel delgada y papirácea, del que nacen hojas largas, delgadas y planas, de color verde más brillante que otros ajos silvestres. Produce una umbela de flores blancas o rosadas de 6 pétalos sobre un tallo (escapo) liso y desnudo.",
+    "identification": "Se reconoce por sus dientes agrupados dentro de una piel externa papirácea y su olor característico al cortarlos o machacarlos; el fruto es una cápsula color crema que se abre al madurar.",
+    "cultivation": "Se planta un diente a la vez, separados de 15 a 20 cm y a 5 a 7,5 cm de profundidad, en suelo suelto, fértil y bien drenado, a pleno sol; los dientes necesitan 4 a 6 semanas para establecerse antes de que llegue el frío.",
+    "lookalikes": [
+      "Allium vineale (ajo silvestre): se confunde con el ajo cultivado, pero es una especie distinta."
+    ],
+    "nativeRange": "Asia central e Irán; hoy cultivado en todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El ajo, tomado en cualquier cantidad, previene el cáncer.",
+      "note": "No es un uso reconocido: no está claro si comer ajo reduce el riesgo de cáncer de estómago o de colon; la evidencia en personas es incierta.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "claim": "El ajo puede tomarse en cualquier cantidad antes de una cirugía porque es 'solo un alimento'.",
+      "note": "El ajo por boca, incluso en suplementos, puede aumentar el riesgo de sangrado; el monograma europeo recomienda evitarlo unos 7 días antes de una cirugía.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "traditional",
+      "note": "Extracto seco de ajo por boca, en adolescentes y adultos; uso tradicional reconocido en Europa. Estudios de medicina tradicional en el norte de Perú también documentan al ajo como una de las plantas más usadas y estudiadas por su efecto sobre las defensas.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "tag": "poor_circulation",
+      "label": "Molestias leves de circulación",
+      "evidence": "traditional",
+      "note": "Extracto seco, polvo o extracto líquido de ajo por boca, junto con una dieta sana, como apoyo tradicional para prevenir la arterioesclerosis en adultos; no reemplaza el tratamiento médico de la presión o el colesterol.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "title": "Cápsulas o comprimidos de ajo",
+      "uses": [
+        "cold_symptoms",
+        "poor_circulation"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra en la farmacia cápsulas o comprimidos de extracto seco de ajo."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalos como indica el envase."
+        }
+      ],
+      "warnings": [
+        "Avisa a tu médico si tomas anticoagulantes o antiagregantes, o si vas a operarte pronto: suspende el ajo en suplemento unos 7 días antes de una cirugía.",
+        "No lo combines con saquinavir/ritonavir (medicamentos para el VIH): el ajo puede bajar su efecto.",
+        "No lo uses para el resfriado en menores de 12 años, ni para la circulación en menores de 18."
+      ],
+      "dose": "Extracto seco para el resfriado: 100 a 200 mg, una o dos veces al día (hasta 400 mg al día). Extracto en polvo para la circulación: 900 a 1.380 mg al día, repartidos en 3 a 5 tomas. Sigue siempre la cantidad indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": null,
+      "instructions": "Usa un producto de farmacia de extracto seco o en polvo de ajo, en la cantidad que indica el envase; no reemplaza el ajo fresco de la cocina.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Ajo fresco en la comida",
+      "uses": [
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Pela y machaca o pica dientes de ajo fresco."
+        },
+        {
+          "kind": "swallow",
+          "text": "Agrégalo a tus comidas."
+        }
+      ],
+      "warnings": [
+        "La cantidad que se usa al cocinar es un condimento, no una dosis medicinal: para un efecto estudiado se necesita un producto de farmacia con la cantidad exacta.",
+        "Nunca frotes ajo crudo sin diluir directamente sobre la piel: puede causar quemaduras e irritación grave."
+      ],
+      "dose": "La que uses al cocinar; no es una dosis medicinal.",
+      "frequency": "Con las comidas.",
+      "maxDays": null,
+      "instructions": "El ajo fresco se usa como alimento; comerlo con la dieta habitual es seguro para la mayoría de las personas, pero la cantidad culinaria no es la dosis que se estudió para los usos medicinales.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "alliaceae",
+      "note": "No lo uses en suplemento si eres alérgico al ajo, la cebolla u otras plantas de esta familia."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "El ajo en suplemento puede aumentar el riesgo de sangrado junto con anticoagulantes."
+    },
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "caution",
+      "note": "El ajo en suplemento puede aumentar el riesgo de sangrado junto con antiagregantes como la aspirina."
+    },
+    {
+      "medicationClass": "antiretroviral",
+      "severity": "avoid",
+      "note": "El ajo está contraindicado con saquinavir/ritonavir: puede reducir el efecto de este medicamento para el VIH."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "alliaceae"
+  ],
+  "sideEffects": [
+    "Mal aliento y olor corporal, dolor abdominal, gases y náuseas.",
+    "Reacciones alérgicas en algunas personas.",
+    "El ajo crudo sin diluir sobre la piel puede causar irritación y quemaduras graves.",
+    "Dolor de cabeza, mareo, sudoración y sangrado, con más frecuencia en dosis altas."
+  ],
+  "safetySources": [
+    "s2",
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/ajo.jpg",
+      "author": "Donovan Govan",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Garlic.jpg",
+      "caption": "Bulbo de ajo"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Allium sativum (Garlic)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/allium-sativum/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Final European Union herbal monograph on Allium sativum L., bulbus",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-allium-sativum-l-bulbus_en.pdf",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Garlic",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/garlic",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "The globalization of traditional medicine in northern Peru: from shamanism to molecules",
+      "publisher": "Evidence-Based Complementary and Alternative Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3888705/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

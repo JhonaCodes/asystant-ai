@@ -1,0 +1,205 @@
+{
+  "id": "neem",
+  "commonName": "Neem",
+  "otherNames": [
+    "nim",
+    "margosa"
+  ],
+  "scientificName": "Azadirachta indica A.Juss.",
+  "family": "Meliaceae",
+  "partsUsed": [
+    "hoja",
+    "aceite de la semilla"
+  ],
+  "easyExplanation": "El neem es un árbol de la India usado desde hace siglos para la piel. Las hojas, en infusión para uso externo, y el aceite de sus semillas, bien diluido, se usan sobre la piel para problemas como hongos leves o picazón. El aceite de neem es peligroso en niños pequeños: tragado, aunque sea en poca cantidad, puede causar una intoxicación grave y ha causado muertes; guárdalo siempre fuera de su alcance y nunca lo uses por boca.",
+  "botany": {
+    "description": "Árbol de crecimiento rápido que alcanza 15 a 20 metros de altura, con hojas opuestas y compuestas (pinnadas), de 20 a 40 cm, con 20 a 30 folíolos de color verde medio a oscuro. Sus flores son blancas y perfumadas, y sus frutos son drupas parecidas a aceitunas que contienen la semilla de la que se extrae el aceite.",
+    "identification": "Se parece al paraíso o canelo de jardín (Melia azedarach), pero se distingue porque las hojas del neem son solo pinnadas (una vez divididas), mientras que las del paraíso son bipinnadas o tripinnadas (dos o tres veces divididas).",
+    "cultivation": "Nativo de climas cálidos y secos; se ha naturalizado como árbol de sombra y ornamental en muchas zonas tropicales y subtropicales del mundo, incluida América Latina, donde crece bien en patios y calles con suelo bien drenado y pleno sol.",
+    "lookalikes": [
+      "Melia azedarach (paraíso, canelo de jardín): hojas dos o tres veces divididas (bipinnadas o tripinnadas), a diferencia de las hojas solo pinnadas del neem."
+    ],
+    "nativeRange": "Nativo de la región de Assam, Pakistán y Bangladés en el subcontinente indio, y de Camboya, Laos, Myanmar, Tailandia y Vietnam en Indochina; hoy naturalizado en regiones tropicales y subtropicales de todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El aceite de neem tomado por boca, aunque sea en poca cantidad, es un remedio casero seguro para niños o adultos.",
+      "note": "El aceite de neem tomado por boca es tóxico, sobre todo en bebés y niños pequeños: series de casos documentan vómito, somnolencia, dificultad para respirar, convulsiones y daño al hígado y al cerebro (un cuadro parecido al síndrome de Reye), incluso con dosis pequeñas, y algunos casos han sido mortales. Nunca se debe dar por boca a niños ni usar como remedio casero oral.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "fungal_skin_infection",
+      "label": "Hongos leves de la piel",
+      "evidence": "limited",
+      "note": "Aceite de neem bien diluido o extracto de hoja, aplicado sobre la piel; estudios de laboratorio y comparativos pequeños muestran actividad contra hongos y bacterias de la piel, pero falta más investigación en personas.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "tag": "itching",
+      "label": "Picazón leve de la piel",
+      "evidence": "popular",
+      "note": "Extracto de hoja o aceite bien diluido, aplicado sobre la piel; uso tradicional muy antiguo en la medicina popular de la India.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "topical",
+      "instructions": "Prepara una infusión con hojas de neem, frescas o secas, deja enfriar, cuela y úsala en compresas sobre la piel afectada. No la tomes por boca.",
+      "dose": "La que indique el envase si usas hoja seca comprada; con hoja fresca, un puñado por taza de agua.",
+      "frequency": "1 a 2 veces al día.",
+      "maxDays": 14,
+      "title": "Compresas de hojas de neem",
+      "uses": [
+        "fungal_skin_infection",
+        "itching"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua y viértela sobre hojas de neem, frescas o secas."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar y cuela."
+        },
+        {
+          "kind": "cool",
+          "text": "Deja que se enfríe."
+        },
+        {
+          "kind": "compress",
+          "text": "Moja un paño limpio y ponlo sobre la piel afectada."
+        }
+      ],
+      "warnings": [
+        "No lo tomes por boca.",
+        "No lo uses en bebés ni niños pequeños.",
+        "No lo apliques sobre heridas abiertas o piel muy dañada."
+      ],
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "essentialOil",
+      "route": "topical",
+      "instructions": "El aceite de neem para la piel es un producto de tienda naturista o farmacia; dilúyelo siempre según el envase antes de aplicarlo. Nunca lo tomes por boca ni lo dejes al alcance de niños.",
+      "dose": "La que indique el envase; siempre diluido.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Aceite de neem diluido para la piel",
+      "uses": [
+        "fungal_skin_infection"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un aceite de neem de una fuente confiable, hecho para uso en la piel."
+        },
+        {
+          "kind": "dilute",
+          "text": "Dilúyelo según el envase antes de usarlo."
+        },
+        {
+          "kind": "apply",
+          "text": "Aplica una cantidad pequeña sobre la piel afectada."
+        }
+      ],
+      "warnings": [
+        "Nunca lo tomes por boca ni se lo des a niños: puede ser mortal incluso en dosis pequeñas.",
+        "Guárdalo siempre fuera del alcance de los niños.",
+        "No lo uses sin diluir sobre la piel.",
+        "No lo uses en el embarazo."
+      ],
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "meliaceae",
+      "note": "No lo uses si eres alérgico al neem o a plantas emparentadas, como el paraíso (Melia azedarach)."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No lo uses sobre heridas abiertas o piel muy dañada."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "meliaceae"
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "sideEffects": [
+    "Irritación de la piel en personas sensibles.",
+    "Tomado por boca es tóxico, sobre todo en bebés y niños pequeños, y puede ser mortal; esto no es un uso que este catálogo recomiende."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/neem.jpg",
+      "author": "Varinder Naturaphile",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Azadirachta_indica,_Neem.jpg",
+      "caption": "Árbol de neem (Azadirachta indica)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Azadirachta indica",
+      "publisher": "Useful Tropical Plants Database (theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Azadirachta+indica",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Neem (Azadirachta indica): A Miracle Herb; Panacea for All Ailments (uso tradicional en la medicina ayurvédica de la India para la piel)",
+      "publisher": "Food Science & Nutrition / PMC (PMID 40901661)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40901661/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Margosa oil poisoning as a cause of Reye's syndrome",
+      "publisher": "The Lancet (PMID 6110100)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6110100/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Neem (Azadirachta indica): A Miracle Herb; Panacea for All Ailments",
+      "publisher": "Food Science & Nutrition (PMID 40901661)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40901661/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

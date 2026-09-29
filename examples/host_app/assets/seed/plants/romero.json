@@ -1,0 +1,243 @@
+{
+  "id": "romero",
+  "commonName": "Romero",
+  "otherNames": [],
+  "scientificName": "Salvia rosmarinus Spenn. (sin. Rosmarinus officinalis L.)",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El romero es un arbusto aromático muy usado en la cocina. En Europa se reconoce el uso tradicional de su hoja en infusión para la digestión pesada y los espasmos leves, y en baños para dolores leves de músculos y articulaciones. No se recomienda en el embarazo, la lactancia ni en personas con problemas de vesícula o de hígado.",
+  "botany": {
+    "description": "Arbusto perenne aromático de la familia de la menta, de 1 a 1,5 metros de alto, con tallos cuadrangulares (verdes de jóvenes y leñosos al madurar) y hojas angostas, parecidas a agujas, verdes por encima y blanquecinas y afelpadas por debajo. Sus flores pequeñas, de dos labios, son azules, moradas, lila o blancas y crecen agrupadas alrededor del tallo.",
+    "identification": "Se reconoce por sus tallos cuadrangulares aromáticos, sus hojas angostas de menos de 2,5 cm opuestas entre sí, sus flores pequeñas en grupos a lo largo del tallo, y el fuerte aroma que sueltan las hojas al estrujarlas.",
+    "cultivation": "Crece bien en suelo ligero, algo ácido, seco a medio húmedo y bien drenado, a pleno sol; tolera bien la sequía, la sombra parcial, la sal y la poda fuerte, pero no tolera ambientes muy húmedos. Se propaga mejor por esquejes, acodo o división que por semilla.",
+    "lookalikes": [
+      "Otros arbustos de hoja aromática de la familia de la menta, como la lavanda, de los que se distingue por su hoja angosta en forma de aguja y su olor característico a romero."
+    ],
+    "nativeRange": "Nativo de África, Europa, Asia occidental y la cuenca del Mediterráneo, en zonas secas y rocosas; hoy cultivado en todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Digestión pesada",
+      "evidence": "traditional",
+      "note": "Infusión por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "abdominal_cramps",
+      "label": "Espasmos digestivos leves",
+      "evidence": "traditional",
+      "note": "Infusión por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "muscle_pain",
+      "label": "Dolor muscular leve",
+      "evidence": "traditional",
+      "note": "En el agua del baño; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "joint_pain",
+      "label": "Dolor leve de articulaciones",
+      "evidence": "traditional",
+      "note": "En el agua del baño; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "poor_circulation",
+      "label": "Molestias leves de circulación",
+      "evidence": "traditional",
+      "note": "En el agua del baño; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "traditional",
+      "note": "Infusión por boca; uso tradicional reconocido en Europa.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos leve",
+      "evidence": "popular",
+      "note": "Infusión de hoja de romero, uso popular documentado en estudios etnobotánicos para afecciones respiratorias del género Salvia (al que hoy pertenece el romero); no cuenta con evaluación científica europea para este uso.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con hoja seca de romero en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de romero",
+      "uses": [
+        "indigestion",
+        "abdominal_cramps",
+        "digest_better",
+        "cough"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas de romero, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Consulta a un médico si los síntomas digestivos duran más de 2 semanas."
+      ],
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    },
+    {
+      "form": "topical",
+      "route": "topical",
+      "instructions": "Añade al agua del baño un preparado de hoja de romero para baño. No lo uses sobre piel lastimada o irritada.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 28,
+      "title": "Baño de romero",
+      "uses": [
+        "muscle_pain",
+        "joint_pain",
+        "poor_circulation"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un preparado de romero para baño."
+        },
+        {
+          "kind": "bath",
+          "text": "Añádelo al agua del baño."
+        }
+      ],
+      "warnings": [
+        "No lo uses sobre piel lastimada o irritada.",
+        "Consulta a un médico si las molestias duran más de 4 semanas."
+      ],
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No lo uses si eres alérgico al romero."
+    },
+    {
+      "kind": "condition",
+      "tag": "gallstones",
+      "note": "No lo uses si tienes cálculos en la vesícula."
+    },
+    {
+      "kind": "condition",
+      "tag": "bile_duct_obstruction",
+      "note": "No lo uses si tienes obstrucción de las vías biliares."
+    },
+    {
+      "kind": "condition",
+      "tag": "gallbladder_inflammation",
+      "note": "No lo uses si tienes la vesícula inflamada."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "No lo uses si tienes una enfermedad del hígado."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No lo uses en baños sobre piel lastimada o irritada."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "sideEffects": [
+    "Reacción alérgica, como dermatitis de contacto; se desconoce con qué frecuencia ocurre."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/romero.jpg",
+      "author": "THOR",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rosmarinus_officinalis133095382.jpg",
+      "caption": "Ramas de romero en flor"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Salvia rosmarinus (Rosemary)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/salvia-rosmarinus/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Ethnobotanical diversity of the genus Salvia L. (Lamiaceae): from medicinal and culinary applications to cultural importance of sage species across the globe",
+      "publisher": "Journal of Ethnopharmacology",
+      "url": "https://doi.org/10.1016/j.jep.2025.121049",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Rosmarini folium — summary of HMPC conclusions (rosemary leaf)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/rosmarini-folium",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

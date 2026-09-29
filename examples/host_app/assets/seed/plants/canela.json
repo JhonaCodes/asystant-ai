@@ -1,0 +1,233 @@
+{
+  "id": "canela",
+  "commonName": "Canela",
+  "otherNames": [
+    "canela de Ceilán",
+    "canela verdadera"
+  ],
+  "scientificName": "Cinnamomum verum J. Presl (sin. Cinnamomum zeylanicum)",
+  "family": "Lauraceae",
+  "partsUsed": [
+    "corteza"
+  ],
+  "easyExplanation": "Esta ficha trata sobre la canela de Ceilán o canela verdadera (Cinnamomum verum), la corteza aromática usada en la cocina y como remedio, con evaluación de uso tradicional en Europa para molestias digestivas leves. Es distinta de la canela casia (Cinnamomum cassia), la más común y barata en los supermercados: la casia tiene mucha más cumarina, una sustancia que en exceso puede dañar el hígado, sobre todo en niños. Si no sabes cuál tienes en casa, es probablemente casia; úsala solo como condimento, no en cantidades medicinales seguidas.",
+  "botany": {
+    "description": "Árbol perennifolio pequeño, de hojas grandes, coriáceas, con tres venas amarillas visibles, de hasta 25 cm de largo; las hojas jóvenes tienen un tono rojizo. Su corteza interna, de olor fragante y color entre marrón oscuro y rojo burdeos, es la especia comercial una vez seca y enrollada.",
+    "identification": "Se distingue por sus hojas con tres nervaduras marcadas, su corteza fragante y sus flores pequeñas, de color crema, dorado o blanco, agrupadas en panículas, con un aroma desagradable al abrirse en invierno.",
+    "cultivation": "Necesita clima cálido y húmedo (zonas USDA 10a a 12b), sol pleno a sombra parcial y tolera suelos arcillosos, francos o arenosos de pH ácido a neutro; en climas fríos solo se cultiva bajo vidrio.",
+    "lookalikes": [
+      "Cinnamomum cassia (canela casia): mucho más común en el mercado, con bastante más cumarina que la canela de Ceilán; conviene no confundirlas para el uso medicinal seguido."
+    ],
+    "nativeRange": "Sri Lanka.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La canela en cualquier cantidad baja el azúcar lo suficiente para reemplazar el medicamento para la diabetes.",
+      "note": "Hay estudios preliminares de que la canela podría ayudar a reducir la resistencia a la insulina junto con el tratamiento, pero no reemplaza ningún medicamento; combinarla sin control puede sumar su efecto al del medicamento.",
+      "sources": [
+        "s5"
+      ]
+    },
+    {
+      "claim": "Toda la canela del supermercado es igual de segura en cualquier cantidad.",
+      "note": "La canela casia, la más vendida, tiene mucha más cumarina que la canela de Ceilán; en dosis diarias altas y seguidas, la cumarina puede dañar el hígado, con más riesgo en niños pequeños.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "La Agencia Europea de Medicamentos clasifica la corteza de canela de Ceilán dentro de los trastornos digestivos; uso tradicional por boca.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "traditional",
+      "note": "Uso tradicional por boca reconocido en Europa para molestias digestivas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Estudios de medicina tradicional en el norte de Perú documentan géneros como Cinnamomum entre las plantas usadas para molestias del sistema respiratorio.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de canela de Ceilán",
+      "uses": [
+        "indigestion",
+        "bloating",
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre un trozo de corteza de canela de Ceilán, o canela en polvo, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Prefiere canela de Ceilán (Cinnamomum verum) para el uso medicinal seguido; la canela casia tiene mucha más cumarina.",
+        "No la uses a diario por tiempo prolongado, sobre todo si es canela casia.",
+        "Avisa a tu médico si tomas medicamentos para la diabetes: la canela podría sumarse a su efecto."
+      ],
+      "dose": "Sigue la cantidad indicada en el envase de la especia o de la tisana; no hay una dosis medicinal exacta descrita en las fuentes consultadas.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "instructions": "Prepara una infusión con un trozo de corteza o canela en polvo en agua recién hervida, deja reposar y cuela.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Canela en polvo en la comida",
+      "uses": [
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Usa canela en polvo o en raja."
+        },
+        {
+          "kind": "swallow",
+          "text": "Agrégala a tus comidas o bebidas."
+        }
+      ],
+      "warnings": [
+        "La cantidad que se usa al cocinar es un condimento, no una dosis medicinal."
+      ],
+      "dose": "La que uses al cocinar; no es una dosis medicinal.",
+      "frequency": "Con las comidas.",
+      "maxDays": null,
+      "instructions": "La canela se usa como especia en la cocina; esa cantidad no es la dosis medicinal estudiada, y con canela casia conviene no repetirla a diario por mucho tiempo.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lauraceae",
+      "note": "No la uses si eres alérgico a la canela u otras plantas de esta familia, como el laurel."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Evita el uso medicinal seguido, sobre todo de canela casia, si tienes una enfermedad del hígado, por su contenido de cumarina."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "La canela podría sumar su efecto al de los medicamentos para bajar el azúcar; consulta antes de usarla seguido si tomas estos medicamentos."
+    },
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "caution",
+      "note": "Evita el uso medicinal seguido junto con medicamentos que puedan dañar el hígado, por el contenido de cumarina, sobre todo en la canela casia."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "lauraceae"
+  ],
+  "sideEffects": [
+    "Irritación de boca o alergia en personas sensibles.",
+    "En dosis altas y seguidas, sobre todo de canela casia, riesgo de daño al hígado por la cumarina.",
+    "Molestias digestivas leves en algunas personas."
+  ],
+  "safetySources": [
+    "s2",
+    "s3",
+    "s5"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/canela.jpg",
+      "author": "Athulvis",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ceylon_Cinnamon_2.jpg",
+      "caption": "Corteza (quills) de canela de Ceilán"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Cinnamomum verum (Ceylon Cinnamon)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/cinnamomum-verum/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Cinnamomi cortex (cinnamon bark, Cinnamomum verum)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/cinnamomi-cortex",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "High rate of safety and fraud issues in commercially available cinnamon",
+      "publisher": "npj Science of Food (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12228808/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "The globalization of traditional medicine in northern Peru: from shamanism to molecules",
+      "publisher": "Evidence-Based Complementary and Alternative Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3888705/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Cinnamon-Derived Phytonutrients as Modulators of Ion Channels and G Protein-Coupled Receptor Signaling in Metabolic Diseases",
+      "publisher": "Nutrients (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12899492/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

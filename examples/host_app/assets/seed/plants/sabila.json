@@ -1,0 +1,165 @@
+{
+  "id": "sabila",
+  "commonName": "Sábila",
+  "otherNames": [
+    "aloe vera",
+    "áloe"
+  ],
+  "scientificName": "Aloe vera (L.) Burm.f. (sin. Aloe barbadensis Mill.)",
+  "family": "Asphodelaceae",
+  "partsUsed": [
+    "gel de la hoja"
+  ],
+  "easyExplanation": "La sábila (aloe vera) es una planta de hojas gruesas llenas de un gel transparente, fácil de tener en maceta en casa. El gel aplicado sobre la piel podría ayudar a que las quemaduras leves y las heridas pequeñas sanen antes y duelan menos. Úsala solo sobre la piel: evita el látex amarillo de debajo de la cáscara de la hoja, y no tomes por boca el gel, el jugo ni el látex, porque pueden causar cólicos, diarrea y daño al hígado.",
+  "botany": {
+    "description": "Planta suculenta, sin tallo o de tallo corto, de 60 a 100 cm de alto, con hojas gruesas y carnosas de color verde a verde grisáceo, de borde dentado con pequeños dientes blancos, dispuestas en roseta. Dentro de cada hoja hay una pulpa transparente y gelatinosa (el gel) y, justo debajo de la cáscara, una capa de látex amarillo amargo.",
+    "identification": "Se reconoce por su roseta de hojas gruesas y puntiagudas, de color verde grisáceo, a veces con manchas claras cuando es joven, y por el gel transparente y viscoso que se ve al cortar una hoja.",
+    "cultivation": "Es una planta de maceta muy común: necesita tierra arenosa con buen drenaje y sol abundante; tolera bien el interior de la casa cerca de una ventana luminosa. No resiste heladas fuertes y en invierno necesita poca agua.",
+    "lookalikes": [
+      "Otras especies de Aloe cultivadas como ornamentales, de aspecto similar pero sin el mismo uso documentado."
+    ],
+    "nativeRange": "Originaria de la región sureste de la península arábiga, en las montañas Hajar del noreste de Omán y el este de los Emiratos Árabes Unidos; hoy naturalizada y cultivada en el norte de África, las islas Canarias y muchas regiones cálidas del mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Tomar el jugo o el látex de sábila por boca limpia la sangre, cura el asma o sirve como laxante seguro.",
+      "note": "El látex amarillo de la hoja tiene efecto laxante fuerte y, tomado por boca, puede causar cólicos y diarrea; el consumo de extractos de la hoja completa por boca se ha relacionado con casos de hepatitis aguda, y organismos internacionales han clasificado el extracto de la hoja entera como posible cancerígeno. Por eso este catálogo solo describe el uso del gel sobre la piel, nunca por boca.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "minor_burn",
+      "label": "Quemadura leve",
+      "evidence": "limited",
+      "note": "Gel transparente sobre la piel; estudios limitados muestran curación algo más rápida y menos dolor.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Heridas y raspones pequeños",
+      "evidence": "popular",
+      "note": "Pulpa o gel transparente de la hoja, aplicado directamente sobre la piel limpia; uso tradicional documentado en el Caribe y América Latina.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "skin_care",
+      "label": "Cuidar la piel irritada",
+      "evidence": "limited",
+      "note": "Gel sobre la piel; también se estudia para psoriasis y otras irritaciones, con evidencia todavía limitada.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "gel",
+      "route": "topical",
+      "instructions": "Aplica una capa fina de gel de sábila para uso en la piel sobre la quemadura o herida leve. Puedes usar un gel de farmacia o el gel transparente de una hoja de tu propia planta, evitando siempre la capa amarilla de debajo de la cáscara. No lo tomes por boca.",
+      "dose": "Sigue la dosis indicada en el envase del producto; si usas la planta, una capa fina del gel transparente es suficiente.",
+      "frequency": "Según el envase, o de 1 a 2 veces al día si usas la planta.",
+      "maxDays": null,
+      "title": "Gel de sábila",
+      "uses": [
+        "minor_burn",
+        "minor_wound",
+        "skin_care"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Usa un gel de sábila para la piel de farmacia, o corta una hoja de tu planta."
+        },
+        {
+          "kind": "clean",
+          "text": "Si usas una hoja fresca, lávala y córtala; deja escurrir el látex amarillo y sácalo antes de usar el gel."
+        },
+        {
+          "kind": "apply",
+          "text": "Pon una capa fina del gel transparente sobre la quemadura o herida leve."
+        }
+      ],
+      "warnings": [
+        "No lo tomes por boca.",
+        "No uses la parte amarilla (látex) que sale bajo la cáscara de la hoja: puede irritar la piel y es laxante si se traga.",
+        "No lo apliques sobre heridas profundas o muy grandes."
+      ],
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asphodelaceae",
+      "note": "No la uses si eres alérgico a la sábila o a otras plantas del género Aloe."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "Sobre heridas profundas o muy grandes, consulta a un médico antes de usarla."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 5,
+  "allergenGroups": [
+    "asphodelaceae"
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "sideEffects": [
+    "En ocasiones, ardor, picazón, sarpullido o eccema en la piel, sobre todo si se usa el látex amarillo en vez del gel."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/sabila.jpg",
+      "author": "Tanvir Rahat",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aloe_vera,_02.jpg",
+      "caption": "Planta de sábila en maceta"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Aloe vera",
+      "publisher": "Useful Tropical Plants Database (theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Aloe+vera",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Aloe vera (sábila) — usos tradicionales documentados por TRAMIL",
+      "publisher": "TRAMIL — Programa de Investigación Científica Aplicada a las Plantas Medicinales del Caribe",
+      "url": "https://tramil.net/es/plant/aloe-vera",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Aloe Vera (Herbs at a Glance)",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/aloe-vera",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

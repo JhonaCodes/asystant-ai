@@ -1,0 +1,199 @@
+{
+  "id": "sauco",
+  "commonName": "Saúco",
+  "otherNames": [
+    "saúco negro",
+    "flor de saúco"
+  ],
+  "scientificName": "Sambucus nigra L.",
+  "family": "Adoxaceae (antes clasificado en Caprifoliaceae o Viburnaceae)",
+  "partsUsed": [
+    "flor",
+    "fruto maduro cocido"
+  ],
+  "easyExplanation": "El saúco es un arbusto grande de flores blancas y bayas negras brillantes. Solo las flores y las bayas maduras ya cocidas son seguras para consumir. Las hojas, la corteza, las semillas y los frutos verdes o crudos son tóxicos: contienen sustancias que liberan cianuro y pueden causar náuseas, vómito y diarrea intensa. En Europa se reconoce el uso tradicional de la flor en infusión para los primeros síntomas del resfriado, solo en adultos y adolescentes mayores de 12 años.",
+  "botany": {
+    "description": "Arbusto o árbol pequeño de varios tallos, de hoja caduca, de 2,5 a 6 metros de alto. Sus hojas, de hasta 25 cm, están compuestas por 3 a 9 folíolos ovalados y dentados que huelen fuerte y desagradable al estrujarlos. Sus flores, pequeñas, blanco amarillentas y de aroma almizclado, se agrupan en racimos planos de 13 a 20 cm. Sus frutos son bayas negras brillantes de menos de 1 cm, comestibles solo una vez cocidas.",
+    "identification": "Se reconoce por sus racimos planos de flores blanco cremosas en verano, sus hojas compuestas de bordes dentados con olor desagradable al estrujarlas, y sus racimos de bayas negras brillantes en otoño.",
+    "cultivation": "Crece bien a pleno sol o media sombra, en suelo húmedo, rico en materia orgánica y bien drenado; tolera suelos arcillosos. Crece rápido, entre 2,5 y 6 metros de alto y ancho, y necesita poda para controlar sus retoños y su dispersión por semilla.",
+    "lookalikes": [
+      "Sambucus ebulus (yezgo o saúco menor): toda la planta, incluidas sus bayas, es tóxica; no debe confundirse con Sambucus nigra."
+    ],
+    "nativeRange": "Nativo de Europa; hoy cultivado y naturalizado también en América.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Las bayas de saúco crudas, o el té hecho con hojas o corteza de saúco, son un remedio casero seguro.",
+      "note": "No lo son: las bayas crudas o verdes, las hojas, la corteza y las semillas del saúco contienen sustancias que el cuerpo transforma en cianuro y pueden causar náuseas, vómito y diarrea intensa. Solo las bayas maduras, bien cocidas, y las flores, son seguras para consumir.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "claim": "El saúco cura o previene el COVID-19.",
+      "note": "No hay evidencia en personas que respalde esa afirmación.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "cold_symptoms",
+      "label": "Primeros síntomas del resfriado",
+      "evidence": "traditional",
+      "note": "Infusión de flor de saúco por boca; uso tradicional reconocido en Europa, solo en adultos y adolescentes mayores de 12 años.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos o molestias de las vías respiratorias altas",
+      "evidence": "limited",
+      "note": "Estudios preliminares y pequeños sugieren que el saúco podría aliviar síntomas de gripe o resfriado, pero la evidencia todavía es limitada.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con flor seca de saúco en agua recién hervida, deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Té de flor de saúco",
+      "uses": [
+        "cold_symptoms",
+        "cough"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre flores de saúco, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Solo para adultos y adolescentes mayores de 12 años.",
+        "Consulta a un médico si los síntomas duran más de 1 semana o empeoran."
+      ],
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "oral",
+      "instructions": "Cocina bien las bayas maduras de saúco (nunca crudas ni verdes) para preparar jarabe, mermelada o jugo; nunca uses hojas, corteza, semillas o frutos verdes.",
+      "dose": "La que indique la receta o el producto ya preparado.",
+      "frequency": "Según el producto.",
+      "maxDays": null,
+      "title": "Bayas de saúco cocidas",
+      "uses": [
+        "cough"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Recolecta solo bayas negras bien maduras."
+        },
+        {
+          "kind": "simmer",
+          "text": "Cocínalas bien; nunca las consumas crudas."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela para retirar semillas y restos de piel si la receta lo indica."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo o úsalo en la receta ya cocido."
+        }
+      ],
+      "warnings": [
+        "Nunca comas bayas crudas o verdes, ni hojas, corteza o semillas: son tóxicas.",
+        "No lo des a bebés."
+      ],
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "safetySources": [
+    "s2",
+    "s4"
+  ],
+  "sideEffects": [
+    "Bayas crudas o verdes, hojas, corteza y semillas: náuseas, vómito y diarrea intensa por sustancias que liberan cianuro; la cocción elimina este riesgo en las bayas maduras.",
+    "No se ha estudiado bien su seguridad en el embarazo ni la lactancia."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/sauco.jpg",
+      "author": "AnRo0002",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:20180501Sambucus_nigra1.jpg",
+      "caption": "Flores de saúco en un arbusto"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Sambucus nigra (Black Elder)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/sambucus-nigra/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Sambuci flos — summary of HMPC conclusions (elder flower)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/sambuci-flos",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Ethnopharmacobotanical investigation of plants used for respiratory disorders in Transylvania, Romania",
+      "publisher": "European Journal of Pharmaceutical Sciences",
+      "url": "https://doi.org/10.1016/j.ejps.2026.107581",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Elderberry",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/elderberry",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

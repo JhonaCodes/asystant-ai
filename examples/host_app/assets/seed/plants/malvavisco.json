@@ -1,0 +1,160 @@
+{
+  "id": "malvavisco",
+  "commonName": "Malvavisco",
+  "otherNames": [
+    "altea",
+    "malvarisco"
+  ],
+  "scientificName": "Althaea officinalis L.",
+  "family": "Malvaceae",
+  "partsUsed": [
+    "raíz",
+    "hoja"
+  ],
+  "easyExplanation": "El malvavisco es una hierba de hojas suaves y flores blanco rosadas cuya raíz es rica en mucílago, una sustancia espesa que forma una capa protectora sobre las mucosas. En Europa se reconoce el uso tradicional de la raíz para la tos seca con irritación de garganta y para las molestias digestivas leves. Como el mucílago cubre el tubo digestivo, si tomas otros medicamentos por boca conviene consultar a un médico o farmacéutico, porque podría afectar cómo se absorben.",
+  "botany": {
+    "description": "Hierba perenne de hasta 1,5 metros de alto, con tallos erguidos, blanquecinos y algo vellosos. Sus hojas, de hasta 10 cm, están cubiertas de pelillos blancos cortos que les dan un aspecto pulverulento, con 2 o 3 lóbulos de forma romboidal. Sus flores son blancas o ligeramente rosadas, solitarias o en grupos, con estambres de color violeta o morado. Su raíz es gruesa, engrosada con la edad, y contiene almidón y polisacáridos (mucílago) de sabor algo dulce.",
+    "identification": "Se reconoce por el aspecto aterciopelado y grisáceo de sus hojas y tallos por la pelusa fina que los cubre, sus flores blanco rosadas de centro violeta, y su raíz gruesa y mucilaginosa.",
+    "cultivation": "Crece en un lugar soleado o con media sombra, en suelo húmedo y bien drenado; se cultiva desde la Antigüedad con fines medicinales.",
+    "lookalikes": [
+      "Otras malváceas de flor parecida, como la malva común, de las que se distingue por sus hojas más afelpadas y su raíz mucilaginosa más gruesa."
+    ],
+    "nativeRange": "Nativo de Eurasia; hoy cultivado y naturalizado en otras regiones templadas.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "sore_throat",
+      "label": "Irritación de garganta con tos seca",
+      "evidence": "traditional",
+      "note": "Infusión o extracto de raíz de malvavisco, por boca; uso tradicional reconocido en Europa desde los 3 años, y usado popularmente para calmar la irritación de las mucosas de garganta y boca.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos seca",
+      "evidence": "traditional",
+      "note": "Infusión o extracto de raíz de malvavisco; uso tradicional reconocido en Europa desde los 3 años, y estudios en animales y personas respaldan su efecto sobre la tos seca.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Infusión de raíz de malvavisco, por boca; uso tradicional reconocido en Europa, solo en adultos y adolescentes mayores de 12 años (a diferencia del uso para la tos y la garganta, permitido desde los 3 años).",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con raíz seca de malvavisco dejándola en agua fría o tibia (no hirviendo, para no dañar el mucílago), durante un buen rato, y cuela antes de tomarla.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 7,
+      "title": "Té de raíz de malvavisco",
+      "uses": [
+        "sore_throat",
+        "cough",
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "pour",
+          "text": "Pon raíz seca de malvavisco en agua fría o tibia, no hirviendo."
+        },
+        {
+          "kind": "steep",
+          "text": "Déjala reposar un buen rato para que suelte el mucílago."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela bien."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "El mucílago puede cubrir el tubo digestivo y afectar cómo se absorben otros medicamentos tomados por boca al mismo tiempo; si tomas otros medicamentos, consulta a un médico o farmacéutico.",
+        "Los extractos con alcohol son solo para adultos.",
+        "Para las molestias digestivas, solo para adultos y adolescentes mayores de 12 años.",
+        "Consulta a un médico si la tos o la irritación de garganta duran más de 1 semana, o los síntomas digestivos más de 2 semanas."
+      ],
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 3,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No se reportaron efectos secundarios en la evaluación europea, aunque la vigilancia es limitada porque hay pocos estudios clínicos.",
+    "Por su mucílago, podría reducir la absorción de otros medicamentos tomados por boca al mismo tiempo."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/malvavisco.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Althaea_officinalis_002.JPG",
+      "caption": "Flores y hojas de malvavisco (Althaea officinalis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Althaea officinalis L.",
+      "publisher": "Plants of the World Online (Kew)",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:558872-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Althaeae radix — summary of HMPC conclusions (marshmallow root)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/althaeae-radix",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Marsh Mallow (Althaea officinalis L.) and Its Potency in the Treatment of Cough",
+      "publisher": "Complementary Medicine Research (PubMed, NLM)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31770755/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Marsh Mallow (Althaea officinalis L.) and Its Potency in the Treatment of Cough — traditional use for cough and sore throat",
+      "publisher": "Complementary Medicine Research",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31770755/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s2",
+    "s3"
+  ]
+}

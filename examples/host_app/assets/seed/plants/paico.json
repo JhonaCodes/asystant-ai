@@ -1,0 +1,110 @@
+{
+  "id": "paico",
+  "commonName": "Paico",
+  "otherNames": [
+    "epazote",
+    "apazote",
+    "hierba santa María",
+    "wormseed"
+  ],
+  "scientificName": "Dysphania ambrosioides (L.) Mosyakin & Clemants",
+  "family": "Amaranthaceae",
+  "partsUsed": [
+    "hoja",
+    "parte aérea"
+  ],
+  "easyExplanation": "El paico es una hierba de olor fuerte que se usa como condimento de comida, sobre todo en platos de frijoles, y también en remedios caseros contra los parásitos intestinales. Pero tomarlo como remedio, en té concentrado o como aceite esencial, es peligroso: contiene ascaridol, una sustancia tóxica para el hígado y los riñones, y hay casos de niños y adultos que han muerto tras tomarlo por boca, incluso en cantidad de té. Por eso este catálogo no describe ninguna forma de tomarlo como remedio; usarlo en poca cantidad como condimento de comida es otra cosa, distinta de tomarlo como medicina.",
+  "botany": {
+    "description": "Hierba anual o perenne de vida corta, de 60 cm a 1,5 m (2 a 5 pies) de alto, con muchas ramas laterales irregulares y crecimiento rápido. Sus hojas van de verde a verde amarillento, con la base en forma de cuña, de 7 a 10 cm de largo y hasta 4 cm de ancho, con el borde variable entre liso, lobulado o dentado incluso en la misma planta. Tanto el tallo como las hojas tienen glándulas diminutas que producen un olor almizclado, fuerte y penetrante. Sus flores son pequeñas y verdosas, agrupadas en espigas densas en las puntas de los tallos, y florece de mediados de verano hasta el otoño.",
+    "identification": "Se reconoce por su olor fuerte y penetrante al frotar hojas o tallos, sus hojas de borde irregular en la misma planta y sus espigas de flores verdosas pequeñas.",
+    "cultivation": "Crece a pleno sol, en suelo medianamente fértil, húmedo y bien drenado, aunque se adapta bien a suelos arenosos y rocosos de sitios alterados. Tolera bien el calor y se resiembra sola con facilidad, por lo que se vuelve maleza en campos cultivados, orillas de caminos y terrenos baldíos.",
+    "lookalikes": [
+      "Otras especies del género Dysphania y Chenopodium, de hojas y porte similares"
+    ],
+    "nativeRange": "Nativa de América tropical, en particular de Sudamérica; hoy naturalizada en América, Europa y otras regiones.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té o el aceite de paico, tomado por boca, elimina los parásitos intestinales de forma segura, incluso en niños.",
+      "note": "El paico contiene ascaridol, tóxico para el hígado, los riñones y el sistema nervioso. Existe un caso documentado de una niña de 4 años que murió unas 6 horas después de tomar 4 tazas de infusión de paico (usada para bajar la fiebre, no para parásitos): tuvo vómito y diarrea intensos, daño al hígado y a los riñones, y un paro cardiorrespiratorio pese a la atención médica intensiva. Un estudio comparó el jugo de la planta con el medicamento albendazol para tratar parásitos (áscaris) en niños y encontró una eficacia similar, pero eso no hace segura la automedicación con esta planta.",
+      "sources": [
+        "s4",
+        "s3"
+      ]
+    },
+    {
+      "claim": "Como el paico se usa para cocinar, tomarlo en té o en cantidad como remedio no tiene riesgo.",
+      "note": "Usarlo como condimento, en la cantidad pequeña de una comida, no es lo mismo que tomarlo como remedio en té concentrado o como aceite esencial: ahí es donde se han reportado intoxicaciones graves y muertes, incluso en niños, por su contenido de ascaridol.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "No lo tomes como remedio junto con medicamentos que puedan dañar el hígado o el riñón; el ascaridol del paico ya es tóxico para ambos órganos."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s4"],
+  "sideEffects": [
+    "Tomado por boca como remedio (en té concentrado o como aceite esencial): puede dañar gravemente el hígado, los riñones y el sistema nervioso, y se han reportado muertes, incluso en niños.",
+    "Usarlo en poca cantidad como condimento de comida es distinto de tomarlo como remedio; este catálogo no recomienda ninguna forma de uso medicinal por boca."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/paico.jpg",
+      "author": "Pisofrix",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hojas_de_Paico_(Dysphania_ambrosioides).jpg",
+      "caption": "Hojas de paico (Dysphania ambrosioides)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Dysphania ambrosioides (L.) Mosyakin & Clemants",
+      "publisher": "Global Biodiversity Information Facility (GBIF)",
+      "url": "https://api.gbif.org/v1/species/match?name=Dysphania%20ambrosioides",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Dysphania ambrosioides (Mexican Tea, Wormseed)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/dysphania-ambrosioides/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Traditional Herbal Medicine in Mesoamerica: Toward Its Evidence Base for Improving Universal Health Coverage",
+      "publisher": "Frontiers in Pharmacology (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7411306/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "A Fatal Case Report of Chenopodium ambrosioides L. (M'khinza) Intoxication",
+      "publisher": "Cureus (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11177892/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

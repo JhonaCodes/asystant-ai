@@ -1,0 +1,166 @@
+{
+  "id": "flor_de_jamaica",
+  "commonName": "Flor de Jamaica",
+  "otherNames": [
+    "jamaica",
+    "rosa de Jamaica",
+    "roselle",
+    "sorrel"
+  ],
+  "scientificName": "Hibiscus sabdariffa L.",
+  "family": "Malvaceae",
+  "partsUsed": [
+    "cáliz (flor)"
+  ],
+  "easyExplanation": "La flor de Jamaica es un cáliz rojo e intenso con el que se prepara el conocido \"agua de Jamaica\", muy popular en México y Centroamérica. Se le atribuye por tradición un efecto para bajar la presión arterial, pero la revisión más reciente de estudios en personas encontró evidencia de muy baja certeza, así que no reemplaza el tratamiento médico de la hipertensión. Puede sumar su efecto al de los medicamentos para la presión y los diuréticos.",
+  "botany": {
+    "description": "Hierba anual o perenne de 2 a 2,5 metros de alto, con hojas profundamente lobuladas y flores de 8 a 10 cm de diámetro, de color blanco a amarillo pálido con una mancha rojo oscuro en la base de los pétalos. El cáliz que rodea la flor se hincha y se vuelve carnoso y de un rojo carmesí intenso a medida que madura el fruto, en unos seis meses.",
+    "identification": "Se reconoce por su cáliz carnoso, grueso y de color rojo intenso que envuelve el fruto, muy distinto de una flor común; se cosecha cuando toma ese color vino y se seca para infusiones y conservas.",
+    "cultivation": "Se propaga por semilla; sus flores se autopolinizan (son cleistógamas), lo que hace más lento el desarrollo de nuevas variedades por mejoramiento genético.",
+    "lookalikes": [],
+    "nativeRange": "Probablemente nativa de zonas de África; se introdujo a Asia y las Antillas hacia los siglos XVI y XVII, y se naturalizó en muchas regiones tropicales.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El agua de Jamaica baja la presión arterial de forma comprobada y puede reemplazar el medicamento para la hipertensión.",
+      "note": "La revisión Cochrane más reciente sobre roselle para la hipertensión encontró un solo ensayo clínico pequeño, con evidencia de certeza muy baja; no hubo diferencia estadísticamente significativa en la presión frente a placebo, y los autores concluyen que la evidencia es insuficiente para determinar su efectividad. No reemplaza el tratamiento médico de la presión alta.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "blood_pressure_support",
+      "label": "Ayudar a bajar la presión arterial",
+      "evidence": "limited",
+      "note": "Uso tradicional muy extendido en México y Centroamérica como agua de Jamaica; la evidencia científica en personas es todavía insuficiente y de baja certeza, aunque algunos metaanálisis más amplios sugieren una baja leve de la presión. No reemplaza el tratamiento médico de la hipertensión.",
+      "sources": [
+        "s2",
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con cáliz seco de flor de Jamaica en agua recién hervida, deja reposar, cuela y sirve fría o caliente.",
+      "dose": "La que indique el envase de la tisana.",
+      "frequency": "Hasta 2 tazas al día.",
+      "maxDays": 14,
+      "title": "Agua o té de flor de Jamaica",
+      "uses": [
+        "blood_pressure_support"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre el cáliz seco de flor de Jamaica en una jarra o taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala fría o caliente."
+        }
+      ],
+      "warnings": [
+        "No reemplaza el tratamiento médico de la presión alta.",
+        "Si tomas medicamentos para la presión o diuréticos, controla tu presión con más frecuencia por el riesgo de que baje demasiado."
+      ],
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "hypertension",
+      "note": "No la uses para reemplazar tu tratamiento; úsala solo como apoyo adicional bajo supervisión médica."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría sumar su efecto reductor de la presión al de estos medicamentos y aumentar el riesgo de que baje demasiado."
+    },
+    {
+      "medicationClass": "diuretic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los diuréticos."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No se reportaron eventos adversos en el ensayo clínico incluido en la revisión Cochrane, pero los autores señalan que no se sabe con certeza si es segura para personas con hipertensión ni si afecta la frecuencia cardíaca."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/flor_de_jamaica.jpg",
+      "author": "Krzysztof Ziarnek, Kenraiz",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hibiscus_sabdariffa_kz01.jpg",
+      "caption": "Cálices rojos de flor de Jamaica (Hibiscus sabdariffa)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Hibiscus sabdariffa (Roselle)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/hibiscus-sabdariffa/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Roselle for hypertension in adults — background on traditional use as beverage and folk medicine",
+      "publisher": "Cochrane Database of Systematic Reviews (PMC8626866)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8626866/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Roselle for hypertension in adults",
+      "publisher": "Cochrane Database of Systematic Reviews (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8626866/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Effects of Hibiscus Sabdariffa Calyces Aqueous Extract on the Antihypertensive Potency of Captopril in the Two-Kidney-One-Clip Rat Hypertension Model",
+      "publisher": "PMC (National Library of Medicine) — Evid Based Complement Alternat Med",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6662455/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ]
+}

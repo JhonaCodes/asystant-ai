@@ -1,0 +1,174 @@
+{
+  "id": "clavo_de_olor",
+  "commonName": "Clavo de olor",
+  "otherNames": [
+    "clavo",
+    "clove"
+  ],
+  "scientificName": "Syzygium aromaticum (L.) Merr. & L.M. Perry",
+  "family": "Myrtaceae",
+  "partsUsed": [
+    "botón floral (clavo)"
+  ],
+  "easyExplanation": "El clavo de olor es el botón floral seco de un árbol tropical, muy usado como especia y, de forma tradicional, para el dolor de muela. Solo se usa por fuera, en la muela o la encía, nunca tragado ni en niños: el aceite esencial de clavo (eugenol) es tóxico si se traga, sobre todo en niños pequeños, y puede causar daño grave al hígado, convulsiones y coma.",
+  "botany": {
+    "description": "Árbol perennifolio de porte denso, de hasta unos 20 metros de altura y tronco de unos 25 cm de diámetro, que puede vivir más de 100 años. Sus botones florales, todavía sin abrir, se secan al sol y son la especia comercial.",
+    "identification": "Se reconoce por su forma de clavo pequeño (de ahí su nombre), su color marrón rojizo y su fuerte aroma; al presionarlo con la uña debe soltar un poco de aceite.",
+    "cultivation": "Necesita tierras bajas tropicales húmedas, por debajo de unos 300 m de altitud, con lluvia anual de al menos 1.500 mm (idealmente 3.000 a 4.000 mm), suelo liviano, bien drenado y algo ácido; las plantas jóvenes necesitan sombra y protección del viento, y el encharcamiento las daña mucho. Empieza a dar cosecha entre los 8 y 10 años, y llega a plena producción entre los 20 y 30 años.",
+    "lookalikes": [
+      "Ninguno de riesgo relevante: su forma y aroma de clavo pequeño lo distinguen con facilidad de otras especias."
+    ],
+    "nativeRange": "Este de Asia, en la región de Maluku (Molucas), Indonesia; hoy cultivado en varios países tropicales.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Como es 'natural', el aceite de clavo se puede tomar por boca o dar a los niños para el dolor.",
+      "note": "El aceite esencial de clavo (eugenol) es tóxico si se traga: hay un caso documentado de un niño que, tras tragar aceite de clavo, tuvo coma, convulsiones, un problema grave de coagulación y daño al hígado, con un cuadro parecido a una sobredosis grave de paracetamol.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "toothache",
+      "label": "Dolor de muela o de diente",
+      "evidence": "popular",
+      "note": "Aplicado por fuera, en la muela o la encía adolorida, nunca tragado. Uso tradicional documentado en varios países de América Latina (Ecuador, Colombia, Perú, Bolivia, Centroamérica). No reemplaza la atención dental si el dolor persiste o hay infección.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "essentialOil",
+      "route": "topical",
+      "title": "Aceite de clavo diluido para el dolor de muela",
+      "uses": [
+        "toothache"
+      ],
+      "steps": [
+        {
+          "kind": "dilute",
+          "text": "Diluye unas gotas de aceite esencial de clavo de farmacia en un poco de aceite vegetal (por ejemplo, de oliva o coco); no lo uses puro."
+        },
+        {
+          "kind": "apply",
+          "text": "Con un cotonete o un trozo de algodón limpio, aplica un poco de la mezcla sobre la muela o la encía adolorida, sin tragarla."
+        },
+        {
+          "kind": "rinse",
+          "text": "Enjuágate la boca con agua después de un rato; escupe, no tragues."
+        }
+      ],
+      "warnings": [
+        "Nunca lo tomes por boca ni lo tragues: el aceite de clavo sin diluir es tóxico incluso en cantidades pequeñas, sobre todo en niños.",
+        "No lo uses en niños pequeños ni en el embarazo.",
+        "Nunca apliques el aceite sin diluir directamente sobre la piel o la encía: puede quemar e irritar los tejidos.",
+        "Si el dolor de muela dura más de un par de días, hay hinchazón, fiebre o pus, consulta a un dentista: puede ser una infección que necesita tratamiento."
+      ],
+      "dose": "Solo unas gotas diluidas para uso externo; no hay una dosis por boca segura para este catálogo.",
+      "frequency": "Como mucho unas pocas veces al día, por poco tiempo, mientras se consigue atención dental.",
+      "maxDays": 3,
+      "instructions": "El aceite esencial de clavo, siempre diluido, se aplica solo por fuera sobre la muela o la encía adolorida con un cotonete, nunca se traga; es un alivio temporal mientras se consigue atención dental.",
+      "sources": [
+        "s3",
+        "s2"
+      ]
+    },
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Clavo entero como especia en la comida",
+      "uses": [],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Usa clavos de olor enteros o molidos como especia."
+        },
+        {
+          "kind": "swallow",
+          "text": "Agrégalos a tus comidas o bebidas calientes."
+        }
+      ],
+      "warnings": [
+        "Esto es uso culinario, no una dosis medicinal; no reemplaza el uso tópico diluido para el dolor de muela."
+      ],
+      "dose": "La que uses al cocinar; no es una dosis medicinal.",
+      "frequency": "Con las comidas.",
+      "maxDays": null,
+      "instructions": "El clavo entero o molido se usa como especia en la cocina; esta cantidad no tiene relación con el aceite esencial, que es mucho más concentrado y peligroso si se traga.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "myrtaceae",
+      "note": "No lo uses si eres alérgico al clavo de olor u otras plantas de esta familia, como el eucalipto."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "El eugenol del clavo puede afectar la coagulación; evita el uso seguido si tomas anticoagulantes o antiagregantes."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "myrtaceae"
+  ],
+  "sideEffects": [
+    "Irritación o quemadura de la piel, la encía o la boca si se usa el aceite sin diluir.",
+    "Si se traga el aceite esencial: náuseas, convulsiones, coma, problemas graves de coagulación y daño al hígado, incluso con cantidades pequeñas.",
+    "Reacciones alérgicas en personas sensibles."
+  ],
+  "safetySources": [
+    "s2"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/clavo_de_olor.jpg",
+      "author": "Challiyan",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cloves_from_india.jpg",
+      "caption": "Clavos de olor secos"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Syzygium aromaticum",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Syzygium+aromaticum",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Near fatal ingestion of oil of cloves",
+      "publisher": "Archives of Disease in Childhood (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1029532/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Therapeutic Potential of Latin American Medicinal Plants in Oral Diseases: From Dental Pain to Periodontal Inflammation—A Systematic Review",
+      "publisher": "International Journal of Molecular Sciences (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12692122/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

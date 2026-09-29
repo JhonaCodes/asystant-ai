@@ -1,0 +1,181 @@
+{
+  "id": "espino_blanco",
+  "commonName": "Espino blanco",
+  "otherNames": [
+    "majuelo",
+    "espino albar",
+    "hawthorn"
+  ],
+  "scientificName": "Crataegus monogyna Jacq.",
+  "family": "Rosaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "El espino blanco es un arbusto espinoso europeo cuyas hojas y flores se usan en infusión, sobre todo para el nerviosismo y las palpitaciones leves, y para ayudar a dormir. No sirve para tratar una enfermedad del corazón: si tienes palpitaciones, dolor en el pecho o cualquier síntoma cardíaco, un médico tiene que revisarte primero, porque el espino blanco puede interactuar con medicamentos del corazón como la digoxina.",
+  "botany": {
+    "description": "Arbusto o arbolito espinoso de 5 a 15 m, de ramas con espinas y hojas lobuladas. Flores blancas agrupadas, de cinco pétalos; frutos rojos a morados (\"majuelas\"), esféricos, con un solo hueso duro en su interior.",
+    "identification": "Se reconoce por sus ramas espinosas, hojas profundamente lobuladas y frutos rojos pequeños con una sola semilla, a diferencia de otras especies de Crataegus que tienen varias semillas por fruto.",
+    "cultivation": "Crece de forma silvestre en setos y bosques claros de Europa; tolera muchos tipos de suelo y se usa también como seto ornamental.",
+    "lookalikes": [
+      "Crataegus laevigata (majuelo de dos estilos): especie muy parecida, con la que se mezcla en los productos comerciales de espino blanco; ambas se usan de la misma forma."
+    ],
+    "nativeRange": "Europa, norte de África y Oriente Próximo, con extensión hasta el Cáucaso y Turquía.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El espino blanco puede reemplazar el tratamiento médico de una enfermedad del corazón.",
+      "note": "No: el uso tradicional aprobado en Europa es solo para síntomas leves de nerviosismo (como palpitaciones) después de que un médico haya descartado una enfermedad seria; una enfermedad del corazón siempre necesita diagnóstico y tratamiento médico.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "nervousness",
+      "label": "Nerviosismo con palpitaciones leves",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa para el alivio de síntomas leves de nerviosismo, como palpitaciones, una vez que un médico descartó una causa cardíaca seria.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "sleep_better",
+      "label": "Dormir mejor",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa como ayuda para conciliar el sueño; la agencia europea lo permite desde los 12 años para este uso, pero aquí se recomienda solo en adultos porque este catálogo no separa la edad mínima por cada uso de la planta, y el uso para palpitaciones sí exige ser adulto.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de espino blanco",
+      "uses": [
+        "nervousness",
+        "sleep_better"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas y flores de espino blanco, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar 10 a 15 minutos."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "Si tienes palpitaciones, dolor en el pecho o cualquier síntoma cardíaco, consulta a un médico antes de usarlo: no es para autotratar una enfermedad del corazón.",
+        "Consulta a tu médico si tomas digoxina u otro medicamento para el corazón.",
+        "Consulta a un médico si los síntomas no mejoran en 2 semanas (nerviosismo) o persisten."
+      ],
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "instructions": "Prepara una infusión con hojas y flores de espino blanco, frescas o secas, en agua recién hervida, deja reposar 10 a 15 minutos, cuela y tómala.",
+      "sources": [
+        "s3",
+        "s4",
+        "s5"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "No lo uses para tratar una enfermedad del corazón por tu cuenta: necesita diagnóstico y seguimiento médico."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "cardiac_glycoside",
+      "severity": "avoid",
+      "note": "El espino blanco y la digoxina actúan sobre el mismo mecanismo del corazón; combinarlos podría aumentar el efecto de la digoxina. No los combines sin supervisión médica."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los medicamentos para la presión arterial."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s4", "s5"],
+  "sideEffects": [
+    "Molestias digestivas, dolor de cabeza o mareo.",
+    "Picazón o reacciones alérgicas en la piel, poco frecuentes."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/espino_blanco.jpg",
+      "author": "Volodymyr Vlasenko",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blooming_hawthorn_(Crataegus_monogyna).jpg",
+      "caption": "Flores de espino blanco (Crataegus monogyna)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Crataegus monogyna Jacq.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:723820-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Hawthorn (Crataegus monogyna Jacq.): A Review of Therapeutic Potential and Applications",
+      "publisher": "Molecules (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12844126/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Crataegi folium cum flore (hawthorn leaf and flower) — summary of HMPC conclusions",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/crataegi-folium-cum-flore",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Hawthorn",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/hawthorn",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Analysis of Adverse Reactions Associated with the Use of Crataegus-Containing Herbal Products",
+      "publisher": "Pharmaceuticals (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11597351/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

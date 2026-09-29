@@ -1,0 +1,127 @@
+{
+  "id": "chia",
+  "commonName": "Chía",
+  "otherNames": [
+    "chian",
+    "chia mexicana"
+  ],
+  "scientificName": "Salvia hispanica L.",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "semilla"
+  ],
+  "easyExplanation": "La chía es una semilla pequeña que ya comían los pueblos de México y Guatemala antes de la llegada de los españoles, mezclada con agua para hacer \"chía fresca\" o molida en harina para tortillas. Al mojarse forma un gel porque absorbe mucha agua, así que siempre debe tomarse con bastante líquido, nunca seca a cucharadas.",
+  "botany": {
+    "description": "Hierba anual de 1,5 a 2,3 m, de la familia de la menta. Hojas verdes, ovaladas, de bordes aserrados y ápice puntiagudo, opuestas sobre el tallo. Flores pequeñas, en forma de campana, agrupadas en racimos con 80 a 140 florecillas cada uno. Semillas pequeñas, ovaladas y aplanadas, de color negro, blanco o beige.",
+    "identification": "Se reconoce por sus semillas pequeñas y ovaladas que forman un gel mucilaginoso al mojarse, y por sus hojas opuestas típicas de la familia de la menta (Lamiaceae).",
+    "cultivation": "Se cultiva en México y Guatemala y hoy también en Sudamérica; tarda 120 a 150 días en completar su ciclo.",
+    "lookalikes": [],
+    "nativeRange": "Centro y sur de México y Guatemala.",
+    "sources": ["s1", "s3"]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "digest_better",
+      "label": "Ayudar a la digestión",
+      "evidence": "popular",
+      "note": "Uso tradicional mesoamericano como \"chía fresca\" (semillas remojadas en agua, a veces con limón) para la digestión, por su alto contenido de fibra.",
+      "sources": ["s2"]
+    },
+    {
+      "tag": "blood_sugar_support",
+      "label": "Ayudar a controlar el azúcar en la sangre",
+      "evidence": "limited",
+      "note": "Algunos estudios en personas muestran menos subida de azúcar después de comer cuando se consume chía junto con la comida; la evidencia todavía es limitada.",
+      "sources": ["s2", "s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Chía fresca",
+      "uses": ["digest_better", "blood_sugar_support"],
+      "steps": [
+        {"kind": "pour", "text": "Pon 1 a 2 cucharadas de semillas de chía en un vaso grande de agua."},
+        {"kind": "steep", "text": "Deja reposar al menos 15 a 30 minutos, revolviendo, hasta que se forme un gel."},
+        {"kind": "drink", "text": "Tómala con bastante agua."}
+      ],
+      "warnings": [
+        "Nunca la comas seca a cucharadas ni la tragues sin remojar: al hidratarse absorbe mucha agua y puede hincharse en la garganta.",
+        "Tómala siempre con suficiente líquido."
+      ],
+      "dose": "1 a 2 cucharadas de semilla por vaso de agua; no hay una cantidad exacta establecida por estudios para esta preparación tradicional.",
+      "frequency": "1 a 2 veces al día, junto con las comidas.",
+      "maxDays": null,
+      "instructions": "Se remojan 1 a 2 cucharadas de semillas de chía en un vaso grande de agua durante al menos 15 a 30 minutos, hasta formar un gel, y se toma con bastante líquido; es la preparación tradicional mesoamericana llamada \"chía fresca\".",
+      "sources": ["s2", "s4"]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Por su posible efecto sobre el azúcar en la sangre, consulta a tu médico si tomas medicamentos para la diabetes."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría sumarse a un efecto leve de bajada de la presión arterial."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 6,
+  "allergenGroups": ["lamiaceae"],
+  "safetySources": ["s3", "s4"],
+  "sideEffects": [
+    "Hinchazón o gases si se toma en exceso, por su alto contenido de fibra.",
+    "Riesgo de atragantamiento o de que se hinche en la garganta si se traga seca o sin suficiente agua."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/chia.jpg",
+      "author": "Dick Culbert",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Salvia_hispanica_(10461546364).jpg",
+      "caption": "Planta de chía (Salvia hispanica)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Salvia hispanica L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:456385-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Chia (Salvia hispanica L.), a Pre-Hispanic Food in the Treatment of Diabetes Mellitus",
+      "publisher": "Molecules (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10745661/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Chia (Salvia hispanica L.), a functional 'superfood': new insights into its botanical, genetic and nutraceutical characteristics",
+      "publisher": "Annals of Botany (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11560377/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Sonication-Freezing-Assisted Extraction of Chia Seed Mucilage",
+      "publisher": "Gels (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13205273/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

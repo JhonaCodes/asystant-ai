@@ -1,0 +1,109 @@
+{
+  "id": "borraja",
+  "commonName": "Borraja",
+  "otherNames": [
+    "borago",
+    "flor de estrella",
+    "borage"
+  ],
+  "scientificName": "Borago officinalis L.",
+  "family": "Boraginaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "La borraja es una planta de flores azules en forma de estrella, muy usada en la cocina mediterránea y en remedios populares para la tos y la fiebre. El problema es que sus hojas y flores contienen alcaloides de pirrolizidina, sustancias que dañan el hígado y que en estudios de laboratorio se han encontrado en cantidades muy por encima de lo que se considera tolerable, incluso comiendo pocas flores. Por eso este catálogo no recomienda tomar hoja ni flor de borraja como remedio por boca; comerla ocasionalmente como verdura o adorno de un plato es otra cosa, distinta de usarla como medicina.",
+  "botany": {
+    "description": "Hierba anual de porte extendido, con tallos ramificados cubiertos de pelos ásperos, de 50 cm a 1 m (1,6 a 3,2 pies) de alto y hasta 40 cm de ancho. Sus hojas son comestibles, ovaladas, de color verde grisáceo apagado y arrugadas, de hasta 15 cm de largo, cubiertas de pelillos ásperos, con sabor parecido al del pepino. Sus flores, también comestibles, son azul brillante, en forma de estrella de cinco pétalos, colgantes, de menos de 2,5 cm, y aparecen en verano agrupadas en cimas.",
+    "identification": "Se reconoce por sus flores azules colgantes en forma de estrella de cinco puntas y sus hojas ásperas al tacto, de color verde grisáceo y sabor a pepino.",
+    "cultivation": "Crece a pleno sol o media sombra, en cualquier tipo de suelo, incluso pobre; se propaga por semilla y se resiembra sola con facilidad. Conviene cortarla a la mitad a mediados de verano para que rebrote en otoño.",
+    "lookalikes": [
+      "Otras boragináceas de flor azul similar"
+    ],
+    "nativeRange": "Nativa de la región mediterránea; hoy naturalizada en muchas regiones templadas del mundo.",
+    "sources": [
+      "s1",
+      "s2",
+      "s4"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de hojas o flores de borraja es un remedio casero seguro para la tos, la fiebre o la digestión.",
+      "note": "Las hojas y flores de borraja contienen alcaloides de pirrolizidina, sustancias tóxicas para el hígado, genotóxicas y con posible efecto cancerígeno; la exposición crónica, incluso baja, se ha relacionado con enfermedad venooclusiva del hígado y falla hepática. Un estudio encontró en flores de borraja concentraciones de estos alcaloides muy por encima del límite considerado tolerable, de forma que incluso un consumo moderado de estas flores podría superar la ingesta diaria tolerable establecida por la autoridad europea de seguridad alimentaria (EFSA).",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "claim": "Como la borraja se usa en la cocina, tomarla en té o en cantidad como remedio no tiene ningún riesgo.",
+      "note": "Comerla ocasionalmente como verdura o como adorno de un plato, en poca cantidad, no es lo mismo que tomarla en té concentrado o de forma repetida como remedio: ahí es donde se alcanzan más fácilmente niveles de alcaloides de pirrolizidina que dañan el hígado.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "No la tomes como remedio junto con medicamentos que puedan dañar el hígado; los alcaloides de pirrolizidina de la borraja ya son tóxicos para el hígado."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "safetySources": ["s3"],
+  "sideEffects": [
+    "Las hojas y flores tomadas como remedio, en té o en cantidad, pueden dañar el hígado por su contenido de alcaloides de pirrolizidina, con riesgo de daño acumulado con el uso repetido.",
+    "No se recomienda ninguna forma de uso medicinal por boca de hoja o flor de borraja."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/borraja.jpg",
+      "author": "Lies Van Rompaey",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Borago_officinalis_01_01.jpg",
+      "caption": "Flor de borraja (Borago officinalis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Borago officinalis L.",
+      "publisher": "Plants of the World Online, Kew Science",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:113618-1",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Borago officinalis (Borage, Starflower)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/borago-officinalis/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Tropane and Pyrrolizidine Alkaloids in Edible Flowers: A Food Safety Perspective",
+      "publisher": "Foods (MDPI, via PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12607445/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Local farmers, custodians of wild food plant knowledge and uses in the touristified Venice Lagoon",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13185300/",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

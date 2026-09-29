@@ -1,0 +1,131 @@
+{
+  "id": "cardo_mariano",
+  "commonName": "Cardo mariano",
+  "otherNames": [
+    "cardo de leche",
+    "cardo de María"
+  ],
+  "scientificName": "Silybum marianum (L.) Gaertn.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "fruto (semilla)"
+  ],
+  "easyExplanation": "El cardo mariano es una planta espinosa con hojas manchadas de blanco; se usa su fruto (semilla) para las molestias digestivas leves y la falta de apetito, como uso tradicional reconocido en Europa. Se le atribuye desde hace mucho tiempo un efecto de apoyo al hígado, pero no hay estudios claros en personas que muestren que cure enfermedades del hígado como la hepatitis o la cirrosis: eso siempre necesita atención médica.",
+  "botany": {
+    "description": "Hierba anual o bienal de 60 cm a 1,8 m, con hojas grandes, brillantes, verdes con manchas y vetas blancas, de bordes espinosos. Sus flores, de color púrpura a rosado, forman una cabezuela redonda rodeada de brácteas espinosas.",
+    "identification": "Se reconoce por las manchas y vetas blancas de sus hojas (de ahí el nombre \"cardo de leche\"), sus bordes con espinas y su cabezuela floral morada rodeada de una envoltura puntiaguda y espinosa.",
+    "cultivation": "Crece bien en terrenos alterados, orillas de caminos y jardines, con sol pleno. Germina en otoño, forma una roseta baja en invierno y florece de fines de primavera a comienzos del verano; la parte que se usa es la semilla madura.",
+    "lookalikes": [],
+    "nativeRange": "Sur de Europa y cuenca del Mediterráneo hasta Asia central; hoy cultivada y naturalizada en muchas partes del mundo.",
+    "sources": ["s1"]
+  },
+  "beliefs": [
+    {
+      "claim": "El cardo mariano cura la hepatitis o la cirrosis por sí solo.",
+      "note": "Se le atribuye un efecto de apoyo al hígado desde hace mucho tiempo y su ingrediente activo (la silimarina) se estudia por sus propiedades antioxidantes, pero las revisiones científicas más recientes concluyen que los beneficios y los riesgos de la silimarina en enfermedades del hígado todavía no están claros. La hepatitis y la cirrosis necesitan diagnóstico y tratamiento médico.",
+      "sources": ["s3", "s4"]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Fruto (semilla) en infusión o extracto; uso tradicional reconocido en Europa, con un uso histórico popular documentado para molestias del hígado y la digestión.",
+      "sources": ["s2", "s3"]
+    },
+    {
+      "tag": "bloating",
+      "label": "Hinchazón y gases",
+      "evidence": "traditional",
+      "note": "Fruto (semilla) en infusión o extracto; uso tradicional reconocido en Europa.",
+      "sources": ["s3"]
+    },
+    {
+      "tag": "poor_appetite",
+      "label": "Falta de apetito",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa como apoyo en la falta de apetito.",
+      "sources": ["s3"]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "instructions": "Prepara una infusión con la semilla molida o triturada, ya que entera no libera bien sus componentes, en agua recién hervida; deja reposar y cuela.",
+      "dose": "Sigue la cantidad indicada en el envase de la tisana.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "title": "Té de cardo mariano",
+      "uses": ["indigestion", "bloating", "poor_appetite"],
+      "steps": [
+        {"kind": "boilWater", "text": "Hierve agua."},
+        {"kind": "pour", "text": "Échala sobre semilla molida de cardo mariano en una taza."},
+        {"kind": "steep", "text": "Deja reposar."},
+        {"kind": "strain", "text": "Cuela."},
+        {"kind": "drink", "text": "Tómalo."}
+      ],
+      "warnings": [
+        "No lo uses en menores de 18 años.",
+        "Si aparece color amarillo en la piel o los ojos, o un cambio de color en la orina o las heces, consulta a un médico de inmediato."
+      ],
+      "sources": ["s3"]
+    },
+    {
+      "form": "capsule",
+      "route": "oral",
+      "instructions": "Usa cápsulas de extracto de cardo mariano (estandarizado en silimarina) de farmacia.",
+      "dose": "Sigue la dosis indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": null,
+      "title": "Extracto de cardo mariano en cápsulas",
+      "uses": ["indigestion", "bloating"],
+      "steps": [
+        {"kind": "buy", "text": "Compra en la farmacia un extracto de cardo mariano."},
+        {"kind": "swallow", "text": "Tómalo como dice el envase."}
+      ],
+      "warnings": ["No reemplaza el tratamiento médico de una enfermedad del hígado."],
+      "sources": ["s3"]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "Puede causar alergia en personas sensibles a plantas como la ambrosía, el crisantemo, la caléndula o la margarita."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "caution",
+      "note": "Puede afectar enzimas del hígado que procesan varios medicamentos; consulta antes de combinarlo."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": ["asteraceae"],
+  "sideEffects": [
+    "Gases, náuseas o malestar digestivo leve.",
+    "Reacciones alérgicas, sobre todo en personas sensibles a la familia de la margarita."
+  ],
+  "safetySources": ["s3", "s4"],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/cardo_mariano.jpg",
+      "author": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Silybum_marianum_0003.JPG",
+      "caption": "Planta de cardo mariano con sus hojas manchadas de blanco"
+    }
+  ],
+  "sources": [
+    {"id": "s1", "kind": "botany", "title": "Silybum marianum (Blessed milk-thistle)", "publisher": "Go Botany, Native Plant Trust", "url": "https://gobotany.nativeplanttrust.org/species/silybum/marianum/", "accessedOn": "2026-09-28"},
+    {"id": "s2", "kind": "popular", "title": "Milk Thistle (background: uso histórico tradicional para molestias del hígado)", "publisher": "NCCIH", "url": "https://www.nccih.nih.gov/health/milk-thistle", "accessedOn": "2026-09-28"},
+    {"id": "s3", "kind": "science", "title": "Silybi mariani fructus (milk thistle fruit) — summary of HMPC conclusions", "publisher": "EMA HMPC", "url": "https://www.ema.europa.eu/en/medicines/herbal/silybi-mariani-fructus", "accessedOn": "2026-09-28"},
+    {"id": "s4", "kind": "science", "title": "Milk Thistle: Usefulness and Safety", "publisher": "NCCIH", "url": "https://www.nccih.nih.gov/health/milk-thistle", "accessedOn": "2026-09-28"}
+  ]
+}

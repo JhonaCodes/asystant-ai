@@ -1,0 +1,149 @@
+{
+  "id": "pina",
+  "commonName": "Piña",
+  "otherNames": [
+    "ananá",
+    "pineapple"
+  ],
+  "scientificName": "Ananas comosus (L.) Merr.",
+  "family": "Bromeliaceae",
+  "partsUsed": [
+    "fruto"
+  ],
+  "easyExplanation": "La piña es una planta herbácea cuyo fruto dulce y ácido contiene bromelina, una mezcla de enzimas que ayuda a digerir proteínas. Comer piña fresca es un alimento normal, no una dosis medicinal. La bromelina en suplemento se estudia para hinchazón después de cirugía o golpes y para molestias digestivas, con evidencia todavía limitada; no hay datos suficientes sobre su seguridad en el embarazo.",
+  "botany": {
+    "description": "Planta herbácea perenne, suculenta, de tallo corto y grueso coronado por una roseta de hojas, de 75 a 125 cm de alto. El fruto es múltiple, formado por 100 a 200 pequeños frutos fusionados entre sí, de 30 a 60 cm de largo y hasta 2,5 kg, con pulpa jugosa, aromática, dulce y ácida.",
+    "identification": "Se reconoce por su roseta de hojas largas y rígidas, a veces con bordes espinosos, y por su fruto compuesto en forma de piña, coronado por un penacho de hojas.",
+    "cultivation": "Necesita temperaturas de 21 a 30 °C y lluvia de 800 a 2.500 mm al año, en suelo liviano, ácido y bien drenado; se daña por debajo de 5 °C. Tarda entre 11 y 36 meses desde la siembra hasta la primera cosecha.",
+    "lookalikes": [
+      "Otras bromeliáceas ornamentales, que no producen un fruto comestible parecido."
+    ],
+    "nativeRange": "Nativa de Sudamérica, en particular de las sabanas de Brasil; hoy cultivada en zonas tropicales de todo el mundo.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "intestinal_parasites",
+      "label": "Parásitos intestinales",
+      "evidence": "popular",
+      "note": "Uso popular del fruto documentado en comunidades tradicionales de la Amazonía brasileña. No reemplaza el tratamiento médico para una parasitosis confirmada.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "El uso medicinal de partes de la planta de piña para molestias digestivas es tradicional en pueblos originarios de Centro y Sudamérica; la bromelina que contiene ayuda a digerir proteínas. Comer la fruta fresca después de una comida es un uso alimentario, no una dosis medicinal.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "muscle_pain",
+      "label": "Molestias musculares por ejercicio",
+      "evidence": "limited",
+      "note": "Estudios pequeños en suplementos de bromelina muestran resultados poco concluyentes para aliviar molestias musculares tras el ejercicio; la evidencia todavía es limitada.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Piña fresca para ayudar a la digestión",
+      "uses": [
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Pela y corta piña fresca, madura."
+        },
+        {
+          "kind": "drink",
+          "text": "Cómela como fruta después de una comida."
+        }
+      ],
+      "warnings": [
+        "Esto es un alimento, no una dosis medicinal; no reemplaza el tratamiento de una enfermedad digestiva."
+      ],
+      "dose": "La cantidad de una porción de fruta.",
+      "frequency": "Con las comidas, según se desee.",
+      "maxDays": null,
+      "instructions": "Come piña fresca y madura después de las comidas como ayuda digestiva popular; es un alimento, no un medicamento.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "La bromelina en suplemento podría aumentar el efecto de los anticoagulantes como la warfarina."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 3,
+  "allergenGroups": [],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "sideEffects": [
+    "En suplemento, la bromelina puede causar malestar estomacal y diarrea; en algunas personas, reacciones alérgicas."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/pina.jpg",
+      "author": "Fastily",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ananas_comosus_1_2018-12-09.jpg",
+      "caption": "Planta de piña con su fruto"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Ananas comosus",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Ananas+comosus",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Natural resources used in the traditional medicine of the Marinaú community, Caxiuanã forest, Brazil",
+      "publisher": "PMC (National Library of Medicine, PMC11496069)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11496069/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Exploring the Therapeutic Potential of Bromelain: Applications, Benefits, and Mechanisms",
+      "publisher": "Nutrients (PMC11243481)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11243481/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Bromelain",
+      "publisher": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/bromelain",
+      "accessedOn": "2026-09-28"
+    }
+  ]
+}

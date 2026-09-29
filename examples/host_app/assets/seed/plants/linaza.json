@@ -1,0 +1,176 @@
+{
+  "id": "linaza",
+  "commonName": "Linaza",
+  "otherNames": [
+    "lino",
+    "semilla de lino",
+    "flaxseed"
+  ],
+  "scientificName": "Linum usitatissimum L.",
+  "family": "Linaceae",
+  "partsUsed": [
+    "semilla"
+  ],
+  "easyExplanation": "La linaza es la semilla de una planta de flores azules. Molida o entera, forma un mucílago espeso al mezclarse con agua, por eso su uso mejor estudiado es para el estreñimiento habitual: hay que tomarla siempre con abundante agua. No comas la semilla cruda o inmadura, porque puede contener sustancias tóxicas; tampoco la tomes junto con otros medicamentos por boca al mismo tiempo, porque su fibra puede reducir su absorción.",
+  "botany": {
+    "description": "Subarbusto anual de vida corta, con uno o varios tallos delgados pero resistentes, erguidos o que se extienden por el suelo. Las hojas son simples, alternas, angostas, de bordes lisos, de 2,5 a 7,5 cm de largo. Las flores son azul pálido, de cinco pétalos amplios dispuestos en forma de rueda, de aproximadamente 2,5 cm, y florecen de finales de primavera a mediados de verano. El fruto es una cápsula globosa con 10 celdas y 10 semillas aplanadas color café cobrizo.",
+    "identification": "Se reconoce por sus flores azules de cinco pétalos y sus cápsulas redondeadas que contienen semillas planas, brillantes y de color café.",
+    "cultivation": "Es nativa de zonas templadas; se cultiva en clima templado, en suelo bien drenado y sol pleno, y se ha naturalizado en Europa y Norteamérica.",
+    "lookalikes": [
+      "Otras especies del género Linum, de flor parecida pero menor importancia agrícola."
+    ],
+    "nativeRange": "Nativa de Turquía e Irán; naturalizada en Europa y en el oeste y centro de Norteamérica, y cultivada en zonas templadas de todo el mundo, incluida América Latina.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "constipation",
+      "label": "Estreñimiento habitual",
+      "evidence": "wellEstablished",
+      "note": "Semilla de linaza por boca, siempre con abundante agua; uso bien establecido reconocido en Europa (HMPC/EMA) para el estreñimiento habitual y las heces duras, y también documentado como remedio popular tradicional. La semilla forma un mucílago al hidratarse que ablanda las heces y facilita el tránsito intestinal.",
+      "sources": [
+        "s2",
+        "s5"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "traditional",
+      "note": "Uso tradicional reconocido en Europa para molestias digestivas leves; la evidencia clínica es todavía limitada.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Semilla de linaza para el estreñimiento",
+      "uses": [
+        "constipation",
+        "indigestion"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Usa semilla de linaza molida o entera, madura (nunca cruda e inmadura)."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómala con un vaso grande de agua."
+        },
+        {
+          "kind": "drink",
+          "text": "Bebe agua extra durante el día."
+        }
+      ],
+      "warnings": [
+        "Tómala siempre con abundante agua u otro líquido; no la tomes seca ni con poco líquido.",
+        "No comas semilla cruda o inmadura: puede contener sustancias tóxicas.",
+        "Tómala separada de otros medicamentos por boca, en un momento distinto: su fibra puede reducir la absorción de medicamentos y de minerales como el hierro, el calcio, el zinc o el magnesio.",
+        "No la uses si tienes dificultad para tragar, alguna enfermedad del esófago, estrechamiento u obstrucción intestinal.",
+        "No la tomes si estás embarazada o en lactancia.",
+        "No la des a menores de 12 años.",
+        "Si el estreñimiento dura más de 3 días, o las molestias digestivas más de 7 días, consulta a un médico.",
+        "Consulta a un médico si notas sangrado rectal sin explicación o un cambio en tus hábitos intestinales que dura más de 2 semanas."
+      ],
+      "dose": "La cantidad que indique el envase del producto o un profesional de salud.",
+      "frequency": "Según el envase o la indicación profesional.",
+      "maxDays": null,
+      "instructions": "Toma semilla de linaza molida o entera, madura, siempre con un vaso grande de agua y líquido extra durante el día, en un momento distinto al de otros medicamentos por boca.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "intestinal_obstruction",
+      "note": "No la uses si tienes obstrucción o parálisis intestinal, estrechamiento anormal del intestino o una enfermedad del esófago: puede empeorar el problema."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "caution",
+      "note": "Su contenido de ácido alfa-linolénico podría sumarse al efecto de los anticoagulantes y aumentar el riesgo de sangrado."
+    },
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los antiagregantes plaquetarios y aumentar el riesgo de sangrado."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Hinchazón, gases o diarrea si se usa en dosis altas.",
+    "Alergia, en raras ocasiones grave.",
+    "La semilla cruda o inmadura puede liberar cianuro al dañarse; no se debe comer cruda."
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/linaza.jpg",
+      "author": "Bjoertvedt",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Linum_usitatissimum_01.jpg",
+      "caption": "Planta de lino en flor (Linum usitatissimum)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Linum usitatissimum (Common Flax)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/linum-usitatissimum/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Lini semen — summary of HMPC conclusions (linseed)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/lini-semen",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Flax and flaxseed oil: an ancient medicine & modern functional food",
+      "publisher": "Journal of Food Science and Technology (PMC4152533)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4152533/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Flaxseed in Diet: A Comprehensive Look at Pros and Cons",
+      "publisher": "Molecules (PMC11945857)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11945857/",
+      "accessedOn": "2026-09-28"
+    },
+    {
+      "id": "s5",
+      "kind": "popular",
+      "title": "Medicinal Plants Traditionally Used to Treat Digestive System Disorders in Lithuania",
+      "publisher": "Plants, MDPI (PMC13164646)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13164646/",
+      "accessedOn": "2026-09-28"
+    }
+  ],
+  "safetySources": [
+    "s2",
+    "s3",
+    "s4"
+  ]
+}
