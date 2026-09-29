@@ -56,7 +56,10 @@ void main() {
     await turn;
     expect(tool.chosen, ['journal']);
     expect(tool.writes, 1);
-    expect(vm.state.steps.single.phase, StepPhase.completed);
+    // A finished turn moves its steps out of the live activity and into
+    // the final answer's entry, where the person can still review them.
+    expect(vm.state.steps, isEmpty);
+    expect(vm.state.entries.last.activity.single.phase, StepPhase.completed);
     expect(vm.state.entries[1].card?.title, 'Result');
     expect(vm.state.entries.last.message?.content, 'Done');
     vm.dispose();

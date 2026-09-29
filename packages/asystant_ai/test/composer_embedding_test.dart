@@ -79,8 +79,8 @@ void main() {
     expect(assistant.conversation.state.messages, isEmpty);
     await tester.sendKeyEvent(LogicalKeyboardKey.enter);
     await tester.pumpAndSettle();
-    expect(find.text('Continue'), findsOneWidget);
-    await tester.tap(find.text('Not now'));
+    expect(find.text('Authorize'), findsOneWidget);
+    await tester.tap(find.text('Decline'));
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox());

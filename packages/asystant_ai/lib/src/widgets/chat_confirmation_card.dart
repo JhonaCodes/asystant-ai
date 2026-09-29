@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/pending_action.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
-import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:asystant_ai/src/widgets/chat_status_card.dart';
 import 'package:asystant_ai/src/widgets/gen_ui_card.dart';
 
 /// An action waiting for the person: what it does, then Decline or Authorize.
+///
+/// Host card content is never rendered here: it only augments completed
+/// cards, so it cannot sit next to or stand in for the approval controls.
 class ChatConfirmationCard extends StatelessWidget {
   const ChatConfirmationCard({
     super.key,
@@ -16,7 +18,6 @@ class ChatConfirmationCard extends StatelessWidget {
     required this.strings,
     required this.onSelect,
     required this.onDecide,
-    this.cardContentBuilder,
   });
 
   final PendingAction pending;
@@ -26,8 +27,6 @@ class ChatConfirmationCard extends StatelessWidget {
   final ValueChanged<String> onSelect;
 
   final ValueChanged<bool> onDecide;
-
-  final AsystantCardContentBuilder? cardContentBuilder;
 
   @override
   Widget build(BuildContext context) => ChatStatusCard(
@@ -46,7 +45,6 @@ class ChatConfirmationCard extends StatelessWidget {
           framed: false,
           selected: pending.selected,
           onSelect: onSelect,
-          content: cardContentBuilder?.call(context, pending.card),
           onApprove: pending.canApprove ? () => onDecide(true) : null,
           onDeny: () => onDecide(false),
         ),

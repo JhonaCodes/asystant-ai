@@ -96,7 +96,6 @@ class ChatConversation extends StatelessWidget {
             strings: strings,
             onSelect: viewModel.selectOption,
             onDecide: viewModel.approve,
-            cardContentBuilder: cardContentBuilder,
           ),
         if (state.failure case final failure?)
           ChatFailureNotice(

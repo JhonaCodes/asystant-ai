@@ -45,10 +45,10 @@ void main() {
       await tester.pump();
       await tester.tap(find.byTooltip('Enviar'));
       await tester.pumpAndSettle();
-      expect(find.text('Continuar'), findsOneWidget);
+      expect(find.text('Autorizar'), findsOneWidget);
       expect(tester.takeException(), isNull);
-      await tester.ensureVisible(find.text('Ahora no'));
-      await tester.tap(find.text('Ahora no'));
+      await tester.ensureVisible(find.text('Rechazar'));
+      await tester.tap(find.text('Rechazar'));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
       await tester.pumpWidget(const SizedBox());

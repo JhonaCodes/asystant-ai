@@ -11,3 +11,6 @@ build/
 
 # Own repo (JhonaCodes/asystant-api), kept as a sibling folder for local convenience only
 /asystant-api/
+
+# Golden test failure output
+**/test/failures/

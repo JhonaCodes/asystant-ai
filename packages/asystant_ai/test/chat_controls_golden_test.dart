@@ -90,7 +90,7 @@ void main() {
       await tester.pump();
       await tester.tap(find.byTooltip('Send'));
       await tester.pumpAndSettle();
-      expect(find.text('Continue').hitTestable(), findsOneWidget);
+      expect(find.text('Authorize').hitTestable(), findsOneWidget);
       if (Platform.isMacOS) {
         await expectLater(
           find.byType(MaterialApp),
