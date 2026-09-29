@@ -14,6 +14,12 @@ import 'package:asystant_ai/src/model/conversation_snapshot.dart';
 import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
 import 'package:asystant_ai/src/service/asystant_file_picker.dart';
 
+/// Decides whether [tool] waits for the person's approval before a call runs.
+///
+/// Asked on every call, after the tool's preview and before it runs; see
+/// `AsystantAI.requiresConfirmation`.
+typedef AsystantConfirmationPolicy = bool Function(AsystantTool tool);
+
 /// Owns conversation state and executes only registered, authorized local tools.
 class ChatViewModel extends ViewModel<ChatState> {
   ChatViewModel() : super(const ChatState());
@@ -63,6 +69,11 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   static Future<List<AsystantSystemPrompt>> _noContext() async => const [];
 
+  /// Whether a call waits for the person; asked again on every call.
+  AsystantConfirmationPolicy _confirmation = _toolDecides;
+
+  static bool _toolDecides(AsystantTool tool) => tool.requiresConfirmation;
+
   /// When the last message went out; see [stop].
   DateTime? _sentAt;
 
@@ -104,6 +115,7 @@ class ChatViewModel extends ViewModel<ChatState> {
         const AsystantAttachmentPolicy(),
     AsystantContextSource? context,
     AsystantTurnLimits turnLimits = const AsystantTurnLimits(),
+    AsystantConfirmationPolicy? confirmation,
   }) async {
     turnLimits.validate();
     if (_closed || state.busy || state.phase == ChatPhase.initializing) {
@@ -119,6 +131,7 @@ class ChatViewModel extends ViewModel<ChatState> {
     _attachmentPolicy = attachmentPolicy;
     _turnLimits = turnLimits;
     _context = context ?? _noContext;
+    _confirmation = confirmation ?? _toolDecides;
     // A retry for the same person keeps the conversations; anyone else
     // starts clean.
     final sameIdentity = _identity != null && _identity == transport.identity;
@@ -940,7 +953,9 @@ class ChatViewModel extends ViewModel<ChatState> {
       failure = preview.errorOrNull?.detail ?? '';
       if (card != null) {
         _step(executionKey, StepPhase.preparing, title: card.title);
-        var allowed = !tool.requiresConfirmation && !tool.requiresSelection;
+        // A choice is input the tool needs, not a permission, so the policy
+        // never skips it.
+        var allowed = !_confirmation(tool) && !tool.requiresSelection;
         var selected = <String>[];
         if (!allowed) {
           _step(executionKey, StepPhase.permission);

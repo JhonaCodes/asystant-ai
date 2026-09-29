@@ -33,6 +33,15 @@ abstract class AsystantAI with AsystantService {
   /// it can carry what the person said.
   Future<List<AsystantSystemPrompt>> contextPrompts() async => const [];
 
+  /// Whether [tool] waits for the person's approval before this call runs.
+  ///
+  /// Asked on every call, after the tool's preview and before it runs, so a
+  /// host can answer from settings that change while the chat is open, such
+  /// as a switch that approves everything. By default it is the tool's own
+  /// [AsystantTool.requiresConfirmation]. It never skips
+  /// [AsystantTool.requiresSelection]: a choice is input, not a permission.
+  bool requiresConfirmation(AsystantTool tool) => tool.requiresConfirmation;
+
   /// Whether tool registration and model assignment have completed.
   bool get isInitialized => conversation.notifier.isInitialized;
 
@@ -106,6 +115,7 @@ abstract class AsystantAI with AsystantService {
         attachmentPolicy: attachments,
         context: contextPrompts,
         turnLimits: turnLimits,
+        confirmation: requiresConfirmation,
       );
     };
   }

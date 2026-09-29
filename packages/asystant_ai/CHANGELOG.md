@@ -1,5 +1,6 @@
 ## Unreleased
 
+- `AsystantAI.requiresConfirmation(tool)` decides whether a call waits for the person's approval. It is asked on every call, after the preview and before the tool runs, and defaults to the tool's own `requiresConfirmation`; a host overrides it to answer from its settings, such as a switch that approves everything. `ChatViewModel.configure` takes it as `confirmation` (`AsystantConfirmationPolicy`). It never skips `requiresSelection`.
 - The images a tool returns (`ToolOutcome.images`) are also kept on its completed step (`AssistantStep.images`), and the built-in chat shows them as thumbnails under the step (`AsystantTheme.stepImageHeight`, 120 by default).
 - Host content inside `AsystantChat`: `headerContent` (a widget under the header), `hostCards` (`AsystantHostCard`s pinned after the conversation, with `AsystantCardAction` buttons for decisions the host's workflow waits for) and `managesConversations` (off hides the conversation list, New and Delete, for hosts that keep one conversation per context). See the integration guide, "Host content".
 - `AsystantStrings.failureMessage(failure)` words a failure in the chat; by default `failure(code)`, and a subclass can add the provider's detail.

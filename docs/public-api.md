@@ -127,6 +127,16 @@ A `ToolField` is a scalar (`string`, `integer`, `number`, `boolean`), a list of 
 
 `isAvailable` is read before every model call: the model is only offered the tools available at that moment, and a call to one that stopped being available is rejected. Use it to scope tools to what the app shows, such as the current screen.
 
+`requiresConfirmation` is the tool's own answer; the assistant has the last word. `AsystantAI.requiresConfirmation(tool)` is asked on every call, after the preview and before the tool runs, and by default returns the tool's value. Override it when the person can change that answer while the chat is open, such as a setting that approves everything:
+
+```dart
+@override
+bool requiresConfirmation(AsystantTool tool) =>
+    !settings.approvesAll && tool.requiresConfirmation;
+```
+
+The override decides permission only: a tool that `requiresSelection` still waits for the person's choice. A host that draws its own chat passes the same function to `ChatViewModel.configure(confirmation: ...)` (`AsystantConfirmationPolicy`).
+
 `ToolOutcome` carries `modelContent`, the text the model reads, and optionally:
 
 - `summary`: what was done, in one line for the person; it replaces the step's title once the tool completes.
