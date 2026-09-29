@@ -48,6 +48,27 @@ class ReadWorkspaceTool extends AsystantTool {
 
 Use `TypedAsystantTool<T>` to decode tool arguments into a domain type. Definitions reject duplicate names, unknown arguments and invalid scalar types. For writes, check cancellation immediately before committing and pass `context.idempotencyKey` to your own repository. Cancellation does not undo effects already committed.
 
+## Local knowledge (RAG)
+
+`AsystantKnowledge` is a local index of the app's own documents, ranked with BM25 and normalized for Spanish and English (accents, plurals, common words). `KnowledgeSearchTool` lets the model search it; each hit carries the matching passage, not the whole document. No service, model or dependency is involved, and the result is deterministic.
+
+```dart
+final knowledge = AsystantKnowledge(
+  documents: const [
+    KnowledgeDocument(
+      id: 'faq-shipping',
+      title: 'Shipping times',
+      collection: 'faq',
+      text: 'Orders ship within two business days...',
+    ),
+  ],
+);
+final hits = knowledge.rank(const KnowledgeQuery(text: 'shipping time', limit: 3));
+final saved = knowledge.toJson(); // Store it wherever the app keeps data.
+```
+
+Pass `KnowledgeSearchTool(knowledge: knowledge)` as a tool; the model calls it as `search_knowledge`. A semantic retriever can replace the index by implementing `KnowledgeRetriever`. See [Local knowledge (RAG)](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#local-knowledge-rag).
+
 ## Providers
 
 A provider says where the answers come from. `AsystantProvider` is a sealed class; each variant creates its `AssistantTransport`, and tools, prompts, per-request context, attachments and the model catalog go through that contract the same way for every provider.

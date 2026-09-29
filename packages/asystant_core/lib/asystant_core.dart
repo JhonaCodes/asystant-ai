@@ -4,6 +4,11 @@ library;
 
 export 'package:result_controller/result_controller.dart';
 
+export 'package:asystant_core/src/knowledge/asystant_knowledge.dart';
+export 'package:asystant_core/src/knowledge/knowledge_document.dart';
+export 'package:asystant_core/src/knowledge/knowledge_hit.dart';
+export 'package:asystant_core/src/knowledge/knowledge_query.dart';
+export 'package:asystant_core/src/knowledge/knowledge_retriever.dart';
 export 'package:asystant_core/src/model/assistant_card.dart';
 export 'package:asystant_core/src/model/assistant_chart.dart';
 export 'package:asystant_core/src/model/assistant_failure.dart';
@@ -19,6 +24,7 @@ export 'package:asystant_core/src/model/token_usage.dart';
 export 'package:asystant_core/src/model/tool_call.dart';
 export 'package:asystant_core/src/tool/asystant_tool.dart';
 export 'package:asystant_core/src/tool/chart_presentation_tool.dart';
+export 'package:asystant_core/src/tool/knowledge_search_tool.dart';
 export 'package:asystant_core/src/tool/presentation_tool.dart';
 export 'package:asystant_core/src/tool/tool_arguments.dart';
 export 'package:asystant_core/src/tool/tool_context.dart';

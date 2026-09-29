@@ -175,6 +175,51 @@ When a turn reaches a limit:
 
 The SDK does not automatically retry uncertain writes or reverse effects already committed. Tool result text returns to the model; optional cards remain in chronological order in the chat.
 
+## Local knowledge (RAG)
+
+The app supplies documents about its own domain (guides, FAQs, policies, catalog entries), and the model searches them with a built-in tool before answering. Everything runs inside the app: no service, no embeddings model, no extra dependency, and it works the same with every provider.
+
+`AsystantKnowledge` is a local index of `KnowledgeDocument`s. Each has an `id` chosen by the app, a `title`, the searchable `text`, and optionally a `collection` (the kind of document, used to narrow a search), `tags` and `metadata` (simple string values the app wants back, such as a route; not searched and not sent to the model). `put` adds a document or replaces the one with the same id, `putAll` adds several, `remove` and `clear` delete.
+
+```dart
+final knowledge = AsystantKnowledge(
+  documents: [
+    for (final guide in await repository.careGuides()) // Host-owned data.
+      KnowledgeDocument(
+        id: 'guide-${guide.id}',
+        title: guide.title,
+        text: guide.body,
+        collection: 'guides',
+        tags: guide.tags,
+        metadata: {'route': '/guides/${guide.id}'},
+      ),
+  ],
+);
+
+assistant.init(
+  provider: provider,
+  builtInTools: [KnowledgeSearchTool(knowledge: knowledge)],
+);
+```
+
+The model calls `search_knowledge` with a `query`, an optional `collection` (the index's collections are offered as its accepted values) and an optional `limit` (5 by default, at most 10), and reads compact JSON with the passage that matched, not the whole document:
+
+```json
+{"query":"riego orquídeas","results":[{"id":"guide-12","title":"Cuidado de la orquídea","collection":"guides","score":2.41,"snippet":"…Riega las orquídeas una vez por semana, por la mañana…"}]}
+```
+
+The tool only reads, so it runs without asking for permission; the step shows the query. The ids found are kept in the step's `data['ids']` for the host. `KnowledgeSearchTool` takes `name` (for example to register two indexes as two tools), `description`, `defaultLimit` and `maxLimit`. Documents added or removed later are searched from the next call on; the collections offered are read before each model call.
+
+**Ranking.** `AsystantKnowledge` ranks with BM25, the lexical scoring of classic search engines, over the title (weighted double), the tags and the text. Text is normalized for Spanish and English: lower case, accents folded (`orquídea` = `orquidea`, `ñ` = `n`), common words of both languages dropped, and a light stemmer that joins singular and plural, masculine and feminine (`orquídeas` = `orquídea`, `luces` = `luz`, `cities` = `city`). A query word of four letters or more also matches the longer words it starts (`jardín` finds `jardinería`, `water` finds `watering`). `collection` and `tags` filter before ranking; a document must carry every requested tag. Each hit's `snippet` is the passage of about 320 characters (`snippetLength`) that covers the most query words, cut at a sentence or word boundary with `…`. `rank(query)` is the synchronous form of `search(query)`, for the host's own screens.
+
+**Why lexical, not embeddings.** For this first version the index needs no model, no network and no dependency, runs on mobile, web and desktop, and is deterministic: the same documents and query always give the same order, so it can be tested. It finds the words of the question, not their synonyms: a question about "watering" does not find a document that only says "irrigation", and the model is told to try other words when nothing matches. It searches a few thousand documents in a few milliseconds; building the index costs roughly half a second per million words, so on native platforms build a large one away from the UI isolate, for example `await Isolate.run(() => AsystantKnowledge.fromJson(saved))`.
+
+**Persistence.** `knowledge.toJson()` returns the documents, with a format `version`, as JSON-compatible data, and `AsystantKnowledge.fromJson(json)` rebuilds the index from them. The SDK does not decide where it is stored: a file, a local database or your backend.
+
+**A different retriever.** `KnowledgeSearchTool` depends on `KnowledgeRetriever`, not on the lexical index: a class with `search(KnowledgeQuery)`, returning `Future<Result<List<KnowledgeHit>, AssistantFailure>>`, and optionally `collections`. A semantic or hybrid retriever (embeddings, a vector store, a search service) implements it and replaces `AsystantKnowledge` where it is passed, with no other change in the app or the tool. Return an `Err` only when the retriever cannot answer; its `detail` reaches the model.
+
+Search results come from documents, and the baseline safety prompt already tells the model to treat tool output as untrusted data; index only content the person using the app is allowed to read.
+
 ## Embedding and customization
 
 `AsystantButton` opens the chat in a bottom sheet (`AsystantPhoneSheet`) on phones and in a side panel (`AsystantPanel`) on tablets and desktops. `AsystantChat` is a bounded section without its own app router or Scaffold; use it in drawers, panels and full screens. Colors follow the host theme. `AsystantTheme` controls dimensions. `AsystantStrings(spanish: false)` selects English; the default locale-aware widget path supports English and Spanish, and subclassing allows custom wording.

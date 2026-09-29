@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Local knowledge (RAG): pass `KnowledgeSearchTool(knowledge: AsystantKnowledge(...))` in `builtInTools` and the assistant searches the app's own documents, locally and without an embeddings model, with every provider (see asystant_core and the integration guide, "Local knowledge (RAG)").
 - `AsystantAI.init(turnLimits: AsystantTurnLimits(...))` configures the limits of each turn, which were fixed: `maxRounds` inference rounds (8 by default, up to 64) and `maxCallsPerResponse` tool calls in one response (16 by default, up to 16, the built-in transports' own bound). Defaults and what happens at a limit are unchanged; an out-of-range value throws a `RangeError` from `init`. See the integration guide, "Turn limits".
 - The images a tool returns (`ToolOutcome.images`) are kept on its result message and reach the model with every provider (see asystant_core).
 - `AsystantTool.isAvailable` is read before every model call, not only at initialization: the model is offered the tools available at that moment, so a host can scope them to what it shows.

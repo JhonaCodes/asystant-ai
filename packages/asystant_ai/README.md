@@ -87,6 +87,8 @@ Implement `AsystantTool` or `TypedAsystantTool<T>`. Return a `ToolDefinition`, a
 
 `ToolContext` exposes cancellation, selected values and an idempotency key. Your repository must still enforce authorization and protect asynchronous writes against duplicate effects. The SDK does not claim to reverse completed actions.
 
+To let the assistant answer from your own documents, index them in an `AsystantKnowledge` and pass `KnowledgeSearchTool(knowledge: knowledge)` in `builtInTools`. The search is local and lexical (BM25, Spanish and English), needs no service or embeddings model and returns only the matching passages. See [Local knowledge (RAG)](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#local-knowledge-rag).
+
 Cards support summary, entity, selection, permission and result presentations. The chat shows ordered tool steps, progress and error icons, and an action that changes from Send to Stop. Theme colors follow the host; use `AsystantTheme` for metrics and subclass `AsystantStrings` for custom wording or languages. English and Spanish are included.
 
 ## Backend and models

@@ -34,6 +34,8 @@ Tools execute in your app using its existing services. The model only receives t
 
 A tool can also return images with its result (`ToolOutcome.images`), for example a frame the app just rendered so the model can review it. Images the person attaches and images a tool returns travel the same way with every provider; a model that cannot see images receives a note instead. See [Images](docs/public-api.md#images).
 
+The assistant can also search documents your app supplies (guides, FAQs, policies) without any service or embeddings model: put them in an `AsystantKnowledge` index and enable `KnowledgeSearchTool` in `builtInTools`. It ranks with BM25, normalized for Spanish and English, and returns only the matching passages. See [Local knowledge (RAG)](docs/public-api.md#local-knowledge-rag).
+
 ## Examples
 
 [packages/asystant_ai/example/lib/main.dart](packages/asystant_ai/example/lib/main.dart) shows the integration without credentials and a real local read-only tool: with `--dart-define=CLAUDE_CODE=true` on a desktop it answers through `ClaudeCodeProvider`, otherwise through an explicitly simulated transport.
