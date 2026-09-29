@@ -27,7 +27,7 @@ assistant.init(
 
 `assistant`, `session` and `fetchAiCredential` are host-owned; see [Credentials and sign-in](#credentials-and-sign-in). `models` are the choices shown next to the send button, each with the provider's model id, a label and an optional icon and description; the first one the transport permits is the default. An empty list lets the provider decide: `OpenRouterProvider` offers the models the credential allows, and `ClaudeCodeProvider` the models the installed CLI declares. Optional built-in tools are enabled only when included; remove one from the list to disable it for a new instance. Duplicate tool names are rejected.
 
-`init` also accepts `additionalSystemPrompts`, a `conversationStore` (an `AsystantConversationStore`; the default `InMemoryConversationStore` forgets conversations when the app closes) and an `attachments` policy (`AsystantAttachmentPolicy`, every file type by default).
+`init` also accepts `additionalSystemPrompts`, a `conversationStore` (an `AsystantConversationStore`; the default `InMemoryConversationStore` forgets conversations when the app closes), an `attachments` policy (`AsystantAttachmentPolicy`, every file type by default) and `turnLimits` (`AsystantTurnLimits`, see [Turn limits](#turn-limits)).
 
 ## Providers
 
@@ -155,7 +155,25 @@ Each executed call is an `AssistantStep` with the `toolName`, when it `startedAt
 
 A preview must be read-only. Mutating actions require confirmation by default. The model cannot approve its own action. Check `ToolContext.isCanceled` or `checkCanceled()` immediately before an asynchronous write, and use its `idempotencyKey` in your own repository. Existing product authorization is still mandatory; a model-requested action is not an authorization grant.
 
-The SDK bounds each user turn to eight inference rounds and sixteen calls per response. It does not automatically retry uncertain writes or reverse effects already committed. Tool result text returns to the model; optional cards remain in chronological order in the chat.
+### Turn limits
+
+The SDK bounds each user turn to 8 inference rounds and 16 tool calls per response by default. `init(turnLimits: ...)` changes them, the same way for every provider, because the chat enforces them, not the transport:
+
+```dart
+assistant.init(
+  provider: provider,
+  turnLimits: const AsystantTurnLimits(maxRounds: 20, maxCallsPerResponse: 8),
+);
+```
+
+Both are positive integers with a ceiling, so a host mistake cannot leave a turn calling the model without end: `maxRounds` from 1 to `AsystantTurnLimits.maxRoundsCeiling` (64), `maxCallsPerResponse` from 1 to `AsystantTurnLimits.maxCallsCeiling` (16). The call ceiling is the built-in transports' own: `OpenRouterProvider` and `ClaudeCodeProvider` refuse a response with more than 16 calls as a protocol failure, so a higher value could not take effect. `init` throws a `RangeError` for a value outside its range, before storing anything.
+
+When a turn reaches a limit:
+
+- **Rounds.** A round that answers without tool calls ends the turn normally. When the last allowed round still proposes calls, they run as usual (permission included) and their results are added to the conversation, but the model is not asked again. The turn ends with a `FailureCode.limit` failure: the turn's steps stay visible in the chat and the failure notice reads "This operation reached its limit. You can start a new request." The model receives nothing more in that turn; on the person's next message it sees the whole history, those tool results included, with no final answer after them.
+- **Calls per response.** A response with more calls than `maxCallsPerResponse` is refused as a `FailureCode.protocol` failure: none of its calls run, the response is not added to the conversation, so the model never sees it, and the chat shows the generic failure notice.
+
+The SDK does not automatically retry uncertain writes or reverse effects already committed. Tool result text returns to the model; optional cards remain in chronological order in the chat.
 
 ## Embedding and customization
 

@@ -8,6 +8,7 @@ import 'package:reactive_notifier/reactive_notifier.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/model/assistant_step.dart';
 import 'package:asystant_ai/src/model/asystant_model_option.dart';
+import 'package:asystant_ai/src/model/asystant_turn_limits.dart';
 import 'package:asystant_ai/src/model/chat_entry.dart';
 import 'package:asystant_ai/src/model/conversation_snapshot.dart';
 import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
@@ -44,6 +45,9 @@ class ChatViewModel extends ViewModel<ChatState> {
   Timer? _streamingTimer;
 
   AsystantAttachmentPolicy _attachmentPolicy = const AsystantAttachmentPolicy();
+
+  /// Rounds per turn and calls per response; see [AsystantTurnLimits].
+  AsystantTurnLimits _turnLimits = const AsystantTurnLimits();
 
   /// What the host knows now; read again before every model call.
   AsystantContextSource _context = _noContext;
@@ -90,7 +94,9 @@ class ChatViewModel extends ViewModel<ChatState> {
     AsystantAttachmentPolicy attachmentPolicy =
         const AsystantAttachmentPolicy(),
     AsystantContextSource? context,
+    AsystantTurnLimits turnLimits = const AsystantTurnLimits(),
   }) async {
+    turnLimits.validate();
     if (_closed || state.busy || state.phase == ChatPhase.initializing) {
       return;
     }
@@ -102,6 +108,7 @@ class ChatViewModel extends ViewModel<ChatState> {
       _store = store;
     }
     _attachmentPolicy = attachmentPolicy;
+    _turnLimits = turnLimits;
     _context = context ?? _noContext;
     // A retry for the same person keeps the conversations; anyone else
     // starts clean.
@@ -666,8 +673,10 @@ class ChatViewModel extends ViewModel<ChatState> {
         clearFailure: true,
       ),
     );
+    // Frozen for the turn, like its epoch.
+    final limits = _turnLimits;
     try {
-      for (var round = 0; round < 8; round++) {
+      for (var round = 0; round < limits.maxRounds; round++) {
         AssistantMessage? completed;
         var failed = false;
         // Read each round: a tool of the previous round may have changed it.
@@ -741,7 +750,7 @@ class ChatViewModel extends ViewModel<ChatState> {
         final ids = response.calls.map((c) => c.id).toSet();
         if (ids.length != response.calls.length ||
             ids.contains('') ||
-            response.calls.length > 16) {
+            response.calls.length > limits.maxCallsPerResponse) {
           _fail(const AssistantFailure(.protocol));
           return;
         }
@@ -778,6 +787,8 @@ class ChatViewModel extends ViewModel<ChatState> {
         }
         updateState(state.copyWith(phase: .thinking));
       }
+      // The last round's calls ran and their results are in the history,
+      // but the model is not asked again.
       _fail(const AssistantFailure(.limit));
     } catch (_) {
       if (_current(epoch)) {

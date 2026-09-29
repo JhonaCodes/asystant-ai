@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:asystant_core/asystant_core.dart';
 
 import 'package:asystant_ai/src/model/asystant_model_option.dart';
+import 'package:asystant_ai/src/model/asystant_turn_limits.dart';
 import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
 import 'package:asystant_ai/src/service/asystant_service.dart';
 
@@ -67,6 +68,9 @@ abstract class AsystantAI with AsystantService {
   /// widget can override it. [models] are the levels the person can choose
   /// next to the send button, each with the provider's id, a name and an
   /// optional icon and description; the first allowed one is the default.
+  /// [turnLimits] bounds each turn: inference rounds and tool calls per
+  /// response (8 and 16 by default); an out-of-range value throws a
+  /// [RangeError] here, before anything is stored.
   void init({
     AsystantProvider? provider,
     AssistantTransport? transport,
@@ -75,6 +79,7 @@ abstract class AsystantAI with AsystantService {
     List<AsystantSystemPrompt> additionalSystemPrompts = const [],
     AsystantConversationStore? conversationStore,
     AsystantAttachmentPolicy attachments = const AsystantAttachmentPolicy(),
+    AsystantTurnLimits turnLimits = const AsystantTurnLimits(),
   }) {
     if (_disposed || _initialize != null) {
       throw StateError('Configure the assistant before opening it.');
@@ -82,6 +87,7 @@ abstract class AsystantAI with AsystantService {
     if ((provider == null) == (transport == null)) {
       throw ArgumentError('Pass exactly one of provider or transport.');
     }
+    turnLimits.validate();
     final configured = transport ?? provider?.createTransport();
     if (configured == null) {
       return;
@@ -99,6 +105,7 @@ abstract class AsystantAI with AsystantService {
         store: conversationStore,
         attachmentPolicy: attachments,
         context: contextPrompts,
+        turnLimits: turnLimits,
       );
     };
   }
