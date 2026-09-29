@@ -2,11 +2,16 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:asystant_core/asystant_core.dart';
+import 'package:collection/collection.dart';
 import 'package:reactive_notifier/reactive_notifier.dart';
 
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/model/assistant_step.dart';
+import 'package:asystant_ai/src/model/asystant_model_option.dart';
 import 'package:asystant_ai/src/model/chat_entry.dart';
+import 'package:asystant_ai/src/model/conversation_snapshot.dart';
+import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
+import 'package:asystant_ai/src/service/asystant_file_picker.dart';
 
 /// Owns conversation state and executes only registered, authorized local tools.
 class ChatViewModel extends ViewModel<ChatState> {
@@ -19,6 +24,8 @@ class ChatViewModel extends ViewModel<ChatState> {
   ToolRegistry? _registry;
 
   StreamSubscription<void>? _session;
+
+  AsystantConversationStore _store = InMemoryConversationStore();
 
   Completer<bool>? _approval;
 
@@ -36,6 +43,18 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   Timer? _streamingTimer;
 
+  AsystantAttachmentPolicy _attachmentPolicy = const AsystantAttachmentPolicy();
+
+  /// What the host knows now; read again before every model call.
+  AsystantContextSource _context = _noContext;
+
+  static Future<List<AsystantSystemPrompt>> _noContext() async => const [];
+
+  /// When the last message went out; see [stop].
+  DateTime? _sentAt;
+
+  static const _stopGuard = Duration(milliseconds: 600);
+
   @override
   void init() {}
 
@@ -44,14 +63,33 @@ class ChatViewModel extends ViewModel<ChatState> {
   bool get isInitialized => _initialized;
 
   bool get canSend =>
-      _initialized && !state.busy && state.draft.trim().isNotEmpty;
+      _initialized &&
+      !state.busy &&
+      (state.draft.trim().isNotEmpty || state.attachments.isNotEmpty);
+
+  /// The person can prepare the next message while a turn runs; only an
+  /// action waiting for a decision locks the field.
+  bool get canType => _initialized && state.pending == null;
+
+  /// The files the assistant accepts unless a chat surface overrides them.
+  AsystantAttachmentPolicy get attachmentPolicy => _attachmentPolicy;
   bool get isAuthenticated => _transport?.isAuthenticated ?? false;
+
+  /// New, open and delete wait until the current turn ends or is stopped.
+  bool get canManageConversations => _initialized && !state.busy;
+
+  /// The store keeps each identity's conversations apart.
+  String get _scope => _identity ?? '';
 
   Future<void> configure({
     required AssistantTransport transport,
     required List<AsystantTool> tools,
     required List<AsystantSystemPrompt> prompts,
-    required List<String> models,
+    required List<AsystantModelOption> models,
+    AsystantConversationStore? store,
+    AsystantAttachmentPolicy attachmentPolicy =
+        const AsystantAttachmentPolicy(),
+    AsystantContextSource? context,
   }) async {
     if (_closed || state.busy || state.phase == ChatPhase.initializing) {
       return;
@@ -60,7 +98,19 @@ class ChatViewModel extends ViewModel<ChatState> {
     _initialized = false;
     final previousTransport = _transport;
     _transport = transport;
-    updateState(const ChatState(phase: ChatPhase.initializing));
+    if (store != null) {
+      _store = store;
+    }
+    _attachmentPolicy = attachmentPolicy;
+    _context = context ?? _noContext;
+    // A retry for the same person keeps the conversations; anyone else
+    // starts clean.
+    final sameIdentity = _identity != null && _identity == transport.identity;
+    updateState(
+      sameIdentity
+          ? state.copyWith(phase: ChatPhase.initializing, clearFailure: true)
+          : ChatState(phase: ChatPhase.initializing, conversationId: _newId()),
+    );
     await _session?.cancel();
     if (previousTransport != null && previousTransport != transport) {
       await previousTransport.dispose();
@@ -74,9 +124,10 @@ class ChatViewModel extends ViewModel<ChatState> {
       if (_identity != transport.identity) {
         cancel();
         _initialized = false;
+        unawaited(_store.clear(_scope));
         _identity = transport.identity;
         _executed.clear();
-        updateState(const ChatState(phase: ChatPhase.idle));
+        updateState(ChatState(phase: ChatPhase.idle, conversationId: _newId()));
       }
     });
     final validation = _registry!.validate();
@@ -103,7 +154,7 @@ class ChatViewModel extends ViewModel<ChatState> {
             .map((t) => t.definition)
             .toList(),
         prompts: configuredPrompts,
-        models: models,
+        models: [for (final option in models) option.id],
       );
       if (!_current(epoch)) {
         return;
@@ -119,18 +170,52 @@ class ChatViewModel extends ViewModel<ChatState> {
             state.copyWith(
               phase: .ready,
               models: allowed,
-              model: transport.defaultModel ?? allowed.first,
+              model: allowed.contains(state.model)
+                  ? state.model
+                  : transport.defaultModel ?? allowed.first,
               allowModelSelection: transport.allowModelSelection,
+              contextLengths: {
+                for (final model in allowed)
+                  if (transport.contextLengthOf(model) case final int length)
+                    model: length,
+              },
+              modelOptions: [
+                for (final id in allowed)
+                  models.firstWhereOrNull((option) => option.id == id) ??
+                      AsystantModelOption.fallback(id),
+              ],
             ),
           );
         },
         err: _fail,
       );
+      if (_initialized && _current(epoch)) {
+        await _loadSavedConversations(epoch);
+      }
     } catch (_) {
       if (_current(epoch)) {
         _fail(const AssistantFailure(.unavailable));
       }
     }
+  }
+
+  /// Lists what the store kept for this identity, next to the one on screen.
+  Future<void> _loadSavedConversations(int epoch) async {
+    final saved = await _store.list(_scope);
+    if (!_current(epoch)) {
+      return;
+    }
+    saved.when(
+      ok: (summaries) => updateState(
+        state.copyWith(
+          conversations: {
+            for (final summary in [...summaries, ...state.conversations])
+              summary.id: summary,
+          }.values.sorted((a, b) => b.updatedAt.compareTo(a.updatedAt)),
+        ),
+      ),
+      err: (_) {},
+    );
   }
 
   /// Keeps unexpected host registration errors inside the assistant surface.
@@ -149,12 +234,247 @@ class ChatViewModel extends ViewModel<ChatState> {
     }
   }
 
+  /// The model belongs to the conversation; a new one keeps the last choice.
   void selectModel(String model) {
     if (state.allowModelSelection &&
         !state.busy &&
         state.models.contains(model)) {
-      updateState(state.copyWith(model: model));
+      // An empty conversation has no row yet; choosing a model adds none.
+      final saved = state.conversations.any(
+        (summary) => summary.id == state.conversationId,
+      );
+      updateState(
+        state.copyWith(
+          model: model,
+          conversations: saved
+              ? _withActive((summary) => summary.copyWith(model: model))
+              : null,
+        ),
+      );
     }
+  }
+
+  // ------------------------------------------------------------ attachments
+
+  /// Adds [file] to the next message if [policy] (the assistant's by
+  /// default) accepts it; otherwise records why not and returns the reason.
+  AttachmentIssue? attach(
+    AsystantAttachment file, {
+    AsystantAttachmentPolicy? policy,
+  }) {
+    if (_closed) {
+      return AttachmentIssue.disabled;
+    }
+    final issue = (policy ?? _attachmentPolicy).issueFor(
+      filename: file.filename,
+      size: file.size,
+      pending: state.attachments.length,
+    );
+    updateState(
+      issue == null
+          ? state.copyWith(
+              attachments: [...state.attachments, file],
+              clearAttachmentIssue: true,
+            )
+          : state.copyWith(attachmentIssue: issue),
+    );
+    return issue;
+  }
+
+  /// Opens [picker] (the system one by default) and attaches what it
+  /// returns, within [policy] (the assistant's by default).
+  Future<void> pickAttachments({
+    AsystantAttachmentPolicy? policy,
+    AsystantFilePick? picker,
+  }) async {
+    final rules = policy ?? _attachmentPolicy;
+    if (_closed || !rules.enabled) {
+      return;
+    }
+    final free = rules.maxFiles - state.attachments.length;
+    if (free <= 0) {
+      rejectAttachment(AttachmentIssue.tooMany);
+      return;
+    }
+    final picked = await (picker ?? AsystantFilePicker.pick)(
+      rules.copyWith(maxFiles: free),
+    );
+    if (_closed) {
+      return;
+    }
+    for (final file in picked.files) {
+      attach(file, policy: rules);
+    }
+    if (picked.issue case final issue?) {
+      rejectAttachment(issue);
+    }
+  }
+
+  /// Shows why a file could not be attached, e.g. it could not be read.
+  void rejectAttachment(AttachmentIssue issue) {
+    if (!_closed) {
+      updateState(state.copyWith(attachmentIssue: issue));
+    }
+  }
+
+  void removeAttachment(String id) {
+    if (!_closed) {
+      updateState(
+        state.copyWith(
+          attachments: state.attachments
+              .where((file) => file.id != id)
+              .toList(),
+          clearAttachmentIssue: true,
+        ),
+      );
+    }
+  }
+
+  /// Stops the turn, except right after sending: a double tap on Send must
+  /// not cancel the message it just sent.
+  void stop() {
+    final sentAt = _sentAt;
+    if (sentAt != null && DateTime.now().difference(sentAt) < _stopGuard) {
+      return;
+    }
+    cancel();
+  }
+
+  // ---------------------------------------------------------- conversations
+
+  /// Starts an empty conversation; an empty one on screen is reused.
+  Future<void> newConversation() async {
+    if (!canManageConversations || state.messages.isEmpty) {
+      return;
+    }
+    await _saveActive();
+    if (_closed || !canManageConversations) {
+      return;
+    }
+    _showConversation(id: _newId());
+  }
+
+  /// Shows [id], keeping the conversation on screen in the store.
+  Future<void> openConversation(String id) async {
+    if (!canManageConversations || id == state.conversationId) {
+      return;
+    }
+    await _saveActive();
+    final snapshot = await _store.read(_scope, id);
+    if (_closed || !canManageConversations) {
+      return;
+    }
+    snapshot.when(
+      ok: (snapshot) => _showConversation(
+        id: snapshot.summary.id,
+        messages: snapshot.messages,
+        entries: snapshot.entries,
+        model: snapshot.summary.model,
+        usage: snapshot.summary.usage,
+      ),
+      err: (_) => updateState(
+        state.copyWith(
+          conversations: state.conversations
+              .where((summary) => summary.id != id)
+              .toList(),
+        ),
+      ),
+    );
+  }
+
+  /// Deletes [id]; deleting the one on screen also clears it.
+  Future<void> deleteConversation(String id) async {
+    if (!canManageConversations) {
+      return;
+    }
+    await _store.delete(_scope, id);
+    if (_closed || !canManageConversations) {
+      return;
+    }
+    final remaining = state.conversations
+        .where((summary) => summary.id != id)
+        .toList();
+    updateState(state.copyWith(conversations: remaining));
+    if (id != state.conversationId) {
+      return;
+    }
+    _showConversation(id: _newId());
+  }
+
+  Future<void> _saveActive() async {
+    final summary = state.conversations.firstWhereOrNull(
+      (summary) => summary.id == state.conversationId,
+    );
+    if (summary == null) {
+      return;
+    }
+    await _store.write(
+      _scope,
+      ConversationSnapshot(
+        summary: summary,
+        messages: state.messages,
+        entries: state.entries,
+      ),
+    );
+  }
+
+  void _showConversation({
+    required String id,
+    List<AssistantMessage> messages = const [],
+    List<ChatEntry> entries = const [],
+    String? model,
+    TokenUsage? usage,
+  }) {
+    _resetStreaming();
+    updateState(
+      state.copyWith(
+        phase: .ready,
+        conversationId: id,
+        messages: messages,
+        entries: entries,
+        cards: const [],
+        steps: const [],
+        streaming: '',
+        draft: '',
+        model: model != null && state.models.contains(model)
+            ? model
+            : state.model,
+        usage: usage,
+        clearUsage: usage == null,
+        clearPending: true,
+        clearFailure: true,
+      ),
+    );
+  }
+
+  /// The list with the active conversation changed by [change], newest first.
+  List<ConversationSummary> _withActive(
+    ConversationSummary Function(ConversationSummary summary) change,
+  ) {
+    final now = DateTime.now();
+    final current =
+        state.conversations.firstWhereOrNull(
+          (summary) => summary.id == state.conversationId,
+        ) ??
+        ConversationSummary(
+          id: state.conversationId,
+          title: '',
+          model: state.model,
+          createdAt: now,
+          updatedAt: now,
+        );
+    return [
+      change(current),
+      ...state.conversations.where((summary) => summary.id != current.id),
+    ].sorted((a, b) => b.updatedAt.compareTo(a.updatedAt));
+  }
+
+  String _newId() {
+    final random = Random.secure();
+    return List.generate(
+      16,
+      (_) => random.nextInt(256).toRadixString(16).padLeft(2, '0'),
+    ).join();
   }
 
   void selectOption(String option) {
@@ -195,12 +515,14 @@ class ChatViewModel extends ViewModel<ChatState> {
       updateState(
         state.copyWith(
           phase: .canceled,
-          steps: _endSteps(StepPhase.canceled),
+          entries: _archivedActivity(_endSteps(StepPhase.canceled)),
+          steps: const [],
           messages: _closePendingCalls(),
           streaming: '',
           clearPending: true,
         ),
       );
+      unawaited(_saveActive());
     }
   }
 
@@ -223,12 +545,19 @@ class ChatViewModel extends ViewModel<ChatState> {
     ];
   }
 
+  /// Keeps what an interrupted turn did visible after it ends.
+  List<ChatEntry> _archivedActivity(List<AssistantStep> steps) => [
+    ...state.entries,
+    if (steps.isNotEmpty) ChatEntry(activity: steps),
+  ];
+
   void _fail(AssistantFailure failure) {
     _resetStreaming();
     updateState(
       state.copyWith(
         phase: .error,
-        steps: _endSteps(StepPhase.failed),
+        entries: _archivedActivity(_endSteps(StepPhase.failed)),
+        steps: const [],
         messages: _closePendingCalls(),
         draft:
             failure.code == FailureCode.network &&
@@ -242,6 +571,7 @@ class ChatViewModel extends ViewModel<ChatState> {
         clearPending: true,
       ),
     );
+    unawaited(_saveActive());
   }
 
   List<AssistantStep> _endSteps(StepPhase phase) => state.steps
@@ -269,31 +599,45 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   Future<void> send([String? text]) async {
     final content = (text ?? state.draft).trim();
-    if (!_initialized || state.busy || content.isEmpty || _transport == null) {
+    final files = state.attachments;
+    if (!_initialized ||
+        state.busy ||
+        (content.isEmpty && files.isEmpty) ||
+        _transport == null) {
       return;
     }
+    _sentAt = DateTime.now();
+    final message = AssistantMessage(
+      role: .user,
+      content: content,
+      attachments: files,
+    );
     final epoch = ++_epoch;
     _resetStreaming();
-    final random = Random.secure();
-    final turn = List.generate(
-      16,
-      (_) => random.nextInt(256).toRadixString(16).padLeft(2, '0'),
-    ).join();
+    final turn = _newId();
     updateState(
       state.copyWith(
         phase: .thinking,
         steps: const [],
+        conversations: _withActive(
+          (summary) => summary.copyWith(
+            title: summary.title.isEmpty
+                ? ConversationSummary.excerpt(
+                    content.isEmpty ? files.first.filename : content,
+                  )
+                : summary.title,
+            model: state.model,
+            updatedAt: DateTime.now(),
+          ),
+        ),
         entries: [
           ...state.entries,
-          ChatEntry(
-            message: AssistantMessage(role: .user, content: content),
-          ),
+          ChatEntry(message: message),
         ],
-        messages: [
-          ...state.messages,
-          AssistantMessage(role: .user, content: content),
-        ],
+        messages: [...state.messages, message],
         draft: '',
+        attachments: const [],
+        clearAttachmentIssue: true,
         streaming: '',
         clearPending: true,
         clearFailure: true,
@@ -303,10 +647,24 @@ class ChatViewModel extends ViewModel<ChatState> {
       for (var round = 0; round < 8; round++) {
         AssistantMessage? completed;
         var failed = false;
+        // Read each round: a tool of the previous round may have changed it.
+        final checked = const AsystantPromptPolicy().context(await _context());
+        if (!_current(epoch)) {
+          return;
+        }
+        final context = checked.when(
+          ok: (prompts) => prompts,
+          err: (_) => null,
+        );
+        if (context == null) {
+          _fail(checked.errorOrNull ?? const AssistantFailure(.protocol));
+          return;
+        }
         await for (final event in _transport!.infer(
           messages: state.messages,
           model: state.model,
           requestId: '$turn-$round',
+          context: context,
         )) {
           if (!_current(epoch)) {
             return;
@@ -322,6 +680,15 @@ class ChatViewModel extends ViewModel<ChatState> {
               } else {
                 completed = event.message;
               }
+            case UsageReported():
+              updateState(
+                state.copyWith(
+                  usage: event.usage,
+                  conversations: _withActive(
+                    (summary) => summary.copyWith(usage: event.usage),
+                  ),
+                ),
+              );
             case InferenceFailed():
               failed = true;
               _fail(event.failure);
@@ -349,18 +716,24 @@ class ChatViewModel extends ViewModel<ChatState> {
           return;
         }
         _resetStreaming();
+        final finished = response.calls.isEmpty;
+        // The final answer carries what the turn did before it.
+        final activity = finished ? state.steps : const <AssistantStep>[];
         updateState(
           state.copyWith(
             entries: [
               ...state.entries,
-              if (response.content.isNotEmpty) ChatEntry(message: response),
+              if (response.content.isNotEmpty || activity.isNotEmpty)
+                ChatEntry(message: response, activity: activity),
             ],
             messages: [...state.messages, response],
+            steps: finished ? const [] : null,
             streaming: '',
+            phase: finished ? .done : null,
           ),
         );
-        if (response.calls.isEmpty) {
-          updateState(state.copyWith(phase: .done));
+        if (finished) {
+          unawaited(_saveActive());
           return;
         }
         for (final call in response.calls) {
@@ -454,6 +827,7 @@ class ChatViewModel extends ViewModel<ChatState> {
             ToolContext(
               idempotencyKey: executionKey,
               selectedOptions: List.unmodifiable(selected),
+              attachments: state.conversationAttachments,
               isCanceled: () => !_current(epoch),
             ),
           );

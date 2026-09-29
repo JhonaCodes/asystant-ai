@@ -28,6 +28,7 @@ class PendingReplyTransport extends FakeTransport {
     required List<AssistantMessage> messages,
     required String model,
     required String requestId,
+    List<AsystantSystemPrompt> context = const [],
   }) {
     requests++;
     if (messages.last.role == MessageRole.tool) {
@@ -97,7 +98,10 @@ void main() {
     (tester) async {
       final transport = PendingReplyTransport();
       final assistant = BackgroundAssistant([])
-        ..init(transport: transport, models: ['test']);
+        ..init(
+          transport: transport,
+          models: [AsystantModelOption.fallback('test')],
+        );
       await tester.runAsync(assistant.ensureInitialized);
       await tester.pumpWidget(ConversationHost(assistant: assistant));
       final turn = assistant.conversation.notifier.send(
@@ -148,7 +152,10 @@ void main() {
       final transport = PendingReplyTransport();
       final tool = WriteTool();
       final assistant = BackgroundAssistant([tool])
-        ..init(transport: transport, models: ['test']);
+        ..init(
+          transport: transport,
+          models: [AsystantModelOption.fallback('test')],
+        );
       await tester.runAsync(assistant.ensureInitialized);
       await tester.pumpWidget(ConversationHost(assistant: assistant));
       final turn = assistant.conversation.notifier.send('Create a draft.');
@@ -198,7 +205,10 @@ void main() {
   ) async {
     final transport = PendingReplyTransport();
     final assistant = BackgroundAssistant([])
-      ..init(transport: transport, models: ['test']);
+      ..init(
+        transport: transport,
+        models: [AsystantModelOption.fallback('test')],
+      );
     await tester.runAsync(assistant.ensureInitialized);
     await tester.pumpWidget(ConversationHost(assistant: assistant));
     final turn = assistant.conversation.notifier.send('Read private settings.');
@@ -230,7 +240,10 @@ void main() {
     (tester) async {
       final transport = PendingReplyTransport();
       final assistant = BackgroundAssistant([])
-        ..init(transport: transport, models: ['test']);
+        ..init(
+          transport: transport,
+          models: [AsystantModelOption.fallback('test')],
+        );
       await tester.runAsync(assistant.ensureInitialized);
       final viewModel = assistant.conversation.notifier;
       var notifications = 0;

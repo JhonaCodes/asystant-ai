@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
-import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 
 class ChatWelcome extends StatelessWidget {
   const ChatWelcome({super.key, required this.strings});
@@ -11,25 +11,33 @@ class ChatWelcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = AsystantTheme.of(context);
+    final metrics = AsystantMetrics.of(context);
+    final colors = Theme.of(context).colorScheme;
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: tokens.padding),
+      padding: const EdgeInsets.only(top: 8, bottom: 16),
       child: Column(
         crossAxisAlignment: .start,
         children: [
-          AsystantGlyph(
-            AsystantGlyphKind.sparkle,
-            color: Theme.of(context).colorScheme.primary,
+          Container(
+            width: 40,
+            height: 40,
+            alignment: .center,
+            decoration: BoxDecoration(
+              color: colors.primaryContainer,
+              borderRadius: BorderRadius.circular(metrics.identityRadius),
+            ),
+            child: AsystantGlyph(
+              AsystantGlyphKind.sparkle,
+              color: colors.primary,
+            ),
           ),
-          SizedBox(height: tokens.padding),
-          Text(
-            strings.welcome,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          SizedBox(height: tokens.spacing),
+          const SizedBox(height: 12),
+          Text(strings.welcome, style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 6),
           Text(
             strings.introduction,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: colors.onSurfaceVariant),
           ),
         ],
       ),

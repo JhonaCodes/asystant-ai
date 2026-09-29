@@ -19,12 +19,16 @@ class GenUiCard extends StatelessWidget {
     this.onApprove,
     this.onDeny,
     this.content,
+    this.framed = true,
   });
 
   final AssistantCard card;
 
   /// Optional host-rendered content; use only with trusted local tool results.
   final Widget? content;
+
+  /// Draws its own border; off when another card already frames it.
+  final bool framed;
 
   final AsystantStrings strings;
 
@@ -40,6 +44,18 @@ class GenUiCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
     final colors = Theme.of(context).colorScheme;
+    final contents = _CardContents(
+      content: content,
+      card: card,
+      strings: strings,
+      selected: selected,
+      onSelect: onSelect,
+      onApprove: onApprove,
+      onDeny: onDeny,
+    );
+    if (!framed) {
+      return contents;
+    }
     return Container(
       margin: EdgeInsets.only(bottom: tokens.spacing),
       padding: EdgeInsets.all(tokens.padding),
@@ -52,15 +68,7 @@ class GenUiCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(tokens.radius),
       ),
-      child: _CardContents(
-        content: content,
-        card: card,
-        strings: strings,
-        selected: selected,
-        onSelect: onSelect,
-        onApprove: onApprove,
-        onDeny: onDeny,
-      ),
+      child: contents,
     );
   }
 }
@@ -207,25 +215,12 @@ class _CardConfirmation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
-    return Column(
-      crossAxisAlignment: .start,
+    return Wrap(
+      spacing: tokens.spacing - 4,
+      runSpacing: tokens.spacing - 4,
       children: [
-        Text(
-          strings.confirmation,
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
-        SizedBox(height: tokens.spacing),
-        Wrap(
-          spacing: tokens.spacing,
-          children: [
-            FilledButton.icon(
-              onPressed: onApprove,
-              icon: const AsystantGlyph(AsystantGlyphKind.check),
-              label: Text(strings.allow),
-            ),
-            TextButton(onPressed: onDeny, child: Text(strings.deny)),
-          ],
-        ),
+        OutlinedButton(onPressed: onDeny, child: Text(strings.deny)),
+        FilledButton(onPressed: onApprove, child: Text(strings.allow)),
       ],
     );
   }

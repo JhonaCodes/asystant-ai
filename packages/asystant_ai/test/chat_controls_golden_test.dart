@@ -38,7 +38,7 @@ void main() {
       final assistant = _PreviewAssistant();
       assistant.init(
         transport: FakeTransport(),
-        models: ['openai/gpt-oss-120b'],
+        models: [AsystantModelOption.fallback('openai/gpt-oss-120b')],
       );
       await tester.runAsync(assistant.ensureInitialized);
       var closed = false;

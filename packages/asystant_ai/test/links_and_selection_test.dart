@@ -153,7 +153,7 @@ void main() {
       const MaterialApp(
         home: Scaffold(
           body: ChatTimeline(
-            revision: 1,
+            anchor: 0,
             padding: EdgeInsets.all(20),
             children: [
               AsystantMarkdownText(
@@ -222,7 +222,7 @@ void main() {
         const MaterialApp(
           home: Scaffold(
             body: ChatTimeline(
-              revision: 1,
+              anchor: 0,
               padding: EdgeInsets.all(20),
               children: [
                 AsystantMarkdownText(
@@ -276,7 +276,7 @@ void main() {
         const MaterialApp(
           home: Scaffold(
             body: ChatTimeline(
-              revision: 1,
+              anchor: 0,
               padding: EdgeInsets.all(20),
               children: [
                 AsystantMarkdownText(
@@ -323,7 +323,7 @@ void main() {
         const MaterialApp(
           home: Scaffold(
             body: ChatTimeline(
-              revision: 1,
+              anchor: 0,
               padding: EdgeInsets.all(20),
               children: [
                 GenUiCard(
@@ -354,31 +354,34 @@ void main() {
   testWidgets('new content does not scroll away from an active selection', (
     tester,
   ) async {
-    Widget timeline(int revision) => MaterialApp(
+    Widget timeline(int added) => MaterialApp(
       home: Scaffold(
         body: ChatTimeline(
-          revision: revision,
-          forceFollow: true,
+          anchor: 0,
           padding: const EdgeInsets.all(20),
           children: List.generate(
-            80 + revision,
+            80 + added,
             (index) => Text('Message number $index'),
           ),
         ),
       ),
     );
     await tester.pumpWidget(timeline(0));
+    await tester.pumpAndSettle();
+    // It opens on the latest message; the reader selects it.
     await selectText(
       tester,
-      characterPosition(tester, 'Message number 0', 'Message'),
-      characterPosition(tester, 'Message number 0', 'number 0', end: true),
+      characterPosition(tester, 'Message number 79', 'Message'),
+      characterPosition(tester, 'Message number 79', 'number 79', end: true),
     );
     final scroll = tester
         .state<ScrollableState>(find.byType(Scrollable).first)
         .position;
-    expect(scroll.pixels, 0);
+    final reading = scroll.pixels;
+    expect(reading, greaterThan(0));
     await tester.pumpWidget(timeline(1));
     await tester.pump();
-    expect(scroll.pixels, 0);
+    await tester.pump();
+    expect(scroll.pixels, reading);
   }, variant: TargetPlatformVariant.only(TargetPlatform.windows));
 }

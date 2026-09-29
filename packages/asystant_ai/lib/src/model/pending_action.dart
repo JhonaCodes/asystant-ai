@@ -19,6 +19,9 @@ class PendingAction {
 
   final List<String> selected;
 
+  /// Authorize stays off until something is selected, when selection is required.
+  bool get canApprove => !requiresSelection || selected.isNotEmpty;
+
   PendingAction copyWith({
     ToolCall? call,
     AssistantCard? card,

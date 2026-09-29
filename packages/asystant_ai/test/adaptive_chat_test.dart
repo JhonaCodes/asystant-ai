@@ -24,7 +24,10 @@ void main() {
       addTearDown(tester.view.resetPhysicalSize);
       addTearDown(tester.view.resetDevicePixelRatio);
       final assistant = TestAssistant();
-      assistant.init(transport: FakeTransport(), models: ['test']);
+      assistant.init(
+        transport: FakeTransport(),
+        models: [AsystantModelOption.fallback('test')],
+      );
       await tester.runAsync(assistant.ensureInitialized);
       await tester.pumpWidget(
         MaterialApp(
@@ -60,7 +63,10 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
     final assistant = TestAssistant();
-    assistant.init(transport: FakeTransport(), models: ['test']);
+    assistant.init(
+      transport: FakeTransport(),
+      models: [AsystantModelOption.fallback('test')],
+    );
     await tester.runAsync(assistant.ensureInitialized);
     await tester.pumpWidget(
       MaterialApp(
@@ -88,9 +94,15 @@ void main() {
   });
   test('instances never share drafts or permission state', () async {
     final a = TestAssistant(), b = TestAssistant();
-    a.init(transport: FakeTransport(), models: ['test']);
+    a.init(
+      transport: FakeTransport(),
+      models: [AsystantModelOption.fallback('test')],
+    );
     await a.ensureInitialized();
-    b.init(transport: FakeTransport(), models: ['test']);
+    b.init(
+      transport: FakeTransport(),
+      models: [AsystantModelOption.fallback('test')],
+    );
     await b.ensureInitialized();
     a.conversation.notifier.setDraft('only a');
     final turn = a.conversation.notifier.send();

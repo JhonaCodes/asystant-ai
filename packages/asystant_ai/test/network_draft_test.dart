@@ -10,6 +10,7 @@ class OfflineTransport extends FakeTransport {
     required List<AssistantMessage> messages,
     required String model,
     required String requestId,
+    List<AsystantSystemPrompt> context = const [],
   }) async* {
     yield const InferenceFailed(AssistantFailure(FailureCode.network));
   }
@@ -23,7 +24,7 @@ void main() {
       transport: OfflineTransport(),
       tools: [],
       prompts: [],
-      models: ['test'],
+      models: [AsystantModelOption.fallback('test')],
     );
     await vm.send('Preparar una clase');
     expect(vm.state.draft, 'Preparar una clase');

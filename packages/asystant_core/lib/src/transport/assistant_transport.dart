@@ -14,6 +14,9 @@ abstract class AssistantTransport {
   /// Whether the user may select another permitted model.
   bool get allowModelSelection => true;
 
+  /// The context window of [model] in tokens, when the provider reports it.
+  int? contextLengthOf(String model) => null;
+
   /// Whether the transport is currently bound to a valid host login.
   bool get isAuthenticated;
 
@@ -31,10 +34,14 @@ abstract class AssistantTransport {
   });
 
   /// Requests one inference with a unique request ID; never executes local tools.
+  ///
+  /// [context] is what the host knows right now, such as the person's saved
+  /// profile. It goes after the configured prompts, for this request only.
   Stream<InferenceEvent> infer({
     required List<AssistantMessage> messages,
     required String model,
     required String requestId,
+    List<AsystantSystemPrompt> context = const [],
   });
 
   /// Stops delivery for the current request without reversing completed effects.

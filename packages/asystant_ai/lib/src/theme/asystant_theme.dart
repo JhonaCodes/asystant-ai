@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:asystant_ai/src/theme/asystant_metrics.dart';
+
 /// Theme extension controlling chat spacing, widths and minimum action sizes.
 /// Override through ThemeData.extensions. Defaults follow the host color scheme.
 @immutable
@@ -22,6 +24,18 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     this.headerHeight = 72,
     this.identitySize = 36,
     this.composerRadius = 16,
+    this.panelMinWidth = 380,
+    this.panelMaxWidth = 560,
+    this.panelWidthFactor = .42,
+    this.panelExpandedFactor = 1.6,
+    this.bubbleMaxWidth = 440,
+    this.success,
+    this.warning,
+    this.compact = AsystantMetrics.compact,
+    this.regular = AsystantMetrics.regular,
+    this.compactBelowWidth = 480,
+    this.sideListFromWidth = 640,
+    this.sideListWidth = 280,
   });
 
   final double radius;
@@ -58,6 +72,67 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
 
   final double composerRadius;
 
+  /// Side panel width on tablets and desktops: a share of the window,
+  /// clamped between the minimum and the maximum.
+  final double panelMinWidth;
+
+  final double panelMaxWidth;
+
+  final double panelWidthFactor;
+
+  /// How much wider the panel gets when expanded.
+  final double panelExpandedFactor;
+
+  final double bubbleMaxWidth;
+
+  /// Completed steps; a green that reads on light and dark surfaces by default.
+  final Color? success;
+
+  /// Long-conversation notice.
+  final Color? warning;
+
+  /// Sizes when the chat is narrower than [compactBelowWidth].
+  final AsystantMetrics compact;
+
+  /// Sizes when the chat is at least [compactBelowWidth] wide.
+  final AsystantMetrics regular;
+
+  /// Chat width below which [compact] applies.
+  final double compactBelowWidth;
+
+  /// An expanded chat at least this wide shows the conversation list as a
+  /// column beside the messages.
+  final double sideListFromWidth;
+
+  final double sideListWidth;
+
+  AsystantMetrics metricsFor(double chatWidth) =>
+      chatWidth < compactBelowWidth ? compact : regular;
+
+  /// Resolved [success] for the current brightness.
+  Color successColor(BuildContext context) =>
+      success ??
+      switch (Theme.of(context).brightness) {
+        Brightness.light => const Color(0xFF1D6F5C),
+        Brightness.dark => const Color(0xFF7FD1B9),
+      };
+
+  /// Resolved [warning] for the current brightness.
+  Color warningColor(BuildContext context) =>
+      warning ??
+      switch (Theme.of(context).brightness) {
+        Brightness.light => const Color(0xFF8A6100),
+        Brightness.dark => const Color(0xFFE9C46A),
+      };
+
+  /// A readable color on [background], chosen from its brightness, so an icon
+  /// on a filled button stays visible with any host theme.
+  static Color contrastOn(Color background) =>
+      switch (ThemeData.estimateBrightnessForColor(background)) {
+        Brightness.dark => const Color(0xFFFFFFFF),
+        Brightness.light => const Color(0xFF111111),
+      };
+
   static AsystantTheme of(BuildContext context) =>
       Theme.of(context).extension<AsystantTheme>() ?? const AsystantTheme();
 
@@ -80,6 +155,18 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     double? headerHeight,
     double? identitySize,
     double? composerRadius,
+    double? panelMinWidth,
+    double? panelMaxWidth,
+    double? panelWidthFactor,
+    double? panelExpandedFactor,
+    double? bubbleMaxWidth,
+    Color? success,
+    Color? warning,
+    AsystantMetrics? compact,
+    AsystantMetrics? regular,
+    double? compactBelowWidth,
+    double? sideListFromWidth,
+    double? sideListWidth,
   }) => AsystantTheme(
     radius: radius ?? this.radius,
     spacing: spacing ?? this.spacing,
@@ -100,6 +187,18 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     headerHeight: headerHeight ?? this.headerHeight,
     identitySize: identitySize ?? this.identitySize,
     composerRadius: composerRadius ?? this.composerRadius,
+    panelMinWidth: panelMinWidth ?? this.panelMinWidth,
+    panelMaxWidth: panelMaxWidth ?? this.panelMaxWidth,
+    panelWidthFactor: panelWidthFactor ?? this.panelWidthFactor,
+    panelExpandedFactor: panelExpandedFactor ?? this.panelExpandedFactor,
+    bubbleMaxWidth: bubbleMaxWidth ?? this.bubbleMaxWidth,
+    success: success ?? this.success,
+    warning: warning ?? this.warning,
+    compact: compact ?? this.compact,
+    regular: regular ?? this.regular,
+    compactBelowWidth: compactBelowWidth ?? this.compactBelowWidth,
+    sideListFromWidth: sideListFromWidth ?? this.sideListFromWidth,
+    sideListWidth: sideListWidth ?? this.sideListWidth,
   );
 
   @override

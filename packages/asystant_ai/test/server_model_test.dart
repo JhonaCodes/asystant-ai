@@ -1,3 +1,4 @@
+import 'package:asystant_ai/src/model/asystant_model_option.dart';
 import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -20,7 +21,10 @@ void main() {
         transport: AssignedTransport(),
         tools: [],
         prompts: [],
-        models: ['small', 'large'],
+        models: [
+          AsystantModelOption.fallback('small'),
+          AsystantModelOption.fallback('large'),
+        ],
       );
       expect(vm.state.model, 'large');
       expect(vm.state.allowModelSelection, isFalse);

@@ -20,3 +20,6 @@ class AsystantSystemPrompt extends AssistantValue {
   @override
   Map<String, Object?> toJson() => {'id': id, 'content': content};
 }
+
+/// Reads what the host knows right now, for the next model call.
+typedef AsystantContextSource = Future<List<AsystantSystemPrompt>> Function();

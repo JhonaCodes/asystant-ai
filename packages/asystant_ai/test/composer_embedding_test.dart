@@ -18,7 +18,10 @@ void main() {
     tester,
   ) async {
     final assistant = _EmbeddedAssistant();
-    assistant.init(transport: FakeTransport(), models: ['test']);
+    assistant.init(
+      transport: FakeTransport(),
+      models: [AsystantModelOption.fallback('test')],
+    );
     await tester.runAsync(assistant.ensureInitialized);
     await tester.pumpWidget(
       MaterialApp(
@@ -55,9 +58,18 @@ void main() {
     expect(tester.getSize(find.byType(ChatHeader)).height, 72);
     final send = tester.getRect(find.byTooltip('Send'));
     final field = tester.getRect(find.byType(TextField));
-    expect(send.center.dy, closeTo(field.center.dy, 4));
-    expect(send.width, greaterThanOrEqualTo(48));
-    expect(send.height, greaterThanOrEqualTo(48));
+    // Send lives in the actions row under the text, at its trailing edge.
+    expect(send.center.dy, greaterThan(field.bottom));
+    expect(send.right, closeTo(field.right, 8));
+    // The touch area, not the smaller visible fill, is what must reach 48.
+    final touch = tester.getSize(
+      find.ancestor(
+        of: find.byTooltip('Send'),
+        matching: find.byType(IconButton),
+      ),
+    );
+    expect(touch.width, greaterThanOrEqualTo(48));
+    expect(touch.height, greaterThanOrEqualTo(48));
 
     await tester.enterText(find.byType(TextField), 'Create a branch draft');
     await tester.sendKeyDownEvent(LogicalKeyboardKey.shiftLeft);

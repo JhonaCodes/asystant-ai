@@ -28,6 +28,8 @@ void main() {
         MaterialApp(
           home: Scaffold(
             body: ChatConversation(
+              name: 'Assistant',
+              onStartNew: () {},
               state: state,
               viewModel: vm,
               strings: const AsystantStrings(spanish: false),

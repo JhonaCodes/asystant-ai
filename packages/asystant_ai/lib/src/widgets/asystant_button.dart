@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
 import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/service/asystant_file_picker.dart';
+import 'package:asystant_core/asystant_core.dart';
 import 'package:asystant_ai/src/service/asystant_link_opener.dart';
-import 'package:asystant_ai/src/theme/asystant_theme.dart';
-import 'package:asystant_ai/src/widgets/asystant_chat.dart';
+import 'package:asystant_ai/src/theme/asystant_device_type.dart';
+import 'package:asystant_ai/src/widgets/asystant_panel.dart';
+import 'package:asystant_ai/src/widgets/asystant_phone_sheet.dart';
 
-/// Default launcher. Hosts can instead mount AsystantChat in an endDrawer.
+/// Default launcher. Hosts can instead mount AsystantChat or AsystantPanel.
 class AsystantButton extends StatelessWidget {
   const AsystantButton({
     super.key,
@@ -16,6 +19,9 @@ class AsystantButton extends StatelessWidget {
     this.strings,
     this.onOpenLink,
     this.cardContentBuilder,
+    this.attachments,
+    this.onPickFiles,
+    this.opensExpanded = true,
   });
 
   final AsystantAI assistant;
@@ -28,32 +34,45 @@ class AsystantButton extends StatelessWidget {
   /// Optional HTTP(S) navigation override shared with the opened chat.
   final AsystantLinkCallback? onOpenLink;
 
+  /// The files the opened chat accepts; the assistant's policy when null.
+  final AsystantAttachmentPolicy? attachments;
+
+  /// Replaces the system file picker in the opened chat.
+  final AsystantFilePick? onPickFiles;
+
+  /// On phones, whether the chat opens over the whole screen (and the
+  /// host's bottom navigation) or as a sheet; its header switches between
+  /// the two either way.
+  final bool opensExpanded;
+
+  /// Phones get the chat from the bottom; tablets and desktops a side panel.
+  Future<void> _open(BuildContext context) =>
+      switch (context.asystantDeviceType) {
+        AsystantDeviceType.mobile => AsystantPhoneSheet.show(
+          context,
+          assistant: assistant,
+          strings: strings,
+          onOpenLink: onOpenLink,
+          cardContentBuilder: cardContentBuilder,
+          attachments: attachments,
+          onPickFiles: onPickFiles,
+          startsExpanded: opensExpanded,
+        ),
+        AsystantDeviceType.tablet ||
+        AsystantDeviceType.desktop => AsystantPanel.show(
+          context,
+          assistant: assistant,
+          strings: strings,
+          onOpenLink: onOpenLink,
+          cardContentBuilder: cardContentBuilder,
+          attachments: attachments,
+          onPickFiles: onPickFiles,
+        ),
+      };
+
   @override
   Widget build(BuildContext context) => FilledButton.tonalIcon(
-    onPressed: () => showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      useSafeArea: true,
-      showDragHandle: true,
-      constraints: BoxConstraints(
-        maxWidth: AsystantTheme.of(context).maxContentWidth,
-      ),
-      builder: (sheetContext) => FractionallySizedBox(
-        heightFactor: AsystantTheme.of(sheetContext).sheetHeightFactor,
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.viewInsetsOf(sheetContext).bottom,
-          ),
-          child: AsystantChat(
-            assistant: assistant,
-            cardContentBuilder: cardContentBuilder,
-            strings: strings,
-            onOpenLink: onOpenLink,
-            onClose: () => Navigator.of(sheetContext).pop(),
-          ),
-        ),
-      ),
-    ),
+    onPressed: () => _open(context),
     icon: const AsystantGlyph(AsystantGlyphKind.sparkle),
     label: Text(assistant.name),
   );

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 
-/// Keeps new content visible while allowing the reader to scroll older messages.
+/// Keeps the end of the conversation in view while the reader follows it.
+///
+/// It follows new messages and content that grows or moves (a reply that
+/// streams in, a photo that loads, the keyboard that opens), and always goes
+/// to the end when the person sends a message. Scrolling back to read stops
+/// it; returning to the end resumes it.
 class ChatTimeline extends StatefulWidget {
   const ChatTimeline({
     super.key,
     required this.children,
     required this.padding,
-    required this.revision,
+    required this.anchor,
     this.forceFollow = false,
   });
 
@@ -16,8 +22,11 @@ class ChatTimeline extends StatefulWidget {
 
   final EdgeInsets padding;
 
-  final Object revision;
+  /// Changes when the person sends a message or opens another conversation:
+  /// the timeline goes to the end and follows again.
+  final Object anchor;
 
+  /// Brings the end into view when it turns true, e.g. a decision waits there.
   final bool forceFollow;
 
   @override
@@ -29,24 +38,59 @@ class _ChatTimelineState extends State<ChatTimeline> {
 
   bool _hasSelection = false;
 
+  bool _follows = true;
+
+  bool _endScheduled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _showEnd();
+  }
+
   @override
   void didUpdateWidget(covariant ChatTimeline oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.revision == oldWidget.revision || _hasSelection) {
+    if (widget.anchor != oldWidget.anchor ||
+        (widget.forceFollow && !oldWidget.forceFollow)) {
+      _follows = true;
+    }
+    _showEnd();
+  }
+
+  /// The reader decides: while they scroll it does not follow, and when they
+  /// stop it follows only if they stopped at the end. Nested scrollables
+  /// (a wide table) do not count.
+  bool _onUserScroll(UserScrollNotification notification) {
+    if (notification.depth == 0) {
+      _follows =
+          notification.direction == ScrollDirection.idle &&
+          notification.metrics.extentAfter <
+              AsystantTheme.of(context).timelineFollowThreshold;
+    }
+    return false;
+  }
+
+  /// The content or the viewport changed size without a new message.
+  bool _onResize(ScrollMetricsNotification notification) {
+    if (notification.depth == 0) {
+      _showEnd();
+    }
+    return false;
+  }
+
+  /// After this frame's layout, when the timeline still follows.
+  void _showEnd() {
+    if (!_follows || _endScheduled) {
       return;
     }
-    final follow =
-        widget.forceFollow ||
-        !_scroll.hasClients ||
-        _scroll.position.extentAfter <
-            AsystantTheme.of(context).timelineFollowThreshold;
-    if (follow) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted && _scroll.hasClients && !_hasSelection) {
-          _scroll.jumpTo(_scroll.position.maxScrollExtent);
-        }
-      });
-    }
+    _endScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _endScheduled = false;
+      if (mounted && _follows && !_hasSelection && _scroll.hasClients) {
+        _scroll.jumpTo(_scroll.position.maxScrollExtent);
+      }
+    });
   }
 
   @override
@@ -59,11 +103,17 @@ class _ChatTimelineState extends State<ChatTimeline> {
   Widget build(BuildContext context) => SelectionArea(
     onSelectionChanged: (selection) =>
         _hasSelection = selection?.plainText.isNotEmpty ?? false,
-    child: ListView(
-      controller: _scroll,
-      padding: widget.padding,
-      keyboardDismissBehavior: .onDrag,
-      children: widget.children,
+    child: NotificationListener<UserScrollNotification>(
+      onNotification: _onUserScroll,
+      child: NotificationListener<ScrollMetricsNotification>(
+        onNotification: _onResize,
+        child: ListView(
+          controller: _scroll,
+          padding: widget.padding,
+          keyboardDismissBehavior: .onDrag,
+          children: widget.children,
+        ),
+      ),
     ),
   );
 }

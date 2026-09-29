@@ -11,6 +11,12 @@ enum FailureCode {
   toolFailed,
   canceled,
   limit,
+
+  /// The conversation no longer fits the model's context window.
+  contextFull,
+
+  /// The provider is receiving too many requests; try again shortly.
+  rateLimited,
 }
 
 /// A typed failure that can safely cross the transport and local-tool boundary.

@@ -27,6 +27,21 @@ class AssistantStep {
     StepPhase.failed => false,
   };
 
+  /// Finished without doing what it set out to do.
+  bool get hasIssue => switch (phase) {
+    StepPhase.declined || StepPhase.canceled || StepPhase.failed => true,
+    StepPhase.preparing ||
+    StepPhase.permission ||
+    StepPhase.running ||
+    StepPhase.completed => false,
+  };
+
+  StepOutcome get outcome => switch (this) {
+    AssistantStep(active: true) => StepOutcome.running,
+    AssistantStep(hasIssue: true) => StepOutcome.issue,
+    _ => StepOutcome.done,
+  };
+
   @override
   bool operator ==(Object other) =>
       other is AssistantStep &&
@@ -48,3 +63,6 @@ enum StepPhase {
   canceled,
   failed,
 }
+
+/// How a step looks at a glance: still going, done, or with an issue.
+enum StepOutcome { running, done, issue }

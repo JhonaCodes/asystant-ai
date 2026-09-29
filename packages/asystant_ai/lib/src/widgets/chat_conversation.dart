@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
 
-import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
-import 'package:asystant_ai/src/model/chat_entry.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
+import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
+import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
+import 'package:asystant_ai/src/widgets/chat_activity_card.dart';
+import 'package:asystant_ai/src/widgets/chat_confirmation_card.dart';
+import 'package:asystant_ai/src/widgets/chat_context_warning.dart';
 import 'package:asystant_ai/src/widgets/chat_failure_notice.dart';
 import 'package:asystant_ai/src/widgets/chat_message_bubble.dart';
 import 'package:asystant_ai/src/widgets/chat_timeline.dart';
 import 'package:asystant_ai/src/widgets/chat_welcome.dart';
 import 'package:asystant_ai/src/widgets/gen_ui_card.dart';
-import 'package:asystant_ai/src/widgets/tool_steps.dart';
-import 'package:asystant_ai/src/widgets/status_indicator.dart';
 
+/// The conversation as it is drawn: messages, what each turn did, the turn
+/// in progress, and whatever waits for the person.
 class ChatConversation extends StatelessWidget {
   const ChatConversation({
     super.key,
+    required this.name,
     required this.state,
     required this.viewModel,
     required this.strings,
+    required this.onStartNew,
     this.cardContentBuilder,
   });
+
+  /// The assistant's name, shown above its messages.
+  final String name;
 
   final ChatState state;
 
@@ -29,58 +38,119 @@ class ChatConversation extends StatelessWidget {
 
   final AsystantStrings strings;
 
+  final VoidCallback onStartNew;
+
   final AsystantCardContentBuilder? cardContentBuilder;
 
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
     return ChatTimeline(
-      revision: Object.hash(
-        state.entries.length,
-        state.streaming,
-        state.pending?.call.id,
-        state.steps,
-      ),
+      anchor: (state.conversationId, state.sentCount),
       forceFollow: state.pending != null,
-      padding: EdgeInsets.all(tokens.padding),
+      padding: AsystantMetrics.of(context).listPadding,
       children: [
-        if (state.entries.isEmpty) ChatWelcome(strings: strings),
-        ...state.entries.map(
-          (entry) => switch (entry) {
-            ChatEntry(message: final message?) => ChatMessageBubble(
-              message: message,
+        if (state.entries.isEmpty && !state.busy) ChatWelcome(strings: strings),
+        for (final entry in state.entries) ...[
+          if (entry.activity.isNotEmpty)
+            ChatActivityCard(
+              title: entry.activityHasIssues
+                  ? strings.activityWithIssues
+                  : strings.activityCompleted,
+              subtitle: strings.activityEvents,
+              icon: AsystantGlyphKind.activity,
+              tone: entry.activityHasIssues
+                  ? Theme.of(context).colorScheme.error
+                  : tokens.successColor(context),
+              steps: entry.activity,
+              strings: strings,
             ),
-            ChatEntry(card: final card?) => GenUiCard(
+          if (entry.message case final message?
+              when message.content.isNotEmpty || message.attachments.isNotEmpty)
+            ChatMessageBubble(
+              text: message.content,
+              fromUser: message.isFromUser,
+              author: message.isFromUser ? strings.you : name,
+              attachments: message.attachments,
+              strings: strings,
+            ),
+          if (entry.card case final card?)
+            GenUiCard(
               card: card,
               strings: strings,
               content: cardContentBuilder?.call(context, card),
             ),
-            _ => const SizedBox.shrink(),
-          },
-        ),
-        if (state.steps.isNotEmpty)
-          ToolSteps(steps: state.steps, strings: strings),
-        if (state.streaming.isNotEmpty) Text(state.streaming),
-        if (state.phase == ChatPhase.thinking ||
-            state.phase == ChatPhase.executing)
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: tokens.spacing),
-            child: StatusIndicator(phase: state.phase, strings: strings),
-          ),
-        if (state.pending case final pending?)
-          GenUiCard(
-            card: pending.card,
+        ],
+        if (state.isWriting)
+          ChatMessageBubble(
+            text: state.streaming,
+            fromUser: false,
+            author: name,
             strings: strings,
-            selected: pending.selected,
+          ),
+        if (state.showsLiveActivity)
+          _LiveActivity(name: name, state: state, strings: strings),
+        if (state.pending case final pending?)
+          ChatConfirmationCard(
+            pending: pending,
+            strings: strings,
             onSelect: viewModel.selectOption,
-            onApprove: pending.requiresSelection && pending.selected.isEmpty
-                ? null
-                : () => viewModel.approve(true),
-            onDeny: () => viewModel.approve(false),
+            onDecide: viewModel.approve,
+            cardContentBuilder: cardContentBuilder,
           ),
         if (state.failure case final failure?)
-          ChatFailureNotice(failure: failure, strings: strings),
+          ChatFailureNotice(
+            failure: failure,
+            strings: strings,
+            onStartNew: state.needsNewConversation ? onStartNew : null,
+          ),
+        if (state.showsContextWarning)
+          ChatContextWarning(strings: strings, onStartNew: onStartNew),
       ],
+    );
+  }
+}
+
+class _LiveActivity extends StatelessWidget {
+  const _LiveActivity({
+    required this.name,
+    required this.state,
+    required this.strings,
+  });
+
+  final String name;
+
+  final ChatState state;
+
+  final AsystantStrings strings;
+
+  @override
+  Widget build(BuildContext context) {
+    final (title, icon, closing) = switch (state.turnActivity) {
+      TurnActivity.thinking => (
+        strings.thinkingAs(name),
+        AsystantGlyphKind.thinking,
+        strings.analyzing,
+      ),
+      TurnActivity.writing => (
+        strings.writingAs(name),
+        AsystantGlyphKind.writing,
+        strings.drafting,
+      ),
+      TurnActivity.usingTool => (
+        strings.usingToolAs(name),
+        AsystantGlyphKind.tool,
+        null,
+      ),
+    };
+    return ChatActivityCard(
+      title: title,
+      subtitle: strings.liveActivity,
+      icon: icon,
+      steps: state.steps,
+      strings: strings,
+      live: true,
+      closingStep: closing,
     );
   }
 }

@@ -42,7 +42,7 @@ void main() {
       transport: FakeTransport(),
       tools: [tool],
       prompts: [],
-      models: ['test'],
+      models: [AsystantModelOption.fallback('test')],
     );
     final turn = vm.send('choose');
     await settle();

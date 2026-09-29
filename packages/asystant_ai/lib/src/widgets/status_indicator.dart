@@ -54,6 +54,8 @@ class StatusIndicator extends StatelessWidget {
           Flexible(
             child: Text(
               strings.phase(phase),
+              maxLines: 1,
+              overflow: .ellipsis,
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),

@@ -24,6 +24,7 @@ class FakeTransport extends AssistantTransport {
     required List<AssistantMessage> messages,
     required String model,
     required String requestId,
+    List<AsystantSystemPrompt> context = const [],
   }) async* {
     if (messages.last.role == MessageRole.user) {
       yield const InferenceCompleted(
@@ -98,7 +99,7 @@ void main() {
         transport: transport,
         tools: [tool],
         prompts: [],
-        models: ['test'],
+        models: [AsystantModelOption.fallback('test')],
       );
       final turn = vm.send('create');
       await settle();
@@ -124,7 +125,7 @@ void main() {
         transport: transport,
         tools: [tool],
         prompts: [],
-        models: ['test'],
+        models: [AsystantModelOption.fallback('test')],
       );
       final turn = vm.send('create');
       await settle();
@@ -149,7 +150,7 @@ void main() {
       transport: transport,
       tools: [tool],
       prompts: [],
-      models: ['test'],
+      models: [AsystantModelOption.fallback('test')],
     );
     final turn = vm.send('create');
     await settle();
