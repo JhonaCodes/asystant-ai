@@ -411,6 +411,35 @@ class ChatViewModel extends ViewModel<ChatState> {
     );
   }
 
+  /// Keeps the conversation on screen in the store, then reads the list again
+  /// and replaces the one shown with exactly what the store answers.
+  ///
+  /// For hosts whose store answers per context of their own (one list per
+  /// open document, say): after switching the context, call this, then
+  /// [openConversation] or [newConversation]. The conversation on screen
+  /// stays until then.
+  Future<void> reloadConversations() async {
+    if (!canManageConversations) {
+      return;
+    }
+    await _saveActive();
+    final epoch = _epoch;
+    final saved = await _store.list(_scope);
+    if (!_current(epoch) || !canManageConversations) {
+      return;
+    }
+    saved.when(
+      ok: (summaries) => updateState(
+        state.copyWith(
+          conversations: summaries.sorted(
+            (a, b) => b.updatedAt.compareTo(a.updatedAt),
+          ),
+        ),
+      ),
+      err: (_) {},
+    );
+  }
+
   /// Deletes [id]; deleting the one on screen also clears it.
   Future<void> deleteConversation(String id) async {
     if (!canManageConversations) {

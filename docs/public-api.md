@@ -282,8 +282,9 @@ For a custom chat UI, call `ensureInitialized()` when that UI opens. Concurrent 
 share initialization. Draw it from `assistant.conversation`, a
 `ReactiveNotifierViewModel<ChatViewModel, ChatState>`: `ChatState` holds the entries,
 the steps of the running turn, the streamed text, the pending permission and the
-failure, and `ChatViewModel` exposes `send`, `cancel`, `approve` and
-`openConversation`. Network failures remain inside the assistant UI and do not
+failure, and `ChatViewModel` exposes `send`, `cancel`, `approve`,
+`openConversation`, `newConversation`, `deleteConversation` and
+`reloadConversations`. Network failures remain inside the assistant UI and do not
 prevent the host app from starting.
 
 Network I/O uses asynchronous Dart APIs. An isolate is unnecessary for this work and
@@ -444,6 +445,8 @@ Three `AsystantChat` parameters put the host's own state inside the chat, for an
 - `headerContent`: a widget under the header, such as what the assistant is working on right now (the open document, the current stage). It stays in place while the conversation scrolls.
 - `hostCards`: cards pinned after the conversation, each an `AsystantHostCard` with an `AssistantCard` (title, Markdown body, optional chart) and its `actions`, `AsystantCardAction`s with a `label`, an `onPressed` callback (null draws the button disabled) and `isPrimary`. Use them for a decision the host's workflow waits for, or for a notice. The card reflects host state: rebuild the chat with the cards that apply now, so a decision taken elsewhere in the app removes its card here too. A card with an enabled action stands out like a permission request and brings the end of the conversation into view.
 - `managesConversations`: `false` hides the conversation list, New conversation and Delete, and the "start a new one" actions of the context notices. Use it when the host keeps one conversation per context (for example one per open document) and switches it itself with `openConversation`.
+
+  A host can also keep **several conversations per context** and leave `managesConversations` on: its `AsystantConversationStore` answers `list` for the context open now, and when the context changes the host calls `assistant.conversation.notifier.reloadConversations()`, which keeps the conversation on screen in the store and replaces the list with exactly what the store answers, newest first. Then it opens one with `openConversation` (the most recent, for example) or starts one with `newConversation`. A write for a conversation must still reach the context it belongs to, even if the host already switched: resolve it from the conversation id, not from the context open now.
 
 ```dart
 AsystantChat(
