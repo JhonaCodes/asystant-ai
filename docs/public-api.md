@@ -33,6 +33,22 @@ The gateway exchanges a ticket for an opaque credential valid for at most ten mi
 
 Call `GatewayTransport.revokeSession()` before discarding a logged-in transport when server-side revocation is required. Local `dispose()` alone does not revoke a remote credential. The product must use a new login ID after revocation.
 
+## Transports
+
+Every transport implements `AssistantTransport`; the chat, permissions and tool loop do not depend on which one is used. Each `infer` streams `TextDelta`s, an optional `UsageReported` and one `InferenceCompleted` whose `message.calls` holds the proposed tool calls, or an `InferenceFailed`. A transport never executes a tool.
+
+- `OpenRouterTransport` calls OpenRouter with a short-lived, budget-limited key that the host backend obtains from asystant-api.
+- `ClaudeCliTransport` (desktop only) runs the Claude Code CLI installed on the user's machine with their own subscription, for local apps without a login or API key. It is always authenticated with a fixed `identity`.
+
+```dart
+assistant.init(
+  transport: ClaudeCliTransport(identity: 'local'),
+  models: const [AsystantModelOption(id: 'sonnet', label: 'Sonnet')],
+);
+```
+
+`ClaudeCliTransport` makes one stateless `claude -p` run per inference: the whole conversation, tool calls and results included, goes on stdin, and the system prompt, with the tool catalog, goes through a private temporary file. No prompt text is placed on the command line. The CLI keeps no session (`--no-session-persistence`), because the SDK owns and may rewrite the history. Tools are declared in the system prompt, and the model writes each call as a `<tool_call>` JSON block that the transport turns into a `ToolCall`, so the SDK cannot tell it from a native tool call. The CLI's own tools, MCP servers and the user's Claude Code customizations are disabled. A missing binary fails with `FailureCode.unavailable` and a `detail` that says what to install; on the web, iOS and Android every inference fails the same way. See the [asystant_core guide](../packages/asystant_core/README.md#claude-code-cli-transport-desktop) for models, isolation, attachments and cancellation.
+
 ## Local tools
 
 `AsystantTool` exposes `definition`, `preview`, `execute`, `requiresConfirmation`, `requiresSelection` and `isAvailable`. `TypedAsystantTool<T>` adds a single domain decoder and typed preview/execution methods. Schema validation rejects unknown fields and wrong scalar types before execution.

@@ -1,4 +1,5 @@
-/// Typed local tools, protocol models and an OpenRouter transport for Dart.
+/// Typed local tools, protocol models and OpenRouter and Claude Code CLI
+/// transports for Dart.
 library;
 
 export 'package:result_controller/result_controller.dart';
@@ -25,6 +26,9 @@ export 'package:asystant_core/src/tool/tool_outcome.dart';
 export 'package:asystant_core/src/tool/tool_registry.dart';
 export 'package:asystant_core/src/tool/typed_asystant_tool.dart';
 export 'package:asystant_core/src/transport/assistant_transport.dart';
+export 'package:asystant_core/src/transport/claude_cli_launcher.dart';
+export 'package:asystant_core/src/transport/claude_cli_launcher_platform.dart';
+export 'package:asystant_core/src/transport/claude_cli_transport.dart';
 export 'package:asystant_core/src/transport/inference_event.dart';
 export 'package:asystant_core/src/transport/open_router_credential.dart';
 export 'package:asystant_core/src/transport/open_router_transport.dart';

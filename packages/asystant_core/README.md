@@ -54,6 +54,41 @@ Implement `SessionSource`, or use `CallbackSessionSource`, to provide the curren
 
 `GatewayTransport(baseUri: yourGatewayUri, sessionSource: yourSession)` exchanges those tickets for short-lived credentials, renews them before expiry and registers the tools. `initialize(models: [])` delegates model selection to the server. The server may assign a fixed model or permit a bounded selection. Keep one transport per assistant; call `dispose()` when its owner is destroyed.
 
+## Claude Code CLI transport (desktop)
+
+`ClaudeCliTransport` runs the [Claude Code](https://docs.claude.com/en/docs/claude-code/setup) CLI installed on the user's machine, with their own Claude subscription. There is no API key, login flow or backend: the transport is always authenticated, with a fixed `identity` (default `'local'`) and no session changes.
+
+```dart
+final transport = ClaudeCliTransport(
+  identity: 'local',
+  effort: ClaudeCliEffort.medium, // optional `--effort`
+);
+
+// With asystant_ai; an empty list offers ClaudeCliTransport.defaultModels.
+assistant.init(
+  transport: transport,
+  models: const [
+    AsystantModelOption(id: 'sonnet', label: 'Sonnet'),
+    AsystantModelOption(id: 'opus', label: 'Opus'),
+  ],
+);
+```
+
+- **Install**: `npm install -g @anthropic-ai/claude-code` (or the native installer), then run `claude` once in a terminal to sign in. `executable` defaults to `claude`, looked up on `PATH` and then in `~/.local/bin`, `~/.claude/local`, `/opt/homebrew/bin` and `/usr/local/bin`, because macOS apps started from Finder get a minimal `PATH`. Pass an absolute path to override it. A missing binary fails the inference with `FailureCode.unavailable` and a `detail` that says what to install; a signed-out CLI fails with `FailureCode.authentication`.
+- **Models**: with no models, `initialize` offers `ClaudeCliTransport.defaultModels` (`sonnet`, `opus`, `haiku`, the CLI's aliases for the latest model of each family). Any alias or full model name the CLI accepts can be passed instead; availability depends on the subscription.
+- **Platforms**: desktop only (macOS, Linux, Windows). On the web the package still compiles, through a conditional import, and every inference fails with `FailureCode.unavailable`; the same happens on iOS and Android. A macOS app must not run in the App Sandbox, where processes cannot be started.
+
+How it works:
+
+- **One stateless run per inference.** Each `infer` is one `claude -p` run with `--no-session-persistence`. The whole conversation, including tool calls and results, is sent every time, just as the SDK passes it. The CLI's `--resume` is deliberately not used: the SDK owns the history and may rewrite it (a canceled turn gets synthetic tool results, conversations are switched or cleared), so a session kept inside the CLI would drift from it. Resending costs input tokens; the CLI's prompt caching absorbs most of the stable prefix.
+- **Tools through the prompt.** `claude -p` cannot register external tools without an MCP server, so the system prompt lists the host's tools as JSON schemas and asks the model to write each call as `<tool_call>{"name": …, "arguments": {…}}</tool_call>`. The transport hides those blocks from the streamed text and returns them as `ToolCall`s in `InferenceCompleted.message.calls`, the same shape as `OpenRouterTransport`, so the SDK's permission and tool loop is unchanged. Tool results go back in the next run's transcript, matched by `call_id`. A malformed block fails the inference with `FailureCode.protocol`; it is never guessed. Unlike a native tool channel, calls depend on the model following the format.
+- **Isolation.** `--tools ""` disables the CLI's own tools (Bash, Edit, Read, web access…), `--strict-mcp-config` disables every MCP server, and `--safe-mode` keeps the user's `CLAUDE.md`, memory, hooks, skills and plugins out of the assistant. Each run works in a private temporary directory, so project files of the app's working directory are not read either.
+- **No prompt on the command line.** A command line is readable by any process on the machine. The system prompt (security baseline, application prompts, per-request context and the tool catalog) goes through `--system-prompt-file` in a private (0700) temporary directory, deleted when the CLI process exits (if the app itself is killed mid-run, it stays in the user's private temporary folder); the transcript goes on stdin. Failures keep only a category and a short excerpt of the CLI's error, never the prompt.
+- **Streaming and cancellation.** Text streams as `TextDelta` (`--include-partial-messages`), followed by `UsageReported` and `InferenceCompleted`. `cancel()` and `dispose()` kill the process (SIGTERM, then SIGKILL after a second). A run silent for longer than `idleTimeout` (two minutes by default) fails with `FailureCode.network`.
+- **Attachments.** Text files travel inside the transcript (up to 60,000 characters each); other files are announced by name and id so a registered tool can process them. Images and PDFs are not sent to the model.
+
+Tests can inject a `ClaudeCliLauncher` that replays recorded output, so the binary is not needed.
+
 ## Reference API
 
 You can use the [Rust gateway](https://github.com/JhonaCodes/asystant-api) as a deployment-ready starting point or as a guide for implementing your own compatible API. Read its [HTTP contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml), [deployment guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/deployment.md) and [security controls](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md). It is self-hosted software; this package does not include a hosted service or provider credits.

@@ -1,3 +1,7 @@
+## Unreleased
+
+- `ClaudeCliTransport`: a desktop transport over the local Claude Code CLI, using the user's subscription without an API key. Tools are declared in the system prompt and returned as regular `ToolCall`s; the CLI's own tools, MCP servers and user customizations are disabled. Compiles on the web, where it reports the platform as unsupported.
+
 ## 0.2.0
 
 - Deferred Flutter initialization: `init()` stores configuration; the mounted chat connects after its first frame. Headless clients await `ensureInitialized()` explicitly.
