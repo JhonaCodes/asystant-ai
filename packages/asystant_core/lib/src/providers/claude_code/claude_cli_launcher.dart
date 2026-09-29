@@ -7,7 +7,8 @@ import 'package:asystant_core/src/model/assistant_failure.dart';
 ///
 /// [arguments] never carry prompt text: a command line is readable by any
 /// process on the machine. The launcher delivers [systemPrompt] through a
-/// private temporary file (`--system-prompt-file`) and [prompt] on stdin.
+/// private temporary file (`--system-prompt-file`) and [prompt] on stdin
+/// (for an inference, one `--input-format stream-json` NDJSON line).
 /// [toString] leaves both out, so an invocation cannot leak them into logs.
 class ClaudeCliInvocation {
   const ClaudeCliInvocation({

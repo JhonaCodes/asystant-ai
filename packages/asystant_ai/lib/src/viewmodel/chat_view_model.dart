@@ -847,6 +847,9 @@ class ChatViewModel extends ViewModel<ChatState> {
     };
     var failure = resolved.errorOrNull?.detail ?? '';
     var endsTurn = false;
+    // Images the tool returned for the model to look at; they stay on the
+    // result message and each transport sends them its own way.
+    var images = const <AsystantAttachment>[];
     _step(
       executionKey,
       StepPhase.preparing,
@@ -912,6 +915,9 @@ class ChatViewModel extends ViewModel<ChatState> {
               );
               outcome = result.modelContent;
               endsTurn = result.endsTurn;
+              images = List.unmodifiable(
+                result.images.where((image) => image.isImage),
+              );
               if (result.card case final card?) {
                 updateState(
                   state.copyWith(
@@ -951,7 +957,12 @@ class ChatViewModel extends ViewModel<ChatState> {
       state.copyWith(
         messages: [
           ...state.messages,
-          AssistantMessage(role: .tool, content: outcome, callId: call.id),
+          AssistantMessage(
+            role: .tool,
+            content: outcome,
+            callId: call.id,
+            attachments: images,
+          ),
         ],
       ),
     );

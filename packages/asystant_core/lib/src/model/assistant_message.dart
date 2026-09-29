@@ -23,7 +23,9 @@ class AssistantMessage extends AssistantValue {
 
   final String callId;
 
-  /// Files the person attached to this message.
+  /// Files the person attached to this message or, on a [MessageRole.tool]
+  /// result, the images the tool returned (`ToolOutcome.images`). Each
+  /// transport sends them in its provider's format.
   final List<AsystantAttachment> attachments;
 
   bool get isFromUser => role == MessageRole.user;

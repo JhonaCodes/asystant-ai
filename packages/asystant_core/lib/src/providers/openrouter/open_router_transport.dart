@@ -108,6 +108,12 @@ class OpenRouterTransport extends AssistantTransport {
   @override
   int? contextLengthOf(String model) => _contextLengths[model];
 
+  /// As OpenRouter declares for [model] (`input_modalities`); false while
+  /// that is unknown.
+  @override
+  bool supportsImageInput(String model) =>
+      _inputModalities[model]?.contains('image') ?? false;
+
   @override
   Future<Result<List<String>, AssistantFailure>> initialize({
     required List<ToolDefinition> tools,
@@ -383,7 +389,7 @@ class OpenRouterTransport extends AssistantTransport {
       'messages': [
         for (final prompt in [..._prompts, ...context])
           {'role': 'system', 'content': prompt.content},
-        for (final message in messages) codec.encode(message),
+        ...codec.encodeAll(messages),
       ],
       if (declared.isNotEmpty) 'tools': declared,
     };

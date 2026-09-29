@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:asystant_core/asystant_core.dart';
 import 'package:test/test.dart';
@@ -140,6 +141,102 @@ void main() {
     expect(invocation.arguments.any((a) => a.contains('Repite')), isFalse);
     expect(invocation.prompt, contains('Repite hola'));
     expect(invocation.systemPrompt, contains('"name":"echo"'));
+  });
+
+  test('the images of the person and of a tool travel as image blocks on '
+      'stdin, labelled in the transcript', () async {
+    final launcher = _RecordedLauncher([
+      {
+        'type': 'result',
+        'subtype': 'success',
+        'is_error': false,
+        'stop_reason': 'end_turn',
+        'result': 'Rojo.',
+      },
+    ]);
+    final transport = ClaudeCliTransport(launcher: launcher);
+    addTearDown(transport.dispose);
+    await transport.initialize(
+      tools: const [_echo],
+      prompts: const [],
+      models: const [],
+    );
+    final photo = AsystantAttachment.fromBytes(
+      bytes: Uint8List.fromList([0xFF, 0xD8, 0xFF]),
+      filename: 'leaf.jpg',
+    );
+    final frame = AsystantAttachment.fromBytes(
+      bytes: Uint8List.fromList([0x89, 0x50, 0x4E, 0x47]),
+      filename: 'frame.png',
+    );
+
+    await transport
+        .infer(
+          messages: [
+            AssistantMessage(
+              role: MessageRole.user,
+              content: 'Look at it',
+              attachments: [photo],
+            ),
+            AssistantMessage(
+              role: MessageRole.assistant,
+              content: '',
+              calls: [
+                ToolCall(
+                  id: 'call_1',
+                  name: 'echo',
+                  arguments: ToolArguments.fromJson(const {'text': 'x'}),
+                ),
+              ],
+            ),
+            AssistantMessage(
+              role: MessageRole.tool,
+              content: 'Rendered',
+              callId: 'call_1',
+              attachments: [frame],
+            ),
+          ],
+          model: 'sonnet',
+          requestId: 't1-1',
+        )
+        .drain<void>();
+
+    final invocation = launcher.invocations.single;
+    expect(
+      invocation.arguments,
+      containsAllInOrder(['--input-format', 'stream-json']),
+    );
+    // One NDJSON user message, as `--input-format stream-json` expects.
+    final line = jsonDecode(invocation.prompt) as Map<String, Object?>;
+    expect(line['type'], 'user');
+    final content =
+        (line['message'] as Map<String, Object?>)['content'] as List<Object?>;
+    final transcript =
+        (content.first as Map<String, Object?>)['text'] as String;
+    expect(transcript, contains(r'"image":"Image 1"'));
+    expect(transcript, contains(r'"call_id":"call_1"'));
+    expect(transcript, contains(r'"image":"Image 2"'));
+    expect(content.skip(1), [
+      {'type': 'text', 'text': 'Image 1: "leaf.jpg"'},
+      {
+        'type': 'image',
+        'source': {
+          'type': 'base64',
+          'media_type': 'image/jpeg',
+          'data': base64Encode(photo.bytes),
+        },
+      },
+      {'type': 'text', 'text': 'Image 2: "frame.png"'},
+      {
+        'type': 'image',
+        'source': {
+          'type': 'base64',
+          'media_type': 'image/png',
+          'data': base64Encode(frame.bytes),
+        },
+      },
+    ]);
+    expect(transport.supportsImageInput('sonnet'), isTrue);
   });
 
   test(

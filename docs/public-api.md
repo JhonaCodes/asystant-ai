@@ -70,7 +70,14 @@ Each `infer` streams `TextDelta`s, an optional `UsageReported` and one `Inferenc
 
 `OpenRouterProvider` sends `appName` as `X-Title` and `appUrl` as `HTTP-Referer`, so usage is attributed to the app in OpenRouter. `baseUri` overrides the API root for an OpenRouter-compatible proxy. `maxOutputTokens` and `temperature` are passed through when set. `pdfEngine` chooses how attached PDFs are read (`pdf-text` by default, `mistral-ocr` or `native`). On initialization it reads each permitted model's context window, which feeds the chat's context meter, and the input types it accepts. HTTP failures map to typed `FailureCode`s: 401/403 to `authentication`, 402 to `budget`, 429 to `rateLimited`, a context overflow to `contextFull`, and 5xx to `unavailable`. `verify()` asks OpenRouter about the key (`GET /api/v1/key`).
 
-`ClaudeCodeProvider` makes one stateless `claude -p` run per inference: the whole conversation, tool calls and results included, goes on stdin, and the system prompt, with the per-request context and the tool catalog, goes through a private temporary file. No prompt text is placed on the command line. The CLI keeps no session (`--no-session-persistence`), because the SDK owns and may rewrite the history. Tools are declared in the system prompt, and the model writes each call as a `<tool_call>` JSON block that the transport turns into a `ToolCall`, so the SDK cannot tell it from a native tool call. The CLI's own tools, MCP servers and the user's Claude Code customizations are disabled. `verify()` runs `claude --version` and `claude auth status --json`; `modelCatalog()` reads `claude --help`. A missing binary fails with `FailureCode.unavailable` and a `detail` that says what to install; on the web, iOS and Android every call fails the same way. See the [asystant_core guide](../packages/asystant_core/README.md#claude-code-desktop) for models, isolation, attachments and cancellation.
+`ClaudeCodeProvider` makes one stateless `claude -p` run per inference: the whole conversation, tool calls, results and images included, goes on stdin as one stream-json message, and the system prompt, with the per-request context and the tool catalog, goes through a private temporary file. No prompt text is placed on the command line. The CLI keeps no session (`--no-session-persistence`), because the SDK owns and may rewrite the history. Tools are declared in the system prompt, and the model writes each call as a `<tool_call>` JSON block that the transport turns into a `ToolCall`, so the SDK cannot tell it from a native tool call. The CLI's own tools, MCP servers and the user's Claude Code customizations are disabled. `verify()` runs `claude --version` and `claude auth status --json`; `modelCatalog()` reads `claude --help`. A missing binary fails with `FailureCode.unavailable` and a `detail` that says what to install; on the web, iOS and Android every call fails the same way. See the [asystant_core guide](../packages/asystant_core/README.md#claude-code-desktop) for models, isolation, attachments and cancellation.
+
+### Images
+
+Images reach the model by the same path whether the person attached them or a tool returned them (`ToolOutcome.images`): they are the `attachments` of an `AssistantMessage`, and each transport translates them. `transport.supportsImageInput(model)` says whether a model sees them; when it does not, each image is sent as the text of its `AsystantAttachment.imageUnavailableNote`, `[Image not available for this provider: "frame.png" (image/png, 1234 bytes, id …)]`, so the model knows an image was there and can pass its id to a tool.
+
+- `OpenRouterProvider`: supported when the model's `input_modalities` include `image`. The person's images are `image_url` parts of their message. OpenRouter's API only accepts a string as the content of a `tool` message, and content parts such as `image_url` only in `user`, `assistant` and `system` messages ([API reference](https://openrouter.ai/docs/api-reference/overview)), so a tool's images cannot go inside its result: the result says they follow, and one `user` message placed after the last consecutive tool result carries them, each labelled with its `call_id`. It goes after the whole run of results because OpenAI-compatible APIs reject anything between the results of one response.
+- `ClaudeCodeProvider`: supported for every model. stdin is one `--input-format stream-json` user message: the transcript as text, then one base64 `image` block per image, labelled as the transcript names it. PNG, JPEG, GIF and WebP up to 5 MB are sent; other images as their note.
 
 ## Adding a provider
 
@@ -80,6 +87,8 @@ A provider is self-contained: its folder holds everything it needs, and adding o
 2. **Declare its variant** in `providers/<name>/<name>_provider.dart`, starting with `part of '../asystant_provider.dart';`: a `final class <Name>Provider extends AsystantProvider` with its settings, `name` and `createTransport()`. Dart requires the variants of a sealed class to be in its library, hence the `part`; a part cannot import, so its types come from the import added in step 4.
 3. **Write its export file**, `providers/<name>/<name>.dart`, exporting the provider's public types (its transport and anything a host configures).
 4. **Register it** with two lines in `providers/asystant_provider.dart`, `import 'package:asystant_core/src/providers/<name>/<name>.dart';` and `part '<name>/<name>_provider.dart';`, and one in `lib/asystant_core.dart`, `export 'package:asystant_core/src/providers/<name>/<name>.dart';`. `asystant_ai` re-exports `asystant_core`, so apps see the new provider after upgrading, with no other change.
+
+**Images.** Messages carry images as `attachments` (see [Images](#images)): the person's on `user` messages, a tool's (`ToolOutcome.images`) on `tool` results. A transport whose provider accepts images sends them in that provider's format and overrides `supportsImageInput(model)` to return true for the models that see them. One that does not keeps the default, false, and sends each image as the text of `AsystantAttachment.imageUnavailableNote` instead, never silently dropping it. Nothing outside the provider's folder changes either way.
 
 A variant without `createTransport()` does not compile, and nothing else dispatches on the provider type, so there is no switch to extend. Hosts that `switch` over `AsystantProvider` get a compile error listing the new variant, which is the intended signal.
 
@@ -124,6 +133,23 @@ A `ToolField` is a scalar (`string`, `integer`, `number`, `boolean`), a list of 
 - `data`: a structured result for the host, such as the ids a tool created. It stays on the step (`AssistantStep.data`) and is never sent to the model.
 - `card`: a genUI card shown in the chat.
 - `endsTurn`: ends the person's turn after this tool. The model is not called again and the remaining calls of that response are answered without running, so the next word belongs to the person. Use it when a tool opens a question only the person can answer, such as a product approval, and say so in `modelContent`.
+- `images`: images the model looks at with the result, such as a frame the app just rendered so the model can review its own work. Each is an `AsystantAttachment` with PNG, JPEG, GIF or WebP bytes and its `mimeType` (`AsystantAttachment.fromBytes(bytes: png, filename: 'frame.png')`); non-image files are ignored. They stay in the conversation as the `attachments` of the tool's result message, like the person's own attachments, and every provider sends them in its own format (see [Images](#images)).
+
+```dart
+@override
+Future<Result<ToolOutcome, AssistantFailure>> execute(
+  ToolArguments arguments,
+  ToolContext context,
+) async {
+  final png = await canvas.renderPng(); // Host-owned renderer.
+  return Ok(
+    ToolOutcome(
+      modelContent: 'Rendered the current frame; the image is attached.',
+      images: [AsystantAttachment.fromBytes(bytes: png, filename: 'frame.png')],
+    ),
+  );
+}
+```
 
 Each executed call is an `AssistantStep` with the `toolName`, when it `startedAt`, the `detail` of a failure and the tool's `data`. A turn's steps end up in `ChatEntry.activity`, which a conversation store keeps.
 

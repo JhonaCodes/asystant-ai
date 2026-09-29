@@ -53,6 +53,12 @@ class AsystantAttachment {
   /// The file's text for [isText] files; invalid bytes are replaced.
   String get text => utf8.decode(bytes, allowMalformed: true);
 
+  /// What a transport sends instead of an image its model cannot see, so
+  /// the model knows an image was there and can still refer to it by id.
+  String get imageUnavailableNote =>
+      '[Image not available for this provider: "$filename" ($mimeType, '
+      '$size bytes, id $id)]';
+
   static String extensionOf(String filename) {
     final dot = filename.lastIndexOf('.');
     return dot < 0 || dot == filename.length - 1

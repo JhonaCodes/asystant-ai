@@ -1,5 +1,6 @@
 import 'package:asystant_core/src/model/assistant_card.dart';
 import 'package:asystant_core/src/model/assistant_value.dart';
+import 'package:asystant_core/src/model/asystant_attachment.dart';
 
 /// A local execution result, with model-facing text and an optional user-facing card.
 class ToolOutcome extends AssistantValue {
@@ -9,6 +10,7 @@ class ToolOutcome extends AssistantValue {
     this.summary,
     this.data = const {},
     this.endsTurn = false,
+    this.images = const [],
   });
 
   /// What the model reads as the tool's result.
@@ -32,6 +34,18 @@ class ToolOutcome extends AssistantValue {
   /// say that the turn stops there.
   final bool endsTurn;
 
+  /// Images the model looks at together with [modelContent], such as a
+  /// frame the app just rendered so the model can review it. PNG, JPEG,
+  /// GIF or WebP bytes, each an [AsystantAttachment] with its `mimeType`
+  /// (see [AsystantAttachment.fromBytes]); other types are ignored.
+  ///
+  /// They stay in the conversation as the attachments of the tool's result
+  /// message, and every provider sends them in its own format. A model that
+  /// cannot see images receives [AsystantAttachment.imageUnavailableNote]
+  /// instead; see `AssistantTransport.supportsImageInput`. Like the
+  /// person's attachments, their bytes are never serialized.
+  final List<AsystantAttachment> images;
+
   ToolOutcome copyWith({
     String? modelContent,
     AssistantCard? card,
@@ -39,12 +53,14 @@ class ToolOutcome extends AssistantValue {
     String? summary,
     Map<String, Object?>? data,
     bool? endsTurn,
+    List<AsystantAttachment>? images,
   }) => ToolOutcome(
     modelContent: modelContent ?? this.modelContent,
     card: clearCard ? null : card ?? this.card,
     summary: summary ?? this.summary,
     data: Map.unmodifiable(data ?? this.data),
     endsTurn: endsTurn ?? this.endsTurn,
+    images: List.unmodifiable(images ?? this.images),
   );
 
   factory ToolOutcome.fromJson(Map<String, Object?> json) => ToolOutcome(
@@ -68,5 +84,7 @@ class ToolOutcome extends AssistantValue {
     'summary': summary,
     'data': data,
     'ends_turn': endsTurn,
+    if (images.isNotEmpty)
+      'images': images.map((image) => image.toJson()).toList(),
   };
 }

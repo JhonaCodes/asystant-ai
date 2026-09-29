@@ -1,5 +1,6 @@
 ## Unreleased
 
+- The images a tool returns (`ToolOutcome.images`) are kept on its result message and reach the model with every provider (see asystant_core).
 - `AsystantTool.isAvailable` is read before every model call, not only at initialization: the model is offered the tools available at that moment, so a host can scope them to what it shows.
 - A tool's failure `detail`, and the reason a call was rejected, reach the model with the tool result, so it can correct the call.
 - `ToolOutcome.endsTurn` ends the turn after that tool (see asystant_core).

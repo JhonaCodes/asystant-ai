@@ -1,5 +1,9 @@
 ## Unreleased
 
+- `ToolOutcome.images`: a tool can return images (PNG, JPEG, GIF, WebP bytes as `AsystantAttachment`s) for the model to look at, such as a rendered frame for visual self-review. They are kept as the `attachments` of the tool's result message, next to the person's own attachments.
+- `AssistantTransport.supportsImageInput(model)`: a provider-neutral capability, false by default. A transport that cannot send images sends `AsystantAttachment.imageUnavailableNote` instead. Custom transports that send images override it.
+- `OpenRouterTransport`: a tool's images follow its results as one `user` message after the last consecutive tool result, labelled with the `call_id`, because OpenRouter only accepts text in `tool` messages. Images for a model without image input are sent as the note.
+- `ClaudeCliTransport`: stdin is now one `--input-format stream-json` user message, the transcript followed by base64 `image` blocks, so the person's images and a tool's images reach the model; previously images were only announced by name. `ClaudeCliProtocol.input` builds it. Tools, context, `endsTurn`, cancellation and the isolation flags are unchanged.
 - `ToolOutcome.endsTurn`: a tool can end the person's turn (for example, a product approval that only the person can answer). The chat does not call the model again and answers the other calls of that response without running them.
 - `ToolOutcome.summary` (a one-line account of what was done, shown instead of the preview title once the tool completes) and `ToolOutcome.data` (structured result for the host, never sent to the model).
 - `ToolField.options` declares the accepted values of a string (schema `enum`), and `ToolFieldKind.objects` with `ToolField.fields` declares a list of objects with their own fields. Both providers send them in the tool schema.

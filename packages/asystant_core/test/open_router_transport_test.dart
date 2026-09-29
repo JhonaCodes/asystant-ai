@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:asystant_core/asystant_core.dart';
 import 'package:test/test.dart';
@@ -41,6 +42,19 @@ class _LocalOpenRouter {
         'data: {"id":"g","choices":[{"index":0,"delta":{"content":""},'
         '"finish_reason":"stop"}]}\n\n'
         'data: [DONE]\n\n',
+      );
+    } else if (request.uri.path.endsWith('/models/vision/model/endpoints')) {
+      // A model that sees images; any other model's metadata is missing.
+      request.response.headers.contentType = ContentType.json;
+      request.response.write(
+        jsonEncode({
+          'data': {
+            'architecture': {
+              'input_modalities': ['text', 'image'],
+            },
+            'endpoints': <Object?>[],
+          },
+        }),
       );
     } else {
       request.response.statusCode = HttpStatus.notFound;
@@ -167,4 +181,88 @@ void main() {
     expect(issued, 2);
     expect(server.authorizations, ['Bearer key-of-ana', 'Bearer key-of-luis']);
   });
+
+  test(
+    'a tool image follows its results as a user message, since a tool '
+    'message only carries text; a model without vision gets a note',
+    () async {
+      final server = await _LocalOpenRouter.start();
+      addTearDown(server.close);
+      final transport = OpenRouterTransport(
+        credentials: () async => Ok(OpenRouterCredential(apiKey: 'test-key')),
+        baseUri: server.baseUri,
+      );
+      addTearDown(transport.dispose);
+      await transport.initialize(
+        tools: const [],
+        prompts: const [],
+        models: const ['vision/model', 'text/model'],
+      );
+      final frame = AsystantAttachment.fromBytes(
+        bytes: Uint8List.fromList([0x89, 0x50, 0x4E, 0x47]),
+        filename: 'frame.png',
+      );
+      final messages = [
+        const AssistantMessage(role: MessageRole.user, content: 'Check it'),
+        AssistantMessage(
+          role: MessageRole.assistant,
+          content: '',
+          calls: [
+            ToolCall(
+              id: 'call_a',
+              name: 'look',
+              arguments: ToolArguments.fromJson(const {}),
+            ),
+            ToolCall(
+              id: 'call_b',
+              name: 'count',
+              arguments: ToolArguments.fromJson(const {}),
+            ),
+          ],
+        ),
+        AssistantMessage(
+          role: MessageRole.tool,
+          content: 'Rendered',
+          callId: 'call_a',
+          attachments: [frame],
+        ),
+        const AssistantMessage(
+          role: MessageRole.tool,
+          content: '3',
+          callId: 'call_b',
+        ),
+      ];
+      Future<List<Map<String, Object?>>> sent(String model) async {
+        await transport
+            .infer(messages: messages, model: model, requestId: model)
+            .drain<void>();
+        return (server.bodies.last['messages'] as List<Object?>)
+            .cast<Map<String, Object?>>();
+      }
+
+      expect(transport.supportsImageInput('vision/model'), isTrue);
+      final seen = await sent('vision/model');
+      // Both results stay together, right after the calls; then the image.
+      expect(
+        [for (final m in seen) m['role']],
+        ['system', 'user', 'assistant', 'tool', 'tool', 'user'],
+      );
+      expect(seen[3]['content'], isA<String>());
+      expect(seen[3]['content'], contains('follows in the next user message'));
+      final parts = (seen[5]['content'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(parts[1]['text'], contains('call_a'));
+      expect(parts[2], {
+        'type': 'image_url',
+        'image_url': {
+          'url': 'data:image/png;base64,${base64Encode(frame.bytes)}',
+        },
+      });
+
+      expect(transport.supportsImageInput('text/model'), isFalse);
+      final blind = await sent('text/model');
+      expect([for (final m in blind) m['role']].last, 'tool');
+      expect(blind[3]['content'], contains(frame.imageUnavailableNote));
+    },
+  );
 }

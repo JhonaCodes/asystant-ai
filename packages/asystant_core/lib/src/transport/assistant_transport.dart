@@ -24,6 +24,13 @@ abstract class AssistantTransport {
   /// The context window of [model] in tokens, when the provider reports it.
   int? contextLengthOf(String model) => null;
 
+  /// Whether [model] sees images: the person's image attachments and the
+  /// images a tool returns (`ToolOutcome.images`). When false the transport
+  /// sends each image as its `AsystantAttachment.imageUnavailableNote`
+  /// text. The default is false: a transport that sends images overrides
+  /// it.
+  bool supportsImageInput(String model) => false;
+
   /// Whether the transport is currently bound to a valid host login.
   bool get isAuthenticated;
 

@@ -29,7 +29,9 @@ enum ClaudeCliEffort { low, medium, high, xhigh, max }
 /// Each inference is one `claude -p` run with no state of its own: the
 /// system prompt (host prompts, per-request context and the tool catalog)
 /// goes in a private temporary file, and the whole conversation, tool calls
-/// and results included, goes on stdin. See [ClaudeCliProtocol]. The CLI's
+/// and results included, goes on stdin as one stream-json user message,
+/// with the images the person attached or a tool returned as `image`
+/// blocks. See [ClaudeCliProtocol]. The CLI's
 /// own tools (Bash, Edit, Read, web access…), MCP servers and the user's
 /// Claude Code customizations (CLAUDE.md, memory, hooks, skills) are all
 /// disabled, so the model can only propose the host's tools, which the SDK
@@ -87,6 +89,11 @@ class ClaudeCliTransport extends AssistantTransport {
 
   @override
   Stream<void> get sessionChanges => const Stream.empty();
+
+  /// Every Claude model sees PNG, JPEG, GIF and WebP images up to
+  /// [ClaudeCliProtocol.maxImageBytes]; other images go as their note.
+  @override
+  bool supportsImageInput(String model) => true;
 
   /// The configured default, when it is one of the permitted models.
   @override
@@ -204,7 +211,7 @@ class ClaudeCliTransport extends AssistantTransport {
           prompts: [..._prompts, ...context],
           tools: tools ?? _tools,
         ),
-        prompt: ClaudeCliProtocol.transcript(messages),
+        prompt: ClaudeCliProtocol.input(messages),
       ),
     );
     final process = started.when(ok: (value) => value, err: (_) => null);
@@ -243,6 +250,10 @@ class ClaudeCliTransport extends AssistantTransport {
     'stream-json',
     '--verbose',
     '--include-partial-messages',
+    // stdin is one user message with content blocks, so images can travel
+    // next to the transcript; see [ClaudeCliProtocol.input].
+    '--input-format',
+    'stream-json',
     // The SDK sends the whole conversation every time; nothing to resume.
     '--no-session-persistence',
     // No CLAUDE.md, memory, hooks, skills, plugins or MCP of the user.

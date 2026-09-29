@@ -32,6 +32,8 @@ See the [package guide](packages/asystant_ai/README.md) and [integration guide](
 
 Tools execute in your app using its existing services. The model only receives their schemas and proposes calls; the SDK validates each call and asks for permission before running it. It does not use MCP.
 
+A tool can also return images with its result (`ToolOutcome.images`), for example a frame the app just rendered so the model can review it. Images the person attaches and images a tool returns travel the same way with every provider; a model that cannot see images receives a note instead. See [Images](docs/public-api.md#images).
+
 ## Examples
 
 [packages/asystant_ai/example/lib/main.dart](packages/asystant_ai/example/lib/main.dart) shows the integration without credentials and a real local read-only tool: with `--dart-define=CLAUDE_CODE=true` on a desktop it answers through `ClaudeCodeProvider`, otherwise through an explicitly simulated transport.
