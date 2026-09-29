@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:asystant_ai/asystant_ai.dart';
-import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 import 'package:asystant_ai/src/widgets/chat_conversation.dart';
 
 void main() {

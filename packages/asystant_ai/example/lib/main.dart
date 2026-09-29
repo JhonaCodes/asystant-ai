@@ -51,6 +51,7 @@ class ExampleTransport extends AssistantTransport {
     required String model,
     required String requestId,
     List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
   }) async* {
     yield InferenceCompleted(
       messages.last.role == .user

@@ -577,7 +577,15 @@ class ChatViewModel extends ViewModel<ChatState> {
   List<AssistantStep> _endSteps(StepPhase phase) => state.steps
       .map((step) => step.active ? step.copyWith(phase: phase) : step)
       .toList();
-  void _step(String id, StepPhase phase, {String? title}) {
+  void _step(
+    String id,
+    StepPhase phase, {
+    String? title,
+    String? toolName,
+    DateTime? startedAt,
+    String? detail,
+    Map<String, Object?>? data,
+  }) {
     final exists = state.steps.any((step) => step.id == id);
     updateState(
       state.copyWith(
@@ -585,13 +593,28 @@ class ChatViewModel extends ViewModel<ChatState> {
             ? state.steps
                   .map(
                     (step) => step.id == id
-                        ? step.copyWith(phase: phase, title: title)
+                        ? step.copyWith(
+                            phase: phase,
+                            title: title,
+                            toolName: toolName,
+                            startedAt: startedAt,
+                            detail: detail,
+                            data: data,
+                          )
                         : step,
                   )
                   .toList()
             : [
                 ...state.steps,
-                AssistantStep(id: id, title: title ?? '', phase: phase),
+                AssistantStep(
+                  id: id,
+                  title: title ?? '',
+                  phase: phase,
+                  toolName: toolName ?? '',
+                  startedAt: startedAt,
+                  detail: detail ?? '',
+                  data: data ?? const {},
+                ),
               ],
       ),
     );
@@ -660,11 +683,18 @@ class ChatViewModel extends ViewModel<ChatState> {
           _fail(checked.errorOrNull ?? const AssistantFailure(.protocol));
           return;
         }
+        // Also read each round: availability can depend on what the host
+        // shows now, which a tool of the previous round may have changed.
+        final available = [
+          for (final tool in _registry!.tools)
+            if (tool.isAvailable) tool.definition,
+        ];
         await for (final event in _transport!.infer(
           messages: state.messages,
           model: state.model,
           requestId: '$turn-$round',
           context: context,
+          tools: available,
         )) {
           if (!_current(epoch)) {
             return;
@@ -736,9 +766,13 @@ class ChatViewModel extends ViewModel<ChatState> {
           unawaited(_saveActive());
           return;
         }
-        for (final call in response.calls) {
-          await _executeLocalCall(call, turn, epoch);
+        for (final (index, call) in response.calls.indexed) {
+          final endsTurn = await _executeLocalCall(call, turn, epoch);
           if (!_current(epoch)) {
+            return;
+          }
+          if (endsTurn) {
+            _endTurnAt(call, skipped: response.calls.skip(index + 1));
             return;
           }
         }
@@ -770,29 +804,63 @@ class ChatViewModel extends ViewModel<ChatState> {
     _streamingText.clear();
   }
 
+  /// Ends the turn after [call], whose tool asked for it
+  /// (`ToolOutcome.endsTurn`): the calls in [skipped] are answered without
+  /// running, and the model is not called again. The person speaks next.
+  void _endTurnAt(ToolCall call, {required Iterable<ToolCall> skipped}) {
+    updateState(
+      state.copyWith(
+        phase: .done,
+        entries: _archivedActivity(state.steps),
+        steps: const [],
+        messages: [
+          ...state.messages,
+          for (final other in skipped)
+            AssistantMessage(
+              role: .tool,
+              content:
+                  'Not run: ${call.name} ended the turn to wait for the '
+                  'person. Propose it again after their answer if it still '
+                  'applies.',
+              callId: other.id,
+            ),
+        ],
+      ),
+    );
+    unawaited(_saveActive());
+  }
+
   /// Previews, authorizes and executes a single call against the frozen turn.
   /// Cancellation is checked again after every asynchronous host boundary.
-  Future<void> _executeLocalCall(ToolCall call, String turn, int epoch) async {
+  ///
+  /// Returns whether the tool ended the turn (`ToolOutcome.endsTurn`).
+  Future<bool> _executeLocalCall(ToolCall call, String turn, int epoch) async {
     if (!_current(epoch)) {
-      return;
+      return false;
     }
     final executionKey = '$turn/${call.id}';
-    final tool = _registry!
-        .resolve(call.name, call.arguments)
-        .when(ok: (tool) => tool, err: (_) => null);
-    var outcome = 'Tool unavailable or invalid arguments.';
+    final resolved = _registry!.resolve(call.name, call.arguments);
+    final tool = resolved.when(ok: (tool) => tool, err: (_) => null);
+    var outcome = switch (resolved.errorOrNull?.detail ?? '') {
+      '' => 'Tool unavailable or invalid arguments.',
+      final String detail => 'Tool unavailable or invalid arguments: $detail',
+    };
+    var failure = resolved.errorOrNull?.detail ?? '';
+    var endsTurn = false;
     _step(
       executionKey,
       StepPhase.preparing,
       title: tool?.definition.description ?? call.name,
+      toolName: call.name,
     );
     if (tool != null && !_executed.contains(executionKey)) {
       updateState(state.copyWith(phase: .executing));
       final preview = await tool.preview(call.arguments);
       if (!_current(epoch)) {
-        return;
+        return false;
       }
       final card = preview.when(ok: (card) => card, err: (_) => null);
+      failure = preview.errorOrNull?.detail ?? '';
       if (card != null) {
         _step(executionKey, StepPhase.preparing, title: card.title);
         var allowed = !tool.requiresConfirmation && !tool.requiresSelection;
@@ -813,13 +881,13 @@ class ChatViewModel extends ViewModel<ChatState> {
           allowed = await _approval!.future;
           selected = state.pending?.selected.toList() ?? [];
           if (!_current(epoch)) {
-            return;
+            return false;
           }
           _approval = null;
           updateState(state.copyWith(clearPending: true));
         }
         if (allowed && tool.isAvailable) {
-          _step(executionKey, StepPhase.running);
+          _step(executionKey, StepPhase.running, startedAt: DateTime.now());
           _executed.add(executionKey);
           updateState(state.copyWith(phase: .executing));
           final result = await tool.execute(
@@ -832,12 +900,18 @@ class ChatViewModel extends ViewModel<ChatState> {
             ),
           );
           if (!_current(epoch)) {
-            return;
+            return false;
           }
           result.when(
             ok: (result) {
-              _step(executionKey, StepPhase.completed);
+              _step(
+                executionKey,
+                StepPhase.completed,
+                title: result.summary,
+                data: result.data,
+              );
               outcome = result.modelContent;
+              endsTurn = result.endsTurn;
               if (result.card case final card?) {
                 updateState(
                   state.copyWith(
@@ -850,9 +924,15 @@ class ChatViewModel extends ViewModel<ChatState> {
                 );
               }
             },
-            err: (_) {
-              _step(executionKey, StepPhase.failed);
-              outcome = 'Local tool failed. Do not assume it succeeded.';
+            err: (error) {
+              // The tool's reason reaches the model, so it can correct the
+              // call instead of guessing.
+              _step(executionKey, StepPhase.failed, detail: error.detail);
+              outcome = switch (error.detail) {
+                '' => 'Local tool failed. Do not assume it succeeded.',
+                final String detail =>
+                  'Local tool failed: $detail Do not assume it succeeded.',
+              };
             },
           );
         } else {
@@ -860,12 +940,12 @@ class ChatViewModel extends ViewModel<ChatState> {
           outcome = 'User declined this action. Do not repeat it without a new request.';
         }
       } else {
-        _step(executionKey, StepPhase.failed);
+        _step(executionKey, StepPhase.failed, detail: failure);
         outcome = 'Could not prepare a safe preview.';
       }
     }
     if (state.steps.any((step) => step.id == executionKey && step.active)) {
-      _step(executionKey, StepPhase.failed);
+      _step(executionKey, StepPhase.failed, detail: failure);
     }
     updateState(
       state.copyWith(
@@ -875,6 +955,7 @@ class ChatViewModel extends ViewModel<ChatState> {
         ],
       ),
     );
+    return endsTurn;
   }
 
   @override

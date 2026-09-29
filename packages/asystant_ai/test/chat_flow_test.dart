@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:asystant_ai/asystant_ai.dart';
-import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class FakeTransport extends AssistantTransport {
@@ -25,6 +24,7 @@ class FakeTransport extends AssistantTransport {
     required String model,
     required String requestId,
     List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
   }) async* {
     if (messages.last.role == MessageRole.user) {
       yield const InferenceCompleted(

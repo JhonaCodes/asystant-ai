@@ -110,7 +110,12 @@ request a credential, or contact the provider. `AsystantChat` starts setup after
 frame, only when mounted; a launcher button alone does not initialize the assistant.
 Do not await assistant readiness before `runApp()` or host authentication.
 For a custom chat UI, call `ensureInitialized()` when that UI opens. Concurrent calls
-share initialization. Network failures remain inside the assistant UI and do not
+share initialization. Draw it from `assistant.conversation`, a
+`ReactiveNotifierViewModel<ChatViewModel, ChatState>`: `ChatState` holds the entries,
+the steps of the running turn, the streamed text, the pending permission and the
+failure, and `ChatViewModel` exposes `send`, `cancel`, `approve` and
+`openConversation`. See [Local tools](../../docs/public-api.md#local-tools) for
+`ToolOutcome.endsTurn`, `summary`, `data` and per-request tool availability. Network failures remain inside the assistant UI and do not
 prevent the host app from starting.
 
 Network I/O uses asynchronous Dart APIs. An isolate is unnecessary for this work and

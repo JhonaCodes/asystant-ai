@@ -1,5 +1,10 @@
 ## Unreleased
 
+- `ToolOutcome.endsTurn`: a tool can end the person's turn (for example, a product approval that only the person can answer). The chat does not call the model again and answers the other calls of that response without running them.
+- `ToolOutcome.summary` (a one-line account of what was done, shown instead of the preview title once the tool completes) and `ToolOutcome.data` (structured result for the host, never sent to the model).
+- `ToolField.options` declares the accepted values of a string (schema `enum`), and `ToolFieldKind.objects` with `ToolField.fields` declares a list of objects with their own fields. Both providers send them in the tool schema.
+- `ToolRegistry.resolve` explains what is wrong in the failure `detail` (unknown tool with the available ones, missing or unexpected argument, wrong type, a value outside its options), and treats `null` for an optional argument as absent.
+- `AssistantTransport.infer` receives `tools`, the tools available for that request; both providers declare those instead of the ones registered at `initialize` when given. Custom transports must add the parameter.
 - `OpenRouterTransport` replaces the former `GatewayTransport` and `SessionSource`: the host supplies an `OpenRouterCredentialSource` (for example a budget-limited key issued by asystant-api) and the transport talks to OpenRouter directly.
 - Security: a cached OpenRouter key is bound to the identity it was issued for; after a login change the transport requests a new key instead of reusing the previous user's.
 - `ClaudeCliTransport`: a desktop transport over the local Claude Code CLI, using the user's subscription without an API key. Tools are declared in the system prompt and returned as regular `ToolCall`s; the CLI's own tools, MCP servers and user customizations are disabled. Compiles on the web, where it reports the platform as unsupported.

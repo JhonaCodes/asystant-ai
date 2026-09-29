@@ -13,6 +13,7 @@ class _RecordingTransport extends FakeTransport {
     required String model,
     required String requestId,
     List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
   }) {
     contexts.add([for (final prompt in context) prompt.content]);
     return super.infer(
@@ -20,6 +21,7 @@ class _RecordingTransport extends FakeTransport {
       model: model,
       requestId: requestId,
       context: context,
+      tools: tools,
     );
   }
 }

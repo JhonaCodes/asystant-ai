@@ -114,6 +114,19 @@ There is no client-side revocation call. `dispose()` forgets the cached key loca
 
 `AsystantTool` exposes `definition`, `preview`, `execute`, `requiresConfirmation`, `requiresSelection` and `isAvailable`. `TypedAsystantTool<T>` adds a single domain decoder and typed preview/execution methods. Schema validation rejects unknown fields and wrong scalar types before execution.
 
+A `ToolField` is a scalar (`string`, `integer`, `number`, `boolean`), a list of scalars (`strings`, `numbers`) or a list of objects (`objects`, whose entries have the `fields` you declare). `options` limits a string, or each entry of `strings`, to those values; they travel as the schema's `enum`. A `null` for an optional field counts as absent. When a call is rejected, or a tool returns an `Err`, the failure's `detail` reaches the model with the tool result ("`scene_id` is missing", "`section` does not accept `x`. Valid values: …"), so write a `detail` the model can act on.
+
+`isAvailable` is read before every model call: the model is only offered the tools available at that moment, and a call to one that stopped being available is rejected. Use it to scope tools to what the app shows, such as the current screen.
+
+`ToolOutcome` carries `modelContent`, the text the model reads, and optionally:
+
+- `summary`: what was done, in one line for the person; it replaces the step's title once the tool completes.
+- `data`: a structured result for the host, such as the ids a tool created. It stays on the step (`AssistantStep.data`) and is never sent to the model.
+- `card`: a genUI card shown in the chat.
+- `endsTurn`: ends the person's turn after this tool. The model is not called again and the remaining calls of that response are answered without running, so the next word belongs to the person. Use it when a tool opens a question only the person can answer, such as a product approval, and say so in `modelContent`.
+
+Each executed call is an `AssistantStep` with the `toolName`, when it `startedAt`, the `detail` of a failure and the tool's `data`. A turn's steps end up in `ChatEntry.activity`, which a conversation store keeps.
+
 A preview must be read-only. Mutating actions require confirmation by default. The model cannot approve its own action. Check `ToolContext.isCanceled` or `checkCanceled()` immediately before an asynchronous write, and use its `idempotencyKey` in your own repository. Existing product authorization is still mandatory; a model-requested action is not an authorization grant.
 
 The SDK bounds each user turn to eight inference rounds and sixteen calls per response. It does not automatically retry uncertain writes or reverse effects already committed. Tool result text returns to the model; optional cards remain in chronological order in the chat.
@@ -142,7 +155,11 @@ request a credential, or contact the provider. `AsystantChat` starts setup after
 frame, only when mounted; a launcher button alone does not initialize the assistant.
 Do not await assistant readiness before `runApp()` or host authentication.
 For a custom chat UI, call `ensureInitialized()` when that UI opens. Concurrent calls
-share initialization. Network failures remain inside the assistant UI and do not
+share initialization. Draw it from `assistant.conversation`, a
+`ReactiveNotifierViewModel<ChatViewModel, ChatState>`: `ChatState` holds the entries,
+the steps of the running turn, the streamed text, the pending permission and the
+failure, and `ChatViewModel` exposes `send`, `cancel`, `approve` and
+`openConversation`. Network failures remain inside the assistant UI and do not
 prevent the host app from starting.
 
 Network I/O uses asynchronous Dart APIs. An isolate is unnecessary for this work and

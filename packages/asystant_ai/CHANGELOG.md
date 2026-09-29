@@ -1,5 +1,10 @@
 ## Unreleased
 
+- `AsystantTool.isAvailable` is read before every model call, not only at initialization: the model is offered the tools available at that moment, so a host can scope them to what it shows.
+- A tool's failure `detail`, and the reason a call was rejected, reach the model with the tool result, so it can correct the call.
+- `ToolOutcome.endsTurn` ends the turn after that tool (see asystant_core).
+- `AssistantStep` records the `toolName`, when it `startedAt`, the `detail` of a failure and the tool's `data`; its title becomes the tool's `summary` when it completes. A conversation store keeps them with the entries.
+- `ChatViewModel` is exported, for hosts that draw their own chat over `assistant.conversation`.
 - Fix: pending permission cards no longer render host card content next to Authorize/Decline, as the card-content contract requires.
 - `AsystantAI.init(provider: ...)` is the way to connect an assistant: `OpenRouterProvider`, `ClaudeCodeProvider` or any later `AsystantProvider`. Tools, prompts, per-request context, attachments, the model picker and cards work the same with each. `init(transport: ...)` remains for a custom `AssistantTransport` (test doubles, proxies); pass exactly one of the two.
 - With `ClaudeCodeProvider` and no `models`, the chat offers the models the installed Claude Code CLI declares.

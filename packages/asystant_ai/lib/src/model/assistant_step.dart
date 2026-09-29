@@ -1,23 +1,57 @@
-/// Ephemeral execution trace; never persisted or sent as model reasoning.
+import 'package:collection/collection.dart';
+
+/// One local tool call as the person sees it: what it is doing and how it
+/// ended. Never sent to the model; a conversation store keeps it with the
+/// entries it belongs to.
 class AssistantStep {
   const AssistantStep({
     required this.id,
     required this.title,
     this.phase = .preparing,
+    this.toolName = '',
+    this.startedAt,
+    this.detail = '',
+    this.data = const {},
   });
 
   final String id;
 
+  /// The preview's title while it runs; the tool's `ToolOutcome.summary`
+  /// once it completes, when it gives one.
   final String title;
 
   final StepPhase phase;
 
-  AssistantStep copyWith({String? id, String? title, StepPhase? phase}) =>
-      AssistantStep(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        phase: phase ?? this.phase,
-      );
+  /// The tool the model called.
+  final String toolName;
+
+  /// When the tool started running; null while it waits or when it never
+  /// ran.
+  final DateTime? startedAt;
+
+  /// Why it did not complete, as the tool or the validation said it.
+  final String detail;
+
+  /// The tool's `ToolOutcome.data`: structured result for the host.
+  final Map<String, Object?> data;
+
+  AssistantStep copyWith({
+    String? id,
+    String? title,
+    StepPhase? phase,
+    String? toolName,
+    DateTime? startedAt,
+    String? detail,
+    Map<String, Object?>? data,
+  }) => AssistantStep(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    phase: phase ?? this.phase,
+    toolName: toolName ?? this.toolName,
+    startedAt: startedAt ?? this.startedAt,
+    detail: detail ?? this.detail,
+    data: Map.unmodifiable(data ?? this.data),
+  );
 
   bool get active => switch (phase) {
     StepPhase.preparing || StepPhase.permission || StepPhase.running => true,
@@ -47,10 +81,22 @@ class AssistantStep {
       other is AssistantStep &&
       id == other.id &&
       title == other.title &&
-      phase == other.phase;
+      phase == other.phase &&
+      toolName == other.toolName &&
+      startedAt == other.startedAt &&
+      detail == other.detail &&
+      const DeepCollectionEquality().equals(data, other.data);
 
   @override
-  int get hashCode => Object.hash(id, title, phase);
+  int get hashCode => Object.hash(
+    id,
+    title,
+    phase,
+    toolName,
+    startedAt,
+    detail,
+    const DeepCollectionEquality().hash(data),
+  );
 }
 
 /// The execution or permission state of a displayed local-tool step.

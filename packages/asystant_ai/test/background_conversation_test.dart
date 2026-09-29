@@ -29,6 +29,7 @@ class PendingReplyTransport extends FakeTransport {
     required String model,
     required String requestId,
     List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
   }) {
     requests++;
     if (messages.last.role == MessageRole.tool) {

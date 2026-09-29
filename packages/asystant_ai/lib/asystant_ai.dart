@@ -7,6 +7,7 @@ export 'package:asystant_core/asystant_core.dart';
 
 export 'src/asystant_ai.dart';
 export 'src/model/chat_state.dart';
+export 'src/viewmodel/chat_view_model.dart';
 export 'src/theme/asystant_theme.dart';
 export 'src/l10n/asystant_strings.dart';
 export 'src/widgets/asystant_chat.dart';

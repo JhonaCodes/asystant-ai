@@ -13,6 +13,7 @@ class _LongReplyTransport extends FakeTransport {
     required String model,
     required String requestId,
     List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
   }) async* {
     yield InferenceCompleted(
       AssistantMessage(

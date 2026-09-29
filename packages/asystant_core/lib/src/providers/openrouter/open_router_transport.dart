@@ -129,13 +129,17 @@ class OpenRouterTransport extends AssistantTransport {
       return Err(const AssistantFailure(.unavailable));
     }
     _prompts = composed;
-    _tools = List.unmodifiable([
-      for (final tool in tools)
-        {'type': 'function', 'function': tool.toSchema()},
-    ]);
+    _tools = _declare(tools);
     await Future.wait(permitted.map(_loadModel));
     return Ok(List.unmodifiable(permitted));
   }
+
+  /// The tools as OpenRouter's Chat Completions API declares them.
+  static List<Map<String, Object?>> _declare(List<ToolDefinition> tools) =>
+      List.unmodifiable([
+        for (final tool in tools)
+          {'type': 'function', 'function': tool.toSchema()},
+      ]);
 
   /// Asks OpenRouter about the key (`GET key`), which costs no inference.
   /// `Err` with [FailureCode.authentication] when the source gives no key
@@ -285,6 +289,7 @@ class OpenRouterTransport extends AssistantTransport {
     required String model,
     required String requestId,
     List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
   }) async* {
     final epoch = ++_epoch;
     try {
@@ -307,7 +312,7 @@ class OpenRouterTransport extends AssistantTransport {
           'Content-Type': 'application/json',
           'Accept': 'text/event-stream',
         })
-        ..body = jsonEncode(_body(messages, model, context));
+        ..body = jsonEncode(_body(messages, model, context, tools));
       final response = await client
           .send(request)
           .timeout(const Duration(seconds: 30));
@@ -352,7 +357,12 @@ class OpenRouterTransport extends AssistantTransport {
     List<AssistantMessage> messages,
     String model,
     List<AsystantSystemPrompt> context,
+    List<ToolDefinition>? tools,
   ) {
+    final declared = switch (tools) {
+      final List<ToolDefinition> available => _declare(available),
+      null => _tools,
+    };
     final codec = OpenRouterMessageCodec(
       inputModalities: _inputModalities[model] ?? const {},
     );
@@ -375,7 +385,7 @@ class OpenRouterTransport extends AssistantTransport {
           {'role': 'system', 'content': prompt.content},
         for (final message in messages) codec.encode(message),
       ],
-      if (_tools.isNotEmpty) 'tools': _tools,
+      if (declared.isNotEmpty) 'tools': declared,
     };
   }
 

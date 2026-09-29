@@ -185,6 +185,7 @@ class ClaudeCliTransport extends AssistantTransport {
     required String model,
     required String requestId,
     List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
   }) async* {
     final epoch = ++_epoch;
     _active?.kill();
@@ -201,7 +202,7 @@ class ClaudeCliTransport extends AssistantTransport {
         arguments: _arguments(model),
         systemPrompt: ClaudeCliProtocol.systemPrompt(
           prompts: [..._prompts, ...context],
-          tools: _tools,
+          tools: tools ?? _tools,
         ),
         prompt: ClaudeCliProtocol.transcript(messages),
       ),

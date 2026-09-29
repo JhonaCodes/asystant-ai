@@ -44,11 +44,16 @@ abstract class AssistantTransport {
   ///
   /// [context] is what the host knows right now, such as the person's saved
   /// profile. It goes after the configured prompts, for this request only.
+  ///
+  /// [tools] are the tools the model may call in this request, the ones
+  /// available right now (see `AsystantTool.isAvailable`); null keeps the
+  /// ones registered in [initialize].
   Stream<InferenceEvent> infer({
     required List<AssistantMessage> messages,
     required String model,
     required String requestId,
     List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
   });
 
   /// Checks that the provider can answer, without running an inference: a
