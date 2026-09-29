@@ -29,14 +29,16 @@ class WorkspaceAssistant extends AsystantAI {
 }
 ```
 
-Then call `assistant.init` once with an `AssistantTransport`. `init` only stores the configuration; the chat connects when it is first shown. Two transports are included:
+Then call `assistant.init` once with a provider: where the answers come from. `init` only stores the configuration; the chat connects when it is first shown. Tools, system prompts, per-request context, attachments, the model picker, permissions and cards work the same with every provider.
 
-- `OpenRouterTransport` calls OpenRouter directly with a short-lived, budget-limited key. Its `credentials` function asks your backend for the key; your backend gets it from [asystant-api](https://github.com/JhonaCodes/asystant-api) (`POST /v1/managed/credentials`), and `OpenRouterCredential.fromManagedJson` reads the response. Never compile a provider key into a release build.
-- `ClaudeCliTransport` runs the Claude Code CLI installed on a desktop machine with the user's own subscription, without an API key or backend.
+| Provider | When to use it | What it needs | Platforms |
+| --- | --- | --- | --- |
+| `OpenRouterProvider` | A published app whose users sign in; models billed per user | A `credentials` function returning a short-lived, budget-limited key from your backend ([asystant-api](https://github.com/JhonaCodes/asystant-api)) | Mobile, web, desktop |
+| `ClaudeCodeProvider` | A local desktop app for someone who has Claude Code | The `claude` CLI installed and signed in (`claude` once in a terminal); no key, no backend | macOS, Linux, Windows |
 
 ```dart
 assistant.init(
-  transport: OpenRouterTransport(
+  provider: OpenRouterProvider(
     credentials: fetchAiCredential,
     identity: () => session.userId,
     sessionChanges: session.changes,
@@ -53,7 +55,18 @@ assistant.init(
 );
 ```
 
-`fetchAiCredential` (an `OpenRouterCredentialSource`, returning `Result<OpenRouterCredential, AssistantFailure>`) and `session` are supplied by your app. `models` are the choices shown next to the send button; the first one permitted is the default. Pass `models: const []` to offer exactly the models the credential allows. Add optional factory tools through `builtInTools`. See the [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#credentials-and-sign-in) for the credential flow.
+`fetchAiCredential` (an `OpenRouterCredentialSource`, returning `Result<OpenRouterCredential, AssistantFailure>`) and `session` are supplied by your app; your backend gets the key from asystant-api (`POST /v1/managed/credentials`) and `OpenRouterCredential.fromManagedJson` reads the response. Never compile a provider key into a release build. `models` are the choices shown next to the send button; the first one permitted is the default. Pass `models: const []` to let the provider decide: the models the credential allows, or the models the installed Claude Code CLI declares. Add optional factory tools through `builtInTools`. See the [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#providers) for both providers.
+
+With Claude Code there is nothing to authenticate:
+
+```dart
+assistant.init(provider: const ClaudeCodeProvider(defaultModel: 'sonnet'));
+
+// A settings screen's "Test connection", without spending an inference.
+final status = await const ClaudeCodeProvider().verify();
+```
+
+`init(transport: ...)` remains for an `AssistantTransport` of your own, such as a test double or a proxy; pass either a provider or a transport.
 
 ## Embed the chat
 
@@ -66,7 +79,7 @@ AsystantChat(
 ); // Mount inside a bounded section, drawer or full-screen Scaffold.
 ```
 
-The host owns the assistant instance: closing the panel preserves the conversation. Call `assistant.dispose()` when its owner ends. When the transport reports a different identity, pending permissions are invalidated, the conversation is cleared and the chat offers to connect again. When another user signs in, dispose the assistant and create a new one.
+The host owns the assistant instance: closing the panel preserves the conversation. Call `assistant.dispose()` when its owner ends. When the provider reports a different identity, pending permissions are invalidated, the conversation is cleared and the chat offers to connect again. When another user signs in, dispose the assistant and create a new one.
 
 ## Tools and permissions
 
@@ -78,13 +91,13 @@ Cards support summary, entity, selection, permission and result presentations. T
 
 ## Backend and models
 
-The package does not include a hosted API, provider credentials or inference credits. For `OpenRouterTransport`, you can deploy [asystant-api](https://github.com/JhonaCodes/asystant-api), a self-hosted service that issues OpenRouter keys with per-tenant and per-user budgets to your backend. It never proxies inference: the app talks to OpenRouter directly. See its [OpenAPI contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml) and [managed keys guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/managed-keys.md), and this repository's [security policy](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md).
+The package does not include a hosted API, provider credentials or inference credits. For `OpenRouterProvider`, you can deploy [asystant-api](https://github.com/JhonaCodes/asystant-api), a self-hosted service that issues OpenRouter keys with per-tenant and per-user budgets to your backend. It never proxies inference: the app talks to OpenRouter directly. See its [OpenAPI contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml) and [managed keys guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/managed-keys.md), and this repository's [security policy](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md).
 
-Implement `AssistantTransport` to reach another provider or your own service. Provider availability and usage terms must be checked before enabling a model.
+To add another provider to the SDK, see [Adding a provider](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#adding-a-provider). Provider availability and usage terms must be checked before enabling a model.
 
 ## Example
 
-[example/lib/main.dart](example/lib/main.dart) runs without credentials using an explicitly simulated assistant response and a real local read-only tool. The repository also includes a complete [host app](https://github.com/JhonaCodes/asystant-ai/tree/main/examples/host_app), Botánica, whose assistant uses `OpenRouterTransport`, local tools, context prompts and host-owned card content.
+[example/lib/main.dart](example/lib/main.dart) runs without credentials, with a real local read-only tool. On a desktop with Claude Code signed in, `flutter run -d macos --dart-define=CLAUDE_CODE=true` answers through `ClaudeCodeProvider`; otherwise a simulated transport answers, so it runs anywhere. The repository also includes a complete [host app](https://github.com/JhonaCodes/asystant-ai/tree/main/examples/host_app), Botánica, whose assistant uses `OpenRouterProvider`, local tools, context prompts and host-owned card content.
 
 ## License
 
@@ -113,7 +126,7 @@ that immediately send messages should explicitly await `ensureInitialized()`.
 
 Application personality is supplied through `AsystantAI.systemPrompts`; scoped
 context can be added with `additionalSystemPrompts` during `init()`, and what the app
-knows right now through `contextPrompts()`. Both transports place the SDK's baseline
+knows right now through `contextPrompts()`. Every provider places the SDK's baseline
 safety guidance first. See the
 [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md).
 

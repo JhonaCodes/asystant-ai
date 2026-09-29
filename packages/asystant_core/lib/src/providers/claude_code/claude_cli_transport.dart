@@ -4,14 +4,17 @@ import 'package:result_controller/result_controller.dart';
 
 import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/assistant_message.dart';
+import 'package:asystant_core/src/model/asystant_model_catalog.dart';
+import 'package:asystant_core/src/model/asystant_provider_status.dart';
 import 'package:asystant_core/src/model/asystant_prompt_policy.dart';
 import 'package:asystant_core/src/model/system_prompt.dart';
 import 'package:asystant_core/src/tool/tool_definition.dart';
 import 'package:asystant_core/src/transport/assistant_transport.dart';
-import 'package:asystant_core/src/transport/claude_cli_launcher.dart';
-import 'package:asystant_core/src/transport/claude_cli_launcher_platform.dart';
-import 'package:asystant_core/src/transport/claude_cli_protocol.dart';
-import 'package:asystant_core/src/transport/claude_cli_stream.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_catalog.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_launcher.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_launcher_platform.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_protocol.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_stream.dart';
 import 'package:asystant_core/src/transport/inference_event.dart';
 
 /// Reasoning effort accepted by `claude --effort`.
@@ -36,16 +39,12 @@ class ClaudeCliTransport extends AssistantTransport {
     this.executable = 'claude',
     String identity = 'local',
     this.effort,
+    String? defaultModel,
     this.idleTimeout = const Duration(minutes: 2),
     ClaudeCliLauncher? launcher,
   }) : _identity = identity,
+       _defaultModel = defaultModel,
        _launcher = launcher ?? const ProcessClaudeCliLauncher();
-
-  /// Offered when the host passes no models: the CLI's aliases for the
-  /// latest model of each family. Any alias or full model name the CLI
-  /// accepts (for example `claude-sonnet-4-5` or `opus[1m]`) can be passed
-  /// to [initialize] instead; which ones work depends on the subscription.
-  static const defaultModels = ['sonnet', 'opus', 'haiku'];
 
   /// The command to run, looked up on `PATH` and the usual install
   /// locations, or an absolute path.
@@ -54,12 +53,20 @@ class ClaudeCliTransport extends AssistantTransport {
   /// Passed as `--effort`; the CLI's default when null.
   final ClaudeCliEffort? effort;
 
+  /// The model a new conversation starts with, when it is permitted; the
+  /// first permitted model otherwise.
+  String? get configuredDefaultModel => _defaultModel;
+
   /// Longest silence from the CLI before the run is abandoned.
   final Duration idleTimeout;
 
   final String _identity;
 
+  final String? _defaultModel;
+
   final ClaudeCliLauncher _launcher;
+
+  List<String> _permitted = const [];
 
   List<AsystantSystemPrompt> _prompts = const [];
 
@@ -81,6 +88,60 @@ class ClaudeCliTransport extends AssistantTransport {
   @override
   Stream<void> get sessionChanges => const Stream.empty();
 
+  /// The configured default, when it is one of the permitted models.
+  @override
+  String? get defaultModel =>
+      _permitted.contains(_defaultModel) ? _defaultModel : null;
+
+  /// Runs `claude --version` and `claude auth status --json`: no prompt,
+  /// no inference and no usage. `Err` when the binary cannot be run; a
+  /// signed-out CLI is `Ok` with `signedIn` false.
+  @override
+  Future<Result<AsystantProviderStatus, AssistantFailure>> verify() async {
+    final version = await _launcher.run(executable, const ['--version']);
+    final output = version.when(ok: (value) => value, err: (_) => null);
+    if (output == null) {
+      return Err(version.errorOrNull ?? const AssistantFailure(.unavailable));
+    }
+    if (output.exitCode != 0) {
+      return Err(
+        AssistantFailure(
+          .unavailable,
+          detail:
+              '`$executable --version` exited with code ${output.exitCode}.',
+        ),
+      );
+    }
+    final auth = await _launcher.run(executable, const [
+      'auth',
+      'status',
+      '--json',
+    ]);
+    // Its JSON is read whatever the exit code; an older CLI without the
+    // command prints none, and the sign-in state stays unknown.
+    final authOutput = auth.when(ok: (value) => value.stdout, err: (_) => null);
+    return Ok(
+      ClaudeCliCatalog.status(version: output.stdout, authStatus: authOutput),
+    );
+  }
+
+  /// Read from `claude --help`, which declares the effort levels and gives
+  /// the model aliases as examples; [ClaudeCliCatalog.bundled] when the help
+  /// changed shape. `Err` when the binary cannot be run.
+  @override
+  Future<Result<AsystantModelCatalog, AssistantFailure>> modelCatalog() async {
+    final help = await _launcher.run(executable, const ['--help']);
+    return help.when(
+      ok: (output) => Ok(
+        (output.exitCode == 0
+                ? ClaudeCliCatalog.parseHelp(output.stdout)
+                : null) ??
+            ClaudeCliCatalog.bundled,
+      ),
+      err: (failure) => Err(failure),
+    );
+  }
+
   @override
   Future<Result<List<String>, AssistantFailure>> initialize({
     required List<ToolDefinition> tools,
@@ -92,13 +153,23 @@ class ClaudeCliTransport extends AssistantTransport {
     if (composed == null) {
       return Err(policy.errorOrNull ?? const AssistantFailure(.protocol));
     }
+    // With no models from the host, the ones the installed CLI declares.
+    // A CLI that cannot be run still gets the bundled list here: the first
+    // inference then reports what is missing, in the chat.
+    final offered = models.isNotEmpty
+        ? models
+        : (await modelCatalog()).when(
+            ok: (catalog) => catalog.models,
+            err: (_) => ClaudeCliCatalog.bundledModels,
+          );
     final permitted = [
-      for (final model in models.isEmpty ? defaultModels : models)
+      for (final model in offered)
         if (_isModelName(model)) model,
     ];
     if (permitted.isEmpty) {
       return Err(const AssistantFailure(.unavailable));
     }
+    _permitted = List.unmodifiable(permitted);
     _prompts = composed;
     _tools = List.unmodifiable(tools);
     return Ok(List.unmodifiable(permitted));

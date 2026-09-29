@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/token_usage.dart';
-import 'package:asystant_core/src/transport/claude_cli_launcher.dart';
-import 'package:asystant_core/src/transport/claude_cli_protocol.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_launcher.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_protocol.dart';
 import 'package:asystant_core/src/transport/inference_event.dart';
 
 /// Turns one `claude -p --output-format stream-json` run into

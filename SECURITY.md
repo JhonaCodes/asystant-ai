@@ -20,12 +20,15 @@ Do not include credentials or customer data in public issues.
 - Keep the asystant-api company key, provider management keys and any other
   long-lived secret outside Flutter. The app only receives the signed-in user's
   short-lived, budget-limited key through `OpenRouterCredentialSource`;
-  `OpenRouterTransport` places it only in the `Authorization` header and redacts
+  `OpenRouterProvider`'s transport places it only in the `Authorization` header and redacts
   it from `toString()`. Never compile a key into a release build.
-- `ClaudeCliTransport` runs the user's own Claude Code CLI with its tools, MCP
+- `ClaudeCodeProvider` runs the user's own Claude Code CLI with its tools, MCP
   servers and customizations disabled, and passes prompts through a private
-  temporary file rather than the command line. It needs a desktop app allowed
-  to start processes (on macOS, outside the App Sandbox).
+  temporary file rather than the command line. Its `verify()` and
+  `modelCatalog()` only run `--version`, `auth status --json` and `--help`,
+  which send no prompt; the account it reports keeps the sign-in method and
+  plan, never the email. It needs a desktop app allowed to start processes (on
+  macOS, outside the App Sandbox).
 - Register and execute application tools locally. Recheck authorization and the
   captured session before mutations; request explicit confirmation when needed.
 - Treat model text and tool results as untrusted. Never execute returned code or

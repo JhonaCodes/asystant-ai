@@ -30,7 +30,8 @@ class ReadWorkspaceTool extends AsystantTool {
   }
 }
 
-/// Demonstrates the protocol without making any inference API requests.
+/// Simulates a provider without any inference request, to show the tool
+/// loop anywhere. Real apps pass a provider to `init` instead.
 class ExampleTransport extends AssistantTransport {
   @override
   bool get isAuthenticated => true;
@@ -78,15 +79,32 @@ class ExampleTransport extends AssistantTransport {
 }
 
 class ExampleAssistant extends AsystantAI {
-  ExampleAssistant() : super(name: 'Assistant · offline demo');
+  ExampleAssistant({required super.name});
   @override
   List<AsystantTool> get tools => const [ReadWorkspaceTool()];
 }
 
+/// How the example is run.
+abstract final class ExampleOptions {
+  /// `flutter run -d macos --dart-define=CLAUDE_CODE=true` answers with the
+  /// Claude Code CLI installed and signed in on this machine: no key and no
+  /// backend. Without it, simulated answers let the example run anywhere.
+  static const useClaudeCode = bool.fromEnvironment('CLAUDE_CODE');
+}
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  final assistant = ExampleAssistant();
-  assistant.init(transport: ExampleTransport());
+  final ExampleAssistant assistant;
+  if (ExampleOptions.useClaudeCode) {
+    // A provider: the usual way to connect an assistant.
+    assistant = ExampleAssistant(name: 'Assistant · Claude Code')
+      ..init(provider: const ClaudeCodeProvider(defaultModel: 'sonnet'));
+  } else {
+    // Advanced: an AssistantTransport of your own, here one that simulates
+    // the answers without any provider.
+    assistant = ExampleAssistant(name: 'Assistant · offline demo')
+      ..init(transport: ExampleTransport());
+  }
   runApp(ExampleApp(assistant: assistant));
 }
 

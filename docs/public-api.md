@@ -4,11 +4,11 @@
 
 Extend `AsystantAI` in the host application. Override `tools` and optionally `systemPrompts` and `contextPrompts()`; pass any display name, and an optional `description`, to the constructor. Own one instance per independent conversation. Closing the chat UI does not destroy it; call `dispose()` when its host owner is destroyed.
 
-Configure the instance once with `init`, passing an `AssistantTransport`. `init` only stores the configuration, so it can run before login completes; the chat connects later (see [Deferred startup](#deferred-startup)). Calling `init` a second time throws a `StateError`: create a new assistant instance to replace its transport or configuration.
+Configure the instance once with `init`, passing an `AsystantProvider` (see [Providers](#providers)). `init` only stores the configuration, so it can run before login completes; the chat connects later (see [Deferred startup](#deferred-startup)). Calling `init` a second time throws a `StateError`: create a new assistant instance to replace its provider or configuration.
 
 ```dart
 assistant.init(
-  transport: OpenRouterTransport(
+  provider: OpenRouterProvider(
     credentials: fetchAiCredential,
     identity: () => session.userId,
     sessionChanges: session.changes,
@@ -25,31 +25,67 @@ assistant.init(
 );
 ```
 
-`assistant`, `session` and `fetchAiCredential` are host-owned; see [Credentials and sign-in](#credentials-and-sign-in). `models` are the choices shown next to the send button, each with the provider's model id, a label and an optional icon and description; the first one the transport permits is the default. An empty list lets the transport decide: `OpenRouterTransport` offers the models the credential allows, and `ClaudeCliTransport` offers `ClaudeCliTransport.defaultModels`. Optional built-in tools are enabled only when included; remove one from the list to disable it for a new instance. Duplicate tool names are rejected.
+`assistant`, `session` and `fetchAiCredential` are host-owned; see [Credentials and sign-in](#credentials-and-sign-in). `models` are the choices shown next to the send button, each with the provider's model id, a label and an optional icon and description; the first one the transport permits is the default. An empty list lets the provider decide: `OpenRouterProvider` offers the models the credential allows, and `ClaudeCodeProvider` the models the installed CLI declares. Optional built-in tools are enabled only when included; remove one from the list to disable it for a new instance. Duplicate tool names are rejected.
 
 `init` also accepts `additionalSystemPrompts`, a `conversationStore` (an `AsystantConversationStore`; the default `InMemoryConversationStore` forgets conversations when the app closes) and an `attachments` policy (`AsystantAttachmentPolicy`, every file type by default).
 
-## Transports
+## Providers
 
-Every transport implements `AssistantTransport`; the chat, permissions and tool loop do not depend on which one is used. `initialize` registers the tool schemas and prompts and returns the permitted models. Each `infer` streams `TextDelta`s, an optional `UsageReported` and one `InferenceCompleted` whose `message.calls` holds the proposed tool calls, or an `InferenceFailed`. A transport never executes a tool. Implement `AssistantTransport` yourself to reach another provider or your own service.
+A provider says where the answers come from. Everything else in the assistant (tools, system prompts, per-request context, attachments, the model picker, permissions and cards) is the same for every provider: it only talks to the `AssistantTransport` the provider creates.
 
-- `OpenRouterTransport` calls OpenRouter's Chat Completions API directly from the app, streaming over SSE, with a short-lived, budget-limited key that your backend obtains from asystant-api.
-- `ClaudeCliTransport` (desktop only) runs the Claude Code CLI installed on the user's machine with their own subscription, for local apps without a login or API key. It is always authenticated with a fixed `identity`.
+| Provider | When to use it | What it needs | Platforms |
+| --- | --- | --- | --- |
+| `OpenRouterProvider` | A published app whose users sign in; usage billed per user with budgets | A `credentials` function returning a short-lived, budget-limited key from your backend (asystant-api) | Android, iOS, web, macOS, Linux, Windows |
+| `ClaudeCodeProvider` | A local desktop app for someone who has Claude Code, such as a personal tool | The `claude` CLI installed and signed in with the person's subscription; no key, no backend | macOS, Linux, Windows |
 
 ```dart
+// A published app: the key comes from your backend.
 assistant.init(
-  transport: ClaudeCliTransport(identity: 'local'),
-  models: const [AsystantModelOption(id: 'sonnet', label: 'Sonnet')],
+  provider: OpenRouterProvider(credentials: fetchAiCredential, appName: 'Workspace'),
+);
+
+// A local desktop app: Claude Code is already signed in.
+assistant.init(
+  provider: const ClaudeCodeProvider(defaultModel: 'sonnet'),
+  models: const [
+    AsystantModelOption(id: 'sonnet', label: 'Sonnet'),
+    AsystantModelOption(id: 'opus', label: 'Opus'),
+  ],
 );
 ```
 
-`OpenRouterTransport` sends `appName` as `X-Title` and `appUrl` as `HTTP-Referer`, so usage is attributed to the app in OpenRouter. `baseUri` overrides the API root for an OpenRouter-compatible proxy. `maxOutputTokens` and `temperature` are passed through when set. `pdfEngine` chooses how attached PDFs are read (`pdf-text` by default, `mistral-ocr` or `native`). On initialization it reads each permitted model's context window, which feeds the chat's context meter, and the input types it accepts. HTTP failures map to typed `FailureCode`s: 401/403 to `authentication`, 402 to `budget`, 429 to `rateLimited`, a context overflow to `contextFull`, and 5xx to `unavailable`.
+Every provider answers two questions without running an inference, for a settings screen:
 
-`ClaudeCliTransport` makes one stateless `claude -p` run per inference: the whole conversation, tool calls and results included, goes on stdin, and the system prompt, with the tool catalog, goes through a private temporary file. No prompt text is placed on the command line. The CLI keeps no session (`--no-session-persistence`), because the SDK owns and may rewrite the history. Tools are declared in the system prompt, and the model writes each call as a `<tool_call>` JSON block that the transport turns into a `ToolCall`, so the SDK cannot tell it from a native tool call. The CLI's own tools, MCP servers and the user's Claude Code customizations are disabled. A missing binary fails with `FailureCode.unavailable` and a `detail` that says what to install; on the web, iOS and Android every inference fails the same way. See the [asystant_core guide](../packages/asystant_core/README.md#claude-code-cli-transport-desktop) for models, isolation, attachments and cancellation.
+- `provider.verify()` returns an `AsystantProviderStatus`: the provider's name, `signedIn` (null when it cannot tell), the version of a local program and a non-secret account description; `isReady` summarizes it. It is an `Err` with a typed `FailureCode` when the provider cannot be reached at all.
+- `provider.modelCatalog()` returns an `AsystantModelCatalog`: model ids, effort levels, `isOpenList` (other ids are accepted too) and `source` (`live`, or `bundled` with the SDK).
+
+`AsystantProvider` is sealed, so a host can `switch` over the variants it knows, for example to show provider-specific settings. `init(transport: ...)` remains for an `AssistantTransport` of your own, such as a test double or a proxy; pass exactly one of `provider` and `transport`. The examples use providers.
+
+### How each transport works
+
+Each `infer` streams `TextDelta`s, an optional `UsageReported` and one `InferenceCompleted` whose `message.calls` holds the proposed tool calls, or an `InferenceFailed`. `initialize` registers the tool schemas and prompts and returns the permitted models. A transport never executes a tool.
+
+- `OpenRouterProvider` creates an `OpenRouterTransport`, which calls OpenRouter's Chat Completions API directly from the app, streaming over SSE, with a short-lived, budget-limited key that your backend obtains from asystant-api.
+- `ClaudeCodeProvider` creates a `ClaudeCliTransport`, which runs the Claude Code CLI installed on the user's machine, for local apps without a login or API key. It is always authenticated with a fixed `identity`.
+
+`OpenRouterProvider` sends `appName` as `X-Title` and `appUrl` as `HTTP-Referer`, so usage is attributed to the app in OpenRouter. `baseUri` overrides the API root for an OpenRouter-compatible proxy. `maxOutputTokens` and `temperature` are passed through when set. `pdfEngine` chooses how attached PDFs are read (`pdf-text` by default, `mistral-ocr` or `native`). On initialization it reads each permitted model's context window, which feeds the chat's context meter, and the input types it accepts. HTTP failures map to typed `FailureCode`s: 401/403 to `authentication`, 402 to `budget`, 429 to `rateLimited`, a context overflow to `contextFull`, and 5xx to `unavailable`. `verify()` asks OpenRouter about the key (`GET /api/v1/key`).
+
+`ClaudeCodeProvider` makes one stateless `claude -p` run per inference: the whole conversation, tool calls and results included, goes on stdin, and the system prompt, with the per-request context and the tool catalog, goes through a private temporary file. No prompt text is placed on the command line. The CLI keeps no session (`--no-session-persistence`), because the SDK owns and may rewrite the history. Tools are declared in the system prompt, and the model writes each call as a `<tool_call>` JSON block that the transport turns into a `ToolCall`, so the SDK cannot tell it from a native tool call. The CLI's own tools, MCP servers and the user's Claude Code customizations are disabled. `verify()` runs `claude --version` and `claude auth status --json`; `modelCatalog()` reads `claude --help`. A missing binary fails with `FailureCode.unavailable` and a `detail` that says what to install; on the web, iOS and Android every call fails the same way. See the [asystant_core guide](../packages/asystant_core/README.md#claude-code-desktop) for models, isolation, attachments and cancellation.
+
+## Adding a provider
+
+A provider is self-contained: its folder holds everything it needs, and adding one changes no other provider, no common logic and no host code. In `packages/asystant_core/lib/src/providers/`:
+
+1. **Create its folder**, `providers/<name>/`, with its transport, a class that `extends AssistantTransport` (`initialize`, `infer`, `cancel`, `dispose`, `isAuthenticated`, `identity`, `sessionChanges`), and whatever it needs: codec, stream decoder, launcher, credentials. Override `verify()` and `modelCatalog()` so settings screens can test it and list its models; override `contextLengthOf` and `defaultModel` when the provider knows them. Compose the prompts with `AsystantPromptPolicy().compose(prompts)` in `initialize`, and send `[...prompts, ...context]` on every `infer`, so the security baseline and the per-request context reach the model.
+2. **Declare its variant** in `providers/<name>/<name>_provider.dart`, starting with `part of '../asystant_provider.dart';`: a `final class <Name>Provider extends AsystantProvider` with its settings, `name` and `createTransport()`. Dart requires the variants of a sealed class to be in its library, hence the `part`; a part cannot import, so its types come from the import added in step 4.
+3. **Write its export file**, `providers/<name>/<name>.dart`, exporting the provider's public types (its transport and anything a host configures).
+4. **Register it** with two lines in `providers/asystant_provider.dart`, `import 'package:asystant_core/src/providers/<name>/<name>.dart';` and `part '<name>/<name>_provider.dart';`, and one in `lib/asystant_core.dart`, `export 'package:asystant_core/src/providers/<name>/<name>.dart';`. `asystant_ai` re-exports `asystant_core`, so apps see the new provider after upgrading, with no other change.
+
+A variant without `createTransport()` does not compile, and nothing else dispatches on the provider type, so there is no switch to extend. Hosts that `switch` over `AsystantProvider` get a compile error listing the new variant, which is the intended signal.
 
 ## Credentials and sign-in
 
-`OpenRouterTransport` takes an `OpenRouterCredentialSource`: a function returning `Future<Result<OpenRouterCredential, AssistantFailure>>`. In production it asks your own backend, which authenticates the signed-in user and calls asystant-api's `POST /v1/managed/credentials` with the company API key. The backend returns that response body to the app, and `OpenRouterCredential.fromManagedJson` reads it:
+`OpenRouterProvider` takes an `OpenRouterCredentialSource`: a function returning `Future<Result<OpenRouterCredential, AssistantFailure>>`. In production it asks your own backend, which authenticates the signed-in user and calls asystant-api's `POST /v1/managed/credentials` with the company API key. The backend returns that response body to the app, and `OpenRouterCredential.fromManagedJson` reads it:
 
 ```dart
 Future<Result<OpenRouterCredential, AssistantFailure>> fetchAiCredential() async {
@@ -95,7 +131,7 @@ GenUI supports summary, entity, selection, permission and result cards. Selectio
 1. An operator creates the company in the asystant-api console, with the OpenRouter workspaces and models it may use, and issues it an API key (`ask_live_...`). That key lives in the company backend's secret manager.
 2. The company backend sets budgets per tenant (an organization) and per subject (a person inside it), in a `daily` or a lifetime `migration` bucket.
 3. After authenticating a user, the backend calls `POST /v1/managed/credentials` with `{"tenant", "subject", "bucket"}`. The response carries `api_key`, `expires_at` (end of the UTC day), `refresh_after` and `allowed_models`. Repeated calls on the same day return the same key.
-4. The app calls OpenRouter directly with that key through `OpenRouterTransport`. OpenRouter enforces the key's spending limit.
+4. The app calls OpenRouter directly with that key through `OpenRouterProvider`. OpenRouter enforces the key's spending limit.
 
 The authoritative HTTP contract is its [OpenAPI specification](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml); see its [managed keys guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/managed-keys.md) and [security policy](https://github.com/JhonaCodes/asystant-api/blob/main/SECURITY.md) before exposing a deployment. Any backend that returns the same JSON body can feed `OpenRouterCredential.fromManagedJson`.
 
@@ -170,7 +206,7 @@ class WorkspaceAssistant extends AsystantAI {
 }
 
 assistant.init(
-  transport: transport,
+  provider: provider,
   additionalSystemPrompts: const [
     AsystantSystemPrompt(id: 'workspace.context', content: 'Reply in English.'),
   ],
@@ -180,9 +216,9 @@ assistant.init(
 
 `AsystantPromptPolicy.security` is always first. Duplicate IDs, empty instructions,
 and replacement of the reserved security ID are rejected. Up to 15 application
-prompts may supplement the baseline. `OpenRouterTransport` and `ClaudeCliTransport`
-compose the same baseline again in `initialize`, so it also applies when a transport
-is used without the Flutter chat.
+prompts may supplement the baseline. Every provider's transport composes the same
+baseline again in `initialize`, so it also applies when a transport is used without
+the Flutter chat.
 The baseline treats retrieved content and tool output as untrusted, prohibits
 claiming approval or successful writes without evidence, and instructs the model
 not to disclose secrets. It is guidance, not a guarantee against prompt injection.

@@ -1,5 +1,6 @@
-/// Embeddable Flutter chat and local tools over an AssistantTransport
-/// (OpenRouter or the Claude Code CLI).
+/// Embeddable Flutter chat and local tools over any AsystantProvider
+/// (OpenRouter, Claude Code, ...). Re-exports asystant_core, so every
+/// provider the core package ships is available from this import.
 library;
 
 export 'package:asystant_core/asystant_core.dart';

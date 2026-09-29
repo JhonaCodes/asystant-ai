@@ -107,7 +107,10 @@ void main() {
     await settle();
 
     expect(transport.contexts, isEmpty);
-    expect(assistant.conversation.notifier.state.failure?.code, FailureCode.protocol);
+    expect(
+      assistant.conversation.notifier.state.failure?.code,
+      FailureCode.protocol,
+    );
     assistant.dispose();
   });
 }

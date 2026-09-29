@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:result_controller/result_controller.dart';
 
 import 'package:asystant_core/src/model/assistant_failure.dart';
-import 'package:asystant_core/src/transport/claude_cli_launcher.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_launcher.dart';
 
 /// Starts the CLI with `dart:io` on desktop platforms.
 ///
@@ -57,11 +57,12 @@ class ProcessClaudeCliLauncher implements ClaudeCliLauncher {
     try {
       final systemPrompt = File('${workspace.path}/system-prompt.md');
       await systemPrompt.writeAsString(invocation.systemPrompt, flush: true);
-      process = await Process.start(executable, [
-        ...invocation.arguments,
-        '--system-prompt-file',
-        systemPrompt.path,
-      ], workingDirectory: workspace.path);
+      process = await Process.start(
+        executable,
+        [...invocation.arguments, '--system-prompt-file', systemPrompt.path],
+        workingDirectory: workspace.path,
+        environment: _environment(executable),
+      );
     } on ProcessException {
       // Its message repeats the command line; it is deliberately dropped.
       _remove(workspace);
@@ -98,6 +99,63 @@ class ProcessClaudeCliLauncher implements ClaudeCliLauncher {
         kill: () => _stop(process, exited: () => exited),
       ),
     );
+  }
+
+  /// Most output kept from a short command, in characters.
+  static const int maxCommandOutput = 256 * 1024;
+
+  /// How long a short command may take.
+  static const commandTimeout = Duration(seconds: 15);
+
+  @override
+  Future<Result<ClaudeCliOutput, AssistantFailure>> run(
+    String executable,
+    List<String> arguments,
+  ) async {
+    if (Platform.isIOS || Platform.isAndroid) {
+      return Err(ClaudeCliFailures.unsupported);
+    }
+    final resolved = await _resolve(executable);
+    if (resolved == null) {
+      return Err(ClaudeCliFailures.missing(executable));
+    }
+    final Process process;
+    try {
+      process = await Process.start(
+        resolved,
+        arguments,
+        environment: _environment(resolved),
+      );
+    } on ProcessException {
+      return Err(ClaudeCliFailures.missing(executable));
+    }
+    process.stdin.close().ignore();
+    final stderr = process.stderr.drain<void>();
+    final stdout = StringBuffer();
+    try {
+      await for (final chunk
+          in process.stdout.transform(utf8.decoder).timeout(commandTimeout)) {
+        if (stdout.length < maxCommandOutput) {
+          stdout.write(chunk);
+        }
+      }
+      final code = await process.exitCode.timeout(commandTimeout);
+      await stderr;
+      return Ok(ClaudeCliOutput(exitCode: code, stdout: stdout.toString()));
+    } on TimeoutException {
+      process.kill(ProcessSignal.sigkill);
+      return Err(ClaudeCliFailures.silent(arguments.join(' ')));
+    }
+  }
+
+  /// The CLI's own directory goes first on `PATH`: an npm install is a Node
+  /// script whose `node` usually sits next to it, and an app started from
+  /// Finder does not have that directory on its `PATH`.
+  static Map<String, String> _environment(String executable) {
+    final separator = Platform.isWindows ? ';' : ':';
+    final directory = File(executable).parent.path;
+    final path = Platform.environment['PATH'] ?? '';
+    return {'PATH': path.isEmpty ? directory : '$directory$separator$path'};
   }
 
   /// SIGTERM first. Once nobody reads its stdout the CLI can take seconds

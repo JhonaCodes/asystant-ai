@@ -8,7 +8,7 @@ final class _BotanicaAssistant extends AsystantAI {
   /// A configured assistant, ready to open in the chat.
   factory _BotanicaAssistant.connected() => _BotanicaAssistant()
     ..init(
-      transport: _AiConnection.transport(),
+      provider: _AiConnection.provider(),
       models: _AiConnection.models,
       attachments: _AiConnection.attachments,
     );

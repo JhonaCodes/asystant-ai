@@ -5,9 +5,9 @@ Embed an AI assistant inside an existing Flutter app. Launch it from a button or
 | Component | Responsibility |
 | --- | --- |
 | [asystant_ai](packages/asystant_ai) | Flutter chat, genUI, permissions, themes and reactive_notifier state |
-| [asystant_core](packages/asystant_core) | Pure Dart tools, protocol models, the `AssistantTransport` contract and its two transports: `OpenRouterTransport` and `ClaudeCliTransport` |
+| [asystant_core](packages/asystant_core) | Pure Dart tools, protocol models, the `AssistantTransport` contract and the providers: `OpenRouterProvider` and `ClaudeCodeProvider` |
 | [asystant-api](https://github.com/JhonaCodes/asystant-api) | Separate self-hosted service that issues short-lived, budget-limited OpenRouter keys to your backend; it does not proxy inference |
-| [Host example](examples/host_app) | Botánica, a local-first app whose assistant uses `OpenRouterTransport`, local tools and host-owned cards |
+| [Host example](examples/host_app) | Botánica, a local-first app whose assistant uses `OpenRouterProvider`, local tools and host-owned cards |
 
 ## Quick start
 
@@ -15,10 +15,18 @@ Embed an AI assistant inside an existing Flutter app. Launch it from a button or
 flutter pub add asystant_ai
 ```
 
-Extend `AsystantAI`, register your local tools, call `init` with a transport, then mount `AsystantButton(assistant: assistant)` or `AsystantChat(assistant: assistant)` in a bounded container:
+Extend `AsystantAI`, register your local tools, call `init` with a provider, then mount `AsystantButton(assistant: assistant)` or `AsystantChat(assistant: assistant)` in a bounded container. Tools, prompts, context, attachments, the model picker and cards work the same with every provider:
 
-- `OpenRouterTransport` talks to OpenRouter directly with a key returned by an `OpenRouterCredentialSource`. In production your backend authenticates the user and obtains that key from asystant-api (`POST /v1/managed/credentials`).
-- `ClaudeCliTransport` runs the Claude Code CLI installed on a desktop machine with the user's own subscription, without an API key or backend.
+| Provider | When to use it | What it needs | Platforms |
+| --- | --- | --- | --- |
+| `OpenRouterProvider` | A published app whose users sign in | A key returned by an `OpenRouterCredentialSource`; in production your backend authenticates the user and obtains it from asystant-api (`POST /v1/managed/credentials`) | Mobile, web, desktop |
+| `ClaudeCodeProvider` | A local desktop app for someone who has Claude Code | The Claude Code CLI installed and signed in with the user's own subscription; no API key or backend | macOS, Linux, Windows |
+
+```dart
+assistant.init(provider: const ClaudeCodeProvider(defaultModel: 'sonnet'));
+```
+
+Each provider can `verify()` its connection and list its `modelCatalog()` without running an inference. More providers can be added without changing the rest of the SDK: see [Adding a provider](docs/public-api.md#adding-a-provider).
 
 See the [package guide](packages/asystant_ai/README.md) and [integration guide](docs/public-api.md).
 
@@ -26,7 +34,7 @@ Tools execute in your app using its existing services. The model only receives t
 
 ## Examples
 
-[packages/asystant_ai/example/lib/main.dart](packages/asystant_ai/example/lib/main.dart) shows the integration without credentials: an explicitly simulated transport and a real local read-only tool.
+[packages/asystant_ai/example/lib/main.dart](packages/asystant_ai/example/lib/main.dart) shows the integration without credentials and a real local read-only tool: with `--dart-define=CLAUDE_CODE=true` on a desktop it answers through `ClaudeCodeProvider`, otherwise through an explicitly simulated transport.
 
 The [host example](examples/host_app/README.md) connects to OpenRouter. For local testing, put a short-lived key in `examples/host_app/.env` as `OPENROUTER_API_KEY` (ignored by Git); without it the assistant opens and shows that it cannot connect.
 
@@ -38,7 +46,7 @@ flutter run -d <device> --dart-define-from-file=.env
 
 ## Backend
 
-The SDK includes no hosted service, provider key or inference credit. With `OpenRouterTransport`, deploy [asystant-api](https://github.com/JhonaCodes/asystant-api) or any backend that returns the same credential JSON. Your backend keeps the asystant-api company key and authenticates each user; the app receives only that user's short-lived, budget-limited OpenRouter key.
+The SDK includes no hosted service, provider key or inference credit. With `OpenRouterProvider`, deploy [asystant-api](https://github.com/JhonaCodes/asystant-api) or any backend that returns the same credential JSON. Your backend keeps the asystant-api company key and authenticates each user; the app receives only that user's short-lived, budget-limited OpenRouter key.
 
 - [asystant-api HTTP contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml)
 - [Managed keys guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/managed-keys.md)
@@ -55,7 +63,7 @@ MIT. See [LICENSE](LICENSE). Both Dart packages and the Rust service include the
 
 Application personality is supplied through `AsystantAI.systemPrompts`; scoped
 context can be added with `additionalSystemPrompts` during `init()`, and what the app
-knows right now through `contextPrompts()`. Both transports place the SDK's baseline
+knows right now through `contextPrompts()`. Every provider places the SDK's baseline
 safety guidance first. See the
 [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md).
 

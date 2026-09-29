@@ -6,14 +6,16 @@ import 'package:result_controller/result_controller.dart';
 
 import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/assistant_message.dart';
+import 'package:asystant_core/src/model/asystant_model_catalog.dart';
+import 'package:asystant_core/src/model/asystant_provider_status.dart';
 import 'package:asystant_core/src/model/asystant_prompt_policy.dart';
 import 'package:asystant_core/src/model/system_prompt.dart';
 import 'package:asystant_core/src/tool/tool_definition.dart';
 import 'package:asystant_core/src/transport/assistant_transport.dart';
 import 'package:asystant_core/src/transport/inference_event.dart';
-import 'package:asystant_core/src/transport/open_router_credential.dart';
-import 'package:asystant_core/src/transport/open_router_message_codec.dart';
-import 'package:asystant_core/src/transport/open_router_stream.dart';
+import 'package:asystant_core/src/providers/openrouter/open_router_credential.dart';
+import 'package:asystant_core/src/providers/openrouter/open_router_message_codec.dart';
+import 'package:asystant_core/src/providers/openrouter/open_router_stream.dart';
 
 /// Talks to OpenRouter directly with the signed-in user's own key.
 ///
@@ -133,6 +135,56 @@ class OpenRouterTransport extends AssistantTransport {
     ]);
     await Future.wait(permitted.map(_loadModel));
     return Ok(List.unmodifiable(permitted));
+  }
+
+  /// Asks OpenRouter about the key (`GET key`), which costs no inference.
+  /// `Err` with [FailureCode.authentication] when the source gives no key
+  /// or OpenRouter refuses it.
+  @override
+  Future<Result<AsystantProviderStatus, AssistantFailure>> verify() async {
+    final access = await _access();
+    final credential = access.when(ok: (value) => value, err: (_) => null);
+    if (credential == null) {
+      return Err(access.errorOrNull ?? const AssistantFailure(.authentication));
+    }
+    final client = _clientFactory();
+    try {
+      final response = await client
+          .get(_url('key'), headers: _headers(credential))
+          .timeout(const Duration(seconds: 15));
+      if (response.statusCode == 200) {
+        return Ok(
+          const AsystantProviderStatus(provider: 'OpenRouter', signedIn: true),
+        );
+      }
+      if (response.statusCode == 401 || response.statusCode == 403) {
+        _credential = null;
+      }
+      return Err(_failure(response.statusCode, response.body));
+    } on TimeoutException {
+      return Err(const AssistantFailure(.network));
+    } on http.ClientException {
+      return Err(const AssistantFailure(.network));
+    } finally {
+      client.close();
+    }
+  }
+
+  /// The models the credential allows; an open list when it does not
+  /// restrict them.
+  @override
+  Future<Result<AsystantModelCatalog, AssistantFailure>> modelCatalog() async {
+    final access = await _access();
+    return access.when(
+      ok: (credential) => Ok(
+        AsystantModelCatalog(
+          models: credential.allowedModels,
+          isOpenList: credential.allowedModels.isEmpty,
+          source: AsystantCatalogSource.live,
+        ),
+      ),
+      err: (failure) => Err(failure),
+    );
   }
 
   /// The host's preferred order, limited to what the key allows.

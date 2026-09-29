@@ -1,7 +1,7 @@
 import 'package:result_controller/result_controller.dart';
 
 import 'package:asystant_core/src/model/assistant_failure.dart';
-import 'package:asystant_core/src/transport/claude_cli_launcher.dart';
+import 'package:asystant_core/src/providers/claude_code/claude_cli_launcher.dart';
 
 /// The web build of [ProcessClaudeCliLauncher]: browsers cannot start
 /// processes, so every run fails with a clear [AssistantFailure].
@@ -16,5 +16,11 @@ class ProcessClaudeCliLauncher implements ClaudeCliLauncher {
   @override
   Future<Result<ClaudeCliProcess, AssistantFailure>> start(
     ClaudeCliInvocation invocation,
+  ) async => Err(ClaudeCliFailures.unsupported);
+
+  @override
+  Future<Result<ClaudeCliOutput, AssistantFailure>> run(
+    String executable,
+    List<String> arguments,
   ) async => Err(ClaudeCliFailures.unsupported);
 }

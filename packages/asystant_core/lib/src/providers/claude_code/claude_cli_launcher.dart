@@ -79,14 +79,52 @@ class ClaudeCliProcess {
   void kill() => _kill();
 }
 
+/// What a short CLI command, such as `claude --version`, printed.
+class ClaudeCliOutput {
+  const ClaudeCliOutput({required this.exitCode, required this.stdout});
+
+  final int exitCode;
+
+  /// Everything written to stdout, bounded by the launcher.
+  final String stdout;
+
+  ClaudeCliOutput copyWith({int? exitCode, String? stdout}) => ClaudeCliOutput(
+    exitCode: exitCode ?? this.exitCode,
+    stdout: stdout ?? this.stdout,
+  );
+
+  @override
+  bool operator ==(Object other) =>
+      other is ClaudeCliOutput &&
+      exitCode == other.exitCode &&
+      stdout == other.stdout;
+
+  @override
+  int get hashCode => Object.hash(exitCode, stdout);
+
+  @override
+  String toString() => 'ClaudeCliOutput($exitCode, ${stdout.length} chars)';
+}
+
 /// Starts the Claude Code CLI.
 ///
 /// The transport depends on this interface, so tests replay recorded output
 /// without the binary installed. A missing binary is an `Err`, not an
 /// exception.
 abstract interface class ClaudeCliLauncher {
+  /// One inference run: [ClaudeCliInvocation.prompt] on stdin, the system
+  /// prompt through a private file.
   Future<Result<ClaudeCliProcess, AssistantFailure>> start(
     ClaudeCliInvocation invocation,
+  );
+
+  /// A short command that sends no prompt and uses no inference, such as
+  /// `--version`, `--help` or `auth status --json`, with its output.
+  ///
+  /// [arguments] must never carry prompt text or a secret.
+  Future<Result<ClaudeCliOutput, AssistantFailure>> run(
+    String executable,
+    List<String> arguments,
   );
 }
 
@@ -109,5 +147,11 @@ abstract final class ClaudeCliFailures {
     detail:
         'ClaudeCliTransport starts a local process and only works on '
         'desktop platforms (macOS, Linux, Windows), not on the web or mobile.',
+  );
+
+  /// A short command did not finish in time.
+  static AssistantFailure silent(String command) => AssistantFailure(
+    .network,
+    detail: 'Claude Code did not answer `$command` in time.',
   );
 }

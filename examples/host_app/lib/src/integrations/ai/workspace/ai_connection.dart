@@ -9,14 +9,17 @@ abstract final class _AiConnection {
   /// `POST /v1/managed/credentials`) and never compiles one into the build.
   static const _openRouterKey = String.fromEnvironment('OPENROUTER_API_KEY');
 
-  static AssistantTransport transport() {
+  /// Where the answers come from. Another provider, such as
+  /// `ClaudeCodeProvider()` on a desktop build, changes only this line:
+  /// tools, prompts, context and cards stay as they are.
+  static AsystantProvider provider() {
     if (_openRouterKey.isEmpty) {
       // The chat still opens and shows that it cannot connect.
       Log.w(
         'OPENROUTER_API_KEY is missing: run with --dart-define-from-file=.env',
       );
     }
-    return OpenRouterTransport(
+    return OpenRouterProvider(
       credentials: () async => _openRouterKey.isEmpty
           ? Err(const AssistantFailure(.authentication))
           : Ok(OpenRouterCredential(apiKey: _openRouterKey)),

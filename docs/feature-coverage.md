@@ -8,7 +8,7 @@
 | Explicit permissions | Confirmation by default, optional required selection, cancellation-aware context |
 | GenUI | Summary, entity, selection, permission and result cards, bar and line charts, host-owned card content |
 | Progress and state icons | Tool steps, send/stop action and failure notices |
-| Transport contract | `AssistantTransport`, implemented by `OpenRouterTransport` and `ClaudeCliTransport`, or by the host |
+| Providers | Sealed `AsystantProvider`: `OpenRouterProvider` and `ClaudeCodeProvider`, each creating its `AssistantTransport`, with `verify()` and `modelCatalog()`; a host may still pass its own `AssistantTransport` |
 | Existing login integration | `OpenRouterCredentialSource` backed by the host backend, which obtains the user's key from asystant-api; `identity` and `sessionChanges` report login changes |
 | Credential renewal | Credential cached until `refreshAfter`/`expiresAt`, then requested again; dropped on HTTP 401/403 |
 | Model assignment | Host model list restricted to the credential's `allowedModels`; an empty list offers exactly those |
@@ -20,7 +20,7 @@
 
 ## Limits
 
-The repository includes no hosted endpoint, provider key or inference credit. For `OpenRouterTransport`, each product must obtain users' keys from its own backend (for example through asystant-api) using its real login. `ClaudeCliTransport` works only on desktop, with the Claude Code CLI installed and signed in; on the web, iOS and Android it reports the platform as unavailable, and its tool calls depend on the model following the prompt's `<tool_call>` format.
+The repository includes no hosted endpoint, provider key or inference credit. For `OpenRouterProvider`, each product must obtain users' keys from its own backend (for example through asystant-api) using its real login. `ClaudeCodeProvider` works only on desktop, with the Claude Code CLI installed and signed in; on the web, iOS and Android it reports the platform as unavailable, and its tool calls depend on the model following the prompt's `<tool_call>` format.
 
 There is no client-side key revocation: `dispose()` only forgets the cached key, and revocation belongs to asystant-api. A transport keeps its cached key until it must be refreshed, so a different user needs a new assistant instance.
 

@@ -1,5 +1,5 @@
-/// Typed local tools, protocol models and OpenRouter and Claude Code CLI
-/// transports for Dart.
+/// Typed local tools, protocol models and the model providers (OpenRouter,
+/// Claude Code) for embedded assistants in Dart.
 library;
 
 export 'package:result_controller/result_controller.dart';
@@ -10,7 +10,9 @@ export 'package:asystant_core/src/model/assistant_failure.dart';
 export 'package:asystant_core/src/model/assistant_message.dart';
 export 'package:asystant_core/src/model/asystant_attachment.dart';
 export 'package:asystant_core/src/model/asystant_attachment_policy.dart';
+export 'package:asystant_core/src/model/asystant_model_catalog.dart';
 export 'package:asystant_core/src/model/asystant_prompt_policy.dart';
+export 'package:asystant_core/src/model/asystant_provider_status.dart';
 export 'package:asystant_core/src/model/chart_point.dart';
 export 'package:asystant_core/src/model/system_prompt.dart';
 export 'package:asystant_core/src/model/token_usage.dart';
@@ -26,9 +28,10 @@ export 'package:asystant_core/src/tool/tool_outcome.dart';
 export 'package:asystant_core/src/tool/tool_registry.dart';
 export 'package:asystant_core/src/tool/typed_asystant_tool.dart';
 export 'package:asystant_core/src/transport/assistant_transport.dart';
-export 'package:asystant_core/src/transport/claude_cli_launcher.dart';
-export 'package:asystant_core/src/transport/claude_cli_launcher_platform.dart';
-export 'package:asystant_core/src/transport/claude_cli_transport.dart';
 export 'package:asystant_core/src/transport/inference_event.dart';
-export 'package:asystant_core/src/transport/open_router_credential.dart';
-export 'package:asystant_core/src/transport/open_router_transport.dart';
+
+// Providers: the sealed AsystantProvider with every variant, then one
+// export per provider folder.
+export 'package:asystant_core/src/providers/asystant_provider.dart';
+export 'package:asystant_core/src/providers/claude_code/claude_code.dart';
+export 'package:asystant_core/src/providers/openrouter/openrouter.dart';

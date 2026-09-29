@@ -1,7 +1,7 @@
 # Deployment
 
-The Flutter SDK has no server component to deploy. `OpenRouterTransport` calls
-OpenRouter directly from the app; `ClaudeCliTransport` runs the Claude Code CLI on
+The Flutter SDK has no server component to deploy. `OpenRouterProvider` calls
+OpenRouter directly from the app; `ClaudeCodeProvider` runs the Claude Code CLI on
 the user's desktop.
 
 For OpenRouter keys with per-tenant and per-user budgets, deploy

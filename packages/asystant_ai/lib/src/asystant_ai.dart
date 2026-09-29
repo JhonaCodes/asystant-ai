@@ -49,6 +49,14 @@ abstract class AsystantAI with AsystantService {
   /// Configures this instance once; create a new instance to replace its setup.
   /// Stores configuration without contacting the server or evaluating tools.
   ///
+  /// [provider] says where answers come from: `OpenRouterProvider`,
+  /// `ClaudeCodeProvider` or any other variant of [AsystantProvider]. Tools,
+  /// prompts, context, attachments and the model picker work the same with
+  /// all of them. [transport] is the advanced alternative for an
+  /// [AssistantTransport] of your own, such as a test double or a proxy;
+  /// pass exactly one of the two. The assistant owns the transport and
+  /// disposes it with itself.
+  ///
   /// The chat starts initialization after its first frame. Applications without
   /// the built-in chat can call [ensureInitialized] when opening their UI.
   /// An empty model list accepts server policy. Additional prompts supplement
@@ -60,7 +68,8 @@ abstract class AsystantAI with AsystantService {
   /// next to the send button, each with the provider's id, a name and an
   /// optional icon and description; the first allowed one is the default.
   void init({
-    required AssistantTransport transport,
+    AsystantProvider? provider,
+    AssistantTransport? transport,
     List<AsystantModelOption> models = const [],
     List<AsystantTool> builtInTools = const [],
     List<AsystantSystemPrompt> additionalSystemPrompts = const [],
@@ -70,13 +79,20 @@ abstract class AsystantAI with AsystantService {
     if (_disposed || _initialize != null) {
       throw StateError('Configure the assistant before opening it.');
     }
-    _pendingTransport = transport;
+    if ((provider == null) == (transport == null)) {
+      throw ArgumentError('Pass exactly one of provider or transport.');
+    }
+    final configured = transport ?? provider?.createTransport();
+    if (configured == null) {
+      return;
+    }
+    _pendingTransport = configured;
     _initialize = () {
       final registeredTools = [...builtInTools, ...tools];
       final registeredPrompts = [...systemPrompts, ...additionalSystemPrompts];
       _pendingTransport = null;
       return conversation.notifier.configure(
-        transport: transport,
+        transport: configured,
         tools: registeredTools,
         prompts: registeredPrompts,
         models: models,

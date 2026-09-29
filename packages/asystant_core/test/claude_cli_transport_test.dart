@@ -25,6 +25,13 @@ class _RecordedLauncher implements ClaudeCliLauncher {
       ),
     );
   }
+
+  /// As if the binary could not answer short commands.
+  @override
+  Future<Result<ClaudeCliOutput, AssistantFailure>> run(
+    String executable,
+    List<String> arguments,
+  ) async => Err(ClaudeCliFailures.missing(executable));
 }
 
 Map<String, Object?> _delta(String text) => {
@@ -93,7 +100,7 @@ void main() {
       prompts: const [],
       models: const [],
     );
-    expect(models.data, ClaudeCliTransport.defaultModels);
+    expect(models.data, ClaudeCliCatalog.bundledModels);
 
     final events = await transport
         .infer(

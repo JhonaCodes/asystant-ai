@@ -3,6 +3,11 @@
 - `OpenRouterTransport` replaces the former `GatewayTransport` and `SessionSource`: the host supplies an `OpenRouterCredentialSource` (for example a budget-limited key issued by asystant-api) and the transport talks to OpenRouter directly.
 - Security: a cached OpenRouter key is bound to the identity it was issued for; after a login change the transport requests a new key instead of reusing the previous user's.
 - `ClaudeCliTransport`: a desktop transport over the local Claude Code CLI, using the user's subscription without an API key. Tools are declared in the system prompt and returned as regular `ToolCall`s; the CLI's own tools, MCP servers and user customizations are disabled. Compiles on the web, where it reports the platform as unsupported.
+- Providers: the sealed `AsystantProvider`, with `OpenRouterProvider` and `ClaudeCodeProvider`, is how an assistant chooses where answers come from. Each variant implements `createTransport()`; `verify()` and `modelCatalog()` work for any provider. Each provider lives in `src/providers/<name>/` with everything it needs; adding one changes no other provider or common code (see "Adding a provider" in `docs/public-api.md`). Public imports are unchanged.
+- `AssistantTransport.verify()` and `AssistantTransport.modelCatalog()`, with defaults that report them as unsupported, return the provider-neutral `AsystantProviderStatus` and `AsystantModelCatalog`.
+- `ClaudeCodeProvider` / `ClaudeCliTransport`: `verify()` runs `claude --version` and `claude auth status --json` (no inference) and reports version, sign-in and plan, never the email; `modelCatalog()` reads the models and effort levels from `claude --help`, falling back to `ClaudeCliCatalog.bundled`. With no models, `initialize` offers that catalog (`ClaudeCliTransport.defaultModels` is replaced by `ClaudeCliCatalog.bundledModels`). New `defaultModel`. The CLI runs with its own directory first on `PATH`, so an npm install finds `node` from a Finder-launched app.
+- `ClaudeCliLauncher.run` runs short commands that send no prompt; custom launchers must implement it.
+- `OpenRouterProvider` / `OpenRouterTransport`: `verify()` checks the key with `GET /api/v1/key` (no inference); `modelCatalog()` lists the credential's allowed models.
 
 ## 0.2.0
 

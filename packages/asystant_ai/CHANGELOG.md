@@ -1,6 +1,9 @@
 ## Unreleased
 
-- Documentation describes the current transports (`OpenRouterTransport`, `ClaudeCliTransport`); the gateway session API no longer exists.
+- `AsystantAI.init(provider: ...)` is the way to connect an assistant: `OpenRouterProvider`, `ClaudeCodeProvider` or any later `AsystantProvider`. Tools, prompts, per-request context, attachments, the model picker and cards work the same with each. `init(transport: ...)` remains for a custom `AssistantTransport` (test doubles, proxies); pass exactly one of the two.
+- With `ClaudeCodeProvider` and no `models`, the chat offers the models the installed Claude Code CLI declares.
+- The example answers through `ClaudeCodeProvider` with `--dart-define=CLAUDE_CODE=true` on a desktop, and through a simulated transport otherwise.
+- Documentation describes the providers and how to add one; the gateway session API no longer exists.
 
 ## 0.3.2
 
