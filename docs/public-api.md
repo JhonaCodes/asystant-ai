@@ -133,7 +133,7 @@ A `ToolField` is a scalar (`string`, `integer`, `number`, `boolean`), a list of 
 - `data`: a structured result for the host, such as the ids a tool created. It stays on the step (`AssistantStep.data`) and is never sent to the model.
 - `card`: a genUI card shown in the chat.
 - `endsTurn`: ends the person's turn after this tool. The model is not called again and the remaining calls of that response are answered without running, so the next word belongs to the person. Use it when a tool opens a question only the person can answer, such as a product approval, and say so in `modelContent`.
-- `images`: images the model looks at with the result, such as a frame the app just rendered so the model can review its own work. Each is an `AsystantAttachment` with PNG, JPEG, GIF or WebP bytes and its `mimeType` (`AsystantAttachment.fromBytes(bytes: png, filename: 'frame.png')`); non-image files are ignored. They stay in the conversation as the `attachments` of the tool's result message, like the person's own attachments, and every provider sends them in its own format (see [Images](#images)).
+- `images`: images the model looks at with the result, such as a frame the app just rendered so the model can review its own work. Each is an `AsystantAttachment` with PNG, JPEG, GIF or WebP bytes and its `mimeType` (`AsystantAttachment.fromBytes(bytes: png, filename: 'frame.png')`); non-image files are ignored. They stay in the conversation as the `attachments` of the tool's result message, like the person's own attachments, and every provider sends them in its own format (see [Images](#images)). The person sees them too: the completed step keeps them (`AssistantStep.images`) and the built-in chat shows them as thumbnails under the step, `AsystantTheme.stepImageHeight` high (120 by default).
 
 ```dart
 @override
@@ -151,7 +151,7 @@ Future<Result<ToolOutcome, AssistantFailure>> execute(
 }
 ```
 
-Each executed call is an `AssistantStep` with the `toolName`, when it `startedAt`, the `detail` of a failure and the tool's `data`. A turn's steps end up in `ChatEntry.activity`, which a conversation store keeps.
+Each executed call is an `AssistantStep` with the `toolName`, when it `startedAt`, the `detail` of a failure, the tool's `data` and the `images` it returned. A turn's steps end up in `ChatEntry.activity`, which a conversation store keeps. A store that serializes steps decides whether it keeps their image bytes; one that keeps only a reference (a file path in `data`, say) can load the bytes back into `images` when it reads the conversation, so the thumbnails survive a restart.
 
 ### Progress and cancellation of long tools
 
@@ -247,7 +247,7 @@ Search results come from documents, and the baseline safety prompt already tells
 
 ## Embedding and customization
 
-`AsystantButton` opens the chat in a bottom sheet (`AsystantPhoneSheet`) on phones and in a side panel (`AsystantPanel`) on tablets and desktops. `AsystantChat` is a bounded section without its own app router or Scaffold; use it in drawers, panels and full screens. Colors follow the host theme. `AsystantTheme` controls dimensions. `AsystantStrings(spanish: false)` selects English; the default locale-aware widget path supports English and Spanish, and subclassing allows custom wording.
+`AsystantButton` opens the chat in a bottom sheet (`AsystantPhoneSheet`) on phones and in a side panel (`AsystantPanel`) on tablets and desktops. `AsystantChat` is a bounded section without its own app router or Scaffold; use it in drawers, panels and full screens. Colors follow the host theme's `ColorScheme`: mainly `surface`, `surfaceContainerLow`, `surfaceContainerHigh` and `surfaceContainerHighest` (cards, composer), `primary` (actions, accents), `primaryContainer` and `onPrimaryContainer` (the person's messages), `onSurface`, `onSurfaceVariant` (secondary text), `outlineVariant` (borders) and `error`. A host whose app theme only sets the basic roles can wrap the chat in a `Theme` that fills these from its own palette. `AsystantTheme` controls dimensions. `AsystantStrings(spanish: false)` selects English; the default locale-aware widget path supports English and Spanish, and subclassing allows custom wording.
 
 GenUI supports summary, entity, selection, permission and result cards. Selections use stable option strings that tools can map to host domain identifiers. Tool steps show preparing, permission, running, completed, declined, canceled and failed states.
 
@@ -426,6 +426,36 @@ Return `true` when the host handled navigation, or `false` to show link feedback
 HTTP(S) validation applies before custom callbacks too: credentials in URLs and
 schemes such as `javascript`, `data` and `file` are rejected. A standalone
 `GenUiCard` can be wrapped in Flutter's `SelectionArea` when used outside the chat.
+
+### Host content: header, cards with actions, conversations
+
+Three `AsystantChat` parameters put the host's own state inside the chat, for an assistant embedded in a larger workflow. None of them is stored with the conversation or sent to the model.
+
+- `headerContent`: a widget under the header, such as what the assistant is working on right now (the open document, the current stage). It stays in place while the conversation scrolls.
+- `hostCards`: cards pinned after the conversation, each an `AsystantHostCard` with an `AssistantCard` (title, Markdown body, optional chart) and its `actions`, `AsystantCardAction`s with a `label`, an `onPressed` callback (null draws the button disabled) and `isPrimary`. Use them for a decision the host's workflow waits for, or for a notice. The card reflects host state: rebuild the chat with the cards that apply now, so a decision taken elsewhere in the app removes its card here too. A card with an enabled action stands out like a permission request and brings the end of the conversation into view.
+- `managesConversations`: `false` hides the conversation list, New conversation and Delete, and the "start a new one" actions of the context notices. Use it when the host keeps one conversation per context (for example one per open document) and switches it itself with `openConversation`.
+
+```dart
+AsystantChat(
+  assistant: assistant,
+  managesConversations: false,
+  headerContent: Text('Chapter 3 · draft'),
+  hostCards: [
+    if (review.isPending) // Host-owned state.
+      AsystantHostCard(
+        card: AssistantCard(title: 'Publish chapter 3', body: review.summary, kind: .permission),
+        actions: [
+          AsystantCardAction(label: 'Publish', onPressed: review.publish, isPrimary: true),
+          AsystantCardAction(label: 'Keep editing', onPressed: review.reject),
+        ],
+      ),
+  ],
+)
+```
+
+`review` is host-owned. A host card is not a tool permission: the SDK's own confirmation card keeps asking for tools that require it, and a host card never approves a tool call.
+
+Failures read as `AsystantStrings.failureMessage(failure)`, by default the wording of `failure(code)`. A subclass can add what the provider reported (`AssistantFailure.detail`, such as which program is missing) or say where the person fixes it in the host app.
 
 ### Host-owned card content
 

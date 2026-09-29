@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:asystant_core/asystant_core.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/asystant_card_action.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/widgets/asystant_markdown_text.dart';
 import 'package:asystant_ai/src/widgets/gen_ui_chart.dart';
@@ -20,9 +21,13 @@ class GenUiCard extends StatelessWidget {
     this.onDeny,
     this.content,
     this.framed = true,
+    this.actions = const [],
   });
 
   final AssistantCard card;
+
+  /// The host's buttons, under everything else (see `AsystantHostCard`).
+  final List<AsystantCardAction> actions;
 
   /// Optional host-rendered content; use only with trusted local tool results.
   final Widget? content;
@@ -52,7 +57,11 @@ class GenUiCard extends StatelessWidget {
       onSelect: onSelect,
       onApprove: onApprove,
       onDeny: onDeny,
+      actions: actions,
     );
+    // A card waiting for the person stands out, like a permission request.
+    final awaitsDecision =
+        onApprove != null || actions.any((action) => action.onPressed != null);
     if (!framed) {
       return contents;
     }
@@ -62,7 +71,7 @@ class GenUiCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: colors.surfaceContainerLow,
         border: Border.all(
-          color: onApprove != null
+          color: awaitsDecision
               ? colors.primary.withValues(alpha: tokens.permissionBorderOpacity)
               : colors.outlineVariant,
         ),
@@ -82,12 +91,15 @@ class _CardContents extends StatelessWidget {
     this.onApprove,
     this.onDeny,
     this.content,
+    this.actions = const [],
   });
 
   final AssistantCard card;
 
   /// Optional host-rendered content; use only with trusted local tool results.
   final Widget? content;
+
+  final List<AsystantCardAction> actions;
 
   final AsystantStrings strings;
 
@@ -133,6 +145,10 @@ class _CardContents extends StatelessWidget {
             onDeny: deny,
             onApprove: onApprove,
           ),
+        ],
+        if (actions.isNotEmpty) ...[
+          SizedBox(height: tokens.spacing),
+          _CardActions(actions: actions),
         ],
       ],
     );
@@ -221,6 +237,35 @@ class _CardConfirmation extends StatelessWidget {
       children: [
         OutlinedButton(onPressed: onDeny, child: Text(strings.deny)),
         FilledButton(onPressed: onApprove, child: Text(strings.allow)),
+      ],
+    );
+  }
+}
+
+/// The host's buttons of a card: the primary one filled, the rest outlined.
+class _CardActions extends StatelessWidget {
+  const _CardActions({required this.actions});
+
+  final List<AsystantCardAction> actions;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = AsystantTheme.of(context);
+    return Wrap(
+      spacing: tokens.spacing - 4,
+      runSpacing: tokens.spacing - 4,
+      children: [
+        for (final action in actions)
+          switch (action.isPrimary) {
+            true => FilledButton(
+              onPressed: action.onPressed,
+              child: Text(action.label),
+            ),
+            false => OutlinedButton(
+              onPressed: action.onPressed,
+              child: Text(action.label),
+            ),
+          },
       ],
     );
   }

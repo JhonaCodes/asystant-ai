@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:asystant_core/asystant_core.dart';
+
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/assistant_step.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
@@ -132,6 +134,7 @@ class _ChatActivityCardState extends State<ChatActivityCard> {
                       outcome: step.outcome,
                       strings: widget.strings,
                       progress: step.showsProgress ? step.progress : null,
+                      images: step.images,
                     ),
                   if (widget.closingStep case final label?)
                     _ActivityRow(
@@ -157,6 +160,7 @@ class _ActivityRow extends StatelessWidget {
     required this.outcome,
     required this.strings,
     this.progress,
+    this.images = const [],
   });
 
   final AsystantGlyphKind icon;
@@ -169,6 +173,9 @@ class _ActivityRow extends StatelessWidget {
 
   /// How far a running tool has come, from 0 to 1; null shows no bar.
   final double? progress;
+
+  /// What the tool returned for the model to look at, shown under the label.
+  final List<AsystantAttachment> images;
 
   @override
   Widget build(BuildContext context) {
@@ -191,46 +198,108 @@ class _ActivityRow extends StatelessWidget {
         strings.stepPhase(StepPhase.failed),
       ),
     };
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: tokens.spacing / 3),
-      child: Row(
-        children: [
-          SizedBox.square(
-            dimension: 16,
-            child: FittedBox(child: AsystantGlyph(icon)),
-          ),
-          SizedBox(width: tokens.spacing - 4),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: .stretch,
-              children: [
-                Text(
-                  label,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: colors.onSurfaceVariant,
+    // The images go under the whole row, so the icons stay beside the label.
+    final row = Row(
+      children: [
+        SizedBox.square(
+          dimension: _iconSize,
+          child: FittedBox(child: AsystantGlyph(icon)),
+        ),
+        SizedBox(width: tokens.spacing - 4),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: .stretch,
+            children: [
+              Text(
+                label,
+                style: Theme.of(context).textTheme.bodySmall
+                    ?.copyWith(color: colors.onSurfaceVariant),
+              ),
+              if (progress case final value?)
+                Padding(
+                  padding: EdgeInsets.only(top: tokens.spacing / 3),
+                  child: LinearProgressIndicator(
+                    value: value,
+                    minHeight: 2,
+                    semanticsLabel: label,
                   ),
                 ),
-                if (progress case final value?)
-                  Padding(
-                    padding: EdgeInsets.only(top: tokens.spacing / 3),
-                    child: LinearProgressIndicator(
-                      value: value,
-                      minHeight: 2,
-                      semanticsLabel: label,
-                    ),
-                  ),
-              ],
+            ],
+          ),
+        ),
+        Tooltip(
+          message: tooltip,
+          child: SizedBox.square(
+            dimension: 15,
+            child: FittedBox(child: AsystantGlyph(glyph, color: color)),
+          ),
+        ),
+      ],
+    );
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: tokens.spacing / 3),
+      child: switch (images) {
+        [] => row,
+        [_, ...] => Column(
+          crossAxisAlignment: .start,
+          children: [
+            row,
+            Padding(
+              padding: EdgeInsets.only(
+                left: _iconSize + tokens.spacing - 4,
+                top: tokens.spacing / 2,
+              ),
+              child: _StepImages(images: images),
+            ),
+          ],
+        ),
+      },
+    );
+  }
+
+  static const double _iconSize = 16;
+}
+
+/// The images a tool returned, as thumbnails the person can look at.
+class _StepImages extends StatelessWidget {
+  const _StepImages({required this.images});
+
+  final List<AsystantAttachment> images;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = AsystantTheme.of(context);
+    final colors = Theme.of(context).colorScheme;
+    final height = tokens.stepImageHeight;
+    // Decoded at the size it is drawn, not at the size the tool rendered it.
+    final cacheHeight = (height * MediaQuery.devicePixelRatioOf(context))
+        .round();
+    return Wrap(
+      spacing: tokens.spacing / 2,
+      runSpacing: tokens.spacing / 2,
+      children: [
+        for (final image in images)
+          DecoratedBox(
+            position: .foreground,
+            decoration: BoxDecoration(
+              border: Border.all(color: colors.outlineVariant),
+              borderRadius: BorderRadius.circular(tokens.radius / 4),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(tokens.radius / 4),
+              child: Image.memory(
+                image.bytes,
+                height: height,
+                fit: .contain,
+                cacheHeight: cacheHeight,
+                gaplessPlayback: true,
+                semanticLabel: image.filename,
+                errorBuilder: (context, error, stackTrace) =>
+                    SizedBox.square(dimension: height),
+              ),
             ),
           ),
-          Tooltip(
-            message: tooltip,
-            child: SizedBox.square(
-              dimension: 15,
-              child: FittedBox(child: AsystantGlyph(glyph, color: color)),
-            ),
-          ),
-        ],
-      ),
+      ],
     );
   }
 }

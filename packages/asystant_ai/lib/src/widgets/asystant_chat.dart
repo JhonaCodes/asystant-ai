@@ -6,6 +6,7 @@ import 'package:reactive_notifier/reactive_notifier.dart';
 
 import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/asystant_host_card.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/service/asystant_file_picker.dart';
 import 'package:asystant_ai/src/service/asystant_link_opener.dart';
@@ -38,9 +39,26 @@ class AsystantChat extends StatefulWidget {
     this.showsHandle = false,
     this.attachments,
     this.onPickFiles,
+    this.hostCards = const [],
+    this.headerContent,
+    this.managesConversations = true,
   });
 
   final AsystantAI assistant;
+
+  /// Cards the host pins after the conversation, with its own buttons: a
+  /// decision its workflow waits for, or a notice. See [AsystantHostCard].
+  final List<AsystantHostCard> hostCards;
+
+  /// Host content under the header, such as what the assistant is working
+  /// on right now. It stays in place while the conversation scrolls.
+  final Widget? headerContent;
+
+  /// Whether the chat offers the conversation list, a new conversation and
+  /// deleting one. Turn it off when the host keeps one conversation per
+  /// context (for example one per open document) and switches it itself
+  /// with `openConversation`.
+  final bool managesConversations;
 
   /// Adds typed, host-owned content to completed cards only.
   final AsystantCardContentBuilder? cardContentBuilder;
@@ -140,6 +158,7 @@ class _AsystantChatState extends State<AsystantChat> {
                     viewmodel: widget.assistant.conversation.notifier,
                     build: (state, vm, keep) => _ChatLayout(
                       sideList:
+                          widget.managesConversations &&
                           widget.isExpanded &&
                           constraints.maxWidth >= tokens.sideListFromWidth,
                       listOpen: _listOpen,
@@ -194,6 +213,7 @@ class _ChatLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final assistant = chat.assistant;
+    final manages = chat.managesConversations;
     final column = Column(
       children: [
         ChatHeader(
@@ -205,11 +225,12 @@ class _ChatLayout extends StatelessWidget {
           showsHandle: chat.showsHandle,
           isExpanded: chat.isExpanded,
           onToggleExpansion: chat.onToggleExpansion,
-          onHistory: sideList ? null : () => onShowList(true),
-          onNew: viewModel.newConversation,
-          onDelete: () => onDelete(state.conversationId),
+          onHistory: manages && !sideList ? () => onShowList(true) : null,
+          onNew: manages ? viewModel.newConversation : null,
+          onDelete: manages ? () => onDelete(state.conversationId) : null,
           onClose: chat.onClose,
         ),
+        ?chat.headerContent,
         const Divider(height: 1),
         if (!viewModel.isInitialized &&
             (state.phase == ChatPhase.idle || state.phase == ChatPhase.error))
@@ -231,10 +252,11 @@ class _ChatLayout extends StatelessWidget {
               child: ChatConversation(
                 name: assistant.name,
                 cardContentBuilder: chat.cardContentBuilder,
+                hostCards: chat.hostCards,
                 state: state,
                 viewModel: viewModel,
                 strings: strings,
-                onStartNew: viewModel.newConversation,
+                onStartNew: manages ? viewModel.newConversation : null,
               ),
             ),
           ),

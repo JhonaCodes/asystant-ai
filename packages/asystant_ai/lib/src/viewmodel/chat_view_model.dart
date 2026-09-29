@@ -605,6 +605,7 @@ class ChatViewModel extends ViewModel<ChatState> {
     Map<String, Object?>? data,
     double? progress,
     String? progressLabel,
+    List<AsystantAttachment>? images,
   }) {
     final exists = state.steps.any((step) => step.id == id);
     updateState(
@@ -622,6 +623,7 @@ class ChatViewModel extends ViewModel<ChatState> {
                             data: data,
                             progress: progress,
                             progressLabel: progressLabel,
+                            images: images,
                           )
                         : step,
                   )
@@ -638,6 +640,7 @@ class ChatViewModel extends ViewModel<ChatState> {
                   data: data ?? const {},
                   progress: progress,
                   progressLabel: progressLabel ?? '',
+                  images: images ?? const [],
                 ),
               ],
       ),
@@ -982,17 +985,20 @@ class ChatViewModel extends ViewModel<ChatState> {
           _resetProgress();
           result.when(
             ok: (result) {
+              images = List.unmodifiable(
+                result.images.where((image) => image.isImage),
+              );
+              // The step shows the images to the person; the result message
+              // below carries the same ones to the model.
               _step(
                 executionKey,
                 StepPhase.completed,
                 title: result.summary,
                 data: result.data,
+                images: images,
               );
               outcome = result.modelContent;
               endsTurn = result.endsTurn;
-              images = List.unmodifiable(
-                result.images.where((image) => image.isImage),
-              );
               if (result.card case final card?) {
                 updateState(
                   state.copyWith(

@@ -221,6 +221,13 @@ class AsystantStrings {
     ChatPhase.canceled => spanish ? 'Detenido' : 'Stopped',
     ChatPhase.error => spanish ? 'Necesita atención' : 'Needs attention',
   };
+
+  /// What the chat says when a turn or the connection fails. By default
+  /// the wording of [failure] for its code; a subclass can add what the
+  /// provider reported (`AssistantFailure.detail`), e.g. which program is
+  /// missing.
+  String failureMessage(AssistantFailure failure) => this.failure(failure.code);
+
   String failure(FailureCode code) => switch (code) {
     FailureCode.network =>
       spanish

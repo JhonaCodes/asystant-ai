@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/asystant_host_card.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
@@ -27,6 +28,7 @@ class ChatConversation extends StatelessWidget {
     required this.strings,
     required this.onStartNew,
     this.cardContentBuilder,
+    this.hostCards = const [],
   });
 
   /// The assistant's name, shown above its messages.
@@ -38,16 +40,23 @@ class ChatConversation extends StatelessWidget {
 
   final AsystantStrings strings;
 
-  final VoidCallback onStartNew;
+  /// Starts a new conversation; null when the host manages conversations
+  /// itself, which hides the actions that would start one.
+  final VoidCallback? onStartNew;
 
   final AsystantCardContentBuilder? cardContentBuilder;
+
+  /// The host's cards, pinned after the conversation.
+  final List<AsystantHostCard> hostCards;
 
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
     return ChatTimeline(
       anchor: (state.conversationId, state.sentCount),
-      forceFollow: state.pending != null,
+      forceFollow:
+          state.pending != null ||
+          hostCards.any((hostCard) => hostCard.awaitsDecision),
       padding: AsystantMetrics.of(context).listPadding,
       children: [
         if (state.entries.isEmpty && !state.busy) ChatWelcome(strings: strings),
@@ -90,6 +99,12 @@ class ChatConversation extends StatelessWidget {
           ),
         if (state.showsLiveActivity)
           _LiveActivity(name: name, state: state, strings: strings),
+        for (final hostCard in hostCards)
+          GenUiCard(
+            card: hostCard.card,
+            strings: strings,
+            actions: hostCard.actions,
+          ),
         if (state.pending case final pending?)
           ChatConfirmationCard(
             pending: pending,
@@ -103,8 +118,11 @@ class ChatConversation extends StatelessWidget {
             strings: strings,
             onStartNew: state.needsNewConversation ? onStartNew : null,
           ),
-        if (state.showsContextWarning)
-          ChatContextWarning(strings: strings, onStartNew: onStartNew),
+        if ((state.showsContextWarning, onStartNew) case (
+          true,
+          final startNew?,
+        ))
+          ChatContextWarning(strings: strings, onStartNew: startNew),
       ],
     );
   }

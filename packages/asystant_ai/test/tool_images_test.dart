@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:asystant_ai/asystant_ai.dart';
+import 'package:asystant_ai/src/widgets/chat_conversation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'chat_flow_test.dart' show FakeTransport;
@@ -77,6 +79,63 @@ void main() {
     expect(result.content, 'Rendered');
     expect(result.attachments, [_LookTool.frame]);
     expect(result.attachments.single.bytes, _LookTool.frame.bytes);
+    vm.dispose();
+  });
+
+  test('the completed step keeps the images, for the person to see', () async {
+    final vm = ChatViewModel();
+    await vm.configure(
+      transport: _RecordingTransport(),
+      tools: [_LookTool()],
+      prompts: const [],
+      models: [AsystantModelOption.fallback('test')],
+    );
+
+    await vm.send('Check the frame');
+
+    final step = vm.state.entries.last.activity.single;
+    expect(step.phase, StepPhase.completed);
+    expect(step.images, [_LookTool.frame]);
+    vm.dispose();
+  });
+
+  testWidgets('the chat shows the images of a step as thumbnails', (
+    tester,
+  ) async {
+    final vm = ChatViewModel();
+    final state = ChatState(
+      entries: [
+        ChatEntry(
+          activity: [
+            AssistantStep(
+              id: 'turn/call-1',
+              title: 'Rendered frame 12',
+              phase: StepPhase.completed,
+              images: [_LookTool.frame],
+            ),
+          ],
+          message: const AssistantMessage(
+            role: MessageRole.assistant,
+            content: 'The frame looks right.',
+          ),
+        ),
+      ],
+    );
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: ChatConversation(
+            name: 'Assistant',
+            onStartNew: () {},
+            state: state,
+            viewModel: vm,
+            strings: const AsystantStrings(spanish: false),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.bySemanticsLabel('frame.png'), findsOneWidget);
     vm.dispose();
   });
 }

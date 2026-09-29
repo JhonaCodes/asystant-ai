@@ -36,6 +36,7 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     this.compactBelowWidth = 480,
     this.sideListFromWidth = 640,
     this.sideListWidth = 280,
+    this.stepImageHeight = 120,
   });
 
   final double radius;
@@ -106,6 +107,9 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
 
   final double sideListWidth;
 
+  /// Height of the images a tool returned, under its step.
+  final double stepImageHeight;
+
   AsystantMetrics metricsFor(double chatWidth) =>
       chatWidth < compactBelowWidth ? compact : regular;
 
@@ -167,6 +171,7 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     double? compactBelowWidth,
     double? sideListFromWidth,
     double? sideListWidth,
+    double? stepImageHeight,
   }) => AsystantTheme(
     radius: radius ?? this.radius,
     spacing: spacing ?? this.spacing,
@@ -199,6 +204,7 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     compactBelowWidth: compactBelowWidth ?? this.compactBelowWidth,
     sideListFromWidth: sideListFromWidth ?? this.sideListFromWidth,
     sideListWidth: sideListWidth ?? this.sideListWidth,
+    stepImageHeight: stepImageHeight ?? this.stepImageHeight,
   );
 
   @override

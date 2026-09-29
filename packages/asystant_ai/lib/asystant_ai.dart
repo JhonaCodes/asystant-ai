@@ -17,6 +17,8 @@ export 'src/widgets/asystant_phone_sheet.dart';
 export 'src/theme/asystant_device_type.dart';
 export 'src/widgets/gen_ui_card.dart';
 export 'src/model/assistant_step.dart';
+export 'src/model/asystant_card_action.dart';
+export 'src/model/asystant_host_card.dart';
 export 'src/model/asystant_model_option.dart';
 export 'src/model/asystant_turn_limits.dart';
 export 'src/model/chat_entry.dart';

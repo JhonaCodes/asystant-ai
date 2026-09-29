@@ -30,7 +30,7 @@ class ChatFailureNotice extends StatelessWidget {
       child: Column(
         crossAxisAlignment: .start,
         children: [
-          Text(strings.failure(failure.code)),
+          Text(strings.failureMessage(failure)),
           if (onStartNew case final startNew?) ...[
             const SizedBox(height: 8),
             OutlinedButton(

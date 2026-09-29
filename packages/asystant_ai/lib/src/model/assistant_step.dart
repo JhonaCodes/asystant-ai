@@ -1,3 +1,4 @@
+import 'package:asystant_core/asystant_core.dart';
 import 'package:collection/collection.dart';
 
 /// One local tool call as the person sees it: what it is doing and how it
@@ -14,6 +15,7 @@ class AssistantStep {
     this.data = const {},
     this.progress,
     this.progressLabel = '',
+    this.images = const [],
   });
 
   final String id;
@@ -45,6 +47,11 @@ class AssistantStep {
   /// when there is none.
   final String progressLabel;
 
+  /// The images the tool returned with its result (`ToolOutcome.images`),
+  /// such as a frame it rendered to review its own work. The chat shows them
+  /// under the step; the model receives them on the tool's result message.
+  final List<AsystantAttachment> images;
+
   /// Whether the step is running and has progress to show.
   bool get showsProgress => active && progress != null;
 
@@ -58,6 +65,7 @@ class AssistantStep {
     Map<String, Object?>? data,
     double? progress,
     String? progressLabel,
+    List<AsystantAttachment>? images,
   }) => AssistantStep(
     id: id ?? this.id,
     title: title ?? this.title,
@@ -68,6 +76,7 @@ class AssistantStep {
     data: Map.unmodifiable(data ?? this.data),
     progress: progress ?? this.progress,
     progressLabel: progressLabel ?? this.progressLabel,
+    images: List.unmodifiable(images ?? this.images),
   );
 
   bool get active => switch (phase) {
@@ -104,7 +113,8 @@ class AssistantStep {
       detail == other.detail &&
       const DeepCollectionEquality().equals(data, other.data) &&
       progress == other.progress &&
-      progressLabel == other.progressLabel;
+      progressLabel == other.progressLabel &&
+      const ListEquality<AsystantAttachment>().equals(images, other.images);
 
   @override
   int get hashCode => Object.hash(
@@ -117,6 +127,7 @@ class AssistantStep {
     const DeepCollectionEquality().hash(data),
     progress,
     progressLabel,
+    Object.hashAll(images),
   );
 }
 
