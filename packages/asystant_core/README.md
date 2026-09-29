@@ -1,6 +1,6 @@
 # asystant_core
 
-Typed local tools, session contracts and an HTTP/SSE gateway client for embedded AI assistants. Pure Dart: usable from Flutter mobile, web and desktop applications, or from a Dart service.
+Typed local tools, protocol models and the `AssistantTransport` contract for embedded AI assistants, with two transports: `OpenRouterTransport` (HTTP/SSE) and `ClaudeCliTransport` (the local Claude Code CLI). Pure Dart: usable from Flutter mobile, web and desktop applications, or from a Dart service.
 
 ## Install
 
@@ -12,7 +12,7 @@ For a ready-to-embed Flutter chat, use [asystant_ai](https://pub.dev/packages/as
 
 ## Define a local tool
 
-Tools run in your application, using its existing authorization and services. The gateway receives only their schemas. Mutating tools require confirmation by default.
+Tools run in your application, using its existing authorization and services. The model receives only their schemas. Mutating tools require confirmation by default.
 
 ```dart
 import 'package:asystant_core/asystant_core.dart';
@@ -48,11 +48,39 @@ class ReadWorkspaceTool extends AsystantTool {
 
 Use `TypedAsystantTool<T>` to decode tool arguments into a domain type. Definitions reject duplicate names, unknown arguments and invalid scalar types. For writes, check cancellation immediately before committing and pass `context.idempotencyKey` to your own repository. Cancellation does not undo effects already committed.
 
-## Connect authentication
+## OpenRouter transport
 
-Implement `SessionSource`, or use `CallbackSessionSource`, to provide the current login identity, a stream of login changes and fresh signed tickets from your existing backend. Never sign tickets or embed provider keys in a client application.
+`OpenRouterTransport` calls OpenRouter's Chat Completions API directly, streaming over SSE. It takes an `OpenRouterCredentialSource`, a function that returns the signed-in user's short-lived, budget-limited key:
 
-`GatewayTransport(baseUri: yourGatewayUri, sessionSource: yourSession)` exchanges those tickets for short-lived credentials, renews them before expiry and registers the tools. `initialize(models: [])` delegates model selection to the server. The server may assign a fixed model or permit a bounded selection. Keep one transport per assistant; call `dispose()` when its owner is destroyed.
+```dart
+final transport = OpenRouterTransport(
+  credentials: () async {
+    final body = await backend.aiCredential(); // Your authenticated endpoint.
+    return body == null
+        ? Err(const AssistantFailure(FailureCode.authentication))
+        : Ok(OpenRouterCredential.fromManagedJson(body));
+  },
+  identity: () => session.userId, // null when signed out.
+  sessionChanges: session.changes, // Emits when the login changes.
+  appName: 'Workspace',
+);
+
+final models = await transport.initialize(
+  tools: [const ReadWorkspaceTool().definition],
+  prompts: const [],
+  models: const [], // The models the credential allows.
+);
+```
+
+`backend` and `session` belong to your app. In production your backend authenticates the user and calls [asystant-api](https://github.com/JhonaCodes/asystant-api)'s `POST /v1/managed/credentials`; `OpenRouterCredential.fromManagedJson` reads its response (`api_key`, `allowed_models`, `expires_at`, `refresh_after`). Keep the asystant-api company key in your backend, and never compile a provider key into a release build.
+
+- The credential is cached until `refreshAfter` (or `expiresAt`) and requested again afterwards; a 401 or 403 drops it. The key only ever goes into the `Authorization` header, and `toString()` redacts it.
+- `initialize` keeps the host's models in order, restricted to the credential's `allowedModels`; an empty list offers exactly those. It fails with `FailureCode.unavailable` when none remain.
+- `identity` defaults to a fixed `'local'`; `sessionChanges` defaults to an empty stream.
+- `baseUri` targets an OpenRouter-compatible proxy; `appName` and `appUrl` attribute usage in OpenRouter; `maxOutputTokens`, `temperature` and `pdfEngine` tune each request.
+- HTTP statuses become typed failures: `authentication`, `budget`, `rateLimited`, `contextFull`, `unavailable`, `network` or `protocol`.
+
+Keep one transport per assistant; call `dispose()` when its owner is destroyed. `dispose()` forgets the cached key locally; revocation is done by asystant-api.
 
 ## Claude Code CLI transport (desktop)
 
@@ -89,11 +117,11 @@ How it works:
 
 Tests can inject a `ClaudeCliLauncher` that replays recorded output, so the binary is not needed.
 
-## Reference API
+## Credential service
 
-You can use the [Rust gateway](https://github.com/JhonaCodes/asystant-api) as a deployment-ready starting point or as a guide for implementing your own compatible API. Read its [HTTP contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml), [deployment guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/deployment.md) and [security controls](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md). It is self-hosted software; this package does not include a hosted service or provider credits.
+[asystant-api](https://github.com/JhonaCodes/asystant-api) is a separate, self-hosted service that issues OpenRouter keys to client backends, with budgets per tenant and per user and revocation handled server-side. It does not proxy inference and this package never calls it. Read its [HTTP contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml), [managed keys guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/managed-keys.md) and [deployment guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/deployment.md). This package does not include a hosted service or provider credits.
 
-OpenRouter is the initial provider. Other adapters and their streaming limitations are documented in the gateway. Application authorization remains the responsibility of your local tool implementations.
+To reach another provider or your own service, implement `AssistantTransport`. Application authorization remains the responsibility of your local tool implementations.
 
 ## Example and license
 

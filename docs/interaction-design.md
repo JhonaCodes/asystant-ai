@@ -1,6 +1,6 @@
 # Interaction design
 
-The assistant belongs to the host app. Its launcher opens a bottom sheet by default; the host can mount the same chat in a section, end drawer or full screen. The assistant name is configurable.
+The assistant belongs to the host app. Its launcher opens a bottom sheet on phones and a side panel on tablets and desktops; the host can mount the same chat in a section, end drawer or full screen. The assistant name is configurable.
 
 A compact composer grows within a bounded height. Send is disabled for empty input and becomes Stop during active work. Thinking, execution, permissions and failures have distinct icons and accessible labels. The chat follows the host color scheme and supports enlarged text and narrow viewports.
 

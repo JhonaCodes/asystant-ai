@@ -1,5 +1,5 @@
 name: asystant_core
-description: Typed local tools, session contracts and gateway transport for embedded assistants.
+description: Typed local tools, protocol models and the OpenRouter and Claude Code CLI transports for embedded assistants.
 version: 0.2.0
 homepage: https://github.com/JhonaCodes/asystant-ai
 repository: https://github.com/JhonaCodes/asystant-ai/tree/main/packages/asystant_core

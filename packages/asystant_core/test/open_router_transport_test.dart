@@ -17,6 +17,8 @@ class _LocalOpenRouter {
 
   final List<String> titles = [];
 
+  final List<String> authorizations = [];
+
   final List<Map<String, Object?>> bodies = [];
 
   Uri get baseUri => Uri.parse('http://127.0.0.1:${_server.port}/api/v1/');
@@ -24,6 +26,7 @@ class _LocalOpenRouter {
   void _serve() => _server.listen((request) async {
     if (request.uri.path.endsWith('/chat/completions')) {
       titles.add(request.headers.value('x-title') ?? '');
+      authorizations.add(request.headers.value('authorization') ?? '');
       bodies.add(
         jsonDecode(await utf8.decoder.bind(request).join())
             as Map<String, Object?>,
@@ -127,4 +130,41 @@ void main() {
       ]);
     },
   );
+
+  test('a key cached for one login is never used for another', () async {
+    final server = await _LocalOpenRouter.start();
+    addTearDown(server.close);
+    var signedIn = 'ana';
+    var issued = 0;
+    final transport = OpenRouterTransport(
+      credentials: () async {
+        issued++;
+        return Ok(OpenRouterCredential(apiKey: 'key-of-$signedIn'));
+      },
+      identity: () => signedIn,
+      baseUri: server.baseUri,
+    );
+    addTearDown(transport.dispose);
+    await transport.initialize(
+      tools: const [],
+      prompts: const [],
+      models: const ['openai/gpt-oss-120b'],
+    );
+    Future<void> ask() => transport
+        .infer(
+          messages: const [
+            AssistantMessage(role: MessageRole.user, content: 'Hola'),
+          ],
+          model: 'openai/gpt-oss-120b',
+          requestId: 'r$issued',
+        )
+        .drain<void>();
+
+    await ask();
+    signedIn = 'luis';
+    await ask();
+
+    expect(issued, 2);
+    expect(server.authorizations, ['Bearer key-of-ana', 'Bearer key-of-luis']);
+  });
 }

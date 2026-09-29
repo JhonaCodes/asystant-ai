@@ -1,3 +1,7 @@
+## Unreleased
+
+- Documentation describes the current transports (`OpenRouterTransport`, `ClaudeCliTransport`); the gateway session API no longer exists.
+
 ## 0.3.2
 
 - Align the embedded chat with Aula-AI: compact header, inline composer and icon-only send/stop controls.

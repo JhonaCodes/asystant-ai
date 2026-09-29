@@ -1,4 +1,5 @@
-/// Embeddable Flutter chat, local tools and session-backed AI transport.
+/// Embeddable Flutter chat and local tools over an AssistantTransport
+/// (OpenRouter or the Claude Code CLI).
 library;
 
 export 'package:asystant_core/asystant_core.dart';

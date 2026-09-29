@@ -75,6 +75,10 @@ class OpenRouterTransport extends AssistantTransport {
 
   OpenRouterCredential? _credential;
 
+  /// The login the cached [_credential] was issued for. A key is reused only
+  /// while the same identity is signed in: another user never inherits it.
+  String? _credentialOwner;
+
   List<AsystantSystemPrompt> _prompts = const [];
 
   List<Map<String, Object?>> _tools = const [];
@@ -185,10 +189,14 @@ class OpenRouterTransport extends AssistantTransport {
 
   Future<Result<OpenRouterCredential, AssistantFailure>> _access() async {
     final cached = _credential;
-    if (cached != null && cached.usableAt(_clock())) {
+    final owner = _identity();
+    if (cached != null &&
+        _credentialOwner == owner &&
+        cached.usableAt(_clock())) {
       return Ok(cached);
     }
     _credential = null;
+    _credentialOwner = null;
     final issued = await _credentials();
     return issued.when(
       ok: (credential) {
@@ -196,6 +204,7 @@ class OpenRouterTransport extends AssistantTransport {
           return Err(const AssistantFailure(.authentication));
         }
         _credential = credential;
+        _credentialOwner = owner;
         return Ok(credential);
       },
       err: (failure) => Err(failure),

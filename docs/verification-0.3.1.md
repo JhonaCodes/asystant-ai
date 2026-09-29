@@ -1,5 +1,7 @@
 # Chat controls and embedded presentation — 0.3.1
 
+> Historical release record. References to the Rust gateway describe the ticket/session gateway that no longer exists; the SDK now uses `OpenRouterTransport` or `ClaudeCliTransport` (see the [integration guide](public-api.md)).
+
 The assistant uses inline SVG glyphs for closing, sending, stopping, statuses,
 model selection, tool steps and permission cards. These controls no longer
 require a downloaded or cached Material icon font. Host theme colors and the

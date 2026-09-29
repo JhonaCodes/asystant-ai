@@ -29,15 +29,23 @@ class WorkspaceAssistant extends AsystantAI {
 }
 ```
 
-After your host services and login are ready, call `assistant.init` with a `GatewayTransport`. Its `SessionSource` obtains signed tickets from your backend; provider API keys never belong in Flutter. Pass `models: []` to accept the server-assigned model and add optional factory tools through `builtInTools`.
+Then call `assistant.init` once with an `AssistantTransport`. `init` only stores the configuration; the chat connects when it is first shown. Two transports are included:
+
+- `OpenRouterTransport` calls OpenRouter directly with a short-lived, budget-limited key. Its `credentials` function asks your backend for the key; your backend gets it from [asystant-api](https://github.com/JhonaCodes/asystant-api) (`POST /v1/managed/credentials`), and `OpenRouterCredential.fromManagedJson` reads the response. Never compile a provider key into a release build.
+- `ClaudeCliTransport` runs the Claude Code CLI installed on a desktop machine with the user's own subscription, without an API key or backend.
 
 ```dart
 assistant.init(
-  transport: GatewayTransport(
-    baseUri: gatewayUri,
-    sessionSource: hostSession,
+  transport: OpenRouterTransport(
+    credentials: fetchAiCredential,
+    identity: () => session.userId,
+    sessionChanges: session.changes,
+    appName: 'Workspace',
   ),
-  models: [],
+  models: const [
+    AsystantModelOption(id: 'openai/gpt-oss-120b', label: 'Precise'),
+    AsystantModelOption(id: 'openai/gpt-oss-20b', label: 'Fast'),
+  ],
   builtInTools: const [
     PresentationTool(kind: AssistantCardKind.summary),
     PresentationTool(kind: AssistantCardKind.selection),
@@ -45,12 +53,12 @@ assistant.init(
 );
 ```
 
-`gatewayUri` and `hostSession` are supplied by your app. See the [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md) for the authentication contract.
+`fetchAiCredential` (an `OpenRouterCredentialSource`, returning `Result<OpenRouterCredential, AssistantFailure>`) and `session` are supplied by your app. `models` are the choices shown next to the send button; the first one permitted is the default. Pass `models: const []` to offer exactly the models the credential allows. Add optional factory tools through `builtInTools`. See the [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#credentials-and-sign-in) for the credential flow.
 
 ## Embed the chat
 
 ```dart
-AsystantButton(assistant: assistant); // Opens a bottom sheet.
+AsystantButton(assistant: assistant); // A sheet on phones, a side panel on tablets and desktops.
 
 AsystantChat(
   assistant: assistant,
@@ -58,11 +66,11 @@ AsystantChat(
 ); // Mount inside a bounded section, drawer or full-screen Scaffold.
 ```
 
-The host owns the assistant instance: closing the panel preserves the conversation. Call `assistant.dispose()` when its owner ends. Changing the login invalidates pending permissions and clears the conversation; initialize again for the new session.
+The host owns the assistant instance: closing the panel preserves the conversation. Call `assistant.dispose()` when its owner ends. When the transport reports a different identity, pending permissions are invalidated, the conversation is cleared and the chat offers to connect again. When another user signs in, dispose the assistant and create a new one.
 
 ## Tools and permissions
 
-Implement `AsystantTool` or `TypedAsystantTool<T>`. Return a `ToolDefinition`, a read-only preview and an execution result. Tools execute inside the host app, never on the gateway. Confirmation is required by default; read-only tools can explicitly opt out. Use `requiresSelection` for user choices and `isAvailable` to control registration.
+Implement `AsystantTool` or `TypedAsystantTool<T>`. Return a `ToolDefinition`, a read-only preview and an execution result. Tools execute inside the host app, never on a server. Confirmation is required by default; read-only tools can explicitly opt out. Use `requiresSelection` for user choices and `isAvailable` to control registration.
 
 `ToolContext` exposes cancellation, selected values and an idempotency key. Your repository must still enforce authorization and protect asynchronous writes against duplicate effects. The SDK does not claim to reverse completed actions.
 
@@ -70,13 +78,13 @@ Cards support summary, entity, selection, permission and result presentations. T
 
 ## Backend and models
 
-You can deploy the [reference Rust API](https://github.com/JhonaCodes/asystant-api), or use its [OpenAPI contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml) as a guide for your own backend. It handles short-lived credentials, revocation, durable budgets and model policies per product, customer and user. See [deployment](https://github.com/JhonaCodes/asystant-api/blob/main/docs/deployment.md) and [security](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md).
+The package does not include a hosted API, provider credentials or inference credits. For `OpenRouterTransport`, you can deploy [asystant-api](https://github.com/JhonaCodes/asystant-api), a self-hosted service that issues OpenRouter keys with per-tenant and per-user budgets to your backend. It never proxies inference: the app talks to OpenRouter directly. See its [OpenAPI contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml) and [managed keys guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/managed-keys.md), and this repository's [security policy](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md).
 
-The package does not include a hosted API, provider credentials or inference credits. OpenRouter is the initial integration; the server also contains OpenAI, Gemini, Anthropic and OpenCode adapters. Messages/Responses adapters currently deliver complete responses rather than incremental text. Provider availability and usage terms must be checked before enabling a model.
+Implement `AssistantTransport` to reach another provider or your own service. Provider availability and usage terms must be checked before enabling a model.
 
 ## Example
 
-[example/lib/main.dart](example/lib/main.dart) runs without credentials using an explicitly simulated assistant response and a real local read-only tool. The repository also includes a complete [host app](https://github.com/JhonaCodes/asystant-ai/tree/main/examples/host_app) demonstrating draft confirmation in sheets, drawers and full screens.
+[example/lib/main.dart](example/lib/main.dart) runs without credentials using an explicitly simulated assistant response and a real local read-only tool. The repository also includes a complete [host app](https://github.com/JhonaCodes/asystant-ai/tree/main/examples/host_app), Botánica, whose assistant uses `OpenRouterTransport`, local tools, context prompts and host-owned card content.
 
 ## License
 
@@ -85,7 +93,7 @@ MIT. See [LICENSE](LICENSE).
 ### Deferred startup
 
 `init()` only stores configuration. It does not evaluate application tool getters,
-create a session, or contact the gateway. `AsystantChat` starts setup after its first
+request a credential, or contact the provider. `AsystantChat` starts setup after its first
 frame, only when mounted; a launcher button alone does not initialize the assistant.
 Do not await assistant readiness before `runApp()` or host authentication.
 For a custom chat UI, call `ensureInitialized()` when that UI opens. Concurrent calls
@@ -104,8 +112,9 @@ that immediately send messages should explicitly await `ensureInitialized()`.
 ## Reports and prompt customization
 
 Application personality is supplied through `AsystantAI.systemPrompts`; scoped
-context can be added with `additionalSystemPrompts` during `init()`. The SDK and
-Rust gateway apply baseline safety guidance independently. See the
+context can be added with `additionalSystemPrompts` during `init()`, and what the app
+knows right now through `contextPrompts()`. Both transports place the SDK's baseline
+safety guidance first. See the
 [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md).
 
 Cards now support typed bar and line charts, with accessible labels, units and

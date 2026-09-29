@@ -1,5 +1,7 @@
 # SDK 0.2.1 verification
 
+> Historical release record. References to the Rust gateway describe the ticket/session gateway that no longer exists; the SDK now uses `OpenRouterTransport` or `ClaudeCliTransport` (see the [integration guide](public-api.md)).
+
 ## Context status
 
 The change separates conversation execution from the visible chat panel and adds

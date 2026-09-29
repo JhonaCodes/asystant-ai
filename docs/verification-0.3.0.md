@@ -1,5 +1,7 @@
 # Verification — asystant_ai 0.3.0
 
+> Historical release record. References to the Rust gateway describe the ticket/session gateway that no longer exists; the SDK now uses `OpenRouterTransport` or `ClaudeCliTransport` (see the [integration guide](public-api.md)).
+
 This release adds `cardContentBuilder` to the Flutter chat and launcher. Core and
 Rust gateway wire contracts are unchanged.
 

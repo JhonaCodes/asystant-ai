@@ -1,6 +1,6 @@
 # Implementation verification
 
-> Historical document: gateway source now lives in [asystant-api](https://github.com/JhonaCodes/asystant-api). PostgreSQL details and monorepo commands below describe the earlier bundled version.
+> Historical document. It describes the earlier bundled ticket/session gateway (PostgreSQL, single-use tickets, opaque credentials, provider adapters) and the SDK's former gateway transport. That flow no longer exists: asystant-api 0.3.0 removed it, and the SDK now uses `OpenRouterTransport`, with keys issued by [asystant-api](https://github.com/JhonaCodes/asystant-api), or `ClaudeCliTransport`. See the [integration guide](public-api.md) for the current API.
 
 ## Scope and context
 
