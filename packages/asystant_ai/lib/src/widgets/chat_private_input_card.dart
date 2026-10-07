@@ -39,18 +39,14 @@ class _ChatPrivateInputCardState extends State<ChatPrivateInputCard> {
     super.dispose();
   }
 
+  Map<String, String> get _values => {
+    for (final entry in _controllers.entries)
+      entry.key: entry.value.text.trim(),
+  };
+
   void _submit() {
-    final values = {
-      for (final entry in _controllers.entries)
-        entry.key: entry.value.text.trim(),
-    };
-    for (final field in widget.request.fields) {
-      if (field.required && (values[field.name]?.isEmpty ?? true)) return;
-      if (field.kind == PrivateInputKind.totp &&
-          values[field.name]!.isNotEmpty &&
-          !RegExp(r'^\d{6,8}$').hasMatch(values[field.name]!))
-        return;
-    }
+    final values = _values;
+    if (!widget.request.isAnswerComplete(values)) return;
     widget.onSubmit(values);
     for (final controller in _controllers.values) {
       controller.clear();
@@ -127,12 +123,7 @@ class _ChatPrivateInputCardState extends State<ChatPrivateInputCard> {
                 ),
                 const SizedBox(width: 8),
                 FilledButton(
-                  onPressed:
-                      widget.request.fields.every(
-                        (field) =>
-                            !field.required ||
-                            _controllers[field.name]!.text.trim().isNotEmpty,
-                      )
+                  onPressed: widget.request.isAnswerComplete(_values)
                       ? _submit
                       : null,
                   child: Text(widget.strings.continueAction),

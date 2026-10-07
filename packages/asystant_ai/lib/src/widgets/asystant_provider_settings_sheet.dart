@@ -198,10 +198,20 @@ class _ProviderSettingsSheetState extends State<_ProviderSettingsSheet> {
     final safeBottom = keyboard > 0
         ? 0.0
         : MediaQueryData.fromView(View.of(context)).viewPadding.bottom;
+    final settings = widget.assistant.providerSettings;
     return Padding(
       padding: EdgeInsets.fromLTRB(20, 20, 20, keyboard + safeBottom + 20),
       child: _loading
           ? const Center(child: CircularProgressIndicator())
+          : settings == null
+          // No settings backend configured: render an error state instead
+          // of force-unwrapping, which used to crash here.
+          ? Center(
+              child: Text(
+                _error ?? _strings.providerSettingsUnavailable,
+                style: TextStyle(color: colors.error),
+              ),
+            )
           : SingleChildScrollView(
               child: Column(
                 mainAxisSize: .min,
@@ -223,8 +233,7 @@ class _ProviderSettingsSheetState extends State<_ProviderSettingsSheet> {
                       labelText: _strings.providerLabel,
                     ),
                     items: [
-                      for (final kind
-                          in widget.assistant.providerSettings!.availableKinds)
+                      for (final kind in settings.availableKinds)
                         DropdownMenuItem(
                           value: kind,
                           child: Text(switch (kind) {
@@ -368,8 +377,9 @@ class _ProviderSettingsSheetState extends State<_ProviderSettingsSheet> {
                   ),
                   if (_kind != .backend &&
                       _hasKey &&
-                      widget.assistant.providerSettings!.availableKinds
-                          .contains(AsystantProviderKind.backend))
+                      settings.availableKinds.contains(
+                        AsystantProviderKind.backend,
+                      ))
                     TextButton(
                       onPressed: _saving ? null : _removeKey,
                       child: Text(_strings.providerDeleteLocalKey),
