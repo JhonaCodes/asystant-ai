@@ -34,7 +34,7 @@ void main() {
           home: Scaffold(
             body: AsystantChat(
               assistant: assistant,
-              strings: const AsystantStrings(),
+              strings: const AsystantStrings(spanish: true),
             ),
           ),
         ),
@@ -79,7 +79,7 @@ void main() {
           child: Scaffold(
             body: AsystantChat(
               assistant: assistant,
-              strings: const AsystantStrings(),
+              strings: const AsystantStrings(spanish: true),
             ),
           ),
         ),

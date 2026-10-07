@@ -14,3 +14,6 @@ build/
 
 # Golden test failure output
 **/test/failures/
+
+# Agent working notes, never part of a release
+/.keel/
