@@ -21,6 +21,7 @@ class ChatHeader extends StatelessWidget {
     this.showsHandle = false,
     this.isExpanded = false,
     this.onToggleExpansion,
+    this.actions = const [],
     this.onHistory,
     this.onNew,
     this.onDelete,
@@ -45,6 +46,9 @@ class ChatHeader extends StatelessWidget {
   final bool isExpanded;
 
   final VoidCallback? onToggleExpansion;
+
+  /// Host buttons drawn before the conversation actions.
+  final List<Widget> actions;
 
   final VoidCallback? onHistory;
 
@@ -117,6 +121,7 @@ class ChatHeader extends StatelessWidget {
                       tooltip: isExpanded ? strings.collapse : strings.expand,
                       onPressed: toggle,
                     ),
+                  ...actions,
                   if (onHistory case final history?)
                     _HeaderAction(
                       glyph: AsystantGlyphKind.history,

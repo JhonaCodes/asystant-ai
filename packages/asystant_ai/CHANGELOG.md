@@ -1,3 +1,7 @@
+## 0.4.1
+
+- `AsystantChat.headerActions`: host buttons in the header row, before the conversation actions, for hosts whose main screen is the chat itself (navigation, sessions, notifications).
+
 ## 0.4.0
 
 - `ChatViewModel.reloadConversations()` keeps the conversation on screen in the store, then reads the list again and replaces the one shown with exactly what the store answers, newest first. For hosts whose store answers per context of their own (one list per open document): after switching the context, call it, then `openConversation` or `newConversation`. See the integration guide, "Host content".

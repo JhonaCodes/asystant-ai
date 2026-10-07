@@ -41,8 +41,13 @@ class AsystantChat extends StatefulWidget {
     this.onPickFiles,
     this.hostCards = const [],
     this.headerContent,
+    this.headerActions = const [],
     this.managesConversations = true,
   });
+
+  /// Host buttons in the header row, before the conversation actions, such
+  /// as navigation when the chat is the host's main screen.
+  final List<Widget> headerActions;
 
   final AsystantAI assistant;
 
@@ -225,6 +230,7 @@ class _ChatLayout extends StatelessWidget {
           showsHandle: chat.showsHandle,
           isExpanded: chat.isExpanded,
           onToggleExpansion: chat.onToggleExpansion,
+          actions: chat.headerActions,
           onHistory: manages && !sideList ? () => onShowList(true) : null,
           onNew: manages ? viewModel.newConversation : null,
           onDelete: manages ? () => onDelete(state.conversationId) : null,

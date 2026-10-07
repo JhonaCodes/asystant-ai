@@ -76,6 +76,39 @@ void main() {
     expect(keepEditing.onPressed, isNull);
   });
 
+  testWidgets('host header actions sit in the header row, before the '
+      'conversation actions', (tester) async {
+    final assistant = await _connected(tester);
+    var homes = 0;
+    await _pumpChat(
+      tester,
+      AsystantChat(
+        assistant: assistant,
+        strings: const AsystantStrings(spanish: false),
+        headerActions: [
+          IconButton(
+            tooltip: 'Home',
+            icon: const Icon(Icons.home_outlined),
+            onPressed: () => homes++,
+          ),
+        ],
+      ),
+    );
+
+    final home = find.byTooltip('Home');
+    expect(home, findsOneWidget);
+    expect(
+      tester.getCenter(home).dy,
+      moreOrLessEquals(tester.getCenter(find.text('Studio')).dy, epsilon: 12),
+    );
+    expect(
+      tester.getCenter(home).dx,
+      lessThan(tester.getCenter(find.byTooltip('New conversation')).dx),
+    );
+    await tester.tap(home);
+    expect(homes, 1);
+  });
+
   testWidgets('the header shows the host content', (tester) async {
     final assistant = await _connected(tester);
     await _pumpChat(
