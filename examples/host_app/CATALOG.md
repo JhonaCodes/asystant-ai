@@ -143,8 +143,9 @@ released, and `newTerms` is removed.
 
 One freely licensed photo from Wikimedia Commons (CC0, public domain, CC BY or
 CC BY-SA) that shows the plant clearly, saved as `assets/plants/<id>.jpg` at
-most 800 px on its longest side and about 120 KB
-(`sips -Z 800 -s format jpeg -s formatOptions 62 <file>`), with its credit:
+most 480 px on its longest side and about 40 KB
+(`sips -Z 480 -s format jpeg -s formatOptions 60 <file>`): the app bundles
+all photos to work offline, so they must stay small. With its credit:
 
 ```json
 {"ref": "asset://assets/plants/menta.jpg", "author": "…", "license": "CC BY-SA 4.0",

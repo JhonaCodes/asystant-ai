@@ -1,0 +1,154 @@
+{
+  "id": "huacatay",
+  "commonName": "Huacatay",
+  "otherNames": [
+    "chinchilla",
+    "suico"
+  ],
+  "scientificName": "Tagetes minuta L.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "hojas",
+    "partes aéreas"
+  ],
+  "easyExplanation": "El huacatay es una hierba andina muy aromática, de la familia de la margarita, que se usa sobre todo como condimento fresco en sopas, guisos y salsas (como la salsa de huacatay peruana). También se toma en infusión, de forma tradicional, como digestivo. Toda la planta es muy aromática y su savia puede irritar la piel o causar alergia de contacto en personas sensibles, sobre todo si eres alérgico a la familia de la margarita (Asteraceae).",
+  "botany": {
+    "description": "Hierba anual erguida, de hasta 120 cm o más de altura, con hojas finamente divididas; toda la planta es muy aromática.",
+    "identification": "Se reconoce por su aroma fuerte al estrujar las hojas y por sus pequeñas flores amarillas agrupadas.",
+    "cultivation": "Se cultiva como hierba de huerta o crece de forma silvestre en los Andes; hoy se ha naturalizado también en otras partes del mundo.",
+    "lookalikes": [
+      "Otras especies de Tagetes (como la flor de muerto, Tagetes erecta), de aroma y aspecto parecidos pero uso diferente."
+    ],
+    "nativeRange": "Sudamérica: Argentina, Bolivia, Brasil, Chile, Ecuador, Paraguay, Perú y Uruguay.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "Uso tradicional entre familias bolivianas y andinas: hojas frescas en infusión, como digestivo y antiespasmódico.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "fluid_retention",
+      "label": "Retención de líquidos",
+      "evidence": "popular",
+      "note": "Uso tradicional como diurético, entre familias bolivianas y andinas.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Infusión de hojas de huacatay",
+      "uses": [
+        "indigestion",
+        "fluid_retention"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre hojas frescas de huacatay en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómala."
+        }
+      ],
+      "warnings": [
+        "No uses el aceite esencial de huacatay por boca ni sin diluir sobre la piel: no hay una dosis segura establecida.",
+        "No la uses en el embarazo, la lactancia ni en niños menores de 12 años."
+      ],
+      "dose": "Las fuentes consultadas no dan una cantidad exacta en gramos.",
+      "frequency": "Uso ocasional.",
+      "maxDays": null,
+      "instructions": "Infusión de hojas frescas de huacatay; no hay una dosis exacta establecida en las fuentes.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "El huacatay es de la familia de la margarita (Asteraceae); su savia puede causar alergia de contacto en personas sensibles a esta familia."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "La savia de la planta puede irritar la piel o causar dermatitis de contacto en personas sensibles.",
+    "No hay estudios de seguridad en personas para su uso por boca más allá de su uso tradicional como condimento y digestivo."
+  ],
+  "safetySources": [
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/huacatay.jpg",
+      "author": "Paul venter",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tagetes_minuta00.jpg",
+      "caption": "Huacatay (Tagetes minuta)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Tagetes minuta",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Tagetes+minuta",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Tagetes minuta L.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:252132-1",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Functional foods and nutraceuticals in a market of Bolivian immigrants in Buenos Aires (Argentina)",
+      "publisher": "Evidence-Based Complementary and Alternative Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3235782/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Antimicrobial Action of Essential Oil of Tagetes minuta: Role of the Bacterial Membrane in the Mechanism of Action",
+      "publisher": "Antibiotics (Basel) (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12291637/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

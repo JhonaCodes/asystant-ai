@@ -1,0 +1,103 @@
+{
+  "id": "chuchuhuasi",
+  "commonName": "Chuchuhuasi",
+  "otherNames": [
+    "chuchuasha"
+  ],
+  "scientificName": "Maytenus macrocarpa (Ruiz & Pav.) Briq.",
+  "family": "Celastraceae",
+  "partsUsed": [
+    "corteza",
+    "raíz"
+  ],
+  "easyExplanation": "El chuchuhuasi es un árbol de la Amazonía cuya corteza y raíz se maceran tradicionalmente en aguardiente y se toman como tónico para el reumatismo, como supuesto afrodisíaco y para la diarrea. No hay ningún estudio en personas que confirme estos usos: solo hay estudios de laboratorio y en animales. En ratas, un extracto de sus hojas afectó el ritmo del corazón en dosis altas. Además, la forma tradicional de tomarlo es un vaso de macerado con alcohol dos veces al día durante un mes, una cantidad de alcohol que no es segura tomar a diario. Por eso aquí no se recomienda ningún preparado casero con chuchuhuasi; solo se explica su uso tradicional y lo que la ciencia sabe.",
+  "botany": {
+    "description": "Árbol amazónico que puede alcanzar hasta 30 metros de altura, de la familia Celastraceae.",
+    "identification": "Se reconoce por su corteza gruesa, muy usada tradicionalmente en macerados; su nombre científico aceptado hoy en algunas fuentes es Monteverdia macrocarpa.",
+    "cultivation": "Crece de forma silvestre en bosques tropicales de tierras bajas de la Amazonía, y de forma excepcional hasta los 2000 metros de altitud; no se cultiva comercialmente, se recolecta de árboles silvestres.",
+    "lookalikes": [
+      "Otras especies de Maytenus (hoy reclasificadas en parte como Monteverdia) de la Amazonía, de corteza similar."
+    ],
+    "nativeRange": "Cuenca amazónica: Bolivia, Brasil (Acre), Colombia, Ecuador, Perú y Venezuela.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El chuchuhuasi macerado en aguardiente cura el reumatismo y los dolores de articulaciones.",
+      "note": "Es el uso tradicional más extendido en la Amazonía: macerar 250 g de raíz seca y triturada en alcohol y tomar un vaso en ayunas, por la mañana y por la noche, durante un mes. No hay estudios clínicos en personas que lo confirmen. En ratas, un extracto de hojas de la misma planta mostró un efecto negativo sobre el ritmo del corazón en dosis altas (1500 mg/kg, inyectado). Además, esa cantidad de alcohol tomada a diario durante un mes no es una práctica segura.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "claim": "El chuchuhuasi es afrodisíaco y cura la diarrea.",
+      "note": "Son usos populares mencionados en estudios etnofarmacológicos de la Amazonía peruana, sin estudios clínicos en personas que los confirmen.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "claim": "El chuchuhuasi cura el cáncer.",
+      "note": "Algunos compuestos aislados de la planta mostraron actividad contra células de cáncer en placa de laboratorio (no en animales ni en personas). Eso no prueba que la planta cure el cáncer; nunca reemplaza un tratamiento médico.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No hay estudios de seguridad en personas.",
+    "En ratas, dosis altas de un extracto de hojas de la misma planta afectaron el ritmo del corazón.",
+    "El macerado tradicional en alcohol, tomado a diario durante semanas, implica un consumo de alcohol que no es seguro."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/chuchuhuasi.jpg",
+      "author": "Gary Saucedo / Archivo Centro Takiwasi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Corteza_de_Chuchuhuasi_(Maytenus_macrocarpa).jpg",
+      "caption": "Corteza de chuchuhuasi (Maytenus macrocarpa)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Maytenus macrocarpa (Ruiz & Pav.) Briq.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:155542-2",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Maytenus macrocarpa (Ruiz & Pav.) Briq.: Phytochemistry and Pharmacological Activity",
+      "publisher": "Molecules (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6630539/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Maytenus macrocarpa (Ruiz & Pav.) Briq.: Phytochemistry and Pharmacological Activity",
+      "publisher": "Molecules (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6630539/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

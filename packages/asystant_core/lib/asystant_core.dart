@@ -1,5 +1,5 @@
 /// Typed local tools, protocol models and the model providers (OpenRouter,
-/// Claude Code) for embedded assistants in Dart.
+/// Claude Code and OpenAI-compatible endpoints) for embedded assistants in Dart.
 library;
 
 export 'package:result_controller/result_controller.dart';

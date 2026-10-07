@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/asystant_ai.dart';
+import 'package:asystant_ai/src/model/asystant_composer_action_placement.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/service/asystant_file_picker.dart';
 import 'package:asystant_ai/src/service/asystant_link_opener.dart';
@@ -25,6 +26,9 @@ class AsystantPhoneSheet extends StatefulWidget {
     this.cardContentBuilder,
     this.attachments,
     this.onPickFiles,
+    this.enablePrivateValueAttachment = false,
+    this.attachmentActionPlacement = AsystantComposerActionPlacement.inside,
+    this.privateValueActionPlacement = AsystantComposerActionPlacement.inside,
     this.startsExpanded = true,
   });
 
@@ -44,6 +48,11 @@ class AsystantPhoneSheet extends StatefulWidget {
   /// Replaces the system file picker.
   final AsystantFilePick? onPickFiles;
 
+  /// Shows the optional private-value button in the opened chat.
+  final bool enablePrivateValueAttachment;
+  final AsystantComposerActionPlacement attachmentActionPlacement;
+  final AsystantComposerActionPlacement privateValueActionPlacement;
+
   /// Whether it opens over the whole screen or as a sheet.
   final bool startsExpanded;
 
@@ -59,6 +68,11 @@ class AsystantPhoneSheet extends StatefulWidget {
     AsystantCardContentBuilder? cardContentBuilder,
     AsystantAttachmentPolicy? attachments,
     AsystantFilePick? onPickFiles,
+    bool enablePrivateValueAttachment = false,
+    AsystantComposerActionPlacement attachmentActionPlacement =
+        AsystantComposerActionPlacement.inside,
+    AsystantComposerActionPlacement privateValueActionPlacement =
+        AsystantComposerActionPlacement.inside,
     bool startsExpanded = true,
   }) => showModalBottomSheet<void>(
     context: context,
@@ -81,6 +95,9 @@ class AsystantPhoneSheet extends StatefulWidget {
       cardContentBuilder: cardContentBuilder,
       attachments: attachments,
       onPickFiles: onPickFiles,
+      enablePrivateValueAttachment: enablePrivateValueAttachment,
+      attachmentActionPlacement: attachmentActionPlacement,
+      privateValueActionPlacement: privateValueActionPlacement,
       startsExpanded: startsExpanded,
       onClose: () => Navigator.of(sheetContext).pop(),
     ),
@@ -136,6 +153,9 @@ class _AsystantPhoneSheetState extends State<AsystantPhoneSheet> {
               cardContentBuilder: widget.cardContentBuilder,
               attachments: widget.attachments,
               onPickFiles: widget.onPickFiles,
+              enablePrivateValueAttachment: widget.enablePrivateValueAttachment,
+              attachmentActionPlacement: widget.attachmentActionPlacement,
+              privateValueActionPlacement: widget.privateValueActionPlacement,
               isExpanded: _expanded,
               onToggleExpansion: _toggle,
               // A handle only means something while it is a sheet.

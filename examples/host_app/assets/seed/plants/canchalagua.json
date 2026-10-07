@@ -1,0 +1,166 @@
+{
+  "id": "canchalagua",
+  "commonName": "Canchalagua",
+  "otherNames": [
+    "canchalahua"
+  ],
+  "scientificName": "Schkuhria pinnata (Lam.) Kuntze ex Thell.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "partes aéreas"
+  ],
+  "easyExplanation": "El canchalagua es una hierba pequeña de la familia de la margarita. En los Andes se prepara en infusión, de forma tradicional, para afecciones inflamatorias y de la piel; algunos estudios de laboratorio muestran que compuestos de la planta bloquean sustancias que producen inflamación, lo que respalda ese uso tradicional. También se le atribuye popularmente un uso para 'el corazón', pero no hay estudios en personas que lo prueben, y una enfermedad del corazón siempre necesita evaluación médica, nunca automedicación con una infusión.",
+  "botany": {
+    "description": "Hierba pequeña anual de la familia de la margarita (Asteraceae).",
+    "identification": "En Perú, el nombre popular 'canchalagua' corresponde a esta especie, Schkuhria pinnata.",
+    "cultivation": "Crece de forma silvestre como maleza común; se recolecta de plantas silvestres, no se cultiva comercialmente.",
+    "lookalikes": [
+      "En otras regiones andinas, el nombre 'canchalagua' o 'cachanlahua' se usa también para especies de Centaurium/Gentianaceae, distintas de Schkuhria pinnata; conviene confirmar cuál planta se está usando."
+    ],
+    "nativeRange": "América, desde el suroeste de Estados Unidos hasta Argentina y Chile, incluyendo Bolivia, Colombia, Ecuador y Perú; hoy introducida también en Europa, África, Asia y Oceanía.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El canchalagua cura enfermedades del corazón o el cáncer.",
+      "note": "Un estudio etnobotánico en Perú menciona un uso tradicional de la planta para 'afecciones del corazón', y compuestos aislados de la planta mostraron actividad contra células de leucemia y otras células de cáncer en placa de laboratorio. Ninguno de los dos hallazgos es un estudio clínico en personas: no hay evidencia de que el canchalagua trate una enfermedad del corazón ni cure el cáncer. Una enfermedad del corazón o un cáncer siempre necesitan evaluación y tratamiento médico.",
+      "sources": [
+        "s2",
+        "s5"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "skin_irritation",
+      "label": "Irritación o inflamación leve de la piel",
+      "evidence": "popular",
+      "note": "Uso tradicional en países andinos: infusión de canchalagua para afecciones inflamatorias y de la piel. Compuestos aislados de la planta bloquearon en laboratorio sustancias relacionadas con la inflamación (TNF-α y ASK1), lo que apoya ese uso tradicional, aunque no hay estudios clínicos en personas.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Infusión de canchalagua",
+      "uses": [
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre partes aéreas de canchalagua, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómala."
+        }
+      ],
+      "warnings": [
+        "No la uses para tratar una enfermedad del corazón ni el cáncer; consulta a un médico.",
+        "Si eres alérgico a la familia de la margarita (Asteraceae), evítala.",
+        "No la uses en el embarazo, la lactancia ni en niños menores de 12 años."
+      ],
+      "dose": "Las fuentes consultadas no dan una cantidad exacta en gramos.",
+      "frequency": "Uso ocasional.",
+      "maxDays": null,
+      "instructions": "Infusión de partes aéreas frescas o secas de canchalagua; no hay una dosis exacta establecida en las fuentes.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "El canchalagua es de la familia de la margarita (Asteraceae); evítalo si eres alérgico a esta familia."
+    },
+    {
+      "kind": "condition",
+      "tag": "heart_disease",
+      "note": "No lo uses para tratar una enfermedad del corazón: no hay estudios clínicos que lo respalden, y una enfermedad del corazón necesita evaluación médica."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Contiene lactonas sesquiterpénicas, compuestos que en otras plantas de la familia Asteraceae pueden causar alergia de contacto en personas sensibles.",
+    "Se vende como suplemento alimenticio en el mercado europeo, pero no hay estudios clínicos formales de seguridad en personas."
+  ],
+  "safetySources": [
+    "s4",
+    "s5"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/canchalagua.jpg",
+      "author": "Harry Rose",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schkuhria_pinnata_plant1_(16117434866).jpg",
+      "caption": "Canchalagua (Schkuhria pinnata)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Schkuhria pinnata (Lam.) Kuntze ex Thell.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:242907-1",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Traditional medicine in Incahuasi: An ethnobotanical study",
+      "publisher": "F1000Research (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10993006/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Anti-inflammatory effects of TNF-α and ASK1 inhibitory compounds isolated from Schkuhria pinnata used for the treatment of dermatitis",
+      "publisher": "Journal of Ethnopharmacology (PubMed 37598765)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37598765/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Anti-inflammatory effects of TNF-α and ASK1 inhibitory compounds isolated from Schkuhria pinnata used for the treatment of dermatitis",
+      "publisher": "Journal of Ethnopharmacology (PubMed 37598765)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37598765/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Antiproliferative and Pro-apoptotic Effects of Sesquiterpene Lactones from Schkuhria pinnata in THP-1 Leukemia Cells",
+      "publisher": "ACS Omega (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12917833/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

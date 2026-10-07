@@ -1,0 +1,158 @@
+{
+  "id": "matico",
+  "commonName": "Matico",
+  "otherNames": [],
+  "scientificName": "Piper aduncum L.",
+  "family": "Piperaceae",
+  "partsUsed": [
+    "hojas"
+  ],
+  "easyExplanation": "El matico es un arbusto amazónico de la familia de la pimienta. En comunidades indígenas de la Amazonía peruana se usan las hojas, en infusión o decocción, para molestias digestivas y dolores de cabeza. No hay estudios en personas sobre su seguridad, solo estudios en animales; por eso se recomienda un uso ocasional, en dosis bajas, y evitarlo en el embarazo, la lactancia y en niños pequeños.",
+  "botany": {
+    "description": "Arbusto o árbol pequeño de 2 a 8 metros de alto, con tallos nudosos y raíces de sostén cerca de la base. Hojas simples, alternas, de borde entero. Produce espigas colgantes, delgadas, de color blanco a amarillo pálido, con flores diminutas polinizadas por el viento.",
+    "identification": "Se reconoce por sus espigas florales delgadas en forma de cordón, sus tallos nudosos parecidos a los del bambú y el olor aromático de sus hojas al estrujarlas, típico de la familia de la pimienta.",
+    "cultivation": "Crece de forma silvestre en bordes de bosque, claros y terrenos alterados de tierras bajas tropicales húmedas; no se cultiva comercialmente, se recolecta de plantas silvestres o naturalizadas.",
+    "lookalikes": [
+      "Otras especies de Piper de hoja y espiga similares, comunes en el mismo hábitat amazónico."
+    ],
+    "nativeRange": "Originaria de América tropical (Brasil, Bolivia, Perú y otros países de Centro y Sudamérica y el Caribe); hoy naturalizada también en Asia y el Pacífico.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "Tomar el té de hojas de matico por boca cura heridas en la piel.",
+      "note": "Una revisión científica de plantas latinoamericanas usadas para cicatrizar heridas incluye al matico solo como uso tradicional (infusión de hojas por boca); no hay estudios preclínicos ni en personas que muestren que tomarlo por boca ayude a cicatrizar heridas externas. Para heridas, lo seguro y estudiado es la limpieza con agua y jabón y cubrir la herida.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "Uso tradicional entre los cashinahua (huni kuin) de la Amazonía peruana: hojas en infusión o decocción para problemas digestivos.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "headache",
+      "label": "Dolor de cabeza leve",
+      "evidence": "popular",
+      "note": "Uso tradicional entre los cashinahua (huni kuin) de la Amazonía peruana: hojas en infusión o decocción para el dolor de cabeza.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Infusión de hojas de matico",
+      "uses": [
+        "indigestion",
+        "headache"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre unas pocas hojas de matico, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "No hay estudios de seguridad en personas: úsalo de forma ocasional, no seguida, y en poca cantidad.",
+        "No lo uses en el embarazo, la lactancia ni en niños menores de 12 años."
+      ],
+      "dose": "Las fuentes consultadas no dan una cantidad exacta en gramos; se preparan pocas hojas por taza.",
+      "frequency": "Uso ocasional, no seguido varios días.",
+      "maxDays": null,
+      "instructions": "Té preparado con pocas hojas frescas o secas de matico por taza, de forma ocasional; no hay una dosis exacta establecida en las fuentes.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No se han descrito reacciones adversas frecuentes en personas, pero la información de seguridad es muy limitada: solo hay estudios en animales, no en personas."
+  ],
+  "safetySources": [
+    "s4",
+    "s5"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/matico.jpg",
+      "author": "Pisofrix",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hoja_de_matico_(Piper_aduncum).jpg",
+      "caption": "Hoja de matico (Piper aduncum)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Piper aduncum",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Piper+aduncum",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Piper aduncum L.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:680296-1",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Ethnobotanical inventory of medicinal plants used by Cashinahua (Huni Kuin) herbalists",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10176740/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Medicinal Plants from Latin America with Wound Healing Activity: Ethnomedicine, Phytochemistry, Preclinical and Clinical Studies",
+      "publisher": "Pharmaceuticals (Basel) (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9505834/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Antioxidant and Cytoprotective Effect of Piper aduncum L. against Sodium Fluoride (NaF)-Induced Toxicity in Albino Mice",
+      "publisher": "Toxics (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6630445/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

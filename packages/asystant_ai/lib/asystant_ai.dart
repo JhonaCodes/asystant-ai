@@ -7,6 +7,7 @@ export 'package:asystant_core/asystant_core.dart';
 
 export 'src/asystant_ai.dart';
 export 'src/model/chat_state.dart';
+export 'src/model/private_input_request.dart';
 export 'src/viewmodel/chat_view_model.dart';
 export 'src/theme/asystant_theme.dart';
 export 'src/l10n/asystant_strings.dart';
@@ -20,6 +21,7 @@ export 'src/model/assistant_step.dart';
 export 'src/model/asystant_card_action.dart';
 export 'src/model/asystant_conversation_actions_style.dart';
 export 'src/model/asystant_composer_layout.dart';
+export 'src/model/asystant_composer_action_placement.dart';
 export 'src/model/asystant_dashboard_content.dart';
 export 'src/model/asystant_menu_action.dart';
 export 'src/model/asystant_host_card.dart';
@@ -34,6 +36,8 @@ export 'src/model/conversation_snapshot.dart';
 export 'src/service/asystant_conversation_store.dart';
 export 'src/service/asystant_json_conversation_store.dart';
 export 'src/service/asystant_file_picker.dart';
+export 'src/service/asystant_provider_settings.dart';
+export 'src/widgets/asystant_provider_settings_sheet.dart';
 export 'src/theme/asystant_metrics.dart';
 
 export 'src/widgets/gen_ui_chart.dart';

@@ -1,4 +1,5 @@
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
+import 'package:asystant_ai/src/model/asystant_composer_action_placement.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
@@ -21,6 +22,9 @@ class AsystantButton extends StatelessWidget {
     this.cardContentBuilder,
     this.attachments,
     this.onPickFiles,
+    this.enablePrivateValueAttachment = false,
+    this.attachmentActionPlacement = AsystantComposerActionPlacement.inside,
+    this.privateValueActionPlacement = AsystantComposerActionPlacement.inside,
     this.opensExpanded = true,
   });
 
@@ -40,6 +44,11 @@ class AsystantButton extends StatelessWidget {
   /// Replaces the system file picker in the opened chat.
   final AsystantFilePick? onPickFiles;
 
+  /// Shows the optional private-value button in the opened chat.
+  final bool enablePrivateValueAttachment;
+  final AsystantComposerActionPlacement attachmentActionPlacement;
+  final AsystantComposerActionPlacement privateValueActionPlacement;
+
   /// On phones, whether the chat opens over the whole screen (and the
   /// host's bottom navigation) or as a sheet; its header switches between
   /// the two either way.
@@ -56,6 +65,9 @@ class AsystantButton extends StatelessWidget {
           cardContentBuilder: cardContentBuilder,
           attachments: attachments,
           onPickFiles: onPickFiles,
+          enablePrivateValueAttachment: enablePrivateValueAttachment,
+          attachmentActionPlacement: attachmentActionPlacement,
+          privateValueActionPlacement: privateValueActionPlacement,
           startsExpanded: opensExpanded,
         ),
         AsystantDeviceType.tablet ||
@@ -67,6 +79,9 @@ class AsystantButton extends StatelessWidget {
           cardContentBuilder: cardContentBuilder,
           attachments: attachments,
           onPickFiles: onPickFiles,
+          enablePrivateValueAttachment: enablePrivateValueAttachment,
+          attachmentActionPlacement: attachmentActionPlacement,
+          privateValueActionPlacement: privateValueActionPlacement,
         ),
       };
 

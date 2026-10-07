@@ -1,0 +1,201 @@
+{
+  "id": "muicle",
+  "commonName": "Muicle",
+  "otherNames": [
+    "mohuite",
+    "yaxan",
+    "hierba de añil",
+    "Mexican honeysuckle"
+  ],
+  "scientificName": "Justicia spicigera Schltdl.",
+  "family": "Acanthaceae",
+  "partsUsed": [
+    "hoja",
+    "flor",
+    "tallo"
+  ],
+  "easyExplanation": "El muicle es un arbusto mexicano de flores anaranjadas cuyas hojas y ramas se toman en decocción, de color violeta rojizo, para molestias digestivas y de la garganta. Es una planta muy popular contra el dengue y para \"purificar la sangre\", pero eso no está probado en personas: solo hay estudios de laboratorio y en animales. No reemplaza la atención médica del dengue ni de otras enfermedades serias.",
+  "botany": {
+    "description": "Arbusto de 1 a 1,5 metros de altura, muy ramificado, de porte erguido o algo trepador, con hojas opuestas y flores tubulares de color naranja a rojo que atraen colibríes.",
+    "identification": "Se reconoce por sus flores tubulares anaranjadas agrupadas en espigas y porque, al hervir sus hojas o ramas en agua, el líquido toma un color violeta rojizo característico.",
+    "cultivation": "Crece en matorrales húmedos o secos, bordes de bosque y setos, desde el nivel del mar hasta 1.800 metros; se propaga fácilmente por esquejes de tallo en suelo húmedo y sol o media sombra.",
+    "lookalikes": [
+      "Otras especies del género Justicia, de flores y porte parecidos."
+    ],
+    "nativeRange": "México hasta Costa Rica, en América Central.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El muicle sube las plaquetas y cura el dengue.",
+      "note": "Esta creencia se popularizó durante brotes de dengue, pero no hay estudios en personas que muestren que el muicle suba las plaquetas o cure el dengue; la evidencia disponible es solo de laboratorio y en animales. El dengue necesita atención médica: nunca lo reemplaces por esta planta.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "claim": "El muicle purifica la sangre y cura tumores o el cáncer.",
+      "note": "Solo hay estudios en células de laboratorio, no en personas; a concentraciones altas el extracto fue tóxico incluso para las propias células estudiadas. No hay evidencia de que \"purifique la sangre\" ni que cure el cáncer en personas.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "claim": "El muicle controla la diabetes o la presión arterial alta y puede reemplazar el medicamento.",
+      "note": "Los efectos sobre el azúcar y la presión solo se han visto en animales y en pruebas de laboratorio, nunca en personas. No dejes ni cambies un medicamento para la diabetes o la presión por esta planta.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "diarrhea",
+      "label": "Diarrea leve",
+      "evidence": "popular",
+      "note": "Decocción de hojas o ramas por boca; uso popular documentado en México.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "Decocción de hojas, ramas o flor por boca para dolor de estómago; uso popular documentado en México.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "cough",
+      "label": "Tos",
+      "evidence": "popular",
+      "note": "Decocción por boca; uso popular documentado en México para tos y bronquitis.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "constipation",
+      "label": "Estreñimiento",
+      "evidence": "popular",
+      "note": "Decocción por boca; uso popular documentado en México.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de muicle",
+      "uses": [
+        "diarrhea",
+        "indigestion",
+        "cough",
+        "constipation"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Pon a hervir agua con hojas y ramas de muicle, frescas o secas."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir unos minutos hasta que el agua tome un color violeta rojizo."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo tibio."
+        }
+      ],
+      "warnings": [
+        "No lo uses para tratar el dengue, la fiebre alta ni ninguna enfermedad grave: busca atención médica.",
+        "No reemplaces el tratamiento de la diabetes o la presión arterial por esta planta."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios; usa la costumbre tradicional de un puñado de hojas y ramas por litro de agua.",
+      "frequency": "1 a 2 tazas al día.",
+      "maxDays": 7,
+      "instructions": "Hierve hojas y ramas de muicle, frescas o secas, en agua unos minutos hasta que tome un color violeta rojizo, cuela y tómalo tibio.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "No lo uses para reemplazar el medicamento para la diabetes: su efecto sobre el azúcar solo se ha visto en animales, no en personas."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "No lo uses para reemplazar el medicamento para la presión arterial: su efecto solo se ha visto en animales, no en personas."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No se han descrito efectos secundarios frecuentes en personas porque no hay estudios clínicos; a dosis altas de extracto concentrado se ha visto toxicidad en células de laboratorio."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/muicle.jpg",
+      "author": "Stan Shebs",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Justicia_spicigera_1.jpg",
+      "caption": "Flores de muicle (Justicia spicigera)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Justicia spicigera",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Justicia+spicigera",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Ethnobotany in a Modern City: The Persistence in the Use of Medicinal Plants in Guadalajara, Mexico",
+      "publisher": "Plants (Basel) / PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12430341/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "In Vitro Evaluation of Anti-Hemolytic and Cytotoxic Effects of Traditional Mexican Medicinal Plant Extracts on Human Erythrocytes and Cell Cultures",
+      "publisher": "Life (Basel) / PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11433374/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Overview of the Justicia Genus: Insights into Its Chemical Diversity and Biological Potential",
+      "publisher": "Molecules / PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9920429/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

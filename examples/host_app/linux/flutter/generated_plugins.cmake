@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   flutter_local_db
+  flutter_secure_storage_linux
   url_launcher_linux
 )
 

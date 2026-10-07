@@ -1,0 +1,156 @@
+{
+  "id": "yacon",
+  "commonName": "Yacón",
+  "otherNames": [
+    "jiquimilla",
+    "jíquima"
+  ],
+  "scientificName": "Smallanthus sonchifolius (Poepp.) H.Rob.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "raíz tuberosa"
+  ],
+  "easyExplanation": "El yacón es una planta andina de raíz tuberosa, dulce y crujiente, que se come cruda o cocida como alimento. Su raíz es rica en fructooligosacáridos (FOS), una fibra que alimenta a las bacterias buenas del intestino. Un análisis de 12 estudios clínicos encontró que el jarabe, la harina o el polvo de yacón mejoran el estreñimiento (más deposiciones, más blandas) y bajan el índice de masa corporal, pero no encontró un efecto claro sobre el azúcar en la sangre; por eso, aunque se venda como endulzante 'apto para diabéticos', no está probado que baje la glucosa.",
+  "botany": {
+    "description": "Hierba perenne de raíz tuberosa, con tallos gruesos de 100 a 200 cm de altura; sus tubérculos, de hasta 500 g cada uno, se comen crudos o cocidos.",
+    "identification": "Se reconoce por sus tubérculos alargados, de piel oscura y pulpa clara, dulce y jugosa al madurar; sus hojas y tallos también se cocinan como verdura.",
+    "cultivation": "Se cultiva en los Andes hasta los 3600 metros de altitud, en Bolivia, Colombia, Ecuador y Perú.",
+    "lookalikes": [
+      "Otras raíces tuberosas andinas, aunque el yacón se distingue por su pulpa dulce y jugosa al morderlo crudo."
+    ],
+    "nativeRange": "Andes de Bolivia, Colombia, Ecuador y Perú.",
+    "sources": [
+      "s1",
+      "s2",
+      "s3"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El yacón baja el azúcar en la sangre y es un endulzante seguro para personas con diabetes.",
+      "note": "Un análisis de 12 estudios clínicos con jarabe, harina o polvo de yacón no encontró un efecto significativo sobre la glucosa en ayunas, la insulina ni la hemoglobina glicosilada. No reemplaza ningún tratamiento para la diabetes.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "constipation",
+      "label": "Estreñimiento",
+      "evidence": "limited",
+      "note": "Un análisis de 12 estudios clínicos (425 personas en total) con jarabe, harina o polvo de yacón, con 6,4 a 14 g de fructooligosacáridos al día, encontró más deposiciones, más blandas y menor pH fecal.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "weight_loss",
+      "label": "Bajar de peso",
+      "evidence": "limited",
+      "note": "El mismo análisis encontró una reducción significativa del índice de masa corporal, aunque el cambio en el peso corporal en kilos no fue significativo.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Jarabe, harina o polvo de yacón",
+      "uses": [
+        "constipation",
+        "weight_loss"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra jarabe, harina o polvo de yacón, o prepara jugo de la raíz fresca."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalo con las comidas o con agua."
+        }
+      ],
+      "warnings": [
+        "Empieza con poca cantidad: los alimentos ricos en fructooligosacáridos (FOS) pueden causar gases o hinchazón leve, sobre todo con más de 10 a 12 g al día.",
+        "No está probado que baje el azúcar en la sangre; si tienes diabetes, no lo uses para reemplazar tu tratamiento."
+      ],
+      "dose": "6,4 a 14 g de fructooligosacáridos (FOS) al día (la cantidad usada en los estudios clínicos).",
+      "frequency": "1 a 2 veces al día, repartido con las comidas.",
+      "maxDays": 150,
+      "instructions": "Jarabe, harina o polvo de yacón con 6,4 a 14 g de FOS al día, repartido en el día; es la cantidad y duración usadas en los estudios clínicos revisados (hasta 5 meses).",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Gases o hinchazón leve, más frecuentes con dosis mayores a 10 a 12 g de fructooligosacáridos (FOS) al día; en los estudios no se reportó diarrea."
+  ],
+  "safetySources": [
+    "s4",
+    "s5"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/yacon.jpg",
+      "author": "NusHub",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yacon_roots_(Smallanthus_sonchifolius).JPG",
+      "caption": "Raíces de yacón (Smallanthus sonchifolius)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Smallanthus sonchifolius (Poepp.) H.Rob.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:237510-2",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Smallanthus sonchifolius",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Smallanthus+sonchifolius",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Smallanthus sonchifolius",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Smallanthus+sonchifolius",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Yacon root is a functional food beneficial for human health: a meta-analysis of clinical trials",
+      "publisher": "Frontiers in Nutrition (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12738341/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Fructooligosaccharides for Relieving Functional Constipation: A Systematic Review and Meta-Analysis of Randomized Controlled Trials",
+      "publisher": "Foods (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11675838/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

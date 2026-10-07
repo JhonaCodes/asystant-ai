@@ -5,13 +5,39 @@ import '../model/chat_state.dart';
 import '../model/assistant_step.dart';
 import '../model/asystant_action_policy.dart';
 
-/// Pass a subclass to AsystantChat to customize wording or add a language.
+/// Pass a subclass to AsystantChat to customize every built-in label.
+/// English is the default; a host explicitly selects or implements a locale.
 class AsystantStrings {
-  const AsystantStrings({this.spanish = true});
+  const AsystantStrings({this.spanish = false});
   final bool spanish;
-  static AsystantStrings of(BuildContext context) => AsystantStrings(
-    spanish: Localizations.localeOf(context).languageCode == 'es',
-  );
+  static const AsystantStrings english = AsystantStrings();
+  static const AsystantStrings spanishLabels = AsystantStrings(spanish: true);
+
+  /// Selects host-supplied strings for any language or region. Keys may be
+  /// language tags (`fr`, `pt-BR`) or language codes (`pt`). A region-specific
+  /// match wins; an unknown locale falls back to English. The built-in
+  /// Spanish bundle is used only when the host did not register `es`.
+  static AsystantStrings forLocale(
+    Locale locale, {
+    Map<String, AsystantStrings> translations = const {},
+  }) {
+    final tag = locale.toLanguageTag().toLowerCase();
+    final language = locale.languageCode.toLowerCase();
+    for (final entry in translations.entries) {
+      if (entry.key.replaceAll('_', '-').toLowerCase() == tag) {
+        return entry.value;
+      }
+    }
+    for (final entry in translations.entries) {
+      if (entry.key.toLowerCase() == language) {
+        return entry.value;
+      }
+    }
+    return language == 'es' ? spanishLabels : english;
+  }
+
+  /// Used when the host did not pass strings. Device locale is not assumed.
+  static AsystantStrings of(BuildContext context) => english;
   String get steps =>
       spanish ? 'Pasos de esta solicitud' : 'Steps in this request';
   String stepPhase(StepPhase phase) => switch (phase) {
@@ -38,7 +64,90 @@ class AsystantStrings {
   String get allow => spanish ? 'Autorizar' : 'Authorize';
   String get deny => spanish ? 'Rechazar' : 'Decline';
   String get cancel => spanish ? 'Cancelar' : 'Cancel';
+  String get privateInputHint => spanish
+      ? 'Estos datos se entregan solo a la acción local y no se envían al asistente.'
+      : 'These values go only to the local action and are not sent to the assistant.';
+  String get showPrivateInput => spanish ? 'Mostrar valores' : 'Show values';
+  String get hidePrivateInput => spanish ? 'Ocultar valores' : 'Hide values';
   String get you => spanish ? 'Tú' : 'You';
+
+  // Provider settings. Override these getters in a host string bundle.
+  String get aiSettings => spanish ? 'Configurar IA' : 'AI settings';
+  String get providerSettingsTitle =>
+      spanish ? 'Proveedor del chat' : 'Chat provider';
+  String get providerSettingsDescription => spanish
+      ? 'Elige cómo se conecta el chat principal. Las claves se guardan en este dispositivo.'
+      : 'Choose how the main chat connects. Keys stay on this device.';
+  String get providerLabel => spanish ? 'Proveedor' : 'Provider';
+  String get providerAppAccount => spanish ? 'Cuenta de la app' : 'App account';
+  String get providerOpenAi => 'OpenAI / GPT';
+  String get providerOpenRouter => 'OpenRouter';
+  String get providerGemini => 'Gemini';
+  String get providerAnthropic => 'Claude API';
+  String get providerCompatible =>
+      spanish ? 'Otro compatible con OpenAI' : 'Other OpenAI-compatible';
+  String get primaryModelOptional =>
+      spanish ? 'Modelo principal (opcional)' : 'Primary model (optional)';
+  String get primaryModelAllowedHint => spanish
+      ? 'Debe estar permitido por tu cuenta.'
+      : 'It must be allowed by your account.';
+  String get primaryModel => spanish ? 'Modelo principal' : 'Primary model';
+  String get automatic => spanish ? 'Automático' : 'Automatic';
+  String get primaryModelId =>
+      spanish ? 'ID del modelo principal' : 'Primary model ID';
+  String get providerName => spanish ? 'Nombre del proveedor' : 'Provider name';
+  String get providerBaseUrl => 'HTTPS API base URL';
+  String get providerBaseUrlHint => 'https://api.example.com/v1/';
+  String get providerApiKey => spanish ? 'Clave API' : 'API key';
+  String get providerSavedKeyHint => spanish
+      ? 'Clave guardada. Déjalo vacío para conservarla.'
+      : 'Key saved. Leave blank to keep it.';
+  String get providerClaudeApiHint => spanish
+      ? 'Usa una clave de Claude API; el inicio de sesión de Claude Code no funciona en el móvil.'
+      : 'Use a Claude API key; Claude Code sign-in is unavailable on mobile.';
+  String get providerTestConnection =>
+      spanish ? 'Probar conexión' : 'Test connection';
+  String get providerSaving => spanish ? 'Guardando…' : 'Saving…';
+  String get providerSaveAndUse => spanish ? 'Guardar y usar' : 'Save and use';
+  String get providerDeleteLocalKey =>
+      spanish ? 'Eliminar clave local' : 'Delete local key';
+  String get providerSettingsUnavailable =>
+      spanish ? 'Configuración no disponible.' : 'Settings are unavailable.';
+  String get providerSecureStorageReadFailed => spanish
+      ? 'No se pudo leer el almacén seguro.'
+      : 'Could not read secure storage.';
+  String get providerApplyFailed => spanish
+      ? 'No se pudo aplicar la configuración.'
+      : 'Could not apply the settings.';
+  String get providerConnectionVerified =>
+      spanish ? 'Conexión verificada.' : 'Connection verified.';
+  String get providerVerificationRejected => spanish
+      ? 'El proveedor rechazó la clave o no permite verificarla.'
+      : 'The provider rejected the key or does not support verification.';
+  String get providerCheckFailed => spanish
+      ? 'No se pudo comprobar la conexión.'
+      : 'Could not check the connection.';
+  String get providerDeleteKeyFailed =>
+      spanish ? 'No se pudo eliminar la clave.' : 'Could not remove the key.';
+  String providerFormatError(String message) => switch (message) {
+    'Enter a model ID.' => spanish ? 'Escribe el ID del modelo.' : message,
+    'Enter an HTTPS API base URL.' =>
+      spanish ? 'Escribe una URL HTTPS válida para la API.' : message,
+    'Enter an API key.' => spanish ? 'Escribe una clave API.' : message,
+    'This provider is not available in this app.' =>
+      spanish ? 'Este proveedor no está disponible en esta app.' : message,
+    _ => spanish ? 'Revisa los datos del proveedor.' : message,
+  };
+
+  String get secretReferenceExpired => spanish
+      ? 'La referencia privada ya no está disponible. Envíala de nuevo.'
+      : 'The private reference has expired. Send it again.';
+  String get privateActionCompleted => spanish
+      ? 'Acción completada con un valor privado'
+      : 'Action completed with a private value';
+  String get privateActionFailed => spanish
+      ? 'La acción con valor privado falló.'
+      : 'The action using a private value failed.';
 
   // Header and conversations.
   String get expand => spanish ? 'Ampliar chat' : 'Expand chat';
@@ -142,6 +251,26 @@ class AsystantStrings {
 
   // Attachments.
   String get attach => spanish ? 'Adjuntar archivos' : 'Attach files';
+  String get attachPrivateValue => spanish ? 'Adjuntar valor' : 'Attach value';
+  String get privateValueTitle =>
+      spanish ? 'Adjuntar valor privado' : 'Attach private value';
+  String get privateValueDescription => spanish
+      ? 'Pega o escribe el valor aquí. El asistente recibirá solo una referencia.'
+      : 'Paste or type the value here. The assistant receives only a reference.';
+  String get privateValueType => spanish ? 'Tipo de valor' : 'Value type';
+  String get privateValueField => spanish ? 'Valor privado' : 'Private value';
+  String get privateValueHint => spanish
+      ? 'Quedará en este dispositivo durante la sesión y se usará solo en una acción autorizada.'
+      : 'It stays on this device for the session and is used only in an authorized action.';
+  String get showPrivateValue => spanish ? 'Mostrar valor' : 'Show value';
+  String get hidePrivateValue => spanish ? 'Ocultar valor' : 'Hide value';
+  String get privateApiKey => spanish ? 'Clave API' : 'API key';
+  String get privateToken => 'Token';
+  String get privateUrl => 'URL';
+  String get privatePassword => spanish ? 'Contraseña' : 'Password';
+  String get privateOther => spanish ? 'Otro valor' : 'Other value';
+  String get privateCustomName =>
+      spanish ? 'Nombre para el asistente' : 'Name for the assistant';
   String removeAttachment(String name) =>
       spanish ? 'Quitar $name' : 'Remove $name';
   String attachmentCount(int count, int max) =>
@@ -165,9 +294,13 @@ class AsystantStrings {
           ? 'Puedes adjuntar hasta ${policy.maxFiles} archivos por mensaje.'
           : 'You can attach up to ${policy.maxFiles} files per message.',
     AttachmentIssue.type =>
-      spanish
-          ? 'Ese tipo de archivo no se acepta. Permitidos: ${policy.normalizedExtensions.join(', ')}.'
-          : 'That file type is not accepted. Allowed: ${policy.normalizedExtensions.join(', ')}.',
+      policy.normalizedExtensions.isEmpty
+          ? (spanish
+                ? 'Ese archivo no cumple las reglas de adjuntos.'
+                : 'That file does not meet the attachment rules.')
+          : (spanish
+                ? 'Ese archivo no cumple las reglas. Formatos permitidos: ${policy.normalizedExtensions.join(', ')}.'
+                : 'That file does not meet the rules. Allowed formats: ${policy.normalizedExtensions.join(', ')}.'),
     AttachmentIssue.tooLarge =>
       spanish
           ? 'El archivo supera ${fileSize(policy.maxFileBytes)}.'
@@ -176,6 +309,14 @@ class AsystantStrings {
       spanish ? 'El archivo está vacío.' : 'The file is empty.',
     AttachmentIssue.unreadable =>
       spanish ? 'No se pudo leer el archivo.' : 'The file could not be read.',
+    AttachmentIssue.sensitiveContent =>
+      spanish
+          ? 'El archivo parece contener claves. Quítalas antes de compartirlo con el asistente.'
+          : 'The file appears to contain credentials. Remove them before sharing it with the assistant.',
+    AttachmentIssue.blockedContent =>
+      spanish
+          ? 'El contenido del archivo no cumple las reglas de este chat.'
+          : 'The file content does not meet this chat’s rules.',
   };
 
   /// Day, month and year; the widget adds the time in the device's format.

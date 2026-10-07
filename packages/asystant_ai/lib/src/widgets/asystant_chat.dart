@@ -8,6 +8,7 @@ import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/asystant_conversation_actions_style.dart';
 import 'package:asystant_ai/src/model/asystant_composer_layout.dart';
+import 'package:asystant_ai/src/model/asystant_composer_action_placement.dart';
 import 'package:asystant_ai/src/model/asystant_menu_action.dart';
 import 'package:asystant_ai/src/model/asystant_host_card.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
@@ -24,6 +25,7 @@ import 'package:asystant_ai/src/widgets/chat_confirm_dialog.dart';
 import 'package:asystant_ai/src/widgets/chat_conversation.dart';
 import 'package:asystant_ai/src/widgets/chat_conversation_list.dart';
 import 'package:asystant_ai/src/widgets/chat_header.dart';
+import 'package:asystant_ai/src/widgets/asystant_provider_settings_sheet.dart';
 
 /// One bounded chat for sheets, side panels, embedded sections and full
 /// screens, with its list of conversations.
@@ -43,6 +45,9 @@ class AsystantChat extends StatefulWidget {
     this.showsHandle = false,
     this.attachments,
     this.onPickFiles,
+    this.enablePrivateValueAttachment = false,
+    this.attachmentActionPlacement = AsystantComposerActionPlacement.inside,
+    this.privateValueActionPlacement = AsystantComposerActionPlacement.inside,
     this.hostCards = const [],
     this.headerContent,
     this.headerActions = const [],
@@ -127,6 +132,15 @@ class AsystantChat extends StatefulWidget {
   /// Replaces the system file picker, e.g. with a camera or scanner.
   final AsystantFilePick? onPickFiles;
 
+  /// Shows the optional key icon and private-value bottom sheet in the
+  /// composer. `$value` text protection works regardless of this setting.
+  final bool enablePrivateValueAttachment;
+
+  /// Place the attachment and private-value buttons inside, beside, or hide
+  /// them independently. A disabled attachment policy still hides its button.
+  final AsystantComposerActionPlacement attachmentActionPlacement;
+  final AsystantComposerActionPlacement privateValueActionPlacement;
+
   @override
   State<AsystantChat> createState() => _AsystantChatState();
 }
@@ -174,6 +188,7 @@ class _AsystantChatState extends State<AsystantChat> {
   @override
   Widget build(BuildContext context) {
     final labels = widget.strings ?? AsystantStrings.of(context);
+    widget.assistant.conversation.notifier.setStrings(labels);
     final tokens = AsystantTheme.of(context);
     return AsystantLinkScope(
       opener: AsystantLinkOpener(onOpenLink: widget.onOpenLink),
@@ -271,7 +286,21 @@ class _ChatLayout extends StatelessWidget {
           actionsStyle: chat.conversationActionsStyle,
           menuIcon: chat.conversationMenuIcon,
           identityIcon: chat.identityIcon,
-          menuActions: chat.menuActions,
+          menuActions: [
+            ...chat.menuActions,
+            if (assistant.providerSettings?.showInChatMenu ?? false)
+              AsystantMenuAction(
+                label: strings.aiSettings,
+                icon: Icons.tune,
+                onPressed: !state.busy && state.phase != ChatPhase.initializing
+                    ? () => showAsystantProviderSettings(
+                        context,
+                        assistant: assistant,
+                        strings: strings,
+                      )
+                    : null,
+              ),
+          ],
           onHistory: manages && !sideList ? () => onShowList(true) : null,
           onNew: manages ? viewModel.newConversation : null,
           onDelete: manages ? () => onDelete(state.conversationId) : null,
@@ -317,6 +346,9 @@ class _ChatLayout extends StatelessWidget {
           strings: strings,
           attachments: chat.attachments ?? viewModel.attachmentPolicy,
           onPickFiles: chat.onPickFiles,
+          enablePrivateValueAttachment: chat.enablePrivateValueAttachment,
+          attachmentActionPlacement: chat.attachmentActionPlacement,
+          privateValueActionPlacement: chat.privateValueActionPlacement,
           layout: chat.composerLayout,
           header: chat.composerHeader,
         ),

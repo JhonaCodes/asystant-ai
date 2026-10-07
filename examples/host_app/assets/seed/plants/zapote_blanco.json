@@ -1,0 +1,198 @@
+{
+  "id": "zapote_blanco",
+  "commonName": "Zapote blanco",
+  "otherNames": [
+    "zapote de niño",
+    "matasano",
+    "white sapote"
+  ],
+  "scientificName": "Casimiroa edulis La Llave",
+  "family": "Rutaceae",
+  "partsUsed": [
+    "hoja"
+  ],
+  "easyExplanation": "El zapote blanco es un árbol mexicano de fruta dulce y comestible, muy diferente de sus hojas y semillas. La decocción de las hojas se usa tradicionalmente en México como calmante para los nervios y para la presión arterial alta; estudios en animales muestran que sí baja la presión y calma la ansiedad, con efecto parecido al de un sedante. Las semillas son distintas y se consideran peligrosas: no se comen nunca, ni crudas ni cocidas, porque pueden ser mortales.",
+  "botany": {
+    "description": "Árbol de hoja perenne de hasta 18 metros de altura, de copa amplia y ramas algo colgantes, con hojas compuestas de 3 a 5 hojuelas. Su fruto es redondo u ovalado, de hasta 10 cm, de cáscara verde amarillenta y pulpa cremosa, dulce, con sabor parecido al durazno.",
+    "identification": "Se reconoce por su fruto de cáscara lisa verde amarillenta y pulpa cremosa muy dulce, y por sus hojas compuestas de 3 a 5 hojuelas; cada fruto contiene de una a cinco semillas grandes y lisas.",
+    "cultivation": "Crece en bosques secos subtropicales y bosques bajos, entre 600 y 1.000 metros de altitud, en regiones templadas y algo secas; se propaga por semilla o injerto y un árbol adulto puede dar más de 100 kg de fruta al año.",
+    "lookalikes": [
+      "Otras especies del género Casimiroa, de fruto y hoja parecidos."
+    ],
+    "nativeRange": "Este de México y América Central hasta Costa Rica.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de hojas de zapote blanco es un calmante casero completamente inofensivo, en cualquier cantidad.",
+      "note": "Aunque su efecto calmante y antihipertensivo se ha confirmado en animales, a dosis más altas el mismo extracto de hoja reduce el movimiento y produce sedación marcada en esos estudios, y puede interferir con el efecto de algunos antidepresivos. No es un té \"inofensivo en cualquier cantidad\": debe usarse con moderación y nunca junto con sedantes, alcohol o antidepresivos sin consultar a un médico.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "nervousness",
+      "label": "Nerviosismo o tensión nerviosa leve",
+      "evidence": "limited",
+      "note": "Un extracto acuoso de las hojas mostró efecto calmante (ansiolítico) en ratas, con dosis bajas comparables a un sedante de uso médico; no hay estudios de este efecto en personas.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "relax",
+      "label": "Relajarme",
+      "evidence": "popular",
+      "note": "Decocción de las hojas por boca; uso tradicional en México como calmante para los nervios.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "blood_pressure_support",
+      "label": "Ayudar a bajar la presión arterial",
+      "evidence": "limited",
+      "note": "Un extracto de las hojas relajó arterias aisladas y bajó la presión arterial en ratas hipertensas, por liberación de óxido nítrico y bloqueo de canales de calcio; no hay estudios de este efecto en personas. No reemplaza el tratamiento médico de la presión alta.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de hojas de zapote blanco",
+      "uses": [
+        "nervousness",
+        "relax",
+        "blood_pressure_support"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua con hojas de zapote blanco, frescas o secas."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala tibia."
+        }
+      ],
+      "warnings": [
+        "No la combines con sedantes, alcohol o antidepresivos sin consultar a un médico: puede sumar el efecto de sueño o interferir con el medicamento.",
+        "No reemplaces el tratamiento médico de la presión arterial alta por esta planta.",
+        "No manejes ni operes maquinaria después de tomarla si sientes somnolencia.",
+        "Nunca uses las semillas: se consideran peligrosas y potencialmente mortales."
+      ],
+      "dose": "No hay una cantidad exacta establecida para uso casero; usa la costumbre tradicional de unas cuantas hojas por taza de agua, con moderación.",
+      "frequency": "1 taza al día.",
+      "maxDays": 7,
+      "instructions": "Hierve unas hojas de zapote blanco en agua, cuela y tómala tibia, con moderación.",
+      "sources": [
+        "s2",
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "rutaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia, como los cítricos."
+    },
+    {
+      "kind": "condition",
+      "tag": "hypertension",
+      "note": "Consulta a tu médico antes de usarla si tomas medicamento para la presión arterial: podría sumarse a su efecto."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "sedative",
+      "severity": "caution",
+      "note": "Podría sumar su efecto calmante al de sedantes o pastillas para dormir."
+    },
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "Podría sumar su efecto al de los medicamentos para la presión arterial y bajarla demasiado."
+    },
+    {
+      "medicationClass": "antidepressant",
+      "severity": "caution",
+      "note": "En un estudio en animales, el extracto de hoja interfirió con el efecto de un antidepresivo; consulta a tu médico si tomas uno."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "rutaceae"
+  ],
+  "sideEffects": [
+    "Somnolencia o reducción del estado de alerta, sobre todo en dosis mayores.",
+    "Las semillas se consideran potencialmente mortales si se comen; nunca se usan como alimento ni remedio.",
+    "No hay estudios amplios de seguridad de las hojas en personas."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/zapote_blanco.jpg",
+      "author": "Amada44",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Casimiroa_edulis_-_Weisse_Sapote_5735.jpg",
+      "caption": "Fruto de zapote blanco (Casimiroa edulis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Casimiroa edulis La Llave",
+      "publisher": "GBIF Backbone Taxonomy (Global Biodiversity Information Facility)",
+      "url": "https://api.gbif.org/v1/species/search?q=Casimiroa%20edulis&rank=SPECIES",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Casimiroa edulis",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Casimiroa+edulis",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Vasorelaxant and Antihypertensive Effects of Extracts from the Leaves of Casimiroa edulis La Llave (Rutaceae) by NO Release and Calcium Channel Blockade",
+      "publisher": "Cardiovascular & Hematological Disorders - Drug Targets (PubMed 39966363)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39966363/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Anxiolytic-like actions of an aqueous extract of the leaves of Casimiroa edulis La Llave ex Lex. (Rutaceae) in male Wistar rats",
+      "publisher": "Journal of Ethnopharmacology (PubMed 15182911)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15182911/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

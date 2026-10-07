@@ -3,8 +3,8 @@ part of '../asystant_provider.dart';
 /// Models on OpenRouter, called directly from the app with the signed-in
 /// user's short-lived, budget-limited key.
 ///
-/// In production [credentials] asks the host's backend, which obtains the
-/// key from asystant-api; see [OpenRouterCredential.fromManagedJson]. The
+/// [credentials] may ask the host's authenticated backend for a scoped key
+/// or read a key from secure local settings. The
 /// key is cached, refreshed and only ever sent in the `Authorization`
 /// header; see [OpenRouterTransport].
 ///

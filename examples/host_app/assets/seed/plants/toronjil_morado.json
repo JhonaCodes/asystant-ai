@@ -1,0 +1,126 @@
+{
+  "id": "toronjil_morado",
+  "commonName": "Toronjil morado",
+  "otherNames": [
+    "toronjil rojo",
+    "toronjil de Puebla",
+    "Mexican giant hyssop"
+  ],
+  "scientificName": "Agastache mexicana (Kunth) Lint. & Epling subsp. mexicana",
+  "family": "Lamiaceae",
+  "partsUsed": [
+    "hoja",
+    "flor"
+  ],
+  "easyExplanation": "El toronjil morado es una hierba mexicana de flores moradas y olor a menta que se usa en té tradicional para calmar los nervios, dormir mejor y molestias digestivas. Su aceite esencial tiene un porcentaje muy alto de pulegona (entre 75 y 80 %), la misma sustancia tóxica para el hígado del poleo (Mentha pulegium), que también puede provocar un aborto peligroso. No hay estudios de seguridad en personas para el toronjil morado, así que, por precaución, este catálogo no recomienda tomarlo por boca en ninguna forma, ni siquiera en té.",
+  "botany": {
+    "description": "Hierba perenne de 50 a 150 cm de altura, con tallos erguidos y ramificados que nacen de rizomas, hojas opuestas de olor mentolado al frotarlas y flores tubulares moradas agrupadas en espigas terminales, muy visitadas por polinizadores.",
+    "identification": "Se distingue de otros \"toronjiles\" mexicanos por el color morado a rojizo de sus flores (existe también una variedad de flor blanca, el toronjil blanco, Agastache mexicana subsp. xolocotziana) y por su fuerte aroma mentolado.",
+    "cultivation": "Crece de forma silvestre y cultivada en zonas templadas de México, por encima de los 2.000 metros de altitud; se propaga por semilla o división de matas, en suelo bien drenado y sol pleno o media sombra.",
+    "lookalikes": [
+      "Agastache mexicana subsp. xolocotziana (toronjil blanco): la misma especie, otra subespecie, de flor blanca.",
+      "Otras plantas también llamadas \"toronjil\" en México, como la Dracocephalum moldavica, con las que a veces se mezcla en preparados tradicionales."
+    ],
+    "nativeRange": "Centro y sur de México, en zonas templadas de más de 2.000 metros de altitud.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de toronjil morado, solo o mezclado como los \"tres toronjiles\", es un remedio casero seguro para los nervios, para dormir o para espasmos del estómago.",
+      "note": "En México se usa mucho el toronjil morado, a veces mezclado con toronjil blanco y con Dracocephalum moldavica (los \"tres toronjiles\"), en infusión para calmar los nervios, ayudar a dormir y aliviar espasmos digestivos. Pero su aceite esencial tiene entre 75 y 80 % de pulegona. Esa misma sustancia, presente en niveles parecidos en el poleo (Mentha pulegium), causa daño grave al hígado y puede provocar un aborto peligroso, incluso tomada en infusión. No hay estudios de seguridad en personas hechos específicamente con el toronjil morado, así que, por precaución, no se recomienda tomarlo por boca en ninguna forma.",
+      "sources": [
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    {
+      "claim": "El toronjil morado baja la presión arterial y se puede usar en vez del medicamento.",
+      "note": "El efecto sobre la presión arterial solo se ha estudiado en animales, no en personas, y no debe reemplazar ningún tratamiento médico. Además, por su alto contenido de pulegona, este catálogo no recomienda tomarlo por boca.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "lamiaceae",
+      "note": "No lo uses si eres alérgico a esta planta o a otras de su familia, como la menta, el romero o el toronjil (Melissa officinalis)."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Evita esta planta si tienes una enfermedad del hígado: su aceite esencial contiene niveles muy altos de pulegona, una sustancia tóxica para el hígado."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "No lo combines con medicamentos que pueden dañar el hígado: la pulegona del toronjil morado es tóxica para el hígado."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "lamiaceae"
+  ],
+  "sideEffects": [
+    "Tomado por boca, en té o extracto, puede alcanzar niveles tóxicos de pulegona, con riesgo de daño grave al hígado y de aborto; este catálogo no recomienda ningún uso por boca de esta planta.",
+    "No se ha estudiado bien un uso externo seguro en personas."
+  ],
+  "safetySources": [
+    "s2",
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/toronjil_morado.jpg",
+      "author": "Chhe",
+      "license": "Public Domain",
+      "licenseUrl": "https://en.wikipedia.org/wiki/en:public_domain",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:AgastacheMexicana.jpg",
+      "caption": "Flores de toronjil morado (Agastache mexicana)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Agastache mexicana",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Agastache+mexicana",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "A Systematic Approach to Agastache mexicana Research: Biology, Agronomy, Phytochemistry, and Bioactivity",
+      "publisher": "Molecules / PMC (PMC8234942)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8234942/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Toxicities of Herbal Abortifacients",
+      "publisher": "PMC (National Library of Medicine)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10192026/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Pharmacological disadvantages in the spasmolytic effects by using the mixture known as 'three toronjiles' in folk medicine",
+      "publisher": "Journal of Ethnopharmacology (PubMed 37524233)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37524233/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

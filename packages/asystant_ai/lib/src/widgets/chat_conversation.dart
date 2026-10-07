@@ -13,6 +13,7 @@ import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:asystant_ai/src/widgets/chat_activity_card.dart';
 import 'package:asystant_ai/src/widgets/chat_confirmation_card.dart';
+import 'package:asystant_ai/src/widgets/chat_private_input_card.dart';
 import 'package:asystant_ai/src/widgets/chat_context_warning.dart';
 import 'package:asystant_ai/src/widgets/chat_failure_notice.dart';
 import 'package:asystant_ai/src/widgets/chat_message_bubble.dart';
@@ -69,6 +70,7 @@ class ChatConversation extends StatelessWidget {
       anchor: (state.conversationId, state.sentCount),
       forceFollow:
           state.pending != null ||
+          state.privateInput != null ||
           hostCards.any((hostCard) => hostCard.awaitsDecision),
       startAtTop: state.entries.isEmpty && !state.busy,
       padding: AsystantMetrics.of(context).listPadding,
@@ -139,6 +141,14 @@ class ChatConversation extends StatelessWidget {
             onSelect: viewModel.selectOption,
             onDecide: viewModel.approve,
             onAllowSession: viewModel.approveAllForSession,
+          ),
+        if (state.privateInput case final request?)
+          ChatPrivateInputCard(
+            key: ValueKey(request.id),
+            request: request,
+            strings: strings,
+            onSubmit: viewModel.submitPrivateInput,
+            onCancel: viewModel.declinePrivateInput,
           ),
         if (state.failure case final failure?)
           ChatFailureNotice(

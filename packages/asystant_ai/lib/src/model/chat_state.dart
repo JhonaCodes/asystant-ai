@@ -8,6 +8,7 @@ import 'package:asystant_ai/src/model/chat_phase.dart';
 import 'package:asystant_ai/src/model/context_usage.dart';
 import 'package:asystant_ai/src/model/conversation_summary.dart';
 import 'package:asystant_ai/src/model/pending_action.dart';
+import 'package:asystant_ai/src/model/private_input_request.dart';
 
 export 'package:asystant_ai/src/model/chat_phase.dart';
 export 'package:asystant_ai/src/model/context_usage.dart';
@@ -26,6 +27,7 @@ class ChatState {
     this.streaming = '',
     this.draft = '',
     this.pending,
+    this.privateInput,
     this.failure,
     this.model = '',
     this.models = const [],
@@ -58,6 +60,7 @@ class ChatState {
   final String draft;
 
   final PendingAction? pending;
+  final PrivateInputRequest? privateInput;
 
   final AssistantFailure? failure;
 
@@ -138,6 +141,7 @@ class ChatState {
   /// The activity of the turn in progress, while it runs.
   bool get showsLiveActivity =>
       pending == null &&
+      privateInput == null &&
       (phase == ChatPhase.thinking || phase == ChatPhase.executing);
 
   /// What the live activity card says the assistant is doing.
@@ -173,6 +177,8 @@ class ChatState {
     String? draft,
     PendingAction? pending,
     bool clearPending = false,
+    PrivateInputRequest? privateInput,
+    bool clearPrivateInput = false,
     AssistantFailure? failure,
     bool clearFailure = false,
     String? model,
@@ -196,6 +202,7 @@ class ChatState {
     streaming: streaming ?? this.streaming,
     draft: draft ?? this.draft,
     pending: clearPending ? null : pending ?? this.pending,
+    privateInput: clearPrivateInput ? null : privateInput ?? this.privateInput,
     failure: clearFailure ? null : failure ?? this.failure,
     model: model ?? this.model,
     models: List.unmodifiable(models ?? this.models),
@@ -220,6 +227,7 @@ class ChatState {
     streaming,
     draft,
     pending,
+    privateInput,
     failure,
     model,
     models,

@@ -5,9 +5,8 @@ import 'package:asystant_core/src/model/assistant_failure.dart';
 
 /// Obtains the OpenRouter key of the signed-in user.
 ///
-/// In production the host backend asks asystant-api for it
-/// (`POST /v1/managed/credentials`) and returns the response to the app; see
-/// [OpenRouterCredential.fromManagedJson]. Never bundle a key in a release.
+/// The host may obtain a scoped key from its authenticated backend or from
+/// secure local settings. Never bundle a provider master key in a release.
 typedef OpenRouterCredentialSource =
     Future<Result<OpenRouterCredential, AssistantFailure>> Function();
 
@@ -23,7 +22,7 @@ class OpenRouterCredential {
     this.refreshAfter,
   }) : _apiKey = apiKey;
 
-  /// Reads the body of asystant-api's `POST /v1/managed/credentials`.
+  /// Convenience adapter for a managed credential response with these fields.
   factory OpenRouterCredential.fromManagedJson(Map<String, Object?> json) =>
       OpenRouterCredential(
         apiKey: json['api_key'] as String,

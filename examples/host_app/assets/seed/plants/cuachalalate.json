@@ -1,0 +1,214 @@
+{
+  "id": "cuachalalate",
+  "commonName": "Cuachalalate",
+  "otherNames": [
+    "cuachalala",
+    "cuachalalá",
+    "palo mulato"
+  ],
+  "scientificName": "Amphipterygium adstringens (Schltdl.) Schiede ex Standl.",
+  "family": "Anacardiaceae",
+  "partsUsed": [
+    "corteza"
+  ],
+  "easyExplanation": "El cuachalalate es un árbol mexicano cuya corteza, de sabor astringente, se hierve en agua y se toma tradicionalmente para molestias de estómago, y se usa por fuera para heridas y granos. Su corteza es un ingrediente herbolario autorizado en México. No hay estudios clínicos en personas: todo lo que se sabe de su efecto viene de animales y de laboratorio, así que no reemplaza el tratamiento médico de una úlcera, cáncer, piedras en el riñón o diabetes.",
+  "botany": {
+    "description": "Árbol o arbusto caducifolio de 3 a 10 metros de altura, de tronco corto y grueso, corteza gris oscura con protuberancias parecidas a espinas, y hojas compuestas agrupadas en las puntas de las ramas. La corteza interna es rosada y suelta una resina blanquecina de olor fuerte.",
+    "identification": "Se reconoce por su corteza gris con protuberancias cónicas, su copa amplia y aplanada, y el color rosado de la corteza interna al cortarla; crece en laderas secas y rocosas.",
+    "cultivation": "Silvestre en bosque tropical caducifolio, en laderas con pendiente pronunciada, clima cálido subhúmedo, entre 200 y 700 metros de altitud; no suele cultivarse, se cosecha del monte.",
+    "lookalikes": [
+      "Otras especies leñosas de corteza astringente de la misma región, que pueden venderse con el mismo nombre popular en mercados."
+    ],
+    "nativeRange": "Endémico de México, en bosques tropicales secos de estados como Nayarit, Jalisco, Colima, Michoacán, Guerrero, Oaxaca, México, Puebla y Morelos; también reportado en Guatemala y Honduras.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El cuachalalate cura el cáncer, disuelve piedras en el riñón o controla la diabetes.",
+      "note": "Estos efectos solo se han visto en animales y en células de laboratorio, nunca en personas; incluso un estudio encontró que algunas fracciones del extracto estimularon el crecimiento de tumores en vez de reducirlo. No hay estudios clínicos en personas para ningún uso del cuachalalate, y esta planta nunca reemplaza el tratamiento médico del cáncer, las piedras en el riñón o la diabetes.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "claim": "El té de cuachalalate cura una úlcera de estómago diagnosticada.",
+      "note": "El efecto protector sobre el estómago solo se ha probado en animales, no en personas, y una úlcera real necesita diagnóstico y tratamiento médico. Si hay dolor de estómago intenso, vómito con sangre o heces negras, se debe buscar atención médica de inmediato.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "indigestion",
+      "label": "Molestias digestivas leves",
+      "evidence": "popular",
+      "note": "Decocción de la corteza por boca; uso popular ampliamente documentado en México para el dolor de estómago y la gastritis leve.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "diarrhea",
+      "label": "Diarrea leve",
+      "evidence": "popular",
+      "note": "Decocción de la corteza por boca; uso popular documentado en comunidades de Morelos, México.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "minor_wound",
+      "label": "Heridas superficiales pequeñas",
+      "evidence": "popular",
+      "note": "Lavados con la decocción de la corteza, o corteza en polvo espolvoreada sobre la piel; uso popular tradicional como cicatrizante.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de corteza de cuachalalate",
+      "uses": [
+        "indigestion",
+        "diarrhea"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua con un trozo de corteza de cuachalalate."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir varios minutos hasta que el agua tome un color rosado o amarillento."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo tibio."
+        }
+      ],
+      "warnings": [
+        "No la uses para tratar una úlcera, un cáncer, piedras en el riñón o diabetes ya diagnosticados: eso necesita tratamiento médico.",
+        "Si el dolor de estómago es intenso, o hay vómito con sangre o heces negras, busca atención médica de inmediato."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios en personas; usa la costumbre tradicional de un trozo pequeño de corteza por taza o litro de agua.",
+      "frequency": "1 a 2 tazas al día.",
+      "maxDays": 7,
+      "instructions": "Hierve un trozo de corteza de cuachalalate en agua varios minutos, cuela y tómalo tibio para molestias digestivas leves.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "topical",
+      "title": "Lavados de cuachalalate para heridas pequeñas",
+      "uses": [
+        "minor_wound"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Prepara la decocción de corteza de cuachalalate como para tomar."
+        },
+        {
+          "kind": "cool",
+          "text": "Cuela y deja entibiar."
+        },
+        {
+          "kind": "clean",
+          "text": "Lava la herida superficial ya limpia con el líquido."
+        }
+      ],
+      "warnings": [
+        "Uso solo en heridas superficiales pequeñas y limpias; una herida profunda, muy sucia o que no cierra necesita atención médica."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios en personas.",
+      "frequency": "1 a 2 veces al día.",
+      "maxDays": 7,
+      "instructions": "Prepara la decocción de corteza, cuela, deja entibiar y úsala para lavar heridas superficiales pequeñas y limpias.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "gastric_ulcer",
+      "note": "No la uses para tratar una úlcera de estómago ya diagnosticada por tu cuenta: solo hay estudios en animales, no en personas, y necesitas tratamiento médico."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No la apliques sobre heridas profundas, muy sucias o que no cierran."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Su sabor astringente puede causar molestia digestiva en algunas personas si se usa en exceso.",
+    "No hay estudios clínicos en personas que confirmen su seguridad a largo plazo por boca."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/cuachalalate.jpg",
+      "author": "DanielFA8",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amphipterygium_adstringens.jpg",
+      "caption": "Árbol de cuachalalate (Amphipterygium adstringens) con frutos"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Amphipterygium adstringens",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Amphipterygium+adstringens",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "How does urbanization affect perceptions and traditional knowledge of medicinal plants?",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine / PMC (PMC8330055)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8330055/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Amphipterygium adstringens (Schltdl.) Schiede ex Standl (Anacardiaceae): An Endemic Plant with Relevant Pharmacological Properties",
+      "publisher": "Plants (Basel) / PMC (PMC9268796)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9268796/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "1H Nuclear Magnetic Resonance-Based Targeted and Untargeted Metabolomics Profiling of Retail Samples of Cuachalalate (Amphipterygium adstringens)",
+      "publisher": "Molecules / PMC (PMC12113676)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12113676/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

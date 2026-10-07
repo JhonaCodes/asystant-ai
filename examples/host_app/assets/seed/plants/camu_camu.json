@@ -1,0 +1,124 @@
+{
+  "id": "camu_camu",
+  "commonName": "Camu camu",
+  "otherNames": [],
+  "scientificName": "Myrciaria dubia (Kunth) McVaugh",
+  "family": "Myrtaceae",
+  "partsUsed": [
+    "fruto"
+  ],
+  "easyExplanation": "El camu camu es un fruto amazónico muy ácido, con una de las mayores concentraciones de vitamina C conocidas; por su acidez, tradicionalmente casi no se come al natural, salvo por los pueblos indígenas de su zona de origen. Un pequeño estudio en fumadores encontró que el jugo bajó marcadores de estrés oxidativo e inflamación más que la vitamina C sola, pero otro estudio en personas sanas no encontró el mismo efecto; hacen falta más estudios para confirmarlo. Existe un caso reportado de hepatitis aguda después de tomarlo, aunque no quedó claro si el camu camu fue la causa.",
+  "botany": {
+    "description": "Arbusto o arbolito de la familia Myrtaceae (la del eucalipto y el árbol de té), que crece junto a ríos y lagunas de la Amazonía y produce frutos pequeños, redondos y muy ácidos.",
+    "identification": "Se reconoce por sus frutos pequeños de color rojo a morado oscuro al madurar, de sabor muy ácido, y por crecer naturalmente en orillas inundables de ríos y lagos amazónicos.",
+    "cultivation": "Se cultiva en la Amazonía peruana y de países vecinos, sobre todo en terrenos que se inundan estacionalmente; también se recolecta de plantas silvestres.",
+    "lookalikes": [
+      "Otras especies de Myrciaria de fruto pequeño y ácido, de aspecto similar."
+    ],
+    "nativeRange": "Cuenca amazónica: Bolivia, norte y centro-oeste de Brasil, Colombia, Ecuador, Guyana, Perú y Venezuela.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "antioxidant_support",
+      "label": "Ayudar a reducir el estrés oxidativo",
+      "evidence": "limited",
+      "note": "Un estudio en 20 fumadores habituales encontró que 70 mL de jugo 100 % de camu camu al día, durante 7 días, bajó marcadores de estrés oxidativo e inflamación (proteína C reactiva, interleucina-6 e interleucina-8) más que tomar la misma cantidad de vitamina C en tabletas. Otro estudio, en 12 personas sanas no fumadoras, con un jugo mezclado de camu camu y otras frutas, no encontró el mismo efecto. Es evidencia limitada y preliminar.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "freshPlant",
+      "route": "oral",
+      "title": "Jugo de camu camu",
+      "uses": [
+        "antioxidant_support"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Licúa la pulpa del fruto de camu camu, fresco o congelado, con agua."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómalo."
+        }
+      ],
+      "warnings": [
+        "Es un fruto muy ácido; si te resulta fuerte, dilúyelo más con agua.",
+        "Existe un caso reportado de hepatitis aguda después de tomar camu camu, sin que quedara clara la causa; evítalo si tienes una enfermedad del hígado.",
+        "Es evidencia preliminar de un estudio pequeño; no reemplaza ningún tratamiento médico."
+      ],
+      "dose": "70 mL de jugo 100 % de camu camu al día (la cantidad usada en el estudio).",
+      "frequency": "1 vez al día.",
+      "maxDays": 7,
+      "instructions": "Jugo 100 % de pulpa de camu camu, 70 mL al día, tal como se usó en el estudio en fumadores durante 7 días.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "Hay un caso reportado de hepatitis aguda después de tomar camu camu, sin causa clara; evítalo si tienes una enfermedad del hígado."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Fruto muy ácido, puede causar molestias digestivas si se toma sin diluir.",
+    "Hay un caso reportado de hepatitis aguda tras su consumo, de causa incierta.",
+    "Los estudios en animales no mostraron toxicidad ni daño genético, pero la evidencia en personas es todavía limitada."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/camu_camu.jpg",
+      "author": "Túllio F",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fruto_de_Myrciaria_dubia.jpg",
+      "caption": "Frutos de camu camu (Myrciaria dubia)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Myrciaria dubia (Kunth) McVaugh",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:166146-2",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Antioxidant and associated capacities of Camu camu (Myrciaria dubia): a systematic review",
+      "publisher": "Journal of Alternative and Complementary Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4296744/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Antioxidant and associated capacities of Camu camu (Myrciaria dubia): a systematic review",
+      "publisher": "Journal of Alternative and Complementary Medicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4296744/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

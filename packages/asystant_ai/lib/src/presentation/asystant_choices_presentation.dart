@@ -8,7 +8,10 @@ import 'package:asystant_ai/src/widgets/gen_ui_card.dart';
 
 /// Built-in selectable answers for an assistant question.
 class AsystantChoicesPresentation extends AsystantPresentation {
-  const AsystantChoicesPresentation();
+  const AsystantChoicesPresentation({this.summary = 'Options shown'});
+
+  /// Visible activity label. Hosts can supply their own translation.
+  final String summary;
 
   @override
   String get id => 'present_choices';
@@ -87,7 +90,7 @@ class AsystantChoicesPresentation extends AsystantPresentation {
       card: _card(input),
       modelContent:
           'Question shown with selectable answers. Wait for the user.',
-      summary: 'Mostró opciones',
+      summary: summary,
       endsTurn: true,
     ),
   );

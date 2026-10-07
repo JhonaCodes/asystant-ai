@@ -1,0 +1,223 @@
+{
+  "id": "arnica_mexicana",
+  "commonName": "Árnica mexicana",
+  "otherNames": [
+    "árnica amarilla",
+    "árnica del país",
+    "falso árnica",
+    "Mexican arnica"
+  ],
+  "scientificName": "Heterotheca inuloides Cass.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "flor",
+    "hoja",
+    "planta entera"
+  ],
+  "easyExplanation": "El árnica mexicana es una hierba de flores amarillas, distinta del árnica europea (Arnica montana), aunque se vende con el mismo nombre en México. Se usa tradicionalmente por fuera, en compresas o lavados, para golpes, dolor muscular y molestias de la piel. No se ha estudiado lo suficiente en personas como para tomarla por boca de forma segura, y en dosis muy altas de extracto concentrado se han visto cambios en el hígado y el riñón de ratones.",
+  "botany": {
+    "description": "Hierba o subarbusto perenne de la familia de la margarita, con hojas ásperas y flores tipo margarita de pétalos amarillos alrededor de un centro también amarillo.",
+    "identification": "Se distingue de la Arnica montana europea por su color amarillo más uniforme (sin el naranja intenso del árnica europea), sus hojas ásperas y su origen mexicano; en los mercados de México ambas se venden bajo el nombre \"árnica\", lo que genera confusión.",
+    "cultivation": "Crece de forma silvestre en climas templados y semiáridos de México, en orillas de caminos y terrenos abiertos; se reproduce por semilla.",
+    "lookalikes": [
+      "Arnica montana (árnica europea, ya en este catálogo como \"árnica\"): otra planta distinta, de origen europeo, con estudios propios de la Agencia Europea de Medicamentos.",
+      "Otras plantas mexicanas vendidas también como \"árnica\", de especies y familias distintas."
+    ],
+    "nativeRange": "Endémica de México, sobre todo del Eje Volcánico Transversal, desde Durango hasta Guerrero y Tlaxcala.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El árnica mexicana tomada por boca, en té o extracto, cura el cáncer o la diabetes.",
+      "note": "Los estudios sobre estos usos son de laboratorio y en animales, no en personas; a dosis muy altas del extracto se han visto cambios en el hígado y el riñón de ratones. No hay evidencia suficiente para tomarla por boca con ese fin, y nunca reemplaza el tratamiento médico del cáncer o la diabetes.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "bruise",
+      "label": "Golpes y moretones",
+      "evidence": "popular",
+      "note": "Uso tradicional externo, en compresas o lavados con la decocción, sobre piel sana y sin heridas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "muscle_pain",
+      "label": "Dolor muscular leve",
+      "evidence": "popular",
+      "note": "Uso tradicional externo en reumatismo y dolor muscular, documentado en la medicina popular mexicana.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "skin_irritation",
+      "label": "Irritación leve de la piel",
+      "evidence": "popular",
+      "note": "Decocción de la planta entera usada en lavados; uso popular documentado en comunidades rurales del norte de México, con alta coincidencia entre las personas consultadas.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "sore_throat",
+      "label": "Irritación leve de garganta",
+      "evidence": "popular",
+      "note": "Gárgaras con la decocción colada y fría; uso popular tradicional.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "topical",
+      "title": "Compresas de árnica mexicana",
+      "uses": [
+        "bruise",
+        "muscle_pain",
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua con flores y hojas de árnica mexicana, frescas o secas."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela y deja entibiar."
+        },
+        {
+          "kind": "compress",
+          "text": "Moja un paño limpio y ponlo sobre la piel sana, sin heridas."
+        }
+      ],
+      "warnings": [
+        "Uso solo externo: no la tomes por boca; no está bien estudiada para eso y en dosis altas se ha visto daño al hígado y al riñón en animales.",
+        "No la apliques sobre heridas abiertas, piel lastimada o mucosas.",
+        "No la uses en el embarazo ni en la lactancia, ni siquiera sobre la piel, por precaución."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios; usa la costumbre tradicional de un puñado de flores y hojas por litro de agua.",
+      "frequency": "1 a 2 veces al día.",
+      "maxDays": 7,
+      "instructions": "Hierve flores y hojas de árnica mexicana en agua, cuela, deja entibiar y aplica en compresas sobre la piel sana, para golpes, moretones o dolor muscular.",
+      "sources": [
+        "s2",
+        "s4"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "topical",
+      "title": "Gárgaras de árnica mexicana",
+      "uses": [
+        "sore_throat"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Prepara la decocción de árnica mexicana como para las compresas."
+        },
+        {
+          "kind": "cool",
+          "text": "Cuela y deja enfriar."
+        },
+        {
+          "kind": "rinse",
+          "text": "Haz gárgaras, sin tragar el líquido."
+        }
+      ],
+      "warnings": [
+        "No la tragues: úsala solo para gárgaras y escúpela después."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios.",
+      "frequency": "2 a 3 veces al día.",
+      "maxDays": 7,
+      "instructions": "Prepara la decocción, cuela, deja enfriar y haz gárgaras sin tragar el líquido.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "No la uses si eres alérgico al árnica o a plantas como el girasol, la caléndula o la ambrosía."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No la apliques sobre heridas abiertas o piel muy dañada."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Dermatitis de contacto o irritación de la piel en personas sensibles.",
+    "No se recomienda tomarla por boca: en dosis muy altas de extracto concentrado se han visto cambios en el hígado y el riñón de ratones; en personas no se ha estudiado lo suficiente."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/arnica_mexicana.jpg",
+      "author": "Juan Carlos Fonseca Mata",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flores_de_árnica_(Heterotheca_inuloides).jpg",
+      "caption": "Flores de árnica mexicana (Heterotheca inuloides)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Heterotheca inuloides Cass.",
+      "publisher": "GBIF Backbone Taxonomy (Global Biodiversity Information Facility)",
+      "url": "https://api.gbif.org/v1/species/search?q=Heterotheca%20inuloides&rank=SPECIES",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Medicinal plants used by rural communities in the arid zone of Viesca and Parras Coahuila in northeast Mexico",
+      "publisher": "Saudi Pharmaceutical Journal / PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9845112/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Toxicological evaluation of the natural products and some semisynthetic derivatives of Heterotheca inuloides Cass (Asteraceae)",
+      "publisher": "Journal of Ethnopharmacology (PubMed 26344038)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26344038/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Mexican Arnica (Heterotheca inuloides Cass. Asteraceae: Astereae): Ethnomedical uses, chemical constituents and biological properties",
+      "publisher": "Journal of Ethnopharmacology (PubMed 27847336)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27847336/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

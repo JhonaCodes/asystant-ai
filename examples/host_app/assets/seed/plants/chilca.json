@@ -1,0 +1,226 @@
+{
+  "id": "chilca",
+  "commonName": "Chilca",
+  "otherNames": [
+    "chilca larga"
+  ],
+  "scientificName": "Baccharis latifolia (Ruiz & Pav.) Pers.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "hojas",
+    "ramas"
+  ],
+  "easyExplanation": "La chilca es un arbusto andino de la familia de la margarita. En Ecuador y Perú se frotan sus hojas y ramas sobre la piel para dolores musculares y de articulaciones, golpes e inflamación de la piel, y se toma en decocción para el resfriado. No hay estudios de seguridad en personas: úsala de forma ocasional. Al ser de la familia de la margarita, puede causar alergia de contacto en personas sensibles a esa familia de plantas.",
+  "botany": {
+    "description": "Arbusto de la familia de las margaritas (Asteraceae), de tallos leñosos y hojas aromáticas al estrujarlas.",
+    "identification": "Se reconoce por sus hojas y tallos resinosos y aromáticos, típicos del género Baccharis, usados tradicionalmente en fricciones sobre la piel.",
+    "cultivation": "Crece de forma silvestre en laderas, bordes de camino y terrenos alterados de los Andes; se recolecta de plantas silvestres, no se cultiva comercialmente.",
+    "lookalikes": [
+      "Otras especies de Baccharis de los Andes, varias también llamadas 'chilca', de aspecto y aroma parecido."
+    ],
+    "nativeRange": "Andes de Argentina (noroeste), Bolivia, Colombia, Ecuador, Perú y Venezuela.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Uso tradicional en Incahuasi (Perú): decocción de hojas de chilca por boca para la gripe.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "joint_pain",
+      "label": "Dolor leve de articulaciones",
+      "evidence": "popular",
+      "note": "Uso tradicional en la sierra de Ecuador: fricciones con ramas y hojas de chilca sobre la piel para el dolor de articulaciones.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "muscle_pain",
+      "label": "Dolor muscular leve",
+      "evidence": "popular",
+      "note": "Uso tradicional en la sierra de Ecuador: fricciones con ramas y hojas de chilca sobre la piel para dolores musculares.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "bruise",
+      "label": "Golpes o moretones",
+      "evidence": "popular",
+      "note": "Uso tradicional en la sierra de Ecuador: fricciones con ramas y hojas de chilca sobre golpes y moretones.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "tag": "skin_irritation",
+      "label": "Irritación o inflamación leve de la piel",
+      "evidence": "popular",
+      "note": "Uso tradicional en la sierra de Ecuador: fricciones con ramas y hojas de chilca sobre la piel inflamada. En laboratorio, el aceite esencial de la chilca mostró actividad moderada contra hongos de la piel (Trichophyton), pero no hay estudios en personas.",
+      "sources": [
+        "s4",
+        "s5"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de hojas de chilca",
+      "uses": [
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Pon a hervir agua con hojas de chilca, frescas o secas."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala tibia."
+        }
+      ],
+      "warnings": [
+        "No hay estudios de seguridad en personas: úsala de forma ocasional, no seguida.",
+        "No la uses en el embarazo, la lactancia ni en niños menores de 12 años.",
+        "Si eres alérgico a la familia de la margarita (Asteraceae), evítala."
+      ],
+      "dose": "Las fuentes consultadas no dan una cantidad exacta en gramos.",
+      "frequency": "Uso ocasional, no seguido varios días.",
+      "maxDays": null,
+      "instructions": "Decocción de hojas de chilca, frescas o secas, hervidas unos minutos y coladas; no hay una dosis exacta establecida en las fuentes.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "form": "topical",
+      "route": "topical",
+      "title": "Fricciones con hojas y ramas de chilca",
+      "uses": [
+        "joint_pain",
+        "muscle_pain",
+        "bruise",
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Toma unas ramas y hojas frescas de chilca."
+        },
+        {
+          "kind": "apply",
+          "text": "Frota suavemente la zona con dolor, el golpe o la piel inflamada."
+        }
+      ],
+      "warnings": [
+        "No la apliques sobre heridas abiertas o piel muy dañada.",
+        "Si eres alérgico a la familia de la margarita (Asteraceae), evítala: puede causar alergia de contacto en la piel."
+      ],
+      "dose": "Las fuentes consultadas no dan una cantidad exacta; se usan unas pocas ramas y hojas frescas por fricción.",
+      "frequency": "Uso ocasional, según la molestia.",
+      "maxDays": null,
+      "instructions": "Fricción de la piel con ramas y hojas frescas de chilca, tal como se usa tradicionalmente en la sierra de Ecuador.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "La chilca es de la familia de la margarita (Asteraceae); evítala si eres alérgico a esa familia, sobre todo en uso sobre la piel."
+    },
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No la frotes sobre heridas abiertas o piel muy dañada o irritada."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "Puede causar alergia de contacto en la piel en personas sensibles a la familia de la margarita (Asteraceae).",
+    "No se han descrito estudios de seguridad en personas para su uso por boca."
+  ],
+  "safetySources": [
+    "s5"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/chilca.jpg",
+      "author": "Roxana Sepúlveda",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tallo,_hojas_y_flores_de_Chillca_(Baccharis_latifolia).jpg",
+      "caption": "Tallo, hojas y flores de chilca (Baccharis latifolia)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Baccharis latifolia (Ruiz & Pav.) Pers.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:183399-1",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Poorly Investigated Ecuadorian Medicinal Plants",
+      "publisher": "Plants (Basel) (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9229133/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Traditional medicine in Incahuasi: An ethnobotanical study",
+      "publisher": "F1000Research (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10993006/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "popular",
+      "title": "Poorly Investigated Ecuadorian Medicinal Plants",
+      "publisher": "Plants (Basel) (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9229133/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Poorly Investigated Ecuadorian Medicinal Plants (essential oil antifungal activity data)",
+      "publisher": "Plants (Basel) (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9229133/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

@@ -48,6 +48,8 @@ class ReadWorkspaceTool extends AsystantTool {
 
 Use `TypedAsystantTool<T>` to decode tool arguments into a domain type. Definitions reject duplicate names, unknown arguments and invalid scalar types. For writes, check cancellation immediately before committing and pass `context.idempotencyKey` to your own repository. Cancellation does not undo effects already committed. A long tool reports how far it has come with `context.reportProgress(fraction, label: 'Frame 12 of 48')` (0 to 1) and checks `context.isCanceled` as it advances, to stop its own work when the turn is canceled.
 
+A tool can use `context.supportsPrivateInput` and `context.requestPrivateInput(title, fields)` to request local password, code, TOTP or text fields. The returned map is an execution-only value; the UI package implements the card and an app can opt out. Do not put those values into `ToolOutcome`.
+
 ## Local knowledge (RAG)
 
 `AsystantKnowledge` is a local index of the app's own documents, ranked with BM25 and normalized for Spanish and English (accents, plurals, common words). `KnowledgeSearchTool` lets the model search it; each hit carries the matching passage, not the whole document. No service, model or dependency is involved, and the result is deterministic.
@@ -75,7 +77,8 @@ A provider says where the answers come from. `AsystantProvider` is a sealed clas
 
 | Provider | When to use it | What it needs | Platforms |
 | --- | --- | --- | --- |
-| `OpenRouterProvider` | A published app whose users sign in | A `credentials` function returning a short-lived, budget-limited key from your backend | Mobile, web, desktop |
+| `OpenRouterProvider` | Direct OpenRouter inference | A `credentials` callback returning a local or server-issued key | Mobile, web, desktop |
+| `OpenAICompatibleProvider` | HTTPS Chat Completions inference | A credential callback, base URL and model ID | Mobile, web, desktop |
 | `ClaudeCodeProvider` | A local desktop app for someone who has Claude Code | The `claude` CLI installed and signed in; no key, no backend | macOS, Linux, Windows |
 
 Every provider also answers, without running an inference:
@@ -110,7 +113,7 @@ final models = await transport.initialize(
 );
 ```
 
-`backend` and `session` belong to your app. In production your backend authenticates the user and calls [asystant-api](https://github.com/JhonaCodes/asystant-api)'s `POST /v1/managed/credentials`; `OpenRouterCredential.fromManagedJson` reads its response (`api_key`, `allowed_models`, `expires_at`, `refresh_after`). Keep the asystant-api company key in your backend, and never compile a provider key into a release build.
+`backend` and `session` belong to your app. The credential callback maps any authenticated server response to `OpenRouterCredential(apiKey:, allowedModels:, expiresAt:, refreshAfter:)`. `fromManagedJson` is an optional adapter for a matching JSON response. Keep permanent provider credentials on the server, and never compile one into a release build. If a provider cannot issue a scoped client key, use a custom `AssistantTransport` that sends inference through your server.
 
 - The credential is cached until `refreshAfter` (or `expiresAt`) and requested again afterwards; a 401 or 403 drops it. The key only ever goes into the `Authorization` header, and `toString()` redacts it.
 - `initialize` keeps the host's models in order, restricted to the credential's `allowedModels`; an empty list offers exactly those. It fails with `FailureCode.unavailable` when none remain.
@@ -119,7 +122,7 @@ final models = await transport.initialize(
 - HTTP statuses become typed failures: `authentication`, `budget`, `rateLimited`, `contextFull`, `unavailable`, `network` or `protocol`.
 - `verify()` asks OpenRouter about the key (`GET /api/v1/key`, no inference): `Ok` when it is accepted, `Err(authentication)` when the source gives none or OpenRouter refuses it. `modelCatalog()` lists the credential's `allowedModels`, as an open list when it has none.
 
-Keep one transport per assistant; call `dispose()` when its owner is destroyed. `dispose()` forgets the cached key locally; revocation is done by asystant-api.
+Keep one transport per assistant; call `dispose()` when its owner is destroyed. `dispose()` forgets the cached key locally; the issuer controls server-side revocation.
 
 ## Claude Code (desktop)
 
@@ -156,7 +159,7 @@ Tests can pass a `ClaudeCliLauncher` (`ClaudeCodeProvider(launcher: ...)`) that 
 
 ## Credential service
 
-[asystant-api](https://github.com/JhonaCodes/asystant-api) is a separate, self-hosted service that issues OpenRouter keys to client backends, with budgets per tenant and per user and revocation handled server-side. It does not proxy inference and this package never calls it. Read its [HTTP contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml), [managed keys guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/managed-keys.md) and [deployment guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/deployment.md). This package does not include a hosted service or provider credits.
+This package does not include a hosted service, provider credentials or credits. A host server may issue scoped, short-lived client credentials after authenticating its user; the app maps that response to `OpenRouterCredential`. Keep permanent provider keys on the server. If the provider cannot issue a safe client credential, use a custom transport to keep inference behind the host server. See [Credentials and sign-in](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#credentials-and-sign-in).
 
 To reach another provider, add it as described in [Adding a provider](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#adding-a-provider). Application authorization remains the responsibility of your local tool implementations.
 

@@ -1,5 +1,5 @@
 {
-  "version": 12,
+  "version": 14,
   "reference": {
     "id": "current",
     "version": 1,
@@ -1036,6 +1036,15 @@
           "transpiración excesiva",
           "hiperhidrosis"
         ]
+      },
+      {
+        "id": "antioxidant_support",
+        "label": "Ayudar a reducir el estrés oxidativo",
+        "kind": "goal",
+        "synonyms": [
+          "antioxidante",
+          "reducir el estrés oxidativo"
+        ]
       }
     ],
     "redFlags": [
@@ -1305,6 +1314,26 @@
     "higuerilla",
     "sen",
     "hoja_santa",
-    "salvia"
+    "salvia",
+    "matico",
+    "chilca",
+    "hercampuri",
+    "chuchuhuasi",
+    "sacha_inchi",
+    "camu_camu",
+    "huacatay",
+    "wira_wira",
+    "yacon",
+    "canchalagua",
+    "muicle",
+    "arnica_mexicana",
+    "toronjil_morado",
+    "cuachalalate",
+    "tepezcohuite",
+    "gobernadora",
+    "hierba_del_sapo",
+    "palo_azul",
+    "zapote_blanco",
+    "tila_mexicana"
   ]
 }

@@ -1,0 +1,111 @@
+{
+  "id": "hercampuri",
+  "commonName": "Hercampuri",
+  "otherNames": [
+    "hercampure"
+  ],
+  "scientificName": "Gentianella alborosea (Gilg) Fabris",
+  "family": "Gentianaceae",
+  "partsUsed": [
+    "planta entera"
+  ],
+  "easyExplanation": "El hercampuri es una hierba andina de altura que crece solo en zonas muy puntuales del Perú, y se vende para 'bajar de peso' y 'limpiar' el hígado. No hay ningún estudio en personas que lo respalde: lo único investigado es un extracto en células de laboratorio, que no prueba ningún beneficio real. Además, un estudio en mercados de Lima encontró que casi nunca se vende la especie verdadera (Gentianella alborosea): en su lugar se venden otras especies del mismo género bajo el mismo nombre, entre ellas Gentianella thyrsoidea, que tiene compuestos tóxicos y a veces se vende sin ninguna advertencia, en dosis que variaron de 20 a 50 gramos por preparación sin ningún control. Por ese riesgo de confundir la planta con una especie tóxica, aquí no se recomienda ningún preparado casero con hercampuri.",
+  "botany": {
+    "description": "Hierba pequeña de altura, de la familia de las genciana (Gentianaceae).",
+    "identification": "Es una de varias especies del género Gentianella de los Andes peruanos que se parecen mucho entre sí y son difíciles de distinguir una vez cortadas o molidas, lo que dificulta saber qué especie se está usando.",
+    "cultivation": "No se cultiva: crece de forma silvestre en zonas altoandinas de distribución muy restringida, y su recolección silvestre a gran escala se considera insostenible.",
+    "lookalikes": [
+      "Otras especies de Gentianella de los Andes peruanos (como Gentianella nitida, Gentianella bicolor y Gentianella thyrsoidea) que se venden bajo el mismo nombre popular 'hercampuri' sin distinguirlas; Gentianella thyrsoidea tiene compuestos tóxicos."
+    ],
+    "nativeRange": "Perú (región de Junín), en el bioma subalpino de los Andes.",
+    "sources": [
+      "s1",
+      "s5"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El hercampuri sirve para bajar de peso y para 'limpiar' o desintoxicar el hígado.",
+      "note": "No hay estudios en personas que muestren que el hercampuri ayude a bajar de peso ni que 'limpie' el hígado. Lo único estudiado es un extracto de la planta en células de laboratorio (no en personas ni en animales), que mostró actividad antioxidante y un efecto sobre células de cáncer de cuello uterino en placa; eso no prueba ningún beneficio para bajar de peso ni para el hígado.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "claim": "Lo que se vende como 'hercampuri' en el mercado es siempre la misma planta segura.",
+      "note": "Un estudio en mercados de Lima no encontró ni una sola muestra de la especie Gentianella alborosea, la más citada en la literatura como 'hercampuri': en su lugar se vendían otras especies de Gentianella bajo el mismo nombre, entre ellas Gentianella thyrsoidea, que tiene compuestos tóxicos y a veces se clasificaba como inofensiva. Las dosis encontradas variaron de 20 a 50 gramos por preparación, sin ningún control.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [],
+  "interactions": [],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "No se conoce con certeza el efecto en personas de Gentianella alborosea, porque casi nunca es la especie que realmente se vende con ese nombre.",
+    "Existe riesgo real de tomar por error otra especie de Gentianella con compuestos tóxicos vendida bajo el mismo nombre popular."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/hercampuri.jpg",
+      "author": "Remi Mathis",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gentianella_alborosea.JPG",
+      "caption": "Hercampuri (Gentianella alborosea)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Gentianella alborosea (Gilg) Fabris",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:108636-2",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Apoptotic and free radical scavenging properties of the methanolic extract of Gentianella alborosea",
+      "publisher": "Fitoterapia (PubMed 16814959)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16814959/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Apoptotic and free radical scavenging properties of the methanolic extract of Gentianella alborosea",
+      "publisher": "Fitoterapia (PubMed 16814959)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16814959/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Peril in the market: classification and dosage of species used as antidiabetics in Lima, Peru",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3738155/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s5",
+      "kind": "botany",
+      "title": "Health for sale: the medicinal plant markets in Trujillo and Chiclayo, Northern Peru",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2245918/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

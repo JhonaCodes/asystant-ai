@@ -21,6 +21,7 @@ import 'package:asystant_core/src/providers/openrouter/openrouter.dart';
 
 part 'claude_code/claude_code_provider.dart';
 part 'openrouter/open_router_provider.dart';
+part 'openrouter/open_ai_compatible_provider.dart';
 
 /// Which provider the assistant talks to, and how.
 ///

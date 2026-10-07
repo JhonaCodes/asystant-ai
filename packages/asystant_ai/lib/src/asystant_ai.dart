@@ -6,9 +6,11 @@ import 'package:asystant_core/asystant_core.dart';
 import 'package:asystant_ai/src/model/asystant_model_option.dart';
 import 'package:asystant_ai/src/model/asystant_action_policy.dart';
 import 'package:asystant_ai/src/model/asystant_turn_limits.dart';
+import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/presentation/asystant_presentation.dart';
 import 'package:asystant_ai/src/presentation/asystant_presentation_registry.dart';
 import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
+import 'package:asystant_ai/src/service/asystant_provider_settings.dart';
 import 'package:asystant_ai/src/service/asystant_service.dart';
 
 /// Extend in the host application; register local tools after host authentication.
@@ -82,6 +84,11 @@ abstract class AsystantAI with AsystantService {
 
   AssistantTransport? _pendingTransport;
 
+  AsystantProviderSettings? _providerSettings;
+
+  /// Optional local provider and model settings, owned by this package.
+  AsystantProviderSettings? get providerSettings => _providerSettings;
+
   /// Configures this instance once; create a new instance to replace its setup.
   /// Stores configuration without contacting the server or evaluating tools.
   ///
@@ -115,6 +122,8 @@ abstract class AsystantAI with AsystantService {
     AsystantConversationStore? conversationStore,
     AsystantAttachmentPolicy attachments = const AsystantAttachmentPolicy(),
     AsystantTurnLimits turnLimits = const AsystantTurnLimits(),
+    AsystantProviderSettings? providerSettings,
+    bool enableInlinePrivateInput = true,
   }) {
     if (_disposed || _initialize != null) {
       throw StateError('Configure the assistant before opening it.');
@@ -123,32 +132,58 @@ abstract class AsystantAI with AsystantService {
       throw ArgumentError('Pass exactly one of provider or transport.');
     }
     turnLimits.validate();
-    final configured = transport ?? provider?.createTransport();
-    if (configured == null) {
-      return;
+    if (providerSettings != null && provider == null) {
+      throw ArgumentError('Local provider settings require a host provider.');
     }
-    _pendingTransport = configured;
-    _initialize = () {
+    _providerSettings = providerSettings;
+    _initialize = () async {
+      final selection = await providerSettings?.load();
+      final local = selection != null && selection.kind != .backend;
+      final selected = local
+          ? await providerSettings!.provider(selection)
+          : provider;
+      final configured = selected?.createTransport() ?? transport!;
+      if (_disposed) {
+        await configured.dispose();
+        return;
+      }
+      _pendingTransport = configured;
       final registeredTools = [
         ...builtInTools,
         ...tools,
         ...presentationRegistry.tools,
       ];
       final registeredPrompts = [...systemPrompts, ...additionalSystemPrompts];
-      _pendingTransport = null;
-      return conversation.notifier.configure(
+      await conversation.notifier.configure(
         transport: configured,
         tools: registeredTools,
         prompts: registeredPrompts,
-        models: models,
+        models: local
+            ? [AsystantModelOption.fallback(selection.model.trim())]
+            : models,
+        preferredModel: selection?.model,
         store: conversationStore,
         attachmentPolicy: attachments,
         context: contextPrompts,
         turnLimits: turnLimits,
         confirmation: requiresConfirmation,
         actionPolicy: actionPolicyFor,
+        enableInlinePrivateInput: enableInlinePrivateInput,
       );
+      _pendingTransport = null;
     };
+  }
+
+  /// Applies a changed local provider/model without losing saved conversations.
+  /// The settings UI calls this only while no turn is running.
+  Future<void> refreshProvider() async {
+    if (_disposed ||
+        _initialization != null ||
+        conversation.notifier.state.busy ||
+        conversation.notifier.state.phase == ChatPhase.initializing) {
+      throw StateError('Finish the current request before changing provider.');
+    }
+    await _initialize?.call();
   }
 
   /// Starts deferred setup once; concurrent callers share the same operation.

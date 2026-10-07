@@ -22,6 +22,7 @@ class ToolField extends AssistantValue {
     required this.description,
     required this.kind,
     this.isRequired = true,
+    this.acceptsSecret = false,
     this.options = const [],
     this.fields = const [],
   });
@@ -33,6 +34,10 @@ class ToolField extends AssistantValue {
   final ToolFieldKind kind;
 
   final bool isRequired;
+
+  /// Allows a `[secret:…]` chat reference in this field to be resolved only
+  /// when the local tool executes. The reference is rejected elsewhere.
+  final bool acceptsSecret;
 
   /// The only values accepted, for [ToolFieldKind.string] and each entry of
   /// [ToolFieldKind.strings]; any value when empty. Sent as the schema's
@@ -48,6 +53,7 @@ class ToolField extends AssistantValue {
     String? description,
     ToolFieldKind? kind,
     bool? isRequired,
+    bool? acceptsSecret,
     List<String>? options,
     List<ToolField>? fields,
   }) => ToolField(
@@ -55,6 +61,7 @@ class ToolField extends AssistantValue {
     description: description ?? this.description,
     kind: kind ?? this.kind,
     isRequired: isRequired ?? this.isRequired,
+    acceptsSecret: acceptsSecret ?? this.acceptsSecret,
     options: List.unmodifiable(options ?? this.options),
     fields: List.unmodifiable(fields ?? this.fields),
   );
@@ -64,6 +71,7 @@ class ToolField extends AssistantValue {
     description: json['description'] as String,
     kind: ToolFieldKind.values.byName(json['kind'] as String),
     isRequired: json['is_required'] as bool,
+    acceptsSecret: json['accepts_secret'] as bool? ?? false,
     options: List.unmodifiable(
       (json['options'] as List<Object?>? ?? const []).cast<String>(),
     ),
@@ -80,6 +88,7 @@ class ToolField extends AssistantValue {
     'description': description,
     'kind': kind.name,
     'is_required': isRequired,
+    if (acceptsSecret) 'accepts_secret': true,
     if (options.isNotEmpty) 'options': options,
     if (fields.isNotEmpty) 'fields': fields.map((f) => f.toJson()).toList(),
   };
@@ -94,7 +103,9 @@ class ToolField extends AssistantValue {
       ToolFieldKind.number ||
       ToolFieldKind.boolean => kind.name,
     },
-    'description': description,
+    'description': acceptsSecret
+        ? '$description Accepts a private [secret:…] reference.'
+        : description,
     if (kind == ToolFieldKind.string && options.isNotEmpty) 'enum': options,
     if (_items() case final Map<String, Object?> items) 'items': items,
   };

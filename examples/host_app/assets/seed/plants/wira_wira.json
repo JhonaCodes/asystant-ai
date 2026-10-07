@@ -1,0 +1,133 @@
+{
+  "id": "wira_wira",
+  "commonName": "Wira wira",
+  "otherNames": [
+    "vira vira",
+    "huira huira"
+  ],
+  "scientificName": "Pseudognaphalium viravira (Molina) Anderb.",
+  "family": "Asteraceae",
+  "partsUsed": [
+    "partes aéreas"
+  ],
+  "easyExplanation": "El wira wira es una hierba andina, de hojas y tallos cubiertos de un vello blanquecino, que se toma en infusión de forma tradicional para molestias respiratorias como el resfriado. En Perú, Bolivia, Chile y Argentina se usa con este nombre popular más de una especie parecida del mismo género; la especie mejor documentada en estudios peruanos es Pseudognaphalium viravira. No hay estudios de seguridad en personas para esta planta.",
+  "botany": {
+    "description": "Hierba de la familia de la margarita (Asteraceae), de tallos y hojas cubiertos de un vello blanquecino y aspecto grisáceo.",
+    "identification": "Se reconoce por el vello blanquecino que cubre toda la planta, típico del género Pseudognaphalium (antes Gnaphalium).",
+    "cultivation": "Crece de forma silvestre en zonas andinas de altura; se recolecta de plantas silvestres, no se cultiva comercialmente.",
+    "lookalikes": [
+      "En Perú, Bolivia, Chile y Argentina se llama 'wira wira' o 'vira vira' a varias especies parecidas de Pseudognaphalium y Gnaphalium, difíciles de distinguir entre sí una vez secas. Aquí se documenta Pseudognaphalium viravira (antes Gnaphalium viravira), la especie identificada por su nombre científico en un estudio etnobotánico peruano; la mayoría de los estudios de laboratorio sobre el género se hicieron en otras especies de Gnaphalium, no en esta en particular, por lo que la evidencia específica de esta especie es muy limitada."
+    ],
+    "nativeRange": "Andes de Argentina, Bolivia, Chile y Perú, y las islas Galápagos.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "cold_symptoms",
+      "label": "Síntomas de resfriado",
+      "evidence": "popular",
+      "note": "Uso tradicional en la sierra de Cusco (Perú): infusión de partes aéreas frescas o secas para malestar y síntomas respiratorios. En otros países de América Latina, especies emparentadas de Gnaphalium ('gordolobo') se usan también para gripe, tos, resfriado y bronquitis, pero la evidencia específica de esta especie es limitada.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Infusión de wira wira",
+      "uses": [
+        "cold_symptoms"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre partes aéreas de wira wira, frescas o secas, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar unos minutos."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómala tibia."
+        }
+      ],
+      "warnings": [
+        "No hay estudios de seguridad en personas: úsala de forma ocasional.",
+        "No la uses en el embarazo, la lactancia ni en niños menores de 12 años."
+      ],
+      "dose": "Las fuentes consultadas no dan una cantidad exacta en gramos.",
+      "frequency": "Uso ocasional, mientras duren los síntomas.",
+      "maxDays": null,
+      "instructions": "Infusión de partes aéreas frescas o secas de wira wira, tal como se usa tradicionalmente en la sierra de Cusco.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "asteraceae",
+      "note": "El wira wira es de la familia de la margarita (Asteraceae); evítalo si eres alérgico a esta familia."
+    }
+  ],
+  "interactions": [],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [
+    "asteraceae"
+  ],
+  "sideEffects": [
+    "No hay estudios de seguridad en personas ni datos de toxicidad publicados para las especies de este género."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/wira_wira.jpg",
+      "author": "Herbario SQF (Erich Torres E.)",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:1._Pseudognaphalium_viravira_-_29_de_abril_de_2025.jpg",
+      "caption": "Wira wira (Pseudognaphalium viravira), ejemplar de herbario"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Pseudognaphalium viravira (Molina) Anderb.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:283893-2",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Use of medicinal plants for COVID-19 prevention and respiratory symptom treatment during the pandemic in Cusco, Peru: a cross-sectional survey",
+      "publisher": "PLoS One (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8457479/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "The genus Gnaphalium L. (Compositae): phytochemical and pharmacological characteristics",
+      "publisher": "Molecules (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6270383/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "id": "gobernadora",
+  "commonName": "Gobernadora",
+  "otherNames": [
+    "hediondilla",
+    "chaparral",
+    "creosote bush"
+  ],
+  "scientificName": "Larrea tridentata (DC.) Coville",
+  "family": "Zygophyllaceae",
+  "partsUsed": [],
+  "easyExplanation": "La gobernadora es un arbusto de los desiertos del norte de México y el suroeste de Estados Unidos, de olor fuerte a \"lluvia en el desierto\". Se usa mucho en la medicina popular en té para dolores, inflamación, resfriados y otros males, pero tomarla por boca se ha relacionado con casos graves de daño al hígado, algunos con necesidad de trasplante, y con daño a los riñones, incluyendo quistes renales y enfermedad renal crónica. Por eso este catálogo no describe ninguna forma de uso: no hay una manera establecida como segura de tomar o aplicar esta planta.",
+  "botany": {
+    "description": "Arbusto perenne de hasta 3 metros de altura, muy ramificado, con hojas pequeñas, cerosas y de color verde oscuro, resinosas y de olor fuerte, sobre todo después de la lluvia. Sus flores son pequeñas, amarillas, de cinco pétalos.",
+    "identification": "Se reconoce por su olor característico a \"lluvia en el desierto\" al frotar las hojas, sus hojas pequeñas y brillantes por la resina, y su forma de arbusto redondeado que puede formar colonias muy longevas por clonación de la raíz.",
+    "cultivation": "Silvestre en los desiertos de Mojave, Sonora y Chihuahua; tolera suelos pobres, calor extremo y sequía prolongada.",
+    "lookalikes": [
+      "Otros arbustos del desierto de porte y hoja pequeña parecidos, aunque su olor resinoso característico la distingue."
+    ],
+    "nativeRange": "Desiertos de Mojave, Sonora y Chihuahua, en el suroeste de Estados Unidos (California, Arizona, Nevada, Utah, Nuevo México, Texas) y el norte de México (Sonora, Chihuahua, Coahuila, Durango).",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de gobernadora es un remedio casero seguro para el dolor, la inflamación, el resfriado, la artritis o para bajar de peso.",
+      "note": "La gobernadora es una de las plantas más usadas en la medicina popular del norte de México, pero tomarla por boca se ha relacionado con casos de daño hepático grave, algunos con necesidad de trasplante de hígado, y con daño a los riñones (quistes renales y enfermedad renal crónica). La eficacia para estos usos tampoco se ha demostrado en personas. Por esto, no se recomienda tomarla en ninguna forma.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "claim": "La gobernadora cura el cáncer o las piedras en el riñón o la vesícula.",
+      "note": "Un estudio clínico en personas encontró que la gobernadora no fue eficaz contra el cáncer. Tomarla por boca puede además dañar el hígado y los riñones, y la FDA retiró a su principal compuesto (NDGA) de la lista de sustancias reconocidas como seguras. No hay evidencia de que disuelva piedras en el riñón o la vesícula, y no reemplaza ningún tratamiento médico.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "indications": [],
+  "preparations": [],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "No la uses si tienes una enfermedad del hígado: se ha relacionado con casos de daño hepático grave."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "No la uses si tienes una enfermedad de los riñones: se ha relacionado con quistes renales y enfermedad renal crónica."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "hepatotoxic_drug",
+      "severity": "avoid",
+      "note": "No la combines con medicamentos que pueden dañar el hígado: la gobernadora se ha relacionado con casos de daño hepático grave por sí sola."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Daño hepático grave, en algunos casos con necesidad de trasplante de hígado: cansancio, náuseas, poco apetito, orina oscura o piel y ojos amarillos son señales de alarma.",
+    "Daño renal, incluidos quistes en los riñones y enfermedad renal crónica.",
+    "La FDA retiró a su principal compuesto (ácido nordihidroguayarético, NDGA) de la lista de sustancias reconocidas como seguras."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/gobernadora.jpg",
+      "author": "Stan Shebs",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larrea_tridentata_1.jpg",
+      "caption": "Arbusto de gobernadora (Larrea tridentata)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Larrea tridentata (DC.) Coville",
+      "publisher": "GBIF Backbone Taxonomy (Global Biodiversity Information Facility)",
+      "url": "https://api.gbif.org/v1/species/search?q=Larrea%20tridentata&rank=SPECIES",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Ethnobotany in a Modern City: The Persistence in the Use of Medicinal Plants in Guadalajara, Mexico",
+      "publisher": "Plants (Basel) / PMC (PMC12430341)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12430341/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Chaparral",
+      "publisher": "LiverTox: Clinical and Research Information on Drug-Induced Liver Injury, National Institute of Diabetes and Digestive and Kidney Diseases (NIH Bookshelf, PMID 31643676)",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK548571/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Chaparral (About Herbs)",
+      "publisher": "Memorial Sloan Kettering Cancer Center",
+      "url": "https://www.mskcc.org/cancer-care/integrative-medicine/herbs/chaparral",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "id": "hierba_del_sapo",
+  "commonName": "Hierba del sapo",
+  "otherNames": [
+    "mosquitas",
+    "hierba del sapo real"
+  ],
+  "scientificName": "Eryngium carlinae F. Delaroche",
+  "family": "Apiaceae",
+  "partsUsed": [
+    "planta entera",
+    "raíz"
+  ],
+  "easyExplanation": "La hierba del sapo es una hierba pequeña y espinosa de las montañas de México, muy conocida como remedio tradicional para las vías urinarias, los golpes y \"el azúcar\". El efecto sobre el azúcar en la sangre solo se ha visto en animales, no en personas; un estudio pequeño en personas encontró que un extracto ayudó a bajar algo el peso y los triglicéridos, pero fue un estudio corto. No reemplaza ningún tratamiento médico para la diabetes ni para problemas de los riñones o de las vías urinarias.",
+  "botany": {
+    "description": "Hierba perenne pequeña, de menos de 30 cm de altura, de porte postrado a erguido, con raíz gruesa y hojas espinosas típicas del género Eryngium.",
+    "identification": "Se reconoce por su porte bajo y espinoso, parecido a un cardo pequeño, y por crecer en laderas rocosas y pastizales de montaña.",
+    "cultivation": "Crece de forma silvestre en prados húmedos o secos, a menudo en zonas alpinas o rocosas, a veces sobre suelo calizo, entre 1.000 y 3.400 metros de altitud, con más frecuencia en las partes más altas.",
+    "lookalikes": [
+      "Otras especies del género Eryngium presentes en México, de aspecto espinoso similar."
+    ],
+    "nativeRange": "Centro y sur de México hasta Panamá, en zonas montañosas.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de hierba del sapo cura la diabetes y puede reemplazar el medicamento.",
+      "note": "El efecto sobre el azúcar en la sangre solo se ha estudiado en ratas con diabetes, no en personas. Nunca dejes ni cambies un medicamento para la diabetes por esta planta; consulta siempre a tu médico. Un estudio pequeño en personas de solo 4 semanas encontró que un extracto en agua ayudó a bajar algo el peso, la grasa corporal y los triglicéridos, pero no midió directamente el azúcar en la sangre.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "claim": "El té de hierba del sapo es un diurético fuerte que \"limpia\" los riñones.",
+      "note": "Un estudio con el extracto de esta planta no encontró el efecto diurético esperado en el modelo que se probó, a pesar de su uso tradicional para las vías urinarias. No hay evidencia de que \"limpie\" los riñones.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "blood_sugar_support",
+      "label": "Ayudar a controlar el azúcar en la sangre",
+      "evidence": "limited",
+      "note": "Un extracto de esta planta, dado por boca durante 60 días, disminuyó el daño e inflamación en el hígado de ratas con diabetes inducida; no hay estudios de este efecto en personas. No reemplaza el tratamiento médico de la diabetes.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "urinary_discomfort",
+      "label": "Molestias urinarias leves",
+      "evidence": "popular",
+      "note": "Infusión de la planta entera, con o sin raíz, por boca; uso popular tradicional en México para las vías urinarias (\"mal de orín\").",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "joint_pain",
+      "label": "Dolor leve de articulaciones o huesos",
+      "evidence": "popular",
+      "note": "Fomentos calientes de la planta con un poco de sal, aplicados sobre la zona; uso popular tradicional para golpes y dolores.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de hierba del sapo",
+      "uses": [
+        "blood_sugar_support",
+        "urinary_discomfort"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre planta entera de hierba del sapo, con o sin raíz, fresca o seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómalo."
+        }
+      ],
+      "warnings": [
+        "No reemplaces el tratamiento médico de la diabetes por esta planta; consulta a tu médico antes de usarla si tomas medicamento para el azúcar.",
+        "Si tienes una enfermedad de los riñones, consulta antes de usarla."
+      ],
+      "dose": "No hay una cantidad exacta establecida para uso casero; usa la costumbre tradicional de un puñado de planta por taza de agua.",
+      "frequency": "1 a 2 tazas al día.",
+      "maxDays": 14,
+      "instructions": "Hierve agua, échala sobre la planta entera de hierba del sapo, deja reposar, cuela y tómalo.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "form": "topical",
+      "route": "topical",
+      "title": "Fomentos de hierba del sapo",
+      "uses": [
+        "joint_pain"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Calienta la planta de hierba del sapo con un poco de sal."
+        },
+        {
+          "kind": "compress",
+          "text": "Aplica el fomento caliente, con cuidado de que no queme, sobre la zona adolorida."
+        }
+      ],
+      "warnings": [
+        "Cuidado con la temperatura para no quemarte la piel."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios.",
+      "frequency": "1 a 2 veces al día.",
+      "maxDays": 7,
+      "instructions": "Calienta la planta con un poco de sal y aplícala como fomento sobre la zona adolorida, con cuidado de no quemarte.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "apiaceae",
+      "note": "No la uses si eres alérgico a esta planta o a otras de su familia, como el apio, el anís o el hinojo."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Consulta antes de usarla si tienes una enfermedad de los riñones."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "Podría sumarse al efecto de los medicamentos para la diabetes; no la uses para reemplazarlos y consulta a tu médico."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "apiaceae"
+  ],
+  "sideEffects": [
+    "No hay estudios amplios de seguridad en personas."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/hierba_del_sapo.jpg",
+      "author": "Angel Solis",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eryngium_carlinae_-_07.jpg",
+      "caption": "Hierba del sapo (Eryngium carlinae)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Eryngium carlinae",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Eryngium+carlinae",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Ethnobotany, Biological Activities and Phytochemical Compounds of Some Species of the Genus Eryngium (Apiaceae), from the Central-Western Region of Mexico",
+      "publisher": "Molecules / PMC (PMC10221068)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10221068/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "An Ethyl Acetate Extract of Eryngium carlinae Inflorescences Attenuates Oxidative Stress and Inflammation in the Liver of Streptozotocin-Induced Diabetic Rats",
+      "publisher": "Antioxidants (Basel) / PMC (PMC10294959)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294959/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "In vitro and in vivo anti-inflammatory effects of an ethanol extract from the aerial parts of Eryngium carlinae F. Delaroche (Apiaceae)",
+      "publisher": "Journal of Ethnopharmacology (PubMed 32979410)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32979410/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

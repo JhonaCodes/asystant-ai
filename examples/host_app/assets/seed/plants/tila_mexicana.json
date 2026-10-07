@@ -1,0 +1,205 @@
+{
+  "id": "tila_mexicana",
+  "commonName": "Tila mexicana",
+  "otherNames": [
+    "flor de tila",
+    "capulincillo",
+    "trompillo"
+  ],
+  "scientificName": "Ternstroemia pringlei (Rose) Standl. (sin. Ternstroemia lineata DC.); también vendida bajo el nombre \"flor de tila\" la especie cercana Ternstroemia sylvatica Choisy",
+  "family": "Pentaphylacaceae",
+  "partsUsed": [
+    "flor"
+  ],
+  "easyExplanation": "La tila mexicana o \"flor de tila\" es un árbol de bosque de niebla de México, distinto del tilo europeo (Tilia) que también está en este catálogo. Lo que se vende como \"flor\" es en realidad el cáliz y el fruto secos de la planta. Se usa en infusión como calmante para dormir, con efecto sedante confirmado en animales, pero ese mismo efecto puede sumarse peligrosamente al de los medicamentos sedantes, antihistamínicos o antipsicóticos. Una planta muy parecida de la misma familia (Ternstroemia sylvatica) tiene una sustancia tóxica en su fruto, así que esta infusión se debe usar con moderación, nunca en dosis concentradas ni por tiempo prolongado.",
+  "botany": {
+    "description": "Árbol o arbusto de bosque de niebla, con hojas de forma y tamaño variables según la población (desde más cortas y anchas hasta más largas y en forma de espátula), típico de la familia Pentaphylacaceae.",
+    "identification": "Lo que se vende como \"flor de tila\" en los mercados mexicanos es, en realidad, el cáliz seco que rodea el fruto, no un pétalo; por eso su aspecto es distinto al de una flor común.",
+    "cultivation": "Crece de forma silvestre en el bosque de niebla (bosque mesófilo de montaña) de México, junto a otras coníferas y árboles de clima templado y húmedo; no suele cultivarse en casa.",
+    "lookalikes": [
+      "Tilia (tilo europeo, ya en este catálogo como \"tilo\"): planta completamente distinta, de otra familia, aunque comparte el nombre popular \"tila\" o \"tilo\" por su uso también calmante.",
+      "Ternstroemia sylvatica: especie cercana, con nombres populares parecidos (\"tila\", \"capulincillo\", \"trompillo\"), que también se vende como \"flor de tila\" y cuyo fruto contiene una sustancia más tóxica."
+    ],
+    "nativeRange": "Bosques de niebla de México, en zonas montañosas templadas y húmedas.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "La flor de tila mexicana calma la ansiedad, no solo ayuda a dormir.",
+      "note": "En estudios en ratas, esta planta produjo somnolencia y redujo el movimiento, pero no mostró un efecto contra la ansiedad en las pruebas usadas, y además canceló el efecto de un antidepresivo probado junto con ella. Su efecto comprobado es sedante (para dormir), no ansiolítico.",
+      "sources": [
+        "s6"
+      ]
+    },
+    {
+      "claim": "La flor de tila mexicana es totalmente inofensiva en cualquier cantidad, como un té cualquiera.",
+      "note": "El fruto de una especie muy cercana (Ternstroemia sylvatica), vendida con el mismo nombre popular, contiene una sustancia (un saponósido) con toxicidad alta en estudios de laboratorio. Por precaución, esta infusión se debe tomar con moderación, en la cantidad tradicional, nunca como extracto concentrado ni por tiempo prolongado.",
+      "sources": [
+        "s5"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "insomnia",
+      "label": "Dificultad para dormir",
+      "evidence": "limited",
+      "note": "Extractos del fruto/cáliz seco (\"flor de tila\") mostraron efecto sedante que aumenta con la dosis en ratones, y uno de sus compuestos (jacaranona) mostró efecto sedante medible en estudios de laboratorio; no hay estudios de este efecto en personas.",
+      "sources": [
+        "s4",
+        "s7"
+      ]
+    },
+    {
+      "tag": "nervousness",
+      "label": "Nerviosismo o tensión nerviosa leve",
+      "evidence": "popular",
+      "note": "Infusión de la \"flor\" (cáliz y fruto secos) por boca; uso popular tradicional en México como calmante.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "infusion",
+      "route": "oral",
+      "title": "Té de flor de tila mexicana",
+      "uses": [
+        "insomnia",
+        "nervousness"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua."
+        },
+        {
+          "kind": "pour",
+          "text": "Échala sobre flor de tila mexicana seca, en una taza."
+        },
+        {
+          "kind": "steep",
+          "text": "Deja reposar."
+        },
+        {
+          "kind": "drink",
+          "text": "Cuela y tómala tibia, media hora antes de dormir."
+        }
+      ],
+      "warnings": [
+        "No la combines con sedantes, pastillas para dormir, antihistamínicos que dan sueño o antipsicóticos: en estudios de laboratorio su efecto sedante se suma de forma importante al de esos medicamentos.",
+        "No la combines con antidepresivos sin consultar a tu médico: en estudios de laboratorio bloqueó el efecto de uno de ellos.",
+        "No manejes ni operes maquinaria después de tomarla si sientes somnolencia.",
+        "Usa solo la infusión tradicional, en cantidad moderada; no uses extractos concentrados ni la tomes por tiempo prolongado."
+      ],
+      "dose": "No hay una cantidad exacta establecida para uso casero en personas; usa la costumbre tradicional de unas piezas de flor de tila mexicana seca por taza de agua, con moderación.",
+      "frequency": "1 taza, antes de dormir.",
+      "maxDays": 14,
+      "instructions": "Hierve agua, échala sobre flor de tila mexicana seca, deja reposar, cuela y tómala tibia media hora antes de dormir.",
+      "sources": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "sedative",
+      "severity": "avoid",
+      "note": "En estudios de laboratorio, su efecto sedante se sumó de forma importante (efecto sinérgico) al de sedantes, pastillas para dormir y antihistamínicos que dan sueño."
+    },
+    {
+      "medicationClass": "antidepressant",
+      "severity": "caution",
+      "note": "En un estudio en animales, bloqueó el efecto de un antidepresivo probado junto con la planta; consulta a tu médico si tomas uno."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Somnolencia y reducción del estado de alerta.",
+    "El fruto de una especie muy cercana, vendida con el mismo nombre popular, contiene una sustancia con toxicidad alta en estudios de laboratorio; por eso no se recomienda usar extractos concentrados ni tomarla por tiempo prolongado.",
+    "No hay estudios amplios de seguridad en personas."
+  ],
+  "safetySources": [
+    "s4",
+    "s5",
+    "s6",
+    "s7"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/tila_mexicana.jpg",
+      "author": "Krzysztof Ziarnek, Kenraiz",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ternstroemia_lineata_chalicophila_kz1.jpg",
+      "caption": "Ternstroemia lineata (especie emparentada con la tila mexicana, Ternstroemia pringlei)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Ternstroemia lineata DC. (sin. Ternstroemia pringlei)",
+      "publisher": "GBIF Backbone Taxonomy (Global Biodiversity Information Facility)",
+      "url": "https://api.gbif.org/v1/species/search?q=Ternstroemia%20pringlei&rank=SPECIES",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "botany",
+      "title": "Morphological variation of leaf traits in the Ternstroemia lineata species complex (Ericales: Pentaphylacaceae)",
+      "publisher": "PeerJ (PubMed 31942256)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31942256/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Ecological apparency, ethnobotanical importance and perceptions of population status of wild-growing medicinal plants in a reserve of south-central Mexico",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine / PMC (PMC9652844)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9652844/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Pharmacodynamic interaction of the sedative effects of Ternstroemia pringlei (Flor de Tila) with several central nervous system depressant drugs in mice",
+      "publisher": "Journal of Ethnopharmacology (PubMed 18582555)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18582555/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "Toxic rather than neuropharmacological effect of Ternstroemia sylvatica fruits and identification of the toxic compound",
+      "publisher": "Pharmaceutical Biology (PubMed 23862771)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23862771/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s6",
+      "kind": "science",
+      "title": "Sedative actions of Ternstroemia sylvatica in the male rat",
+      "publisher": "Phytomedicine (PubMed 10374250)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10374250/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s7",
+      "kind": "science",
+      "title": "Isolation of jacaranone, a sedative constituent extracted from the flowers of Ternstroemia pringlei",
+      "publisher": "Journal of Ethnopharmacology (PubMed 19951739)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19951739/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

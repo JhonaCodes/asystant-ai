@@ -1,3 +1,34 @@
+## 0.9.2
+
+- Default all library chat surfaces to English; hosts can opt in to built-in Spanish or supply an `AsystantStrings` subclass for every label, including provider settings and private input.
+- Let hosts register strings for any language or region in `AsystantStrings.forLocale`, with English fallback.
+- Use English defaults for the optional dashboard and choice presentation.
+- Document local API keys and provider-neutral server-issued credentials without requiring a specific backend.
+
+## 0.9.1
+
+- Show a secure inline card for an arbitrary number of private tool fields, including password and TOTP, after approval. The host can disable it with `enableInlinePrivateInput: false`.
+- Keep entered values out of conversation state and withhold tool output after a private-input request.
+
+## 0.9.0
+
+- Add OpenAI/GPT as a built-in local key source. Apps can hide the entire provider settings menu or allow only selected provider kinds.
+- Let hosts place attachment and private-value buttons inside or outside the composer independently, or hide either button. The Keel Bot chat uses the external attachment button.
+- Fix bottom navigation overlap in provider and private-value sheets. A custom private value now asks for a name shown to the assistant while its value remains private.
+- Support host-defined attachment MIME limits, filename allow/deny regexes and text-content deny regexes alongside extension, size and count limits.
+
+## 0.8.0
+
+- Add opt-in provider settings in the library's chat menu. A host backend remains the default; the owner can choose a local OpenRouter, Gemini, Claude API, or HTTPS OpenAI-compatible key and a primary model for either local or backend inference.
+- Keep local keys separate from messages and conversations in device secure storage, scoped by the host's account namespace. The settings sheet masks key entry and never displays a saved key.
+- Reconfigure the chat transport when provider settings change, retaining saved conversations under their provider identity.
+
+## 0.7.4
+
+- Replace `$value` text with an opaque, conversation-scoped reference before messages are displayed, persisted or sent to the model. Resolve references only for local tool fields declared with `acceptsSecret: true`, after approval, and withhold secret-bearing tool output.
+- Add an opt-in key icon beside file attachment in both composer layouts. Its bottom sheet collects API keys, tokens, URLs, passwords or other values without putting them into the draft; the model receives a labeled reference. `$value` remains available independently.
+- Allow `AsystantAttachmentPolicy(rejectLikelySecrets: true)` to reject text attachments with likely credentials at the chat boundary, including custom picker and programmatic attachments, with a localized explanation.
+
 ## 0.7.3
 
 - Add `showAsystantSecretPrompt` for one-time values collected on the device after an action's approval. The dialog returns values only to its caller and never adds them to conversation state.

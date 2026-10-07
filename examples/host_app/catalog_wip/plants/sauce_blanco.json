@@ -1,0 +1,225 @@
+{
+  "id": "sauce_blanco",
+  "commonName": "Sauce blanco",
+  "otherNames": [
+    "sauce",
+    "sauce llorón blanco",
+    "mimbrera blanca"
+  ],
+  "scientificName": "Salix alba L.",
+  "family": "Salicaceae",
+  "partsUsed": [
+    "corteza"
+  ],
+  "easyExplanation": "El sauce blanco es un árbol grande de ramas flexibles y hojas plateadas por debajo. Su corteza contiene salicina, una sustancia parecida a la aspirina. En Europa se reconoce su uso tradicional por boca para el dolor leve de articulaciones, la fiebre de los resfriados y el dolor de cabeza. No lo uses si eres alérgico a la aspirina o a otros salicilatos, si tienes una úlcera de estómago o un trastorno de la coagulación, ni en niños o adolescentes con fiebre o síntomas virales, por el riesgo del síndrome de Reye.",
+  "botany": {
+    "description": "Árbol de hasta 15 a 25 metros, de copa amplia y algo colgante, con hojas angostas en forma de lanza, de borde aserrado, verde oscuras por encima y blanco plateadas y sedosas por debajo. Es dioico: los amentos (flores en espiga) masculinos y femeninos crecen en árboles distintos, en primavera, antes o junto con las hojas.",
+    "identification": "Se reconoce por su corteza amarillenta a grisácea, corchosa y agrietada, sus ramas jóvenes verde amarillentas y flexibles, y el envés plateado y velloso de sus hojas, que le da un aspecto brillante cuando el viento las mueve.",
+    "cultivation": "Necesita suelo húmedo y sol pleno a media sombra; no tolera suelos secos. Crece rápido pero es de mantenimiento alto porque su madera es quebradiza y se daña con el viento, la nieve o el hielo. Se poda a fines del invierno o inicios de la primavera.",
+    "lookalikes": [
+      "Salix humboldtiana (sauce criollo o sauce amargo): especie nativa de América, también llamada \"sauce\", usada en la medicina popular de los Andes para el dolor corporal y el resfriado; no debe confundirse con el sauce blanco europeo.",
+      "Salix fragilis (sauce quebradizo): otro sauce europeo de corteza también usada tradicionalmente, de ramas aún más frágiles."
+    ],
+    "nativeRange": "Europa, norte de África y Asia central; introducido y hoy naturalizado en América, incluida América Latina, donde también se cultiva como ornamental y para leña.",
+    "sources": [
+      "s1",
+      "s3"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de corteza de sauce blanco es un sustituto seguro de la aspirina para cualquier persona, incluidos niños con fiebre.",
+      "note": "El sauce blanco contiene salicina, que el cuerpo transforma en una sustancia parecida a la aspirina; por eso comparte sus mismos riesgos. No se recomienda en niños ni adolescentes con fiebre o síntomas virales por el riesgo del síndrome de Reye, ni en personas alérgicas a los salicilatos, con úlcera de estómago o con trastornos de la coagulación.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "joint_pain",
+      "label": "Dolor leve de articulaciones",
+      "evidence": "traditional",
+      "note": "Uso tradicional por boca reconocido en Europa, a partir de la corteza.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "fever",
+      "label": "Fiebre asociada al resfriado",
+      "evidence": "traditional",
+      "note": "Uso tradicional por boca reconocido en Europa para la fiebre ligada al resfriado común.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "headache",
+      "label": "Dolor de cabeza",
+      "evidence": "traditional",
+      "note": "Uso tradicional por boca reconocido en Europa.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de corteza de sauce blanco",
+      "uses": [
+        "joint_pain",
+        "fever",
+        "headache"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Consigue corteza seca de sauce blanco en una tienda naturista o farmacia."
+        },
+        {
+          "kind": "simmer",
+          "text": "Hierve la corteza en agua a fuego lento unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala tibia."
+        }
+      ],
+      "warnings": [
+        "No la des a niños ni adolescentes con fiebre o síntomas de una infección viral, por el riesgo del síndrome de Reye.",
+        "No la uses si eres alérgico a la aspirina u otros salicilatos, ni si tienes asma relacionada con esa alergia.",
+        "No la uses si tienes una úlcera de estómago activa, un trastorno de la coagulación, o una enfermedad grave del hígado o del riñón.",
+        "Avisa a tu médico si tomas anticoagulantes o antiagregantes.",
+        "No la uses en el último trimestre del embarazo; por precaución, evítala durante todo el embarazo."
+      ],
+      "dose": "Sigue la cantidad indicada en el envase del producto.",
+      "frequency": "Según el envase.",
+      "maxDays": 14,
+      "instructions": "Prepara una decocción con corteza seca de sauce blanco, en la cantidad que indique el envase, y tómala tibia.",
+      "sources": [
+        "s2"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "allergy",
+      "tag": "salicaceae",
+      "note": "No lo uses si eres alérgico a la aspirina, otros salicilatos o antiinflamatorios (AINE), ni si tienes asma relacionada con esa alergia."
+    },
+    {
+      "kind": "condition",
+      "tag": "gastric_ulcer",
+      "note": "La EMA no recomienda el sauce blanco si tienes una úlcera de estómago activa."
+    },
+    {
+      "kind": "condition",
+      "tag": "liver_disease",
+      "note": "No lo uses si tienes una enfermedad grave del hígado."
+    },
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "No lo uses si tienes una enfermedad grave del riñón."
+    },
+    {
+      "kind": "condition",
+      "tag": "bleeding_disorder",
+      "note": "No lo uses si tienes un trastorno de la coagulación, por su efecto parecido a la aspirina."
+    },
+    {
+      "kind": "condition",
+      "tag": "g6pd_deficiency",
+      "note": "La EMA lo contraindica en personas con deficiencia de glucosa-6-fosfato deshidrogenasa."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "anticoagulant",
+      "severity": "avoid",
+      "note": "El sauce blanco actúa de forma parecida a la aspirina y puede aumentar el riesgo de sangrado junto con anticoagulantes."
+    },
+    {
+      "medicationClass": "antiplatelet",
+      "severity": "avoid",
+      "note": "Puede sumar su efecto al de los antiagregantes y aumentar el riesgo de sangrado."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [
+    "salicaceae"
+  ],
+  "sideEffects": [
+    "Reacciones alérgicas: sarpullido, picazón, asma en personas sensibles a los salicilatos.",
+    "Molestias digestivas: náuseas, vómito, dolor de estómago, diarrea, acidez.",
+    "En niños y adolescentes con fiebre o infecciones virales, riesgo del síndrome de Reye, igual que con la aspirina."
+  ],
+  "safetySources": [
+    "s2"
+  ],
+  "newTerms": [
+    {
+      "id": "salicaceae",
+      "label": "Familia del sauce (Salicaceae)",
+      "kind": "allergenGroup",
+      "synonyms": ["sauce", "álamo", "salicáceas", "salicilatos"]
+    },
+    {
+      "id": "bleeding_disorder",
+      "label": "Trastorno de la coagulación",
+      "kind": "condition",
+      "synonyms": ["hemofilia", "trastorno de coagulación", "tendencia a sangrar"]
+    },
+    {
+      "id": "g6pd_deficiency",
+      "label": "Deficiencia de glucosa-6-fosfato deshidrogenasa (favismo)",
+      "kind": "condition",
+      "synonyms": ["favismo", "déficit de G6PD"]
+    }
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/sauce_blanco.jpg",
+      "author": "AnRo0002",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:20110716Salix_alba.jpg",
+      "caption": "Sauce blanco (Salix alba) junto a un río"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Salix alba (White Willow)",
+      "publisher": "NC State Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/salix-alba/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "science",
+      "title": "Salicis cortex — willow bark (summary of HMPC conclusions)",
+      "publisher": "EMA HMPC",
+      "url": "https://www.ema.europa.eu/en/medicines/herbal/salicis-cortex",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "popular",
+      "title": "Medicinal ethnobotany in Huacareta (Chuquisaca, Bolivia)",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3484016/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

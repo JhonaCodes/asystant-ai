@@ -1,0 +1,218 @@
+{
+  "id": "palo_azul",
+  "commonName": "Palo azul",
+  "otherNames": [
+    "palo dulce",
+    "taray",
+    "Mexican kidneywood"
+  ],
+  "scientificName": "Eysenhardtia polystachya (Ortega) Sarg.",
+  "family": "Fabaceae",
+  "partsUsed": [
+    "madera",
+    "corteza"
+  ],
+  "easyExplanation": "El palo azul es un arbolito mexicano cuya madera, remojada o hervida en agua, produce un agua de color azul fluorescente muy conocida en México como remedio tradicional para las vías urinarias. Un estudio en animales no encontró toxicidad importante del extracto. No hay estudios en personas, así que no reemplaza el tratamiento médico de una infección urinaria, piedras en el riñón o diabetes ya diagnosticadas.",
+  "botany": {
+    "description": "Arbusto o árbol pequeño, de 1,5 a 5 metros de altura (rara vez hasta 7), de hojas compuestas pequeñas. Su madera, al remojarse en agua ligeramente alcalina, produce una fluorescencia azul característica.",
+    "identification": "Se reconoce por el color azul fluorescente que toma el agua al remojar su madera o corteza, visible sobre todo con luz indirecta o contraluz.",
+    "cultivation": "Crece de forma silvestre en pastizales, bosque seco abierto y orillas de bosque y de cursos de agua, entre 150 y 3.000 metros de altitud, en zonas de 250 a 1.750 mm de lluvia anual.",
+    "lookalikes": [
+      "Cyclolepis genistoides, otra planta distinta de Sudamérica (Argentina, Paraguay) que también se vende con el nombre \"palo azul\" para molestias urinarias; no es la misma especie."
+    ],
+    "nativeRange": "Centro y sur de México.",
+    "sources": [
+      "s1"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El agua de palo azul disuelve las piedras en el riñón o cura una infección urinaria ya diagnosticada.",
+      "note": "Los estudios que protegen el riñón con esta planta son en animales, no en personas, y evalúan que ayuda a prevenir daño renal, no que disuelva piedras ya formadas. Una infección urinaria o un cólico renal necesitan diagnóstico y tratamiento médico.",
+      "sources": [
+        "s4"
+      ]
+    },
+    {
+      "claim": "El palo azul controla la diabetes y puede reemplazar el medicamento.",
+      "note": "El efecto sobre el azúcar y el riñón en la diabetes solo se ha estudiado en animales, no en personas. Nunca reemplaces un medicamento para la diabetes por esta planta.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "urinary_discomfort",
+      "label": "Molestias urinarias leves",
+      "evidence": "popular",
+      "note": "Agua de la madera o corteza remojada o hervida; uso tradicional muy extendido en México para las vías urinarias.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "tag": "diarrhea",
+      "label": "Diarrea leve",
+      "evidence": "limited",
+      "note": "Un extracto de ramas y hojas mostró efecto antidiarreico en un estudio en animales; no hay estudios de este efecto en personas.",
+      "sources": [
+        "s3"
+      ]
+    },
+    {
+      "tag": "joint_pain",
+      "label": "Dolor leve de articulaciones",
+      "evidence": "limited",
+      "note": "Un extracto de ramas y hojas mostró efecto analgésico y antiinflamatorio en un estudio en animales, junto con su uso tradicional contra el reumatismo; no hay estudios de este efecto en personas.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Agua de palo azul",
+      "uses": [
+        "urinary_discomfort",
+        "diarrhea"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Pon a hervir agua con unos trozos o astillas de madera de palo azul."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir unos minutos, hasta que el agua tome un tono azulado."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala tibia o fría, a lo largo del día."
+        }
+      ],
+      "warnings": [
+        "Si hay dolor fuerte de espalda o costado, fiebre, sangre en la orina o dificultad para orinar, busca atención médica: puede ser una infección o un cólico renal.",
+        "No reemplaces el tratamiento médico de la diabetes por esta planta."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios en personas; usa la costumbre tradicional de unos trozos de madera por litro de agua.",
+      "frequency": "A lo largo del día, como agua de uso.",
+      "maxDays": 14,
+      "instructions": "Hierve unos trozos de madera de palo azul en agua hasta que tome un tono azulado, cuela y tómala tibia o fría a lo largo del día.",
+      "sources": [
+        "s2"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "oral",
+      "title": "Decocción de ramas y hojas de palo azul",
+      "uses": [
+        "joint_pain"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua con ramas y hojas de palo azul, frescas o secas."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela."
+        },
+        {
+          "kind": "drink",
+          "text": "Tómala tibia."
+        }
+      ],
+      "warnings": [
+        "Si el dolor articular es intenso, dura semanas o viene con hinchazón, consulta a un médico."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios en personas.",
+      "frequency": "1 a 2 tazas al día.",
+      "maxDays": 14,
+      "instructions": "Hierve ramas y hojas de palo azul en agua, cuela y tómala tibia.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "kidney_disease",
+      "note": "Consulta antes de usarla si tienes una enfermedad de los riñones ya diagnosticada."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidiabetic",
+      "severity": "caution",
+      "note": "No la uses para reemplazar el medicamento para la diabetes: su efecto sobre el azúcar solo se ha visto en animales."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "En un estudio en animales, el extracto de ramas y hojas mostró baja toxicidad (dosis letal 50 mayor a 2.000 mg/kg por boca e inyectada); no hay estudios amplios de seguridad en personas."
+  ],
+  "safetySources": [
+    "s3",
+    "s4"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/palo_azul.jpg",
+      "author": "Juan Carlos Fonseca Mata",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Inflorescencia_de_palo_azul_(Eysenhardtia_polystachya).jpg",
+      "caption": "Inflorescencia de palo azul (Eysenhardtia polystachya)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Eysenhardtia polystachya (Ortega) Sarg.",
+      "publisher": "GBIF Backbone Taxonomy (Global Biodiversity Information Facility)",
+      "url": "https://api.gbif.org/v1/species/search?q=Eysenhardtia%20polystachya&rank=SPECIES",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Eysenhardtia polystachya",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Eysenhardtia+polystachya",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Pharmacological and toxicological study of a chemical-standardized ethanol extract of the branches and leaves from Eysenhardtia polystachya (Ortega) Sarg. (Fabaceae)",
+      "publisher": "Journal of Ethnopharmacology (PubMed 29913299)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29913299/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Nephroprotective activity of Eysenhardtia polystachya through antioxidant, H2S, and NO pathways",
+      "publisher": "Naunyn-Schmiedeberg's Archives of Pharmacology / PMC (PMC12678624)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12678624/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

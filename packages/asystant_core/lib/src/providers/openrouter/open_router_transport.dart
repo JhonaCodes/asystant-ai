@@ -33,6 +33,9 @@ class OpenRouterTransport extends AssistantTransport {
     this.maxOutputTokens,
     this.temperature,
     this.pdfEngine = 'pdf-text',
+    this.compatibilityMode = false,
+    this.providerName = 'OpenRouter',
+    this.preferredModel,
     http.Client Function()? clientFactory,
     DateTime Function()? clock,
   }) : _credentials = credentials,
@@ -63,6 +66,11 @@ class OpenRouterTransport extends AssistantTransport {
   /// `mistral-ocr` (paid, scanned documents) or `native` (models that read
   /// PDFs themselves).
   final String pdfEngine;
+
+  /// Uses only the standard Chat Completions fields and `/models` verification.
+  final bool compatibilityMode;
+  final String providerName;
+  final String? preferredModel;
 
   final OpenRouterCredentialSource _credentials;
 
@@ -98,6 +106,9 @@ class OpenRouterTransport extends AssistantTransport {
   static String? _alwaysSignedIn() => 'local';
 
   Uri _url(String path) => (baseUri ?? defaultBaseUri).resolve(path);
+
+  @override
+  String? get defaultModel => preferredModel;
 
   @override
   bool get isAuthenticated => _identity() != null;
@@ -136,7 +147,7 @@ class OpenRouterTransport extends AssistantTransport {
     }
     _prompts = composed;
     _tools = _declare(tools);
-    await Future.wait(permitted.map(_loadModel));
+    if (!compatibilityMode) await Future.wait(permitted.map(_loadModel));
     return Ok(List.unmodifiable(permitted));
   }
 
@@ -159,18 +170,23 @@ class OpenRouterTransport extends AssistantTransport {
     }
     final client = _clientFactory();
     try {
+      final request =
+          http.Request('GET', _url(compatibilityMode ? 'models' : 'key'))
+            ..followRedirects = false
+            ..headers.addAll(_headers(credential));
       final response = await client
-          .get(_url('key'), headers: _headers(credential))
+          .send(request)
           .timeout(const Duration(seconds: 15));
       if (response.statusCode == 200) {
         return Ok(
-          const AsystantProviderStatus(provider: 'OpenRouter', signedIn: true),
+          AsystantProviderStatus(provider: providerName, signedIn: true),
         );
       }
       if (response.statusCode == 401 || response.statusCode == 403) {
         _credential = null;
       }
-      return Err(_failure(response.statusCode, response.body));
+      final body = await response.stream.bytesToString();
+      return Err(_failure(response.statusCode, body));
     } on TimeoutException {
       return Err(const AssistantFailure(.network));
     } on http.ClientException {
@@ -275,8 +291,10 @@ class OpenRouterTransport extends AssistantTransport {
 
   Map<String, String> _headers([OpenRouterCredential? credential]) => {
     if (credential != null) 'Authorization': credential.authorization,
-    if (appName case final String name) 'X-Title': _headerValue(name),
-    if (appUrl case final String url) 'HTTP-Referer': _headerValue(url),
+    if (!compatibilityMode && appName != null)
+      'X-Title': _headerValue(appName!),
+    if (!compatibilityMode && appUrl != null)
+      'HTTP-Referer': _headerValue(appUrl!),
   };
 
   /// Printable ASCII as is; anything else, and `%` itself, percent-encoded,
@@ -313,6 +331,7 @@ class OpenRouterTransport extends AssistantTransport {
       final client = _clientFactory();
       _active = client;
       final request = http.Request('POST', _url('chat/completions'))
+        ..followRedirects = false
         ..headers.addAll({
           ..._headers(credential),
           'Content-Type': 'application/json',
@@ -375,11 +394,11 @@ class OpenRouterTransport extends AssistantTransport {
     return {
       'model': model,
       'stream': true,
-      'usage': {'include': true},
-      'parallel_tool_calls': false,
+      if (!compatibilityMode) 'usage': {'include': true},
+      if (!compatibilityMode) 'parallel_tool_calls': false,
       if (maxOutputTokens case final int tokens) 'max_tokens': tokens,
       if (temperature case final double value) 'temperature': value,
-      if (OpenRouterMessageCodec.hasPdf(messages))
+      if (!compatibilityMode && OpenRouterMessageCodec.hasPdf(messages))
         'plugins': [
           {
             'id': 'file-parser',

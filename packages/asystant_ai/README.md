@@ -33,7 +33,7 @@ Then call `assistant.init` once with a provider: where the answers come from. `i
 
 | Provider | When to use it | What it needs | Platforms |
 | --- | --- | --- | --- |
-| `OpenRouterProvider` | A published app whose users sign in; models billed per user | A `credentials` function returning a short-lived, budget-limited key from your backend ([asystant-api](https://github.com/JhonaCodes/asystant-api)) | Mobile, web, desktop |
+| `OpenRouterProvider` | Direct OpenRouter inference | A credential source: a local key or a short-lived key issued through your authenticated server | Mobile, web, desktop |
 | `ClaudeCodeProvider` | A local desktop app for someone who has Claude Code | The `claude` CLI installed and signed in (`claude` once in a terminal); no key, no backend | macOS, Linux, Windows |
 
 ```dart
@@ -55,7 +55,7 @@ assistant.init(
 );
 ```
 
-`fetchAiCredential` (an `OpenRouterCredentialSource`, returning `Result<OpenRouterCredential, AssistantFailure>`) and `session` are supplied by your app; your backend gets the key from asystant-api (`POST /v1/managed/credentials`) and `OpenRouterCredential.fromManagedJson` reads the response. Never compile a provider key into a release build. `models` are the choices shown next to the send button; the first one permitted is the default. Pass `models: const []` to let the provider decide: the models the credential allows, or the models the installed Claude Code CLI declares. Add optional factory tools through `builtInTools`. See the [integration guide](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#providers) for both providers.
+`fetchAiCredential` (an `OpenRouterCredentialSource`, returning `Result<OpenRouterCredential, AssistantFailure>`) and `session` belong to the host app. The source can obtain a short-lived provider credential from any authenticated server; map that server's response to `OpenRouterCredential` in the app. Never compile a provider master key into a release build. `models` are the choices shown next to the send button; the first one permitted is the default. Pass `models: const []` to let the credential or provider decide. Add optional factory tools through `builtInTools`. See [connection modes](#connection-modes) and the [integration guide](../../docs/public-api.md#credentials-and-sign-in).
 
 With Claude Code there is nothing to authenticate:
 
@@ -68,7 +68,55 @@ final status = await const ClaudeCodeProvider().verify();
 
 `init(transport: ...)` remains for an `AssistantTransport` of your own, such as a test double or a proxy; pass either a provider or a transport.
 
+To reject text attachments that appear to contain credentials, pass `attachments: const AsystantAttachmentPolicy(rejectLikelySecrets: true)` to `assistant.init`. The library checks every file as it enters the chat, including files supplied by a custom picker or `attachFile`, and shows a localized error. This optional check covers readable text files; it cannot inspect secrets inside images, PDFs or encoded data.
+
+## Connection modes
+
+**Manual API key on this device.** Pass a host provider and opt in to `AsystantProviderSettings`. The chat menu then offers local OpenAI, OpenRouter, Gemini, Claude API, or another HTTPS OpenAI-compatible endpoint and an explicit model ID. The person enters the key in the library-owned settings sheet; the key is kept in device secure storage under an account-specific namespace, separate from conversation history. Limit `availableKinds` or set `showInChatMenu: false` when an app must not offer local providers.
+
+```dart
+assistant.init(
+  provider: OpenRouterProvider(credentials: fetchServerCredential),
+  providerSettings: AsystantProviderSettings(
+    namespace: 'my-app:$accountId',
+    availableKinds: const [
+      AsystantProviderKind.backend,
+      AsystantProviderKind.openRouter,
+      AsystantProviderKind.openAi,
+      AsystantProviderKind.compatible,
+    ],
+  ),
+);
+```
+
+**Authentication through your server.** Authenticate the app user using your own account system. Supply `identity` and `sessionChanges` to the provider, and implement a credential callback that calls your authenticated API. That API should authorize the user and return a provider credential scoped to that user, allowed models, budget and a short validity window. The callback maps the response to `OpenRouterCredential(apiKey:, allowedModels:, expiresAt:, refreshAfter:)`. The SDK refreshes it when needed and sends it directly to the configured provider. Keep permanent provider credentials on the server. If a provider cannot issue a safe client credential, keep inference on your server and supply a custom `AssistantTransport` instead of returning the server's master key to the device. See the [provider-neutral server contract](../../docs/public-api.md#credentials-and-sign-in).
+
+The manual settings mode and server mode can coexist. Omitting `providerSettings` uses only the host provider. `OpenAICompatibleProvider` accepts the same credential callback for an HTTPS Chat Completions endpoint.
+
 ## Embed the chat
+
+### Private values requested by a tool
+
+A local tool may request any number of fields after its approval. The chat shows an inline card; entered values are held only by the card and returned to that tool. Neither the model nor the saved conversation receives them. The tool must keep its own credential storage secure.
+
+```dart
+final values = await context.requestPrivateInput('Sign in to DEV', const [
+  PrivateInputField(name: 'password', label: 'Password', kind: PrivateInputKind.password),
+  PrivateInputField(name: 'code', label: 'Authenticator code', kind: PrivateInputKind.totp),
+]);
+if (values == null) return Err(const AssistantFailure(.canceled));
+// Use values in the local API call; never place them in a ToolOutcome.
+```
+
+This feature is enabled by default. Set `enableInlinePrivateInput: false` in `assistant.init` to hide it for a host app; `context.supportsPrivateInput` lets a tool provide its own fallback. Cancelling the turn closes the card. Tool output is withheld from the model after the card is used.
+
+### Private values in chat
+
+Prefix a one-line secret with `$`, for example `Configura la API key $una-key-importante en DEV`. The SDK replaces the value with a random `[secret:…]` reference **before** creating a chat message, saving the conversation or calling the model. Declare the destination field with `ToolField(..., acceptsSecret: true)`. The model can pass that reference as the complete value of that field; the SDK rejects references in other fields. After the tool preview and any required approval, the SDK resolves it in memory only for `tool.execute`. Tool results, cards, progress and errors are withheld or scrubbed before entering the conversation or model context. A secret reference expires when the assistant is disposed, the identity changes, or the conversation is deleted; after an app restart, send the secret again. Secret values are never persisted by this feature. The host tool remains responsible for storing the credential in secure storage when its action is approved.
+
+Set `AsystantChat(enablePrivateValueAttachment: true)` to show an optional **key icon beside file attachment**. The same option is available on `AsystantButton`, `AsystantPanel` and `AsystantPhoneSheet`; it is off by default. The key icon opens a safe-area bottom sheet for an API key, token, URL, password or other private value. The field is obscured by default. The SDK keeps the raw value out of the draft and inserts only a labeled reference at the cursor; send the message with enough context for the assistant to choose the destination tool. The `$value` text method remains available regardless of the option. The built-in prompt tells the model to suggest the key icon when present, or the `$` marker otherwise.
+
+Values may contain letters, digits, `_`, `-`, `.`, `/`, `+`, `=`, `:`, and `@` (at least four characters). A `$` in ordinary text should be separated when it is not a secret. For calls that use a secret, the SDK hides the tool's arbitrary output and images from the model and chat, showing only a generic success or failure status. This protects **text marked with `$`**; attachments, host context, provider logs and secrets entered without the marker are outside this mechanism.
 
 ```dart
 AsystantButton(assistant: assistant); // A sheet on phones, a side panel on tablets and desktops.
@@ -135,7 +183,7 @@ Each presentation has a stable `id` (its model-visible tool name), `description`
 
 ## Backend and models
 
-The package does not include a hosted API, provider credentials or inference credits. For `OpenRouterProvider`, you can deploy [asystant-api](https://github.com/JhonaCodes/asystant-api), a self-hosted service that issues OpenRouter keys with per-tenant and per-user budgets to your backend. It never proxies inference: the app talks to OpenRouter directly. See its [OpenAPI contract](https://github.com/JhonaCodes/asystant-api/blob/main/openapi.yaml) and [managed keys guide](https://github.com/JhonaCodes/asystant-api/blob/main/docs/managed-keys.md), and this repository's [security policy](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md).
+The package does not include a hosted API, provider credentials or inference credits. Your app may use a local key, obtain a scoped client credential through its own authenticated server, or send inference through a custom server transport. See [connection modes](#connection-modes) and this repository's [security policy](https://github.com/JhonaCodes/asystant-ai/blob/main/SECURITY.md).
 
 To add another provider to the SDK, see [Adding a provider](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#adding-a-provider). Provider availability and usage terms must be checked before enabling a model.
 
@@ -170,6 +218,63 @@ this is not a claim of literally zero CPU cost.
 
 Migration from 0.1.0: remove `await` before `init()`. Only headless clients and tests
 that immediately send messages should explicitly await `ensureInitialized()`.
+
+## Local provider and primary model
+
+An app can opt in to the library's provider settings while retaining its
+existing signed-in backend provider as the default:
+
+```dart
+assistant.init(
+  provider: OpenRouterProvider(credentials: backendCredential, identity: currentUserId),
+  providerSettings: AsystantProviderSettings(namespace: 'my-app:$accountId'),
+);
+```
+
+When `AsystantChat` uses the menu header, **AI settings** appears in that menu.
+The owner can enter an OpenAI/GPT, OpenRouter, Gemini, Claude API, or other HTTPS
+OpenAI-compatible API key, an explicit primary model ID, and a base URL for a
+custom provider. The key is stored separately in device secure storage; it is
+not added to the chat or sent to the model as a message. A saved key is never
+displayed. Use a stable, account-specific namespace; the host must not reuse
+one namespace across people. Claude Code CLI login is a separate desktop
+provider, not a mobile API key. See [provider settings](../../docs/public-api.md#local-provider-settings).
+
+Apps can pass `showInChatMenu: false` to hide that entry, or `availableKinds`
+to limit the provider choices. Composer actions and file rules are configurable;
+see [composer controls](../../docs/public-api.md#composer-controls-and-attachment-rules).
+
+## Language and host translations
+
+All library UI defaults to English, regardless of the device locale. The host can provide **any language** by subclassing `AsystantStrings` and overriding its labels and formatted messages. Register those classes by language (`fr`) or region (`pt-BR`) when selecting a locale; a region match takes priority, then the language match. The built-in Spanish labels remain available when no host translation for `es` is registered, and unknown locales fall back to English.
+
+```dart
+class AppAssistantStrings extends AsystantStrings {
+  AppAssistantStrings(this.l10n);
+  final AppLocalizations l10n;
+
+  @override
+  String get newConversation => l10n.newConversation;
+  @override
+  String get deleteConversation => l10n.deleteConversation;
+  @override
+  String get providerSettingsTitle => l10n.aiProviderTitle;
+  @override
+  String failureMessage(AssistantFailure failure) => l10n.aiFailure;
+}
+
+AsystantChat(
+  assistant: assistant,
+  strings: AsystantStrings.forLocale(
+    Localizations.localeOf(context),
+    translations: {
+      Localizations.localeOf(context).toLanguageTag(): AppAssistantStrings(l10n),
+    },
+  ),
+);
+```
+
+For a fixed registry, use entries such as `'fr': FrenchAssistantStrings()` and `'pt-BR': BrazilianPortugueseAssistantStrings()`. Override every getter or method you need translated; inherited labels use the English default. Rebuild with a new `strings` value when the host changes language. The same `strings` argument is available on `AsystantButton`, `AsystantPanel`, and `AsystantPhoneSheet`. The optional `AsystantDashboardWelcome` exposes its copy through constructor parameters. Model-generated answers and host-defined tool/card text are owned by the host, not translated by the SDK.
 
 ## Reports and prompt customization
 

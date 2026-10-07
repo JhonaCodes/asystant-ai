@@ -12,8 +12,11 @@ import 'package:asystant_ai/src/model/asystant_model_option.dart';
 import 'package:asystant_ai/src/model/asystant_turn_limits.dart';
 import 'package:asystant_ai/src/model/chat_entry.dart';
 import 'package:asystant_ai/src/model/conversation_snapshot.dart';
+import 'package:asystant_ai/src/model/private_input_request.dart';
+import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
 import 'package:asystant_ai/src/service/asystant_file_picker.dart';
+import 'package:asystant_ai/src/service/chat_secret_vault.dart';
 
 /// Decides whether [tool] waits for the person's approval before a call runs.
 ///
@@ -42,6 +45,12 @@ class ChatViewModel extends ViewModel<ChatState> {
   AsystantConversationStore _store = InMemoryConversationStore();
 
   Completer<bool>? _approval;
+  Completer<Map<String, String>?>? _privateInput;
+  bool _enableInlinePrivateInput = true;
+  AsystantStrings _strings = AsystantStrings.english;
+
+  /// The current host text bundle for labels created while a tool runs.
+  void setStrings(AsystantStrings strings) => _strings = strings;
 
   int _epoch = 0;
 
@@ -51,7 +60,10 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   String? _identity;
 
+  String? _preferredModel;
+
   final Set<String> _executed = {};
+  final ChatSecretVault _secrets = ChatSecretVault();
 
   final StringBuffer _streamingText = StringBuffer();
 
@@ -104,7 +116,8 @@ class ChatViewModel extends ViewModel<ChatState> {
 
   /// The person can prepare the next message while a turn runs; only an
   /// action waiting for a decision locks the field.
-  bool get canType => _initialized && state.pending == null;
+  bool get canType =>
+      _initialized && state.pending == null && state.privateInput == null;
 
   /// The files the assistant accepts unless a chat surface overrides them.
   AsystantAttachmentPolicy get attachmentPolicy => _attachmentPolicy;
@@ -121,6 +134,7 @@ class ChatViewModel extends ViewModel<ChatState> {
     required List<AsystantTool> tools,
     required List<AsystantSystemPrompt> prompts,
     required List<AsystantModelOption> models,
+    String? preferredModel,
     AsystantConversationStore? store,
     AsystantAttachmentPolicy attachmentPolicy =
         const AsystantAttachmentPolicy(),
@@ -128,11 +142,14 @@ class ChatViewModel extends ViewModel<ChatState> {
     AsystantTurnLimits turnLimits = const AsystantTurnLimits(),
     AsystantConfirmationPolicy? confirmation,
     AsystantActionPolicyResolver? actionPolicy,
+    bool enableInlinePrivateInput = true,
   }) async {
     turnLimits.validate();
     if (_closed || state.busy || state.phase == ChatPhase.initializing) {
       return;
     }
+    if (_initialized) await _saveActive();
+    if (_closed || state.busy) return;
     final epoch = ++_epoch;
     _initialized = false;
     final previousTransport = _transport;
@@ -142,13 +159,16 @@ class ChatViewModel extends ViewModel<ChatState> {
     }
     _attachmentPolicy = attachmentPolicy;
     _turnLimits = turnLimits;
+    _preferredModel = preferredModel;
     _context = context ?? _noContext;
     _confirmation = confirmation ?? _toolDecides;
     _actionPolicy = actionPolicy;
+    _enableInlinePrivateInput = enableInlinePrivateInput;
     _approvesAllForSession = false;
     // A retry for the same person keeps the conversations; anyone else
     // starts clean.
     final sameIdentity = _identity != null && _identity == transport.identity;
+    if (!sameIdentity) _secrets.clear();
     updateState(
       sameIdentity
           ? state.copyWith(phase: ChatPhase.initializing, clearFailure: true)
@@ -169,6 +189,7 @@ class ChatViewModel extends ViewModel<ChatState> {
         _initialized = false;
         _identity = transport.identity;
         _executed.clear();
+        _secrets.clear();
         _approvesAllForSession = false;
         updateState(ChatState(phase: ChatPhase.idle, conversationId: _newId()));
       }
@@ -178,7 +199,23 @@ class ChatViewModel extends ViewModel<ChatState> {
       _fail(validation.errorOrNull!);
       return;
     }
-    final promptPolicy = const AsystantPromptPolicy().compose(prompts);
+    final promptPolicy = const AsystantPromptPolicy().compose([
+      ...prompts,
+      const AsystantSystemPrompt(
+        id: 'asystant-private-values',
+        content:
+            'A [secret:...] reference in a user message stands for a '
+            'private value. Never ask to reveal or repeat it. When a local '
+            'tool needs that value, pass the reference exactly as the whole '
+            'argument value. The app resolves it only after preview and '
+            'approval. When you need a new private value, ask the user to '
+            'attach it with the key icon beside file attachment if that icon '
+            'is available, or to prefix the value with \$ in the chat. Both '
+            'methods send only a reference to you. Do not ask for an '
+            'unmarked raw value. An expired reference requires the user to '
+            'provide it again.',
+      ),
+    ]);
     final configuredPrompts = promptPolicy.when(
       ok: (composed) => composed,
       err: (failure) {
@@ -215,6 +252,8 @@ class ChatViewModel extends ViewModel<ChatState> {
               models: allowed,
               model: allowed.contains(state.model)
                   ? state.model
+                  : allowed.contains(preferredModel)
+                  ? preferredModel
                   : transport.defaultModel ?? allowed.first,
               allowModelSelection: transport.allowModelSelection,
               contextLengths: {
@@ -294,6 +333,13 @@ class ChatViewModel extends ViewModel<ChatState> {
     }
   }
 
+  /// Returns an opaque reference for the composer to insert at the cursor.
+  /// The raw value stays only in the in-memory vault until local execution.
+  String? reserveSecret(String value) {
+    if (!canType || value.trim().isEmpty) return null;
+    return _secrets.reserve(state.conversationId, value);
+  }
+
   /// The model belongs to the conversation; a new one keeps the last choice.
   void selectModel(String model) {
     if (state.allowModelSelection &&
@@ -325,9 +371,8 @@ class ChatViewModel extends ViewModel<ChatState> {
     if (_closed) {
       return AttachmentIssue.disabled;
     }
-    final issue = (policy ?? _attachmentPolicy).issueFor(
-      filename: file.filename,
-      size: file.size,
+    final issue = (policy ?? _attachmentPolicy).issueForAttachment(
+      file,
       pending: state.attachments.length,
     );
     updateState(
@@ -362,12 +407,12 @@ class ChatViewModel extends ViewModel<ChatState> {
     if (_closed) {
       return;
     }
+    var issue = picked.issue;
     for (final file in picked.files) {
-      attach(file, policy: rules);
+      final fileIssue = attach(file, policy: rules);
+      issue ??= fileIssue;
     }
-    if (picked.issue case final issue?) {
-      rejectAttachment(issue);
-    }
+    if (issue != null) rejectAttachment(issue);
   }
 
   /// Shows why a file could not be attached, e.g. it could not be read.
@@ -477,6 +522,7 @@ class ChatViewModel extends ViewModel<ChatState> {
       return;
     }
     await _store.delete(_scope, id);
+    _secrets.forget(id);
     if (_closed || !canManageConversations) {
       return;
     }
@@ -530,6 +576,8 @@ class ChatViewModel extends ViewModel<ChatState> {
         draft: '',
         model: model != null && state.models.contains(model)
             ? model
+            : state.models.contains(_preferredModel)
+            ? _preferredModel
             : state.model,
         usage: usage,
         clearUsage: usage == null,
@@ -608,6 +656,55 @@ class ChatViewModel extends ViewModel<ChatState> {
     approve(true);
   }
 
+  void submitPrivateInput(Map<String, String> values) {
+    final request = state.privateInput;
+    if (request == null || _privateInput?.isCompleted != false) return;
+    if (values.keys
+        .toSet()
+        .difference(request.fields.map((f) => f.name).toSet())
+        .isNotEmpty)
+      return;
+    for (final field in request.fields) {
+      if (field.required && (values[field.name]?.trim().isEmpty ?? true))
+        return;
+    }
+    _privateInput!.complete(Map.unmodifiable(values));
+  }
+
+  void declinePrivateInput() {
+    if (_privateInput?.isCompleted == false) _privateInput!.complete(null);
+  }
+
+  Future<Map<String, String>?> _requestPrivateInput(
+    int epoch,
+    String title,
+    List<PrivateInputField> fields,
+  ) async {
+    if (!_current(epoch) || fields.isEmpty || _privateInput != null)
+      return null;
+    final names = fields.map((field) => field.name).toSet();
+    if (names.length != fields.length ||
+        fields.any((field) => field.name.isEmpty))
+      return null;
+    final waiter = Completer<Map<String, String>?>();
+    _privateInput = waiter;
+    updateState(
+      state.copyWith(
+        phase: .permission,
+        privateInput: PrivateInputRequest(
+          id: _newId(),
+          title: title,
+          fields: List.unmodifiable(fields),
+        ),
+      ),
+    );
+    final result = await waiter.future;
+    if (identical(_privateInput, waiter)) _privateInput = null;
+    if (_current(epoch))
+      updateState(state.copyWith(phase: .executing, clearPrivateInput: true));
+    return _current(epoch) ? result : null;
+  }
+
   void cancel() {
     _epoch++;
     _resetStreaming();
@@ -617,6 +714,8 @@ class ChatViewModel extends ViewModel<ChatState> {
       _approval?.complete(false);
     }
     _approval = null;
+    if (_privateInput?.isCompleted == false) _privateInput?.complete(null);
+    _privateInput = null;
     if (!_closed) {
       updateState(
         state.copyWith(
@@ -626,6 +725,7 @@ class ChatViewModel extends ViewModel<ChatState> {
           messages: _closePendingCalls(),
           streaming: '',
           clearPending: true,
+          clearPrivateInput: true,
         ),
       );
       unawaited(_saveActive());
@@ -740,14 +840,15 @@ class ChatViewModel extends ViewModel<ChatState> {
   }
 
   Future<void> send([String? text]) async {
-    final content = (text ?? state.draft).trim();
+    final rawContent = (text ?? state.draft).trim();
     final files = state.attachments;
     if (!_initialized ||
         state.busy ||
-        (content.isEmpty && files.isEmpty) ||
+        (rawContent.isEmpty && files.isEmpty) ||
         _transport == null) {
       return;
     }
+    final content = _secrets.protect(state.conversationId, rawContent);
     _sentAt = DateTime.now();
     final message = AssistantMessage(
       role: .user,
@@ -1006,6 +1107,7 @@ class ChatViewModel extends ViewModel<ChatState> {
       return false;
     }
     final executionKey = '$turn/${call.id}';
+    final usesSecret = _secrets.containsReference(call.arguments);
     final resolved = _registry!.resolve(call.name, call.arguments);
     final tool = resolved.when(ok: (tool) => tool, err: (_) => null);
     var outcome = switch (resolved.errorOrNull?.detail ?? '') {
@@ -1070,19 +1172,46 @@ class ChatViewModel extends ViewModel<ChatState> {
           _approval = null;
           updateState(state.copyWith(clearPending: true));
         }
-        if (allowed && tool.isAvailable) {
+        final executionArguments = allowed && tool.isAvailable
+            ? _secrets.resolve(
+                state.conversationId,
+                call.arguments,
+                tool.definition.fields,
+              )
+            : null;
+        if (allowed && tool.isAvailable && executionArguments == null) {
+          _step(
+            executionKey,
+            StepPhase.failed,
+            detail: _strings.secretReferenceExpired,
+          );
+          outcome = 'Secret reference expired. Ask the user to send it again.';
+        } else if (allowed && tool.isAvailable) {
           _step(executionKey, StepPhase.running, startedAt: DateTime.now());
           _executed.add(executionKey);
           updateState(state.copyWith(phase: .executing));
+          var usedPrivateInput = false;
           final result = await tool.execute(
-            call.arguments,
+            executionArguments!,
             ToolContext(
               idempotencyKey: executionKey,
               selectedOptions: List.unmodifiable(selected),
               attachments: state.conversationAttachments,
               isCanceled: () => !_current(epoch),
-              onProgress: (fraction, label) =>
-                  _reportProgress(executionKey, epoch, fraction, label),
+              onPrivateInput: _enableInlinePrivateInput
+                  ? (title, fields) async {
+                      usedPrivateInput = true;
+                      return _requestPrivateInput(epoch, title, fields);
+                    }
+                  : null,
+              onProgress: (fraction, label) => _reportProgress(
+                executionKey,
+                epoch,
+                fraction,
+                usesSecret || usedPrivateInput
+                    ? 'Ejecutando con un valor privado'
+                    : _secrets.redact(state.conversationId, label),
+              ),
             ),
           );
           if (!_current(epoch)) {
@@ -1092,6 +1221,18 @@ class ChatViewModel extends ViewModel<ChatState> {
           _resetProgress();
           result.when(
             ok: (result) {
+              if (usesSecret || usedPrivateInput) {
+                _step(
+                  executionKey,
+                  StepPhase.completed,
+                  title: _strings.privateActionCompleted,
+                );
+                outcome =
+                    'Local tool completed successfully with a private '
+                    'value. The value and tool output are withheld.';
+                endsTurn = result.endsTurn;
+                return;
+              }
               images = List.unmodifiable(
                 result.images.where((image) => image.isImage),
               );
@@ -1100,29 +1241,58 @@ class ChatViewModel extends ViewModel<ChatState> {
               _step(
                 executionKey,
                 StepPhase.completed,
-                title: result.summary,
-                data: result.data,
+                title: result.summary == null
+                    ? null
+                    : _secrets.redact(state.conversationId, result.summary!),
+                data: (_secrets.redactValue(
+                  state.conversationId,
+                  result.data,
+                ) as Map).cast<String, Object?>(),
                 images: images,
               );
-              outcome = result.modelContent;
+              outcome = _secrets.redact(
+                state.conversationId,
+                result.modelContent,
+              );
               endsTurn = result.endsTurn;
               if (result.card case final card?) {
+                final safeCard = AssistantCard.fromJson(
+                  (_secrets.redactValue(
+                    state.conversationId,
+                    card.toJson(),
+                  ) as Map).cast<String, Object?>(),
+                );
                 updateState(
                   state.copyWith(
-                    cards: [...state.cards, card],
+                    cards: [...state.cards, safeCard],
                     entries: [
                       ...state.entries,
-                      ChatEntry(card: card),
+                      ChatEntry(card: safeCard),
                     ],
                   ),
                 );
               }
             },
             err: (error) {
+              if (usesSecret || usedPrivateInput) {
+                _step(
+                  executionKey,
+                  StepPhase.failed,
+                  detail: _strings.privateActionFailed,
+                );
+                outcome =
+                    'Local tool failed while using a private value. '
+                    'Do not assume it succeeded.';
+                return;
+              }
               // The tool's reason reaches the model, so it can correct the
               // call instead of guessing.
-              _step(executionKey, StepPhase.failed, detail: error.detail);
-              outcome = switch (error.detail) {
+              final safeDetail = _secrets.redact(
+                state.conversationId,
+                error.detail,
+              );
+              _step(executionKey, StepPhase.failed, detail: safeDetail);
+              outcome = switch (safeDetail) {
                 '' => 'Local tool failed. Do not assume it succeeded.',
                 final String detail =>
                   'Local tool failed: $detail Do not assume it succeeded.',
@@ -1163,6 +1333,7 @@ class ChatViewModel extends ViewModel<ChatState> {
       return;
     }
     cancel();
+    _secrets.clear();
     _closed = true;
     unawaited(_session?.cancel());
     unawaited(_transport?.dispose());

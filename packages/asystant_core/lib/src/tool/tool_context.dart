@@ -5,6 +5,28 @@ import 'package:asystant_core/src/model/asystant_attachment.dart';
 /// for the person, or an empty one.
 typedef ToolProgressListener = void Function(double fraction, String label);
 
+/// Metadata only. Values entered in the chat are delivered directly to the
+/// executing local tool and are never part of a model message.
+class PrivateInputField {
+  const PrivateInputField({
+    required this.name,
+    required this.label,
+    this.kind = .secret,
+    this.required = true,
+  });
+  final String name;
+  final String label;
+  final PrivateInputKind kind;
+  final bool required;
+}
+
+enum PrivateInputKind { secret, password, code, totp, text }
+
+typedef PrivateInputRequester = Future<Map<String, String>?> Function(
+  String title,
+  List<PrivateInputField> fields,
+);
+
 /// An execution capability, not a serializable model. Host tools check cancellation
 /// before committing a write and pass idempotencyKey to their own repository.
 class ToolContext {
@@ -14,8 +36,10 @@ class ToolContext {
     required bool Function() isCanceled,
     this.attachments = const [],
     ToolProgressListener? onProgress,
+    PrivateInputRequester? onPrivateInput,
   }) : _isCanceled = isCanceled,
-       _onProgress = onProgress;
+       _onProgress = onProgress,
+       _onPrivateInput = onPrivateInput;
 
   /// Pass this key to the host repository to prevent duplicate effects.
   final String idempotencyKey;
@@ -39,6 +63,22 @@ class ToolContext {
   final bool Function() _isCanceled;
 
   final ToolProgressListener? _onProgress;
+  final PrivateInputRequester? _onPrivateInput;
+
+  bool get supportsPrivateInput => _onPrivateInput != null;
+
+  /// Requests any number of private fields in an inline chat card. The model
+  /// sees only the tool's eventual safe outcome, never the entered values.
+  Future<Map<String, String>?> requestPrivateInput(
+    String title,
+    List<PrivateInputField> fields,
+  ) async {
+    checkCanceled();
+    if (_onPrivateInput == null) return null;
+    final values = await _onPrivateInput(title, fields);
+    checkCanceled();
+    return values;
+  }
 
   /// Whether this execution capability has been canceled or invalidated.
   bool get isCanceled => _isCanceled();

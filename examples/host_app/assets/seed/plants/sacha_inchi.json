@@ -1,0 +1,143 @@
+{
+  "id": "sacha_inchi",
+  "commonName": "Sacha inchi",
+  "otherNames": [
+    "maní del inca",
+    "maní inca"
+  ],
+  "scientificName": "Plukenetia volubilis L.",
+  "family": "Euphorbiaceae",
+  "partsUsed": [
+    "semillas"
+  ],
+  "easyExplanation": "El sacha inchi es una semilla amazónica rica en proteína y en grasas omega-3, que los pueblos indígenas comen tostada como alimento desde hace miles de años. Las semillas crudas pueden ser tóxicas por sustancias naturales que contienen (saponinas, lectinas) y siempre se deben tostar o cocinar antes de comerlas; una vez tostadas o en aceite, se consideran un alimento seguro. Un pequeño estudio en personas con presión alta, azúcar alta y colesterol alto encontró que el aceite en cápsulas bajó la presión arterial y el colesterol, sin cambios en el azúcar en la sangre; hacen falta más estudios para confirmarlo.",
+  "botany": {
+    "description": "Enredadera o bejuco leñoso de la familia Euphorbiaceae, cultivado por sus semillas oleaginosas.",
+    "identification": "Se reconoce por su fruto en forma de cápsula con varios lóbulos (parecida a una estrella), que al madurar y secarse libera semillas oscuras y aplanadas ricas en aceite.",
+    "cultivation": "Se cultiva en la Amazonía peruana y de países vecinos como cultivo comercial de semillas y aceite; también se recolecta de forma tradicional.",
+    "lookalikes": [
+      "Otras especies del género Plukenetia, de fruto y semilla similares."
+    ],
+    "nativeRange": "Cuenca amazónica: Bolivia, norte de Brasil, Colombia, Ecuador, Perú, Surinam, Venezuela y las Antillas de Barlovento.",
+    "sources": [
+      "s1",
+      "s2"
+    ]
+  },
+  "beliefs": [],
+  "indications": [
+    {
+      "tag": "blood_pressure_support",
+      "label": "Ayudar a bajar la presión arterial",
+      "evidence": "limited",
+      "note": "Un ensayo clínico preliminar, aleatorizado y controlado con placebo, en 54 personas con presión alta, azúcar alta y colesterol alto, encontró que 1000 mg al día de aceite de sacha inchi en cápsulas, durante 12 semanas, bajó la presión arterial y el colesterol total y LDL, sin cambios en la glucosa. Es un solo estudio pequeño; hacen falta más estudios para confirmarlo.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "capsule",
+      "route": "oral",
+      "title": "Cápsulas de aceite de sacha inchi",
+      "uses": [
+        "blood_pressure_support"
+      ],
+      "steps": [
+        {
+          "kind": "buy",
+          "text": "Compra cápsulas de aceite de sacha inchi en la farmacia o tienda naturista."
+        },
+        {
+          "kind": "swallow",
+          "text": "Tómalas con agua."
+        }
+      ],
+      "warnings": [
+        "Avisa a tu médico si tomas medicamentos para la presión arterial: el efecto podría sumarse.",
+        "Es un solo estudio pequeño y preliminar; no reemplaza el tratamiento médico de la presión, el azúcar o el colesterol altos."
+      ],
+      "dose": "1000 mg de aceite de sacha inchi al día, en cápsula (la dosis usada en el estudio).",
+      "frequency": "1 vez al día.",
+      "maxDays": 84,
+      "instructions": "Cápsulas de aceite de sacha inchi, 1000 mg al día, tomadas con agua; es la dosis y duración (12 semanas) usadas en el estudio clínico preliminar.",
+      "sources": [
+        "s4"
+      ]
+    }
+  ],
+  "contraindications": [],
+  "interactions": [
+    {
+      "medicationClass": "antihypertensive",
+      "severity": "caution",
+      "note": "El aceite de sacha inchi bajó la presión arterial en un estudio preliminar; junto con medicamentos para la presión, el efecto podría sumarse."
+    }
+  ],
+  "pregnancy": "notEstablished",
+  "lactation": "notEstablished",
+  "minAgeYears": 18,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Náuseas leves y molestias digestivas, sobre todo en la primera semana; suelen desaparecer con el uso continuado.",
+    "Las semillas crudas (sin tostar ni cocinar) pueden ser tóxicas por sus antinutrientes naturales (saponinas, lectinas, alcaloides); siempre se deben tostar o cocinar antes de comerlas."
+  ],
+  "safetySources": [
+    "s3",
+    "s4",
+    "s5"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/sacha_inchi.jpg",
+      "author": "NusHub",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plukenetia_volubilis_fruits.JPG",
+      "caption": "Frutos de sacha inchi (Plukenetia volubilis)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "botany",
+      "title": "Plukenetia volubilis L.",
+      "publisher": "Plants of the World Online (POWO), Royal Botanic Gardens, Kew",
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:354970-1",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Edible Fruits from the Ecuadorian Amazon: Ethnobotany, Physicochemical Characteristics, and Bioactive Components",
+      "publisher": "Plants (Basel) (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10610027/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Safety of roasted seeds from Plukenetia volubilis L. as a traditional food from a third country pursuant to Regulation (EU) No 2015/2283",
+      "publisher": "EFSA Journal (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13397464/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "science",
+      "title": "Effects of Sacha Inchi (Plukenetia volubilis L.) Oil Supplementation on Hyperglycaemia, Hypertension and Hyperlipidaemia (3Hs) Patients: A Preliminary Human Trial",
+      "publisher": "Plant Foods for Human Nutrition (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11861005/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s5",
+      "kind": "science",
+      "title": "The application prospects of sacha inchi (Plukenetia volubilis linneo) in rheumatoid arthritis",
+      "publisher": "Frontiers in Pharmacology (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11524839/",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

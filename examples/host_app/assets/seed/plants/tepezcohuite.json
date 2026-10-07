@@ -1,0 +1,205 @@
+{
+  "id": "tepezcohuite",
+  "commonName": "Tepezcohuite",
+  "otherNames": [
+    "jurema preta",
+    "árbol de la piel",
+    "cabrera",
+    "carbonal"
+  ],
+  "scientificName": "Mimosa tenuiflora (Willd.) Poir.",
+  "family": "Fabaceae",
+  "partsUsed": [
+    "corteza del tallo"
+  ],
+  "easyExplanation": "El tepezcohuite es un árbol espinoso mexicano cuya corteza, en polvo o decocción, se usa desde hace siglos solo sobre la piel para ayudar a sanar quemaduras, heridas leves y granos. Este catálogo describe únicamente ese uso externo: la corteza de este árbol también contiene DMT, una sustancia psicoactiva controlada, y no hay una forma establecida ni segura de tomarla por boca. La raíz se ha usado tradicionalmente para preparar una bebida alucinógena (jurema); eso no es un remedio y no se describe aquí.",
+  "botany": {
+    "description": "Árbol espinoso de 4 a 6 metros de altura, de copa irregular, tronco algo inclinado de 20 a 30 cm de diámetro y madera muy dura y pesada; sus hojas son compuestas, pequeñas y numerosas.",
+    "identification": "Se reconoce por sus espinas abundantes a lo largo de las ramas, sus hojas compuestas tipo pluma y su corteza rojiza por dentro, que se usa molida en polvo fino de color canela.",
+    "cultivation": "Crece de forma silvestre en bosque seco tropical, en suelos profundos y alcalinos, con 6 a 11 meses de sequía al año; se propaga por semilla y tolera suelos pobres.",
+    "lookalikes": [
+      "Otras especies del género Mimosa, de espinas y hojas parecidas."
+    ],
+    "nativeRange": "Noreste de Brasil (Caatinga) hasta el sur de México (costa de Oaxaca y Chiapas), y también Colombia, Venezuela, Panamá, Honduras y El Salvador.",
+    "sources": [
+      "s4"
+    ]
+  },
+  "beliefs": [
+    {
+      "claim": "El té de tepezcohuite, tomado por boca, ayuda a la inflamación o al dolor de muela.",
+      "note": "Este uso interno con la corteza y la hoja está documentado en la medicina tradicional, pero la corteza del tallo del tepezcohuite también contiene DMT, una sustancia psicoactiva controlada; no hay estudios que establezcan una dosis segura por boca en personas. Por eso este catálogo no recomienda tomar esta planta por boca, solo usarla sobre la piel.",
+      "sources": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "claim": "La raíz de tepezcohuite (jurema) es un remedio o un ritual seguro para \"limpiar\" el cuerpo o la mente.",
+      "note": "La raíz de esta planta se ha usado tradicionalmente para preparar una bebida alucinógena por su contenido de DMT, una sustancia controlada en la mayoría de los países, con efectos psicoactivos impredecibles y riesgo de una reacción grave (síndrome serotoninérgico) si se combina con antidepresivos u otras sustancias que afectan la serotonina. Esto no es un remedio casero y este catálogo no lo describe ni lo recomienda.",
+      "sources": [
+        "s3"
+      ]
+    }
+  ],
+  "indications": [
+    {
+      "tag": "minor_wound",
+      "label": "Heridas superficiales pequeñas",
+      "evidence": "popular",
+      "note": "Corteza en polvo espolvoreada sobre la piel, o compresas con la decocción; uso tradicional documentado en México y Brasil para ayudar a sanar la piel.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "tag": "skin_irritation",
+      "label": "Irritación leve de la piel",
+      "evidence": "popular",
+      "note": "Corteza en polvo o decocción aplicada sobre la piel; uso tradicional para granos y otras molestias leves de la piel.",
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "form": "topical",
+      "route": "topical",
+      "title": "Polvo de corteza de tepezcohuite sobre la piel",
+      "uses": [
+        "minor_wound",
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "clean",
+          "text": "Lava bien la piel con agua y jabón."
+        },
+        {
+          "kind": "apply",
+          "text": "Espolvorea una capa fina de corteza de tepezcohuite molida sobre la zona."
+        }
+      ],
+      "warnings": [
+        "Uso solo externo: no lo tomes por boca ni te lo lleves a la boca.",
+        "No lo uses sobre heridas profundas, quemaduras extensas o muy graves: esas necesitan atención médica.",
+        "No lo uses en bebés ni niños pequeños."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios; usa una capa fina de polvo, la costumbre tradicional.",
+      "frequency": "1 a 2 veces al día.",
+      "maxDays": 14,
+      "instructions": "Lava la piel, y espolvorea una capa fina de corteza de tepezcohuite molida sobre la zona afectada.",
+      "sources": [
+        "s1"
+      ]
+    },
+    {
+      "form": "decoction",
+      "route": "topical",
+      "title": "Compresas de tepezcohuite",
+      "uses": [
+        "minor_wound",
+        "skin_irritation"
+      ],
+      "steps": [
+        {
+          "kind": "boilWater",
+          "text": "Hierve agua con corteza de tepezcohuite."
+        },
+        {
+          "kind": "simmer",
+          "text": "Deja hervir unos minutos."
+        },
+        {
+          "kind": "strain",
+          "text": "Cuela y deja entibiar."
+        },
+        {
+          "kind": "compress",
+          "text": "Moja un paño limpio y ponlo sobre la piel afectada."
+        }
+      ],
+      "warnings": [
+        "Uso solo externo: no lo tomes por boca.",
+        "No lo uses sobre heridas profundas o quemaduras extensas: esas necesitan atención médica."
+      ],
+      "dose": "No hay una cantidad exacta establecida en estudios.",
+      "frequency": "1 a 2 veces al día.",
+      "maxDays": 14,
+      "instructions": "Hierve corteza de tepezcohuite en agua, cuela, deja entibiar y aplica en compresas sobre la piel afectada.",
+      "sources": [
+        "s1"
+      ]
+    }
+  ],
+  "contraindications": [
+    {
+      "kind": "condition",
+      "tag": "damaged_skin",
+      "note": "No lo uses sobre heridas profundas, quemaduras extensas o muy graves: esas necesitan atención médica."
+    }
+  ],
+  "interactions": [
+    {
+      "medicationClass": "antidepressant",
+      "severity": "avoid",
+      "note": "No tomes esta planta por boca si usas antidepresivos: su corteza contiene DMT, y combinarlo con medicamentos que afectan la serotonina puede causar una reacción grave. Este catálogo no recomienda tomar esta planta por boca en ninguna forma."
+    }
+  ],
+  "pregnancy": "avoid",
+  "lactation": "avoid",
+  "minAgeYears": 12,
+  "allergenGroups": [],
+  "sideEffects": [
+    "Irritación leve de la piel en personas sensibles.",
+    "Tomada por boca no es segura: su corteza contiene DMT, una sustancia psicoactiva controlada, sin una dosis segura establecida en personas."
+  ],
+  "safetySources": [
+    "s3"
+  ],
+  "photos": [
+    {
+      "ref": "asset://assets/plants/tepezcohuite.jpg",
+      "author": "Drewpiter",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mimosa-tenuiflora-bush.jpg",
+      "caption": "Arbusto de tepezcohuite (Mimosa tenuiflora)"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "popular",
+      "title": "Mimosa tenuiflora",
+      "publisher": "Useful Tropical Plants Database (tropical.theferns.info)",
+      "url": "https://tropical.theferns.info/viewtropical.php?id=Mimosa+tenuiflora",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s2",
+      "kind": "popular",
+      "title": "Re-examining hypotheses concerning the use and knowledge of medicinal plants: a study in the Caatinga vegetation of NE Brazil",
+      "publisher": "Journal of Ethnobiology and Ethnomedicine / PMC (PMC1557484)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1557484/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s3",
+      "kind": "science",
+      "title": "Extraction and Characterization of N,N-Dimethyltryptamine from Mimosa tenuiflora: A Multivariate Approach",
+      "publisher": "ACS Omega (PMID 41048742)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12489689/",
+      "accessedOn": "2026-09-29"
+    },
+    {
+      "id": "s4",
+      "kind": "botany",
+      "title": "Mimosa tenuiflora (Willd.) Poir.",
+      "publisher": "GBIF Backbone Taxonomy (Global Biodiversity Information Facility)",
+      "url": "https://api.gbif.org/v1/species/search?q=Mimosa%20tenuiflora&rank=SPECIES",
+      "accessedOn": "2026-09-29"
+    }
+  ]
+}

@@ -1,3 +1,21 @@
+## 0.5.1
+
+- Add `ToolContext.requestPrivateInput` with typed, ephemeral fields for local tools. Values are returned only to the tool.
+
+## 0.5.0
+
+- Extend `AsystantAttachmentPolicy` with MIME types and host-supplied regular expressions for file names and text content.
+
+## 0.4.0
+
+- Add `OpenAICompatibleProvider` for user-supplied HTTPS Chat Completions endpoints. It shares the streaming and tool-call codec with OpenRouter while omitting OpenRouter-only request fields and metadata paths.
+- Allow `OpenRouterTransport` to run in compatibility mode with an explicit preferred model; streamed inference requests do not follow redirects.
+
+## 0.3.1
+
+- Add `ToolField.acceptsSecret` to declare the only fields eligible for a private chat reference during local execution.
+- Add an opt-in credential-content guard to `AsystantAttachmentPolicy` and a `sensitiveContent` attachment issue.
+
 ## 0.3.0
 
 - `ToolContext.reportProgress(fraction, label: ...)`: a long tool reports how far it has come (0 to 1, clamped; non-finite values ignored) with an optional short label for the person. The context forwards it to an optional `onProgress` (`ToolProgressListener`) given by whoever runs the tool; it never reaches the model and does nothing once the call is canceled.
