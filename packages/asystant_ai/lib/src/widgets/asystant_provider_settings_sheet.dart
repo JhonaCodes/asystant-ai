@@ -1,184 +1,153 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:reactive_notifier/reactive_notifier.dart';
 
 import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/provider_settings_state.dart';
 import 'package:asystant_ai/src/service/asystant_provider_settings.dart';
+import 'package:asystant_ai/src/viewmodel/provider_settings_view_model.dart';
 
 /// Library-owned settings for the primary chat provider and model.
 Future<void> showAsystantProviderSettings(
   BuildContext context, {
   required AsystantAI assistant,
   AsystantStrings? strings,
-}) => showModalBottomSheet<void>(
-  context: context,
-  isScrollControlled: true,
-  useSafeArea: true,
-  builder: (context) =>
-      _ProviderSettingsSheet(assistant: assistant, strings: strings),
-);
+}) {
+  // Opening is the user's command, so the reset and load start here, before
+  // the sheet's first frame, and never again on a rebuild of the sheet.
+  unawaited(
+    ProviderSettingsViewModel.of(
+      assistant,
+    ).open(assistant, strings ?? AsystantStrings.of(context)),
+  );
+  return showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    useSafeArea: true,
+    builder: (context) =>
+        _ProviderSettingsSheet(assistant: assistant, strings: strings),
+  );
+}
 
-class _ProviderSettingsSheet extends StatefulWidget {
+extension _ProviderKindPresentation on AsystantProviderKind {
+  String toLabel(AsystantStrings strings) => switch (this) {
+    .backend => strings.providerAppAccount,
+    .openAi => strings.providerOpenAi,
+    .openRouter => strings.providerOpenRouter,
+    .gemini => strings.providerGemini,
+    .anthropic => strings.providerAnthropic,
+    .compatible => strings.providerCompatible,
+  };
+
+  String toModelIdHint() => switch (this) {
+    .openAi => 'gpt-…',
+    .openRouter => 'openai/gpt-…',
+    .gemini => 'gemini-…',
+    .anthropic => 'claude-…',
+    .backend || .compatible => 'provider/model',
+  };
+}
+
+class _ProviderSettingsSheet extends StatelessWidget {
   const _ProviderSettingsSheet({required this.assistant, this.strings});
 
   final AsystantAI assistant;
   final AsystantStrings? strings;
 
   @override
-  State<_ProviderSettingsSheet> createState() => _ProviderSettingsSheetState();
+  Widget build(BuildContext context) {
+    final strings = this.strings ?? AsystantStrings.of(context);
+    final colors = Theme.of(context).colorScheme;
+    final keyboard = MediaQuery.viewInsetsOf(context).bottom;
+    final safeBottom = keyboard > 0
+        ? 0.0
+        : MediaQueryData.fromView(View.of(context)).viewPadding.bottom;
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20, 20, 20, keyboard + safeBottom + 20),
+      child:
+          ReactiveViewModelBuilder<
+            ProviderSettingsViewModel,
+            ProviderSettingsState
+          >(
+            viewmodel: ProviderSettingsViewModel.of(assistant),
+            build: (state, viewModel, keep) => switch (state) {
+              ProviderSettingsState(isLoading: true) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              // No settings backend configured: an error state, not a crash.
+              ProviderSettingsState(isAvailable: false) => Center(
+                child: Text(
+                  state.error ?? strings.providerSettingsUnavailable,
+                  style: TextStyle(color: colors.error),
+                ),
+              ),
+              _ => _ProviderSettingsForm(
+                state: state,
+                viewModel: viewModel,
+                strings: strings,
+              ),
+            },
+          ),
+    );
+  }
 }
 
-class _ProviderSettingsSheetState extends State<_ProviderSettingsSheet> {
-  final _key = TextEditingController();
-  final _model = TextEditingController();
-  final _baseUrl = TextEditingController();
-  final _name = TextEditingController();
-  AsystantProviderKind _kind = .backend;
-  bool _loading = true;
-  bool _saving = false;
-  bool _hasKey = false;
-  String? _error;
-  String? _connection;
-  AsystantStrings get _strings => widget.strings ?? AsystantStrings.of(context);
+class _ProviderSettingsForm extends StatefulWidget {
+  const _ProviderSettingsForm({
+    required this.state,
+    required this.viewModel,
+    required this.strings,
+  });
 
-  String _formatError(FormatException error) =>
-      _strings.providerFormatError(error.message);
+  final ProviderSettingsState state;
+  final ProviderSettingsViewModel viewModel;
+  final AsystantStrings strings;
 
   @override
-  void initState() {
-    super.initState();
-    _load();
+  State<_ProviderSettingsForm> createState() => _ProviderSettingsFormState();
+}
+
+class _ProviderSettingsFormState extends State<_ProviderSettingsForm> {
+  final _key = TextEditingController();
+  late final _model = TextEditingController(text: widget.state.model);
+  late final _baseUrl = TextEditingController(text: widget.state.baseUrl);
+  late final _name = TextEditingController(text: widget.state.name);
+
+  void _select(AsystantProviderKind kind) {
+    _key.clear();
+    _model.clear();
+    unawaited(widget.viewModel.select(kind));
   }
 
-  Future<void> _load() async {
-    final settings = widget.assistant.providerSettings;
-    if (settings == null) {
-      if (mounted)
-        setState(() {
-          _loading = false;
-          _error = _strings.providerSettingsUnavailable;
-        });
-      return;
-    }
-    try {
-      final selected = await settings.load();
-      final hasKey = await settings.hasKey(selected.kind);
-      if (!mounted) return;
-      setState(() {
-        _kind = selected.kind;
-        _model.text = selected.model;
-        _baseUrl.text = selected.baseUrl;
-        _name.text = selected.name;
-        _hasKey = hasKey;
-        _loading = false;
-      });
-    } on Object {
-      if (mounted)
-        setState(() {
-          _loading = false;
-          _error = _strings.providerSecureStorageReadFailed;
-        });
-    }
-  }
-
-  Future<void> _select(AsystantProviderKind kind) async {
-    final settings = widget.assistant.providerSettings!;
-    setState(() {
-      _kind = kind;
-      _hasKey = false;
-      _error = null;
-      _connection = null;
-      _key.clear();
-      _model.clear();
-    });
-    final hasKey = await settings.hasKey(kind);
-    if (mounted && _kind == kind) setState(() => _hasKey = hasKey);
+  void _discardKey() {
+    if (mounted) _key.clear();
   }
 
   Future<void> _save() async {
-    if (_saving) return;
-    final settings = widget.assistant.providerSettings!;
-    setState(() {
-      _saving = true;
-      _error = null;
-    });
-    try {
-      await settings.save(
-        AsystantProviderSelection(
-          kind: _kind,
-          model: _model.text.trim(),
-          baseUrl: _baseUrl.text.trim(),
-          name: _name.text.trim(),
-        ),
-        apiKey: _key.text,
-      );
-      _key.clear();
-      await widget.assistant.refreshProvider();
-      if (mounted) Navigator.of(context).pop();
-    } on Object catch (error) {
-      if (mounted)
-        setState(() {
-          _error = error is FormatException
-              ? _formatError(error)
-              : _strings.providerApplyFailed;
-        });
-    } finally {
-      if (mounted) setState(() => _saving = false);
-    }
+    final isApplied = await widget.viewModel.save(
+      apiKey: _key.text,
+      model: _model.text,
+      baseUrl: _baseUrl.text,
+      name: _name.text,
+      onKeyStored: _discardKey,
+    );
+    if (isApplied && mounted) Navigator.of(context).pop();
   }
 
-  Future<void> _verify() async {
-    if (_saving || _kind == .backend) return;
-    setState(() {
-      _saving = true;
-      _error = null;
-      _connection = null;
-    });
-    try {
-      final selection = AsystantProviderSelection(
-        kind: _kind,
-        model: _model.text.trim(),
-        baseUrl: _baseUrl.text.trim(),
-        name: _name.text.trim(),
-      );
-      final provider = await widget.assistant.providerSettings!.provider(
-        selection,
-        keyOverride: _key.text,
-      );
-      final result = await provider.verify();
-      if (mounted) {
-        setState(() {
-          _connection = result.when(
-            ok: (_) => _strings.providerConnectionVerified,
-            err: (_) => _strings.providerVerificationRejected,
-          );
-        });
-      }
-    } on FormatException catch (error) {
-      if (mounted) setState(() => _error = _formatError(error));
-    } on Object {
-      if (mounted) setState(() => _error = _strings.providerCheckFailed);
-    } finally {
-      if (mounted) setState(() => _saving = false);
-    }
-  }
+  Future<void> _verify() => widget.viewModel.verify(
+    keyOverride: _key.text,
+    model: _model.text,
+    baseUrl: _baseUrl.text,
+    name: _name.text,
+  );
 
   Future<void> _removeKey() async {
-    if (_saving || _kind == .backend) return;
-    setState(() => _saving = true);
-    try {
-      final settings = widget.assistant.providerSettings!;
-      await settings.save(const AsystantProviderSelection());
-      await settings.deleteKey(_kind);
-      _key.clear();
-      await widget.assistant.refreshProvider();
-      if (mounted) Navigator.of(context).pop();
-    } on Object {
-      if (mounted) {
-        setState(() => _error = _strings.providerDeleteKeyFailed);
-      }
-    } finally {
-      if (mounted) setState(() => _saving = false);
-    }
+    final isRemoved = await widget.viewModel.removeKey(
+      onKeyRemoved: _discardKey,
+    );
+    if (isRemoved && mounted) Navigator.of(context).pop();
   }
 
   @override
@@ -193,200 +162,228 @@ class _ProviderSettingsSheetState extends State<_ProviderSettingsSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final state = widget.state;
+    final strings = widget.strings;
     final colors = Theme.of(context).colorScheme;
-    final keyboard = MediaQuery.viewInsetsOf(context).bottom;
-    final safeBottom = keyboard > 0
-        ? 0.0
-        : MediaQueryData.fromView(View.of(context)).viewPadding.bottom;
-    final settings = widget.assistant.providerSettings;
-    return Padding(
-      padding: EdgeInsets.fromLTRB(20, 20, 20, keyboard + safeBottom + 20),
-      child: _loading
-          ? const Center(child: CircularProgressIndicator())
-          : settings == null
-          // No settings backend configured: render an error state instead
-          // of force-unwrapping, which used to crash here.
-          ? Center(
-              child: Text(
-                _error ?? _strings.providerSettingsUnavailable,
-                style: TextStyle(color: colors.error),
-              ),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: .min,
+        crossAxisAlignment: .stretch,
+        children: [
+          Text(
+            strings.providerSettingsTitle,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            strings.providerSettingsDescription,
+            style: TextStyle(color: colors.onSurfaceVariant),
+          ),
+          const SizedBox(height: 20),
+          DropdownButtonFormField<AsystantProviderKind>(
+            initialValue: state.kind,
+            decoration: InputDecoration(labelText: strings.providerLabel),
+            items: state.availableKinds
+                .map(
+                  (kind) => DropdownMenuItem(
+                    value: kind,
+                    child: Text(kind.toLabel(strings)),
+                  ),
+                )
+                .toList(),
+            onChanged: state.isSaving
+                ? null
+                : (kind) {
+                    if (kind != null) _select(kind);
+                  },
+          ),
+          const SizedBox(height: 14),
+          if (state.usesHostProvider)
+            _HostModelField(
+              models: state.hostModels,
+              controller: _model,
+              isSaving: state.isSaving,
+              strings: strings,
             )
-          : SingleChildScrollView(
-              child: Column(
-                mainAxisSize: .min,
-                crossAxisAlignment: .stretch,
-                children: [
-                  Text(
-                    _strings.providerSettingsTitle,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    _strings.providerSettingsDescription,
-                    style: TextStyle(color: colors.onSurfaceVariant),
-                  ),
-                  const SizedBox(height: 20),
-                  DropdownButtonFormField<AsystantProviderKind>(
-                    initialValue: _kind,
-                    decoration: InputDecoration(
-                      labelText: _strings.providerLabel,
-                    ),
-                    items: [
-                      for (final kind in settings.availableKinds)
-                        DropdownMenuItem(
-                          value: kind,
-                          child: Text(switch (kind) {
-                            .backend => _strings.providerAppAccount,
-                            .openAi => _strings.providerOpenAi,
-                            .openRouter => _strings.providerOpenRouter,
-                            .gemini => _strings.providerGemini,
-                            .anthropic => _strings.providerAnthropic,
-                            .compatible => _strings.providerCompatible,
-                          }),
-                        ),
-                    ],
-                    onChanged: _saving
-                        ? null
-                        : (kind) {
-                            if (kind != null) _select(kind);
-                          },
-                  ),
-                  if (_kind == .backend) ...[
-                    const SizedBox(height: 14),
-                    Builder(
-                      builder: (context) {
-                        final available =
-                            widget.assistant.conversation.notifier.state.models;
-                        if (available.isEmpty) {
-                          return TextField(
-                            controller: _model,
-                            decoration: InputDecoration(
-                              labelText: _strings.primaryModelOptional,
-                              helperText: _strings.primaryModelAllowedHint,
-                            ),
-                          );
-                        }
-                        return DropdownButtonFormField<String>(
-                          initialValue: available.contains(_model.text)
-                              ? _model.text
-                              : '',
-                          decoration: InputDecoration(
-                            labelText: _strings.primaryModel,
-                          ),
-                          items: [
-                            DropdownMenuItem(
-                              value: '',
-                              child: Text(_strings.automatic),
-                            ),
-                            for (final id in available)
-                              DropdownMenuItem(
-                                value: id,
-                                child: Text(
-                                  id,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                          ],
-                          onChanged: _saving
-                              ? null
-                              : (id) => _model.text = id ?? '',
-                        );
-                      },
-                    ),
-                  ],
-                  if (_kind != .backend) ...[
-                    const SizedBox(height: 14),
-                    TextField(
-                      controller: _model,
-                      decoration: InputDecoration(
-                        labelText: _strings.primaryModelId,
-                        hintText: switch (_kind) {
-                          .openAi => 'gpt-…',
-                          .openRouter => 'openai/gpt-…',
-                          .gemini => 'gemini-…',
-                          .anthropic => 'claude-…',
-                          _ => 'provider/model',
-                        },
-                      ),
-                    ),
-                    if (_kind == .compatible) ...[
-                      const SizedBox(height: 14),
-                      TextField(
-                        controller: _name,
-                        decoration: InputDecoration(
-                          labelText: _strings.providerName,
-                        ),
-                      ),
-                      const SizedBox(height: 14),
-                      TextField(
-                        controller: _baseUrl,
-                        keyboardType: TextInputType.url,
-                        decoration: InputDecoration(
-                          labelText: _strings.providerBaseUrl,
-                          hintText: _strings.providerBaseUrlHint,
-                        ),
-                      ),
-                    ],
-                    const SizedBox(height: 14),
-                    TextField(
-                      controller: _key,
-                      obscureText: true,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      decoration: InputDecoration(
-                        labelText: _strings.providerApiKey,
-                        helperText: _hasKey
-                            ? _strings.providerSavedKeyHint
-                            : null,
-                      ),
-                    ),
-                    if (_kind == .anthropic) ...[
-                      const SizedBox(height: 8),
-                      Text(
-                        _strings.providerClaudeApiHint,
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                    ],
-                  ],
-                  if (_error != null) ...[
-                    const SizedBox(height: 12),
-                    Text(_error!, style: TextStyle(color: colors.error)),
-                  ],
-                  if (_connection != null) ...[
-                    const SizedBox(height: 12),
-                    Text(
-                      _connection!,
-                      style: TextStyle(color: colors.onSurfaceVariant),
-                    ),
-                  ],
-                  const SizedBox(height: 20),
-                  if (_kind != .backend)
-                    OutlinedButton(
-                      onPressed: _saving ? null : _verify,
-                      child: Text(_strings.providerTestConnection),
-                    ),
-                  if (_kind != .backend) const SizedBox(height: 8),
-                  FilledButton(
-                    onPressed: _saving ? null : _save,
-                    child: Text(
-                      _saving
-                          ? _strings.providerSaving
-                          : _strings.providerSaveAndUse,
-                    ),
-                  ),
-                  if (_kind != .backend &&
-                      _hasKey &&
-                      settings.availableKinds.contains(
-                        AsystantProviderKind.backend,
-                      ))
-                    TextButton(
-                      onPressed: _saving ? null : _removeKey,
-                      child: Text(_strings.providerDeleteLocalKey),
-                    ),
-                ],
-              ),
+          else
+            _LocalProviderFields(
+              state: state,
+              keyController: _key,
+              modelController: _model,
+              baseUrlController: _baseUrl,
+              nameController: _name,
+              strings: strings,
             ),
+          if (state.error case final error?) ...[
+            const SizedBox(height: 12),
+            Text(error, style: TextStyle(color: colors.error)),
+          ],
+          if (state.connection case final connection?) ...[
+            const SizedBox(height: 12),
+            Text(connection, style: TextStyle(color: colors.onSurfaceVariant)),
+          ],
+          const SizedBox(height: 20),
+          _ProviderSettingsActions(
+            state: state,
+            strings: strings,
+            onVerify: _verify,
+            onSave: _save,
+            onRemoveKey: _removeKey,
+          ),
+        ],
+      ),
     );
   }
+}
+
+/// Model choice for the app account: the allowed list, or free text.
+class _HostModelField extends StatelessWidget {
+  const _HostModelField({
+    required this.models,
+    required this.controller,
+    required this.isSaving,
+    required this.strings,
+  });
+
+  final List<String> models;
+  final TextEditingController controller;
+  final bool isSaving;
+  final AsystantStrings strings;
+
+  @override
+  Widget build(BuildContext context) {
+    if (models.isEmpty) {
+      return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: strings.primaryModelOptional,
+          helperText: strings.primaryModelAllowedHint,
+        ),
+      );
+    }
+    return DropdownButtonFormField<String>(
+      initialValue: models.contains(controller.text) ? controller.text : '',
+      decoration: InputDecoration(labelText: strings.primaryModel),
+      items: [
+        DropdownMenuItem(value: '', child: Text(strings.automatic)),
+        ...models.map(
+          (id) => DropdownMenuItem(
+            value: id,
+            child: Text(id, overflow: .ellipsis),
+          ),
+        ),
+      ],
+      onChanged: isSaving ? null : (id) => controller.text = id ?? '',
+    );
+  }
+}
+
+/// Model, endpoint and key fields for a provider the person configures.
+class _LocalProviderFields extends StatelessWidget {
+  const _LocalProviderFields({
+    required this.state,
+    required this.keyController,
+    required this.modelController,
+    required this.baseUrlController,
+    required this.nameController,
+    required this.strings,
+  });
+
+  final ProviderSettingsState state;
+  final TextEditingController keyController;
+  final TextEditingController modelController;
+  final TextEditingController baseUrlController;
+  final TextEditingController nameController;
+  final AsystantStrings strings;
+
+  @override
+  Widget build(BuildContext context) => Column(
+    mainAxisSize: .min,
+    crossAxisAlignment: .stretch,
+    children: [
+      TextField(
+        controller: modelController,
+        decoration: InputDecoration(
+          labelText: strings.primaryModelId,
+          hintText: state.kind.toModelIdHint(),
+        ),
+      ),
+      if (state.kind == .compatible) ...[
+        const SizedBox(height: 14),
+        TextField(
+          controller: nameController,
+          decoration: InputDecoration(labelText: strings.providerName),
+        ),
+        const SizedBox(height: 14),
+        TextField(
+          controller: baseUrlController,
+          keyboardType: .url,
+          decoration: InputDecoration(
+            labelText: strings.providerBaseUrl,
+            hintText: strings.providerBaseUrlHint,
+          ),
+        ),
+      ],
+      const SizedBox(height: 14),
+      TextField(
+        controller: keyController,
+        obscureText: true,
+        enableSuggestions: false,
+        autocorrect: false,
+        decoration: InputDecoration(
+          labelText: strings.providerApiKey,
+          helperText: state.hasKey ? strings.providerSavedKeyHint : null,
+        ),
+      ),
+      if (state.kind == .anthropic) ...[
+        const SizedBox(height: 8),
+        Text(
+          strings.providerClaudeApiHint,
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+      ],
+    ],
+  );
+}
+
+class _ProviderSettingsActions extends StatelessWidget {
+  const _ProviderSettingsActions({
+    required this.state,
+    required this.strings,
+    required this.onVerify,
+    required this.onSave,
+    required this.onRemoveKey,
+  });
+
+  final ProviderSettingsState state;
+  final AsystantStrings strings;
+  final VoidCallback onVerify;
+  final VoidCallback onSave;
+  final VoidCallback onRemoveKey;
+
+  @override
+  Widget build(BuildContext context) => Column(
+    mainAxisSize: .min,
+    crossAxisAlignment: .stretch,
+    children: [
+      if (!state.usesHostProvider) ...[
+        OutlinedButton(
+          onPressed: state.isSaving ? null : onVerify,
+          child: Text(strings.providerTestConnection),
+        ),
+        const SizedBox(height: 8),
+      ],
+      FilledButton(
+        onPressed: state.isSaving ? null : onSave,
+        child: Text(
+          state.isSaving ? strings.providerSaving : strings.providerSaveAndUse,
+        ),
+      ),
+      if (state.canDeleteKey)
+        TextButton(
+          onPressed: state.isSaving ? null : onRemoveKey,
+          child: Text(strings.providerDeleteLocalKey),
+        ),
+    ],
+  );
 }
