@@ -17,8 +17,11 @@ class GenUiCard extends StatelessWidget {
     required this.strings,
     this.selected = const [],
     this.onSelect,
+    this.onOptionPressed,
     this.onApprove,
     this.onDeny,
+    this.approveLabel,
+    this.denyLabel,
     this.content,
     this.framed = true,
     this.actions = const [],
@@ -41,9 +44,16 @@ class GenUiCard extends StatelessWidget {
 
   final ValueChanged<String>? onSelect;
 
+  /// A completed card's suggested action. Pending selection uses [onSelect].
+  final ValueChanged<String>? onOptionPressed;
+
   final VoidCallback? onApprove;
 
   final VoidCallback? onDeny;
+
+  final String? approveLabel;
+
+  final String? denyLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +65,11 @@ class GenUiCard extends StatelessWidget {
       strings: strings,
       selected: selected,
       onSelect: onSelect,
+      onOptionPressed: onOptionPressed,
       onApprove: onApprove,
       onDeny: onDeny,
+      approveLabel: approveLabel,
+      denyLabel: denyLabel,
       actions: actions,
     );
     // A card waiting for the person stands out, like a permission request.
@@ -69,7 +82,9 @@ class GenUiCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: tokens.spacing),
       padding: EdgeInsets.all(tokens.padding),
       decoration: BoxDecoration(
-        color: colors.surfaceContainerLow,
+        color: awaitsDecision
+            ? colors.surfaceContainerHigh
+            : colors.surfaceContainerLow,
         border: Border.all(
           color: awaitsDecision
               ? colors.primary.withValues(alpha: tokens.permissionBorderOpacity)
@@ -88,8 +103,11 @@ class _CardContents extends StatelessWidget {
     required this.strings,
     required this.selected,
     this.onSelect,
+    this.onOptionPressed,
     this.onApprove,
     this.onDeny,
+    this.approveLabel,
+    this.denyLabel,
     this.content,
     this.actions = const [],
   });
@@ -107,9 +125,15 @@ class _CardContents extends StatelessWidget {
 
   final ValueChanged<String>? onSelect;
 
+  final ValueChanged<String>? onOptionPressed;
+
   final VoidCallback? onApprove;
 
   final VoidCallback? onDeny;
+
+  final String? approveLabel;
+
+  final String? denyLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -130,12 +154,17 @@ class _CardContents extends StatelessWidget {
           SizedBox(height: tokens.spacing),
           content,
         ],
-        if (card.options.isNotEmpty) ...[
+        if (card.options.isNotEmpty &&
+            (onSelect != null || onOptionPressed != null)) ...[
           SizedBox(height: tokens.spacing),
           _CardOptions(
             options: card.options,
             selected: selected,
             onSelect: onSelect,
+            onOptionPressed: onOptionPressed,
+            stacked:
+                card.kind == AssistantCardKind.selection &&
+                onOptionPressed != null,
           ),
         ],
         if (onDeny case final deny?) ...[
@@ -144,6 +173,8 @@ class _CardContents extends StatelessWidget {
             strings: strings,
             onDeny: deny,
             onApprove: onApprove,
+            approveLabel: approveLabel,
+            denyLabel: denyLabel,
           ),
         ],
         if (actions.isNotEmpty) ...[
@@ -185,6 +216,8 @@ class _CardOptions extends StatelessWidget {
     required this.options,
     required this.selected,
     this.onSelect,
+    this.onOptionPressed,
+    this.stacked = false,
   });
 
   final List<String> options;
@@ -193,24 +226,53 @@ class _CardOptions extends StatelessWidget {
 
   final ValueChanged<String>? onSelect;
 
+  final ValueChanged<String>? onOptionPressed;
+
+  final bool stacked;
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
+    if (stacked) {
+      return Column(
+        crossAxisAlignment: .stretch,
+        children: [
+          for (final (index, option) in options.indexed) ...[
+            OutlinedButton(
+              onPressed: onOptionPressed == null
+                  ? null
+                  : () => onOptionPressed!(option),
+              style: OutlinedButton.styleFrom(
+                alignment: Alignment.centerLeft,
+                minimumSize: const Size.fromHeight(48),
+              ),
+              child: Text(option, textAlign: TextAlign.start),
+            ),
+            if (index < options.length - 1)
+              SizedBox(height: tokens.spacing / 2),
+          ],
+        ],
+      );
+    }
     return Wrap(
       spacing: tokens.spacing / 2,
       runSpacing: tokens.spacing / 2,
-      children: options
-          .map(
-            (option) => FilterChip(
+      children: [
+        for (final option in options)
+          if (onSelect case final select?)
+            FilterChip(
               label: Text(option),
               selected: selected.contains(option),
-              onSelected: switch (onSelect) {
-                final select? => (_) => select(option),
-                null => null,
-              },
+              onSelected: (_) => select(option),
+            )
+          else
+            OutlinedButton(
+              onPressed: onOptionPressed == null
+                  ? null
+                  : () => onOptionPressed!(option),
+              child: Text(option),
             ),
-          )
-          .toList(),
+      ],
     );
   }
 }
@@ -220,6 +282,8 @@ class _CardConfirmation extends StatelessWidget {
     required this.strings,
     required this.onDeny,
     this.onApprove,
+    this.approveLabel,
+    this.denyLabel,
   });
 
   final AsystantStrings strings;
@@ -228,6 +292,10 @@ class _CardConfirmation extends StatelessWidget {
 
   final VoidCallback? onApprove;
 
+  final String? approveLabel;
+
+  final String? denyLabel;
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
@@ -235,8 +303,20 @@ class _CardConfirmation extends StatelessWidget {
       spacing: tokens.spacing - 4,
       runSpacing: tokens.spacing - 4,
       children: [
-        OutlinedButton(onPressed: onDeny, child: Text(strings.deny)),
-        FilledButton(onPressed: onApprove, child: Text(strings.allow)),
+        OutlinedButton(
+          onPressed: onDeny,
+          child: Text(denyLabel ?? strings.deny),
+        ),
+        FilledButton(
+          onPressed: onApprove,
+          style: FilledButton.styleFrom(
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            foregroundColor: AsystantTheme.contrastOn(
+              Theme.of(context).colorScheme.primary,
+            ),
+          ),
+          child: Text(approveLabel ?? strings.allow),
+        ),
       ],
     );
   }

@@ -3,6 +3,7 @@ import 'package:asystant_core/asystant_core.dart';
 
 import '../model/chat_state.dart';
 import '../model/assistant_step.dart';
+import '../model/asystant_action_policy.dart';
 
 /// Pass a subclass to AsystantChat to customize wording or add a language.
 class AsystantStrings {
@@ -86,6 +87,16 @@ class AsystantStrings {
       spanish ? '$name está usando la app' : '$name is using the app';
   String get reviewBeforeAuthorizing =>
       spanish ? 'Revisa antes de autorizar' : 'Review before authorizing';
+  String get chooseBeforeContinuing =>
+      spanish ? 'Elige antes de continuar' : 'Choose before continuing';
+  String get continueAction => spanish ? 'Continuar' : 'Continue';
+  String get approvalRequired =>
+      spanish ? 'Requiere aprobación' : 'Approval required';
+  String get allowAllForSession =>
+      spanish ? 'Aceptar todas en esta sesión' : 'Approve all for this session';
+  String get allowAllForSessionDetail => spanish
+      ? 'Autoriza esta acción y las siguientes que permitan aprobación de sesión, hasta que cierres sesión.'
+      : 'Authorizes this and later actions that allow session approval, until you sign out.';
   String get awaitingDecision => spanish
       ? 'Hay una acción esperando tu respuesta: usa Autorizar o Rechazar.'
       : 'An action is waiting for you: use Authorize or Decline.';
@@ -104,6 +115,16 @@ class AsystantStrings {
 
   String contextPercent(int percent) =>
       spanish ? '$percent % usado' : '$percent % used';
+
+  String contextCompactPercent(int percent) => '$percent%';
+
+  String sensitivityLevel(AsystantSensitivityLevel level) => switch (level) {
+    .none => spanish ? 'Nulo' : 'None',
+    .low => spanish ? 'Bajo' : 'Low',
+    .medium => spanish ? 'Medio' : 'Medium',
+    .high => spanish ? 'Alto' : 'High',
+    .admin => 'Admin',
+  };
   String contextUsed(int used) => '${tokens(used)} tokens';
   String get contextTitle =>
       spanish ? 'Memoria de la conversación' : 'Conversation memory';

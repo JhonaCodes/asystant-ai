@@ -13,3 +13,10 @@ typedef AsystantCardContentBuilder = Widget? Function(
   BuildContext context,
   AssistantCard card,
 );
+
+/// Replaces a completed card with a host domain widget. Pending permission
+/// cards never use this builder and keep the library's approval controls.
+typedef AsystantCompletedCardBuilder = Widget? Function(
+  BuildContext context,
+  AssistantCard card,
+);

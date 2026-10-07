@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:reactive_notifier/reactive_notifier.dart';
 
 import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/model/asystant_action_policy.dart';
 import 'package:asystant_ai/src/model/assistant_step.dart';
 import 'package:asystant_ai/src/model/asystant_model_option.dart';
 import 'package:asystant_ai/src/model/asystant_turn_limits.dart';
@@ -19,6 +20,12 @@ import 'package:asystant_ai/src/service/asystant_file_picker.dart';
 /// Asked on every call, after the tool's preview and before it runs; see
 /// `AsystantAI.requiresConfirmation`.
 typedef AsystantConfirmationPolicy = bool Function(AsystantTool tool);
+
+/// Classifies each invocation after argument validation and before preview.
+typedef AsystantActionPolicyResolver = AsystantActionPolicy Function(
+  AsystantTool tool,
+  ToolArguments arguments,
+);
 
 /// Owns conversation state and executes only registered, authorized local tools.
 class ChatViewModel extends ViewModel<ChatState> {
@@ -72,6 +79,10 @@ class ChatViewModel extends ViewModel<ChatState> {
   /// Whether a call waits for the person; asked again on every call.
   AsystantConfirmationPolicy _confirmation = _toolDecides;
 
+  AsystantActionPolicyResolver? _actionPolicy;
+
+  bool _approvesAllForSession = false;
+
   static bool _toolDecides(AsystantTool tool) => tool.requiresConfirmation;
 
   /// When the last message went out; see [stop].
@@ -116,6 +127,7 @@ class ChatViewModel extends ViewModel<ChatState> {
     AsystantContextSource? context,
     AsystantTurnLimits turnLimits = const AsystantTurnLimits(),
     AsystantConfirmationPolicy? confirmation,
+    AsystantActionPolicyResolver? actionPolicy,
   }) async {
     turnLimits.validate();
     if (_closed || state.busy || state.phase == ChatPhase.initializing) {
@@ -132,6 +144,8 @@ class ChatViewModel extends ViewModel<ChatState> {
     _turnLimits = turnLimits;
     _context = context ?? _noContext;
     _confirmation = confirmation ?? _toolDecides;
+    _actionPolicy = actionPolicy;
+    _approvesAllForSession = false;
     // A retry for the same person keeps the conversations; anyone else
     // starts clean.
     final sameIdentity = _identity != null && _identity == transport.identity;
@@ -153,9 +167,9 @@ class ChatViewModel extends ViewModel<ChatState> {
       if (_identity != transport.identity) {
         cancel();
         _initialized = false;
-        unawaited(_store.clear(_scope));
         _identity = transport.identity;
         _executed.clear();
+        _approvesAllForSession = false;
         updateState(ChatState(phase: ChatPhase.idle, conversationId: _newId()));
       }
     });
@@ -234,14 +248,31 @@ class ChatViewModel extends ViewModel<ChatState> {
     if (!_current(epoch)) {
       return;
     }
-    saved.when(
-      ok: (summaries) => updateState(
-        state.copyWith(
-          conversations: {
-            for (final summary in [...summaries, ...state.conversations])
-              summary.id: summary,
-          }.values.sorted((a, b) => b.updatedAt.compareTo(a.updatedAt)),
-        ),
+    final summaries = saved.when(ok: (items) => items, err: (_) => null);
+    if (summaries == null) return;
+    final ordered = {
+      for (final summary in [...summaries, ...state.conversations])
+        summary.id: summary,
+    }.values.sorted((a, b) => b.updatedAt.compareTo(a.updatedAt));
+    updateState(state.copyWith(conversations: ordered));
+    final active = await _store.activeId(_scope);
+    if (!_current(epoch)) return;
+    final id = active.when(ok: (value) => value, err: (_) => null);
+    if (id != null && ordered.every((summary) => summary.id != id)) {
+      _showConversation(id: id);
+      return;
+    }
+    final restoreId = id ?? ordered.firstOrNull?.id;
+    if (restoreId == null) return;
+    final snapshot = await _store.read(_scope, restoreId);
+    if (!_current(epoch)) return;
+    snapshot.when(
+      ok: (saved) => _showConversation(
+        id: saved.summary.id,
+        messages: saved.messages,
+        entries: saved.entries,
+        model: saved.summary.model,
+        usage: saved.summary.usage,
       ),
       err: (_) {},
     );
@@ -484,6 +515,9 @@ class ChatViewModel extends ViewModel<ChatState> {
     TokenUsage? usage,
   }) {
     _resetStreaming();
+    if (_initialized) {
+      unawaited(_store.setActiveId(_scope, id));
+    }
     updateState(
       state.copyWith(
         phase: .ready,
@@ -559,6 +593,19 @@ class ChatViewModel extends ViewModel<ChatState> {
     if (_approval?.isCompleted == false) {
       _approval?.complete(allow);
     }
+  }
+
+  /// Approves this action and later eligible approvals in this login only.
+  void approveAllForSession() {
+    final pending = state.pending;
+    if (pending == null ||
+        !pending.canApprove ||
+        !pending.policy.requiresApproval ||
+        !pending.policy.allowSessionApproval) {
+      return;
+    }
+    _approvesAllForSession = true;
+    approve(true);
   }
 
   void cancel() {
@@ -648,6 +695,7 @@ class ChatViewModel extends ViewModel<ChatState> {
     double? progress,
     String? progressLabel,
     List<AsystantAttachment>? images,
+    AsystantSensitivity? sensitivity,
   }) {
     final exists = state.steps.any((step) => step.id == id);
     updateState(
@@ -666,6 +714,7 @@ class ChatViewModel extends ViewModel<ChatState> {
                             progress: progress,
                             progressLabel: progressLabel,
                             images: images,
+                            sensitivity: sensitivity,
                           )
                         : step,
                   )
@@ -683,6 +732,7 @@ class ChatViewModel extends ViewModel<ChatState> {
                   progress: progress,
                   progressLabel: progressLabel ?? '',
                   images: images ?? const [],
+                  sensitivity: sensitivity,
                 ),
               ],
       ),
@@ -735,6 +785,7 @@ class ChatViewModel extends ViewModel<ChatState> {
         clearFailure: true,
       ),
     );
+    unawaited(_saveActive());
     // Frozen for the turn, like its epoch.
     final limits = _turnLimits;
     try {
@@ -981,10 +1032,21 @@ class ChatViewModel extends ViewModel<ChatState> {
       final card = preview.when(ok: (card) => card, err: (_) => null);
       failure = preview.errorOrNull?.detail ?? '';
       if (card != null) {
-        _step(executionKey, StepPhase.preparing, title: card.title);
+        final policy =
+            _actionPolicy?.call(tool, call.arguments) ??
+            AsystantActionPolicy(requiresApproval: _confirmation(tool));
+        _step(
+          executionKey,
+          StepPhase.preparing,
+          title: card.title,
+          sensitivity: policy.displaySensitivity,
+        );
         // A choice is input the tool needs, not a permission, so the policy
         // never skips it.
-        var allowed = !_confirmation(tool) && !tool.requiresSelection;
+        final needsApproval =
+            policy.requiresApproval &&
+            !(_approvesAllForSession && policy.allowSessionApproval);
+        var allowed = !needsApproval && !tool.requiresSelection;
         var selected = <String>[];
         if (!allowed) {
           _step(executionKey, StepPhase.permission);
@@ -996,6 +1058,7 @@ class ChatViewModel extends ViewModel<ChatState> {
                 call: call,
                 card: card,
                 requiresSelection: tool.requiresSelection,
+                policy: policy,
               ),
             ),
           );

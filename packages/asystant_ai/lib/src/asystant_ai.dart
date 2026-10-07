@@ -4,7 +4,10 @@ import 'dart:typed_data';
 import 'package:asystant_core/asystant_core.dart';
 
 import 'package:asystant_ai/src/model/asystant_model_option.dart';
+import 'package:asystant_ai/src/model/asystant_action_policy.dart';
 import 'package:asystant_ai/src/model/asystant_turn_limits.dart';
+import 'package:asystant_ai/src/presentation/asystant_presentation.dart';
+import 'package:asystant_ai/src/presentation/asystant_presentation_registry.dart';
 import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
 import 'package:asystant_ai/src/service/asystant_service.dart';
 
@@ -21,6 +24,14 @@ abstract class AsystantAI with AsystantService {
 
   /// Local application tools to register during initialization.
   List<AsystantTool> get tools;
+
+  /// Read-only presentations exposed as tools and restored as native widgets.
+  List<AsystantPresentation> get presentations => const [];
+
+  AsystantPresentationRegistry? _presentationRegistry;
+
+  AsystantPresentationRegistry get presentationRegistry =>
+      _presentationRegistry ??= AsystantPresentationRegistry(presentations);
 
   /// Product-specific instructions registered alongside tool schemas.
   List<AsystantSystemPrompt> get systemPrompts => const [];
@@ -41,6 +52,21 @@ abstract class AsystantAI with AsystantService {
   /// [AsystantTool.requiresConfirmation]. It never skips
   /// [AsystantTool.requiresSelection]: a choice is input, not a permission.
   bool requiresConfirmation(AsystantTool tool) => tool.requiresConfirmation;
+
+  /// Classifies one validated tool call before it is shown or executed.
+  ///
+  /// A tool can implement [AsystantActionPolicyProvider] for an argument-aware
+  /// policy. Override this method for a central host policy. Existing tools
+  /// keep their [requiresConfirmation] behavior until classified explicitly.
+  AsystantActionPolicy actionPolicyFor(
+    AsystantTool tool,
+    ToolArguments arguments,
+  ) => switch (tool) {
+    final AsystantActionPolicyProvider provider => provider.actionPolicy(
+      arguments,
+    ),
+    _ => AsystantActionPolicy(requiresApproval: requiresConfirmation(tool)),
+  };
 
   /// Whether tool registration and model assignment have completed.
   bool get isInitialized => conversation.notifier.isInitialized;
@@ -103,7 +129,11 @@ abstract class AsystantAI with AsystantService {
     }
     _pendingTransport = configured;
     _initialize = () {
-      final registeredTools = [...builtInTools, ...tools];
+      final registeredTools = [
+        ...builtInTools,
+        ...tools,
+        ...presentationRegistry.tools,
+      ];
       final registeredPrompts = [...systemPrompts, ...additionalSystemPrompts];
       _pendingTransport = null;
       return conversation.notifier.configure(
@@ -116,6 +146,7 @@ abstract class AsystantAI with AsystantService {
         context: contextPrompts,
         turnLimits: turnLimits,
         confirmation: requiresConfirmation,
+        actionPolicy: actionPolicyFor,
       );
     };
   }

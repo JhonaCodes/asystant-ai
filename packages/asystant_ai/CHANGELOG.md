@@ -1,3 +1,20 @@
+## 0.7.3
+
+- Add `showAsystantSecretPrompt` for one-time values collected on the device after an action's approval. The dialog returns values only to its caller and never adds them to conversation state.
+- Keep the control-center chat, persistent conversations, native presentations and per-invocation sensitivity policy in the reusable package.
+
+## 0.6.0
+
+- Add `AsystantActionPolicy` and `AsystantSensitivity` so tools or the host assistant can classify each validated invocation by a host-defined name and color and decide whether it requires approval.
+- Show sensitivity on approval cards and in the collapsible activity panel.
+- Add **Approve all for this session** to eligible approval cards. It applies only to the current assistant login, never skips required selections, and is not persisted.
+
+## 0.5.0
+
+- Register any number of `AsystantPresentation` definitions on an assistant. Each definition provides its tool schema, input validation, trusted data resolution and completed-card widget.
+- Persist presentation identity and data in conversation snapshots, so native cards survive app restarts; unknown presentations retain a generic card fallback.
+- Include `AsystantChoicesPresentation` for questions with tappable answers.
+
 ## 0.4.3
 
 - `AsystantChat.identityIcon` lets the host replace the default sparkle in the header with its own identity mark.
@@ -75,3 +92,17 @@
 - Session-backed gateway authentication and server-assigned model policies.
 - English examples and integration guidance for the reference Rust API.
 - Embeddable Flutter chat, adaptive layouts, genUI cards and reactive_notifier state.
+## 0.7.0
+
+- Define the five tool sensitivity levels `none` (Nulo), `low` (Bajo), `medium` (Medio), `high` (Alto) and `admin` (Admin). Host tools assign a level for each validated invocation; the library provides its name, color and approval behavior.
+- Run `none` and `low` actions immediately. Require approval for `medium`, `high` and `admin`, with the existing optional approval for the current session. Required selections always wait for the person.
+- Move the tappable context usage meter into the chat header, leaving the composer free for input.
+- Preserve the legacy `requiresConfirmation` behavior for tools that have not been classified yet.
+## 0.7.1
+
+- Remove the empty composer footer after moving context usage into the header.
+## 0.7.2
+
+- Show sensitivity as a compact colored ticket icon beside each action in the activity row; keep the localized level name in its tooltip and accessibility label.
+- Place the compact context meter beside the chat header controls, with a full tooltip and tappable detail.
+- Keep sensitivity identifiers and stored names in English while localizing their visible labels.

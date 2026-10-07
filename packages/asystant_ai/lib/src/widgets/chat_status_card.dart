@@ -27,7 +27,9 @@ class ChatStatusCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: metrics.messageGap),
       padding: EdgeInsets.all(metrics.cardPadding),
       decoration: BoxDecoration(
-        color: colors.surfaceContainerLow,
+        color: color == null
+            ? colors.surfaceContainerLow
+            : colors.surfaceContainerHigh,
         border: Border.all(color: color ?? colors.outlineVariant),
         borderRadius: BorderRadius.circular(10),
       ),

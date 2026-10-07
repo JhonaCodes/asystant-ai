@@ -7,6 +7,8 @@ import 'package:reactive_notifier/reactive_notifier.dart';
 import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/asystant_conversation_actions_style.dart';
+import 'package:asystant_ai/src/model/asystant_composer_layout.dart';
+import 'package:asystant_ai/src/model/asystant_menu_action.dart';
 import 'package:asystant_ai/src/model/asystant_host_card.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/service/asystant_file_picker.dart';
@@ -35,6 +37,7 @@ class AsystantChat extends StatefulWidget {
     this.strings,
     this.onOpenLink,
     this.cardContentBuilder,
+    this.completedCardBuilder,
     this.isExpanded = false,
     this.onToggleExpansion,
     this.showsHandle = false,
@@ -48,6 +51,9 @@ class AsystantChat extends StatefulWidget {
     this.conversationMenuIcon,
     this.identityIcon,
     this.welcomeContent,
+    this.menuActions = const [],
+    this.composerLayout = AsystantComposerLayout.stacked,
+    this.composerHeader,
   });
 
   /// Host buttons in the header row, before the conversation actions, such
@@ -65,6 +71,15 @@ class AsystantChat extends StatefulWidget {
 
   /// Host welcome screen when the conversation is empty.
   final Widget? welcomeContent;
+
+  /// Host navigation and other actions in the conversation menu.
+  final List<AsystantMenuAction> menuActions;
+
+  /// Built-in composer layout; inline keeps attachments, model selection and send.
+  final AsystantComposerLayout composerLayout;
+
+  /// Host content immediately above the composer field.
+  final Widget? composerHeader;
 
   final AsystantAI assistant;
 
@@ -84,6 +99,10 @@ class AsystantChat extends StatefulWidget {
 
   /// Adds typed, host-owned content to completed cards only.
   final AsystantCardContentBuilder? cardContentBuilder;
+
+  /// Host presentation for a completed domain card, such as a native ticket
+  /// row. A null result keeps the built-in structured card.
+  final AsystantCompletedCardBuilder? completedCardBuilder;
 
   final VoidCallback? onClose;
 
@@ -243,6 +262,7 @@ class _ChatLayout extends StatelessWidget {
           description: assistant.description,
           state: state,
           strings: strings,
+          contextUsage: state.contextUsage,
           canManage: viewModel.canManageConversations,
           showsHandle: chat.showsHandle,
           isExpanded: chat.isExpanded,
@@ -251,6 +271,7 @@ class _ChatLayout extends StatelessWidget {
           actionsStyle: chat.conversationActionsStyle,
           menuIcon: chat.conversationMenuIcon,
           identityIcon: chat.identityIcon,
+          menuActions: chat.menuActions,
           onHistory: manages && !sideList ? () => onShowList(true) : null,
           onNew: manages ? viewModel.newConversation : null,
           onDelete: manages ? () => onDelete(state.conversationId) : null,
@@ -278,6 +299,8 @@ class _ChatLayout extends StatelessWidget {
               child: ChatConversation(
                 name: assistant.name,
                 cardContentBuilder: chat.cardContentBuilder,
+                completedCardBuilder: chat.completedCardBuilder,
+                presentationRegistry: assistant.presentationRegistry,
                 hostCards: chat.hostCards,
                 welcomeContent: chat.welcomeContent,
                 state: state,
@@ -294,6 +317,8 @@ class _ChatLayout extends StatelessWidget {
           strings: strings,
           attachments: chat.attachments ?? viewModel.attachmentPolicy,
           onPickFiles: chat.onPickFiles,
+          layout: chat.composerLayout,
+          header: chat.composerHeader,
         ),
       ],
     );

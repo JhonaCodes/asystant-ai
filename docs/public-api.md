@@ -129,6 +129,12 @@ A `ToolField` is a scalar (`string`, `integer`, `number`, `boolean`), a list of 
 
 `requiresConfirmation` is the tool's own answer; the assistant has the last word. `AsystantAI.requiresConfirmation(tool)` is asked on every call, after the preview and before the tool runs, and by default returns the tool's value. Override it when the person can change that answer while the chat is open, such as a setting that approves everything:
 
+For a classified invocation, implement `AsystantActionPolicyProvider` on the tool or override `AsystantAI.actionPolicyFor(tool, arguments)`. The host chooses one of `AsystantSensitivityLevel.none`, `.low`, `.medium`, `.high`, or `.admin` after arguments are validated. The library gives each level its visible name and color: Nulo and Bajo execute without approval; Medio, Alto and Admin require it. `admin` is available for administrator endpoints the host defines. For example, return `const AsystantActionPolicy(level: AsystantSensitivityLevel.high, allowSessionApproval: false)` from `actionPolicy(arguments)` for an action that must be approved every time. The default `allowSessionApproval: true` offers approval for all eligible actions in the current signed-in session only. A required selection is never bypassed. Unclassified tools retain their previous `requiresConfirmation` behavior (true maps to Medio, false to Nulo). The host backend still enforces its own authorization.
+
+`showAsystantSecretPrompt(context, title: ..., fieldNames: ...)` collects transient values on the device after approval. Do not include those fields in model-visible arguments, previews, outcomes or persisted snapshots. It returns `null` if canceled.
+
+Level identifiers and stored names are English; visible labels are localized. Activity shows the level as a compact colored ticket icon beside the action, with the localized name in its tooltip and accessibility label. The context meter is compact in the header action row and opens token details when tapped.
+
 ```dart
 @override
 bool requiresConfirmation(AsystantTool tool) =>

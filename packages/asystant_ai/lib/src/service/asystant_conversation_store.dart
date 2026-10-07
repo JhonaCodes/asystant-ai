@@ -29,6 +29,15 @@ abstract class AsystantConversationStore {
 
   /// Forgets every conversation of [scope], for example on sign-out.
   Future<Result<bool, AssistantFailure>> clear(String scope);
+
+  /// The conversation last shown for this identity, including an empty one.
+  Future<Result<String?, AssistantFailure>> activeId(String scope) async =>
+      Ok(null);
+
+  Future<Result<bool, AssistantFailure>> setActiveId(
+    String scope,
+    String id,
+  ) async => Ok(true);
 }
 
 /// Conversations kept while the app runs.
@@ -36,6 +45,20 @@ class InMemoryConversationStore extends AsystantConversationStore {
   InMemoryConversationStore();
 
   final Map<String, Map<String, ConversationSnapshot>> _scopes = {};
+  final Map<String, String> _active = {};
+
+  @override
+  Future<Result<String?, AssistantFailure>> activeId(String scope) async =>
+      Ok(_active[scope]);
+
+  @override
+  Future<Result<bool, AssistantFailure>> setActiveId(
+    String scope,
+    String id,
+  ) async {
+    _active[scope] = id;
+    return Ok(true);
+  }
 
   @override
   Future<Result<List<ConversationSummary>, AssistantFailure>> list(
@@ -72,6 +95,8 @@ class InMemoryConversationStore extends AsystantConversationStore {
   ) async => Ok(_scopes[scope]?.remove(id) != null);
 
   @override
-  Future<Result<bool, AssistantFailure>> clear(String scope) async =>
-      Ok(_scopes.remove(scope) != null);
+  Future<Result<bool, AssistantFailure>> clear(String scope) async {
+    _active.remove(scope);
+    return Ok(_scopes.remove(scope) != null);
+  }
 }

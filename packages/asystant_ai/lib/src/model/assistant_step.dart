@@ -1,6 +1,8 @@
 import 'package:asystant_core/asystant_core.dart';
 import 'package:collection/collection.dart';
 
+import 'package:asystant_ai/src/model/asystant_action_policy.dart';
+
 /// One local tool call as the person sees it: what it is doing and how it
 /// ended. Never sent to the model; a conversation store keeps it with the
 /// entries it belongs to.
@@ -16,6 +18,7 @@ class AssistantStep {
     this.progress,
     this.progressLabel = '',
     this.images = const [],
+    this.sensitivity,
   });
 
   final String id;
@@ -28,6 +31,9 @@ class AssistantStep {
 
   /// The tool the model called.
   final String toolName;
+
+  /// Host-declared level shown beside this action in the activity panel.
+  final AsystantSensitivity? sensitivity;
 
   /// When the tool started running; null while it waits or when it never
   /// ran.
@@ -66,6 +72,7 @@ class AssistantStep {
     double? progress,
     String? progressLabel,
     List<AsystantAttachment>? images,
+    AsystantSensitivity? sensitivity,
   }) => AssistantStep(
     id: id ?? this.id,
     title: title ?? this.title,
@@ -77,6 +84,7 @@ class AssistantStep {
     progress: progress ?? this.progress,
     progressLabel: progressLabel ?? this.progressLabel,
     images: List.unmodifiable(images ?? this.images),
+    sensitivity: sensitivity ?? this.sensitivity,
   );
 
   bool get active => switch (phase) {
@@ -109,6 +117,7 @@ class AssistantStep {
       title == other.title &&
       phase == other.phase &&
       toolName == other.toolName &&
+      sensitivity == other.sensitivity &&
       startedAt == other.startedAt &&
       detail == other.detail &&
       const DeepCollectionEquality().equals(data, other.data) &&
@@ -122,6 +131,7 @@ class AssistantStep {
     title,
     phase,
     toolName,
+    sensitivity,
     startedAt,
     detail,
     const DeepCollectionEquality().hash(data),

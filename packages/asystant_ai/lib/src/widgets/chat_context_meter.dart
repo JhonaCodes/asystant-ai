@@ -12,11 +12,15 @@ class ChatContextMeter extends StatelessWidget {
     super.key,
     required this.usage,
     required this.strings,
+    this.compact = false,
   });
 
   final ContextUsage usage;
 
   final AsystantStrings strings;
+
+  /// Short label for a crowded app bar; the full value remains in the tooltip.
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -25,38 +29,46 @@ class ChatContextMeter extends StatelessWidget {
         ? AsystantTheme.of(context).warningColor(context)
         : colors.onSurfaceVariant;
     return switch ((usage.percent, usage.ratio, usage.limit)) {
-      (final int percent, final double ratio, final int limit) => InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: () => showDialog<void>(
-          context: context,
-          builder: (_) => _ContextDetail(
-            percent: percent,
-            used: usage.used,
-            limit: limit,
-            strings: strings,
+      (final int percent, final double ratio, final int limit) => Tooltip(
+        message: strings.contextPercent(percent),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(8),
+          onTap: () => showDialog<void>(
+            context: context,
+            builder: (_) => _ContextDetail(
+              percent: percent,
+              used: usage.used,
+              limit: limit,
+              strings: strings,
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-          child: Row(
-            mainAxisSize: .min,
-            children: [
-              SizedBox.square(
-                dimension: 14,
-                child: CircularProgressIndicator(
-                  value: ratio,
-                  strokeWidth: 2,
-                  backgroundColor: colors.surfaceContainerHighest,
-                  color: usage.isLong ? tone : colors.primary,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: compact ? 6 : 4,
+              vertical: compact ? 10 : 2,
+            ),
+            child: Row(
+              mainAxisSize: .min,
+              children: [
+                SizedBox.square(
+                  dimension: 14,
+                  child: CircularProgressIndicator(
+                    value: ratio,
+                    strokeWidth: 2,
+                    backgroundColor: colors.surfaceContainerHighest,
+                    color: usage.isLong ? tone : colors.primary,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 6),
-              Text(
-                strings.contextPercent(percent),
-                style: Theme.of(context).textTheme.labelSmall
-                    ?.copyWith(color: tone),
-              ),
-            ],
+                const SizedBox(width: 6),
+                Text(
+                  compact
+                      ? strings.contextCompactPercent(percent)
+                      : strings.contextPercent(percent),
+                  style: Theme.of(context).textTheme.labelSmall
+                      ?.copyWith(color: tone),
+                ),
+              ],
+            ),
           ),
         ),
       ),

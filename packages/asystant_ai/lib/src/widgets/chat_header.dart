@@ -3,9 +3,11 @@ import 'package:multiselect_field/multiselect_field.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/asystant_conversation_actions_style.dart';
+import 'package:asystant_ai/src/model/asystant_menu_action.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
+import 'package:asystant_ai/src/widgets/chat_context_meter.dart';
 import 'package:asystant_ai/src/widgets/status_indicator.dart';
 
 /// Identity and the conversation actions: expand, list, new, delete, close.
@@ -18,6 +20,7 @@ class ChatHeader extends StatelessWidget {
     required this.name,
     required this.state,
     required this.strings,
+    this.contextUsage,
     required this.canManage,
     this.description,
     this.showsHandle = false,
@@ -27,6 +30,7 @@ class ChatHeader extends StatelessWidget {
     this.actionsStyle = AsystantConversationActionsStyle.inline,
     this.menuIcon,
     this.identityIcon,
+    this.menuActions = const [],
     this.onHistory,
     this.onNew,
     this.onDelete,
@@ -41,6 +45,8 @@ class ChatHeader extends StatelessWidget {
   final ChatState state;
 
   final AsystantStrings strings;
+
+  final ContextUsage? contextUsage;
 
   /// Whether conversations can change now.
   final bool canManage;
@@ -63,6 +69,8 @@ class ChatHeader extends StatelessWidget {
 
   /// Host-provided identity mark inside the header tile.
   final Widget? identityIcon;
+
+  final List<AsystantMenuAction> menuActions;
 
   final VoidCallback? onHistory;
 
@@ -129,6 +137,12 @@ class ChatHeader extends StatelessWidget {
                       strings: strings,
                     ),
                   ),
+                  if (contextUsage case final usage?)
+                    ChatContextMeter(
+                      usage: usage,
+                      strings: strings,
+                      compact: true,
+                    ),
                   if (onToggleExpansion case final toggle?)
                     _HeaderAction(
                       glyph: isExpanded
@@ -139,13 +153,17 @@ class ChatHeader extends StatelessWidget {
                     ),
                   ...actions,
                   if (actionsStyle == AsystantConversationActionsStyle.menu &&
-                      (onHistory != null || onNew != null || onDelete != null))
+                      (onHistory != null ||
+                          onNew != null ||
+                          onDelete != null ||
+                          menuActions.isNotEmpty))
                     _ConversationMenu(
                       strings: strings,
                       icon: menuIcon,
                       onHistory: canManage ? onHistory : null,
                       onNew: canChange ? onNew : null,
                       onDelete: canChange ? onDelete : null,
+                      actions: menuActions,
                     ),
                   if (actionsStyle == AsystantConversationActionsStyle.inline)
                     _InlineConversationActions(
@@ -235,6 +253,7 @@ class _ConversationMenu extends StatefulWidget {
     required this.onHistory,
     required this.onNew,
     required this.onDelete,
+    required this.actions,
   });
 
   final AsystantStrings strings;
@@ -248,6 +267,8 @@ class _ConversationMenu extends StatefulWidget {
   final VoidCallback? onNew;
 
   final VoidCallback? onDelete;
+
+  final List<AsystantMenuAction> actions;
 
   @override
   State<_ConversationMenu> createState() => _ConversationMenuState();
@@ -288,6 +309,14 @@ class _ConversationMenuState extends State<_ConversationMenu> {
         mainAxisSize: .min,
         crossAxisAlignment: .stretch,
         children: [
+          for (final action in widget.actions)
+            _ConversationMenuEntry(
+              icon: action.icon,
+              label: action.label,
+              onPressed: action.onPressed == null
+                  ? null
+                  : () => _run(action.onPressed!),
+            ),
           _ConversationMenuEntry(
             glyph: AsystantGlyphKind.history,
             label: widget.strings.history,
@@ -315,12 +344,15 @@ class _ConversationMenuState extends State<_ConversationMenu> {
 
 class _ConversationMenuEntry extends StatelessWidget {
   const _ConversationMenuEntry({
-    required this.glyph,
+    this.glyph,
+    this.icon,
     required this.label,
     required this.onPressed,
   });
 
-  final AsystantGlyphKind glyph;
+  final AsystantGlyphKind? glyph;
+
+  final IconData? icon;
 
   final String label;
 
@@ -339,7 +371,10 @@ class _ConversationMenuEntry extends StatelessWidget {
         child: Row(
           mainAxisSize: .min,
           children: [
-            AsystantGlyph(glyph, color: color),
+            if (icon case final materialIcon?)
+              Icon(materialIcon, color: color)
+            else
+              AsystantGlyph(glyph!, color: color),
             const SizedBox(width: 12),
             Text(
               label,

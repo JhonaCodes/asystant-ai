@@ -81,15 +81,57 @@ AsystantChat(
 
 The host owns the assistant instance: closing the panel preserves the conversation. Call `assistant.dispose()` when its owner ends. When the provider reports a different identity, pending permissions are invalidated, the conversation is cleared and the chat offers to connect again. When another user signs in, dispose the assistant and create a new one.
 
+Conversation history uses memory unless the host supplies `conversationStore` to `assistant.init`. `AsystantJsonConversationStore` adapts a persistent string key/value store with `readValue`, `writeValue` and `removeValue` callbacks. It saves the active conversation as messages arrive, reopens it after restart, and keeps each provider identity in a separate scope. Pass a stable account identity (and environment, if applicable) to `OpenRouterProvider.identity`; otherwise the default identity is only `local` and cannot separate accounts. Existing in-memory conversations cannot be recovered after the process has ended.
+
 ## Tools and permissions
 
 Implement `AsystantTool` or `TypedAsystantTool<T>`. Return a `ToolDefinition`, a read-only preview and an execution result. Tools execute inside the host app, never on a server. Confirmation is required by default; read-only tools can explicitly opt out. Use `requiresSelection` for user choices and `isAvailable` to control registration.
+
+For argument-aware permissions, implement `AsystantActionPolicyProvider.actionPolicy(arguments)` on a tool or override `AsystantAI.actionPolicyFor(tool, arguments)` centrally. The integrating app assigns an `AsystantSensitivityLevel` to each invocation. The library determines whether approval is needed and draws its name and color on approval cards and activity rows:
+
+| Level | Display | Execution |
+| --- | --- | --- |
+| `none` | Nulo | Immediate |
+| `low` | Bajo | Immediate |
+| `medium` | Medio | Ask for approval |
+| `high` | Alto | Ask for approval |
+| `admin` | Admin | Ask for approval; reserved for host administrator endpoints |
+
+```dart
+class DeleteRecordTool extends TypedAsystantTool<DeleteRecordInput>
+    implements AsystantActionPolicyProvider {
+  // Other TypedAsystantTool members omitted.
+  @override
+  AsystantActionPolicy actionPolicy(ToolArguments arguments) =>
+      const AsystantActionPolicy(level: AsystantSensitivityLevel.high);
+}
+```
+
+`AsystantActionPolicy.requiresApproval` is derived from the level. `allowSessionApproval: false` makes the person approve every invocation; the default `true` offers **Approve all for this session** on approval cards. That choice stays in memory and resets on reconfiguration or a signed-in identity change. Tools requiring selection still wait for the person's selection. Unclassified tools retain their existing `requiresConfirmation` behavior: true maps to `medium`, false to `none`. Backend authorization remains the host's responsibility.
+
+The code uses English level identifiers. The chat localizes level labels for display; activity rows show a compact colored ticket icon beside the action with the full label available on long press and to screen readers. The context percentage sits in the header action row; tap it for token details.
+
+For an approved operation that needs a password or one-time code, call `showAsystantSecretPrompt(context, title: 'Account · DEV', fieldNames: ['password'])` inside the host tool after approval. Pass the returned value directly to the API and keep it out of tool arguments, previews, model results and conversation snapshots. A `null` result means the person canceled the dialog.
 
 `ToolContext` exposes cancellation, selected values, an idempotency key and `reportProgress(fraction, label: ...)`: a long tool reports how far it has come, the running `AssistantStep` shows it (`progress`, `progressLabel`, throttled so the chat is not rebuilt on every report), and `cancel()` makes `isCanceled` true for the tool while it runs, so it can stop its own work; the step ends as canceled. Your repository must still enforce authorization and protect asynchronous writes against duplicate effects. The SDK does not claim to reverse completed actions.
 
 To let the assistant answer from your own documents, index them in an `AsystantKnowledge` and pass `KnowledgeSearchTool(knowledge: knowledge)` in `builtInTools`. The search is local and lexical (BM25, Spanish and English), needs no service or embeddings model and returns only the matching passages. See [Local knowledge (RAG)](https://github.com/JhonaCodes/asystant-ai/blob/main/docs/public-api.md#local-knowledge-rag).
 
 Cards support summary, entity, selection, permission and result presentations. The chat shows ordered tool steps, progress and error icons, and an action that changes from Send to Stop. Theme colors follow the host; use `AsystantTheme` for metrics and subclass `AsystantStrings` for custom wording or languages. English and Spanish are included.
+
+### Native presentations
+
+Register read-only `AsystantPresentation` objects on your `AsystantAI` subclass:
+
+```dart
+@override
+List<AsystantPresentation> get presentations => const [
+  AsystantChoicesPresentation(),
+  TicketPresentation(),
+];
+```
+
+Each presentation has a stable `id` (its model-visible tool name), `description` and `fields`. Implement `validate` to reject unsuitable arguments, `preview` for the tool step, `present` to resolve trusted JSON-compatible data, and `build` to display its widget. `isAvailable` can hide the tool when its data source is unavailable; it is checked again before execution. The chat registers these tools automatically and restores the presentation ID and data with conversation history. `matchesLegacy` and `buildLegacy` can render older generic cards after a migration. Unknown presentation IDs fall back to the normal card. Keep writes in separate tools with explicit confirmation; presentations only read and display data.
 
 ## Backend and models
 

@@ -16,6 +16,7 @@ class ChatModelPicker extends StatelessWidget {
     required this.state,
     required this.viewModel,
     required this.strings,
+    this.compact = false,
   });
 
   final ChatState state;
@@ -23,6 +24,8 @@ class ChatModelPicker extends StatelessWidget {
   final ChatViewModel viewModel;
 
   final AsystantStrings strings;
+
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +50,15 @@ class ChatModelPicker extends StatelessWidget {
             ),
           ),
       ],
-      child: _ModelChip(option: current, enabled: !state.busy),
+      child: compact
+          ? Icon(Icons.tune_rounded, color: colorFor(context, !state.busy))
+          : _ModelChip(option: current, enabled: !state.busy),
     );
   }
+
+  Color colorFor(BuildContext context, bool enabled) => enabled
+      ? Theme.of(context).colorScheme.onSurfaceVariant
+      : Theme.of(context).colorScheme.onSurface.withValues(alpha: .38);
 }
 
 class _ModelChip extends StatelessWidget {

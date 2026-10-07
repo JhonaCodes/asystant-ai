@@ -19,12 +19,20 @@ export 'src/widgets/gen_ui_card.dart';
 export 'src/model/assistant_step.dart';
 export 'src/model/asystant_card_action.dart';
 export 'src/model/asystant_conversation_actions_style.dart';
+export 'src/model/asystant_composer_layout.dart';
+export 'src/model/asystant_dashboard_content.dart';
+export 'src/model/asystant_menu_action.dart';
 export 'src/model/asystant_host_card.dart';
 export 'src/model/asystant_model_option.dart';
 export 'src/model/asystant_turn_limits.dart';
+export 'src/model/asystant_action_policy.dart';
+export 'src/presentation/asystant_presentation.dart';
+export 'src/presentation/asystant_presentation_registry.dart';
+export 'src/presentation/asystant_choices_presentation.dart';
 export 'src/model/chat_entry.dart';
 export 'src/model/conversation_snapshot.dart';
 export 'src/service/asystant_conversation_store.dart';
+export 'src/service/asystant_json_conversation_store.dart';
 export 'src/service/asystant_file_picker.dart';
 export 'src/theme/asystant_metrics.dart';
 
@@ -33,3 +41,6 @@ export 'src/widgets/gen_ui_chart.dart';
 export 'src/service/asystant_link_opener.dart';
 
 export 'src/widgets/asystant_card_content.dart';
+export 'src/widgets/asystant_dashboard_welcome.dart';
+export 'src/widgets/asystant_control_center_chrome.dart';
+export 'src/widgets/asystant_secret_prompt.dart';

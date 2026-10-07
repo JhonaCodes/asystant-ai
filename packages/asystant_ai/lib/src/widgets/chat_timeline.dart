@@ -16,6 +16,7 @@ class ChatTimeline extends StatefulWidget {
     required this.padding,
     required this.anchor,
     this.forceFollow = false,
+    this.startAtTop = false,
   });
 
   final List<Widget> children;
@@ -28,6 +29,9 @@ class ChatTimeline extends StatefulWidget {
 
   /// Brings the end into view when it turns true, e.g. a decision waits there.
   final bool forceFollow;
+
+  /// Empty welcomes open at their beginning even when taller than the screen.
+  final bool startAtTop;
 
   @override
   State<ChatTimeline> createState() => _ChatTimelineState();
@@ -45,13 +49,21 @@ class _ChatTimelineState extends State<ChatTimeline> {
   @override
   void initState() {
     super.initState();
+    _follows = !widget.startAtTop;
     _showEnd();
   }
 
   @override
   void didUpdateWidget(covariant ChatTimeline oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.anchor != oldWidget.anchor ||
+    if (widget.startAtTop) {
+      _follows = false;
+      if (!oldWidget.startAtTop) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted && _scroll.hasClients) _scroll.jumpTo(0);
+        });
+      }
+    } else if (widget.anchor != oldWidget.anchor ||
         (widget.forceFollow && !oldWidget.forceFollow)) {
       _follows = true;
     }

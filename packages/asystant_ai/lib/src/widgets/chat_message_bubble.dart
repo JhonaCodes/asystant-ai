@@ -4,6 +4,7 @@ import 'package:asystant_core/asystant_core.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
+import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:asystant_ai/src/widgets/asystant_markdown_text.dart';
 
@@ -93,7 +94,9 @@ class ChatMessageBubble extends StatelessWidget {
                               ? Text(
                                   text,
                                   style: TextStyle(
-                                    color: colors.onPrimaryContainer,
+                                    color: AsystantTheme.contrastOn(
+                                      colors.primaryContainer,
+                                    ),
                                   ),
                                 )
                               : AsystantMarkdownText(text: text),

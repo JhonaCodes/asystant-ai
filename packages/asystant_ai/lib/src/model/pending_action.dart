@@ -1,6 +1,8 @@
 import 'package:asystant_core/asystant_core.dart';
 import 'package:collection/collection.dart';
 
+import 'package:asystant_ai/src/model/asystant_action_policy.dart';
+
 /// An ephemeral preview of one invocation; never serialized or persisted.
 /// Approval applies only to this invocation, never to later calls.
 class PendingAction {
@@ -9,9 +11,12 @@ class PendingAction {
     required this.card,
     this.selected = const [],
     this.requiresSelection = false,
+    this.policy = const AsystantActionPolicy(requiresApproval: true),
   });
 
   final bool requiresSelection;
+
+  final AsystantActionPolicy policy;
 
   final ToolCall call;
 
@@ -27,11 +32,13 @@ class PendingAction {
     AssistantCard? card,
     List<String>? selected,
     bool? requiresSelection,
+    AsystantActionPolicy? policy,
   }) => PendingAction(
     requiresSelection: requiresSelection ?? this.requiresSelection,
     call: call ?? this.call,
     card: card ?? this.card,
     selected: List.unmodifiable(selected ?? this.selected),
+    policy: policy ?? this.policy,
   );
 
   @override
@@ -40,6 +47,7 @@ class PendingAction {
       requiresSelection == other.requiresSelection &&
       call == other.call &&
       card == other.card &&
+      policy == other.policy &&
       const ListEquality<String>().equals(selected, other.selected);
 
   @override
@@ -47,6 +55,7 @@ class PendingAction {
     requiresSelection,
     call,
     card,
+    policy,
     const ListEquality<String>().hash(selected),
   );
 }

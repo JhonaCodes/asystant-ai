@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/asystant_host_card.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
+import 'package:asystant_ai/src/presentation/asystant_presentation_registry.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
@@ -28,6 +31,8 @@ class ChatConversation extends StatelessWidget {
     required this.strings,
     required this.onStartNew,
     this.cardContentBuilder,
+    this.completedCardBuilder,
+    this.presentationRegistry,
     this.hostCards = const [],
     this.welcomeContent,
   });
@@ -47,6 +52,10 @@ class ChatConversation extends StatelessWidget {
 
   final AsystantCardContentBuilder? cardContentBuilder;
 
+  final AsystantCompletedCardBuilder? completedCardBuilder;
+
+  final AsystantPresentationRegistry? presentationRegistry;
+
   /// The host's cards, pinned after the conversation.
   final List<AsystantHostCard> hostCards;
 
@@ -61,6 +70,7 @@ class ChatConversation extends StatelessWidget {
       forceFollow:
           state.pending != null ||
           hostCards.any((hostCard) => hostCard.awaitsDecision),
+      startAtTop: state.entries.isEmpty && !state.busy,
       padding: AsystantMetrics.of(context).listPadding,
       children: [
         if (state.entries.isEmpty && !state.busy)
@@ -89,11 +99,23 @@ class ChatConversation extends StatelessWidget {
               strings: strings,
             ),
           if (entry.card case final card?)
-            GenUiCard(
-              card: card,
-              strings: strings,
-              content: cardContentBuilder?.call(context, card),
-            ),
+            presentationRegistry?.build(
+                  context,
+                  card,
+                  strings,
+                  state.busy
+                      ? null
+                      : (option) => unawaited(viewModel.send(option)),
+                ) ??
+                completedCardBuilder?.call(context, card) ??
+                GenUiCard(
+                  card: card,
+                  strings: strings,
+                  content: cardContentBuilder?.call(context, card),
+                  onOptionPressed: state.busy
+                      ? null
+                      : (option) => unawaited(viewModel.send(option)),
+                ),
         ],
         if (state.isWriting)
           ChatMessageBubble(
@@ -116,6 +138,7 @@ class ChatConversation extends StatelessWidget {
             strings: strings,
             onSelect: viewModel.selectOption,
             onDecide: viewModel.approve,
+            onAllowSession: viewModel.approveAllForSession,
           ),
         if (state.failure case final failure?)
           ChatFailureNotice(

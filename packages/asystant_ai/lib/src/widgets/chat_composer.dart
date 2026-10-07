@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/asystant_composer_layout.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/service/asystant_file_picker.dart';
 import 'package:asystant_ai/src/theme/asystant_device_type.dart';
@@ -11,7 +12,6 @@ import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
-import 'package:asystant_ai/src/widgets/chat_context_meter.dart';
 import 'package:asystant_ai/src/widgets/chat_message_bubble.dart';
 import 'package:asystant_ai/src/widgets/chat_model_picker.dart';
 import 'package:asystant_ai/src/widgets/chat_send_action.dart';
@@ -26,6 +26,8 @@ class ChatComposer extends StatefulWidget {
     required this.strings,
     required this.attachments,
     this.onPickFiles,
+    this.layout = AsystantComposerLayout.stacked,
+    this.header,
   });
 
   final ChatState state;
@@ -39,6 +41,10 @@ class ChatComposer extends StatefulWidget {
 
   /// Replaces the system file picker.
   final AsystantFilePick? onPickFiles;
+
+  final AsystantComposerLayout layout;
+
+  final Widget? header;
 
   @override
   State<ChatComposer> createState() => _ChatComposerState();
@@ -115,6 +121,10 @@ class _ChatComposerState extends State<ChatComposer> {
             mainAxisSize: .min,
             crossAxisAlignment: .start,
             children: [
+              if (widget.header case final header?) ...[
+                header,
+                const SizedBox(height: 8),
+              ],
               if (widget.state.attachments.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 6),
@@ -133,75 +143,93 @@ class _ChatComposerState extends State<ChatComposer> {
                     ],
                   ),
                 ),
-              AnimatedContainer(
-                duration: AsystantTheme.of(context).transitionDuration,
-                padding: EdgeInsets.all(metrics.composerInnerPadding),
-                decoration: BoxDecoration(
-                  color: colors.surfaceContainerLow,
-                  border: Border.all(
-                    color: _isFocused ? colors.primary : colors.outlineVariant,
-                    width: _isFocused ? 2 : 1,
+              if (widget.layout == AsystantComposerLayout.inline)
+                _InlineComposer(
+                  state: widget.state,
+                  viewModel: widget.viewModel,
+                  strings: widget.strings,
+                  attachments: widget.attachments,
+                  onPickFiles: widget.onPickFiles,
+                  controller: _text,
+                  focusNode: _focus,
+                  onFocusChange: (focused) =>
+                      setState(() => _isFocused = focused),
+                  onKeyEvent: _handleKey,
+                  onSend: _send,
+                  focused: _isFocused,
+                )
+              else
+                AnimatedContainer(
+                  duration: AsystantTheme.of(context).transitionDuration,
+                  padding: EdgeInsets.all(metrics.composerInnerPadding),
+                  decoration: BoxDecoration(
+                    color: colors.surfaceContainerLow,
+                    border: Border.all(
+                      color: _isFocused
+                          ? colors.primary
+                          : colors.outlineVariant,
+                      width: _isFocused ? 2 : 1,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      if (_isFocused)
+                        BoxShadow(
+                          color: colors.primary.withValues(alpha: .12),
+                          spreadRadius: 3,
+                        ),
+                    ],
                   ),
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    if (_isFocused)
-                      BoxShadow(
-                        color: colors.primary.withValues(alpha: .12),
-                        spreadRadius: 3,
+                  child: Column(
+                    mainAxisSize: .min,
+                    children: [
+                      Focus(
+                        onFocusChange: (focused) =>
+                            setState(() => _isFocused = focused),
+                        onKeyEvent: _handleKey,
+                        child: _ComposerTextField(
+                          controller: _text,
+                          focusNode: _focus,
+                          enabled: canType,
+                          viewModel: widget.viewModel,
+                          strings: widget.strings,
+                        ),
                       ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisSize: .min,
-                  children: [
-                    Focus(
-                      onFocusChange: (focused) =>
-                          setState(() => _isFocused = focused),
-                      onKeyEvent: _handleKey,
-                      child: _ComposerTextField(
-                        controller: _text,
-                        focusNode: _focus,
-                        enabled: canType,
-                        viewModel: widget.viewModel,
-                        strings: widget.strings,
-                      ),
-                    ),
-                    // Attach on the left; the model and Send on the right.
-                    Row(
-                      children: [
-                        if (widget.attachments.enabled)
-                          IconButton(
-                            tooltip: widget.strings.attach,
-                            visualDensity: VisualDensity.compact,
-                            onPressed: canType
-                                ? () => widget.viewModel.pickAttachments(
-                                    policy: widget.attachments,
-                                    picker: widget.onPickFiles,
-                                  )
-                                : null,
-                            icon: AsystantGlyph(
-                              AsystantGlyphKind.attach,
-                              color: colors.onSurfaceVariant,
+                      // Attach on the left; the model and Send on the right.
+                      Row(
+                        children: [
+                          if (widget.attachments.enabled)
+                            IconButton(
+                              tooltip: widget.strings.attach,
+                              visualDensity: VisualDensity.compact,
+                              onPressed: canType
+                                  ? () => widget.viewModel.pickAttachments(
+                                      policy: widget.attachments,
+                                      picker: widget.onPickFiles,
+                                    )
+                                  : null,
+                              icon: AsystantGlyph(
+                                AsystantGlyphKind.attach,
+                                color: colors.onSurfaceVariant,
+                              ),
                             ),
+                          const Spacer(),
+                          ChatModelPicker(
+                            state: widget.state,
+                            viewModel: widget.viewModel,
+                            strings: widget.strings,
                           ),
-                        const Spacer(),
-                        ChatModelPicker(
-                          state: widget.state,
-                          viewModel: widget.viewModel,
-                          strings: widget.strings,
-                        ),
-                        const SizedBox(width: 4),
-                        ChatSendAction(
-                          state: widget.state,
-                          viewModel: widget.viewModel,
-                          strings: widget.strings,
-                          onSend: _send,
-                        ),
-                      ],
-                    ),
-                  ],
+                          const SizedBox(width: 4),
+                          ChatSendAction(
+                            state: widget.state,
+                            viewModel: widget.viewModel,
+                            strings: widget.strings,
+                            onSend: _send,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
               _ComposerFooter(
                 state: widget.state,
                 viewModel: widget.viewModel,
@@ -211,6 +239,89 @@ class _ChatComposerState extends State<ChatComposer> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _InlineComposer extends StatelessWidget {
+  const _InlineComposer({
+    required this.state,
+    required this.viewModel,
+    required this.strings,
+    required this.attachments,
+    required this.onPickFiles,
+    required this.controller,
+    required this.focusNode,
+    required this.onFocusChange,
+    required this.onKeyEvent,
+    required this.onSend,
+    required this.focused,
+  });
+
+  final ChatState state;
+  final ChatViewModel viewModel;
+  final AsystantStrings strings;
+  final AsystantAttachmentPolicy attachments;
+  final AsystantFilePick? onPickFiles;
+  final TextEditingController controller;
+  final FocusNode focusNode;
+  final ValueChanged<bool> onFocusChange;
+  final FocusOnKeyEventCallback onKeyEvent;
+  final VoidCallback onSend;
+  final bool focused;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return AnimatedContainer(
+      duration: AsystantTheme.of(context).transitionDuration,
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
+      decoration: BoxDecoration(
+        color: colors.surfaceContainerLow,
+        border: Border.all(
+          color: focused ? colors.primary : colors.outlineVariant,
+          width: focused ? 2 : 1,
+        ),
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: Row(
+        children: [
+          if (attachments.enabled)
+            IconButton(
+              tooltip: strings.attach,
+              onPressed: viewModel.canType
+                  ? () => viewModel.pickAttachments(
+                      policy: attachments,
+                      picker: onPickFiles,
+                    )
+                  : null,
+              icon: AsystantGlyph(
+                AsystantGlyphKind.attach,
+                color: colors.onSurfaceVariant,
+              ),
+            ),
+          Expanded(
+            child: Focus(
+              onFocusChange: onFocusChange,
+              onKeyEvent: onKeyEvent,
+              child: _ComposerTextField(
+                controller: controller,
+                focusNode: focusNode,
+                enabled: viewModel.canType,
+                viewModel: viewModel,
+                strings: strings,
+              ),
+            ),
+          ),
+          ChatModelPicker(state: state, viewModel: viewModel, strings: strings),
+          ChatSendAction(
+            state: state,
+            viewModel: viewModel,
+            strings: strings,
+            onSend: onSend,
+          ),
+        ],
       ),
     );
   }
@@ -234,6 +345,11 @@ class _ComposerFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (state.attachmentIssue == null &&
+        state.pending == null &&
+        state.attachments.isEmpty) {
+      return const SizedBox.shrink();
+    }
     final colors = Theme.of(context).colorScheme;
     final label = Theme.of(context).textTheme.labelSmall
         ?.copyWith(color: colors.onSurfaceVariant);
@@ -266,8 +382,6 @@ class _ComposerFooter extends StatelessWidget {
                         style: label,
                       ),
                     ),
-                  if (state.contextUsage case final usage?)
-                    ChatContextMeter(usage: usage, strings: strings),
                 ],
               ),
             ),

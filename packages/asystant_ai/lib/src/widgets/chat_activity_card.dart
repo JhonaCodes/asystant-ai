@@ -4,9 +4,11 @@ import 'package:asystant_core/asystant_core.dart';
 
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/assistant_step.dart';
+import 'package:asystant_ai/src/model/asystant_action_policy.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:asystant_ai/src/widgets/chat_activity_pulse.dart';
+import 'package:asystant_ai/src/widgets/asystant_sensitivity_badge.dart';
 
 /// What the assistant did in a turn: live while it works, a record after.
 ///
@@ -135,6 +137,7 @@ class _ChatActivityCardState extends State<ChatActivityCard> {
                       strings: widget.strings,
                       progress: step.showsProgress ? step.progress : null,
                       images: step.images,
+                      sensitivity: step.sensitivity,
                     ),
                   if (widget.closingStep case final label?)
                     _ActivityRow(
@@ -161,6 +164,7 @@ class _ActivityRow extends StatelessWidget {
     required this.strings,
     this.progress,
     this.images = const [],
+    this.sensitivity,
   });
 
   final AsystantGlyphKind icon;
@@ -176,6 +180,8 @@ class _ActivityRow extends StatelessWidget {
 
   /// What the tool returned for the model to look at, shown under the label.
   final List<AsystantAttachment> images;
+
+  final AsystantSensitivity? sensitivity;
 
   @override
   Widget build(BuildContext context) {
@@ -210,10 +216,26 @@ class _ActivityRow extends StatelessWidget {
           child: Column(
             crossAxisAlignment: .stretch,
             children: [
-              Text(
-                label,
-                style: Theme.of(context).textTheme.bodySmall
-                    ?.copyWith(color: colors.onSurfaceVariant),
+              Row(
+                children: [
+                  Flexible(
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      overflow: .ellipsis,
+                      style: Theme.of(context).textTheme.bodySmall
+                          ?.copyWith(color: colors.onSurfaceVariant),
+                    ),
+                  ),
+                  if (sensitivity case final level?) ...[
+                    SizedBox(width: tokens.spacing / 2),
+                    AsystantSensitivityBadge(
+                      sensitivity: level,
+                      strings: strings,
+                      compact: true,
+                    ),
+                  ],
+                ],
               ),
               if (progress case final value?)
                 Padding(
