@@ -148,10 +148,18 @@ class AsystantChat extends StatefulWidget {
 class _AsystantChatState extends State<AsystantChat> {
   bool _listOpen = false;
 
+  late AsystantStrings _labels;
+
   @override
   void initState() {
     super.initState();
     _initializeAfterFrame();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _syncStrings();
   }
 
   @override
@@ -160,6 +168,16 @@ class _AsystantChatState extends State<AsystantChat> {
     if (oldWidget.assistant != widget.assistant) {
       _initializeAfterFrame();
     }
+    if (oldWidget.strings != widget.strings ||
+        oldWidget.assistant != widget.assistant) {
+      _syncStrings();
+    }
+  }
+
+  /// Resolves the labels and hands them to the view model outside `build()`.
+  void _syncStrings() {
+    _labels = widget.strings ?? AsystantStrings.of(context);
+    widget.assistant.conversation.notifier.setStrings(_labels);
   }
 
   void _initializeAfterFrame() {
@@ -187,8 +205,7 @@ class _AsystantChatState extends State<AsystantChat> {
 
   @override
   Widget build(BuildContext context) {
-    final labels = widget.strings ?? AsystantStrings.of(context);
-    widget.assistant.conversation.notifier.setStrings(labels);
+    final labels = _labels;
     final tokens = AsystantTheme.of(context);
     return AsystantLinkScope(
       opener: AsystantLinkOpener(onOpenLink: widget.onOpenLink),
@@ -268,9 +285,84 @@ class _ChatLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final column = _ChatColumn(
+      sideList: sideList,
+      onShowList: onShowList,
+      chat: chat,
+      state: state,
+      viewModel: viewModel,
+      strings: strings,
+      onDelete: onDelete,
+    );
+    if (sideList) {
+      return Row(
+        children: [
+          SizedBox(
+            width: AsystantTheme.of(context).sideListWidth,
+            child: _BoundConversationList(
+              state: state,
+              viewModel: viewModel,
+              strings: strings,
+              onDelete: onDelete,
+            ),
+          ),
+          const VerticalDivider(width: 1),
+          Expanded(child: column),
+        ],
+      );
+    }
+    return Stack(
+      children: [
+        column,
+        if (listOpen)
+          Positioned.fill(
+            child: ChatConversationLayer(
+              onDismiss: () => onShowList(false),
+              list: _BoundConversationList(
+                state: state,
+                viewModel: viewModel,
+                strings: strings,
+                onDelete: onDelete,
+                onBack: () => onShowList(false),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+/// Header, connect prompt, messages and composer, stacked top to bottom.
+class _ChatColumn extends StatelessWidget {
+  const _ChatColumn({
+    required this.sideList,
+    required this.onShowList,
+    required this.chat,
+    required this.state,
+    required this.viewModel,
+    required this.strings,
+    required this.onDelete,
+  });
+
+  final bool sideList;
+
+  final ValueChanged<bool> onShowList;
+
+  final AsystantChat chat;
+
+  final ChatState state;
+
+  final ChatViewModel viewModel;
+
+  final AsystantStrings strings;
+
+  final ValueChanged<String> onDelete;
+
+  @override
+  Widget build(BuildContext context) {
     final assistant = chat.assistant;
     final manages = chat.managesConversations;
-    final column = Column(
+    return Column(
       children: [
         ChatHeader(
           name: assistant.name,
@@ -292,7 +384,7 @@ class _ChatLayout extends StatelessWidget {
               AsystantMenuAction(
                 label: strings.aiSettings,
                 icon: Icons.tune,
-                onPressed: !state.busy && state.phase != ChatPhase.initializing
+                onPressed: state.canOpenSettings
                     ? () => showAsystantProviderSettings(
                         context,
                         assistant: assistant,
@@ -308,8 +400,7 @@ class _ChatLayout extends StatelessWidget {
         ),
         ?chat.headerContent,
         const Divider(height: 1),
-        if (!viewModel.isInitialized &&
-            (state.phase == ChatPhase.idle || state.phase == ChatPhase.error))
+        if (viewModel.offersConnect)
           Padding(
             padding: const EdgeInsets.all(12),
             child: OutlinedButton.icon(
@@ -352,41 +443,6 @@ class _ChatLayout extends StatelessWidget {
           layout: chat.composerLayout,
           header: chat.composerHeader,
         ),
-      ],
-    );
-    if (sideList) {
-      return Row(
-        children: [
-          SizedBox(
-            width: AsystantTheme.of(context).sideListWidth,
-            child: _BoundConversationList(
-              state: state,
-              viewModel: viewModel,
-              strings: strings,
-              onDelete: onDelete,
-            ),
-          ),
-          const VerticalDivider(width: 1),
-          Expanded(child: column),
-        ],
-      );
-    }
-    return Stack(
-      children: [
-        column,
-        if (listOpen)
-          Positioned.fill(
-            child: ChatConversationLayer(
-              onDismiss: () => onShowList(false),
-              list: _BoundConversationList(
-                state: state,
-                viewModel: viewModel,
-                strings: strings,
-                onDelete: onDelete,
-                onBack: () => onShowList(false),
-              ),
-            ),
-          ),
       ],
     );
   }
@@ -448,4 +504,18 @@ class _KeyboardInset extends StatelessWidget {
       child: child,
     ),
   );
+}
+
+// keel-debt: belongs on ChatState (plan M3); private here until WP-5 lands.
+extension _ChatStateRules on ChatState {
+  /// Provider settings open only while no turn runs and setup is not underway.
+  bool get canOpenSettings => !busy && phase != ChatPhase.initializing;
+}
+
+// keel-debt: belongs on ChatViewModel; private here while viewmodel/ is frozen.
+extension _ChatViewModelRules on ChatViewModel {
+  /// The manual connect prompt shows while setup has not run, or after it failed.
+  bool get offersConnect =>
+      !isInitialized &&
+      (state.phase == ChatPhase.idle || state.phase == ChatPhase.error);
 }
