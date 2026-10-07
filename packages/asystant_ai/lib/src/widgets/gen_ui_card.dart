@@ -6,6 +6,7 @@ import 'package:asystant_core/asystant_core.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/asystant_card_action.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/widgets/assistant_card_kind_presentation.dart';
 import 'package:asystant_ai/src/widgets/asystant_markdown_text.dart';
 import 'package:asystant_ai/src/widgets/gen_ui_chart.dart';
 
@@ -55,11 +56,15 @@ class GenUiCard extends StatelessWidget {
 
   final String? denyLabel;
 
+  /// Whether a button can be pressed now, so the card waits for the person.
+  bool get _awaitsDecision =>
+      onApprove != null || actions.any((action) => action.onPressed != null);
+
   @override
-  Widget build(BuildContext context) {
-    final tokens = AsystantTheme.of(context);
-    final colors = Theme.of(context).colorScheme;
-    final contents = _CardContents(
+  Widget build(BuildContext context) => _CardFrame(
+    framed: framed,
+    awaitsDecision: _awaitsDecision,
+    child: _CardContents(
       content: content,
       card: card,
       strings: strings,
@@ -71,13 +76,32 @@ class GenUiCard extends StatelessWidget {
       approveLabel: approveLabel,
       denyLabel: denyLabel,
       actions: actions,
-    );
-    // A card waiting for the person stands out, like a permission request.
-    final awaitsDecision =
-        onApprove != null || actions.any((action) => action.onPressed != null);
+    ),
+  );
+}
+
+/// The card's border; a card waiting for the person stands out, like a
+/// permission request. Unframed, it draws only its child.
+class _CardFrame extends StatelessWidget {
+  const _CardFrame({
+    required this.framed,
+    required this.awaitsDecision,
+    required this.child,
+  });
+
+  final bool framed;
+
+  final bool awaitsDecision;
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
     if (!framed) {
-      return contents;
+      return child;
     }
+    final tokens = AsystantTheme.of(context);
+    final colors = Theme.of(context).colorScheme;
     return Container(
       margin: EdgeInsets.only(bottom: tokens.spacing),
       padding: EdgeInsets.all(tokens.padding),
@@ -92,7 +116,7 @@ class GenUiCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(tokens.radius),
       ),
-      child: contents,
+      child: child,
     );
   }
 }
@@ -197,13 +221,7 @@ class _CardHeader extends StatelessWidget {
     final theme = Theme.of(context);
     return Row(
       children: [
-        AsystantGlyph(switch (card.kind) {
-          AssistantCardKind.summary => AsystantGlyphKind.document,
-          AssistantCardKind.entity => AsystantGlyphKind.document,
-          AssistantCardKind.selection => AsystantGlyphKind.check,
-          AssistantCardKind.permission => AsystantGlyphKind.shield,
-          AssistantCardKind.result => AsystantGlyphKind.check,
-        }, color: theme.colorScheme.primary),
+        AsystantGlyph(card.kind.toGlyph(), color: theme.colorScheme.primary),
         SizedBox(width: tokens.spacing),
         Expanded(child: Text(card.title, style: theme.textTheme.titleSmall)),
       ],
@@ -230,6 +248,12 @@ class _CardOptions extends StatelessWidget {
 
   final bool stacked;
 
+  /// Presses [option]; null draws the button disabled.
+  VoidCallback? _pressing(String option) => switch (onOptionPressed) {
+    final press? => () => press(option),
+    null => null,
+  };
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
@@ -239,9 +263,7 @@ class _CardOptions extends StatelessWidget {
         children: [
           for (final (index, option) in options.indexed) ...[
             OutlinedButton(
-              onPressed: onOptionPressed == null
-                  ? null
-                  : () => onOptionPressed!(option),
+              onPressed: _pressing(option),
               style: OutlinedButton.styleFrom(
                 alignment: Alignment.centerLeft,
                 minimumSize: const Size.fromHeight(48),
@@ -266,12 +288,7 @@ class _CardOptions extends StatelessWidget {
               onSelected: (_) => select(option),
             )
           else
-            OutlinedButton(
-              onPressed: onOptionPressed == null
-                  ? null
-                  : () => onOptionPressed!(option),
-              child: Text(option),
-            ),
+            OutlinedButton(onPressed: _pressing(option), child: Text(option)),
       ],
     );
   }

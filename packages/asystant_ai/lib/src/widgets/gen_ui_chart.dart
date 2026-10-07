@@ -2,6 +2,7 @@ import 'package:asystant_core/asystant_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/widgets/assistant_chart_presentation.dart';
 import 'package:asystant_ai/src/widgets/chart_bar_painter.dart';
 import 'package:asystant_ai/src/widgets/chart_line_painter.dart';
 
@@ -21,7 +22,7 @@ class GenUiChart extends StatelessWidget {
     return Column(
       crossAxisAlignment: .stretch,
       children: [
-        if (chart.kind == AssistantChartKind.line) ...[
+        if (chart.drawsLine) ...[
           Padding(
             padding: EdgeInsets.all(tokens.spacing),
             child: SizedBox(
@@ -30,9 +31,7 @@ class GenUiChart extends StatelessWidget {
                 child: RepaintBoundary(
                   child: CustomPaint(
                     painter: ChartLinePainter(
-                      values: chart.points
-                          .map((point) => chart.normalized(point.value))
-                          .toList(),
+                      values: chart.toNormalizedValues(),
                       color: theme.colorScheme.primary,
                     ),
                   ),
@@ -59,7 +58,7 @@ class GenUiChart extends StatelessWidget {
                     ),
                   ],
                 ),
-                if (chart.kind == AssistantChartKind.bar) ...[
+                if (chart.drawsBars) ...[
                   SizedBox(height: tokens.spacing / 2),
                   ExcludeSemantics(
                     child: SizedBox(

@@ -20,6 +20,7 @@ import 'package:asystant_ai/src/widgets/chat_message_bubble.dart';
 import 'package:asystant_ai/src/widgets/chat_timeline.dart';
 import 'package:asystant_ai/src/widgets/chat_welcome.dart';
 import 'package:asystant_ai/src/widgets/gen_ui_card.dart';
+import 'package:asystant_ai/src/widgets/turn_activity_presentation.dart';
 
 /// The conversation as it is drawn: messages, what each turn did, the turn
 /// in progress, and whatever waits for the person.
@@ -63,20 +64,25 @@ class ChatConversation extends StatelessWidget {
   /// Host-provided welcome shown in an empty conversation.
   final Widget? welcomeContent;
 
+  /// Whatever waits for the person keeps the timeline at the end.
+  bool get _forcesFollow =>
+      state.awaitsAnswer ||
+      hostCards.any((hostCard) => hostCard.awaitsDecision);
+
+  /// A card's suggested option is sent as a message, never while a turn runs.
+  ValueChanged<String>? get _onOptionPressed =>
+      state.busy ? null : (option) => unawaited(viewModel.send(option));
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
     return ChatTimeline(
       anchor: (state.conversationId, state.sentCount),
-      forceFollow:
-          state.pending != null ||
-          state.privateInput != null ||
-          hostCards.any((hostCard) => hostCard.awaitsDecision),
-      startAtTop: state.entries.isEmpty && !state.busy,
+      forceFollow: _forcesFollow,
+      startAtTop: state.showsWelcome,
       padding: AsystantMetrics.of(context).listPadding,
       children: [
-        if (state.entries.isEmpty && !state.busy)
-          welcomeContent ?? ChatWelcome(strings: strings),
+        if (state.showsWelcome) welcomeContent ?? ChatWelcome(strings: strings),
         for (final entry in state.entries) ...[
           if (entry.activity.isNotEmpty)
             ChatActivityCard(
@@ -105,18 +111,14 @@ class ChatConversation extends StatelessWidget {
                   context,
                   card,
                   strings,
-                  state.busy
-                      ? null
-                      : (option) => unawaited(viewModel.send(option)),
+                  _onOptionPressed,
                 ) ??
                 completedCardBuilder?.call(context, card) ??
                 GenUiCard(
                   card: card,
                   strings: strings,
                   content: cardContentBuilder?.call(context, card),
-                  onOptionPressed: state.busy
-                      ? null
-                      : (option) => unawaited(viewModel.send(option)),
+                  onOptionPressed: _onOptionPressed,
                 ),
         ],
         if (state.isWriting)
@@ -180,32 +182,13 @@ class _LiveActivity extends StatelessWidget {
   final AsystantStrings strings;
 
   @override
-  Widget build(BuildContext context) {
-    final (title, icon, closing) = switch (state.turnActivity) {
-      TurnActivity.thinking => (
-        strings.thinkingAs(name),
-        AsystantGlyphKind.thinking,
-        strings.analyzing,
-      ),
-      TurnActivity.writing => (
-        strings.writingAs(name),
-        AsystantGlyphKind.writing,
-        strings.drafting,
-      ),
-      TurnActivity.usingTool => (
-        strings.usingToolAs(name),
-        AsystantGlyphKind.tool,
-        null,
-      ),
-    };
-    return ChatActivityCard(
-      title: title,
-      subtitle: strings.liveActivity,
-      icon: icon,
-      steps: state.steps,
-      strings: strings,
-      live: true,
-      closingStep: closing,
-    );
-  }
+  Widget build(BuildContext context) => ChatActivityCard(
+    title: state.turnActivity.toTitle(strings, name),
+    subtitle: strings.liveActivity,
+    icon: state.turnActivity.toGlyph(),
+    steps: state.steps,
+    strings: strings,
+    live: true,
+    closingStep: state.turnActivity.toClosingStep(strings),
+  );
 }

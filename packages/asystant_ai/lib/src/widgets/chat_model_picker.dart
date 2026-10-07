@@ -4,6 +4,7 @@ import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/asystant_model_option.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
+import 'package:asystant_ai/src/widgets/asystant_disabled_colors.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 
 /// The chosen model next to the send button: its icon, its name and a ▾.
@@ -58,7 +59,7 @@ class ChatModelPicker extends StatelessWidget {
 
   Color colorFor(BuildContext context, bool enabled) => enabled
       ? Theme.of(context).colorScheme.onSurfaceVariant
-      : Theme.of(context).colorScheme.onSurface.withValues(alpha: .38);
+      : Theme.of(context).colorScheme.disabledContent;
 }
 
 class _ModelChip extends StatelessWidget {
@@ -71,9 +72,7 @@ class _ModelChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final color = enabled
-        ? colors.onSurfaceVariant
-        : colors.onSurface.withValues(alpha: .38);
+    final color = enabled ? colors.onSurfaceVariant : colors.disabledContent;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       child: Row(

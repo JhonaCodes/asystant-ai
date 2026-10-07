@@ -5,6 +5,7 @@ import 'package:asystant_ai/src/widgets/chat_activity_pulse.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
+import 'package:asystant_ai/src/widgets/chat_phase_presentation.dart';
 
 /// A glyph and short label for the current [ChatPhase], animated on change.
 /// Announced as a live region so assistive technology reads phase changes.
@@ -22,17 +23,6 @@ class StatusIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AsystantTheme.of(context);
-    final icon = switch (phase) {
-      ChatPhase.idle => AsystantGlyphKind.chat,
-      ChatPhase.initializing => AsystantGlyphKind.refresh,
-      ChatPhase.ready => AsystantGlyphKind.chat,
-      ChatPhase.thinking => AsystantGlyphKind.sparkle,
-      ChatPhase.executing => AsystantGlyphKind.refresh,
-      ChatPhase.permission => AsystantGlyphKind.shield,
-      ChatPhase.done => AsystantGlyphKind.check,
-      ChatPhase.canceled => AsystantGlyphKind.pause,
-      ChatPhase.error => AsystantGlyphKind.warning,
-    };
     return Semantics(
       liveRegion: true,
       child: Row(
@@ -42,12 +32,9 @@ class StatusIndicator extends StatelessWidget {
             duration: theme.transitionDuration,
             child: ChatActivityPulse(
               key: ValueKey(phase),
-              active:
-                  phase == ChatPhase.thinking ||
-                  phase == ChatPhase.initializing ||
-                  phase == ChatPhase.executing,
+              active: phase.isPulsing,
               child: AsystantGlyph(
-                icon,
+                phase.toGlyph(),
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),

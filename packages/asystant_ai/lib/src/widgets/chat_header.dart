@@ -6,6 +6,7 @@ import 'package:asystant_ai/src/model/asystant_conversation_actions_style.dart';
 import 'package:asystant_ai/src/model/asystant_menu_action.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
+import 'package:asystant_ai/src/widgets/asystant_disabled_colors.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:asystant_ai/src/widgets/chat_context_meter.dart';
 import 'package:asystant_ai/src/widgets/status_indicator.dart';
@@ -80,12 +81,21 @@ class ChatHeader extends StatelessWidget {
 
   final VoidCallback? onClose;
 
+  /// New and delete need a conversation to act on, besides the permission.
+  bool get _canChange => canManage && state.hasConversation;
+
+  /// The menu style shows only when at least one of its entries exists.
+  bool get _showsMenu =>
+      actionsStyle == AsystantConversationActionsStyle.menu &&
+      (onHistory != null ||
+          onNew != null ||
+          onDelete != null ||
+          menuActions.isNotEmpty);
+
   @override
   Widget build(BuildContext context) {
     final metrics = AsystantMetrics.of(context);
     final colors = Theme.of(context).colorScheme;
-    final hasMessages = state.messages.isNotEmpty;
-    final canChange = canManage && hasMessages;
     return ConstrainedBox(
       constraints: BoxConstraints(
         minHeight: metrics.headerHeight + (showsHandle ? 10 : 0),
@@ -152,17 +162,13 @@ class ChatHeader extends StatelessWidget {
                       onPressed: toggle,
                     ),
                   ...actions,
-                  if (actionsStyle == AsystantConversationActionsStyle.menu &&
-                      (onHistory != null ||
-                          onNew != null ||
-                          onDelete != null ||
-                          menuActions.isNotEmpty))
+                  if (_showsMenu)
                     _ConversationMenu(
                       strings: strings,
                       icon: menuIcon,
                       onHistory: canManage ? onHistory : null,
-                      onNew: canChange ? onNew : null,
-                      onDelete: canChange ? onDelete : null,
+                      onNew: _canChange ? onNew : null,
+                      onDelete: _canChange ? onDelete : null,
                       actions: menuActions,
                     ),
                   if (actionsStyle == AsystantConversationActionsStyle.inline)
@@ -173,7 +179,7 @@ class ChatHeader extends StatelessWidget {
                       onNew: onNew,
                       onDelete: onDelete,
                       canManage: canManage,
-                      canChange: canChange,
+                      canChange: _canChange,
                     ),
                   if (onClose case final close?)
                     _HeaderAction(
@@ -282,6 +288,12 @@ class _ConversationMenuState extends State<_ConversationMenu> {
     action();
   }
 
+  /// Closes the menu before [action] runs; a null action stays disabled.
+  VoidCallback? _closingFirst(VoidCallback? action) => switch (action) {
+    final run? => () => _run(run),
+    null => null,
+  };
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -313,28 +325,22 @@ class _ConversationMenuState extends State<_ConversationMenu> {
             _ConversationMenuEntry(
               icon: action.icon,
               label: action.label,
-              onPressed: action.onPressed == null
-                  ? null
-                  : () => _run(action.onPressed!),
+              onPressed: _closingFirst(action.onPressed),
             ),
           _ConversationMenuEntry(
             glyph: AsystantGlyphKind.history,
             label: widget.strings.history,
-            onPressed: widget.onHistory == null
-                ? null
-                : () => _run(widget.onHistory!),
+            onPressed: _closingFirst(widget.onHistory),
           ),
           _ConversationMenuEntry(
             glyph: AsystantGlyphKind.plus,
             label: widget.strings.newConversation,
-            onPressed: widget.onNew == null ? null : () => _run(widget.onNew!),
+            onPressed: _closingFirst(widget.onNew),
           ),
           _ConversationMenuEntry(
             glyph: AsystantGlyphKind.trash,
             label: widget.strings.deleteConversation,
-            onPressed: widget.onDelete == null
-                ? null
-                : () => _run(widget.onDelete!),
+            onPressed: _closingFirst(widget.onDelete),
           ),
         ],
       ),
@@ -361,9 +367,7 @@ class _ConversationMenuEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final color = onPressed == null
-        ? colors.onSurface.withValues(alpha: .38)
-        : colors.onSurface;
+    final color = onPressed == null ? colors.disabledContent : colors.onSurface;
     return InkWell(
       onTap: onPressed,
       child: Padding(
@@ -373,8 +377,8 @@ class _ConversationMenuEntry extends StatelessWidget {
           children: [
             if (icon case final materialIcon?)
               Icon(materialIcon, color: color)
-            else
-              AsystantGlyph(glyph!, color: color),
+            else if (glyph case final kind?)
+              AsystantGlyph(kind, color: color),
             const SizedBox(width: 12),
             Text(
               label,
@@ -456,7 +460,7 @@ class _HeaderAction extends StatelessWidget {
       icon: AsystantGlyph(
         glyph,
         color: onPressed == null
-            ? colors.onSurface.withValues(alpha: .38)
+            ? colors.disabledContent
             : colors.onSurfaceVariant,
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/model/asystant_action_policy.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/widgets/asystant_sensitivity_presentation.dart';
 
 /// Compact and accessible sensitivity label shared by approvals and activity.
 class AsystantSensitivityBadge extends StatelessWidget {
@@ -22,10 +23,7 @@ class AsystantSensitivityBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = sensitivity.color;
-    final label = switch (sensitivity.level) {
-      final AsystantSensitivityLevel level => strings.sensitivityLevel(level),
-      null => sensitivity.name,
-    };
+    final label = sensitivity.toLabel(strings);
     if (compact) {
       return Tooltip(
         message: label,

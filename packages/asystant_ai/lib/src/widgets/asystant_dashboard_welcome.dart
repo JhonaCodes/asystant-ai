@@ -55,13 +55,17 @@ class AsystantDashboardWelcome extends StatefulWidget {
 class _AsystantDashboardWelcomeState extends State<AsystantDashboardWelcome> {
   int selected = 0;
 
+  /// The selected module's prompts; the last module if the host removed some.
+  List<String> get _prompts => switch (widget.modules) {
+    [] => const <String>[],
+    final modules => modules[selected.clamp(0, modules.length - 1)].prompts,
+  };
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
-    final prompts = widget.modules.isEmpty
-        ? const <String>[]
-        : widget.modules[selected.clamp(0, widget.modules.length - 1)].prompts;
+    final prompts = _prompts;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(

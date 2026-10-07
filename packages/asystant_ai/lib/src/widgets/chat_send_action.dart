@@ -5,6 +5,7 @@ import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
+import 'package:asystant_ai/src/widgets/asystant_disabled_colors.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 
 /// Send, or Stop while a turn runs. The icon takes a contrasting color from
@@ -26,23 +27,23 @@ class ChatSendAction extends StatelessWidget {
 
   final VoidCallback onSend;
 
+  _SendMode get _mode => switch ((state.busy, viewModel.canSend)) {
+    (true, _) => .stop,
+    (false, true) => .send,
+    (false, false) => .unavailable,
+  };
+
+  VoidCallback? get _onPressed => switch (_mode) {
+    .stop => viewModel.stop,
+    .send => onSend,
+    .unavailable => null,
+  };
+
   @override
   Widget build(BuildContext context) {
     final size = AsystantMetrics.of(context).sendSize;
     final colors = Theme.of(context).colorScheme;
-    final onPressed = switch ((state.busy, viewModel.canSend)) {
-      (true, _) => viewModel.stop,
-      (false, true) => onSend,
-      _ => null,
-    };
-    final fill = switch ((onPressed, state.busy)) {
-      (null, _) => colors.onSurface.withValues(alpha: .12),
-      (_, true) => colors.error,
-      (_, false) => colors.primary,
-    };
-    final glyph = onPressed == null
-        ? colors.onSurface.withValues(alpha: .38)
-        : AsystantTheme.contrastOn(fill);
+    final fill = _mode.toFill(colors);
     // The fill follows the density; the touch area never drops below 48.
     return IconButton.filled(
       tooltip: state.busy ? strings.stop : strings.send,
@@ -57,15 +58,31 @@ class ChatSendAction extends StatelessWidget {
           borderRadius: BorderRadius.circular(size / 3.5),
         ),
       ),
-      onPressed: onPressed,
+      onPressed: _onPressed,
       icon: AnimatedSwitcher(
         duration: kThemeAnimationDuration,
         child: AsystantGlyph(
           state.busy ? AsystantGlyphKind.stop : AsystantGlyphKind.send,
           key: ValueKey(state.busy),
-          color: glyph,
+          color: _mode.toGlyphColor(colors),
         ),
       ),
     );
   }
+}
+
+/// What the button does now: stop the turn, send the draft, or nothing.
+enum _SendMode { stop, send, unavailable }
+
+extension _SendModePresentation on _SendMode {
+  Color toFill(ColorScheme colors) => switch (this) {
+    .stop => colors.error,
+    .send => colors.primary,
+    .unavailable => colors.onSurface.withValues(alpha: .12),
+  };
+
+  Color toGlyphColor(ColorScheme colors) => switch (this) {
+    .stop || .send => AsystantTheme.contrastOn(toFill(colors)),
+    .unavailable => colors.disabledContent,
+  };
 }

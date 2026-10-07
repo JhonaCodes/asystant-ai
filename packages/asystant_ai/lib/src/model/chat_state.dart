@@ -135,6 +135,18 @@ class ChatState {
     ChatPhase.canceled => false,
   };
 
+  /// A turn runs or setup is underway, so the provider cannot change now.
+  bool get isBusyOrInitializing => busy || phase == ChatPhase.initializing;
+
+  /// Whether there is a conversation to replace or delete.
+  bool get hasConversation => messages.isNotEmpty;
+
+  /// An approval or a private value waits for the person's answer.
+  bool get awaitsAnswer => pending != null || privateInput != null;
+
+  /// The empty conversation shows the welcome while no turn runs.
+  bool get showsWelcome => entries.isEmpty && !busy;
+
   /// Whether the model is writing text right now.
   bool get isWriting => streaming.isNotEmpty;
 

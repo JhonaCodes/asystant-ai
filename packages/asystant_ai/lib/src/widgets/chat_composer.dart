@@ -78,6 +78,13 @@ class _ChatComposerState extends State<ChatComposer> {
     return .ignored;
   }
 
+  void _pickAttachments() => unawaited(
+    widget.viewModel.pickAttachments(
+      policy: widget.attachments,
+      picker: widget.onPickFiles,
+    ),
+  );
+
   /// On phones the keyboard steps aside so the answer is visible.
   void _send() {
     if (context.asystantDeviceType == AsystantDeviceType.mobile) {
@@ -195,7 +202,7 @@ class _ChatComposerState extends State<ChatComposer> {
                   viewModel: widget.viewModel,
                   strings: widget.strings,
                   attachments: widget.attachments,
-                  onPickFiles: widget.onPickFiles,
+                  onAttach: _pickAttachments,
                   controller: _text,
                   focusNode: _focus,
                   onFocusChange: (focused) =>
@@ -213,27 +220,17 @@ class _ChatComposerState extends State<ChatComposer> {
               else
                 Row(
                   children: [
-                    if (widget.attachments.enabled &&
-                        widget.attachmentActionPlacement ==
-                            AsystantComposerActionPlacement.outside)
-                      _ComposerIconAction(
-                        icon: AsystantGlyphKind.attach,
-                        tooltip: widget.strings.attach,
-                        onPressed: canType
-                            ? () => widget.viewModel.pickAttachments(
-                                policy: widget.attachments,
-                                picker: widget.onPickFiles,
-                              )
-                            : null,
-                      ),
-                    if (widget.enablePrivateValueAttachment &&
-                        widget.privateValueActionPlacement ==
-                            AsystantComposerActionPlacement.outside)
-                      _ComposerIconAction(
-                        icon: AsystantGlyphKind.key,
-                        tooltip: widget.strings.privateValueTitle,
-                        onPressed: canType ? _attachPrivateValue : null,
-                      ),
+                    _PlacedComposerActions(
+                      placement: .outside,
+                      attachments: widget.attachments,
+                      attachmentPlacement: widget.attachmentActionPlacement,
+                      offersPrivateValue: widget.enablePrivateValueAttachment,
+                      privateValuePlacement: widget.privateValueActionPlacement,
+                      strings: widget.strings,
+                      enabled: canType,
+                      onAttach: _pickAttachments,
+                      onAttachPrivateValue: _attachPrivateValue,
+                    ),
                     Expanded(
                       child: AnimatedContainer(
                         duration: AsystantTheme.of(context).transitionDuration,
@@ -273,38 +270,21 @@ class _ChatComposerState extends State<ChatComposer> {
                             // Attach on the left; the model and Send on the right.
                             Row(
                               children: [
-                                if (widget.attachments.enabled &&
-                                    widget.attachmentActionPlacement ==
-                                        AsystantComposerActionPlacement.inside)
-                                  IconButton(
-                                    tooltip: widget.strings.attach,
-                                    visualDensity: VisualDensity.compact,
-                                    onPressed: canType
-                                        ? () =>
-                                              widget.viewModel.pickAttachments(
-                                                policy: widget.attachments,
-                                                picker: widget.onPickFiles,
-                                              )
-                                        : null,
-                                    icon: AsystantGlyph(
-                                      AsystantGlyphKind.attach,
-                                      color: colors.onSurfaceVariant,
-                                    ),
-                                  ),
-                                if (widget.enablePrivateValueAttachment &&
-                                    widget.privateValueActionPlacement ==
-                                        AsystantComposerActionPlacement.inside)
-                                  IconButton(
-                                    tooltip: widget.strings.privateValueTitle,
-                                    visualDensity: VisualDensity.compact,
-                                    onPressed: canType
-                                        ? _attachPrivateValue
-                                        : null,
-                                    icon: AsystantGlyph(
-                                      AsystantGlyphKind.key,
-                                      color: colors.onSurfaceVariant,
-                                    ),
-                                  ),
+                                _PlacedComposerActions(
+                                  placement: .inside,
+                                  attachments: widget.attachments,
+                                  attachmentPlacement:
+                                      widget.attachmentActionPlacement,
+                                  offersPrivateValue:
+                                      widget.enablePrivateValueAttachment,
+                                  privateValuePlacement:
+                                      widget.privateValueActionPlacement,
+                                  strings: widget.strings,
+                                  enabled: canType,
+                                  onAttach: _pickAttachments,
+                                  onAttachPrivateValue: _attachPrivateValue,
+                                  fixedTarget: false,
+                                ),
                                 const Spacer(),
                                 ChatModelPicker(
                                   state: widget.state,
@@ -346,7 +326,7 @@ class _InlineComposer extends StatelessWidget {
     required this.viewModel,
     required this.strings,
     required this.attachments,
-    required this.onPickFiles,
+    required this.onAttach,
     required this.controller,
     required this.focusNode,
     required this.onFocusChange,
@@ -363,7 +343,7 @@ class _InlineComposer extends StatelessWidget {
   final ChatViewModel viewModel;
   final AsystantStrings strings;
   final AsystantAttachmentPolicy attachments;
-  final AsystantFilePick? onPickFiles;
+  final VoidCallback onAttach;
   final TextEditingController controller;
   final FocusNode focusNode;
   final ValueChanged<bool> onFocusChange;
@@ -380,27 +360,17 @@ class _InlineComposer extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     return Row(
       children: [
-        if (attachments.enabled &&
-            attachmentActionPlacement ==
-                AsystantComposerActionPlacement.outside)
-          _ComposerIconAction(
-            icon: AsystantGlyphKind.attach,
-            tooltip: strings.attach,
-            onPressed: viewModel.canType
-                ? () => viewModel.pickAttachments(
-                    policy: attachments,
-                    picker: onPickFiles,
-                  )
-                : null,
-          ),
-        if (enablePrivateValueAttachment &&
-            privateValueActionPlacement ==
-                AsystantComposerActionPlacement.outside)
-          _ComposerIconAction(
-            icon: AsystantGlyphKind.key,
-            tooltip: strings.privateValueTitle,
-            onPressed: viewModel.canType ? onAttachPrivateValue : null,
-          ),
+        _PlacedComposerActions(
+          placement: .outside,
+          attachments: attachments,
+          attachmentPlacement: attachmentActionPlacement,
+          offersPrivateValue: enablePrivateValueAttachment,
+          privateValuePlacement: privateValueActionPlacement,
+          strings: strings,
+          enabled: viewModel.canType,
+          onAttach: onAttach,
+          onAttachPrivateValue: onAttachPrivateValue,
+        ),
         Expanded(
           child: AnimatedContainer(
             duration: AsystantTheme.of(context).transitionDuration,
@@ -415,27 +385,17 @@ class _InlineComposer extends StatelessWidget {
             ),
             child: Row(
               children: [
-                if (attachments.enabled &&
-                    attachmentActionPlacement ==
-                        AsystantComposerActionPlacement.inside)
-                  _ComposerIconAction(
-                    icon: AsystantGlyphKind.attach,
-                    tooltip: strings.attach,
-                    onPressed: viewModel.canType
-                        ? () => viewModel.pickAttachments(
-                            policy: attachments,
-                            picker: onPickFiles,
-                          )
-                        : null,
-                  ),
-                if (enablePrivateValueAttachment &&
-                    privateValueActionPlacement ==
-                        AsystantComposerActionPlacement.inside)
-                  _ComposerIconAction(
-                    icon: AsystantGlyphKind.key,
-                    tooltip: strings.privateValueTitle,
-                    onPressed: viewModel.canType ? onAttachPrivateValue : null,
-                  ),
+                _PlacedComposerActions(
+                  placement: .inside,
+                  attachments: attachments,
+                  attachmentPlacement: attachmentActionPlacement,
+                  offersPrivateValue: enablePrivateValueAttachment,
+                  privateValuePlacement: privateValueActionPlacement,
+                  strings: strings,
+                  enabled: viewModel.canType,
+                  onAttach: onAttach,
+                  onAttachPrivateValue: onAttachPrivateValue,
+                ),
                 Expanded(
                   child: Focus(
                     onFocusChange: onFocusChange,
@@ -469,23 +429,87 @@ class _InlineComposer extends StatelessWidget {
   }
 }
 
+/// The attach and private-value buttons the host placed at [placement].
+class _PlacedComposerActions extends StatelessWidget {
+  const _PlacedComposerActions({
+    required this.placement,
+    required this.attachments,
+    required this.attachmentPlacement,
+    required this.offersPrivateValue,
+    required this.privateValuePlacement,
+    required this.strings,
+    required this.enabled,
+    required this.onAttach,
+    required this.onAttachPrivateValue,
+    this.fixedTarget = true,
+  });
+
+  final AsystantComposerActionPlacement placement;
+  final AsystantAttachmentPolicy attachments;
+  final AsystantComposerActionPlacement attachmentPlacement;
+  final bool offersPrivateValue;
+  final AsystantComposerActionPlacement privateValuePlacement;
+  final AsystantStrings strings;
+
+  /// Off while the person cannot type; the buttons stay visible, disabled.
+  final bool enabled;
+  final VoidCallback onAttach;
+  final VoidCallback onAttachPrivateValue;
+
+  /// See [_ComposerIconAction.fixedTarget].
+  final bool fixedTarget;
+
+  bool get _showsAttach =>
+      attachments.enabled && attachmentPlacement == placement;
+
+  bool get _showsPrivateValue =>
+      offersPrivateValue && privateValuePlacement == placement;
+
+  @override
+  Widget build(BuildContext context) => Row(
+    mainAxisSize: .min,
+    children: [
+      if (_showsAttach)
+        _ComposerIconAction(
+          icon: AsystantGlyphKind.attach,
+          tooltip: strings.attach,
+          onPressed: enabled ? onAttach : null,
+          fixedTarget: fixedTarget,
+        ),
+      if (_showsPrivateValue)
+        _ComposerIconAction(
+          icon: AsystantGlyphKind.key,
+          tooltip: strings.privateValueTitle,
+          onPressed: enabled ? onAttachPrivateValue : null,
+          fixedTarget: fixedTarget,
+        ),
+    ],
+  );
+}
+
 class _ComposerIconAction extends StatelessWidget {
   const _ComposerIconAction({
     required this.icon,
     required this.tooltip,
     required this.onPressed,
+    required this.fixedTarget,
   });
 
   final AsystantGlyphKind icon;
   final String tooltip;
   final VoidCallback? onPressed;
 
+  /// Pins a 40 dp box with 8 dp padding; off keeps the IconButton defaults.
+  final bool fixedTarget;
+
   @override
   Widget build(BuildContext context) => IconButton(
     tooltip: tooltip,
     visualDensity: VisualDensity.compact,
-    constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
-    padding: const EdgeInsets.all(8),
+    constraints: fixedTarget
+        ? const BoxConstraints(minWidth: 40, minHeight: 40)
+        : null,
+    padding: fixedTarget ? const EdgeInsets.all(8) : null,
     onPressed: onPressed,
     icon: AsystantGlyph(
       icon,

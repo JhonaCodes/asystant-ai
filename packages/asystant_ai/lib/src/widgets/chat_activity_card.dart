@@ -9,6 +9,7 @@ import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:asystant_ai/src/widgets/chat_activity_pulse.dart';
 import 'package:asystant_ai/src/widgets/asystant_sensitivity_badge.dart';
+import 'package:asystant_ai/src/widgets/step_outcome_presentation.dart';
 
 /// What the assistant did in a turn: live while it works, a record after.
 ///
@@ -184,31 +185,87 @@ class _ActivityRow extends StatelessWidget {
   final AsystantSensitivity? sensitivity;
 
   @override
+  Widget build(BuildContext context) => Padding(
+    padding: EdgeInsets.symmetric(
+      vertical: AsystantTheme.of(context).spacing / 3,
+    ),
+    child: _WithStepImages(
+      images: images,
+      child: _ActivityLine(
+        icon: icon,
+        label: label,
+        outcome: outcome,
+        strings: strings,
+        progress: progress,
+        sensitivity: sensitivity,
+      ),
+    ),
+  );
+
+  static const double _iconSize = 16;
+}
+
+/// The images go under the whole row, so the icons stay beside the label.
+class _WithStepImages extends StatelessWidget {
+  const _WithStepImages({required this.images, required this.child});
+
+  final List<AsystantAttachment> images;
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = AsystantTheme.of(context);
+    return switch (images) {
+      [] => child,
+      [_, ...] => Column(
+        crossAxisAlignment: .start,
+        children: [
+          child,
+          Padding(
+            padding: EdgeInsets.only(
+              left: _ActivityRow._iconSize + tokens.spacing - 4,
+              top: tokens.spacing / 2,
+            ),
+            child: _StepImages(images: images),
+          ),
+        ],
+      ),
+    };
+  }
+}
+
+/// The step's icon, label, optional badge and progress, and its outcome.
+class _ActivityLine extends StatelessWidget {
+  const _ActivityLine({
+    required this.icon,
+    required this.label,
+    required this.outcome,
+    required this.strings,
+    this.progress,
+    this.sensitivity,
+  });
+
+  final AsystantGlyphKind icon;
+
+  final String label;
+
+  final StepOutcome outcome;
+
+  final AsystantStrings strings;
+
+  final double? progress;
+
+  final AsystantSensitivity? sensitivity;
+
+  @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
     final colors = Theme.of(context).colorScheme;
-    final (glyph, color, tooltip) = switch (outcome) {
-      StepOutcome.running => (
-        AsystantGlyphKind.pending,
-        colors.onSurfaceVariant,
-        strings.stepPhase(StepPhase.running),
-      ),
-      StepOutcome.done => (
-        AsystantGlyphKind.check,
-        tokens.successColor(context),
-        strings.stepPhase(StepPhase.completed),
-      ),
-      StepOutcome.issue => (
-        AsystantGlyphKind.warning,
-        colors.error,
-        strings.stepPhase(StepPhase.failed),
-      ),
-    };
-    // The images go under the whole row, so the icons stay beside the label.
-    final row = Row(
+    return Row(
       children: [
         SizedBox.square(
-          dimension: _iconSize,
+          dimension: _ActivityRow._iconSize,
           child: FittedBox(child: AsystantGlyph(icon)),
         ),
         SizedBox(width: tokens.spacing - 4),
@@ -250,36 +307,20 @@ class _ActivityRow extends StatelessWidget {
           ),
         ),
         Tooltip(
-          message: tooltip,
+          message: outcome.toLabel(strings),
           child: SizedBox.square(
             dimension: 15,
-            child: FittedBox(child: AsystantGlyph(glyph, color: color)),
+            child: FittedBox(
+              child: AsystantGlyph(
+                outcome.toGlyph(),
+                color: outcome.toColor(context),
+              ),
+            ),
           ),
         ),
       ],
     );
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: tokens.spacing / 3),
-      child: switch (images) {
-        [] => row,
-        [_, ...] => Column(
-          crossAxisAlignment: .start,
-          children: [
-            row,
-            Padding(
-              padding: EdgeInsets.only(
-                left: _iconSize + tokens.spacing - 4,
-                top: tokens.spacing / 2,
-              ),
-              child: _StepImages(images: images),
-            ),
-          ],
-        ),
-      },
-    );
   }
-
-  static const double _iconSize = 16;
 }
 
 /// The images a tool returned, as thumbnails the person can look at.
