@@ -109,6 +109,30 @@ void main() {
     expect(homes, 1);
   });
 
+  testWidgets('the conversation actions can live in a menu behind a host '
+      'icon, each with its own icon', (tester) async {
+    final assistant = await _connected(tester);
+    await _pumpChat(
+      tester,
+      AsystantChat(
+        assistant: assistant,
+        strings: const AsystantStrings(spanish: false),
+        conversationActionsStyle: AsystantConversationActionsStyle.menu,
+        conversationMenuIcon: const Icon(Icons.tune_rounded),
+      ),
+    );
+
+    expect(find.byTooltip('New conversation'), findsNothing);
+    expect(find.text('New conversation'), findsNothing);
+
+    await tester.tap(find.byIcon(Icons.tune_rounded));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Conversations'), findsOneWidget);
+    expect(find.text('New conversation'), findsOneWidget);
+    expect(find.text('Delete conversation'), findsOneWidget);
+  });
+
   testWidgets('the header shows the host content', (tester) async {
     final assistant = await _connected(tester);
     await _pumpChat(

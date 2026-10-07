@@ -1,3 +1,8 @@
+## 0.4.2
+
+- `AsystantChat.conversationActionsStyle`: `AsystantConversationActionsStyle.inline` (default, unchanged) or `.menu`, which puts the conversation list, new conversation and delete behind one icon as a dropdown, each entry with its own icon. `conversationMenuIcon` replaces the trigger icon.
+- New dependency: `multiselect_field` ^2.5.0, used for the dropdown.
+
 ## 0.4.1
 
 - `AsystantChat.headerActions`: host buttons in the header row, before the conversation actions, for hosts whose main screen is the chat itself (navigation, sessions, notifications).

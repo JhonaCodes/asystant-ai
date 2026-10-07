@@ -18,6 +18,7 @@ export 'src/theme/asystant_device_type.dart';
 export 'src/widgets/gen_ui_card.dart';
 export 'src/model/assistant_step.dart';
 export 'src/model/asystant_card_action.dart';
+export 'src/model/asystant_conversation_actions_style.dart';
 export 'src/model/asystant_host_card.dart';
 export 'src/model/asystant_model_option.dart';
 export 'src/model/asystant_turn_limits.dart';

@@ -6,6 +6,7 @@ import 'package:reactive_notifier/reactive_notifier.dart';
 
 import 'package:asystant_ai/src/asystant_ai.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
+import 'package:asystant_ai/src/model/asystant_conversation_actions_style.dart';
 import 'package:asystant_ai/src/model/asystant_host_card.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/service/asystant_file_picker.dart';
@@ -43,11 +44,19 @@ class AsystantChat extends StatefulWidget {
     this.headerContent,
     this.headerActions = const [],
     this.managesConversations = true,
+    this.conversationActionsStyle = AsystantConversationActionsStyle.inline,
+    this.conversationMenuIcon,
   });
 
   /// Host buttons in the header row, before the conversation actions, such
   /// as navigation when the chat is the host's main screen.
   final List<Widget> headerActions;
+
+  /// Inline icons or one dropdown menu for the conversation actions.
+  final AsystantConversationActionsStyle conversationActionsStyle;
+
+  /// The icon that opens the menu style; a "more" glyph when null.
+  final Widget? conversationMenuIcon;
 
   final AsystantAI assistant;
 
@@ -231,6 +240,8 @@ class _ChatLayout extends StatelessWidget {
           isExpanded: chat.isExpanded,
           onToggleExpansion: chat.onToggleExpansion,
           actions: chat.headerActions,
+          actionsStyle: chat.conversationActionsStyle,
+          menuIcon: chat.conversationMenuIcon,
           onHistory: manages && !sideList ? () => onShowList(true) : null,
           onNew: manages ? viewModel.newConversation : null,
           onDelete: manages ? () => onDelete(state.conversationId) : null,

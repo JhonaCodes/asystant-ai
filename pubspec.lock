@@ -416,6 +416,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  multiselect_field:
+    dependency: transitive
+    description:
+      name: multiselect_field
+      sha256: "2f74e0e63e7fff4b7af024c486cf0ec8df57dc1898d132e95f9ab8ea6f2cd6aa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.0"
   node_preamble:
     dependency: transitive
     description:
