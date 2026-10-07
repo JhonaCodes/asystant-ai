@@ -1,5 +1,5 @@
 // keel-debt: attachment classification is duplicated in the Claude CLI codec;
-// keel-debt: extract only the decision into an AttachmentDelivery enum.
+//   extract only the decision into an AttachmentDelivery enum.
 import 'dart:convert';
 
 import 'package:asystant_core/src/model/assistant_message.dart';

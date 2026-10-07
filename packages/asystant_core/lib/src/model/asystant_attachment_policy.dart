@@ -1,5 +1,5 @@
 // keel-debt: 3 public types in one file; split when the next major allows
-// keel-debt: moving declaring URIs.
+//   moving declaring URIs.
 import 'package:collection/collection.dart';
 
 import 'package:asystant_core/src/model/asystant_attachment.dart';

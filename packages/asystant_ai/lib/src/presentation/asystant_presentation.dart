@@ -1,5 +1,5 @@
 // keel-debt: Map<String, Object?> payloads cross the public presentation API into the
-// keel-debt: UI, and 3 public types share this file; type per presentation and split in a major.
+//   UI, and 3 public types share this file; type per presentation and split in a major.
 import 'package:flutter/widgets.dart';
 
 import 'package:asystant_core/asystant_core.dart';

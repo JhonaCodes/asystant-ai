@@ -2,7 +2,7 @@ import 'package:asystant_core/src/model/assistant_value.dart';
 import 'package:asystant_core/src/tool/tool_arguments.dart';
 
 // keel-debt: model/ imports tool/ and tool/ imports model/ (layer cycle); move
-// keel-debt: ToolCall to src/tool/ in the next major, the barrel keeps the name.
+//   ToolCall to src/tool/ in the next major, the barrel keeps the name.
 /// A model-proposed local function call whose arguments must be validated before use.
 class ToolCall extends AssistantValue {
   const ToolCall({

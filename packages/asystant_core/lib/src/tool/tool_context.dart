@@ -1,5 +1,5 @@
 // keel-debt: 5 public types in one file (one-class-per-file rule); split when
-// keel-debt: the next major allows moving declaring URIs.
+//   the next major allows moving declaring URIs.
 import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/asystant_attachment.dart';
 
@@ -27,7 +27,7 @@ class PrivateInputField {
 enum PrivateInputKind { secret, password, code, totp, text }
 
 // keel-debt: returns an untyped Map<String, String> unrelated to the fields asked;
-// keel-debt: type it as a PrivateInputValues model in the next major.
+//   type it as a PrivateInputValues model in the next major.
 /// Shown by the host UI to collect [fields] inline in the chat, titled
 /// [title]. Returns the entered values keyed by [PrivateInputField.name],
 /// or null when the person dismisses the request without submitting.
@@ -93,7 +93,7 @@ class ToolContext {
   bool get isCanceled => _isCanceled();
 
   // keel-debt: throws AssistantFailure for an expected flow, and callers that catch(_)
-  // keel-debt: lose the .canceled code; return a Result in the next major.
+  //   lose the .canceled code; return a Result in the next major.
   /// Throws a canceled failure; call immediately before committing a write.
   void checkCanceled() {
     if (isCanceled) {
