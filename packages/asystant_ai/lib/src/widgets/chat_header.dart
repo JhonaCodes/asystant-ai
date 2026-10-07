@@ -26,6 +26,7 @@ class ChatHeader extends StatelessWidget {
     this.actions = const [],
     this.actionsStyle = AsystantConversationActionsStyle.inline,
     this.menuIcon,
+    this.identityIcon,
     this.onHistory,
     this.onNew,
     this.onDelete,
@@ -59,6 +60,9 @@ class ChatHeader extends StatelessWidget {
 
   /// Opens the menu style; a "more" glyph when null.
   final Widget? menuIcon;
+
+  /// Host-provided identity mark inside the header tile.
+  final Widget? identityIcon;
 
   final VoidCallback? onHistory;
 
@@ -109,10 +113,12 @@ class ChatHeader extends StatelessWidget {
                         metrics.identityRadius,
                       ),
                     ),
-                    child: AsystantGlyph(
-                      AsystantGlyphKind.sparkle,
-                      color: colors.primary,
-                    ),
+                    child:
+                        identityIcon ??
+                        AsystantGlyph(
+                          AsystantGlyphKind.sparkle,
+                          color: colors.primary,
+                        ),
                   ),
                   const SizedBox(width: 10),
                   Expanded(

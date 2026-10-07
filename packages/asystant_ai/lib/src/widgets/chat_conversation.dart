@@ -29,6 +29,7 @@ class ChatConversation extends StatelessWidget {
     required this.onStartNew,
     this.cardContentBuilder,
     this.hostCards = const [],
+    this.welcomeContent,
   });
 
   /// The assistant's name, shown above its messages.
@@ -49,6 +50,9 @@ class ChatConversation extends StatelessWidget {
   /// The host's cards, pinned after the conversation.
   final List<AsystantHostCard> hostCards;
 
+  /// Host-provided welcome shown in an empty conversation.
+  final Widget? welcomeContent;
+
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
@@ -59,7 +63,8 @@ class ChatConversation extends StatelessWidget {
           hostCards.any((hostCard) => hostCard.awaitsDecision),
       padding: AsystantMetrics.of(context).listPadding,
       children: [
-        if (state.entries.isEmpty && !state.busy) ChatWelcome(strings: strings),
+        if (state.entries.isEmpty && !state.busy)
+          welcomeContent ?? ChatWelcome(strings: strings),
         for (final entry in state.entries) ...[
           if (entry.activity.isNotEmpty)
             ChatActivityCard(

@@ -1,3 +1,8 @@
+## 0.4.3
+
+- `AsystantChat.identityIcon` lets the host replace the default sparkle in the header with its own identity mark.
+- `AsystantChat.welcomeContent` lets the host provide the empty conversation view while keeping the built-in timeline, activity steps, composer and permission flow.
+
 ## 0.4.2
 
 - `AsystantChat.conversationActionsStyle`: `AsystantConversationActionsStyle.inline` (default, unchanged) or `.menu`, which puts the conversation list, new conversation and delete behind one icon as a dropdown, each entry with its own icon. `conversationMenuIcon` replaces the trigger icon.

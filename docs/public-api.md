@@ -440,7 +440,11 @@ schemes such as `javascript`, `data` and `file` are rejected. A standalone
 
 ### Host content: header, cards with actions, conversations
 
-Three `AsystantChat` parameters put the host's own state inside the chat, for an assistant embedded in a larger workflow. None of them is stored with the conversation or sent to the model.
+`identityIcon` replaces the header's default sparkle with a host widget.
+`welcomeContent` replaces the welcome view only when the conversation is empty;
+the built-in activity timeline, messages, composer and approvals remain in place.
+
+These `AsystantChat` parameters put the host's own state inside the chat, for an assistant embedded in a larger workflow. None of them is stored with the conversation or sent to the model.
 
 - `headerContent`: a widget under the header, such as what the assistant is working on right now (the open document, the current stage). It stays in place while the conversation scrolls.
 - `hostCards`: cards pinned after the conversation, each an `AsystantHostCard` with an `AssistantCard` (title, Markdown body, optional chart) and its `actions`, `AsystantCardAction`s with a `label`, an `onPressed` callback (null draws the button disabled) and `isPrimary`. Use them for a decision the host's workflow waits for, or for a notice. The card reflects host state: rebuild the chat with the cards that apply now, so a decision taken elsewhere in the app removes its card here too. A card with an enabled action stands out like a permission request and brings the end of the conversation into view.

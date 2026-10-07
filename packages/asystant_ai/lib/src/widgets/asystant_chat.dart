@@ -46,6 +46,8 @@ class AsystantChat extends StatefulWidget {
     this.managesConversations = true,
     this.conversationActionsStyle = AsystantConversationActionsStyle.inline,
     this.conversationMenuIcon,
+    this.identityIcon,
+    this.welcomeContent,
   });
 
   /// Host buttons in the header row, before the conversation actions, such
@@ -57,6 +59,12 @@ class AsystantChat extends StatefulWidget {
 
   /// The icon that opens the menu style; a "more" glyph when null.
   final Widget? conversationMenuIcon;
+
+  /// Host identity in the chat header. Defaults to the library glyph.
+  final Widget? identityIcon;
+
+  /// Host welcome screen when the conversation is empty.
+  final Widget? welcomeContent;
 
   final AsystantAI assistant;
 
@@ -242,6 +250,7 @@ class _ChatLayout extends StatelessWidget {
           actions: chat.headerActions,
           actionsStyle: chat.conversationActionsStyle,
           menuIcon: chat.conversationMenuIcon,
+          identityIcon: chat.identityIcon,
           onHistory: manages && !sideList ? () => onShowList(true) : null,
           onNew: manages ? viewModel.newConversation : null,
           onDelete: manages ? () => onDelete(state.conversationId) : null,
@@ -270,6 +279,7 @@ class _ChatLayout extends StatelessWidget {
                 name: assistant.name,
                 cardContentBuilder: chat.cardContentBuilder,
                 hostCards: chat.hostCards,
+                welcomeContent: chat.welcomeContent,
                 state: state,
                 viewModel: viewModel,
                 strings: strings,
