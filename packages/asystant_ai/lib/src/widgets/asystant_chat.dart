@@ -384,7 +384,7 @@ class _ChatColumn extends StatelessWidget {
               AsystantMenuAction(
                 label: strings.aiSettings,
                 icon: Icons.tune,
-                onPressed: state.canOpenSettings
+                onPressed: !state.isBusyOrInitializing
                     ? () => showAsystantProviderSettings(
                         context,
                         assistant: assistant,
@@ -506,13 +506,8 @@ class _KeyboardInset extends StatelessWidget {
   );
 }
 
-// keel-debt: belongs on ChatState (plan M3); private here until WP-5 lands.
-extension _ChatStateRules on ChatState {
-  /// Provider settings open only while no turn runs and setup is not underway.
-  bool get canOpenSettings => !busy && phase != ChatPhase.initializing;
-}
-
-// keel-debt: belongs on ChatViewModel; private here while viewmodel/ is frozen.
+// keel-debt: rule kept private beside its only caller, move it onto
+// ChatViewModel in the next minor, where a new public member is allowed.
 extension _ChatViewModelRules on ChatViewModel {
   /// The manual connect prompt shows while setup has not run, or after it failed.
   bool get offersConnect =>
