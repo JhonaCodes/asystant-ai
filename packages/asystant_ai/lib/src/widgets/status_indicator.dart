@@ -6,6 +6,8 @@ import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 
+/// A glyph and short label for the current [ChatPhase], animated on change.
+/// Announced as a live region so assistive technology reads phase changes.
 class StatusIndicator extends StatelessWidget {
   const StatusIndicator({
     super.key,

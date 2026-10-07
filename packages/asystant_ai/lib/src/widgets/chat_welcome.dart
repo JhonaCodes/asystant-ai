@@ -4,6 +4,8 @@ import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 
+/// The empty-conversation greeting: the assistant's glyph, a welcome title
+/// and a short introduction, both from [strings].
 class ChatWelcome extends StatelessWidget {
   const ChatWelcome({super.key, required this.strings});
 

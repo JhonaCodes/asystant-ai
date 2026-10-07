@@ -20,8 +20,13 @@ class PrivateInputField {
   final bool required;
 }
 
+/// How a [PrivateInputField] should be entered and displayed; the host UI
+/// decides obscuring and keyboard type from this, never from the field name.
 enum PrivateInputKind { secret, password, code, totp, text }
 
+/// Shown by the host UI to collect [fields] inline in the chat, titled
+/// [title]. Returns the entered values keyed by [PrivateInputField.name],
+/// or null when the person dismisses the request without submitting.
 typedef PrivateInputRequester = Future<Map<String, String>?> Function(
   String title,
   List<PrivateInputField> fields,

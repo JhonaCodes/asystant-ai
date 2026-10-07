@@ -42,6 +42,10 @@ class ToolDefinition extends AssistantValue {
     'fields': fields.map((field) => field.toJson()).toList(),
   };
 
+  /// This definition as the JSON-schema function spec a provider expects:
+  /// `name`, `description` and a `parameters` object schema built from
+  /// [fields], with `additionalProperties: false` and `required` listing
+  /// every [ToolField.isRequired] field.
   Map<String, Object?> toSchema() => {
     'name': name,
     'description': description,

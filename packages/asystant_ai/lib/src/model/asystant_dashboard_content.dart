@@ -9,6 +9,8 @@ class AsystantDashboardModule {
   final List<String> prompts;
 }
 
+/// One capability the host highlights on the control-center welcome, with
+/// the prompt that triggers it when the person taps the card.
 @immutable
 class AsystantDashboardCapability {
   const AsystantDashboardCapability({
