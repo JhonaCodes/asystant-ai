@@ -1,4 +1,4 @@
-## Unreleased
+## 0.4.0
 
 - `ChatViewModel.reloadConversations()` keeps the conversation on screen in the store, then reads the list again and replaces the one shown with exactly what the store answers, newest first. For hosts whose store answers per context of their own (one list per open document): after switching the context, call it, then `openConversation` or `newConversation`. See the integration guide, "Host content".
 - `AsystantAI.requiresConfirmation(tool)` decides whether a call waits for the person's approval. It is asked on every call, after the preview and before the tool runs, and defaults to the tool's own `requiresConfirmation`; a host overrides it to answer from its settings, such as a switch that approves everything. `ChatViewModel.configure` takes it as `confirmation` (`AsystantConfirmationPolicy`). It never skips `requiresSelection`.

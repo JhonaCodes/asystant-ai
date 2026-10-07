@@ -1,4 +1,4 @@
-## Unreleased
+## 0.3.0
 
 - `ToolContext.reportProgress(fraction, label: ...)`: a long tool reports how far it has come (0 to 1, clamped; non-finite values ignored) with an optional short label for the person. The context forwards it to an optional `onProgress` (`ToolProgressListener`) given by whoever runs the tool; it never reaches the model and does nothing once the call is canceled.
 - Local knowledge (RAG): `AsystantKnowledge`, a local index of `KnowledgeDocument`s (id, title, text, optional collection, tags and metadata) with `put` (add or replace by id), `putAll`, `remove` and `clear`. It ranks with BM25 over title, tags and text, normalized for Spanish and English (lower case, accents folded, stop words of both languages, light plural and gender stemming, prefix matching for query words of four letters or more), filters by collection and tags, and returns `KnowledgeHit`s with the most relevant passage instead of the whole document. `toJson` / `fromJson` save and restore it; the app decides where. Lexical by design: no service, model or dependency, and deterministic.
