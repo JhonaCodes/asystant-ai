@@ -6,18 +6,19 @@ A map for a new contributor. For the full public API, see dartdoc.
 
 ```mermaid
 flowchart TD
-  Host[App host] -->|extiende| AI[AsystantAI<br/>fachada publica]
-  AI -->|mixin| SVC[AsystantService<br/>contenedor perezoso]
-  SVC -->|crea sin parametros| VM[ChatViewModel]
-  VM -->|unico estado| ST[ChatState]
-  VM -->|habla con| CORE[asystant_core<br/>transport + tools]
-  UI[AsystantChat<br/>un solo builder] -->|lee| ST
-  UI -->|invoca metodos| VM
-  W[39 widgets<br/>solo presentacion] -->|reciben datos| UI
+  Host[Host app] -->|extends| AI[AsystantAI<br/>public facade]
+  AI -->|mixin| SVC[AsystantService<br/>lazy container]
+  SVC -->|creates, no params| VM[ChatViewModel]
+  VM -->|single state| ST[ChatState]
+  VM -->|talks to| CORE[asystant_core<br/>transport + tools]
+  UI[AsystantChat<br/>one builder] -->|reads| ST
+  UI -->|calls methods| VM
+  W[Widgets<br/>presentation only] -->|receive data| UI
   CORE --> PROV[Providers:<br/>OpenRouter / ClaudeCode]
-  CORE --> TOOL[Tools tipadas]
-  AI -.->|refreshProvider con guardas| VM
-  SHEET[Provider settings sheet] -.->|llama| AI
+  CORE --> TOOL[Typed tools]
+  AI -.->|refreshProvider, guarded| VM
+  SHEET[Provider settings sheet] -->|one builder| PVM[ProviderSettingsViewModel]
+  PVM -.->|calls| AI
 ```
 
 ## State flow
@@ -26,18 +27,18 @@ flowchart TD
 stateDiagram-v2
   [*] --> idle
   idle --> initializing: configure()
-  initializing --> ready: transporte listo
-  initializing --> error: fallo de red
-  error --> initializing: reintento
+  initializing --> ready: transport ready
+  initializing --> error: network failure
+  error --> initializing: retry
   ready --> thinking: send()
-  thinking --> executing: el modelo pide una tool
-  thinking --> done: respuesta sin tools
-  executing --> permission: la tool requiere aprobacion
+  thinking --> executing: model requests a tool
+  thinking --> done: answer without tools
+  executing --> permission: tool needs approval
   permission --> executing: approve(true)
   permission --> canceled: approve(false)
-  executing --> thinking: resultado al modelo
-  executing --> done: turno terminado
-  done --> ready: listo para el siguiente
+  executing --> thinking: result back to the model
+  executing --> done: turn ended
+  done --> ready: ready for the next turn
   thinking --> canceled: stop()
   canceled --> ready
 ```
@@ -47,19 +48,28 @@ stateDiagram-v2
 - `AsystantAI` is the public facade a host extends. `AsystantService` is the
   mixin that lazily owns one `ChatViewModel` per instance.
 - `ChatViewModel` holds the one `ChatState` for a conversation and talks to
-  `asystant_core` for transport and tool execution.
-- `AsystantChat` is the single `ReactiveViewModelBuilder` of the package: it
+  `asystant_core` for transport and tool execution. Its code is split by
+  responsibility into five private `part of` mixins, one file each:
+  `lifecycle`, `conversations`, `composition`, `turn` and `tools`. Each mixin
+  is declared `on` the ones applied before it, and every private member is
+  implemented in exactly one of them.
+- `ProviderSettingsViewModel` (private, not exported) owns the provider
+  settings sheet: loading, validation, saving and key removal. `open()`
+  resets it on every opening. The API key is only ever a method argument and
+  never part of its state.
+- `AsystantChat` is the single `ReactiveViewModelBuilder` of the chat: it
   reads `ChatState` and invokes `ChatViewModel` methods. Every other widget
-  under `widgets/` is pure presentation — it receives already-derived data
-  and renders it, nothing more.
+  under `widgets/` is pure presentation; enum-to-glyph/color mappings live in
+  the `*_presentation.dart` extensions.
 
 ## Rules
 
-- All business logic lives in the `ChatViewModel` (or in the `ChatState`
-  getters it exposes) — never in a widget's `build()`. A condition that is
-  not strictly visual is in the wrong layer.
-- `ChatViewModel` has a zero-parameter constructor. Collaborators are
-  resolved inside via `configure(...)`, never injected through the
-  constructor.
-- One `ReactiveViewModelBuilder` per screen, never nested. `AsystantChat`
-  owns the only one in this package.
+- All business logic lives in a view model or in the `ChatState` getters
+  it exposes, never in a widget's `build()`. A condition that is not
+  strictly visual is in the wrong layer.
+- View models have a zero-parameter constructor. Collaborators arrive
+  through a method (`configure(...)`, `open(...)`), never the constructor.
+- One reactive builder per screen, never nested.
+- Never call `ReactiveNotifier.cleanup()`: it is global and would wipe the
+  host's state.
+- Deferred design debt is marked in code with `keel-debt:` comments.

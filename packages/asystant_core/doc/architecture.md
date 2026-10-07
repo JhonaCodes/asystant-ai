@@ -9,9 +9,10 @@ layer that `asystant_ai`'s `ChatViewModel` talks to.
 
 ```mermaid
 flowchart TD
-  VM[ChatViewModel<br/>in asystant_ai] -->|habla con| CORE[asystant_core<br/>transport + tools]
+  VM[ChatViewModel<br/>in asystant_ai] -->|talks to| CORE[asystant_core<br/>transport + tools]
   CORE --> PROV[Providers:<br/>OpenRouter / ClaudeCode]
-  CORE --> TOOL[Tools tipadas]
+  CORE --> TOOL[Typed tools]
+  PROV -->|share| LIM[sdk_limits.dart<br/>one source of SDK caps]
 ```
 
 ## Layering
