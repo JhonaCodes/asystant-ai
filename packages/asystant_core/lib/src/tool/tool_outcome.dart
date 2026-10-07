@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:asystant_core/src/model/assistant_card.dart';
 import 'package:asystant_core/src/model/assistant_value.dart';
 import 'package:asystant_core/src/model/asystant_attachment.dart';
@@ -75,6 +77,11 @@ class ToolOutcome extends AssistantValue {
       _ => const {},
     },
     endsTurn: json['ends_turn'] as bool? ?? false,
+    images: List.unmodifiable(
+      (json['images'] as List<Object?>? ?? const []).map(
+        (image) => _attachmentFromJson(image as Map<String, Object?>),
+      ),
+    ),
   );
 
   @override
@@ -88,3 +95,15 @@ class ToolOutcome extends AssistantValue {
       'images': images.map((image) => image.toJson()).toList(),
   };
 }
+
+/// Restores the metadata [AsystantAttachment.toJson] emits. Bytes are never
+/// serialized (see its class comment), so they come back empty; callers that
+/// need the original bytes keep their own side-channel, as
+/// `ConversationSnapshot` already does.
+AsystantAttachment _attachmentFromJson(Map<String, Object?> json) =>
+    AsystantAttachment(
+      id: json['id'] as String,
+      filename: json['filename'] as String,
+      mimeType: json['mime_type'] as String,
+      bytes: Uint8List(0),
+    );

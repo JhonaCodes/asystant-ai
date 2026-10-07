@@ -215,7 +215,8 @@ class ClaudeCliStream {
     }
     if (text.contains('prompt is too long') ||
         text.contains('context window') ||
-        text.contains('context length')) {
+        text.contains('context length') ||
+        text.contains('too many tokens')) {
       return const AssistantFailure(.contextFull);
     }
     return AssistantFailure(.unavailable, detail: _excerpt(message));

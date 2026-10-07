@@ -240,6 +240,37 @@ void main() {
   });
 
   test(
+    'a "too many tokens" error is classified as contextFull, the same as '
+    "OpenRouter's own context-length detection",
+    () async {
+      final launcher = _RecordedLauncher([
+        {
+          'type': 'result',
+          'subtype': 'error_during_execution',
+          'is_error': true,
+          'result': 'Error: too many tokens in this request',
+        },
+      ]);
+      final transport = ClaudeCliTransport(launcher: launcher);
+      addTearDown(transport.dispose);
+      await transport.initialize(tools: const [], prompts: const [], models: const []);
+
+      final events = await transport
+          .infer(
+            messages: const [
+              AssistantMessage(role: MessageRole.user, content: 'Hola'),
+            ],
+            model: 'sonnet',
+            requestId: 't1-0',
+          )
+          .toList();
+
+      final failure = (events.single as InferenceFailed).failure;
+      expect(failure.code, FailureCode.contextFull);
+    },
+  );
+
+  test(
     'a missing binary fails the inference and says what to install',
     () async {
       final transport = ClaudeCliTransport(executable: '/nonexistent/claude');

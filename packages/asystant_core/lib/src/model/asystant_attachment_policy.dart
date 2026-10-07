@@ -186,18 +186,9 @@ class AsystantAttachmentPolicy {
         allowedMimeTypes,
         other.allowedMimeTypes,
       ) &&
-      const ListEquality<RegExp>().equals(
-        allowedFilenamePatterns,
-        other.allowedFilenamePatterns,
-      ) &&
-      const ListEquality<RegExp>().equals(
-        blockedFilenamePatterns,
-        other.blockedFilenamePatterns,
-      ) &&
-      const ListEquality<RegExp>().equals(
-        blockedTextPatterns,
-        other.blockedTextPatterns,
-      ) &&
+      _patternsEqual(allowedFilenamePatterns, other.allowedFilenamePatterns) &&
+      _patternsEqual(blockedFilenamePatterns, other.blockedFilenamePatterns) &&
+      _patternsEqual(blockedTextPatterns, other.blockedTextPatterns) &&
       maxFiles == other.maxFiles &&
       maxFileBytes == other.maxFileBytes &&
       enabled == other.enabled &&
@@ -207,14 +198,43 @@ class AsystantAttachmentPolicy {
   int get hashCode => Object.hash(
     Object.hashAll(allowedExtensions),
     Object.hashAll(allowedMimeTypes),
-    Object.hashAll(allowedFilenamePatterns),
-    Object.hashAll(blockedFilenamePatterns),
-    Object.hashAll(blockedTextPatterns),
+    _hashPatterns(allowedFilenamePatterns),
+    _hashPatterns(blockedFilenamePatterns),
+    _hashPatterns(blockedTextPatterns),
     maxFiles,
     maxFileBytes,
     enabled,
     rejectLikelySecrets,
   );
+
+  /// `RegExp` does not override `==`, so comparing instances by identity
+  /// would make two policies built with the same pattern unequal. Compare
+  /// by the fields that define a pattern's behavior instead.
+  static bool _patternsEqual(List<RegExp> a, List<RegExp> b) {
+    if (a.length != b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (!_sameRegExp(a[i], b[i])) return false;
+    }
+    return true;
+  }
+
+  static bool _sameRegExp(RegExp a, RegExp b) =>
+      a.pattern == b.pattern &&
+      a.isCaseSensitive == b.isCaseSensitive &&
+      a.isMultiLine == b.isMultiLine &&
+      a.isDotAll == b.isDotAll &&
+      a.isUnicode == b.isUnicode;
+
+  static int _hashPatterns(List<RegExp> patterns) => Object.hashAll([
+    for (final pattern in patterns)
+      Object.hash(
+        pattern.pattern,
+        pattern.isCaseSensitive,
+        pattern.isMultiLine,
+        pattern.isDotAll,
+        pattern.isUnicode,
+      ),
+  ]);
 }
 
 /// Why a file was not attached.

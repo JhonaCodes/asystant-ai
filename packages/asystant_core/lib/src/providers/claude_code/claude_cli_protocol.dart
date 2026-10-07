@@ -7,6 +7,7 @@ import 'package:asystant_core/src/model/assistant_message.dart';
 import 'package:asystant_core/src/model/asystant_attachment.dart';
 import 'package:asystant_core/src/model/system_prompt.dart';
 import 'package:asystant_core/src/model/tool_call.dart';
+import 'package:asystant_core/src/providers/sdk_limits.dart';
 import 'package:asystant_core/src/tool/tool_arguments.dart';
 import 'package:asystant_core/src/tool/tool_definition.dart';
 
@@ -33,14 +34,14 @@ abstract final class ClaudeCliProtocol {
 
   static const closeTag = '</tool_call>';
 
-  static const int maxToolCalls = 16;
+  static const int maxToolCalls = AsystantSdkLimits.maxToolCalls;
 
-  static const int maxArgumentsLength = 64 * 1024;
+  static const int maxArgumentsLength = AsystantSdkLimits.maxArgumentsLength;
 
   static const int maxNameLength = 64;
 
   /// Longest text taken from one attached text file, in characters.
-  static const int maxAttachmentText = 60000;
+  static const int maxAttachmentText = AsystantSdkLimits.maxAttachmentText;
 
   /// The system prompt of one run: [prompts] in order, then the tools.
   static String systemPrompt({

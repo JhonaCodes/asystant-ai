@@ -4,6 +4,7 @@ import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/assistant_message.dart';
 import 'package:asystant_core/src/model/token_usage.dart';
 import 'package:asystant_core/src/model/tool_call.dart';
+import 'package:asystant_core/src/providers/sdk_limits.dart';
 import 'package:asystant_core/src/tool/tool_arguments.dart';
 import 'package:asystant_core/src/transport/inference_event.dart';
 
@@ -12,8 +13,8 @@ import 'package:asystant_core/src/transport/inference_event.dart';
 /// It only interprets the stream: it never decides or executes tool calls.
 class OpenRouterStream {
   static const int maxResponseBytes = 4 * 1024 * 1024;
-  static const int maxToolCalls = 16;
-  static const int maxArgumentsLength = 64 * 1024;
+  static const int maxToolCalls = AsystantSdkLimits.maxToolCalls;
+  static const int maxArgumentsLength = AsystantSdkLimits.maxArgumentsLength;
 
   Stream<InferenceEvent> decode(Stream<List<int>> bytes) async* {
     final calls = <int, _PendingCall>{};

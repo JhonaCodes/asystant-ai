@@ -13,6 +13,7 @@ export 'package:asystant_core/src/model/assistant_card.dart';
 export 'package:asystant_core/src/model/assistant_chart.dart';
 export 'package:asystant_core/src/model/assistant_failure.dart';
 export 'package:asystant_core/src/model/assistant_message.dart';
+export 'package:asystant_core/src/model/assistant_value.dart';
 export 'package:asystant_core/src/model/asystant_attachment.dart';
 export 'package:asystant_core/src/model/asystant_attachment_policy.dart';
 export 'package:asystant_core/src/model/asystant_model_catalog.dart';

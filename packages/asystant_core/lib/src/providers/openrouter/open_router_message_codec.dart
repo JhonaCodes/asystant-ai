@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:asystant_core/src/model/assistant_message.dart';
 import 'package:asystant_core/src/model/asystant_attachment.dart';
+import 'package:asystant_core/src/providers/sdk_limits.dart';
 
 /// Writes conversation messages in OpenRouter's chat-completions format,
 /// attached files included.
@@ -23,7 +24,7 @@ import 'package:asystant_core/src/model/asystant_attachment.dart';
 class OpenRouterMessageCodec {
   const OpenRouterMessageCodec({
     required this.inputModalities,
-    this.maxAttachmentText = 60000,
+    this.maxAttachmentText = AsystantSdkLimits.maxAttachmentText,
   });
 
   /// What the model accepts besides text, e.g. `{'image', 'file', 'audio'}`.

@@ -65,6 +65,28 @@ class _LocalOpenRouter {
   Future<void> close() => _server.close(force: true);
 }
 
+/// Replies to `chat/completions` with a fixed HTTP status and body, to drive
+/// `OpenRouterTransport`'s error classification.
+class _FailingOpenRouter {
+  _FailingOpenRouter._(this._server);
+
+  static Future<_FailingOpenRouter> start(int status, String body) async =>
+      _FailingOpenRouter._(await HttpServer.bind(InternetAddress.loopbackIPv4, 0))
+        .._serve(status, body);
+
+  final HttpServer _server;
+
+  Uri get baseUri => Uri.parse('http://127.0.0.1:${_server.port}/api/v1/');
+
+  void _serve(int status, String body) => _server.listen((request) async {
+    request.response.statusCode = status;
+    request.response.write(body);
+    await request.response.close();
+  });
+
+  Future<void> close() => _server.close(force: true);
+}
+
 void main() {
   test('an app name with accents still reaches the model', () async {
     final server = await _LocalOpenRouter.start();
@@ -263,6 +285,41 @@ void main() {
       final blind = await sent('text/model');
       expect([for (final m in blind) m['role']].last, 'tool');
       expect(blind[3]['content'], contains(frame.imageUnavailableNote));
+    },
+  );
+
+  test(
+    'a "too many tokens" error is classified as contextFull, the same as '
+    "Claude Code's own classification",
+    () async {
+      final server = await _FailingOpenRouter.start(
+        400,
+        '{"error":{"message":"too many tokens in the request"}}',
+      );
+      addTearDown(server.close);
+      final transport = OpenRouterTransport(
+        credentials: () async => Ok(OpenRouterCredential(apiKey: 'test-key')),
+        baseUri: server.baseUri,
+      );
+      addTearDown(transport.dispose);
+      await transport.initialize(
+        tools: const [],
+        prompts: const [],
+        models: const ['openai/gpt-oss-120b'],
+      );
+
+      final events = await transport
+          .infer(
+            messages: const [
+              AssistantMessage(role: MessageRole.user, content: 'Hola'),
+            ],
+            model: 'openai/gpt-oss-120b',
+            requestId: 'r1',
+          )
+          .toList();
+
+      final failure = (events.single as InferenceFailed).failure;
+      expect(failure.code, FailureCode.contextFull);
     },
   );
 }
