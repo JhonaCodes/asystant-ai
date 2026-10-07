@@ -1,3 +1,5 @@
+// keel-debt: 3 public types in one file; split when the next major allows
+// keel-debt: moving declaring URIs.
 import 'package:flutter/material.dart';
 
 import 'package:asystant_ai/src/theme/asystant_theme.dart';

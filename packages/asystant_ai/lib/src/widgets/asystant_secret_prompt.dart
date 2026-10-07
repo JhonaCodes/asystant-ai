@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// keel-debt: public API returns an untyped Map<String, String>?; return a typed
+// keel-debt: model in the next major.
 /// Collects one-time values on the device after the action is approved.
 /// Values are returned to the caller only and are never added to chat state.
 Future<Map<String, String>?> showAsystantSecretPrompt(

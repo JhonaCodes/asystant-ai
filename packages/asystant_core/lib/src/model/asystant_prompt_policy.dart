@@ -3,6 +3,8 @@ import 'package:result_controller/result_controller.dart';
 import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/system_prompt.dart';
 
+// keel-debt: a validation service living in model/; move it to src/prompt/
+// keel-debt: in the next major, the barrel keeps the name.
 /// Composes baseline safeguards with application personality and scoped context.
 ///
 /// Instructions guide the model; they cannot replace authorization, secret

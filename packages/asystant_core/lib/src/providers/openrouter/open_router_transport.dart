@@ -441,6 +441,8 @@ class OpenRouterTransport extends AssistantTransport {
     _active = null;
   }
 
+  // keel-debt: epoch/cancel/dispose cycle duplicated in ClaudeCliTransport (~30 lines);
+  // keel-debt: extract a TransportLifecycle mixin when a third provider exists.
   @override
   Future<void> dispose() async {
     _disposed = true;

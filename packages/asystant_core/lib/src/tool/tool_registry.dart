@@ -19,6 +19,7 @@ class ToolRegistry {
 
   List<AsystantTool> get tools => _tools;
 
+  // keel-debt: the bool is always true; Result<void, AssistantFailure> in the next major.
   Result<bool, AssistantFailure> validate() {
     final names = <String>{};
     for (final tool in _tools) {

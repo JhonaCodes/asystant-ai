@@ -1,3 +1,5 @@
+// keel-debt: 4 public types in one file; split when the next major allows
+// keel-debt: moving declaring URIs.
 import 'package:collection/collection.dart';
 import 'package:result_controller/result_controller.dart';
 
