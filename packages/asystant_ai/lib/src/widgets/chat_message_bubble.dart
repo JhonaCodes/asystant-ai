@@ -6,6 +6,7 @@ import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
+import 'package:asystant_ai/src/widgets/asystant_icon_action.dart';
 import 'package:asystant_ai/src/widgets/asystant_markdown_text.dart';
 
 /// One message: the person's on the right in a bubble, the assistant's on
@@ -185,14 +186,10 @@ class ChatAttachmentTile extends StatelessWidget {
             ),
           ),
           if (onRemove case final remove?)
-            IconButton(
+            AsystantIconAction(
+              glyph: AsystantGlyphKind.close,
               tooltip: strings.removeAttachment(file.filename),
-              visualDensity: VisualDensity.compact,
               onPressed: remove,
-              icon: AsystantGlyph(
-                AsystantGlyphKind.close,
-                color: colors.onSurfaceVariant,
-              ),
             )
           else
             const SizedBox(width: 4),

@@ -4,6 +4,7 @@ import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/conversation_summary.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
+import 'package:asystant_ai/src/widgets/asystant_icon_action.dart';
 import 'package:asystant_ai/src/widgets/chat_confirm_dialog.dart';
 
 /// Every conversation, the most recent first: open one, start a new one or
@@ -56,13 +57,11 @@ class ChatConversationList extends StatelessWidget {
             child: Row(
               children: [
                 if (onBack case final back?)
-                  IconButton(
+                  AsystantIconAction(
+                    glyph: AsystantGlyphKind.back,
                     tooltip: strings.back,
                     onPressed: back,
-                    icon: AsystantGlyph(
-                      AsystantGlyphKind.back,
-                      color: colors.onSurfaceVariant,
-                    ),
+                    compact: false,
                   ),
                 Expanded(
                   child: Text(
@@ -186,13 +185,11 @@ class _ConversationTile extends StatelessWidget {
           (true, true) => onBack,
           (true, false) => () => onOpen(summary.id),
         },
-        trailing: IconButton(
+        trailing: AsystantIconAction(
+          glyph: AsystantGlyphKind.trash,
           tooltip: strings.delete,
           onPressed: canManage ? () => _confirmDelete(context) : null,
-          icon: AsystantGlyph(
-            AsystantGlyphKind.trash,
-            color: colors.onSurfaceVariant,
-          ),
+          compact: false,
         ),
       ),
     );

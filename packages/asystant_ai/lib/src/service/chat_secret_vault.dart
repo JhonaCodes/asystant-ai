@@ -1,23 +1,18 @@
-import 'dart:math';
-
 import 'package:asystant_core/asystant_core.dart';
+
+import 'package:asystant_ai/src/service/random_hex_id.dart';
 
 /// Keeps `$value` chat secrets in memory, outside conversation state and stores.
 /// Only a local tool execution may exchange a reference for its value.
 class ChatSecretVault {
   static final _literal = RegExp(r'\$([A-Za-z0-9_./+=:@-]{4,})');
   static final _reference = RegExp(r'^\[secret:([a-f0-9]{32})\]$');
-  final _random = Random.secure();
   final Map<String, Map<String, String>> _values = {};
 
   /// Reserves a value entered through the private sheet without ever placing
   /// that value in the chat draft, conversation or provider request.
   String reserve(String conversationId, String value) {
-    final id = List<int>.generate(
-      16,
-      (_) => _random.nextInt(256),
-    ).map((byte) => byte.toRadixString(16).padLeft(2, '0')).join();
-    final reference = '[secret:$id]';
+    final reference = '[secret:${randomHexId(16)}]';
     _values.putIfAbsent(conversationId, () => {})[reference] = value;
     return reference;
   }

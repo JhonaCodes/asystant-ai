@@ -13,6 +13,7 @@ import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
+import 'package:asystant_ai/src/widgets/asystant_icon_action.dart';
 import 'package:asystant_ai/src/widgets/asystant_secret_attachment_sheet.dart';
 import 'package:asystant_ai/src/widgets/chat_message_bubble.dart';
 import 'package:asystant_ai/src/widgets/chat_model_picker.dart';
@@ -456,7 +457,7 @@ class _PlacedComposerActions extends StatelessWidget {
   final VoidCallback onAttach;
   final VoidCallback onAttachPrivateValue;
 
-  /// See [_ComposerIconAction.fixedTarget].
+  /// See [AsystantIconAction.fixedTarget].
   final bool fixedTarget;
 
   bool get _showsAttach =>
@@ -470,51 +471,20 @@ class _PlacedComposerActions extends StatelessWidget {
     mainAxisSize: .min,
     children: [
       if (_showsAttach)
-        _ComposerIconAction(
-          icon: AsystantGlyphKind.attach,
+        AsystantIconAction(
+          glyph: AsystantGlyphKind.attach,
           tooltip: strings.attach,
           onPressed: enabled ? onAttach : null,
           fixedTarget: fixedTarget,
         ),
       if (_showsPrivateValue)
-        _ComposerIconAction(
-          icon: AsystantGlyphKind.key,
+        AsystantIconAction(
+          glyph: AsystantGlyphKind.key,
           tooltip: strings.privateValueTitle,
           onPressed: enabled ? onAttachPrivateValue : null,
           fixedTarget: fixedTarget,
         ),
     ],
-  );
-}
-
-class _ComposerIconAction extends StatelessWidget {
-  const _ComposerIconAction({
-    required this.icon,
-    required this.tooltip,
-    required this.onPressed,
-    required this.fixedTarget,
-  });
-
-  final AsystantGlyphKind icon;
-  final String tooltip;
-  final VoidCallback? onPressed;
-
-  /// Pins a 40 dp box with 8 dp padding; off keeps the IconButton defaults.
-  final bool fixedTarget;
-
-  @override
-  Widget build(BuildContext context) => IconButton(
-    tooltip: tooltip,
-    visualDensity: VisualDensity.compact,
-    constraints: fixedTarget
-        ? const BoxConstraints(minWidth: 40, minHeight: 40)
-        : null,
-    padding: fixedTarget ? const EdgeInsets.all(8) : null,
-    onPressed: onPressed,
-    icon: AsystantGlyph(
-      icon,
-      color: Theme.of(context).colorScheme.onSurfaceVariant,
-    ),
   );
 }
 

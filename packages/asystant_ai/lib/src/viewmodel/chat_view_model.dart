@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:asystant_core/asystant_core.dart';
 import 'package:collection/collection.dart';
@@ -17,6 +16,7 @@ import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
 import 'package:asystant_ai/src/service/asystant_file_picker.dart';
 import 'package:asystant_ai/src/service/chat_secret_vault.dart';
+import 'package:asystant_ai/src/service/random_hex_id.dart';
 
 /// Decides whether [tool] waits for the person's approval before a call runs.
 ///
@@ -609,13 +609,7 @@ class ChatViewModel extends ViewModel<ChatState> {
     ].sorted((a, b) => b.updatedAt.compareTo(a.updatedAt));
   }
 
-  String _newId() {
-    final random = Random.secure();
-    return List.generate(
-      16,
-      (_) => random.nextInt(256).toRadixString(16).padLeft(2, '0'),
-    ).join();
-  }
+  String _newId() => randomHexId(16);
 
   void selectOption(String option) {
     final pending = state.pending;

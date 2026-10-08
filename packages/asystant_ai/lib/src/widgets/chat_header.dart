@@ -8,6 +8,7 @@ import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
 import 'package:asystant_ai/src/widgets/asystant_disabled_colors.dart';
 import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
+import 'package:asystant_ai/src/widgets/asystant_icon_action.dart';
 import 'package:asystant_ai/src/widgets/chat_context_meter.dart';
 import 'package:asystant_ai/src/widgets/status_indicator.dart';
 
@@ -154,12 +155,13 @@ class ChatHeader extends StatelessWidget {
                       compact: true,
                     ),
                   if (onToggleExpansion case final toggle?)
-                    _HeaderAction(
+                    AsystantIconAction(
                       glyph: isExpanded
                           ? AsystantGlyphKind.collapse
                           : AsystantGlyphKind.expand,
                       tooltip: isExpanded ? strings.collapse : strings.expand,
                       onPressed: toggle,
+                      dimsWhenDisabled: true,
                     ),
                   ...actions,
                   if (_showsMenu)
@@ -182,10 +184,11 @@ class ChatHeader extends StatelessWidget {
                       canChange: _canChange,
                     ),
                   if (onClose case final close?)
-                    _HeaderAction(
+                    AsystantIconAction(
                       glyph: AsystantGlyphKind.close,
                       tooltip: strings.close,
                       onPressed: close,
+                      dimsWhenDisabled: true,
                     ),
                 ],
               ),
@@ -228,22 +231,25 @@ class _InlineConversationActions extends StatelessWidget {
     mainAxisSize: .min,
     children: [
       if (onHistory case final history?)
-        _HeaderAction(
+        AsystantIconAction(
           glyph: AsystantGlyphKind.history,
           tooltip: strings.history,
           onPressed: canManage ? history : null,
+          dimsWhenDisabled: true,
         ),
       if (onNew case final create?)
-        _HeaderAction(
+        AsystantIconAction(
           glyph: AsystantGlyphKind.plus,
           tooltip: strings.newConversation,
           onPressed: canChange ? create : null,
+          dimsWhenDisabled: true,
         ),
       if (onDelete case final delete? when showsDelete)
-        _HeaderAction(
+        AsystantIconAction(
           glyph: AsystantGlyphKind.trash,
           tooltip: strings.deleteConversation,
           onPressed: canChange ? delete : null,
+          dimsWhenDisabled: true,
         ),
       if (onDelete case final delete? when !showsDelete)
         _MoreActions(strings: strings, onDelete: canChange ? delete : null),
@@ -433,36 +439,6 @@ class _Identity extends StatelessWidget {
                 ?.copyWith(color: colors.onSurfaceVariant),
           ),
       ],
-    );
-  }
-}
-
-class _HeaderAction extends StatelessWidget {
-  const _HeaderAction({
-    required this.glyph,
-    required this.tooltip,
-    required this.onPressed,
-  });
-
-  final AsystantGlyphKind glyph;
-
-  final String tooltip;
-
-  final VoidCallback? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    return IconButton(
-      tooltip: tooltip,
-      visualDensity: VisualDensity.compact,
-      onPressed: onPressed,
-      icon: AsystantGlyph(
-        glyph,
-        color: onPressed == null
-            ? colors.disabledContent
-            : colors.onSurfaceVariant,
-      ),
     );
   }
 }
