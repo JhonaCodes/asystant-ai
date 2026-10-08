@@ -11,6 +11,7 @@ class AsystantDashboardWelcome extends StatefulWidget {
     required this.modules,
     required this.capabilities,
     required this.onPromptSelected,
+    this.compact = false,
     this.eyebrow = 'ASSISTANT · YOUR SYSTEMS',
     this.status = 'Available',
     this.title = 'What shall we do today?',
@@ -32,6 +33,9 @@ class AsystantDashboardWelcome extends StatefulWidget {
   final List<AsystantDashboardModule> modules;
   final List<AsystantDashboardCapability> capabilities;
   final ValueChanged<String> onPromptSelected;
+
+  /// A short welcome with filters and suggested prompts only.
+  final bool compact;
   final String eyebrow;
   final String status;
   final String title;
@@ -71,38 +75,39 @@ class _AsystantDashboardWelcomeState extends State<AsystantDashboardWelcome> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  widget.eyebrow,
-                  style: text.labelSmall?.copyWith(
-                    color: colors.onSurfaceVariant,
-                    letterSpacing: 1.2,
-                    fontWeight: FontWeight.w700,
+          if (!widget.compact)
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    widget.eyebrow,
+                    style: text.labelSmall?.copyWith(
+                      color: colors.onSurfaceVariant,
+                      letterSpacing: 1.2,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
-                ),
-                decoration: BoxDecoration(
-                  color: colors.primaryContainer,
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Text(
-                  '● ${widget.status}',
-                  style: text.labelSmall?.copyWith(
-                    color: AsystantTheme.contrastOn(colors.primaryContainer),
-                    fontWeight: FontWeight.w700,
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    color: colors.primaryContainer,
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: Text(
+                    '● ${widget.status}',
+                    style: text.labelSmall?.copyWith(
+                      color: AsystantTheme.contrastOn(colors.primaryContainer),
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
+              ],
+            ),
+          if (!widget.compact) const SizedBox(height: 24),
           Text(
             widget.title,
             style: text.headlineMedium?.copyWith(
@@ -110,11 +115,13 @@ class _AsystantDashboardWelcomeState extends State<AsystantDashboardWelcome> {
               fontWeight: FontWeight.w800,
             ),
           ),
-          const SizedBox(height: 6),
-          Text(
-            widget.subtitle,
-            style: text.bodyMedium?.copyWith(color: colors.onSurfaceVariant),
-          ),
+          if (!widget.compact) ...[
+            const SizedBox(height: 6),
+            Text(
+              widget.subtitle,
+              style: text.bodyMedium?.copyWith(color: colors.onSurfaceVariant),
+            ),
+          ],
           const SizedBox(height: 24),
           SizedBox(
             height: 42,
@@ -138,10 +145,13 @@ class _AsystantDashboardWelcomeState extends State<AsystantDashboardWelcome> {
                   style: text.titleSmall?.copyWith(fontWeight: FontWeight.w700),
                 ),
               ),
-              Text(
-                'Ejemplos',
-                style: text.bodySmall?.copyWith(color: colors.onSurfaceVariant),
-              ),
+              if (!widget.compact)
+                Text(
+                  'Ejemplos',
+                  style: text.bodySmall?.copyWith(
+                    color: colors.onSurfaceVariant,
+                  ),
+                ),
             ],
           ),
           const SizedBox(height: 8),
@@ -178,61 +188,68 @@ class _AsystantDashboardWelcomeState extends State<AsystantDashboardWelcome> {
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          Row(
-            children: [
-              const _AiTile(size: 26),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  widget.previewLabel,
-                  style: text.labelMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
+          if (!widget.compact) ...[
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                const _AiTile(size: 26),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    widget.previewLabel,
+                    style: text.labelMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
-              ),
-              Text(
-                'Datos ilustrativos',
-                style: text.bodySmall?.copyWith(color: colors.onSurfaceVariant),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              decoration: BoxDecoration(
-                color: colors.surfaceContainerHigh,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Text(
-                widget.previewQuestion,
-                style: text.bodySmall?.copyWith(color: colors.onSurface),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          _OverviewPanel(widget: widget),
-          const SizedBox(height: 18),
-          Row(
-            children: [
-              Icon(
-                Icons.verified_user_outlined,
-                size: 16,
-                color: colors.primary,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  widget.trustNote,
+                Text(
+                  'Datos ilustrativos',
                   style: text.bodySmall?.copyWith(
                     color: colors.onSurfaceVariant,
                   ),
                 ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                decoration: BoxDecoration(
+                  color: colors.surfaceContainerHigh,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Text(
+                  widget.previewQuestion,
+                  style: text.bodySmall?.copyWith(color: colors.onSurface),
+                ),
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+            _OverviewPanel(widget: widget),
+            const SizedBox(height: 18),
+            Row(
+              children: [
+                Icon(
+                  Icons.verified_user_outlined,
+                  size: 16,
+                  color: colors.primary,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    widget.trustNote,
+                    style: text.bodySmall?.copyWith(
+                      color: colors.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );

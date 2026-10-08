@@ -87,6 +87,9 @@ class AsystantProviderSettings {
   AsystantProviderSettings({
     required this.namespace,
     FlutterSecureStorage? storage,
+    this.managedOpenRouterCredentials,
+    this.openRouterAppName,
+    this.openRouterAppUrl,
     this.showInChatMenu = true,
     List<AsystantProviderKind> availableKinds = const [
       AsystantProviderKind.backend,
@@ -110,6 +113,11 @@ class AsystantProviderSettings {
 
   final String namespace;
   final FlutterSecureStorage _storage;
+  final OpenRouterCredentialSource? managedOpenRouterCredentials;
+  final String? openRouterAppName;
+  final String? openRouterAppUrl;
+  bool get usesManagedOpenRouterCredential =>
+      managedOpenRouterCredentials != null;
 
   /// A managed app can hide provider settings while continuing to use its
   /// backend credential. The host can also omit this settings object entirely.
@@ -122,11 +130,84 @@ class AsystantProviderSettings {
   String get _prefix => 'asystant_ai.provider.$namespace';
   String get _selectionKey => '$_prefix.selection';
   String _secretKey(AsystantProviderKind kind) => '$_prefix.key.${kind.name}';
+  String _profileKey(AsystantProviderKind kind) =>
+      '$_prefix.profile.${kind.name}';
+  String _modelsKey(AsystantProviderKind kind) =>
+      '$_prefix.models.${kind.name}';
+
+  /// Restores a provider's last endpoint and model after switching away.
+  Future<AsystantProviderSelection> profileFor(
+    AsystantProviderKind kind,
+  ) async {
+    final raw = await _storage.read(key: _profileKey(kind));
+    if (raw == null) {
+      final active = await load();
+      return active.kind == kind
+          ? active
+          : AsystantProviderSelection(kind: kind);
+    }
+    try {
+      final profile = AsystantProviderSelection.fromJson(
+        jsonDecode(raw) as Map<String, Object?>,
+      );
+      return profile.kind == kind
+          ? profile
+          : AsystantProviderSelection(kind: kind);
+    } on Object {
+      return AsystantProviderSelection(kind: kind);
+    }
+  }
+
+  /// Models explicitly saved for one personal provider on this device.
+  Future<List<String>> modelsFor(AsystantProviderKind kind) async {
+    if (kind == .backend) return const [];
+    final raw = await _storage.read(key: _modelsKey(kind));
+    if (raw != null) {
+      try {
+        final values = jsonDecode(raw) as List<Object?>;
+        return List.unmodifiable(
+          values
+              .whereType<String>()
+              .where((id) => id.trim().isNotEmpty)
+              .toSet(),
+        );
+      } on Object {
+        // Fall through to the saved active profile.
+      }
+    }
+    final selected = await profileFor(kind);
+    return selected.model.trim().isEmpty ? const [] : [selected.model.trim()];
+  }
+
+  Future<void> addModel(AsystantProviderKind kind, String model) async {
+    if (kind == .backend || !availableKinds.contains(kind)) {
+      throw const FormatException('Choose a personal provider.');
+    }
+    final id = model.trim();
+    if (id.isEmpty) throw const FormatException('Enter a model ID.');
+    if (kind == .openRouter && usesManagedOpenRouterCredential) {
+      await _validateManagedModel(id);
+    }
+    await _storeModel(kind, id);
+  }
+
+  Future<void> _storeModel(AsystantProviderKind kind, String id) async {
+    final models = {...await modelsFor(kind), id}.toList(growable: false);
+    await _storage.write(key: _modelsKey(kind), value: jsonEncode(models));
+  }
+
+  Future<void> removeModel(AsystantProviderKind kind, String model) async {
+    final models = (await modelsFor(kind))
+        .where((id) => id != model)
+        .toList(growable: false);
+    await _storage.write(key: _modelsKey(kind), value: jsonEncode(models));
+  }
 
   Future<AsystantProviderSelection> load() async {
     final raw = await _storage.read(key: _selectionKey);
-    if (raw == null)
+    if (raw == null) {
       return AsystantProviderSelection(kind: availableKinds.first);
+    }
     try {
       final selected = AsystantProviderSelection.fromJson(
         jsonDecode(raw) as Map<String, Object?>,
@@ -140,7 +221,22 @@ class AsystantProviderSettings {
   }
 
   Future<bool> hasKey(AsystantProviderKind kind) async =>
-      (await _storage.read(key: _secretKey(kind)))?.isNotEmpty ?? false;
+      kind == .openRouter && usesManagedOpenRouterCredential
+      ? true
+      : (await _storage.read(key: _secretKey(kind)))?.isNotEmpty ?? false;
+
+  /// The host may use the saved OpenRouter key for account quota checks and
+  /// free-model routing. The credential never enters chat or preferences.
+  Future<OpenRouterCredential?> openRouterCredential() async {
+    if (managedOpenRouterCredentials case final source?) {
+      final result = await source();
+      return result.when(ok: (credential) => credential, err: (_) => null);
+    }
+    final key = await _storage.read(key: _secretKey(.openRouter));
+    return key == null || key.isEmpty
+        ? null
+        : OpenRouterCredential(apiKey: key);
+  }
 
   /// Replaces a key only when [apiKey] is supplied. Empty input retains it.
   Future<void> save(
@@ -153,12 +249,16 @@ class AsystantProviderSettings {
         'This provider is not available in this app.',
       );
     }
+    if (selection.kind == .openRouter && usesManagedOpenRouterCredential) {
+      await _validateManagedModel(selection.model);
+    }
     if (selection.kind != .backend &&
         (apiKey == null || apiKey.trim().isEmpty) &&
         !await hasKey(selection.kind)) {
       throw const FormatException('Enter an API key.');
     }
     if (selection.kind != .backend &&
+        !(selection.kind == .openRouter && usesManagedOpenRouterCredential) &&
         apiKey != null &&
         apiKey.trim().isNotEmpty) {
       await _storage.write(
@@ -170,10 +270,31 @@ class AsystantProviderSettings {
       key: _selectionKey,
       value: jsonEncode(selection.toJson()),
     );
+    await _storage.write(
+      key: _profileKey(selection.kind),
+      value: jsonEncode(selection.toJson()),
+    );
+    if (selection.kind != .backend) {
+      await _storeModel(selection.kind, selection.model.trim());
+    }
   }
 
   Future<void> deleteKey(AsystantProviderKind kind) =>
       _storage.delete(key: _secretKey(kind));
+
+  Future<void> _validateManagedModel(String model) async {
+    final credential = await openRouterCredential();
+    if (credential == null) {
+      throw const FormatException(
+        'Could not obtain the app account credential.',
+      );
+    }
+    if (!credential.allowedModels.contains(model.trim())) {
+      throw const FormatException(
+        'This model is not enabled for the app account.',
+      );
+    }
+  }
 
   Future<AsystantProvider> provider(
     AsystantProviderSelection selection, {
@@ -184,6 +305,15 @@ class AsystantProviderSettings {
       throw StateError('This provider is not available in this app.');
     }
     if (selection.kind == .backend) throw StateError('Use the host provider.');
+    if (selection.kind == .openRouter && usesManagedOpenRouterCredential) {
+      await _validateManagedModel(selection.model);
+      return OpenRouterProvider(
+        credentials: managedOpenRouterCredentials!,
+        identity: () => 'managed:$namespace',
+        appName: openRouterAppName,
+        appUrl: openRouterAppUrl,
+      );
+    }
     if ((keyOverride == null || keyOverride.trim().isEmpty) &&
         !await hasKey(selection.kind)) {
       throw StateError('No API key is saved for ${selection.label}.');
@@ -206,10 +336,14 @@ class AsystantProviderSettings {
     final endpointId = sha256.convert(
       utf8.encode(selection.endpoint.toString()),
     );
-    final identity = () =>
-        'local:$namespace:${selection.kind.name}:$endpointId';
+    String identity() => 'local:$namespace:${selection.kind.name}:$endpointId';
     if (selection.kind == .openRouter) {
-      return OpenRouterProvider(credentials: credentials, identity: identity);
+      return OpenRouterProvider(
+        credentials: credentials,
+        identity: identity,
+        appName: openRouterAppName,
+        appUrl: openRouterAppUrl,
+      );
     }
     return OpenAICompatibleProvider(
       providerName: selection.label,

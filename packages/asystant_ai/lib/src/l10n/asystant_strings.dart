@@ -79,9 +79,26 @@ class AsystantStrings {
       ? 'Elige cómo se conecta el chat principal. Las claves se guardan en este dispositivo.'
       : 'Choose how the main chat connects. Keys stay on this device.';
   String get providerLabel => spanish ? 'Proveedor' : 'Provider';
+  String get providerInUse => spanish ? 'En uso' : 'In use';
+  String get providerListTitle => spanish ? 'Proveedores' : 'Providers';
+  String get providerManagedBudget =>
+      spanish ? 'Presupuesto administrado' : 'Managed budget';
+  String get providerUsesAppAccountKeyShort =>
+      spanish ? 'Clave de la cuenta de la app' : 'App account key';
+  String get providerPersonalKey => spanish
+      ? 'Clave personal en este dispositivo'
+      : 'Personal key on this device';
   String get providerAppAccount => spanish ? 'Cuenta de la app' : 'App account';
   String get providerOpenAi => 'OpenAI / GPT';
   String get providerOpenRouter => 'OpenRouter';
+  String get browseOpenRouterModels =>
+      spanish ? 'Buscar modelos de OpenRouter' : 'Browse OpenRouter models';
+  String get savedModels => spanish ? 'Modelos guardados' : 'Saved models';
+  String get addModelToProvider =>
+      spanish ? 'Añadir modelo a este proveedor' : 'Add model to this provider';
+  String get providerUsesAppAccountKey => spanish
+      ? 'Usa la clave de la cuenta de la app. Solo puedes activar modelos habilitados por el administrador.'
+      : 'Uses the app account key. Only administrator-approved models can be activated.';
   String get providerGemini => 'Gemini';
   String get providerAnthropic => 'Claude API';
   String get providerCompatible =>
@@ -136,6 +153,14 @@ class AsystantStrings {
     'Enter an API key.' => spanish ? 'Escribe una clave API.' : message,
     'This provider is not available in this app.' =>
       spanish ? 'Este proveedor no está disponible en esta app.' : message,
+    'Could not obtain the app account credential.' =>
+      spanish
+          ? 'No se pudo obtener la credencial de la cuenta de la app.'
+          : message,
+    'This model is not enabled for the app account.' =>
+      spanish
+          ? 'Este modelo no está habilitado para la cuenta de la app.'
+          : message,
     _ => spanish ? 'Revisa los datos del proveedor.' : message,
   };
 

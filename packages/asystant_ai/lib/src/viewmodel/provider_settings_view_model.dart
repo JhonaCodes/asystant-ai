@@ -69,6 +69,7 @@ class ProviderSettingsViewModel extends ViewModel<ProviderSettingsState> {
     try {
       final selected = await settings.load();
       final hasKey = await settings.hasKey(selected.kind);
+      final savedModels = await settings.modelsFor(selected.kind);
       _apply(
         opening,
         (state) => state.copyWith(
@@ -78,6 +79,10 @@ class ProviderSettingsViewModel extends ViewModel<ProviderSettingsState> {
           name: selected.name,
           hostModels: _hostModels,
           hasKey: hasKey,
+          savedModels: savedModels,
+          usesManagedOpenRouterCredential:
+              selected.kind == .openRouter &&
+              settings.usesManagedOpenRouterCredential,
           isLoading: false,
         ),
       );
@@ -104,15 +109,69 @@ class ProviderSettingsViewModel extends ViewModel<ProviderSettingsState> {
         model: '',
         hostModels: _hostModels,
         hasKey: false,
+        savedModels: const [],
+        usesManagedOpenRouterCredential:
+            kind == .openRouter && settings.usesManagedOpenRouterCredential,
         clearError: true,
         clearConnection: true,
       ),
     );
     final hasKey = await settings.hasKey(kind);
+    final profile = await settings.profileFor(kind);
+    final savedModels = await settings.modelsFor(kind);
     _apply(
       opening,
-      (state) => state.kind == kind ? state.copyWith(hasKey: hasKey) : state,
+      (state) => state.kind == kind
+          ? state.copyWith(
+              hasKey: hasKey,
+              model: profile.model,
+              baseUrl: profile.baseUrl,
+              name: profile.name,
+              savedModels: savedModels,
+            )
+          : state,
     );
+  }
+
+  Future<void> addModel(String model) async {
+    final settings = _settings;
+    if (settings == null) return;
+    final opening = _opening;
+    final kind = data.kind;
+    try {
+      await settings.addModel(kind, model);
+      final models = await settings.modelsFor(kind);
+      _apply(
+        opening,
+        (state) => state.kind == kind
+            ? state.copyWith(
+                model: model.trim(),
+                savedModels: models,
+                clearError: true,
+              )
+            : state,
+      );
+    } on FormatException catch (error) {
+      _apply(opening, (state) => state.copyWith(error: _formatError(error)));
+    }
+  }
+
+  void selectSavedModel(String model) {
+    if (data.savedModels.contains(model)) {
+      transformState((state) => state.copyWith(model: model));
+    }
+  }
+
+  Future<void> removeModel(String model) async {
+    final settings = _settings;
+    if (settings == null) return;
+    final opening = _opening;
+    final kind = data.kind;
+    await settings.removeModel(kind, model);
+    final models = await settings.modelsFor(kind);
+    _apply(opening, (state) => state.kind == kind
+        ? state.copyWith(savedModels: models)
+        : state);
   }
 
   /// Stores the selection and [apiKey], then applies them to the chat.
@@ -131,9 +190,7 @@ class ProviderSettingsViewModel extends ViewModel<ProviderSettingsState> {
     final settings = _settings;
     if (assistant == null || settings == null || data.isSaving) return false;
     final opening = _opening;
-    transformState(
-      (state) => state.copyWith(isSaving: true, clearError: true),
-    );
+    transformState((state) => state.copyWith(isSaving: true, clearError: true));
     try {
       await settings.save(
         _selection(model: model, baseUrl: baseUrl, name: name),
@@ -192,10 +249,7 @@ class ProviderSettingsViewModel extends ViewModel<ProviderSettingsState> {
         ),
       );
     } on FormatException catch (error) {
-      _apply(
-        opening,
-        (state) => state.copyWith(error: _formatError(error)),
-      );
+      _apply(opening, (state) => state.copyWith(error: _formatError(error)));
     } on Object {
       _apply(
         opening,

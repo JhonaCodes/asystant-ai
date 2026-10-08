@@ -82,6 +82,7 @@ abstract class AsystantAI with AsystantService {
   bool _disposed = false;
 
   AssistantTransport? _pendingTransport;
+  AssistantTransport? _configuredTransport;
 
   AsystantProviderSettings? _providerSettings;
 
@@ -122,6 +123,15 @@ abstract class AsystantAI with AsystantService {
     AsystantAttachmentPolicy attachments = const AsystantAttachmentPolicy(),
     AsystantTurnLimits turnLimits = const AsystantTurnLimits(),
     AsystantProviderSettings? providerSettings,
+    Future<AsystantProviderSelection?> Function(
+      AsystantProviderSelection? selection,
+    )?
+    resolveSelection,
+    Future<AssistantTransport> Function(
+      AssistantTransport transport,
+      AsystantProviderSelection? selection,
+    )?
+    decorateTransport,
     bool enableInlinePrivateInput = true,
   }) {
     if (_disposed || _initialize != null) {
@@ -135,13 +145,20 @@ abstract class AsystantAI with AsystantService {
       throw ArgumentError('Local provider settings require a host provider.');
     }
     _providerSettings = providerSettings;
+    _configuredTransport = transport;
     _initialize = () async {
-      final selection = await providerSettings?.load();
+      final savedSelection = await providerSettings?.load();
+      final selection = resolveSelection == null
+          ? savedSelection
+          : await resolveSelection(savedSelection);
       final local = selection != null && selection.kind != .backend;
       final selected = local
           ? await providerSettings!.provider(selection)
           : provider;
-      final configured = selected?.createTransport() ?? transport!;
+      final baseTransport = selected?.createTransport() ?? transport!;
+      final configured = decorateTransport == null
+          ? baseTransport
+          : await decorateTransport(baseTransport, selection);
       if (_disposed) {
         await configured.dispose();
         return;
@@ -153,7 +170,7 @@ abstract class AsystantAI with AsystantService {
         ...presentationRegistry.tools,
       ];
       final registeredPrompts = [...systemPrompts, ...additionalSystemPrompts];
-      await conversation.notifier.configure(
+      final configuring = conversation.notifier.configure(
         transport: configured,
         tools: registeredTools,
         prompts: registeredPrompts,
@@ -169,6 +186,10 @@ abstract class AsystantAI with AsystantService {
         actionPolicy: actionPolicyFor,
         enableInlinePrivateInput: enableInlinePrivateInput,
       );
+      // configure takes ownership synchronously, before its first await.
+      _pendingTransport = null;
+      _configuredTransport = null;
+      await configuring;
       _pendingTransport = null;
     };
   }
@@ -242,8 +263,10 @@ abstract class AsystantAI with AsystantService {
       return;
     }
     _disposed = true;
-    unawaited(_pendingTransport?.dispose());
+    final unowned = _pendingTransport ?? _configuredTransport;
+    unawaited(unowned?.dispose());
     _pendingTransport = null;
+    _configuredTransport = null;
     _initialize = null;
     disposeConversation();
   }

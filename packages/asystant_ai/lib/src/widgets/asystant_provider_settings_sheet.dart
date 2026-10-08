@@ -14,20 +14,25 @@ Future<void> showAsystantProviderSettings(
   BuildContext context, {
   required AsystantAI assistant,
   AsystantStrings? strings,
+  Future<String?> Function(BuildContext)? browseOpenRouterModels,
+  bool showProviderCards = false,
 }) {
   // Opening is the user's command, so the reset and load start here, before
   // the sheet's first frame, and never again on a rebuild of the sheet.
   unawaited(
-    ProviderSettingsViewModel.of(
-      assistant,
-    ).open(assistant, strings ?? AsystantStrings.of(context)),
+    ProviderSettingsViewModel.of(assistant)
+        .open(assistant, strings ?? AsystantStrings.of(context)),
   );
   return showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     useSafeArea: true,
-    builder: (context) =>
-        _ProviderSettingsSheet(assistant: assistant, strings: strings),
+    builder: (context) => _ProviderSettingsSheet(
+      assistant: assistant,
+      strings: strings,
+      browseOpenRouterModels: browseOpenRouterModels,
+      showProviderCards: showProviderCards,
+    ),
   );
 }
 
@@ -51,10 +56,17 @@ extension _ProviderKindPresentation on AsystantProviderKind {
 }
 
 class _ProviderSettingsSheet extends StatelessWidget {
-  const _ProviderSettingsSheet({required this.assistant, this.strings});
+  const _ProviderSettingsSheet({
+    required this.assistant,
+    this.strings,
+    this.browseOpenRouterModels,
+    this.showProviderCards = false,
+  });
 
   final AsystantAI assistant;
   final AsystantStrings? strings;
+  final Future<String?> Function(BuildContext)? browseOpenRouterModels;
+  final bool showProviderCards;
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +96,12 @@ class _ProviderSettingsSheet extends StatelessWidget {
                 ),
               ),
               _ => _ProviderSettingsForm(
+                assistant: assistant,
                 state: state,
                 viewModel: viewModel,
                 strings: strings,
+                browseOpenRouterModels: browseOpenRouterModels,
+                showProviderCards: showProviderCards,
               ),
             },
           ),
@@ -96,14 +111,20 @@ class _ProviderSettingsSheet extends StatelessWidget {
 
 class _ProviderSettingsForm extends StatefulWidget {
   const _ProviderSettingsForm({
+    required this.assistant,
     required this.state,
     required this.viewModel,
     required this.strings,
+    this.browseOpenRouterModels,
+    this.showProviderCards = false,
   });
 
+  final AsystantAI assistant;
   final ProviderSettingsState state;
   final ProviderSettingsViewModel viewModel;
   final AsystantStrings strings;
+  final Future<String?> Function(BuildContext)? browseOpenRouterModels;
+  final bool showProviderCards;
 
   @override
   State<_ProviderSettingsForm> createState() => _ProviderSettingsFormState();
@@ -114,6 +135,17 @@ class _ProviderSettingsFormState extends State<_ProviderSettingsForm> {
   late final _model = TextEditingController(text: widget.state.model);
   late final _baseUrl = TextEditingController(text: widget.state.baseUrl);
   late final _name = TextEditingController(text: widget.state.name);
+
+  @override
+  void didUpdateWidget(covariant _ProviderSettingsForm oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.state.kind != widget.state.kind ||
+        oldWidget.state.model != widget.state.model) {
+      _model.text = widget.state.model;
+      _baseUrl.text = widget.state.baseUrl;
+      _name.text = widget.state.name;
+    }
+  }
 
   void _select(AsystantProviderKind kind) {
     _key.clear();
@@ -142,6 +174,17 @@ class _ProviderSettingsFormState extends State<_ProviderSettingsForm> {
     baseUrl: _baseUrl.text,
     name: _name.text,
   );
+
+  Future<void> _browseOpenRouter() async {
+    final browse = widget.browseOpenRouterModels;
+    if (browse == null || widget.state.isSaving) return;
+    final id = await browse(context);
+    if (!mounted || id == null) return;
+    await widget.viewModel.select(.openRouter);
+    if (!mounted) return;
+    _model.text = id;
+    await widget.viewModel.addModel(id);
+  }
 
   Future<void> _removeKey() async {
     final isRemoved = await widget.viewModel.removeKey(
@@ -179,24 +222,83 @@ class _ProviderSettingsFormState extends State<_ProviderSettingsForm> {
             strings.providerSettingsDescription,
             style: TextStyle(color: colors.onSurfaceVariant),
           ),
+          if (widget.browseOpenRouterModels != null) ...[
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: state.isSaving ? null : _browseOpenRouter,
+              icon: const Icon(Icons.search_rounded),
+              label: Text(strings.browseOpenRouterModels),
+            ),
+          ],
           const SizedBox(height: 20),
-          DropdownButtonFormField<AsystantProviderKind>(
-            initialValue: state.kind,
-            decoration: InputDecoration(labelText: strings.providerLabel),
-            items: state.availableKinds
-                .map(
-                  (kind) => DropdownMenuItem(
-                    value: kind,
-                    child: Text(kind.toLabel(strings)),
-                  ),
-                )
-                .toList(),
-            onChanged: state.isSaving
-                ? null
-                : (kind) {
-                    if (kind != null) _select(kind);
-                  },
-          ),
+          if (widget.showProviderCards) ...[
+            Text(
+              strings.providerInUse,
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(height: 8),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.auto_awesome_rounded),
+                title: Text(state.kind.toLabel(strings)),
+                subtitle: Text(
+                  widget.assistant.conversation.notifier.state.model,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              strings.providerListTitle,
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(height: 8),
+            Card(
+              child: Column(
+                children: [
+                  for (final kind in state.availableKinds)
+                    ListTile(
+                      title: Text(kind.toLabel(strings)),
+                      subtitle: Text(
+                        kind == .backend
+                            ? strings.providerManagedBudget
+                            : kind == .openRouter &&
+                                  widget
+                                      .assistant
+                                      .providerSettings!
+                                      .usesManagedOpenRouterCredential
+                            ? strings.providerUsesAppAccountKeyShort
+                            : strings.providerPersonalKey,
+                      ),
+                      trailing: kind == state.kind
+                          ? const Icon(Icons.check_rounded)
+                          : const Icon(Icons.chevron_right_rounded),
+                      selected: kind == state.kind,
+                      enabled: !state.isSaving,
+                      onTap: () => _select(kind),
+                    ),
+                ],
+              ),
+            ),
+          ] else
+            DropdownButtonFormField<AsystantProviderKind>(
+              initialValue: state.kind,
+              decoration: InputDecoration(labelText: strings.providerLabel),
+              items: state.availableKinds
+                  .map(
+                    (kind) => DropdownMenuItem(
+                      value: kind,
+                      child: Text(kind.toLabel(strings)),
+                    ),
+                  )
+                  .toList(),
+              onChanged: state.isSaving
+                  ? null
+                  : (kind) {
+                      if (kind != null) _select(kind);
+                    },
+            ),
           const SizedBox(height: 14),
           if (state.usesHostProvider)
             _HostModelField(
@@ -213,6 +315,11 @@ class _ProviderSettingsFormState extends State<_ProviderSettingsForm> {
               baseUrlController: _baseUrl,
               nameController: _name,
               strings: strings,
+              onSelectModel: widget.viewModel.selectSavedModel,
+              onAddModel: () =>
+                  unawaited(widget.viewModel.addModel(_model.text)),
+              onRemoveModel: (id) =>
+                  unawaited(widget.viewModel.removeModel(id)),
             ),
           if (state.error case final error?) ...[
             const SizedBox(height: 12),
@@ -287,6 +394,9 @@ class _LocalProviderFields extends StatelessWidget {
     required this.baseUrlController,
     required this.nameController,
     required this.strings,
+    required this.onSelectModel,
+    required this.onAddModel,
+    required this.onRemoveModel,
   });
 
   final ProviderSettingsState state;
@@ -295,17 +405,48 @@ class _LocalProviderFields extends StatelessWidget {
   final TextEditingController baseUrlController;
   final TextEditingController nameController;
   final AsystantStrings strings;
+  final ValueChanged<String> onSelectModel;
+  final VoidCallback onAddModel;
+  final ValueChanged<String> onRemoveModel;
 
   @override
   Widget build(BuildContext context) => Column(
     mainAxisSize: .min,
     crossAxisAlignment: .stretch,
     children: [
+      if (state.savedModels.isNotEmpty) ...[
+        Text(
+          strings.savedModels,
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 8),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final id in state.savedModels)
+              InputChip(
+                label: Text(id),
+                onPressed: state.isSaving ? null : () => onSelectModel(id),
+                onDeleted: state.isSaving ? null : () => onRemoveModel(id),
+              ),
+          ],
+        ),
+        const SizedBox(height: 8),
+      ],
       TextField(
         controller: modelController,
         decoration: InputDecoration(
           labelText: strings.primaryModelId,
           hintText: state.kind.toModelIdHint(),
+        ),
+      ),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton.icon(
+          onPressed: state.isSaving ? null : onAddModel,
+          icon: const Icon(Icons.add_rounded),
+          label: Text(strings.addModelToProvider),
         ),
       ),
       if (state.kind == .compatible) ...[
@@ -324,17 +465,20 @@ class _LocalProviderFields extends StatelessWidget {
           ),
         ),
       ],
-      const SizedBox(height: 14),
-      TextField(
-        controller: keyController,
-        obscureText: true,
-        enableSuggestions: false,
-        autocorrect: false,
-        decoration: InputDecoration(
-          labelText: strings.providerApiKey,
-          helperText: state.hasKey ? strings.providerSavedKeyHint : null,
+      if (!state.usesManagedOpenRouterCredential) ...[
+        const SizedBox(height: 14),
+        TextField(
+          controller: keyController,
+          obscureText: true,
+          enableSuggestions: false,
+          autocorrect: false,
+          decoration: InputDecoration(
+            labelText: strings.providerApiKey,
+            helperText: state.hasKey ? strings.providerSavedKeyHint : null,
+          ),
         ),
-      ),
+      ] else
+        Text(strings.providerUsesAppAccountKey),
       if (state.kind == .anthropic) ...[
         const SizedBox(height: 8),
         Text(

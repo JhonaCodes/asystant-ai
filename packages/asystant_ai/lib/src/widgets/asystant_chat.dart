@@ -24,6 +24,7 @@ import 'package:asystant_ai/src/widgets/chat_composer.dart';
 import 'package:asystant_ai/src/widgets/chat_confirm_dialog.dart';
 import 'package:asystant_ai/src/widgets/chat_conversation.dart';
 import 'package:asystant_ai/src/widgets/chat_conversation_list.dart';
+import 'package:asystant_ai/src/widgets/chat_context_line.dart';
 import 'package:asystant_ai/src/widgets/chat_header.dart';
 import 'package:asystant_ai/src/widgets/asystant_provider_settings_sheet.dart';
 
@@ -51,6 +52,7 @@ class AsystantChat extends StatefulWidget {
     this.hostCards = const [],
     this.headerContent,
     this.headerActions = const [],
+    this.showContextLine = false,
     this.managesConversations = true,
     this.conversationActionsStyle = AsystantConversationActionsStyle.inline,
     this.conversationMenuIcon,
@@ -58,12 +60,16 @@ class AsystantChat extends StatefulWidget {
     this.welcomeContent,
     this.menuActions = const [],
     this.composerLayout = AsystantComposerLayout.stacked,
+    this.showComposerModelPicker = true,
     this.composerHeader,
   });
 
   /// Host buttons in the header row, before the conversation actions, such
   /// as navigation when the chat is the host's main screen.
   final List<Widget> headerActions;
+
+  /// Draw context usage in the divider below the header instead of a circle.
+  final bool showContextLine;
 
   /// Inline icons or one dropdown menu for the conversation actions.
   final AsystantConversationActionsStyle conversationActionsStyle;
@@ -82,6 +88,9 @@ class AsystantChat extends StatefulWidget {
 
   /// Built-in composer layout; inline keeps attachments, model selection and send.
   final AsystantComposerLayout composerLayout;
+
+  /// Allows a host to put its model picker in the chat header.
+  final bool showComposerModelPicker;
 
   /// Host content immediately above the composer field.
   final Widget? composerHeader;
@@ -369,7 +378,7 @@ class _ChatColumn extends StatelessWidget {
           description: assistant.description,
           state: state,
           strings: strings,
-          contextUsage: state.contextUsage,
+          contextUsage: chat.showContextLine ? null : state.contextUsage,
           canManage: viewModel.canManageConversations,
           showsHandle: chat.showsHandle,
           isExpanded: chat.isExpanded,
@@ -398,8 +407,11 @@ class _ChatColumn extends StatelessWidget {
           onDelete: manages ? () => onDelete(state.conversationId) : null,
           onClose: chat.onClose,
         ),
+        if (chat.showContextLine)
+          ChatContextLine(usage: state.contextUsage, strings: strings),
         ?chat.headerContent,
-        const Divider(height: 1),
+        if (chat.headerContent != null || !chat.showContextLine)
+          const Divider(height: 1),
         if (viewModel.offersConnect)
           Padding(
             padding: const EdgeInsets.all(12),
@@ -441,6 +453,7 @@ class _ChatColumn extends StatelessWidget {
           attachmentActionPlacement: chat.attachmentActionPlacement,
           privateValueActionPlacement: chat.privateValueActionPlacement,
           layout: chat.composerLayout,
+          showModelPicker: chat.showComposerModelPicker,
           header: chat.composerHeader,
         ),
       ],

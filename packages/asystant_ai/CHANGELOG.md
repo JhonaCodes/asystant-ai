@@ -1,3 +1,11 @@
+## 0.9.3
+
+- Let hosts put model selection in the chat header and show context usage as a thin progress line.
+- Keep model choices per provider and allow hosts to open an OpenRouter model catalog from settings.
+- Reuse a host-managed OpenRouter credential without asking for a second key, honoring its allowed models.
+- Let hosts decorate chat transports for free-first routing and supply OpenRouter app attribution.
+- Fix transport disposal during deferred initialization.
+
 ## 0.9.2
 
 - Default all library chat surfaces to English; hosts can opt in to built-in Spanish or supply an `AsystantStrings` subclass for every label, including provider settings and private input.

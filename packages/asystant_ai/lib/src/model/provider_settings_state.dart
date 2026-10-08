@@ -14,6 +14,8 @@ class ProviderSettingsState {
     this.name = '',
     this.availableKinds = const [],
     this.hostModels = const [],
+    this.savedModels = const [],
+    this.usesManagedOpenRouterCredential = false,
     this.isLoading = true,
     this.isAvailable = false,
     this.isSaving = false,
@@ -37,6 +39,8 @@ class ProviderSettingsState {
 
   /// Models the host provider allows, read when the selection loads.
   final List<String> hostModels;
+  final List<String> savedModels;
+  final bool usesManagedOpenRouterCredential;
 
   final bool isLoading;
 
@@ -60,6 +64,7 @@ class ProviderSettingsState {
   bool get canDeleteKey =>
       !usesHostProvider &&
       hasKey &&
+      !usesManagedOpenRouterCredential &&
       availableKinds.contains(AsystantProviderKind.backend);
 
   ProviderSettingsState copyWith({
@@ -69,6 +74,8 @@ class ProviderSettingsState {
     String? name,
     List<AsystantProviderKind>? availableKinds,
     List<String>? hostModels,
+    List<String>? savedModels,
+    bool? usesManagedOpenRouterCredential,
     bool? isLoading,
     bool? isAvailable,
     bool? isSaving,
@@ -84,6 +91,9 @@ class ProviderSettingsState {
     name: name ?? this.name,
     availableKinds: List.unmodifiable(availableKinds ?? this.availableKinds),
     hostModels: List.unmodifiable(hostModels ?? this.hostModels),
+    savedModels: List.unmodifiable(savedModels ?? this.savedModels),
+    usesManagedOpenRouterCredential:
+        usesManagedOpenRouterCredential ?? this.usesManagedOpenRouterCredential,
     isLoading: isLoading ?? this.isLoading,
     isAvailable: isAvailable ?? this.isAvailable,
     isSaving: isSaving ?? this.isSaving,
@@ -99,6 +109,8 @@ class ProviderSettingsState {
     name,
     availableKinds,
     hostModels,
+    savedModels,
+    usesManagedOpenRouterCredential,
     isLoading,
     isAvailable,
     isSaving,

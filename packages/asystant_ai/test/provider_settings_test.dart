@@ -103,7 +103,7 @@ void main() {
     expect(find.text('Chat provider'), findsOneWidget);
     expect(find.text('OpenRouter'), findsOneWidget);
     expect(find.text('App account'), findsNothing);
-    expect(find.text('openai/gpt-saved'), findsOneWidget);
+    expect(find.text('openai/gpt-saved'), findsWidgets);
     expect(find.text('Key saved. Leave blank to keep it.'), findsOneWidget);
   });
 
@@ -159,6 +159,7 @@ void main() {
       addTearDown(assistant.dispose);
 
       await _openSheet(tester, assistant);
+      await tester.ensureVisible(find.text('Delete local key'));
       await tester.tap(find.text('Delete local key'));
       await tester.pumpAndSettle();
 

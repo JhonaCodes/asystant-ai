@@ -33,6 +33,7 @@ class ChatComposer extends StatefulWidget {
     this.attachmentActionPlacement = AsystantComposerActionPlacement.inside,
     this.privateValueActionPlacement = AsystantComposerActionPlacement.inside,
     this.layout = AsystantComposerLayout.stacked,
+    this.showModelPicker = true,
     this.header,
   });
 
@@ -54,6 +55,7 @@ class ChatComposer extends StatefulWidget {
   final AsystantComposerActionPlacement privateValueActionPlacement;
 
   final AsystantComposerLayout layout;
+  final bool showModelPicker;
 
   final Widget? header;
 
@@ -217,6 +219,7 @@ class _ChatComposerState extends State<ChatComposer> {
                   privateValueActionPlacement:
                       widget.privateValueActionPlacement,
                   focused: _isFocused,
+                  showModelPicker: widget.showModelPicker,
                 )
               else
                 Row(
@@ -287,12 +290,14 @@ class _ChatComposerState extends State<ChatComposer> {
                                   fixedTarget: false,
                                 ),
                                 const Spacer(),
-                                ChatModelPicker(
-                                  state: widget.state,
-                                  viewModel: widget.viewModel,
-                                  strings: widget.strings,
-                                ),
-                                const SizedBox(width: 4),
+                                if (widget.showModelPicker) ...[
+                                  ChatModelPicker(
+                                    state: widget.state,
+                                    viewModel: widget.viewModel,
+                                    strings: widget.strings,
+                                  ),
+                                  const SizedBox(width: 4),
+                                ],
                                 ChatSendAction(
                                   state: widget.state,
                                   viewModel: widget.viewModel,
@@ -338,6 +343,7 @@ class _InlineComposer extends StatelessWidget {
     required this.attachmentActionPlacement,
     required this.privateValueActionPlacement,
     required this.focused,
+    required this.showModelPicker,
   });
 
   final ChatState state;
@@ -355,6 +361,7 @@ class _InlineComposer extends StatelessWidget {
   final AsystantComposerActionPlacement attachmentActionPlacement;
   final AsystantComposerActionPlacement privateValueActionPlacement;
   final bool focused;
+  final bool showModelPicker;
 
   @override
   Widget build(BuildContext context) {
@@ -410,11 +417,12 @@ class _InlineComposer extends StatelessWidget {
                     ),
                   ),
                 ),
-                ChatModelPicker(
-                  state: state,
-                  viewModel: viewModel,
-                  strings: strings,
-                ),
+                if (showModelPicker)
+                  ChatModelPicker(
+                    state: state,
+                    viewModel: viewModel,
+                    strings: strings,
+                  ),
                 ChatSendAction(
                   state: state,
                   viewModel: viewModel,
