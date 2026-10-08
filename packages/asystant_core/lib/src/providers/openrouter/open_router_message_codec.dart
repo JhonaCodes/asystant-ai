@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:asystant_core/src/model/assistant_message.dart';
 import 'package:asystant_core/src/model/asystant_attachment.dart';
+import 'package:asystant_core/src/providers/attachment_text.dart';
 import 'package:asystant_core/src/providers/sdk_limits.dart';
 
 /// Writes conversation messages in OpenRouter's chat-completions format,
@@ -158,14 +159,13 @@ class OpenRouterMessageCodec {
       };
     }
     if (file.isText) {
-      final text = file.text;
-      final cut = text.length > maxAttachmentText;
+      final cut = AttachmentText.cut(file.text, limit: maxAttachmentText);
       return {
         'type': 'text',
         'text':
             'Attached file "${file.filename}" (id ${file.id})'
-            '${cut ? ', first $maxAttachmentText characters' : ''}:\n'
-            '```\n${cut ? text.substring(0, maxAttachmentText) : text}\n```',
+            '${cut.truncated ? ', first $maxAttachmentText characters' : ''}:\n'
+            '```\n${cut.text}\n```',
       };
     }
     return {'type': 'text', 'text': _described(file)};

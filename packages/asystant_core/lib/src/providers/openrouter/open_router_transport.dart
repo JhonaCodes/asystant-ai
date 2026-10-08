@@ -16,6 +16,7 @@ import 'package:asystant_core/src/transport/inference_event.dart';
 import 'package:asystant_core/src/providers/openrouter/open_router_credential.dart';
 import 'package:asystant_core/src/providers/openrouter/open_router_message_codec.dart';
 import 'package:asystant_core/src/providers/openrouter/open_router_stream.dart';
+import 'package:asystant_core/src/providers/provider_failure.dart';
 
 /// Talks to OpenRouter directly with the signed-in user's own key.
 ///
@@ -131,6 +132,8 @@ class OpenRouterTransport extends AssistantTransport {
     required List<AsystantSystemPrompt> prompts,
     required List<String> models,
   }) async {
+    // keel-debt: 9 when-then-early-exit Result unwraps here and in claude_cli_*; no
+    //   helper can return/yield for its caller, chain with flatMap on the next reshape.
     final policy = const AsystantPromptPolicy().compose(prompts);
     final composed = policy.when(ok: (value) => value, err: (_) => null);
     if (composed == null) {
@@ -414,24 +417,26 @@ class OpenRouterTransport extends AssistantTransport {
     };
   }
 
-  /// [detail] is the provider's error body; only its category is kept.
-  AssistantFailure _failure(int status, String detail) => switch (status) {
-    401 || 403 => const AssistantFailure(.authentication),
-    402 => const AssistantFailure(.budget),
-    413 => const AssistantFailure(.contextFull),
-    400 when _mentionsContext(detail) => const AssistantFailure(.contextFull),
-    429 => const AssistantFailure(.rateLimited),
-    408 => const AssistantFailure(.network),
-    >= 500 => const AssistantFailure(.unavailable),
-    _ => const AssistantFailure(.protocol),
-  };
+  /// OpenRouter's own spelling, on top of [ProviderFailure.contextFullPhrases].
+  static const _contextFullPhrases = ['context_length'];
 
-  static bool _mentionsContext(String detail) {
-    final text = detail.toLowerCase();
-    return text.contains('context length') ||
-        text.contains('context_length') ||
-        text.contains('context window') ||
-        text.contains('too many tokens');
+  /// [detail] is the provider's error body; only its category is kept.
+  AssistantFailure _failure(int status, String detail) {
+    if (ProviderFailure.codeOfStatus(status) case final FailureCode code) {
+      return AssistantFailure(code);
+    }
+    return switch (status) {
+      402 => const AssistantFailure(.budget),
+      400
+          when ProviderFailure.mentionsContextFull(
+            detail,
+            extraPhrases: _contextFullPhrases,
+          ) =>
+        const AssistantFailure(.contextFull),
+      408 => const AssistantFailure(.network),
+      >= 500 => const AssistantFailure(.unavailable),
+      _ => const AssistantFailure(.protocol),
+    };
   }
 
   @override

@@ -5,6 +5,7 @@ import 'package:asystant_core/src/model/assistant_failure.dart';
 import 'package:asystant_core/src/model/token_usage.dart';
 import 'package:asystant_core/src/providers/claude_code/claude_cli_launcher.dart';
 import 'package:asystant_core/src/providers/claude_code/claude_cli_protocol.dart';
+import 'package:asystant_core/src/providers/provider_failure.dart';
 import 'package:asystant_core/src/transport/inference_event.dart';
 
 /// Turns one `claude -p --output-format stream-json` run into
@@ -181,11 +182,10 @@ class ClaudeCliStream {
         for (final error in errors)
           if (error case final String text) text,
     ].join(' ');
-    return switch (status) {
-      401 || 403 => _signedOut,
-      429 => const AssistantFailure(.rateLimited),
-      413 => const AssistantFailure(.contextFull),
-      _ => _classify(message),
+    return switch (ProviderFailure.codeOfStatus(status)) {
+      FailureCode.authentication => _signedOut,
+      final FailureCode code => AssistantFailure(code),
+      null => _classify(message),
     };
   }
 
@@ -213,14 +213,18 @@ class ClaudeCliStream {
     if (text.contains('rate limit') || text.contains('usage limit')) {
       return const AssistantFailure(.rateLimited);
     }
-    if (text.contains('prompt is too long') ||
-        text.contains('context window') ||
-        text.contains('context length') ||
-        text.contains('too many tokens')) {
+    if (ProviderFailure.mentionsContextFull(
+      text,
+      extraPhrases: _contextFullPhrases,
+    )) {
       return const AssistantFailure(.contextFull);
     }
     return AssistantFailure(.unavailable, detail: _excerpt(message));
   }
+
+  /// The Claude API's own wording, on top of
+  /// [ProviderFailure.contextFullPhrases].
+  static const _contextFullPhrases = ['prompt is too long'];
 
   static const _signedOut = AssistantFailure(
     .authentication,

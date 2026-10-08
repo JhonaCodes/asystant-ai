@@ -7,6 +7,7 @@ import 'package:asystant_core/src/model/assistant_message.dart';
 import 'package:asystant_core/src/model/asystant_attachment.dart';
 import 'package:asystant_core/src/model/system_prompt.dart';
 import 'package:asystant_core/src/model/tool_call.dart';
+import 'package:asystant_core/src/providers/attachment_text.dart';
 import 'package:asystant_core/src/providers/sdk_limits.dart';
 import 'package:asystant_core/src/tool/tool_arguments.dart';
 import 'package:asystant_core/src/tool/tool_definition.dart';
@@ -194,7 +195,9 @@ Write your next reply as the assistant.''';
     AsystantAttachment file,
     String? Function(AsystantAttachment file) label,
   ) {
-    final cut = file.isText && file.text.length > maxAttachmentText;
+    final excerpt = file.isText
+        ? AttachmentText.cut(file.text, limit: maxAttachmentText)
+        : null;
     final image = label(file);
     return {
       'id': file.id,
@@ -205,13 +208,14 @@ Write your next reply as the assistant.''';
         'image': image
       else if (file.isImage)
         'note': file.imageUnavailableNote
-      else if (file.isText)
-        'text': cut ? file.text.substring(0, maxAttachmentText) : file.text
+      else if (excerpt != null)
+        'text': excerpt.text
       else
         'note':
             'You cannot read this file directly; a registered tool may '
             'process it by its id.',
-      if (cut) 'truncated_to_characters': maxAttachmentText,
+      if (excerpt?.truncated ?? false)
+        'truncated_to_characters': maxAttachmentText,
     };
   }
 
