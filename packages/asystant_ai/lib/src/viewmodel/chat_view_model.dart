@@ -30,6 +30,8 @@ typedef AsystantActionPolicyResolver = AsystantActionPolicy Function(
   ToolArguments arguments,
 );
 
+// keel-debt: about 1340 lines in one class, because every part shares the same
+//   private state. Shrinking it means redesigning the turn flow, in a major.
 /// Owns conversation state and executes only registered, authorized local tools.
 class ChatViewModel extends ViewModel<ChatState> {
   ChatViewModel() : super(const ChatState());
