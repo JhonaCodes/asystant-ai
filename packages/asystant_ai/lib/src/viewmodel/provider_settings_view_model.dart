@@ -5,6 +5,13 @@ import 'package:asystant_ai/src/l10n/asystant_strings.dart';
 import 'package:asystant_ai/src/model/provider_settings_state.dart';
 import 'package:asystant_ai/src/service/asystant_provider_settings.dart';
 
+// keel-debt: loads data on ViewModel<T> with hand-made loading/availability
+//   flags. AsyncViewModelImpl loads in its constructor before open() gives it
+//   the assistant, and loadOnInit: false is banned here; migrate in a major,
+//   with the opening as another notifier's state.
+// keel-debt: stores already translated error text, so a host locale change
+//   between openings shows the old language; store a failure enum and
+//   translate it in the widget.
 /// Loads, checks and applies the local chat provider of one assistant.
 ///
 /// One instance per assistant, kept across openings of the settings sheet and
