@@ -48,11 +48,13 @@ stateDiagram-v2
 - `AsystantAI` is the public facade a host extends. `AsystantService` is the
   mixin that lazily owns one `ChatViewModel` per instance.
 - `ChatViewModel` holds the one `ChatState` for a conversation and talks to
-  `asystant_core` for transport and tool execution. Its code is split by
-  responsibility into five private `part of` mixins, one file each:
-  `lifecycle`, `conversations`, `composition`, `turn` and `tools`. Each mixin
-  is declared `on` the ones applied before it, and every private member is
-  implemented in exactly one of them.
+  `asystant_core` for transport and tool execution. It is one large file on
+  purpose: its parts share the same private state, so splitting the file
+  would move lines without creating anything reusable. Shrinking it means
+  redesigning the turn flow, which is tracked as debt for a major release.
+- A unit becomes its own module only when two or more real callers share it
+  (for example `ChatState.isBusyOrInitializing` or the disabled-color
+  extension). File length alone is never the reason.
 - `ProviderSettingsViewModel` (private, not exported) owns the provider
   settings sheet: loading, validation, saving and key removal. `open()`
   resets it on every opening. The API key is only ever a method argument and
