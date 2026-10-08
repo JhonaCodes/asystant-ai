@@ -145,7 +145,7 @@ class ChatViewModel extends ViewModel<ChatState> {
     bool enableInlinePrivateInput = true,
   }) async {
     turnLimits.validate();
-    if (_closed || state.busy || state.phase == ChatPhase.initializing) {
+    if (_closed || state.isBusyOrInitializing) {
       return;
     }
     if (_initialized) await _saveActive();

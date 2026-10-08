@@ -6,7 +6,6 @@ import 'package:asystant_core/asystant_core.dart';
 import 'package:asystant_ai/src/model/asystant_model_option.dart';
 import 'package:asystant_ai/src/model/asystant_action_policy.dart';
 import 'package:asystant_ai/src/model/asystant_turn_limits.dart';
-import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/presentation/asystant_presentation.dart';
 import 'package:asystant_ai/src/presentation/asystant_presentation_registry.dart';
 import 'package:asystant_ai/src/service/asystant_conversation_store.dart';
@@ -179,8 +178,7 @@ abstract class AsystantAI with AsystantService {
   Future<void> refreshProvider() async {
     if (_disposed ||
         _initialization != null ||
-        conversation.notifier.state.busy ||
-        conversation.notifier.state.phase == ChatPhase.initializing) {
+        conversation.notifier.state.isBusyOrInitializing) {
       throw StateError('Finish the current request before changing provider.');
     }
     await _initialize?.call();
