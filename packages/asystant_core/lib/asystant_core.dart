@@ -37,6 +37,9 @@ export 'package:asystant_core/src/tool/typed_asystant_tool.dart';
 export 'package:asystant_core/src/transport/assistant_transport.dart';
 export 'package:asystant_core/src/transport/inference_event.dart';
 
+// Business APIs: contracts, sign-in as data and the executor.
+export 'package:asystant_core/src/business/business.dart';
+
 // Providers: the sealed AsystantProvider with every variant, then one
 // export per provider folder.
 export 'package:asystant_core/src/providers/asystant_provider.dart';

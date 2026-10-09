@@ -1,3 +1,14 @@
+## 0.6.0
+
+- Business APIs (`business/`, pure Dart): typed contracts of administrative APIs that an assistant can register and operate.
+  - `BusinessContract` with `dev`/`prod` `BusinessEndpoint`s and `BusinessOperation`s whose `BusinessField`s are typed (`BusinessFieldKind`) and located (`BusinessFieldLocation`: path, query, body or header). `BusinessContract.parse` reads untrusted JSON into a `Result`; `validateContract()` checks addresses, headers, sign-in, profiles and operations.
+  - Sign-in as data: `BusinessAuthFlow` lists `BusinessAuthStep`s (`request`, `verify`, `password`, `totp`, `refresh`) with the `BusinessAuthInput`s the person types (`email`, `password`, `code`, `totp`, `text`), fixed editable `parameters` (such as `company_id` and `application_id`), headers, the token path in the answer and renewal. Named constructors build the common flows (`bearer`, `apiKey`, `emailCode`, `emailCodeTotp`, `emailPassword`, `emailPasswordTotp`, `aulaMasOperator`, `sstOperator`).
+  - Several `BusinessCredentialProfile`s per environment (for example `admin` and `guest`), each with its own session, keyed by `BusinessCredentialScope`.
+  - `BusinessSignIn` runs a flow through a `BusinessSignInPrompter` and renews a session once at a time per scope; `BusinessExecutor` runs an operation, renews once on 401 and redacts the answer (`BusinessRedaction`).
+  - Interfaces for the host: `BusinessHttp` (default `BusinessHttpClient` over `package:http`), `BusinessCredentialStore` and `BusinessContractStore`. Failures are `BusinessFailure` values, never exceptions.
+  - Source documents: `BusinessDocument` keeps the document a business was registered from (such as its endpoints `.md`), `BusinessDocumentStore` stores one per business (`InMemoryBusinessDocumentStore` by default), and `BusinessDocumentReading` splits it at its Markdown headings and returns the sections that match a query, ranked by `AsystantKnowledge` and cut to a size.
+  - Compatibility: `BusinessEndpoint.fromJson` also reads the first contract format, whose flat `auth_kind` and routes `BusinessAuthFlow.fromLegacyJson` turns into a flow.
+
 ## 0.5.2
 
 - `PrivateInputField.initialValue`: pre-fills a private input field (its own last value, or a known public default). Never applies to `PrivateInputKind.secret`, `.password`, `.code` or `.totp`.

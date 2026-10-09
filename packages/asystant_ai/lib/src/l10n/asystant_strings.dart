@@ -396,6 +396,101 @@ class AsystantStrings {
         : '$month ${local.day}, ${local.year}';
   }
 
+  // Business tools (`BusinessToolkit`): card titles, secure form labels and
+  // step summaries the person reads. What the model reads stays English.
+  String businessRegisterTitle(String name) =>
+      spanish ? 'Registrar $name' : 'Register $name';
+  String businessUpdateTitle(String name) =>
+      spanish ? 'Actualizar $name' : 'Update $name';
+  String businessConnectTitle(String name) =>
+      spanish ? 'Conectar $name' : 'Sign in to $name';
+  String get businessConnectNote => spanish
+      ? 'El correo y los códigos se introducen en el dispositivo.'
+      : 'The email and codes are entered on this device.';
+  String businessEnvironmentTitle(String name, String environment) => spanish
+      ? 'Configurar $name · $environment'
+      : 'Configure $name · $environment';
+  String get businessPrivateHeaderTitle =>
+      spanish ? 'Configurar encabezado privado' : 'Configure private header';
+  String get businessSecretsTitle =>
+      spanish ? 'Valores privados de la operación' : 'Private operation values';
+  String get businessNotConfigured =>
+      spanish ? 'sin configurar' : 'not configured';
+  String get businessOperations =>
+      spanish ? 'Operaciones propuestas:' : 'Proposed operations:';
+  String businessAddedOperations(String ids) =>
+      spanish ? 'Operaciones nuevas: $ids' : 'New operations: $ids';
+  String businessRemovedOperations(String ids) =>
+      spanish ? 'Operaciones quitadas: $ids' : 'Removed operations: $ids';
+  String get businessSessionResetNote => spanish
+      ? 'Si cambia la dirección o el inicio de sesión, habrá que conectarse de nuevo.'
+      : 'If the address or sign-in changes, you will need to sign in again.';
+  String get businessVaultNote => spanish
+      ? 'El valor se guardará en el llavero del dispositivo.'
+      : 'The value is saved in the device vault.';
+  String get businessCredentialNote => spanish
+      ? 'Credencial: reservada · se guardará en el llavero.'
+      : 'Credential: private · saved in the device vault.';
+
+  /// The label of a sign-in field of [kind] in the secure form.
+  String businessInputLabel(BusinessAuthInputKind kind) => switch (kind) {
+    BusinessAuthInputKind.email => spanish ? 'Correo' : 'Email',
+    BusinessAuthInputKind.password => spanish ? 'Contraseña' : 'Password',
+    BusinessAuthInputKind.code => spanish ? 'Código enviado' : 'Code sent',
+    BusinessAuthInputKind.totp =>
+      spanish ? 'Código del autenticador' : 'Authenticator code',
+    BusinessAuthInputKind.text => spanish ? 'Valor' : 'Value',
+  };
+
+  /// The label of the sign-in parameter [name], such as `company_id`.
+  String businessParameterLabel(String name, {required bool isRequired}) {
+    final label = switch (name) {
+      'application_id' => spanish ? 'ID de aplicación' : 'Application ID',
+      'company_id' => spanish ? 'ID de compañía' : 'Company ID',
+      _ => name,
+    };
+    if (isRequired) return label;
+    return spanish ? '$label (opcional)' : '$label (optional)';
+  }
+
+  String businessCodeSentTitle(String place, String sentTo) => spanish
+      ? '$place · código enviado a $sentTo'
+      : '$place · code sent to $sentTo';
+
+  /// Why an email code may not arrive although the API accepted the
+  /// request: some APIs answer the same when the sign-in parameters do not
+  /// match the account.
+  String businessMissingCodeHint(String businessName, String parameters) =>
+      spanish
+      ? 'Si no llega, revisa $parameters: $businessName responde igual aunque no coincidan con tu cuenta.'
+      : 'If it does not arrive, check $parameters: $businessName answers the same even when they do not match your account.';
+  String businessTotpTitle(String place) =>
+      spanish ? 'Autenticador · $place' : 'Authenticator · $place';
+  String businessTotpEnrollment(String secret) => spanish
+      ? 'Agrega esta clave a tu app autenticadora: $secret'
+      : 'Add this key to your authenticator app: $secret';
+  String businessPrivateHeadersTitle(String place) =>
+      spanish ? '$place · encabezados privados' : '$place · private headers';
+  String businessSignedIn(String place) =>
+      spanish ? '$place · acceso guardado' : '$place · signed in';
+  String businessRegistered(String name) =>
+      spanish ? 'Negocio registrado: $name' : 'Business registered: $name';
+  String businessUpdated(String name) =>
+      spanish ? 'Negocio actualizado: $name' : 'Business updated: $name';
+  String businessEnvironmentConfigured(String place) => spanish
+      ? '$place · entorno configurado'
+      : '$place · environment configured';
+  String get businessPrivateHeaderSaved =>
+      spanish ? 'Encabezado privado guardado' : 'Private header saved';
+  String businessDocsTitle(String name) =>
+      spanish ? 'Documentación de $name' : '$name documentation';
+  String businessDocsRead(String name) => spanish
+      ? 'Documentación de $name consultada'
+      : 'Read the $name documentation';
+  String get businessSecretsHeld => spanish
+      ? 'Valores listos para la próxima operación'
+      : 'Values ready for the next operation';
+
   String get placeholder =>
       spanish ? '¿Qué te gustaría hacer?' : 'What would you like to do?';
   String get welcome =>
