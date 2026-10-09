@@ -134,6 +134,9 @@ void main() {
         ),
       ),
     );
+    // A finished turn folds its steps; the person opens them to look.
+    await tester.tap(find.text('1 step · completed'));
+    await tester.pump();
 
     expect(find.bySemanticsLabel('frame.png'), findsOneWidget);
     vm.dispose();

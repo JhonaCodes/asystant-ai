@@ -7,10 +7,8 @@ import 'package:asystant_ai/src/model/asystant_host_card.dart';
 import 'package:asystant_ai/src/model/chat_state.dart';
 import 'package:asystant_ai/src/presentation/asystant_presentation_registry.dart';
 import 'package:asystant_ai/src/theme/asystant_metrics.dart';
-import 'package:asystant_ai/src/theme/asystant_theme.dart';
 import 'package:asystant_ai/src/viewmodel/chat_view_model.dart';
 import 'package:asystant_ai/src/widgets/asystant_card_content.dart';
-import 'package:asystant_ai/src/widgets/asystant_glyph.dart';
 import 'package:asystant_ai/src/widgets/chat_activity_card.dart';
 import 'package:asystant_ai/src/widgets/chat_confirmation_card.dart';
 import 'package:asystant_ai/src/widgets/chat_private_input_card.dart';
@@ -73,9 +71,15 @@ class ChatConversation extends StatelessWidget {
   ValueChanged<String>? get _onOptionPressed =>
       state.busy ? null : (option) => unawaited(viewModel.send(option));
 
+  /// Who a part of an entry is, so what it keeps (an activity line the
+  /// person opened) stays with it and never passes to another conversation.
+  /// Entries have no id of their own; within a conversation they are only
+  /// appended, so their position identifies them.
+  Key _entryKey(int index, _EntryPart part) =>
+      ValueKey((state.conversationId, index, part));
+
   @override
   Widget build(BuildContext context) {
-    final tokens = AsystantTheme.of(context);
     return ChatTimeline(
       anchor: (state.conversationId, state.sentCount),
       forceFollow: _forcesFollow,
@@ -83,23 +87,12 @@ class ChatConversation extends StatelessWidget {
       padding: AsystantMetrics.of(context).listPadding,
       children: [
         if (state.showsWelcome) welcomeContent ?? ChatWelcome(strings: strings),
-        for (final entry in state.entries) ...[
-          if (entry.activity.isNotEmpty)
-            ChatActivityCard(
-              title: entry.activityHasIssues
-                  ? strings.activityWithIssues
-                  : strings.activityCompleted,
-              subtitle: strings.activityEvents,
-              icon: AsystantGlyphKind.activity,
-              tone: entry.activityHasIssues
-                  ? Theme.of(context).colorScheme.error
-                  : tokens.successColor(context),
-              steps: entry.activity,
-              strings: strings,
-            ),
+        // A finished turn's activity goes under what the turn showed.
+        for (final (index, entry) in state.entries.indexed) ...[
           if (entry.message case final message?
               when message.content.isNotEmpty || message.attachments.isNotEmpty)
             ChatMessageBubble(
+              key: _entryKey(index, _EntryPart.message),
               text: message.content,
               fromUser: message.isFromUser,
               author: message.isFromUser ? strings.you : name,
@@ -107,19 +100,33 @@ class ChatConversation extends StatelessWidget {
               strings: strings,
             ),
           if (entry.card case final card?)
-            presentationRegistry?.build(
-                  context,
-                  card,
-                  strings,
-                  _onOptionPressed,
-                ) ??
-                completedCardBuilder?.call(context, card) ??
-                GenUiCard(
-                  card: card,
-                  strings: strings,
-                  content: cardContentBuilder?.call(context, card),
-                  onOptionPressed: _onOptionPressed,
-                ),
+            KeyedSubtree(
+              key: _entryKey(index, _EntryPart.card),
+              child:
+                  presentationRegistry?.build(
+                    context,
+                    card,
+                    strings,
+                    _onOptionPressed,
+                  ) ??
+                  completedCardBuilder?.call(context, card) ??
+                  GenUiCard(
+                    card: card,
+                    strings: strings,
+                    content: cardContentBuilder?.call(context, card),
+                    onOptionPressed: _onOptionPressed,
+                  ),
+            ),
+          if (entry.activity.isNotEmpty)
+            ChatActivityCard(
+              key: _entryKey(index, _EntryPart.activity),
+              title: entry.toActivitySteps(strings),
+              subtitle: entry.toActivityEnding(strings),
+              icon: entry.toActivityGlyph(),
+              tone: entry.toActivityTone(context),
+              steps: entry.activity,
+              strings: strings,
+            ),
         ],
         if (state.isWriting)
           ChatMessageBubble(
@@ -167,6 +174,9 @@ class ChatConversation extends StatelessWidget {
     );
   }
 }
+
+/// The parts an entry draws, each with its own key.
+enum _EntryPart { message, card, activity }
 
 class _LiveActivity extends StatelessWidget {
   const _LiveActivity({

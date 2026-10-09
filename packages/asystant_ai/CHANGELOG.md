@@ -1,3 +1,9 @@
+## 0.9.6
+
+- A finished turn's activity is folded into one compact line, such as "3 steps · completed" (or "with issues", with the warning icon, when a step failed, was declined or was stopped), and its steps, including the images a tool returned, open only when the person taps it; the line is at least one action height tall. The line now goes under the turn's answer instead of above it. The turn in progress still shows its steps open and live.
+- An activity line the person opened stays open only for its own turn: switching conversations no longer passes it to the turn drawn in the same position.
+- `AsystantStrings` adds `activitySteps(count)` (singular and plural), `activityFinished` and `activityFinishedWithIssues` for that line; host string bundles can override them.
+
 ## 0.9.5
 
 - `ChatPrivateInputCard` pre-fills a field from `PrivateInputField.initialValue` (`asystant_core` 0.5.2) instead of always starting empty. Only `text` and `email` fields are pre-filled: `secret`, `password`, `code` and `totp` always start empty, whatever value the tool sends.

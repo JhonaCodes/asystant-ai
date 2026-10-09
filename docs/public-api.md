@@ -206,7 +206,7 @@ Future<Result<ToolOutcome, AssistantFailure>> execute(
 }
 ```
 
-Each executed call is an `AssistantStep` with the `toolName`, when it `startedAt`, the `detail` of a failure, the tool's `data` and the `images` it returned. A turn's steps end up in `ChatEntry.activity`, which a conversation store keeps. A store that serializes steps decides whether it keeps their image bytes; one that keeps only a reference (a file path in `data`, say) can load the bytes back into `images` when it reads the conversation, so the thumbnails survive a restart.
+Each executed call is an `AssistantStep` with the `toolName`, when it `startedAt`, the `detail` of a failure, the tool's `data` and the `images` it returned. A turn's steps end up in `ChatEntry.activity`, which a conversation store keeps. A store that serializes steps decides whether it keeps their image bytes; one that keeps only a reference (a file path in `data`, say) can load the bytes back into `images` when it reads the conversation, so the thumbnails survive a restart. The built-in chat shows a finished turn's activity under its answer, folded into one line such as "3 steps · completed" (`AsystantStrings.activitySteps`, `activityFinished`, `activityFinishedWithIssues`); the person taps it to see the steps and their images. The turn in progress shows its steps open.
 
 ### Progress and cancellation of long tools
 
