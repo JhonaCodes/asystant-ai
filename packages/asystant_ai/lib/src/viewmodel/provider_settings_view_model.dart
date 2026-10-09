@@ -169,9 +169,11 @@ class ProviderSettingsViewModel extends ViewModel<ProviderSettingsState> {
     final kind = data.kind;
     await settings.removeModel(kind, model);
     final models = await settings.modelsFor(kind);
-    _apply(opening, (state) => state.kind == kind
-        ? state.copyWith(savedModels: models)
-        : state);
+    _apply(
+      opening,
+      (state) =>
+          state.kind == kind ? state.copyWith(savedModels: models) : state,
+    );
   }
 
   /// Stores the selection and [apiKey], then applies them to the chat.

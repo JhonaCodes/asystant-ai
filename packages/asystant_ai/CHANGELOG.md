@@ -1,3 +1,7 @@
+## 0.9.4
+
+- Fix raw JSON text appearing in chat when a model (observed with gpt-oss) writes a registered presentation tool's arguments (e.g. `present_choices`) in `content` instead of `tool_calls`; it now shows the same card a real call would.
+
 ## 0.9.3
 
 - Let hosts put model selection in the chat header and show context usage as a thin progress line.

@@ -31,8 +31,10 @@ void main() {
             builder: (context) => Scaffold(
               body: Center(
                 child: TextButton(
-                  onPressed: () =>
-                      showAsystantProviderSettings(context, assistant: assistant),
+                  onPressed: () => showAsystantProviderSettings(
+                    context,
+                    assistant: assistant,
+                  ),
                   child: const Text('Open'),
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:asystant_core/asystant_core.dart';
 import 'package:collection/collection.dart';
@@ -965,17 +966,20 @@ class ChatViewModel extends ViewModel<ChatState> {
           return;
         }
         _resetStreaming();
-        final finished = response.calls.isEmpty;
+        final recovered = response.calls.isEmpty
+            ? _recoverPresentationCall(response)
+            : response;
+        final finished = recovered.calls.isEmpty;
         // The final answer carries what the turn did before it.
         final activity = finished ? state.steps : const <AssistantStep>[];
         updateState(
           state.copyWith(
             entries: [
               ...state.entries,
-              if (response.content.isNotEmpty || activity.isNotEmpty)
-                ChatEntry(message: response, activity: activity),
+              if (recovered.content.isNotEmpty || activity.isNotEmpty)
+                ChatEntry(message: recovered, activity: activity),
             ],
-            messages: [...state.messages, response],
+            messages: [...state.messages, recovered],
             steps: finished ? const [] : null,
             streaming: '',
             phase: finished ? .done : null,
@@ -985,13 +989,13 @@ class ChatViewModel extends ViewModel<ChatState> {
           unawaited(_saveActive());
           return;
         }
-        for (final (index, call) in response.calls.indexed) {
+        for (final (index, call) in recovered.calls.indexed) {
           final endsTurn = await _executeLocalCall(call, turn, epoch);
           if (!_current(epoch)) {
             return;
           }
           if (endsTurn) {
-            _endTurnAt(call, skipped: response.calls.skip(index + 1));
+            _endTurnAt(call, skipped: recovered.calls.skip(index + 1));
             return;
           }
         }
@@ -1023,6 +1027,74 @@ class ChatViewModel extends ViewModel<ChatState> {
     _streamingTimer?.cancel();
     _streamingTimer = null;
     _streamingText.clear();
+  }
+
+  // Some models (observed with gpt-oss) answer a presentation tool's
+  // arguments as plain text instead of a real tool call. If the full
+  // content (admitting a ```json fence) is a JSON object that validates
+  // against exactly one registered `present_*` tool's schema, synthesize
+  // that call so the turn produces its card instead of showing the raw
+  // JSON to the person. Ambiguous (valid for 0 or 2+ tools) stays as text.
+  AssistantMessage _recoverPresentationCall(AssistantMessage response) {
+    final decoded = _decodePresentationJson(response.content);
+    if (decoded == null) {
+      return response;
+    }
+    final arguments = ToolArguments.fromJson(decoded);
+    final matches = <AsystantTool>[];
+    for (final tool in _registry!.tools) {
+      if (!tool.definition.name.startsWith('present_')) {
+        continue;
+      }
+      // Same gate a real tool_call goes through: the generic field schema
+      // (required/unexpected arguments, types, options) first, via the
+      // registry — never the tool's own decode() alone, which does not
+      // know about an extra or missing argument and can throw on one
+      // instead of reporting it.
+      if (_registry!.resolve(tool.definition.name, arguments).isErr) {
+        continue;
+      }
+      if (tool is TypedAsystantTool) {
+        try {
+          if (tool.decode(arguments).isErr) continue;
+        } on Object {
+          continue;
+        }
+      }
+      matches.add(tool);
+    }
+    if (matches.length != 1) {
+      return response;
+    }
+    return response.copyWith(
+      content: '',
+      calls: [
+        ToolCall(
+          id: _newId(),
+          name: matches.single.definition.name,
+          arguments: arguments,
+        ),
+      ],
+    );
+  }
+
+  Map<String, Object?>? _decodePresentationJson(String content) {
+    final unfenced = _stripJsonFence(content.trim());
+    if (unfenced.isEmpty) {
+      return null;
+    }
+    try {
+      final decoded = jsonDecode(unfenced);
+      return decoded is Map<String, Object?> ? decoded : null;
+    } on FormatException {
+      return null;
+    }
+  }
+
+  String _stripJsonFence(String text) {
+    final fenced = RegExp(r'^```(?:json)?\s*([\s\S]*?)\s*```$')
+        .firstMatch(text);
+    return fenced?.group(1)?.trim() ?? text;
   }
 
   /// Shows a running tool's progress on its step without rebuilding the
