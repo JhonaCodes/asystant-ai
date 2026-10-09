@@ -206,6 +206,21 @@ class AsystantStrings {
       : 'Activity finished with issues';
   String get activityEvents =>
       spanish ? 'Lo que hizo el asistente' : 'What the assistant did';
+
+  /// How many steps a finished turn took, on its folded activity line.
+  String activitySteps(int count) => switch ((spanish, count)) {
+    (true, 1) => '1 paso',
+    (true, _) => '$count pasos',
+    (false, 1) => '1 step',
+    (false, _) => '$count steps',
+  };
+
+  /// How a finished turn ended when every step did what it set out to do.
+  String get activityFinished => spanish ? 'completado' : 'completed';
+
+  /// How a finished turn ended when a step failed, was declined or stopped.
+  String get activityFinishedWithIssues =>
+      spanish ? 'con novedades' : 'with issues';
   String get liveActivity => spanish ? 'Trabajando…' : 'Working…';
   String get requestReceived =>
       spanish ? 'Solicitud recibida' : 'Request received';

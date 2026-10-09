@@ -13,7 +13,9 @@ import 'package:asystant_ai/src/widgets/step_outcome_presentation.dart';
 
 /// What the assistant did in a turn: live while it works, a record after.
 ///
-/// The header toggles the list of steps; it starts open, like the reference.
+/// The header toggles the list of steps. A live turn starts open, so the
+/// person follows it; a finished one starts folded into one line, such as
+/// "3 steps · completed", and opens only when the person taps it.
 class ChatActivityCard extends StatefulWidget {
   const ChatActivityCard({
     super.key,
@@ -27,8 +29,10 @@ class ChatActivityCard extends StatefulWidget {
     this.closingStep,
   });
 
+  /// What the assistant is doing while [live]; how many steps it took after.
   final String title;
 
+  /// Under [title] while [live]; after it, on the same line, how it ended.
   final String subtitle;
 
   final AsystantGlyphKind icon;
@@ -40,7 +44,7 @@ class ChatActivityCard extends StatefulWidget {
   /// Icon color; the primary color when null.
   final Color? tone;
 
-  /// Pulses the icon while the turn runs.
+  /// Pulses the icon while the turn runs, and starts the card open.
   final bool live;
 
   /// The last row of a live card: analyzing or drafting.
@@ -51,13 +55,18 @@ class ChatActivityCard extends StatefulWidget {
 }
 
 class _ChatActivityCardState extends State<ChatActivityCard> {
-  bool _expanded = true;
+  late bool _expanded;
+
+  @override
+  void initState() {
+    super.initState();
+    _expanded = widget.live;
+  }
 
   @override
   Widget build(BuildContext context) {
     final tokens = AsystantTheme.of(context);
     final colors = Theme.of(context).colorScheme;
-    final text = Theme.of(context).textTheme;
     final radius = BorderRadius.circular(tokens.radius / 2);
     return Container(
       margin: EdgeInsets.only(bottom: tokens.spacing + 4),
@@ -73,7 +82,10 @@ class _ChatActivityCardState extends State<ChatActivityCard> {
             child: InkWell(
               onTap: () => setState(() => _expanded = !_expanded),
               borderRadius: radius,
-              child: Padding(
+              child: Container(
+                // At least one action height: on a phone this line is the
+                // only way to reach a finished turn's steps.
+                constraints: BoxConstraints(minHeight: tokens.actionHeight),
                 padding: EdgeInsets.all(tokens.spacing - 4),
                 child: Row(
                   children: [
@@ -90,18 +102,15 @@ class _ChatActivityCardState extends State<ChatActivityCard> {
                     ),
                     SizedBox(width: tokens.spacing - 4),
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: .start,
-                        children: [
-                          Text(widget.title, style: text.bodyMedium),
-                          Text(
-                            widget.subtitle,
-                            style: text.bodySmall?.copyWith(
-                              color: colors.onSurfaceVariant,
+                      child: widget.live
+                          ? _LiveHeading(
+                              title: widget.title,
+                              subtitle: widget.subtitle,
+                            )
+                          : _FinishedHeading(
+                              steps: widget.title,
+                              ending: widget.subtitle,
                             ),
-                          ),
-                        ],
-                      ),
                     ),
                     AsystantGlyph(
                       _expanded
@@ -153,6 +162,64 @@ class _ChatActivityCardState extends State<ChatActivityCard> {
           ],
         ],
       ),
+    );
+  }
+}
+
+/// What the assistant is doing, over the line that says it is working.
+class _LiveHeading extends StatelessWidget {
+  const _LiveHeading({required this.title, required this.subtitle});
+
+  final String title;
+
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    return Column(
+      crossAxisAlignment: .start,
+      children: [
+        Text(title, style: text.bodyMedium),
+        Text(
+          subtitle,
+          style: text.bodySmall?.copyWith(
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// A finished turn in one line: how many steps it took, then how it ended.
+class _FinishedHeading extends StatelessWidget {
+  const _FinishedHeading({required this.steps, required this.ending});
+
+  final String steps;
+
+  final String ending;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+            text: steps,
+            style: TextStyle(
+              color: colors.onSurface,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          TextSpan(text: ' · $ending'),
+        ],
+      ),
+      maxLines: 1,
+      overflow: .ellipsis,
+      style: Theme.of(context).textTheme.bodyMedium
+          ?.copyWith(color: colors.onSurfaceVariant),
     );
   }
 }
