@@ -1,3 +1,8 @@
+## 0.5.2
+
+- `PrivateInputField.initialValue`: pre-fills a private input field (its own last value, or a known public default). Never applies to `PrivateInputKind.secret`, `.password`, `.code` or `.totp`.
+- Add `PrivateInputKind.email`: entered in clear like `text`, with an email keyboard, and pre-filled from `initialValue`. Exhaustive `switch`es over `PrivateInputKind` need the new case.
+
 ## 0.5.1
 
 - Add `ToolContext.requestPrivateInput` with typed, ephemeral fields for local tools. Values are returned only to the tool.

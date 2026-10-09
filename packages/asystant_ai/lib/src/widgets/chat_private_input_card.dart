@@ -26,7 +26,7 @@ class ChatPrivateInputCard extends StatefulWidget {
 class _ChatPrivateInputCardState extends State<ChatPrivateInputCard> {
   late final Map<String, TextEditingController> _controllers = {
     for (final field in widget.request.fields)
-      field.name: TextEditingController(),
+      field.name: TextEditingController(text: field.toInitialText()),
   };
   bool _show = false;
 
@@ -81,32 +81,14 @@ class _ChatPrivateInputCardState extends State<ChatPrivateInputCard> {
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 12),
-            for (final field in widget.request.fields)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: TextField(
-                  controller: _controllers[field.name],
-                  obscureText: !_show && field.kind != PrivateInputKind.text,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  keyboardType:
-                      field.kind == PrivateInputKind.totp ||
-                          field.kind == PrivateInputKind.code
-                      ? TextInputType.number
-                      : TextInputType.text,
-                  inputFormatters: field.kind == PrivateInputKind.totp
-                      ? [
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(8),
-                        ]
-                      : null,
-                  decoration: InputDecoration(
-                    labelText: field.label,
-                    border: const OutlineInputBorder(),
-                  ),
-                  onChanged: (_) => setState(() {}),
-                ),
+            ...widget.request.fields.map(
+              (field) => _PrivateInputTextField(
+                field: field,
+                controller: _controllers[field.name],
+                isRevealed: _show,
+                onChanged: (_) => setState(() {}),
               ),
+            ),
             Row(
               children: [
                 IconButton(
@@ -135,4 +117,72 @@ class _ChatPrivateInputCardState extends State<ChatPrivateInputCard> {
       ),
     );
   }
+}
+
+class _PrivateInputTextField extends StatelessWidget {
+  const _PrivateInputTextField({
+    required this.field,
+    required this.controller,
+    required this.isRevealed,
+    required this.onChanged,
+  });
+
+  final PrivateInputField field;
+  final TextEditingController? controller;
+  final bool isRevealed;
+  final ValueChanged<String> onChanged;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(bottom: 10),
+    child: TextField(
+      controller: controller,
+      obscureText: !isRevealed && field.kind.isObscured,
+      enableSuggestions: false,
+      autocorrect: false,
+      keyboardType: field.kind.toKeyboardType(),
+      autofillHints: field.kind.toAutofillHints(),
+      inputFormatters: field.kind.toInputFormatters(),
+      decoration: InputDecoration(
+        labelText: field.label,
+        border: const OutlineInputBorder(),
+      ),
+      onChanged: onChanged,
+    ),
+  );
+}
+
+extension on PrivateInputField {
+  /// [PrivateInputField.initialValue] for a public field; always empty for a
+  /// secret one, whatever the tool sent.
+  String toInitialText() => switch (kind) {
+    .text || .email => initialValue ?? '',
+    .secret || .password || .code || .totp => '',
+  };
+}
+
+extension on PrivateInputKind {
+  bool get isObscured => switch (this) {
+    .text || .email => false,
+    .secret || .password || .code || .totp => true,
+  };
+
+  TextInputType toKeyboardType() => switch (this) {
+    .totp || .code => .number,
+    .email => .emailAddress,
+    .secret || .password || .text => .text,
+  };
+
+  Iterable<String> toAutofillHints() => switch (this) {
+    .email => const [AutofillHints.email],
+    .secret || .password || .code || .totp || .text => const [],
+  };
+
+  List<TextInputFormatter>? toInputFormatters() => switch (this) {
+    .totp => [
+      FilteringTextInputFormatter.digitsOnly,
+      LengthLimitingTextInputFormatter(8),
+    ],
+    .secret || .password || .code || .text || .email => null,
+  };
 }

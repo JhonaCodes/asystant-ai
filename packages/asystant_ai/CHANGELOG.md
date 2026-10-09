@@ -1,3 +1,8 @@
+## 0.9.5
+
+- `ChatPrivateInputCard` pre-fills a field from `PrivateInputField.initialValue` (`asystant_core` 0.5.2) instead of always starting empty. Only `text` and `email` fields are pre-filled: `secret`, `password`, `code` and `totp` always start empty, whatever value the tool sends.
+- `PrivateInputKind.email` fields are shown in clear with an email keyboard and the email autofill hint, and the form cannot be sent until the value looks like an email address.
+
 ## 0.9.4
 
 - Fix raw JSON text appearing in chat when a model (observed with gpt-oss) writes a registered presentation tool's arguments (e.g. `present_choices`) in `content` instead of `tool_calls`; it now shows the same card a real call would.

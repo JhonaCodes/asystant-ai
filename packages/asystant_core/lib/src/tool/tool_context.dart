@@ -15,16 +15,27 @@ class PrivateInputField {
     required this.label,
     this.kind = .secret,
     this.required = true,
+    this.initialValue,
   });
   final String name;
   final String label;
   final PrivateInputKind kind;
   final bool required;
+
+  /// Pre-fills the field, such as the last value the person entered or a
+  /// known public default. The host UI pre-fills only
+  /// [PrivateInputKind.text] and [PrivateInputKind.email] from this, never
+  /// [PrivateInputKind.secret], [PrivateInputKind.password],
+  /// [PrivateInputKind.code] or [PrivateInputKind.totp]: a value worth
+  /// pre-filling is never a secret in the first place.
+  final String? initialValue;
 }
 
 /// How a [PrivateInputField] should be entered and displayed; the host UI
 /// decides obscuring and keyboard type from this, never from the field name.
-enum PrivateInputKind { secret, password, code, totp, text }
+/// [text] and [email] are shown in clear; [email] also gets an email
+/// keyboard and must look like an address before the form can be sent.
+enum PrivateInputKind { secret, password, code, totp, text, email }
 
 // keel-debt: returns an untyped Map<String, String> unrelated to the fields asked;
 //   type it as a PrivateInputValues model in the next major.
