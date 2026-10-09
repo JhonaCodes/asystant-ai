@@ -1,3 +1,14 @@
+## 0.10.0
+
+- Business tools: `BusinessToolkit` registers, corrects, signs in to and operates business APIs described by `asystant_core` 0.6.0 contracts. Return `toolkit.tools` from `AsystantAI.tools` and `toolkit.contextPrompt()` from `AsystantAI.contextPrompts`.
+  - Tools: `RegisterBusinessTool`, `UpdateBusinessTool`, `ConnectBusinessTool`, `OperateBusinessTool`, `ConfigureBusinessEnvironmentTool`, `ConfigureBusinessPrivateHeaderTool`, `EnterBusinessSecretsTool` and `ReadBusinessDocsTool`, named by `BusinessToolNames`.
+  - Register and update keep the source document (`document_attachment_id` for an attached text file such as the endpoints `.md`, or `document` as text) in `BusinessToolkit.documentStore`; `read_business_docs` returns the sections that match a query, capped in size, with every heading. `JsonBusinessDocumentStore` persists documents through the host's key/value callbacks.
+  - Sign-in values, private headers and secret fields are typed in secure forms by tools separate from `OperateBusinessTool`, so the chat never withholds an operation's answer from the model.
+  - `BusinessApprovalPolicy`: only destructive operations (`DELETE` by default) ask for approval.
+  - `BusinessContextPrompt` tells the model every registered operation and, per environment and profile, how it signs in and whether a session is saved.
+- `SecureCredentialStore`: a `BusinessCredentialStore` over `flutter_secure_storage`, keyed by account, business, environment and profile under a configurable prefix.
+- `AsystantStrings` adds the business labels (`businessRegisterTitle`, `businessInputLabel`, `businessParameterLabel`, `businessCodeSentTitle`, `businessDocsTitle`, ...); host string bundles can override them.
+
 ## 0.9.6
 
 - A finished turn's activity is folded into one compact line, such as "3 steps · completed" (or "with issues", with the warning icon, when a step failed, was declined or was stopped), and its steps, including the images a tool returned, open only when the person taps it; the line is at least one action height tall. The line now goes under the turn's answer instead of above it. The turn in progress still shows its steps open and live.

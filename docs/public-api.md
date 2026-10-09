@@ -300,6 +300,94 @@ The tool only reads, so it runs without asking for permission; the step shows th
 
 Search results come from documents, and the baseline safety prompt already tells the model to treat tool output as untrusted data; index only content the person using the app is allowed to read.
 
+## Business APIs
+
+`asystant_core` describes the administrative API of a business as a typed contract, and `asystant_ai` gives the assistant the tools to register it, sign in and run its operations. Credentials never enter the contract, the conversation or the model.
+
+### Contract
+
+A `BusinessContract` has an `id`, a `name`, optional `dev` and `prod` `BusinessEndpoint`s and its `BusinessOperation`s. An operation is `METHOD path` with typed `BusinessField`s: a `BusinessFieldKind` (`string`, `integer`, `number`, `boolean`, `object` with typed `properties`, `list` with a typed `item`, or `secret`) and a `BusinessFieldLocation` (`path`, `query`, `body`, `header`), plus `options`, `minimum` and `maximum`. Endpoints and operations may add public `headers` and `privateHeaders`, whose values live in the device vault.
+
+`BusinessContract.parse(json)` reads untrusted JSON into a `Result`, and `contract.validateContract()` checks it before it is saved: identifiers, addresses (PROD needs https), headers, the sign-in flow, profiles, operation routes and every field. `operation.validateArguments(arguments)` checks one call.
+
+### Sign-in as data
+
+An endpoint's `auth` is a `BusinessAuthFlow`: `scheme` (`bearer` or `apiKey` with `apiKeyHeader`) says how the saved credential is sent; `steps` say how it is obtained. Each `BusinessAuthStep` is a `POST` with a `kind` (`request`, `verify`, `password`, `totp`, `refresh`), a `path`, the `BusinessAuthInput`s the person types (`email`, `password`, `code`, `totp` or `text`, each sent as its `field`), and `carry`, values taken from the previous answer such as a second-factor challenge. The flow also holds the fixed `parameters` every step sends (editable in the first form), `requiredParameters`, sign-in `headers`, a separate `baseUrl`, the `tokenPath` of the answer, the refresh token and session id members, and an optional required role. A flow without steps uses an API key or Bearer token saved directly.
+
+Named constructors build the usual flows: `bearer()`, `apiKey(header:)`, `emailCode`, `emailCodeTotp`, `emailPassword`, `emailPasswordTotp`, `aulaMasOperator` and `sstOperator`; `copyWith` and `withRefresh(path)` finish them. LoginFlow, for example:
+
+```dart
+final loginFlow = BusinessAuthFlow.emailCode(
+  requestPath: '/v1/public/request-otp-login',
+  verifyPath: '/v1/public/login-with-otp',
+).copyWith(
+  baseUrl: 'https://api.loginflow.example',
+  parameters: {'application_id': 'app-1', 'company_id': 'company-1'},
+  requiredParameters: ['application_id', 'company_id'],
+  tokenPath: 'jwt',
+  reusesTokenForRefresh: true,
+).withRefresh('/v1/public/refresh-token');
+```
+
+In JSON the same flow is the `auth` object of the endpoint (`scheme`, `parameters`, `required_parameters`, `steps: [{kind, path, inputs: [{name, kind, field}], carry}]`, `token_path`, ...). Contracts saved in the first format, a flat `auth_kind` (`bearer`, `apiKey`, `emailCode`, `emailCodeTotp`, `emailPassword`, `emailPasswordTotp`, `aulaMasOperator`, `sstOperator`) with `request_path`, `verify_path`, `totp_path`, `login_path`, `refresh_path`, `token_field`, `auth_parameters` and the other flat members, are still read: `BusinessEndpoint.fromJson` hands them to `BusinessAuthFlow.fromLegacyJson`, and `toJson` writes the current format.
+
+`BusinessSignIn.signIn` runs the steps in order. Before each one it calls a `BusinessSignInPrompter` with a `BusinessSignInRequest`: the inputs not typed yet, the parameters (first form only) and a `BusinessTotpEnrollment` when the API enrolls a new authenticator. An input with the same name in two steps is typed once. A 4xx answer that carries every value the next step needs is a challenge, not a rejection. The token, refresh token, session id and last email go to the credential store; `BusinessSignInOutcome` returns the parameters the person confirmed. `refresh` renews a session once at a time per scope.
+
+### Profiles, stores and execution
+
+An endpoint can declare several `BusinessCredentialProfile`s, such as `admin` and `guest`; each signs in separately. A `BusinessCredentialScope` (account, business, environment, profile) keys every stored value. Without declared profiles an environment has one default profile.
+
+The host implements three interfaces: `BusinessHttp` (`BusinessHttpClient` is the default over `package:http`: JSON bodies, no redirects, a timeout), `BusinessCredentialStore` (credential, session values, last email and private headers per scope; `asystant_ai` ships `SecureCredentialStore` over `flutter_secure_storage`) and `BusinessContractStore` (list and save the contracts of an account, locally or synced with a server). Every method answers a `Result` with a `BusinessFailure`.
+
+`BusinessExecutor.execute` validates the arguments, builds the request (path, query, body, headers, the credential per scheme, private headers and an `Idempotency-Key` for writes) and redacts every secret from the answer. On 401 it renews the session once and retries; when renewal is impossible or rejected it clears the session and answers `BusinessFailureCode.sessionExpired`. `contract.sessionResetsFrom(previous)` says which sessions a new version of a contract invalidates: a changed address or sign-in clears them, a header change does not.
+
+### Tools
+
+`BusinessToolkit` wires it together for an assistant:
+
+```dart
+class ShopAssistant extends AsystantAI {
+  ShopAssistant(this.session);
+
+  final Session session;
+
+  late final business = BusinessToolkit(
+    contractStore: MyContractStore(), // Host-owned.
+    credentialStore: const SecureCredentialStore(),
+    documentStore: JsonBusinessDocumentStore(
+      readValue: preferences.read, // Host-owned key/value store.
+      writeValue: preferences.write,
+      removeValue: preferences.remove,
+    ),
+    accountId: () => session.userId,
+    strings: AsystantStrings.spanishLabels,
+  );
+
+  @override
+  List<AsystantTool> get tools => [...business.tools];
+
+  @override
+  Future<List<AsystantSystemPrompt>> contextPrompts() async => [
+    await business.contextPrompt(),
+  ];
+}
+```
+
+The tools, named by `BusinessToolNames`:
+
+- `register_business` (`RegisterBusinessTool`): registers a contract the model writes, for example from an attached `.md`. A contract with a credential in it is rejected.
+- `update_business` (`UpdateBusinessTool`): corrects the sign-in, addresses, headers, profiles or operations in place; sessions survive unless the address or sign-in changed. `builtInOperations` protects operations that ship with the app.
+- `connect_business` (`ConnectBusinessTool`): runs the sign-in flow with secure forms (email, parameters pre-filled, password, codes, missing private headers). `onTotpEnrollment` lets the host show a QR; without it the manual key appears in the code form.
+- `operate_business` (`OperateBusinessTool`): runs an operation with the saved session and gives the redacted answer to the model. It never opens a form: a missing session, private header or secret field fails naming the tool to call first.
+- `configure_business_environment` (`ConfigureBusinessEnvironmentTool`): saves an address and an API key or Bearer token given as a private chat value.
+- `configure_business_private_header` (`ConfigureBusinessPrivateHeaderTool`): saves a declared private header from a private value or a secure form.
+- `enter_business_secrets` (`EnterBusinessSecretsTool`): asks for an operation's secret fields and holds them for its next call, which uses them once.
+- `read_business_docs` (`ReadBusinessDocsTool`): reads the source document of a business, the sections that match `query` (or the beginning), cut to 8000 characters, with every heading.
+
+Register and update accept the source document of the contract: `document_attachment_id` for a text file attached to the chat (the endpoints `.md`) or `document` as text. It is kept as a `BusinessDocument` in `toolkit.documentStore`, one per business, replaced by a newer one; a document with a credential in it is refused. `BusinessDocumentStore` is in memory by default; `JsonBusinessDocumentStore` persists it through the same key/value callbacks as `AsystantJsonConversationStore`. In pure Dart, `document.matchingSections(query)` splits it at its Markdown headings and ranks the sections with `AsystantKnowledge`. The context prompt says which businesses have documentation.
+
+The chat withholds from the model the outcome of any tool that used private input or a secret reference. That is why secrets are always entered by a tool other than `operate_business`: the operation's answer stays visible. `BusinessApprovalPolicy` asks approval only for destructive operations (`DELETE` by default, high sensitivity, every time); every other business tool runs directly. `BusinessContextPrompt` (`toolkit.contextPrompt()`) lists the rules, every registered operation and, per environment and profile, how it signs in and whether a session is saved, without any credential or parameter value. Card titles, form labels and step summaries come from `AsystantStrings`; what the model reads stays English.
+
 ## Embedding and customization
 
 `AsystantButton` opens the chat in a bottom sheet (`AsystantPhoneSheet`) on phones and in a side panel (`AsystantPanel`) on tablets and desktops. `AsystantChat` is a bounded section without its own app router or Scaffold; use it in drawers, panels and full screens. Colors follow the host theme's `ColorScheme`: mainly `surface`, `surfaceContainerLow`, `surfaceContainerHigh` and `surfaceContainerHighest` (cards, composer), `primary` (actions, accents), `primaryContainer` and `onPrimaryContainer` (the person's messages), `onSurface`, `onSurfaceVariant` (secondary text), `outlineVariant` (borders) and `error`. A host whose app theme only sets the basic roles can wrap the chat in a `Theme` that fills these from its own palette. `AsystantTheme` controls dimensions. English labels are the default; use `AsystantStrings(spanish: true)` or a host subclass for another language.

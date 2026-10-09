@@ -48,3 +48,26 @@ export 'src/widgets/asystant_card_content.dart';
 export 'src/widgets/asystant_dashboard_welcome.dart';
 export 'src/widgets/asystant_control_center_chrome.dart';
 export 'src/widgets/asystant_secret_prompt.dart';
+
+// Business APIs: secure credential store, tools and context prompt.
+export 'src/business/business_approval_policy.dart';
+export 'src/business/business_call_target.dart';
+export 'src/business/business_context_prompt.dart';
+export 'src/business/business_contract_submission.dart';
+export 'src/business/business_docs_query.dart';
+export 'src/business/business_environment_change.dart';
+export 'src/business/business_operation_call.dart';
+export 'src/business/business_private_header_value.dart';
+export 'src/business/business_tool_names.dart';
+export 'src/business/business_tool_text.dart';
+export 'src/business/business_toolkit.dart';
+export 'src/business/configure_business_environment_tool.dart';
+export 'src/business/configure_business_private_header_tool.dart';
+export 'src/business/connect_business_tool.dart';
+export 'src/business/enter_business_secrets_tool.dart';
+export 'src/business/json_business_document_store.dart';
+export 'src/business/operate_business_tool.dart';
+export 'src/business/read_business_docs_tool.dart';
+export 'src/business/register_business_tool.dart';
+export 'src/business/secure_credential_store.dart';
+export 'src/business/update_business_tool.dart';
