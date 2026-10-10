@@ -2,7 +2,6 @@ import 'dart:ui' show PointerDeviceKind;
 
 import 'package:asystant_ai/asystant_ai.dart';
 import 'package:asystant_ai/src/widgets/asystant_image_placeholder.dart';
-import 'package:asystant_ai/src/widgets/asystant_markdown_text.dart';
 import 'package:asystant_ai/src/widgets/chat_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';

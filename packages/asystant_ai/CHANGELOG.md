@@ -1,3 +1,14 @@
+## 0.11.0
+
+- Mermaid flowcharts in messages are drawn as diagrams instead of code. A ```` ```mermaid ```` block whose source is a `flowchart` or `graph` (`TD`, `TB`, `BT`, `LR`, `RL`) renders as a card sized to the diagram, scaled to the message width (never below 60 %, the rest clipped with a fade, at most `AsystantTheme.diagramMaxHeight` tall). A tap opens it across the screen with pan, pinch zoom and a "View code" action. Everything is parsed, laid out and painted on the device: no web view and no network service.
+  - Supported: every classic node shape, quoted labels and `<br>`; links `-->`, `---`, `-.->`, `==>`, `~~~`, `<-->`, `--o`, `--x` and their longer forms, labelled with `|text|` or `-- text -->`; chains, `&` groups, `;` separators, nested `subgraph … end` drawn as titled frames, `%%` comments. `classDef`, `class`, `style`, `linkStyle` and `click` lines are ignored; colors follow the app's theme in light and dark.
+  - Layered layout: back edges are routed around the flow, every link label gets its own space, and the same source always gives the same drawing.
+  - Other diagram types, statements outside that subset and charts over 150 nodes keep showing as a code block, exactly as before.
+- `AsystantMermaidDiagram(source: …)` is public, for drawing a flowchart anywhere in a host app.
+- `AsystantMarkdownText` is public, so hosts can render agent Markdown, diagrams included, outside the chat (task history, decisions, activity logs). Its constructor takes `text`, `style` (merged over the paragraph style), `selectable` (wraps it in its own `SelectionArea`), `onOpenLink` and `strings`; inside a chat it keeps using the chat's link handling and labels.
+- `AsystantTheme.diagramMaxHeight` (420 by default) and the `AsystantStrings` labels `diagram`, `openDiagram`, `showDiagramCode`, `showDiagram` and `diagramSummary(steps)`; host string bundles can override them.
+- Depends on `markdown` directly (it was already a transitive dependency).
+
 ## 0.10.0
 
 - Business tools: `BusinessToolkit` registers, corrects, signs in to and operates business APIs described by `asystant_core` 0.6.0 contracts. Return `toolkit.tools` from `AsystantAI.tools` and `toolkit.contextPrompt()` from `AsystantAI.contextPrompts`.

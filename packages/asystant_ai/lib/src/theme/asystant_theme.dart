@@ -37,6 +37,7 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     this.sideListFromWidth = 640,
     this.sideListWidth = 280,
     this.stepImageHeight = 120,
+    this.diagramMaxHeight = 420,
   });
 
   final double radius;
@@ -110,6 +111,10 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
   /// Height of the images a tool returned, under its step.
   final double stepImageHeight;
 
+  /// Tallest a diagram gets inside a message; the rest is clipped with a
+  /// fade and shown in the full view, which opens on a tap.
+  final double diagramMaxHeight;
+
   AsystantMetrics metricsFor(double chatWidth) =>
       chatWidth < compactBelowWidth ? compact : regular;
 
@@ -172,6 +177,7 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     double? sideListFromWidth,
     double? sideListWidth,
     double? stepImageHeight,
+    double? diagramMaxHeight,
   }) => AsystantTheme(
     radius: radius ?? this.radius,
     spacing: spacing ?? this.spacing,
@@ -205,6 +211,7 @@ class AsystantTheme extends ThemeExtension<AsystantTheme> {
     sideListFromWidth: sideListFromWidth ?? this.sideListFromWidth,
     sideListWidth: sideListWidth ?? this.sideListWidth,
     stepImageHeight: stepImageHeight ?? this.stepImageHeight,
+    diagramMaxHeight: diagramMaxHeight ?? this.diagramMaxHeight,
   );
 
   @override
