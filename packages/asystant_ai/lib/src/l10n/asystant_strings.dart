@@ -58,6 +58,20 @@ class AsystantStrings {
 
   String get imageOmitted => spanish ? 'Imagen omitida' : 'Image omitted';
 
+  // Diagrams in messages (`AsystantMermaidDiagram`).
+  String get diagram => spanish ? 'Diagrama' : 'Diagram';
+  String get openDiagram => spanish ? 'Abrir diagrama' : 'Open diagram';
+  String get showDiagramCode => spanish ? 'Ver código' : 'View code';
+  String get showDiagram => spanish ? 'Ver diagrama' : 'View diagram';
+
+  /// What a screen reader says for a flowchart with [steps] nodes.
+  String diagramSummary(int steps) => switch ((spanish, steps)) {
+    (true, 1) => 'Diagrama de flujo con 1 paso',
+    (true, _) => 'Diagrama de flujo con $steps pasos',
+    (false, 1) => 'Flowchart with 1 step',
+    (false, _) => 'Flowchart with $steps steps',
+  };
+
   String get send => spanish ? 'Enviar' : 'Send';
   String get stop => spanish ? 'Detener' : 'Stop';
   String get close => spanish ? 'Cerrar' : 'Close';

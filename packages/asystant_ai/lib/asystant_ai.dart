@@ -45,6 +45,8 @@ export 'src/widgets/gen_ui_chart.dart';
 export 'src/service/asystant_link_opener.dart';
 
 export 'src/widgets/asystant_card_content.dart';
+export 'src/widgets/asystant_markdown_text.dart';
+export 'src/widgets/asystant_mermaid_diagram.dart';
 export 'src/widgets/asystant_dashboard_welcome.dart';
 export 'src/widgets/asystant_control_center_chrome.dart';
 export 'src/widgets/asystant_secret_prompt.dart';

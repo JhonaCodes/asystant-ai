@@ -525,6 +525,29 @@ For model-arranged charts, explicitly enable `ChartPresentationTool()` or
 presents data; it cannot fetch private information or change application records.
 For authoritative reporting, build the card directly in the local data tool.
 
+## Diagrams in messages
+
+A ```` ```mermaid ```` block in a completed message or card body whose source is a
+flowchart (`flowchart` or `graph`, any direction) is drawn as a diagram: a card sized
+to it inside the message, and a full view with pan, zoom and its source on a tap. It
+is parsed, laid out and painted on the device, so diagrams carrying private project
+details never reach a web view or a rendering service. Other Mermaid diagram types,
+and flowcharts using syntax outside the supported subset, stay code blocks. Use
+`AsystantMermaidDiagram(source: …)` to draw one anywhere, and `AsystantMarkdownText`
+to render agent Markdown outside the chat with the same diagrams, links and image
+rules:
+
+```dart
+AsystantMarkdownText(
+  text: decision.markdown,
+  selectable: true,
+  onOpenLink: (uri) async => router.openIfInternal(uri),
+  strings: AsystantStrings.spanishLabels,
+);
+```
+
+The tallest a diagram gets in a message is `AsystantTheme.diagramMaxHeight`.
+
 ## Links, selection and copying
 
 Completed messages and card bodies render Markdown, including named links such as
