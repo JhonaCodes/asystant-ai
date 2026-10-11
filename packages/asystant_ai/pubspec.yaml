@@ -23,7 +23,7 @@ dependencies:
   flutter_svg: ^2.2.3
   flutter_markdown_plus: ^1.0.12
   markdown: ^7.3.1
-  url_launcher: ^6.3.2
+  url_launcher: ^6.3.3
   file_picker: ^12.2.0
   multiselect_field: ^2.5.0
   flutter_secure_storage: ^11.2.0

@@ -17,7 +17,7 @@ dependencies:
   flutter_local_db: ^1.5.2
   path_provider: ^2.1.6
   uuid: ^4.6.0
-  url_launcher: ^6.3.2
+  url_launcher: ^6.3.3
   collection: ^1.19.1
 dev_dependencies:
   flutter_test:
