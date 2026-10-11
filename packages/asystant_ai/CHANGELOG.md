@@ -1,3 +1,8 @@
+## 0.12.0
+
+- The round limit is optional. `AsystantTurnLimits.unlimited()` lets a turn run until the model answers without tool calls (or the person stops it); `AsystantTurnLimits.maxRounds` is now `int?`, null meaning no limit. **Breaking** for code that reads `maxRounds` as an `int`.
+- `AsystantAI.setTurnLimits(limits)` changes the limits from the next turn on without reconnecting, so a host can let the person turn the limit on or off. A turn already running keeps its own.
+
 ## 0.11.0
 
 - Mermaid flowcharts in messages are drawn as diagrams instead of code. A ```` ```mermaid ```` block whose source is a `flowchart` or `graph` (`TD`, `TB`, `BT`, `LR`, `RL`) renders as a card sized to the diagram, scaled to the message width (never below 60 %, the rest clipped with a fade, at most `AsystantTheme.diagramMaxHeight` tall). A tap opens it across the screen with pan, pinch zoom and a "View code" action. Everything is parsed, laid out and painted on the device: no web view and no network service.
