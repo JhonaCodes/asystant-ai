@@ -13,7 +13,7 @@ dependencies:
     path: ../../packages/asystant_ai
   result_controller: ^1.3.0
   logger_rs: ^2.1.1
-  go_router: ^17.5.0
+  go_router: ^18.0.2
   flutter_local_db: ^1.5.2
   path_provider: ^2.1.6
   uuid: ^4.6.0
