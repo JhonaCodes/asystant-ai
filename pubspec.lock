@@ -121,6 +121,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
+  db_dsl:
+    dependency: transitive
+    description:
+      name: db_dsl
+      sha256: "86a665a04a2dab3071eda8f372cc21bf66f612b18b08a4039751283b20004177"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.7"
   dbus:
     dependency: transitive
     description:
@@ -218,10 +226,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_local_db
-      sha256: "0fecee8025d94a67a6010b7c419dd1f58fbc45e32287f51ad91366a0bd1ccfc8"
+      sha256: "60a078b298afc55c6f648299334806e45be370b67bb4414b72ad4dbf1250e56e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.2"
+    version: "3.0.6"
   flutter_markdown_plus:
     dependency: transitive
     description:
