@@ -10,12 +10,15 @@ import 'package:flutter/foundation.dart';
 /// ```dart
 /// const AsystantTurnLimits()                  // 8 rounds, 16 calls
 /// const AsystantTurnLimits(maxRounds: 20)     // a longer tool loop
+/// const AsystantTurnLimits.unlimited()        // no round limit
 /// ```
 ///
 /// - When a turn uses its [maxRounds] and the last one still proposed tool
 ///   calls, those calls have run and their results are in the conversation,
 ///   but the model is not asked again: the turn ends with a
-///   `FailureCode.limit` failure, shown in the chat.
+///   `FailureCode.limit` failure, shown in the chat. With no [maxRounds]
+///   ([AsystantTurnLimits.unlimited]) a turn runs until the model answers
+///   without tool calls.
 /// - A response with more than [maxCallsPerResponse] calls is refused as a
 ///   `FailureCode.protocol` failure: none of its calls run and it is not
 ///   added to the conversation.
@@ -23,9 +26,14 @@ import 'package:flutter/foundation.dart';
 class AsystantTurnLimits {
   const AsystantTurnLimits({this.maxRounds = 8, this.maxCallsPerResponse = 16});
 
+  /// No limit on rounds: the turn ends when the model stops calling tools,
+  /// or when the person stops it.
+  const AsystantTurnLimits.unlimited({this.maxCallsPerResponse = 16})
+    : maxRounds = null;
+
   factory AsystantTurnLimits.fromJson(Map<String, Object?> json) =>
       AsystantTurnLimits(
-        maxRounds: json['maxRounds'] as int,
+        maxRounds: json['maxRounds'] as int?,
         maxCallsPerResponse: json['maxCallsPerResponse'] as int,
       );
 
@@ -38,20 +46,18 @@ class AsystantTurnLimits {
   /// protocol failure), so a higher value would promise nothing.
   static const int maxCallsCeiling = 16;
 
-  /// Inference rounds in one turn, from 1 to [maxRoundsCeiling].
-  final int maxRounds;
+  /// Inference rounds in one turn, from 1 to [maxRoundsCeiling]; null for
+  /// no limit ([AsystantTurnLimits.unlimited]).
+  final int? maxRounds;
 
   /// Tool calls accepted in one model response, from 1 to [maxCallsCeiling].
   final int maxCallsPerResponse;
 
   /// Throws a [RangeError] when a value is outside its range.
   void validate() {
-    RangeError.checkValueInInterval(
-      maxRounds,
-      1,
-      maxRoundsCeiling,
-      'maxRounds',
-    );
+    if (maxRounds case final int rounds) {
+      RangeError.checkValueInInterval(rounds, 1, maxRoundsCeiling, 'maxRounds');
+    }
     RangeError.checkValueInInterval(
       maxCallsPerResponse,
       1,
@@ -60,6 +66,8 @@ class AsystantTurnLimits {
     );
   }
 
+  /// A copy with [maxRounds] or [maxCallsPerResponse] changed; use
+  /// [AsystantTurnLimits.unlimited] to drop the round limit.
   AsystantTurnLimits copyWith({int? maxRounds, int? maxCallsPerResponse}) =>
       AsystantTurnLimits(
         maxRounds: maxRounds ?? this.maxRounds,

@@ -86,6 +86,9 @@ abstract class AsystantAI with AsystantService {
 
   AsystantProviderSettings? _providerSettings;
 
+  /// The limits each turn runs with; [setTurnLimits] changes them.
+  AsystantTurnLimits _turnLimits = const AsystantTurnLimits();
+
   /// Optional local provider and model settings, owned by this package.
   AsystantProviderSettings? get providerSettings => _providerSettings;
 
@@ -141,6 +144,7 @@ abstract class AsystantAI with AsystantService {
       throw ArgumentError('Pass exactly one of provider or transport.');
     }
     turnLimits.validate();
+    _turnLimits = turnLimits;
     if (providerSettings != null && provider == null) {
       throw ArgumentError('Local provider settings require a host provider.');
     }
@@ -181,7 +185,7 @@ abstract class AsystantAI with AsystantService {
         store: conversationStore,
         attachmentPolicy: attachments,
         context: contextPrompts,
-        turnLimits: turnLimits,
+        turnLimits: _turnLimits,
         confirmation: requiresConfirmation,
         actionPolicy: actionPolicyFor,
         enableInlinePrivateInput: enableInlinePrivateInput,
@@ -192,6 +196,15 @@ abstract class AsystantAI with AsystantService {
       await configuring;
       _pendingTransport = null;
     };
+  }
+
+  /// Changes the turn limits from the next turn on, without reconnecting
+  /// (a host setting that turns the round limit on or off). Throws a
+  /// [RangeError] for an out-of-range value.
+  void setTurnLimits(AsystantTurnLimits limits) {
+    limits.validate();
+    _turnLimits = limits;
+    conversation.notifier.setTurnLimits(limits);
   }
 
   /// Applies a changed local provider/model without losing saved conversations.

@@ -246,7 +246,7 @@ assistant.init(
 );
 ```
 
-Both are positive integers with a ceiling, so a host mistake cannot leave a turn calling the model without end: `maxRounds` from 1 to `AsystantTurnLimits.maxRoundsCeiling` (64), `maxCallsPerResponse` from 1 to `AsystantTurnLimits.maxCallsCeiling` (16). The call ceiling is the built-in transports' own: `OpenRouterProvider` and `ClaudeCodeProvider` refuse a response with more than 16 calls as a protocol failure, so a higher value could not take effect. `init` throws a `RangeError` for a value outside its range, before storing anything.
+Both are positive integers with a ceiling, so a host mistake cannot leave a turn calling the model without end: `maxRounds` from 1 to `AsystantTurnLimits.maxRoundsCeiling` (64), or null with `AsystantTurnLimits.unlimited()` for no round limit (the turn ends when the model stops calling tools or the person stops it), `maxCallsPerResponse` from 1 to `AsystantTurnLimits.maxCallsCeiling` (16). The call ceiling is the built-in transports' own: `OpenRouterProvider` and `ClaudeCodeProvider` refuse a response with more than 16 calls as a protocol failure, so a higher value could not take effect. `init` throws a `RangeError` for a value outside its range, before storing anything. `AsystantAI.setTurnLimits(limits)` changes them from the next turn on without reconnecting, so a host can let the person turn the limit on or off.
 
 When a turn reaches a limit:
 

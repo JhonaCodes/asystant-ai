@@ -86,6 +86,14 @@ class ChatViewModel extends ViewModel<ChatState> {
   /// Rounds per turn and calls per response; see [AsystantTurnLimits].
   AsystantTurnLimits _turnLimits = const AsystantTurnLimits();
 
+  /// Changes the limits from the next turn on; a turn already running keeps
+  /// the ones it started with. Throws a [RangeError] for an out-of-range
+  /// value.
+  void setTurnLimits(AsystantTurnLimits limits) {
+    limits.validate();
+    _turnLimits = limits;
+  }
+
   /// What the host knows now; read again before every model call.
   AsystantContextSource _context = _noContext;
 
@@ -886,8 +894,9 @@ class ChatViewModel extends ViewModel<ChatState> {
     unawaited(_saveActive());
     // Frozen for the turn, like its epoch.
     final limits = _turnLimits;
+    final maxRounds = limits.maxRounds;
     try {
-      for (var round = 0; round < limits.maxRounds; round++) {
+      for (var round = 0; maxRounds == null || round < maxRounds; round++) {
         AssistantMessage? completed;
         var failed = false;
         // Read each round: a tool of the previous round may have changed it.

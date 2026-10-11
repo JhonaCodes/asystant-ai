@@ -58,6 +58,40 @@ class _LookTool extends AsystantTool {
   }
 }
 
+/// A model that calls the tool [rounds] times and then answers.
+class _LongTransport extends FakeTransport {
+  _LongTransport(this.rounds);
+
+  final int rounds;
+  int requests = 0;
+
+  @override
+  Stream<InferenceEvent> infer({
+    required List<AssistantMessage> messages,
+    required String model,
+    required String requestId,
+    List<AsystantSystemPrompt> context = const [],
+    List<ToolDefinition>? tools,
+  }) async* {
+    requests++;
+    yield InferenceCompleted(
+      requests > rounds
+          ? const AssistantMessage(role: MessageRole.assistant, content: 'Done')
+          : AssistantMessage(
+              role: MessageRole.assistant,
+              content: '',
+              calls: [
+                ToolCall(
+                  id: 'call-$requests',
+                  name: 'look',
+                  arguments: const ToolArguments('{}'),
+                ),
+              ],
+            ),
+    );
+  }
+}
+
 class _LoopingAssistant extends AsystantAI {
   _LoopingAssistant(this.look);
 
@@ -87,6 +121,46 @@ void main() {
     expect(look.runs, 2);
     expect(state.phase, ChatPhase.error);
     expect(state.failure?.code, FailureCode.limit);
+    assistant.dispose();
+  });
+
+  test('unlimited runs past the ceiling until the model answers', () async {
+    final transport = _LongTransport(100);
+    final look = _LookTool();
+    final assistant = _LoopingAssistant(look)
+      ..init(
+        transport: transport,
+        models: [AsystantModelOption.fallback('test')],
+        turnLimits: const AsystantTurnLimits.unlimited(),
+      );
+
+    await assistant.sendMessage('Keep looking');
+
+    final state = assistant.conversation.notifier.state;
+    expect(transport.requests, 101);
+    expect(look.runs, 100);
+    expect(state.failure, isNull);
+    expect(state.messages.last.content, 'Done');
+    assistant.dispose();
+  });
+
+  test('setTurnLimits turns the limit off for the next turn', () async {
+    final transport = _LongTransport(20);
+    final look = _LookTool();
+    final assistant = _LoopingAssistant(look)
+      ..init(
+        transport: transport,
+        models: [AsystantModelOption.fallback('test')],
+        turnLimits: const AsystantTurnLimits(maxRounds: 2),
+      );
+
+    assistant.setTurnLimits(const AsystantTurnLimits.unlimited());
+    await assistant.sendMessage('Keep looking');
+
+    final state = assistant.conversation.notifier.state;
+    expect(transport.requests, 21);
+    expect(state.failure, isNull);
+    expect(state.messages.last.content, 'Done');
     assistant.dispose();
   });
 }
