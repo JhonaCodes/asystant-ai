@@ -27,7 +27,7 @@ dependencies:
   file_picker: ^12.2.0
   multiselect_field: ^2.5.0
   flutter_secure_storage: ^11.2.0
-  crypto: ^3.0.6
+  crypto: ^3.0.8
 dev_dependencies:
   flutter_test:
     sdk: flutter
